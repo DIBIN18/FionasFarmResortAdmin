@@ -24,6 +24,7 @@ namespace Admin_Login
             );
         public Login()
         {
+            int ints;
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
         }
