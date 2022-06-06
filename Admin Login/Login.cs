@@ -24,7 +24,9 @@ namespace Admin_Login
             int bottom,
             int width,
             int height,
-            string paul ="pogi"
+            string paul ="pogi",
+            string kagaguhan = "hey"
+
             );
         public Login()
         {
