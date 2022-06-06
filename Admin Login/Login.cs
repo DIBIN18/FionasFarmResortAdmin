@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-//CUNAN COMMENT wqeqwwqe
+
 
 namespace Admin_Login
 {
