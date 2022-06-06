@@ -23,7 +23,8 @@ namespace Admin_Login
             int top,
             int bottom,
             int width,
-            int height
+            int height,
+            string paul ="pogi"
             );
         public Login()
         {
@@ -111,6 +112,11 @@ namespace Admin_Login
                     Username.ForeColor = Color.Silver;
                 }
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
