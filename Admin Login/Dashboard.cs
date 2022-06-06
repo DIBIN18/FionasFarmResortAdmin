@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 namespace Admin_Login
 {
     public partial class Dashboard : Form
@@ -21,6 +22,7 @@ namespace Admin_Login
             int width,
             int height
             );
+        public string connectionString = "Data Source=DESKTOP-BU3N3PT\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         public Dashboard()
         {
             InitializeComponent();

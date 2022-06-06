@@ -29,28 +29,20 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.Username = new System.Windows.Forms.TextBox();
             this.Password = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.ForgotPassword = new System.Windows.Forms.Label();
             this.UsernameError = new System.Windows.Forms.Label();
             this.PasswordError = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.ExitIcon = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ExitIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1288, 66);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // LoginLabel
             // 
@@ -63,17 +55,6 @@ namespace Admin_Login
             this.LoginLabel.Size = new System.Drawing.Size(593, 45);
             this.LoginLabel.TabIndex = 1;
             this.LoginLabel.Text = "Fiona\'s Farm and Resort - Login";
-            // 
-            // Logo
-            // 
-            this.Logo.Image = global::Admin_Login.Properties.Resources.FullLogo_02;
-            this.Logo.Location = new System.Drawing.Point(540, 130);
-            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(200, 199);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logo.TabIndex = 2;
-            this.Logo.TabStop = false;
             // 
             // Username
             // 
@@ -156,11 +137,47 @@ namespace Admin_Login
             this.PasswordError.TabIndex = 8;
             this.PasswordError.Text = " ";
             // 
+            // ExitIcon
+            // 
+            this.ExitIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.ExitIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitIcon.Image = global::Admin_Login.Properties.Resources.Exit_Icon1;
+            this.ExitIcon.Location = new System.Drawing.Point(1234, 11);
+            this.ExitIcon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ExitIcon.Name = "ExitIcon";
+            this.ExitIcon.Size = new System.Drawing.Size(34, 43);
+            this.ExitIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ExitIcon.TabIndex = 9;
+            this.ExitIcon.TabStop = false;
+            this.ExitIcon.Click += new System.EventHandler(this.ExitIcon_Click);
+            // 
+            // Logo
+            // 
+            this.Logo.Image = global::Admin_Login.Properties.Resources.FullLogo_02;
+            this.Logo.Location = new System.Drawing.Point(540, 130);
+            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(200, 199);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo.TabIndex = 2;
+            this.Logo.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1288, 66);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.ExitIcon);
             this.Controls.Add(this.PasswordError);
             this.Controls.Add(this.UsernameError);
             this.Controls.Add(this.ForgotPassword);
@@ -174,9 +191,9 @@ namespace Admin_Login
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.Login_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExitIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,6 +210,7 @@ namespace Admin_Login
         private System.Windows.Forms.Label ForgotPassword;
         private System.Windows.Forms.Label UsernameError;
         private System.Windows.Forms.Label PasswordError;
+        private System.Windows.Forms.PictureBox ExitIcon;
     }
 }
 

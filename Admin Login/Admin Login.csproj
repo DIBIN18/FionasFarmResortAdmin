@@ -92,5 +92,17 @@
   <ItemGroup>
     <None Include="Resources\FullLogo-02.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit_Icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Admin_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Admin_Icon1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

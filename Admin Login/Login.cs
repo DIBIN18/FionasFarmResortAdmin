@@ -22,12 +22,12 @@ namespace Admin_Login
             int width,
             int height
             );
+        public string connectionString = "Data Source=DESKTOP-BU3N3PT\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         public Login()
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
         }
-        public string connectionString = "Data Source=DESKTOP-BU3N3PT\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         private void NameText_Enter(object sender, EventArgs e)
         {
             UsernameError.Text = "";
@@ -109,9 +109,9 @@ namespace Admin_Login
                 }
             }
         }
-        private void Login_Load(object sender, EventArgs e)
+        private void ExitIcon_Click(object sender, EventArgs e)
         {
-
+            System.Environment.Exit(0);
         }
     }
 }

@@ -29,22 +29,17 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.DashboardLabel = new System.Windows.Forms.Label();
+            this.AdminIcon = new System.Windows.Forms.PictureBox();
             this.Logo = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.AdminName = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1288, 66);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // DashboardLabel
             // 
@@ -58,6 +53,18 @@ namespace Admin_Login
             this.DashboardLabel.TabIndex = 2;
             this.DashboardLabel.Text = "Fiona\'s Farm and Resort - Dashboard";
             // 
+            // AdminIcon
+            // 
+            this.AdminIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
+            this.AdminIcon.Image = global::Admin_Login.Properties.Resources.Admin_Icon1;
+            this.AdminIcon.Location = new System.Drawing.Point(33, 70);
+            this.AdminIcon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AdminIcon.Name = "AdminIcon";
+            this.AdminIcon.Size = new System.Drawing.Size(63, 68);
+            this.AdminIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AdminIcon.TabIndex = 5;
+            this.AdminIcon.TabStop = false;
+            // 
             // Logo
             // 
             this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
@@ -70,20 +77,56 @@ namespace Admin_Login
             this.Logo.TabIndex = 3;
             this.Logo.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1288, 66);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
+            this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(334, 720);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            // 
+            // AdminName
+            // 
+            this.AdminName.AutoSize = true;
+            this.AdminName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
+            this.AdminName.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminName.ForeColor = System.Drawing.Color.White;
+            this.AdminName.Location = new System.Drawing.Point(102, 85);
+            this.AdminName.Name = "AdminName";
+            this.AdminName.Size = new System.Drawing.Size(0, 40);
+            this.AdminName.TabIndex = 6;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.AdminName);
+            this.Controls.Add(this.AdminIcon);
             this.Controls.Add(this.Logo);
             this.Controls.Add(this.DashboardLabel);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AdminIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,5 +137,8 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label DashboardLabel;
         private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox AdminIcon;
+        private System.Windows.Forms.Label AdminName;
     }
 }
