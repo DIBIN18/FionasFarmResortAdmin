@@ -9,11 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
-//Comment 2 ererereQdasdasdqwe
-//Comment 3 ewqeqeqeqwewqe
-//Comment 4 ibang comment 
-
 namespace Admin_Login
 {
     public partial class Login : Form
@@ -114,7 +109,6 @@ namespace Admin_Login
                 }
             }
         }
-
         private void Login_Load(object sender, EventArgs e)
         {
 
