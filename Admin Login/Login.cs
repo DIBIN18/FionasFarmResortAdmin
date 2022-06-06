@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-//CUNAN COMMENT
-//Comment #2222222222222222
+
 
 namespace Admin_Login
 {
@@ -24,7 +23,11 @@ namespace Admin_Login
             int top,
             int bottom,
             int width,
-            int height
+            int height,
+            string paul ="pogi",
+            string kagaguhan = "hey",
+            string asd = "pogi"
+
             );
         public Login()
         {
@@ -112,6 +115,11 @@ namespace Admin_Login
                     Username.ForeColor = Color.Silver;
                 }
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
