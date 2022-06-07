@@ -79,9 +79,9 @@ namespace Admin_Login
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 SqlCommand UsernameCommand = new SqlCommand("select Username_ from Users where Username_ = @Username_", connection);
-                UsernameCommand.Parameters.AddWithValue("Username_", Username.Text);
+                UsernameCommand.Parameters.AddWithValue("@Username_", Username.Text);
                 SqlCommand PasswordCommand = new SqlCommand("select Password_ from Users where Password_ = @Password_", connection);
-                PasswordCommand.Parameters.AddWithValue("Password_", Password.Text);
+                PasswordCommand.Parameters.AddWithValue("@Password_", Password.Text);
                 SqlDataReader Reader;
                 Reader = UsernameCommand.ExecuteReader();
                 if (Reader.Read())
