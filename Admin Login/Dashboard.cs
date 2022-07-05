@@ -22,11 +22,12 @@ namespace Admin_Login
             int width,
             int height
             );
-        public string connectionString = "Data Source=DESKTOP-BU3N3PT\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
-        public Dashboard()
+        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public Dashboard(string name)
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
+            AdminName.Text = name;
         }
     }
 }

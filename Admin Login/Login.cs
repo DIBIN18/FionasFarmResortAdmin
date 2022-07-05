@@ -22,7 +22,8 @@ namespace Admin_Login
             int width,
             int height
             );
-        public string connectionString = "Data Source=DESKTOP-BU3N3PT\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        string Name;
         public Login()
         {
             InitializeComponent();
@@ -78,7 +79,7 @@ namespace Admin_Login
             {
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
-                SqlCommand UsernameCommand = new SqlCommand("select Username_ from Users where Username_ = @Username_", connection);
+                SqlCommand UsernameCommand = new SqlCommand("select Username_, User_ from Users where Username_ = @Username_", connection);
                 UsernameCommand.Parameters.AddWithValue("@Username_", Username.Text);
                 SqlCommand PasswordCommand = new SqlCommand("select Password_ from Users where Password_ = @Password_", connection);
                 PasswordCommand.Parameters.AddWithValue("@Password_", Password.Text);
@@ -86,10 +87,11 @@ namespace Admin_Login
                 Reader = UsernameCommand.ExecuteReader();
                 if (Reader.Read())
                 {
+                    Name = Reader.GetValue(1).ToString();
                     Reader = PasswordCommand.ExecuteReader();
                     if (Reader.Read())
                     {
-                        Dashboard dashboard = new Dashboard();
+                        Dashboard dashboard = new Dashboard(Name);
                         this.Hide();
                         dashboard.ShowDialog();
                     }

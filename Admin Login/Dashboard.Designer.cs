@@ -65,7 +65,7 @@ namespace Admin_Login
             this.AdminName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.AdminName.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminName.ForeColor = System.Drawing.Color.White;
-            this.AdminName.Location = new System.Drawing.Point(102, 85);
+            this.AdminName.Location = new System.Drawing.Point(74, 86);
             this.AdminName.Name = "AdminName";
             this.AdminName.Size = new System.Drawing.Size(0, 39);
             this.AdminName.TabIndex = 6;
@@ -100,7 +100,7 @@ namespace Admin_Login
             this.pictureBox3.Location = new System.Drawing.Point(0, 142);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(330, 48);
+            this.pictureBox3.Size = new System.Drawing.Size(338, 48);
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
@@ -108,7 +108,7 @@ namespace Admin_Login
             // 
             this.AdminIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.AdminIcon.Image = global::Admin_Login.Properties.Resources.Admin_Icon1;
-            this.AdminIcon.Location = new System.Drawing.Point(33, 70);
+            this.AdminIcon.Location = new System.Drawing.Point(12, 70);
             this.AdminIcon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AdminIcon.Name = "AdminIcon";
             this.AdminIcon.Size = new System.Drawing.Size(63, 68);
@@ -144,15 +144,15 @@ namespace Admin_Login
             this.pictureBox2.Location = new System.Drawing.Point(-4, 0);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(334, 720);
+            this.pictureBox2.Size = new System.Drawing.Size(342, 720);
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(330, 66);
+            this.panel1.Location = new System.Drawing.Point(336, 66);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(958, 654);
+            this.panel1.Size = new System.Drawing.Size(952, 654);
             this.panel1.TabIndex = 10;
             // 
             // Dashboard
