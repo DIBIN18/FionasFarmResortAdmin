@@ -110,5 +110,26 @@
   <ItemGroup>
     <None Include="Resources\EmployeeList.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AdvancedDay-Offs_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PositionAndDepartments_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Deductions_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AttendanceRecord_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PayrollReport_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SignOut_Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
