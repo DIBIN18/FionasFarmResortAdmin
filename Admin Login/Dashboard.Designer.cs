@@ -29,10 +29,11 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.AdminName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.DashboardPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,6 +65,10 @@ namespace Admin_Login
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.lbl_Time = new System.Windows.Forms.Label();
+            this.lbl_Date = new System.Windows.Forms.Label();
+            this.tmr_DateAndTime = new System.Windows.Forms.Timer(this.components);
+            this.DashboardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -124,13 +129,16 @@ namespace Admin_Login
             this.label1.Text = "Dashboard";
             this.label1.Click += new System.EventHandler(this.btn_Dashboard_Click);
             // 
-            // panel1
+            // DashboardPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(379, 66);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 654);
-            this.panel1.TabIndex = 10;
+            this.DashboardPanel.BackColor = System.Drawing.Color.White;
+            this.DashboardPanel.Controls.Add(this.lbl_Date);
+            this.DashboardPanel.Controls.Add(this.lbl_Time);
+            this.DashboardPanel.Location = new System.Drawing.Point(379, 66);
+            this.DashboardPanel.Name = "DashboardPanel";
+            this.DashboardPanel.Size = new System.Drawing.Size(909, 654);
+            this.DashboardPanel.TabIndex = 10;
+            this.DashboardPanel.Tag = "pnl_Dashboard";
             // 
             // label2
             // 
@@ -562,13 +570,40 @@ namespace Admin_Login
             this.pictureBox20.Tag = "btn_Settings";
             this.pictureBox20.Click += new System.EventHandler(this.btn_Settings_Click);
             // 
+            // lbl_Time
+            // 
+            this.lbl_Time.AutoSize = true;
+            this.lbl_Time.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Time.Location = new System.Drawing.Point(686, 20);
+            this.lbl_Time.Name = "lbl_Time";
+            this.lbl_Time.Size = new System.Drawing.Size(169, 40);
+            this.lbl_Time.TabIndex = 0;
+            this.lbl_Time.Tag = "pnl_Dashboard";
+            this.lbl_Time.Text = "10:31 AM";
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.AutoSize = true;
+            this.lbl_Date.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Date.Location = new System.Drawing.Point(18, 20);
+            this.lbl_Date.Name = "lbl_Date";
+            this.lbl_Date.Size = new System.Drawing.Size(474, 40);
+            this.lbl_Date.TabIndex = 1;
+            this.lbl_Date.Tag = "pnl_Dashboard";
+            this.lbl_Date.Text = "Monday, November 7, 2022";
+            // 
+            // tmr_DateAndTime
+            // 
+            this.tmr_DateAndTime.Enabled = true;
+            this.tmr_DateAndTime.Tick += new System.EventHandler(this.tmr_DateAndTime_Tick);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.ClientSize = new System.Drawing.Size(1280, 720);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.DashboardPanel);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pictureBox18);
             this.Controls.Add(this.pictureBox17);
@@ -607,6 +642,9 @@ namespace Admin_Login
             this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.DashboardPanel.ResumeLayout(false);
+            this.DashboardPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -643,7 +681,7 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel DashboardPanel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label3;
@@ -670,5 +708,8 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.Label lbl_Date;
+        private System.Windows.Forms.Label lbl_Time;
+        private System.Windows.Forms.Timer tmr_DateAndTime;
     }
 }

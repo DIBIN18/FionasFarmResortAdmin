@@ -77,5 +77,14 @@ namespace Admin_Login
             TitleExtension = "Settings";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
         }
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+            tmr_DateAndTime.Start();
+        }
+        private void tmr_DateAndTime_Tick(object sender, EventArgs e)
+        {
+            lbl_Date.Text = DateTime.Now.ToLongDateString();
+            lbl_Time.Text = DateTime.Now.ToLongTimeString();
+        }
     }
 }
