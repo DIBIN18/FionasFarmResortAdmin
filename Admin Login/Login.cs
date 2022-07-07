@@ -23,7 +23,7 @@ namespace Admin_Login
             int height
             );
         public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
-        string Name;
+        new string Name;
         public Login()
         {
             InitializeComponent();

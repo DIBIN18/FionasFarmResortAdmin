@@ -29,7 +29,7 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
-            this.DashboardLabel = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.AdminName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -87,17 +87,16 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             this.SuspendLayout();
             // 
-            // DashboardLabel
+            // TitleLabel
             // 
-            this.DashboardLabel.AutoSize = true;
-            this.DashboardLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.DashboardLabel.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DashboardLabel.ForeColor = System.Drawing.Color.White;
-            this.DashboardLabel.Location = new System.Drawing.Point(12, 9);
-            this.DashboardLabel.Name = "DashboardLabel";
-            this.DashboardLabel.Size = new System.Drawing.Size(698, 45);
-            this.DashboardLabel.TabIndex = 2;
-            this.DashboardLabel.Text = "Fiona\'s Farm and Resort - Dashboard";
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.TitleLabel.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.ForeColor = System.Drawing.Color.White;
+            this.TitleLabel.Location = new System.Drawing.Point(12, 9);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(0, 44);
+            this.TitleLabel.TabIndex = 2;
             // 
             // AdminName
             // 
@@ -119,9 +118,11 @@ namespace Admin_Login
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(96, 151);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 30);
+            this.label1.Size = new System.Drawing.Size(138, 27);
             this.label1.TabIndex = 8;
+            this.label1.Tag = "btn_Dashboard";
             this.label1.Text = "Dashboard";
+            this.label1.Click += new System.EventHandler(this.btn_Dashboard_Click);
             // 
             // panel1
             // 
@@ -139,7 +140,7 @@ namespace Admin_Login
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(7, 192);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 30);
+            this.label2.Size = new System.Drawing.Size(135, 27);
             this.label2.TabIndex = 11;
             this.label2.Text = "Employees";
             // 
@@ -152,9 +153,11 @@ namespace Admin_Login
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(82, 233);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(175, 30);
+            this.label3.Size = new System.Drawing.Size(166, 27);
             this.label3.TabIndex = 13;
+            this.label3.Tag = "btn_EmployeeList";
             this.label3.Text = "Employee List";
+            this.label3.Click += new System.EventHandler(this.btn_EmployeeList_Click);
             // 
             // label4
             // 
@@ -165,9 +168,11 @@ namespace Admin_Login
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(39, 285);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(249, 30);
+            this.label4.Size = new System.Drawing.Size(239, 27);
             this.label4.TabIndex = 16;
+            this.label4.Tag = "btn_AdvancedDayOffs";
             this.label4.Text = "Advanced Day-Offs";
+            this.label4.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
             // 
             // label5
             // 
@@ -178,9 +183,11 @@ namespace Admin_Login
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(7, 337);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(319, 30);
+            this.label5.Size = new System.Drawing.Size(304, 27);
             this.label5.TabIndex = 19;
+            this.label5.Tag = "btn_PositionAndDepartments";
             this.label5.Text = "Position and Departments";
+            this.label5.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
             // 
             // label6
             // 
@@ -190,7 +197,7 @@ namespace Admin_Login
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(7, 378);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 30);
+            this.label6.Size = new System.Drawing.Size(89, 27);
             this.label6.TabIndex = 21;
             this.label6.Text = "Payroll";
             // 
@@ -203,9 +210,11 @@ namespace Admin_Login
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(93, 419);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(149, 30);
+            this.label7.Size = new System.Drawing.Size(141, 27);
             this.label7.TabIndex = 23;
+            this.label7.Tag = "btn_Deductions";
             this.label7.Text = "Deductions";
+            this.label7.Click += new System.EventHandler(this.btn_Deductions_Click);
             // 
             // label8
             // 
@@ -216,9 +225,11 @@ namespace Admin_Login
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(36, 471);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(249, 30);
+            this.label8.Size = new System.Drawing.Size(238, 27);
             this.label8.TabIndex = 26;
+            this.label8.Tag = "btn_AttendanceRecord";
             this.label8.Text = "Attendance Record";
+            this.label8.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
             // 
             // label9
             // 
@@ -229,9 +240,11 @@ namespace Admin_Login
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(71, 523);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(176, 30);
+            this.label9.Size = new System.Drawing.Size(170, 27);
             this.label9.TabIndex = 29;
+            this.label9.Tag = "btn_PayrollReport";
             this.label9.Text = "Payroll Report";
+            this.label9.Click += new System.EventHandler(this.btn_PayrollReport_Click);
             // 
             // label10
             // 
@@ -242,9 +255,11 @@ namespace Admin_Login
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(7, 676);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 30);
+            this.label10.Size = new System.Drawing.Size(98, 27);
             this.label10.TabIndex = 31;
+            this.label10.Tag = "btn_Settings";
             this.label10.Text = "Settings";
+            this.label10.Click += new System.EventHandler(this.btn_Settings_Click);
             // 
             // label11
             // 
@@ -255,9 +270,11 @@ namespace Admin_Login
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(213, 676);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 30);
+            this.label11.Size = new System.Drawing.Size(106, 27);
             this.label11.TabIndex = 33;
+            this.label11.Tag = "btn_SignOut";
             this.label11.Text = "Sign Out";
+            this.label11.Click += new System.EventHandler(this.btn_SignOut_Click);
             // 
             // pictureBox18
             // 
@@ -271,6 +288,8 @@ namespace Admin_Login
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox18.TabIndex = 34;
             this.pictureBox18.TabStop = false;
+            this.pictureBox18.Tag = "btn_SignOut";
+            this.pictureBox18.Click += new System.EventHandler(this.btn_SignOut_Click);
             // 
             // pictureBox17
             // 
@@ -284,6 +303,8 @@ namespace Admin_Login
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox17.TabIndex = 32;
             this.pictureBox17.TabStop = false;
+            this.pictureBox17.Tag = "btn_Settings";
+            this.pictureBox17.Click += new System.EventHandler(this.btn_Settings_Click);
             // 
             // pictureBox16
             // 
@@ -297,6 +318,8 @@ namespace Admin_Login
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox16.TabIndex = 30;
             this.pictureBox16.TabStop = false;
+            this.pictureBox16.Tag = "btn_PayrollReport";
+            this.pictureBox16.Click += new System.EventHandler(this.btn_PayrollReport_Click);
             // 
             // pictureBox15
             // 
@@ -308,6 +331,8 @@ namespace Admin_Login
             this.pictureBox15.Size = new System.Drawing.Size(379, 48);
             this.pictureBox15.TabIndex = 28;
             this.pictureBox15.TabStop = false;
+            this.pictureBox15.Tag = "btn_PayrollReport";
+            this.pictureBox15.Click += new System.EventHandler(this.btn_PayrollReport_Click);
             // 
             // pictureBox14
             // 
@@ -321,6 +346,8 @@ namespace Admin_Login
             this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox14.TabIndex = 27;
             this.pictureBox14.TabStop = false;
+            this.pictureBox14.Tag = "btn_AttendanceRecord";
+            this.pictureBox14.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
             // 
             // pictureBox13
             // 
@@ -332,6 +359,8 @@ namespace Admin_Login
             this.pictureBox13.Size = new System.Drawing.Size(379, 48);
             this.pictureBox13.TabIndex = 25;
             this.pictureBox13.TabStop = false;
+            this.pictureBox13.Tag = "btn_AttendanceRecord";
+            this.pictureBox13.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
             // 
             // pictureBox12
             // 
@@ -345,6 +374,8 @@ namespace Admin_Login
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox12.TabIndex = 24;
             this.pictureBox12.TabStop = false;
+            this.pictureBox12.Tag = "btn_Deductions";
+            this.pictureBox12.Click += new System.EventHandler(this.btn_Deductions_Click);
             // 
             // pictureBox11
             // 
@@ -356,6 +387,8 @@ namespace Admin_Login
             this.pictureBox11.Size = new System.Drawing.Size(379, 48);
             this.pictureBox11.TabIndex = 22;
             this.pictureBox11.TabStop = false;
+            this.pictureBox11.Tag = "btn_Deductions";
+            this.pictureBox11.Click += new System.EventHandler(this.btn_Deductions_Click);
             // 
             // pictureBox10
             // 
@@ -369,6 +402,8 @@ namespace Admin_Login
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 20;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "btn_PositionAndDepartments";
+            this.pictureBox10.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
             // 
             // pictureBox9
             // 
@@ -380,6 +415,8 @@ namespace Admin_Login
             this.pictureBox9.Size = new System.Drawing.Size(379, 48);
             this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "btn_PositionAndDepartments";
+            this.pictureBox9.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
             // 
             // pictureBox8
             // 
@@ -393,6 +430,8 @@ namespace Admin_Login
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 17;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Tag = "btn_AdvancedDayOffs";
+            this.pictureBox8.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
             // 
             // pictureBox7
             // 
@@ -404,6 +443,8 @@ namespace Admin_Login
             this.pictureBox7.Size = new System.Drawing.Size(379, 48);
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "btn_AdvancedDayOffs";
+            this.pictureBox7.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
             // 
             // pictureBox6
             // 
@@ -417,6 +458,8 @@ namespace Admin_Login
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 14;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Tag = "btn_EmployeeList";
+            this.pictureBox6.Click += new System.EventHandler(this.btn_EmployeeList_Click);
             // 
             // pictureBox5
             // 
@@ -428,6 +471,8 @@ namespace Admin_Login
             this.pictureBox5.Size = new System.Drawing.Size(379, 48);
             this.pictureBox5.TabIndex = 12;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Tag = "btn_EmployeeList";
+            this.pictureBox5.Click += new System.EventHandler(this.btn_EmployeeList_Click);
             // 
             // pictureBox4
             // 
@@ -441,6 +486,8 @@ namespace Admin_Login
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "btn_Dashboard";
+            this.pictureBox4.Click += new System.EventHandler(this.btn_Dashboard_Click);
             // 
             // pictureBox3
             // 
@@ -452,6 +499,8 @@ namespace Admin_Login
             this.pictureBox3.Size = new System.Drawing.Size(379, 48);
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "btn_Dashboard";
+            this.pictureBox3.Click += new System.EventHandler(this.btn_Dashboard_Click);
             // 
             // AdminIcon
             // 
@@ -497,6 +546,8 @@ namespace Admin_Login
             this.pictureBox19.Size = new System.Drawing.Size(179, 57);
             this.pictureBox19.TabIndex = 35;
             this.pictureBox19.TabStop = false;
+            this.pictureBox19.Tag = "btn_SignOut";
+            this.pictureBox19.Click += new System.EventHandler(this.btn_SignOut_Click);
             // 
             // pictureBox20
             // 
@@ -508,6 +559,8 @@ namespace Admin_Login
             this.pictureBox20.Size = new System.Drawing.Size(179, 57);
             this.pictureBox20.TabIndex = 36;
             this.pictureBox20.TabStop = false;
+            this.pictureBox20.Tag = "btn_Settings";
+            this.pictureBox20.Click += new System.EventHandler(this.btn_Settings_Click);
             // 
             // Dashboard
             // 
@@ -546,7 +599,7 @@ namespace Admin_Login
             this.Controls.Add(this.AdminName);
             this.Controls.Add(this.AdminIcon);
             this.Controls.Add(this.Logo);
-            this.Controls.Add(this.DashboardLabel);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox19);
             this.Controls.Add(this.pictureBox20);
@@ -583,7 +636,7 @@ namespace Admin_Login
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label DashboardLabel;
+        private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.PictureBox AdminIcon;
         private System.Windows.Forms.Label AdminName;
