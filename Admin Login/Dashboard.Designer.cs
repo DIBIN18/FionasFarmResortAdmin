@@ -576,10 +576,9 @@ namespace Admin_Login
             this.lbl_Time.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Time.Location = new System.Drawing.Point(686, 20);
             this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(169, 40);
+            this.lbl_Time.Size = new System.Drawing.Size(0, 40);
             this.lbl_Time.TabIndex = 0;
             this.lbl_Time.Tag = "pnl_Dashboard";
-            this.lbl_Time.Text = "10:31 AM";
             // 
             // lbl_Date
             // 
@@ -587,10 +586,9 @@ namespace Admin_Login
             this.lbl_Date.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Date.Location = new System.Drawing.Point(18, 20);
             this.lbl_Date.Name = "lbl_Date";
-            this.lbl_Date.Size = new System.Drawing.Size(474, 40);
+            this.lbl_Date.Size = new System.Drawing.Size(0, 40);
             this.lbl_Date.TabIndex = 1;
             this.lbl_Date.Tag = "pnl_Dashboard";
-            this.lbl_Date.Text = "Monday, November 7, 2022";
             // 
             // tmr_DateAndTime
             // 
