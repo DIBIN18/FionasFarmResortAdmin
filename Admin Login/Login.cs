@@ -91,7 +91,7 @@ namespace Admin_Login
                     Reader = PasswordCommand.ExecuteReader();
                     if (Reader.Read())
                     {
-                        Dashboard dashboard = new Dashboard(Name);
+                        Menu dashboard = new Menu(Name);
                         this.Hide();
                         dashboard.ShowDialog();
                     }
