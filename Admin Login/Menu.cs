@@ -95,5 +95,10 @@ namespace Admin_Login
             dashboard.BringToFront();
             dashboard.Show();
         }
+
+        private void pnl_Content_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

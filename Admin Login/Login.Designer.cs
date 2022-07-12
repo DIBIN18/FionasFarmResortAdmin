@@ -52,7 +52,7 @@ namespace Admin_Login
             this.LoginLabel.ForeColor = System.Drawing.Color.White;
             this.LoginLabel.Location = new System.Drawing.Point(12, 9);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(593, 45);
+            this.LoginLabel.Size = new System.Drawing.Size(564, 44);
             this.LoginLabel.TabIndex = 1;
             this.LoginLabel.Text = "Fiona\'s Farm and Resort - Login";
             // 
@@ -82,6 +82,7 @@ namespace Admin_Login
             this.Password.TabIndex = 4;
             this.Password.Text = " Password";
             this.Password.Enter += new System.EventHandler(this.PassText_Enter);
+            this.Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Password_KeyDown);
             this.Password.Leave += new System.EventHandler(this.PassText_Leave);
             // 
             // LoginButton
@@ -109,7 +110,7 @@ namespace Admin_Login
             this.ForgotPassword.ForeColor = System.Drawing.Color.MidnightBlue;
             this.ForgotPassword.Location = new System.Drawing.Point(559, 516);
             this.ForgotPassword.Name = "ForgotPassword";
-            this.ForgotPassword.Size = new System.Drawing.Size(162, 24);
+            this.ForgotPassword.Size = new System.Drawing.Size(156, 22);
             this.ForgotPassword.TabIndex = 6;
             this.ForgotPassword.Text = "Forgot Password?";
             // 
@@ -121,7 +122,7 @@ namespace Admin_Login
             this.UsernameError.ForeColor = System.Drawing.Color.Red;
             this.UsernameError.Location = new System.Drawing.Point(821, 382);
             this.UsernameError.Name = "UsernameError";
-            this.UsernameError.Size = new System.Drawing.Size(15, 24);
+            this.UsernameError.Size = new System.Drawing.Size(15, 22);
             this.UsernameError.TabIndex = 7;
             this.UsernameError.Text = " ";
             // 
@@ -133,7 +134,7 @@ namespace Admin_Login
             this.PasswordError.ForeColor = System.Drawing.Color.Red;
             this.PasswordError.Location = new System.Drawing.Point(821, 453);
             this.PasswordError.Name = "PasswordError";
-            this.PasswordError.Size = new System.Drawing.Size(15, 24);
+            this.PasswordError.Size = new System.Drawing.Size(15, 22);
             this.PasswordError.TabIndex = 8;
             this.PasswordError.Text = " ";
             // 

@@ -45,6 +45,7 @@ namespace Admin_Login
             this.pnl_Content = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -64,8 +65,9 @@ namespace Admin_Login
             this.AdminIcon = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.Logo = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
@@ -85,7 +87,6 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.AdminIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -117,7 +118,7 @@ namespace Admin_Login
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(96, 151);
+            this.label1.Location = new System.Drawing.Point(96, 157);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 27);
             this.label1.TabIndex = 8;
@@ -144,7 +145,7 @@ namespace Admin_Login
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(82, 243);
+            this.label3.Location = new System.Drawing.Point(82, 252);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 27);
             this.label3.TabIndex = 13;
@@ -159,7 +160,7 @@ namespace Admin_Login
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(39, 300);
+            this.label4.Location = new System.Drawing.Point(39, 315);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(239, 27);
             this.label4.TabIndex = 16;
@@ -174,7 +175,7 @@ namespace Admin_Login
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(7, 357);
+            this.label5.Location = new System.Drawing.Point(13, 387);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(304, 27);
             this.label5.TabIndex = 19;
@@ -188,7 +189,7 @@ namespace Admin_Login
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(7, 408);
+            this.label6.Location = new System.Drawing.Point(7, 433);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 27);
             this.label6.TabIndex = 21;
@@ -201,7 +202,7 @@ namespace Admin_Login
             this.label7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(93, 449);
+            this.label7.Location = new System.Drawing.Point(93, 485);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(141, 27);
             this.label7.TabIndex = 23;
@@ -216,7 +217,7 @@ namespace Admin_Login
             this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(36, 506);
+            this.label8.Location = new System.Drawing.Point(36, 554);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(238, 27);
             this.label8.TabIndex = 26;
@@ -231,7 +232,7 @@ namespace Admin_Login
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(71, 563);
+            this.label9.Location = new System.Drawing.Point(71, 621);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(170, 27);
             this.label9.TabIndex = 29;
@@ -246,7 +247,7 @@ namespace Admin_Login
             this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(7, 754);
+            this.label10.Location = new System.Drawing.Point(26, 721);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(98, 27);
             this.label10.TabIndex = 31;
@@ -261,7 +262,7 @@ namespace Admin_Login
             this.label11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(213, 754);
+            this.label11.Location = new System.Drawing.Point(210, 721);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 27);
             this.label11.TabIndex = 33;
@@ -277,9 +278,14 @@ namespace Admin_Login
             this.pnl_Content.Name = "pnl_Content";
             this.pnl_Content.Size = new System.Drawing.Size(1146, 734);
             this.pnl_Content.TabIndex = 39;
+            this.pnl_Content.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_Content_Paint);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox15);
+            this.panel1.Controls.Add(this.pictureBox13);
+            this.panel1.Controls.Add(this.pictureBox20);
+            this.panel1.Controls.Add(this.pictureBox19);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 66);
             this.panel1.Name = "panel1";
@@ -296,12 +302,24 @@ namespace Admin_Login
             this.panel2.Size = new System.Drawing.Size(1525, 66);
             this.panel2.TabIndex = 38;
             // 
+            // Logo
+            // 
+            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
+            this.Logo.Location = new System.Drawing.Point(1456, 0);
+            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(57, 66);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo.TabIndex = 3;
+            this.Logo.TabStop = false;
+            // 
             // pictureBox18
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.pictureBox18.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox18.Image = global::Admin_Login.Properties.Resources.SignOut_Icon;
-            this.pictureBox18.Location = new System.Drawing.Point(332, 750);
+            this.pictureBox18.Location = new System.Drawing.Point(317, 717);
             this.pictureBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox18.Name = "pictureBox18";
             this.pictureBox18.Size = new System.Drawing.Size(32, 39);
@@ -316,7 +334,7 @@ namespace Admin_Login
             this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.pictureBox17.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox17.Image = global::Admin_Login.Properties.Resources.Settings_Icon;
-            this.pictureBox17.Location = new System.Drawing.Point(117, 750);
+            this.pictureBox17.Location = new System.Drawing.Point(133, 717);
             this.pictureBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(32, 39);
@@ -331,7 +349,7 @@ namespace Admin_Login
             this.pictureBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox16.Image = global::Admin_Login.Properties.Resources.PayrollReport_Icon;
-            this.pictureBox16.Location = new System.Drawing.Point(253, 559);
+            this.pictureBox16.Location = new System.Drawing.Point(253, 616);
             this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(32, 39);
@@ -345,10 +363,10 @@ namespace Admin_Login
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox15.Location = new System.Drawing.Point(0, 554);
+            this.pictureBox15.Location = new System.Drawing.Point(-16, 541);
             this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox15.Size = new System.Drawing.Size(435, 62);
             this.pictureBox15.TabIndex = 28;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Tag = "btn_PayrollReport";
@@ -359,7 +377,7 @@ namespace Admin_Login
             this.pictureBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox14.Image = global::Admin_Login.Properties.Resources.AttendanceRecord_Icon;
-            this.pictureBox14.Location = new System.Drawing.Point(297, 502);
+            this.pictureBox14.Location = new System.Drawing.Point(296, 549);
             this.pictureBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox14.Name = "pictureBox14";
             this.pictureBox14.Size = new System.Drawing.Size(32, 39);
@@ -373,10 +391,10 @@ namespace Admin_Login
             // 
             this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox13.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox13.Location = new System.Drawing.Point(0, 497);
+            this.pictureBox13.Location = new System.Drawing.Point(-4, 474);
             this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox13.Size = new System.Drawing.Size(435, 60);
             this.pictureBox13.TabIndex = 25;
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Tag = "btn_AttendanceRecord";
@@ -387,7 +405,7 @@ namespace Admin_Login
             this.pictureBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox12.Image = global::Admin_Login.Properties.Resources.Deductions_Icon;
-            this.pictureBox12.Location = new System.Drawing.Point(248, 445);
+            this.pictureBox12.Location = new System.Drawing.Point(247, 479);
             this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(32, 39);
@@ -401,10 +419,10 @@ namespace Admin_Login
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox11.Location = new System.Drawing.Point(0, 440);
+            this.pictureBox11.Location = new System.Drawing.Point(0, 468);
             this.pictureBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox11.Size = new System.Drawing.Size(435, 64);
             this.pictureBox11.TabIndex = 22;
             this.pictureBox11.TabStop = false;
             this.pictureBox11.Tag = "btn_Deductions";
@@ -415,10 +433,10 @@ namespace Admin_Login
             this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox10.Image = global::Admin_Login.Properties.Resources.PositionAndDepartments_Icon;
-            this.pictureBox10.Location = new System.Drawing.Point(332, 352);
+            this.pictureBox10.Location = new System.Drawing.Point(333, 379);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(32, 39);
+            this.pictureBox10.Size = new System.Drawing.Size(32, 45);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 20;
             this.pictureBox10.TabStop = false;
@@ -429,10 +447,10 @@ namespace Admin_Login
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox9.Location = new System.Drawing.Point(0, 348);
+            this.pictureBox9.Location = new System.Drawing.Point(0, 369);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox9.Size = new System.Drawing.Size(435, 62);
             this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "btn_PositionAndDepartments";
@@ -443,7 +461,7 @@ namespace Admin_Login
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::Admin_Login.Properties.Resources.AdvancedDay_Offs_Icon;
-            this.pictureBox8.Location = new System.Drawing.Point(302, 295);
+            this.pictureBox8.Location = new System.Drawing.Point(302, 316);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(32, 39);
@@ -457,10 +475,10 @@ namespace Admin_Login
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Location = new System.Drawing.Point(0, 291);
+            this.pictureBox7.Location = new System.Drawing.Point(0, 302);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox7.Size = new System.Drawing.Size(435, 60);
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Tag = "btn_AdvancedDayOffs";
@@ -471,7 +489,7 @@ namespace Admin_Login
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.EmployeeList_Icon;
-            this.pictureBox6.Location = new System.Drawing.Point(256, 238);
+            this.pictureBox6.Location = new System.Drawing.Point(256, 246);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(32, 39);
@@ -488,7 +506,7 @@ namespace Admin_Login
             this.pictureBox5.Location = new System.Drawing.Point(0, 234);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox5.Size = new System.Drawing.Size(435, 62);
             this.pictureBox5.TabIndex = 12;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "btn_EmployeeList";
@@ -499,7 +517,7 @@ namespace Admin_Login
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.Dashboard_Icon;
-            this.pictureBox4.Location = new System.Drawing.Point(245, 146);
+            this.pictureBox4.Location = new System.Drawing.Point(245, 151);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(32, 39);
@@ -516,7 +534,7 @@ namespace Admin_Login
             this.pictureBox3.Location = new System.Drawing.Point(0, 142);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(435, 48);
+            this.pictureBox3.Size = new System.Drawing.Size(419, 58);
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Tag = "btn_Dashboard";
@@ -538,10 +556,10 @@ namespace Admin_Login
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.pictureBox19.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox19.Location = new System.Drawing.Point(200, 741);
+            this.pictureBox19.Location = new System.Drawing.Point(200, 642);
             this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(179, 57);
+            this.pictureBox19.Size = new System.Drawing.Size(164, 57);
             this.pictureBox19.TabIndex = 35;
             this.pictureBox19.TabStop = false;
             this.pictureBox19.Tag = "btn_SignOut";
@@ -551,26 +569,14 @@ namespace Admin_Login
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(123)))), ((int)(((byte)(123)))));
             this.pictureBox20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox20.Location = new System.Drawing.Point(0, 741);
+            this.pictureBox20.Location = new System.Drawing.Point(18, 642);
             this.pictureBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(179, 57);
+            this.pictureBox20.Size = new System.Drawing.Size(163, 57);
             this.pictureBox20.TabIndex = 36;
             this.pictureBox20.TabStop = false;
             this.pictureBox20.Tag = "btn_Settings";
             this.pictureBox20.Click += new System.EventHandler(this.btn_Settings_Click);
-            // 
-            // Logo
-            // 
-            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(1456, 0);
-            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(57, 66);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logo.TabIndex = 3;
-            this.Logo.TabStop = false;
             // 
             // Menu
             // 
@@ -586,10 +592,8 @@ namespace Admin_Login
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pictureBox16);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.pictureBox13);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox11);
@@ -609,8 +613,6 @@ namespace Admin_Login
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.AdminName);
             this.Controls.Add(this.AdminIcon);
-            this.Controls.Add(this.pictureBox19);
-            this.Controls.Add(this.pictureBox20);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -618,7 +620,9 @@ namespace Admin_Login
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Menu_Load);
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
@@ -638,7 +642,6 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.AdminIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
