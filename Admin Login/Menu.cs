@@ -61,16 +61,31 @@ namespace Admin_Login
         {
             TitleExtension = "Advanced Day-Offs";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+            AdvancedDay_Offs advanceddayoffs = new AdvancedDay_Offs();
+            advanceddayoffs.TopLevel = false;
+            pnl_Content.Controls.Add(advanceddayoffs);
+            advanceddayoffs.BringToFront();
+            advanceddayoffs.Show();
         }
         private void btn_PositionAndDepartments_Click(object sender, EventArgs e)
         {
             TitleExtension = "Position and Departments";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+            PositionAndDepartments positionanddepartments = new PositionAndDepartments();
+            positionanddepartments.TopLevel = false;
+            pnl_Content.Controls.Add(positionanddepartments);
+            positionanddepartments.BringToFront();
+            positionanddepartments.Show();
         }
         private void btn_Deductions_Click(object sender, EventArgs e)
         {
             TitleExtension = "Deductions";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+            Deductions deductions = new Deductions();
+            deductions.TopLevel = false;
+            pnl_Content.Controls.Add(deductions);
+            deductions.BringToFront();
+            deductions.Show();
         }
         private void btn_AttendanceRecord_Click(object sender, EventArgs e)
         {

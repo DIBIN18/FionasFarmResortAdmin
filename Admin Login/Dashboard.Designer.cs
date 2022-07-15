@@ -36,10 +36,10 @@
             this.lbl_TimedInToday = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_LateToday = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.lbl_Date.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Date.Location = new System.Drawing.Point(23, 20);
             this.lbl_Date.Name = "lbl_Date";
-            this.lbl_Date.Size = new System.Drawing.Size(0, 40);
+            this.lbl_Date.Size = new System.Drawing.Size(0, 39);
             this.lbl_Date.TabIndex = 0;
             // 
             // tmr_DateAndTime
@@ -80,7 +80,7 @@
             this.lbl_Time.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Time.Location = new System.Drawing.Point(905, 20);
             this.lbl_Time.Name = "lbl_Time";
-            this.lbl_Time.Size = new System.Drawing.Size(0, 40);
+            this.lbl_Time.Size = new System.Drawing.Size(0, 39);
             this.lbl_Time.TabIndex = 1;
             // 
             // label1
@@ -113,7 +113,7 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 219);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(460, 40);
+            this.label2.Size = new System.Drawing.Size(447, 39);
             this.label2.TabIndex = 14;
             this.label2.Text = "Employees Timed-In Today";
             // 
@@ -129,25 +129,15 @@
             this.panel1.Size = new System.Drawing.Size(1087, 435);
             this.panel1.TabIndex = 15;
             // 
-            // label4
+            // label8
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 27);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Employee ID";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(358, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 27);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Name";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(923, 21);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 27);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Timed-In";
             // 
             // label7
             // 
@@ -159,15 +149,25 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Department";
             // 
-            // label8
+            // label6
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(923, 21);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(110, 27);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Timed-In";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(358, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 27);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Name";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(30, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(153, 27);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Employee ID";
             // 
             // pictureBox2
             // 
@@ -281,6 +281,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1144, 732);
             this.ControlBox = false;
             this.Controls.Add(this.lbl_AbsentToday);

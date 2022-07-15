@@ -122,16 +122,11 @@ namespace Admin_Login
         {
             System.Environment.Exit(0);
         }
-
         private void Password_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
                 LoginButton.PerformClick();
-            }
-            else
-            {
-
             }
         }
     }

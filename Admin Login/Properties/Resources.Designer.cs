@@ -93,6 +93,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddPositionOrDepartment_Icon {
+            get {
+                object obj = ResourceManager.GetObject("AddPositionOrDepartment_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Admin_Icon {
             get {
                 object obj = ResourceManager.GetObject("Admin_Icon", resourceCulture);

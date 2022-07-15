@@ -47,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvancedDayOffs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvancedDayOffs.Designer.cs">
+      <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Deductions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Deductions.Designer.cs">
+      <DependentUpon>Deductions.cs</DependentUpon>
     </Compile>
     <Compile Include="EmployeeList.cs">
       <SubType>Form</SubType>
@@ -71,10 +83,22 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="PositionAndDepartments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PositionAndDepartments.Designer.cs">
+      <DependentUpon>PositionAndDepartments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AdvancedDayOffs.resx">
+      <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Deductions.resx">
+      <DependentUpon>Deductions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
@@ -84,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PositionAndDepartments.resx">
+      <DependentUpon>PositionAndDepartments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -185,6 +212,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FionasFarmAndResort_Log.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddPositionOrDepartment_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
