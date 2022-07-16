@@ -53,6 +53,12 @@
     <Compile Include="AdvancedDayOffs.Designer.cs">
       <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceRecord.Designer.cs">
+      <DependentUpon>AttendanceRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdvancedDayOffs.resx">
       <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceRecord.resx">
+      <DependentUpon>AttendanceRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

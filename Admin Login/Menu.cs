@@ -91,6 +91,11 @@ namespace Admin_Login
         {
             TitleExtension = "Attendance Record";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+            AttendanceRecord attendancerecord = new AttendanceRecord();
+            attendancerecord.TopLevel = false;
+            pnl_Content.Controls.Add(attendancerecord);
+            attendancerecord.BringToFront();
+            attendancerecord.Show();
         }
         private void btn_PayrollReport_Click(object sender, EventArgs e)
         {
