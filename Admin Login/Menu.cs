@@ -8,7 +8,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 namespace Admin_Login
 {
     public partial class Menu : Form
@@ -22,7 +21,6 @@ namespace Admin_Login
             int width,
             int height
             );
-        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         string TitleExtension = "Dashboard";
         public Menu(string name)
         {
@@ -101,6 +99,11 @@ namespace Admin_Login
         {
             TitleExtension = "Payroll Report";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+            PayrollReport payrollreport = new PayrollReport();
+            payrollreport.TopLevel = false;
+            pnl_Content.Controls.Add(payrollreport);
+            payrollreport.BringToFront();
+            payrollreport.Show();
         }
         private void btn_Settings_Click(object sender, EventArgs e)
         {
@@ -114,11 +117,6 @@ namespace Admin_Login
             pnl_Content.Controls.Add(dashboard);
             dashboard.BringToFront();
             dashboard.Show();
-        }
-
-        private void pnl_Content_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

@@ -89,6 +89,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayrollReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayrollReport.Designer.cs">
+      <DependentUpon>PayrollReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="PositionAndDepartments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PayrollReport.resx">
+      <DependentUpon>PayrollReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PositionAndDepartments.resx">
       <DependentUpon>PositionAndDepartments.cs</DependentUpon>
@@ -224,6 +233,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AddPositionOrDepartment_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HolidaySettings_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

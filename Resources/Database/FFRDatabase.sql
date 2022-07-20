@@ -1,0 +1,39 @@
+--create database FFRUsers;
+
+--create table Users(
+--User_ varchar(50) not null unique,
+--Username_ varchar(10) not null unique,
+--Password_ varchar(10) not null,
+--primary key (User_)
+--)
+--insert into Users
+--values ('Admin (main)', 'admin', 'root');
+
+--create table Holidays(
+--Holiday_ varchar(150) not null unique,
+--From_ varchar(50) not null,
+--To_ varchar(50) not null,
+--Type_ varchar (50) not null
+--)
+--insert into Holidays
+--values ('New Year''s Day', 'January 01', 'January 01', 'Regular Holiday'),
+--('Day of Valor', 'April 09', 'April 09', 'Regular Holiday'),
+--('Maundy Thursday (Holy Week)', 'April 14', 'April 14', 'Regular Holiday'),
+--('Good Friday (Holy Week)', 'April 15', 'April 15', 'Regular Holiday'),
+--('Labor Day', 'May 01', 'May 01', 'Regular Holiday'),
+--('Independence Day', 'June 12', 'June 12', 'Regular Holiday'),
+--('National Heroe''s Day', 'August 29', 'August 29', 'Regular Holiday'),
+--('Bonifacio Day', 'November 30', 'November 30', 'Regular Holiday'),
+--('Christmas Day', 'December 25', 'December 25', 'Regular Holiday'),
+--('Rizal Day', 'December 30', 'December 30', 'Regular Holiday'),
+--('Chinese Lunar New Year', 'February 01', 'February 01', 'Special Non-Working Holiday'),
+--('EDSA People Power Revolution Anniversary', 'February 25', 'February 25', 'Special Non-Working Holiday'),
+--('Black Saturday (Holy Week)', 'April 16', 'April 16', 'Special Non-Working Holiday'),
+--('Ninoy Aquino Day', 'August 21', 'August 21', 'Special Non-Working Holiday'),
+--('All Saint''s Day', 'November 01', 'November 01', 'Special Non-Working Holiday'),
+--('Feast of the Immaculate Conception of Mary', 'December 08', 'December 08', 'Special Non-Working Holiday'),
+--('All Soul''s Day', 'November 02', 'November 02', 'Special Working Holiday'),
+--('Christmas Eve', 'December 24', 'December 24', 'Special Working Holiday'),
+--('New Year''s Eve', 'December 31', 'December 31', 'Special Working Holiday');
+
+--select * from Holidays;

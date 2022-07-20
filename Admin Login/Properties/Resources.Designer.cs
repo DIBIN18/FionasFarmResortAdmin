@@ -233,6 +233,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap HolidaySettings_Icon {
+            get {
+                object obj = ResourceManager.GetObject("HolidaySettings_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LateToday_Icon {
             get {
                 object obj = ResourceManager.GetObject("LateToday_Icon", resourceCulture);
