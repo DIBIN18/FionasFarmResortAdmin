@@ -144,9 +144,9 @@
             this.cb_SortBy.Items.AddRange(new object[] {
             "Default",
             "Name",
-            "Time Period",
-            "Late",
-            "Overtime"});
+            "Gross Pay",
+            "Deductions",
+            "Net Pay"});
             this.cb_SortBy.Location = new System.Drawing.Point(112, 4);
             this.cb_SortBy.Name = "cb_SortBy";
             this.cb_SortBy.Size = new System.Drawing.Size(174, 35);
