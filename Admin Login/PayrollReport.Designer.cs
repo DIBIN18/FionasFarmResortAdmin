@@ -38,7 +38,6 @@
             this.cb_SortBy = new System.Windows.Forms.ComboBox();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dt_Date = new System.Windows.Forms.DateTimePicker();
@@ -50,13 +49,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -152,9 +152,9 @@
             this.cb_SortBy.Size = new System.Drawing.Size(174, 35);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
-            this.cb_SortBy.Click += new System.EventHandler(this.cb_SortBy_Click);
-            this.cb_SortBy.Enter += new System.EventHandler(this.cb_SortBy_Enter);
-            this.cb_SortBy.Leave += new System.EventHandler(this.cb_SortBy_Leave);
+            this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
+            this.cb_SortBy.Enter += new System.EventHandler(this.Cb_SortBy_Enter);
+            this.cb_SortBy.Leave += new System.EventHandler(this.Cb_SortBy_Leave);
             // 
             // lbl_SortBy
             // 
@@ -177,17 +177,6 @@
             this.panel1.Size = new System.Drawing.Size(406, 45);
             this.panel1.TabIndex = 28;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            // 
             // tb_Search
             // 
             this.tb_Search.BackColor = System.Drawing.Color.White;
@@ -200,8 +189,8 @@
             this.tb_Search.Size = new System.Drawing.Size(345, 29);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
-            this.tb_Search.Enter += new System.EventHandler(this.tb_Search_Enter);
-            this.tb_Search.Leave += new System.EventHandler(this.tb_Search_Leave);
+            this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
+            this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
             // label1
             // 
@@ -222,7 +211,7 @@
             this.dt_Date.Name = "dt_Date";
             this.dt_Date.Size = new System.Drawing.Size(297, 36);
             this.dt_Date.TabIndex = 31;
-            this.dt_Date.ValueChanged += new System.EventHandler(this.dt_Date_ValueChanged);
+            this.dt_Date.ValueChanged += new System.EventHandler(this.Dt_Date_ValueChanged);
             // 
             // label2
             // 
@@ -285,8 +274,9 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(190, 27);
             this.label9.TabIndex = 37;
-            this.label9.Tag = "btn_AddNew";
+            this.label9.Tag = "btn_HolidaySettings";
             this.label9.Text = "Holiday Settings";
+            this.label9.Click += new System.EventHandler(this.Btn_HolidaySettings_Click);
             // 
             // pictureBox2
             // 
@@ -299,7 +289,8 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 38;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "btn_AddNew";
+            this.pictureBox2.Tag = "btn_HolidaySettings";
+            this.pictureBox2.Click += new System.EventHandler(this.Btn_HolidaySettings_Click);
             // 
             // pictureBox1
             // 
@@ -311,7 +302,19 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 36;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "btn_AddNew";
+            this.pictureBox1.Tag = "btn_HolidaySettings";
+            this.pictureBox1.Click += new System.EventHandler(this.Btn_HolidaySettings_Click);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
             // 
             // PayrollReport
             // 
@@ -334,19 +337,21 @@
             this.Controls.Add(this.dt_Date);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollReport";
+            this.Tag = "btn_HolidaySettings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PayrollReport_Load);
+            this.Click += new System.EventHandler(this.Btn_HolidaySettings_Click);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

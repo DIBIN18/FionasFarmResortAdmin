@@ -15,11 +15,11 @@ namespace Admin_Login
         {
             InitializeComponent();
         }
-        private void cb_SortBy_Click(object sender, EventArgs e)
+        private void Cb_SortBy_Click(object sender, EventArgs e)
         {
             cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-        private void tb_Search_Enter(object sender, EventArgs e)
+        private void Tb_Search_Enter(object sender, EventArgs e)
         {
             if (tb_Search.Text == " Search")
             {
@@ -27,7 +27,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Black;
             }
         }
-        private void tb_Search_Leave(object sender, EventArgs e)
+        private void Tb_Search_Leave(object sender, EventArgs e)
         {
             if (tb_Search.Text == "")
             {
@@ -35,7 +35,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Silver;
             }
         }
-        private void cb_SortBy_Enter(object sender, EventArgs e)
+        private void Cb_SortBy_Enter(object sender, EventArgs e)
         {
             if(cb_SortBy.Text == "Default")
             {
@@ -43,7 +43,7 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Black;
             }
         }
-        private void cb_SortBy_Leave(object sender, EventArgs e)
+        private void Cb_SortBy_Leave(object sender, EventArgs e)
         {
             if (cb_SortBy.Text == "Default")
             {

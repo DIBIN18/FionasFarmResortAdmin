@@ -71,7 +71,7 @@
             // tmr_DateAndTime
             // 
             this.tmr_DateAndTime.Enabled = true;
-            this.tmr_DateAndTime.Tick += new System.EventHandler(this.tmr_DateAndTime_Tick);
+            this.tmr_DateAndTime.Tick += new System.EventHandler(this.Tmr_DateAndTime_Tick);
             // 
             // lbl_Time
             // 

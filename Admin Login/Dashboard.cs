@@ -19,7 +19,7 @@ namespace Admin_Login
         {
             tmr_DateAndTime.Start();
         }
-        private void tmr_DateAndTime_Tick(object sender, EventArgs e)
+        private void Tmr_DateAndTime_Tick(object sender, EventArgs e)
         {
             lbl_Date.Text = DateTime.Now.ToLongDateString();
             lbl_Time.Text = DateTime.Now.ToLongTimeString();

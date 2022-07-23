@@ -124,7 +124,7 @@ namespace Admin_Login
             this.label1.TabIndex = 8;
             this.label1.Tag = "btn_Dashboard";
             this.label1.Text = "Dashboard";
-            this.label1.Click += new System.EventHandler(this.btn_Dashboard_Click);
+            this.label1.Click += new System.EventHandler(this.Btn_Dashboard_Click);
             // 
             // label2
             // 
@@ -151,7 +151,7 @@ namespace Admin_Login
             this.label3.TabIndex = 13;
             this.label3.Tag = "btn_EmployeeList";
             this.label3.Text = "Employee List";
-            this.label3.Click += new System.EventHandler(this.btn_EmployeeList_Click);
+            this.label3.Click += new System.EventHandler(this.Btn_EmployeeList_Click);
             // 
             // label4
             // 
@@ -166,7 +166,7 @@ namespace Admin_Login
             this.label4.TabIndex = 16;
             this.label4.Tag = "btn_AdvancedDayOffs";
             this.label4.Text = "Advanced Day-Offs";
-            this.label4.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
+            this.label4.Click += new System.EventHandler(this.Btn_AdvancedDayOffs_Click);
             // 
             // label5
             // 
@@ -181,7 +181,7 @@ namespace Admin_Login
             this.label5.TabIndex = 19;
             this.label5.Tag = "btn_PositionAndDepartments";
             this.label5.Text = "Position and Departments";
-            this.label5.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
+            this.label5.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
             // 
             // label6
             // 
@@ -208,7 +208,7 @@ namespace Admin_Login
             this.label7.TabIndex = 23;
             this.label7.Tag = "btn_Deductions";
             this.label7.Text = "Deductions";
-            this.label7.Click += new System.EventHandler(this.btn_Deductions_Click);
+            this.label7.Click += new System.EventHandler(this.Btn_Deductions_Click);
             // 
             // label8
             // 
@@ -223,7 +223,7 @@ namespace Admin_Login
             this.label8.TabIndex = 26;
             this.label8.Tag = "btn_AttendanceRecord";
             this.label8.Text = "Attendance Record";
-            this.label8.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
+            this.label8.Click += new System.EventHandler(this.Btn_AttendanceRecord_Click);
             // 
             // label9
             // 
@@ -238,7 +238,7 @@ namespace Admin_Login
             this.label9.TabIndex = 29;
             this.label9.Tag = "btn_PayrollReport";
             this.label9.Text = "Payroll Report";
-            this.label9.Click += new System.EventHandler(this.btn_PayrollReport_Click);
+            this.label9.Click += new System.EventHandler(this.Btn_PayrollReport_Click);
             // 
             // label10
             // 
@@ -253,7 +253,7 @@ namespace Admin_Login
             this.label10.TabIndex = 31;
             this.label10.Tag = "btn_Settings";
             this.label10.Text = "Settings";
-            this.label10.Click += new System.EventHandler(this.btn_Settings_Click);
+            this.label10.Click += new System.EventHandler(this.Btn_Settings_Click);
             // 
             // label11
             // 
@@ -268,7 +268,7 @@ namespace Admin_Login
             this.label11.TabIndex = 33;
             this.label11.Tag = "btn_SignOut";
             this.label11.Text = "Sign Out";
-            this.label11.Click += new System.EventHandler(this.btn_SignOut_Click);
+            this.label11.Click += new System.EventHandler(this.Btn_SignOut_Click);
             // 
             // pnl_Content
             // 
@@ -302,7 +302,7 @@ namespace Admin_Login
             this.pictureBox15.TabIndex = 28;
             this.pictureBox15.TabStop = false;
             this.pictureBox15.Tag = "btn_PayrollReport";
-            this.pictureBox15.Click += new System.EventHandler(this.btn_PayrollReport_Click);
+            this.pictureBox15.Click += new System.EventHandler(this.Btn_PayrollReport_Click);
             // 
             // pictureBox13
             // 
@@ -315,7 +315,7 @@ namespace Admin_Login
             this.pictureBox13.TabIndex = 25;
             this.pictureBox13.TabStop = false;
             this.pictureBox13.Tag = "btn_AttendanceRecord";
-            this.pictureBox13.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
+            this.pictureBox13.Click += new System.EventHandler(this.Btn_AttendanceRecord_Click);
             // 
             // pictureBox20
             // 
@@ -328,7 +328,7 @@ namespace Admin_Login
             this.pictureBox20.TabIndex = 36;
             this.pictureBox20.TabStop = false;
             this.pictureBox20.Tag = "btn_Settings";
-            this.pictureBox20.Click += new System.EventHandler(this.btn_Settings_Click);
+            this.pictureBox20.Click += new System.EventHandler(this.Btn_Settings_Click);
             // 
             // pictureBox19
             // 
@@ -341,7 +341,7 @@ namespace Admin_Login
             this.pictureBox19.TabIndex = 35;
             this.pictureBox19.TabStop = false;
             this.pictureBox19.Tag = "btn_SignOut";
-            this.pictureBox19.Click += new System.EventHandler(this.btn_SignOut_Click);
+            this.pictureBox19.Click += new System.EventHandler(this.Btn_SignOut_Click);
             // 
             // panel2
             // 
@@ -378,7 +378,7 @@ namespace Admin_Login
             this.pictureBox8.TabIndex = 17;
             this.pictureBox8.TabStop = false;
             this.pictureBox8.Tag = "btn_AdvancedDayOffs";
-            this.pictureBox8.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
+            this.pictureBox8.Click += new System.EventHandler(this.Btn_AdvancedDayOffs_Click);
             // 
             // pictureBox18
             // 
@@ -393,7 +393,7 @@ namespace Admin_Login
             this.pictureBox18.TabIndex = 34;
             this.pictureBox18.TabStop = false;
             this.pictureBox18.Tag = "btn_SignOut";
-            this.pictureBox18.Click += new System.EventHandler(this.btn_SignOut_Click);
+            this.pictureBox18.Click += new System.EventHandler(this.Btn_SignOut_Click);
             // 
             // pictureBox17
             // 
@@ -408,7 +408,7 @@ namespace Admin_Login
             this.pictureBox17.TabIndex = 32;
             this.pictureBox17.TabStop = false;
             this.pictureBox17.Tag = "btn_Settings";
-            this.pictureBox17.Click += new System.EventHandler(this.btn_Settings_Click);
+            this.pictureBox17.Click += new System.EventHandler(this.Btn_Settings_Click);
             // 
             // pictureBox16
             // 
@@ -423,7 +423,7 @@ namespace Admin_Login
             this.pictureBox16.TabIndex = 30;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Tag = "btn_PayrollReport";
-            this.pictureBox16.Click += new System.EventHandler(this.btn_PayrollReport_Click);
+            this.pictureBox16.Click += new System.EventHandler(this.Btn_PayrollReport_Click);
             // 
             // pictureBox14
             // 
@@ -438,7 +438,7 @@ namespace Admin_Login
             this.pictureBox14.TabIndex = 27;
             this.pictureBox14.TabStop = false;
             this.pictureBox14.Tag = "btn_AttendanceRecord";
-            this.pictureBox14.Click += new System.EventHandler(this.btn_AttendanceRecord_Click);
+            this.pictureBox14.Click += new System.EventHandler(this.Btn_AttendanceRecord_Click);
             // 
             // pictureBox12
             // 
@@ -453,7 +453,7 @@ namespace Admin_Login
             this.pictureBox12.TabIndex = 24;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "btn_Deductions";
-            this.pictureBox12.Click += new System.EventHandler(this.btn_Deductions_Click);
+            this.pictureBox12.Click += new System.EventHandler(this.Btn_Deductions_Click);
             // 
             // pictureBox11
             // 
@@ -466,7 +466,7 @@ namespace Admin_Login
             this.pictureBox11.TabIndex = 22;
             this.pictureBox11.TabStop = false;
             this.pictureBox11.Tag = "btn_Deductions";
-            this.pictureBox11.Click += new System.EventHandler(this.btn_Deductions_Click);
+            this.pictureBox11.Click += new System.EventHandler(this.Btn_Deductions_Click);
             // 
             // pictureBox10
             // 
@@ -481,7 +481,7 @@ namespace Admin_Login
             this.pictureBox10.TabIndex = 20;
             this.pictureBox10.TabStop = false;
             this.pictureBox10.Tag = "btn_PositionAndDepartments";
-            this.pictureBox10.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
+            this.pictureBox10.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
             // 
             // pictureBox9
             // 
@@ -494,7 +494,7 @@ namespace Admin_Login
             this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
             this.pictureBox9.Tag = "btn_PositionAndDepartments";
-            this.pictureBox9.Click += new System.EventHandler(this.btn_PositionAndDepartments_Click);
+            this.pictureBox9.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
             // 
             // pictureBox7
             // 
@@ -507,7 +507,7 @@ namespace Admin_Login
             this.pictureBox7.TabIndex = 15;
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Tag = "btn_AdvancedDayOffs";
-            this.pictureBox7.Click += new System.EventHandler(this.btn_AdvancedDayOffs_Click);
+            this.pictureBox7.Click += new System.EventHandler(this.Btn_AdvancedDayOffs_Click);
             // 
             // pictureBox6
             // 
@@ -522,7 +522,7 @@ namespace Admin_Login
             this.pictureBox6.TabIndex = 14;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "btn_EmployeeList";
-            this.pictureBox6.Click += new System.EventHandler(this.btn_EmployeeList_Click);
+            this.pictureBox6.Click += new System.EventHandler(this.Btn_EmployeeList_Click);
             // 
             // pictureBox5
             // 
@@ -535,7 +535,7 @@ namespace Admin_Login
             this.pictureBox5.TabIndex = 12;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "btn_EmployeeList";
-            this.pictureBox5.Click += new System.EventHandler(this.btn_EmployeeList_Click);
+            this.pictureBox5.Click += new System.EventHandler(this.Btn_EmployeeList_Click);
             // 
             // pictureBox4
             // 
@@ -550,7 +550,7 @@ namespace Admin_Login
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "btn_Dashboard";
-            this.pictureBox4.Click += new System.EventHandler(this.btn_Dashboard_Click);
+            this.pictureBox4.Click += new System.EventHandler(this.Btn_Dashboard_Click);
             // 
             // pictureBox3
             // 
@@ -563,7 +563,7 @@ namespace Admin_Login
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Tag = "btn_Dashboard";
-            this.pictureBox3.Click += new System.EventHandler(this.btn_Dashboard_Click);
+            this.pictureBox3.Click += new System.EventHandler(this.Btn_Dashboard_Click);
             // 
             // AdminIcon
             // 
@@ -617,7 +617,6 @@ namespace Admin_Login
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();

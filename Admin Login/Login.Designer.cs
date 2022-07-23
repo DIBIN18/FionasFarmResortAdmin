@@ -82,7 +82,6 @@ namespace Admin_Login
             this.Password.TabIndex = 4;
             this.Password.Text = " Password";
             this.Password.Enter += new System.EventHandler(this.PassText_Enter);
-            this.Password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Password_KeyDown);
             this.Password.Leave += new System.EventHandler(this.PassText_Leave);
             // 
             // LoginButton
@@ -193,6 +192,7 @@ namespace Admin_Login
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fiona\'s Farm and Resort - Login";
             ((System.ComponentModel.ISupportInitialize)(this.ExitIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

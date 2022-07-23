@@ -94,9 +94,9 @@ namespace Admin_Login
                     Reader = PasswordCommand.ExecuteReader();
                     if (Reader.Read())
                     {
-                        Menu dashboard = new Menu(Name);
+                        Menu menu = new Menu(Name);
                         this.Hide();
-                        dashboard.ShowDialog();
+                        menu.ShowDialog();
                     }
                     else
                     {
@@ -117,13 +117,6 @@ namespace Admin_Login
         private void ExitIcon_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
-        }
-        private void Password_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                LoginButton.PerformClick();
-            }
         }
     }
 }

@@ -141,9 +141,9 @@
             this.cb_SortBy.Size = new System.Drawing.Size(174, 35);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
-            this.cb_SortBy.Click += new System.EventHandler(this.cb_SortBy_Click);
-            this.cb_SortBy.Enter += new System.EventHandler(this.cb_SortBy_Enter);
-            this.cb_SortBy.Leave += new System.EventHandler(this.cb_SortBy_Leave);
+            this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
+            this.cb_SortBy.Enter += new System.EventHandler(this.Cb_SortBy_Enter);
+            this.cb_SortBy.Leave += new System.EventHandler(this.Cb_SortBy_Leave);
             // 
             // lbl_SortBy
             // 
@@ -178,8 +178,8 @@
             this.tb_Search.Size = new System.Drawing.Size(345, 29);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
-            this.tb_Search.Enter += new System.EventHandler(this.tb_Search_Enter);
-            this.tb_Search.Leave += new System.EventHandler(this.tb_Search_Leave);
+            this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
+            this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
             // dt_Date
             // 

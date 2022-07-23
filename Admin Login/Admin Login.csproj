@@ -77,6 +77,12 @@
     <Compile Include="EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="HolidaySettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HolidaySettings.Designer.cs">
+      <DependentUpon>HolidaySettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HolidaySettings.resx">
+      <DependentUpon>HolidaySettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -236,6 +245,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HolidaySettings_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -21,102 +21,126 @@ namespace Admin_Login
             int width,
             int height
             );
-        string TitleExtension = "Dashboard";
+        string TitleExtension;
         public Menu(string name)
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
         }
-        private void btn_SignOut_Click(object sender, EventArgs e)
+        private void Btn_SignOut_Click(object sender, EventArgs e)
         {
             Login login = new Login();
             this.Hide();
             login.ShowDialog();
         }
-        private void btn_Dashboard_Click(object sender, EventArgs e)
+        private void Btn_Dashboard_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Dashboard";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            Dashboard dashboard = new Dashboard();
-            dashboard.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Dashboard";
+            TitleLabel.Text = TitleExtension;
+            Dashboard dashboard = new Dashboard
+            {
+                TopLevel = false
+            };
             pnl_Content.Controls.Add(dashboard);
             dashboard.BringToFront();
             dashboard.Show();
         }
-        private void btn_EmployeeList_Click(object sender, EventArgs e)
+        private void Btn_EmployeeList_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Employee List";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            EmployeeList employeelist = new EmployeeList();
-            employeelist.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Employee List";
+            TitleLabel.Text = TitleExtension;
+            EmployeeList employeelist = new EmployeeList
+            {
+                TopLevel = false
+            };
             pnl_Content.Controls.Add(employeelist);
             employeelist.BringToFront();
             employeelist.Show();
         }
-        private void btn_AdvancedDayOffs_Click(object sender, EventArgs e)
+        private void Btn_AdvancedDayOffs_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Advanced Day-Offs";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            AdvancedDay_Offs advanceddayoffs = new AdvancedDay_Offs();
-            advanceddayoffs.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Advanced Day-Offs";
+            TitleLabel.Text = TitleExtension;
+            AdvancedDay_Offs advanceddayoffs = new AdvancedDay_Offs
+            {
+                TopLevel = false
+            };
             pnl_Content.Controls.Add(advanceddayoffs);
             advanceddayoffs.BringToFront();
             advanceddayoffs.Show();
         }
-        private void btn_PositionAndDepartments_Click(object sender, EventArgs e)
+        private void Btn_PositionAndDepartments_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Position and Departments";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            PositionAndDepartments positionanddepartments = new PositionAndDepartments();
-            positionanddepartments.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Position and Departments";
+            TitleLabel.Text = TitleExtension;
+            PositionAndDepartments positionanddepartments = new PositionAndDepartments 
+            { 
+                TopLevel = false 
+            };
             pnl_Content.Controls.Add(positionanddepartments);
             positionanddepartments.BringToFront();
             positionanddepartments.Show();
         }
-        private void btn_Deductions_Click(object sender, EventArgs e)
+        private void Btn_Deductions_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Deductions";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            Deductions deductions = new Deductions();
-            deductions.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Deductions";
+            TitleLabel.Text = TitleExtension;
+            Deductions deductions = new Deductions 
+            { 
+                TopLevel = false 
+            };
             pnl_Content.Controls.Add(deductions);
             deductions.BringToFront();
             deductions.Show();
         }
-        private void btn_AttendanceRecord_Click(object sender, EventArgs e)
+        private void Btn_AttendanceRecord_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Attendance Record";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            AttendanceRecord attendancerecord = new AttendanceRecord();
-            attendancerecord.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Attendance Record";
+            TitleLabel.Text = TitleExtension;
+            AttendanceRecord attendancerecord = new AttendanceRecord 
+            { 
+                TopLevel = false 
+            };
             pnl_Content.Controls.Add(attendancerecord);
             attendancerecord.BringToFront();
             attendancerecord.Show();
         }
-        private void btn_PayrollReport_Click(object sender, EventArgs e)
+        private void Btn_PayrollReport_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Payroll Report";
-            TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
-            PayrollReport payrollreport = new PayrollReport();
-            payrollreport.TopLevel = false;
+            Text = TitleExtension = "Fiona's Farm and Resort - Payroll Report";
+            TitleLabel.Text = TitleExtension;
+            PayrollReport payrollreport = new PayrollReport(AdminName.Text)
+            {
+                TopLevel = false
+            };
             pnl_Content.Controls.Add(payrollreport);
             payrollreport.BringToFront();
             payrollreport.Show();
         }
-        private void btn_Settings_Click(object sender, EventArgs e)
+        private void Btn_Settings_Click(object sender, EventArgs e)
         {
-            TitleExtension = "Settings";
+            Text = TitleExtension = "Settings";
             TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
         }
-        private void Menu_Load(object sender, EventArgs e)
+        internal void Menu_Load(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
-            dashboard.TopLevel = false;
-            pnl_Content.Controls.Add(dashboard);
-            dashboard.BringToFront();
-            dashboard.Show();
+            if (this.Text == "Holiday Settings")
+            {
+                TitleExtension = "Holiday Settings";
+                TitleLabel.Text = "Fiona's Farm and Resort - " + TitleExtension;
+                HolidaySettings holidaysettings = new HolidaySettings()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(holidaysettings);
+                holidaysettings.BringToFront();
+                holidaysettings.Show();
+            }
+            else
+            {
+                Btn_Dashboard_Click(sender, e);
+            }
         }
     }
 }

@@ -12,13 +12,15 @@ namespace Admin_Login
 {
     public partial class PayrollReport : Form
     {
+        private new string Name;
         //DEVIN CONNECTION STRING
         public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
-        public PayrollReport()
+        public PayrollReport(string name)
         {
             InitializeComponent();
+            Name = name;
         }
         private void PayrollReport_Load(object sender, EventArgs e)
         {
@@ -34,11 +36,11 @@ namespace Admin_Login
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
         }
-        private void cb_SortBy_Click(object sender, EventArgs e)
+        private void Cb_SortBy_Click(object sender, EventArgs e)
         {
             cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
         }
-        private void tb_Search_Enter(object sender, EventArgs e)
+        private void Tb_Search_Enter(object sender, EventArgs e)
         {
             if (tb_Search.Text == " Search")
             {
@@ -46,7 +48,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Black;
             }
         }
-        private void tb_Search_Leave(object sender, EventArgs e)
+        private void Tb_Search_Leave(object sender, EventArgs e)
         {
             if (tb_Search.Text == "")
             {
@@ -54,7 +56,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Silver;
             }
         }
-        private void cb_SortBy_Enter(object sender, EventArgs e)
+        private void Cb_SortBy_Enter(object sender, EventArgs e)
         {
             if (cb_SortBy.Text == "Default")
             {
@@ -62,7 +64,7 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Black;
             }
         }
-        private void cb_SortBy_Leave(object sender, EventArgs e)
+        private void Cb_SortBy_Leave(object sender, EventArgs e)
         {
             if (cb_SortBy.Text == "Default")
             {
@@ -70,7 +72,7 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-        private void dt_Date_ValueChanged(object sender, EventArgs e)
+        private void Dt_Date_ValueChanged(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -88,6 +90,14 @@ namespace Admin_Login
                 lbl_Period.Text = "";
                 lbl_Holiday.Text = "";
             }
+        }
+        private void Btn_HolidaySettings_Click(object sender, EventArgs e)
+        {
+            /*Menu menu = new Menu(Name);
+            menu.Show();*/
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Holiday Settings";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }
