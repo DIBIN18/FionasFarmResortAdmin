@@ -38,9 +38,10 @@
             this.cb_SortBy = new System.Windows.Forms.ComboBox();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dt_Date = new System.Windows.Forms.DateTimePicker();
+            this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lbl_Period = new System.Windows.Forms.Label();
@@ -49,14 +50,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -177,6 +177,17 @@
             this.panel1.Size = new System.Drawing.Size(406, 45);
             this.panel1.TabIndex = 28;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
+            // 
             // tb_Search
             // 
             this.tb_Search.BackColor = System.Drawing.Color.White;
@@ -202,16 +213,16 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Period:";
             // 
-            // dt_Date
+            // dtp_Date
             // 
-            this.dt_Date.CustomFormat = "MMMM dd, yyyy";
-            this.dt_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dt_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dt_Date.Location = new System.Drawing.Point(130, 23);
-            this.dt_Date.Name = "dt_Date";
-            this.dt_Date.Size = new System.Drawing.Size(297, 36);
-            this.dt_Date.TabIndex = 31;
-            this.dt_Date.ValueChanged += new System.EventHandler(this.Dt_Date_ValueChanged);
+            this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_Date.Location = new System.Drawing.Point(130, 23);
+            this.dtp_Date.Name = "dtp_Date";
+            this.dtp_Date.Size = new System.Drawing.Size(297, 36);
+            this.dtp_Date.TabIndex = 31;
+            this.dtp_Date.ValueChanged += new System.EventHandler(this.Dt_Date_ValueChanged);
             // 
             // label2
             // 
@@ -270,7 +281,7 @@
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(146, 132);
+            this.label9.Location = new System.Drawing.Point(146, 131);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(190, 27);
             this.label9.TabIndex = 37;
@@ -305,17 +316,6 @@
             this.pictureBox1.Tag = "btn_HolidaySettings";
             this.pictureBox1.Click += new System.EventHandler(this.Btn_HolidaySettings_Click);
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            // 
             // PayrollReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -334,7 +334,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dt_Date);
+            this.Controls.Add(this.dtp_Date);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PayrollReport";
             this.Tag = "btn_HolidaySettings";
@@ -347,11 +347,11 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,7 +372,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dt_Date;
+        private System.Windows.Forms.DateTimePicker dtp_Date;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lbl_Period;

@@ -163,6 +163,26 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Cancel_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Clear_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Clear_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dashboard_Icon {
             get {
                 object obj = ResourceManager.GetObject("Dashboard_Icon", resourceCulture);
@@ -186,6 +206,16 @@ namespace Admin_Login.Properties {
         internal static System.Drawing.Bitmap Delete_Icon {
             get {
                 object obj = ResourceManager.GetObject("Delete_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Done_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Done_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

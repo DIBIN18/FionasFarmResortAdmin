@@ -26,13 +26,13 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            HolidayCommand.Parameters.AddWithValue("@From_", dt_Date.Value.ToString("MMMM dd"));
+            SqlCommand command = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
+            command.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));
             SqlDataReader Reader;
-            Reader = HolidayCommand.ExecuteReader();
+            Reader = command.ExecuteReader();
             if (Reader.Read())
             {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dt_Date.Value.ToString("yyyy");
+                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
         }
@@ -77,12 +77,12 @@ namespace Admin_Login
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
             SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            HolidayCommand.Parameters.AddWithValue("@From_", dt_Date.Value.ToString("MMMM dd"));
+            HolidayCommand.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));
             SqlDataReader Reader;
             Reader = HolidayCommand.ExecuteReader();
             if (Reader.Read())
             {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dt_Date.Value.ToString(", yyyy");
+                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
             else
@@ -93,10 +93,8 @@ namespace Admin_Login
         }
         private void Btn_HolidaySettings_Click(object sender, EventArgs e)
         {
-            /*Menu menu = new Menu(Name);
-            menu.Show();*/
             Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Holiday Settings";
+            menu.Text = "Fiona's Farm and Resort - Holiday Settings";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
     }

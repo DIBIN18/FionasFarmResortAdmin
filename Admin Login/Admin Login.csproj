@@ -77,6 +77,16 @@
     <Compile Include="EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="FFRUsersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="HolidaySettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +159,28 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="FFRUsersDataSet.xsc">
+      <DependentUpon>FFRUsersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet.xss">
+      <DependentUpon>FFRUsersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet1.xsc">
+      <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet1.xss">
+      <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -254,6 +286,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Delete_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Done_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clear_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
