@@ -23,9 +23,12 @@ namespace Admin_Login
             int height
             );
         //DEVIN CONNECTION STRING
-        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+
         //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+
+
         new string Name;
         public Login()
         {

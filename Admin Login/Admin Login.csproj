@@ -77,6 +77,13 @@
     <Compile Include="EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="EmlpoyeeProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmlpoyeeProfile.Designer.cs">
+      <DependentUpon>EmlpoyeeProfile.cs</DependentUpon>
+=======
     <Compile Include="FFRUsersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,6 +93,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
+>>>>>>> 1df57fc16369848b3fbe1b05a2418168867b9dc1
     </Compile>
     <Compile Include="HolidaySettings.cs">
       <SubType>Form</SubType>
@@ -133,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmlpoyeeProfile.resx">
+      <DependentUpon>EmlpoyeeProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HolidaySettings.resx">
       <DependentUpon>HolidaySettings.cs</DependentUpon>
