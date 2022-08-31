@@ -87,6 +87,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FFRUsersDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="HolidaySettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +185,17 @@
     </None>
     <None Include="FFRUsersDataSet1.xss">
       <DependentUpon>FFRUsersDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet2.xsc">
+      <DependentUpon>FFRUsersDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet2.xss">
+      <DependentUpon>FFRUsersDataSet2.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

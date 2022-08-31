@@ -14,9 +14,9 @@ namespace Admin_Login
     {
         string ClickedButton, cb_HolidayName_Holder;
         //DEVIN CONNECTION STRING
-        static readonly string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //static readonly string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        static readonly string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         static readonly SqlConnection connection = new SqlConnection(connectionString);
         static readonly SqlCommand command = new SqlCommand("select Holiday_ from Holidays", connection);
         static readonly SqlDataAdapter dataadapter = new SqlDataAdapter
@@ -30,9 +30,11 @@ namespace Admin_Login
         }
         private void HolidaySettings_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'fFRUsersDataSet2.Holidays' table. You can move, or remove it, as needed.
+            this.holidaysTableAdapter1.Fill(this.fFRUsersDataSet2.Holidays);
             connection.Close();
             connection.Open();
-            holidaysTableAdapter.Fill(fFRUsersDataSet.Holidays);
+            holidaysTableAdapter1.Fill(fFRUsersDataSet2.Holidays);
             cb_HolidayName.DataSource = null;
             Btn_Add_Click(sender, e);
             t_Done.Start();
