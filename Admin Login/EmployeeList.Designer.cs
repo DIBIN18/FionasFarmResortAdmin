@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cb_SortBy = new System.Windows.Forms.ComboBox();
             this.lbl_SortBy = new System.Windows.Forms.Label();
@@ -43,17 +45,30 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgvEmployeeList = new System.Windows.Forms.DataGridView();
+            this.fFRUsersDataSet = new Admin_Login.FFRUsersDataSet9();
+            this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter();
+            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,12 +78,14 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(33, 32);
+            this.label1.Location = new System.Drawing.Point(31, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 27);
+            this.label1.Size = new System.Drawing.Size(93, 23);
             this.label1.TabIndex = 1;
             this.label1.Tag = "btn_AddNew";
             this.label1.Text = "Add new";
+            this.label1.Click += new System.EventHandler(this.btnAddEmployee);
             // 
             // tb_Search
             // 
@@ -76,10 +93,10 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(48, 7);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Search.Location = new System.Drawing.Point(36, 6);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(345, 29);
+            this.tb_Search.Size = new System.Drawing.Size(259, 23);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
@@ -90,19 +107,33 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(411, 23);
+            this.panel1.Location = new System.Drawing.Point(308, 19);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 45);
+            this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 7;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(832, 23);
+            this.panel2.Location = new System.Drawing.Point(624, 19);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(291, 45);
+            this.panel2.Size = new System.Drawing.Size(219, 37);
             this.panel2.TabIndex = 9;
             // 
             // cb_SortBy
@@ -120,9 +151,10 @@
             "Department",
             "Position",
             "Status"});
-            this.cb_SortBy.Location = new System.Drawing.Point(112, 4);
+            this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
             this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(174, 35);
+            this.cb_SortBy.Size = new System.Drawing.Size(132, 29);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
@@ -134,9 +166,10 @@
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(12, 8);
+            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
+            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(94, 27);
+            this.lbl_SortBy.Size = new System.Drawing.Size(78, 22);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -147,9 +180,10 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(228, 32);
+            this.label2.Location = new System.Drawing.Point(171, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 27);
+            this.label2.Size = new System.Drawing.Size(81, 23);
             this.label2.TabIndex = 11;
             this.label2.Tag = "btn_Archive";
             this.label2.Text = "Archive";
@@ -157,23 +191,26 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.dgvEmployeeList);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(21, 87);
+            this.panel3.Location = new System.Drawing.Point(16, 71);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1102, 629);
+            this.panel3.Size = new System.Drawing.Size(827, 511);
             this.panel3.TabIndex = 16;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(934, 21);
+            this.label3.Location = new System.Drawing.Point(700, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 27);
+            this.label3.Size = new System.Drawing.Size(64, 23);
             this.label3.TabIndex = 4;
             this.label3.Text = "Status";
             // 
@@ -181,9 +218,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(755, 21);
+            this.label8.Location = new System.Drawing.Point(566, 17);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 27);
+            this.label8.Size = new System.Drawing.Size(80, 23);
             this.label8.TabIndex = 3;
             this.label8.Text = "Position";
             // 
@@ -191,9 +229,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(489, 21);
+            this.label7.Location = new System.Drawing.Point(367, 17);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 27);
+            this.label7.Size = new System.Drawing.Size(120, 23);
             this.label7.TabIndex = 2;
             this.label7.Text = "Department";
             // 
@@ -201,9 +240,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(288, 21);
+            this.label6.Location = new System.Drawing.Point(216, 17);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 27);
+            this.label6.Size = new System.Drawing.Size(67, 23);
             this.label6.TabIndex = 1;
             this.label6.Text = "Name";
             // 
@@ -211,9 +251,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 21);
+            this.label4.Location = new System.Drawing.Point(22, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 27);
+            this.label4.Size = new System.Drawing.Size(126, 23);
             this.label4.TabIndex = 0;
             this.label4.Text = "Employee ID";
             // 
@@ -222,9 +263,10 @@
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(348, 29);
+            this.pictureBox3.Location = new System.Drawing.Point(261, 24);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(26, 32);
+            this.pictureBox3.Size = new System.Drawing.Size(20, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
@@ -234,56 +276,134 @@
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox4.Location = new System.Drawing.Point(216, 23);
+            this.pictureBox4.Location = new System.Drawing.Point(162, 19);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(184, 45);
+            this.pictureBox4.Size = new System.Drawing.Size(138, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "btn_Archive";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(153, 29);
+            this.pictureBox2.Location = new System.Drawing.Point(126, 24);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(26, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Tag = "btn_AddNew";
+            this.pictureBox2.Click += new System.EventHandler(this.btnAddEmployee);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 45);
+            this.pictureBox1.Size = new System.Drawing.Size(138, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "btn_AddNew";
+            this.pictureBox1.Click += new System.EventHandler(this.btnAddEmployee);
+            // 
+            // dgvEmployeeList
+            // 
+            this.dgvEmployeeList.AllowUserToAddRows = false;
+            this.dgvEmployeeList.AllowUserToDeleteRows = false;
+            this.dgvEmployeeList.AutoGenerateColumns = false;
+            this.dgvEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeeIDDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.middleNameDataGridViewTextBoxColumn,
+            this.positionDataGridViewTextBoxColumn,
+            this.departmentDataGridViewTextBoxColumn,
+            this.jobStatusDataGridViewTextBoxColumn});
+            this.dgvEmployeeList.DataSource = this.employeeInfoBindingSource;
+            this.dgvEmployeeList.Location = new System.Drawing.Point(26, 60);
+            this.dgvEmployeeList.Name = "dgvEmployeeList";
+            this.dgvEmployeeList.ReadOnly = true;
+            this.dgvEmployeeList.Size = new System.Drawing.Size(767, 418);
+            this.dgvEmployeeList.TabIndex = 5;
+            // 
+            // fFRUsersDataSet
+            // 
+            this.fFRUsersDataSet.DataSetName = "FFRUsersDataSet";
+            this.fFRUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeInfoBindingSource
+            // 
+            this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
+            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet;
+            // 
+            // employeeInfoTableAdapter
+            // 
+            this.employeeInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeIDDataGridViewTextBoxColumn
+            // 
+            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // middleNameDataGridViewTextBoxColumn
+            // 
+            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
+            this.middleNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionDataGridViewTextBoxColumn
+            // 
+            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
+            this.positionDataGridViewTextBoxColumn.HeaderText = "Position";
+            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
+            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // departmentDataGridViewTextBoxColumn
+            // 
+            this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
+            this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
+            this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
+            this.departmentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobStatusDataGridViewTextBoxColumn
+            // 
+            this.jobStatusDataGridViewTextBoxColumn.DataPropertyName = "JobStatus";
+            this.jobStatusDataGridViewTextBoxColumn.HeaderText = "JobStatus";
+            this.jobStatusDataGridViewTextBoxColumn.Name = "jobStatusDataGridViewTextBoxColumn";
+            this.jobStatusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // EmployeeList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1139, 728);
+            this.ClientSize = new System.Drawing.Size(854, 592);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.pictureBox3);
@@ -295,19 +415,24 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.EmployeeList_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,5 +458,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvEmployeeList;
+        private FFRUsersDataSet9 fFRUsersDataSet;
+        private System.Windows.Forms.BindingSource employeeInfoBindingSource;
+        private FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jobStatusDataGridViewTextBoxColumn;
     }
 }
