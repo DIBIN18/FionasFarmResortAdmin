@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 namespace Admin_Login
 {
     public partial class Login : Form
-    {
+    {//POGI SI PAUL
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(
             int left,
