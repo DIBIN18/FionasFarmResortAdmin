@@ -13,7 +13,7 @@ namespace Admin_Login
     {
         public EmployeeList()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -51,5 +51,20 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Black;
             }
         }
+
+        private void btnAddEmployee(object sender, EventArgs e)
+        {
+            AddEmployee addEmployee = new AddEmployee();
+            addEmployee.ShowDialog();
+        }
+
+        private void EmployeeList_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'fFRUsersDataSet9.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
+            
+        }
+
+      
     }
 }

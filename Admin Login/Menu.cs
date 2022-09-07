@@ -142,10 +142,25 @@ namespace Admin_Login
             {
                 Btn_PayrollReport_Click(sender, e);
             }
+           
+            //jovs
+            else if (Text == "Fiona's Farm and Resort - Employee List")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Employee List";
+                TitleLabel.Text = TitleExtension;
+                EmployeeList employeeList = new EmployeeList()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(employeeList);
+                employeeList.BringToFront();
+                employeeList.Show();
+            }
             else
             {
                 Btn_Dashboard_Click(sender, e);
             }
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
