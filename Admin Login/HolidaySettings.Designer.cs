@@ -44,11 +44,19 @@
             this.fromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< Updated upstream
             this.holidaysBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.fFRUsersDataSet10 = new Admin_Login.FFRUsersDataSet10();
             this.holidaysBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.fFRUsersDataSet3 = new Admin_Login.FFRUsersDataSet3();
             this.holidaysBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+=======
+            this.holidaysBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+<<<<<<< Updated upstream
+=======
+            this.fFRUsersDataSet2 = new Admin_Login.FFRUsersDataSet2();
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.holidaysBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -64,6 +72,7 @@
             this.cb_HolidayName = new System.Windows.Forms.ComboBox();
             this.t_Done = new System.Windows.Forms.Timer(this.components);
             this.holidaysTableAdapter1 = new Admin_Login.FFRUsersDataSet2TableAdapters.HolidaysTableAdapter();
+<<<<<<< Updated upstream
             this.holidaysTableAdapter2 = new Admin_Login.FFRUsersDataSet3TableAdapters.HolidaysTableAdapter();
             this.fFRUsersDataSet2 = new Admin_Login.FFRUsersDataSet2();
             this.fFRUsersDataSet = new Admin_Login.FFRUsersDataSet();
@@ -74,6 +83,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource1)).BeginInit();
+=======
+            this.fFRUsersDataSet3 = new Admin_Login.FFRUsersDataSet3();
+            this.holidaysBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.holidaysTableAdapter2 = new Admin_Login.FFRUsersDataSet3TableAdapters.HolidaysTableAdapter();
+            this.fFRUsersDataSet2 = new Admin_Login.FFRUsersDataSet2();
+            this.fFRUsersDataSet = new Admin_Login.FFRUsersDataSet();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_HolidaysTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource1)).BeginInit();
+<<<<<<< Updated upstream
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet2)).BeginInit();
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -81,8 +103,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_Delete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Add)).BeginInit();
+<<<<<<< Updated upstream
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).BeginInit();
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.SuspendLayout();
             // 
             // lbl_Add
@@ -132,7 +162,16 @@
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+<<<<<<< Updated upstream
             this.dtp_To.Location = new System.Drawing.Point(507, 148);
+=======
+<<<<<<< Updated upstream
+            this.dtp_To.Location = new System.Drawing.Point(338, 96);
+            this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.dtp_To.Location = new System.Drawing.Point(507, 148);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.dtp_To.Name = "dtp_To";
             this.dtp_To.Size = new System.Drawing.Size(418, 41);
             this.dtp_To.TabIndex = 35;
@@ -161,7 +200,16 @@
             // tb_HolidayName
             // 
             this.tb_HolidayName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.tb_HolidayName.Location = new System.Drawing.Point(14, 55);
+=======
+<<<<<<< Updated upstream
+            this.tb_HolidayName.Location = new System.Drawing.Point(9, 36);
+            this.tb_HolidayName.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.tb_HolidayName.Location = new System.Drawing.Point(14, 55);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.tb_HolidayName.Name = "tb_HolidayName";
             this.tb_HolidayName.Size = new System.Drawing.Size(912, 41);
             this.tb_HolidayName.TabIndex = 39;
@@ -184,7 +232,16 @@
             "Regular Holiday",
             "Special Non-Working Holiday",
             "Special Working Holiday"});
+<<<<<<< Updated upstream
             this.cb_Type.Location = new System.Drawing.Point(14, 238);
+=======
+<<<<<<< Updated upstream
+            this.cb_Type.Location = new System.Drawing.Point(9, 155);
+            this.cb_Type.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.cb_Type.Location = new System.Drawing.Point(14, 238);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.cb_Type.Name = "cb_Type";
             this.cb_Type.Size = new System.Drawing.Size(460, 42);
             this.cb_Type.TabIndex = 41;
@@ -195,7 +252,16 @@
             this.dtp_From.CustomFormat = "MMMM dd, yyyy";
             this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+<<<<<<< Updated upstream
             this.dtp_From.Location = new System.Drawing.Point(14, 148);
+=======
+<<<<<<< Updated upstream
+            this.dtp_From.Location = new System.Drawing.Point(9, 96);
+            this.dtp_From.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.dtp_From.Location = new System.Drawing.Point(14, 148);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.dtp_From.Name = "dtp_From";
             this.dtp_From.Size = new System.Drawing.Size(394, 41);
             this.dtp_From.TabIndex = 42;
@@ -215,8 +281,19 @@
             this.fromDataGridViewTextBoxColumn,
             this.toDataGridViewTextBoxColumn,
             this.typeDataGridViewTextBoxColumn});
+<<<<<<< Updated upstream
             this.dg_HolidaysTable.DataSource = this.holidaysBindingSource3;
             this.dg_HolidaysTable.Location = new System.Drawing.Point(14, 311);
+=======
+<<<<<<< Updated upstream
+            this.dg_HolidaysTable.DataSource = this.holidaysBindingSource2;
+            this.dg_HolidaysTable.Location = new System.Drawing.Point(9, 202);
+            this.dg_HolidaysTable.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.dg_HolidaysTable.DataSource = this.holidaysBindingSource1;
+            this.dg_HolidaysTable.Location = new System.Drawing.Point(14, 311);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.dg_HolidaysTable.Name = "dg_HolidaysTable";
             this.dg_HolidaysTable.ReadOnly = true;
             this.dg_HolidaysTable.RowHeadersWidth = 51;
@@ -257,6 +334,7 @@
             this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
             this.typeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+<<<<<<< Updated upstream
             // holidaysBindingSource3
             // 
             this.holidaysBindingSource3.DataMember = "Holidays";
@@ -283,6 +361,27 @@
             // 
             // holidaysBindingSource
             // 
+=======
+            // holidaysBindingSource1
+<<<<<<< Updated upstream
+=======
+            // 
+            this.holidaysBindingSource1.DataMember = "Holidays";
+            this.holidaysBindingSource1.DataSource = this.fFRUsersDataSet2;
+            // 
+            // fFRUsersDataSet2
+            // 
+            this.fFRUsersDataSet2.DataSetName = "FFRUsersDataSet2";
+            this.fFRUsersDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // holidaysBindingSource
+>>>>>>> Stashed changes
+            // 
+            this.holidaysBindingSource1.DataMember = "Holidays";
+            // 
+            // holidaysBindingSource
+            // 
+>>>>>>> Stashed changes
             this.holidaysBindingSource.DataMember = "Holidays";
             // 
             // label3
@@ -342,7 +441,16 @@
             // 
             this.pictureBox6.Enabled = false;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.Clear_Icon;
+<<<<<<< Updated upstream
             this.pictureBox6.Location = new System.Drawing.Point(982, 698);
+=======
+<<<<<<< Updated upstream
+            this.pictureBox6.Location = new System.Drawing.Point(655, 454);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pictureBox6.Location = new System.Drawing.Point(982, 698);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(262, 94);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -354,7 +462,16 @@
             // 
             this.pictureBox5.Enabled = false;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Done_Icon;
+<<<<<<< Updated upstream
             this.pictureBox5.Location = new System.Drawing.Point(982, 597);
+=======
+<<<<<<< Updated upstream
+            this.pictureBox5.Location = new System.Drawing.Point(655, 388);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pictureBox5.Location = new System.Drawing.Point(982, 597);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(262, 94);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -366,7 +483,16 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Cancel_Icon;
+<<<<<<< Updated upstream
             this.pictureBox3.Location = new System.Drawing.Point(982, 802);
+=======
+<<<<<<< Updated upstream
+            this.pictureBox3.Location = new System.Drawing.Point(655, 521);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pictureBox3.Location = new System.Drawing.Point(982, 802);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(262, 94);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -378,7 +504,16 @@
             // pb_Delete
             // 
             this.pb_Delete.Image = global::Admin_Login.Properties.Resources.Delete_Icon;
+<<<<<<< Updated upstream
             this.pb_Delete.Location = new System.Drawing.Point(982, 257);
+=======
+<<<<<<< Updated upstream
+            this.pb_Delete.Location = new System.Drawing.Point(655, 167);
+            this.pb_Delete.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pb_Delete.Location = new System.Drawing.Point(982, 257);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pb_Delete.Name = "pb_Delete";
             this.pb_Delete.Size = new System.Drawing.Size(262, 94);
             this.pb_Delete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -390,7 +525,16 @@
             // pb_Edit
             // 
             this.pb_Edit.Image = global::Admin_Login.Properties.Resources.Edit_Icon;
+<<<<<<< Updated upstream
             this.pb_Edit.Location = new System.Drawing.Point(982, 154);
+=======
+<<<<<<< Updated upstream
+            this.pb_Edit.Location = new System.Drawing.Point(655, 100);
+            this.pb_Edit.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pb_Edit.Location = new System.Drawing.Point(982, 154);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pb_Edit.Name = "pb_Edit";
             this.pb_Edit.Size = new System.Drawing.Size(262, 94);
             this.pb_Edit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -402,7 +546,16 @@
             // pb_Add
             // 
             this.pb_Add.Image = global::Admin_Login.Properties.Resources.Add_Icon;
+<<<<<<< Updated upstream
             this.pb_Add.Location = new System.Drawing.Point(982, 52);
+=======
+<<<<<<< Updated upstream
+            this.pb_Add.Location = new System.Drawing.Point(655, 34);
+            this.pb_Add.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.pb_Add.Location = new System.Drawing.Point(982, 52);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.pb_Add.Name = "pb_Add";
             this.pb_Add.Size = new System.Drawing.Size(262, 94);
             this.pb_Add.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -419,7 +572,16 @@
             // 
             this.cb_HolidayName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_HolidayName.FormattingEnabled = true;
+<<<<<<< Updated upstream
             this.cb_HolidayName.Location = new System.Drawing.Point(14, 57);
+=======
+<<<<<<< Updated upstream
+            this.cb_HolidayName.Location = new System.Drawing.Point(9, 37);
+            this.cb_HolidayName.Margin = new System.Windows.Forms.Padding(2);
+=======
+            this.cb_HolidayName.Location = new System.Drawing.Point(14, 57);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.cb_HolidayName.Name = "cb_HolidayName";
             this.cb_HolidayName.Size = new System.Drawing.Size(912, 42);
             this.cb_HolidayName.TabIndex = 51;
@@ -430,9 +592,26 @@
             this.t_Done.Tick += new System.EventHandler(this.Done_Tick);
             // 
             // holidaysTableAdapter1
+<<<<<<< Updated upstream
             // 
             this.holidaysTableAdapter1.ClearBeforeFill = true;
             // 
+=======
+<<<<<<< Updated upstream
+            // 
+            this.holidaysTableAdapter1.ClearBeforeFill = true;
+            // 
+            // fFRUsersDataSet3
+            // 
+            this.fFRUsersDataSet3.DataSetName = "FFRUsersDataSet3";
+            this.fFRUsersDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // holidaysBindingSource2
+            // 
+            this.holidaysBindingSource2.DataMember = "Holidays";
+            this.holidaysBindingSource2.DataSource = this.fFRUsersDataSet3;
+            // 
+>>>>>>> Stashed changes
             // holidaysTableAdapter2
             // 
             this.holidaysTableAdapter2.ClearBeforeFill = true;
@@ -443,6 +622,7 @@
             this.fFRUsersDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // fFRUsersDataSet
+<<<<<<< Updated upstream
             // 
             this.fFRUsersDataSet.DataSetName = "FFRUsersDataSet";
             this.fFRUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
@@ -450,6 +630,13 @@
             // holidaysTableAdapter3
             // 
             this.holidaysTableAdapter3.ClearBeforeFill = true;
+=======
+=======
+>>>>>>> Stashed changes
+            // 
+            this.fFRUsersDataSet.DataSetName = "FFRUsersDataSet";
+            this.fFRUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+>>>>>>> Stashed changes
             // 
             // HolidaySettings
             // 
@@ -481,15 +668,30 @@
             this.Controls.Add(this.lbl_Add);
             this.Controls.Add(this.pb_Add);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+            this.Margin = new System.Windows.Forms.Padding(2);
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.Name = "HolidaySettings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HolidaySettings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_HolidaysTable)).EndInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource1)).EndInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource1)).EndInit();
+<<<<<<< Updated upstream
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet2)).EndInit();
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -497,8 +699,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_Delete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Add)).EndInit();
+<<<<<<< Updated upstream
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).EndInit();
+<<<<<<< Updated upstream
+=======
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,8 +752,11 @@
         private FFRUsersDataSet3TableAdapters.HolidaysTableAdapter holidaysTableAdapter2;
         private FFRUsersDataSet2 fFRUsersDataSet2;
         private FFRUsersDataSet fFRUsersDataSet;
+<<<<<<< Updated upstream
         private FFRUsersDataSet10 fFRUsersDataSet10;
         private System.Windows.Forms.BindingSource holidaysBindingSource3;
         private FFRUsersDataSet10TableAdapters.HolidaysTableAdapter holidaysTableAdapter3;
+=======
+>>>>>>> Stashed changes
     }
 }

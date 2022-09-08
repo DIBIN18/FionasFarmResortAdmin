@@ -58,9 +58,23 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+<<<<<<< Updated upstream
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+=======
+            this.dgvEmployeeList = new System.Windows.Forms.DataGridView();
+            this.fFRUsersDataSet = new Admin_Login.FFRUsersDataSet9();
+            this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter();
+            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jobStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> Stashed changes
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
@@ -72,8 +86,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
+>>>>>>> Stashed changes
             this.SuspendLayout();
             // 
             // label1
@@ -83,9 +103,16 @@
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.label1.Location = new System.Drawing.Point(115, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(137, 34);
+=======
+            this.label1.Location = new System.Drawing.Point(31, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 23);
+>>>>>>> Stashed changes
             this.label1.TabIndex = 1;
             this.label1.Tag = "btn_AddNew";
             this.label1.Text = "Add new";
@@ -97,9 +124,16 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+<<<<<<< Updated upstream
             this.tb_Search.Location = new System.Drawing.Point(54, 9);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(388, 34);
+=======
+            this.tb_Search.Location = new System.Drawing.Point(36, 6);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Search.Name = "tb_Search";
+            this.tb_Search.Size = new System.Drawing.Size(259, 23);
+>>>>>>> Stashed changes
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
@@ -110,18 +144,32 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
+<<<<<<< Updated upstream
             this.panel1.Location = new System.Drawing.Point(340, 94);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(659, 56);
+=======
+            this.panel1.Location = new System.Drawing.Point(308, 19);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(305, 37);
+>>>>>>> Stashed changes
             this.panel1.TabIndex = 7;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+<<<<<<< Updated upstream
             this.pictureBox5.Location = new System.Drawing.Point(10, 6);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(28, 43);
+=======
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+>>>>>>> Stashed changes
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -131,9 +179,16 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
+<<<<<<< Updated upstream
             this.panel2.Location = new System.Drawing.Point(841, 32);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(328, 56);
+=======
+            this.panel2.Location = new System.Drawing.Point(624, 19);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(219, 37);
+>>>>>>> Stashed changes
             this.panel2.TabIndex = 9;
             // 
             // cb_SortBy
@@ -151,9 +206,16 @@
             "Department",
             "Position",
             "Status"});
+<<<<<<< Updated upstream
             this.cb_SortBy.Location = new System.Drawing.Point(126, 5);
             this.cb_SortBy.Name = "cb_SortBy";
             this.cb_SortBy.Size = new System.Drawing.Size(196, 42);
+=======
+            this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_SortBy.Name = "cb_SortBy";
+            this.cb_SortBy.Size = new System.Drawing.Size(132, 29);
+>>>>>>> Stashed changes
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.SelectedIndexChanged += new System.EventHandler(this.cb_SortBy_SelectedIndexChanged);
@@ -166,9 +228,16 @@
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+<<<<<<< Updated upstream
             this.lbl_SortBy.Location = new System.Drawing.Point(14, 9);
             this.lbl_SortBy.Name = "lbl_SortBy";
             this.lbl_SortBy.Size = new System.Drawing.Size(114, 34);
+=======
+            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
+            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_SortBy.Name = "lbl_SortBy";
+            this.lbl_SortBy.Size = new System.Drawing.Size(78, 22);
+>>>>>>> Stashed changes
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -179,9 +248,16 @@
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
+<<<<<<< Updated upstream
             this.label2.Location = new System.Drawing.Point(325, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 34);
+=======
+            this.label2.Location = new System.Drawing.Point(171, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 23);
+>>>>>>> Stashed changes
             this.label2.TabIndex = 11;
             this.label2.Tag = "btn_Archive";
             this.label2.Text = "Archive";
@@ -196,9 +272,16 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
+<<<<<<< Updated upstream
             this.panel3.Location = new System.Drawing.Point(30, 156);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1240, 785);
+=======
+            this.panel3.Location = new System.Drawing.Point(16, 71);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(827, 511);
+>>>>>>> Stashed changes
             this.panel3.TabIndex = 16;
             // 
             // dgvEmployeeList
@@ -302,9 +385,16 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label3.Location = new System.Drawing.Point(1050, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 34);
+=======
+            this.label3.Location = new System.Drawing.Point(700, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 23);
+>>>>>>> Stashed changes
             this.label3.TabIndex = 4;
             this.label3.Text = "Status";
             // 
@@ -312,9 +402,16 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label8.Location = new System.Drawing.Point(550, 26);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 34);
+=======
+            this.label8.Location = new System.Drawing.Point(566, 17);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(80, 23);
+>>>>>>> Stashed changes
             this.label8.TabIndex = 3;
             this.label8.Text = "Position";
             // 
@@ -322,9 +419,16 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label7.Location = new System.Drawing.Point(796, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(175, 34);
+=======
+            this.label7.Location = new System.Drawing.Point(367, 17);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(120, 23);
+>>>>>>> Stashed changes
             this.label7.TabIndex = 2;
             this.label7.Text = "Department";
             // 
@@ -332,9 +436,16 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label6.Location = new System.Drawing.Point(324, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 34);
+=======
+            this.label6.Location = new System.Drawing.Point(216, 17);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 23);
+>>>>>>> Stashed changes
             this.label6.TabIndex = 1;
             this.label6.Text = "Name";
             // 
@@ -342,9 +453,16 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< Updated upstream
             this.label4.Location = new System.Drawing.Point(33, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(187, 34);
+=======
+            this.label4.Location = new System.Drawing.Point(22, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 23);
+>>>>>>> Stashed changes
             this.label4.TabIndex = 0;
             this.label4.Text = "Employee ID";
             // 
@@ -357,9 +475,16 @@
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
+<<<<<<< Updated upstream
             this.pictureBox3.Location = new System.Drawing.Point(461, 37);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(30, 40);
+=======
+            this.pictureBox3.Location = new System.Drawing.Point(261, 24);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(20, 26);
+>>>>>>> Stashed changes
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
@@ -370,23 +495,40 @@
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
+<<<<<<< Updated upstream
             this.pictureBox4.Location = new System.Drawing.Point(312, 29);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(207, 57);
+=======
+            this.pictureBox4.Location = new System.Drawing.Point(162, 19);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(138, 37);
+>>>>>>> Stashed changes
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
             this.pictureBox4.Tag = "btn_Archive";
+<<<<<<< Updated upstream
             this.pictureBox4.Click += new System.EventHandler(this.btnArchive);
+=======
+>>>>>>> Stashed changes
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
+<<<<<<< Updated upstream
             this.pictureBox2.Location = new System.Drawing.Point(258, 37);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(30, 40);
+=======
+            this.pictureBox2.Location = new System.Drawing.Point(126, 24);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(20, 26);
+>>>>>>> Stashed changes
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -397,15 +539,23 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
+<<<<<<< Updated upstream
             this.pictureBox1.Location = new System.Drawing.Point(99, 31);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(207, 57);
+=======
+            this.pictureBox1.Location = new System.Drawing.Point(20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(138, 37);
+>>>>>>> Stashed changes
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "btn_AddNew";
             this.pictureBox1.Click += new System.EventHandler(this.btnAddEmployee);
             // 
+<<<<<<< Updated upstream
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
@@ -454,6 +604,98 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1281, 911);
+=======
+            // dgvEmployeeList
+            // 
+            this.dgvEmployeeList.AllowUserToAddRows = false;
+            this.dgvEmployeeList.AllowUserToDeleteRows = false;
+            this.dgvEmployeeList.AutoGenerateColumns = false;
+            this.dgvEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.employeeIDDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.middleNameDataGridViewTextBoxColumn,
+            this.positionDataGridViewTextBoxColumn,
+            this.departmentDataGridViewTextBoxColumn,
+            this.jobStatusDataGridViewTextBoxColumn});
+            this.dgvEmployeeList.DataSource = this.employeeInfoBindingSource;
+            this.dgvEmployeeList.Location = new System.Drawing.Point(26, 60);
+            this.dgvEmployeeList.Name = "dgvEmployeeList";
+            this.dgvEmployeeList.ReadOnly = true;
+            this.dgvEmployeeList.Size = new System.Drawing.Size(767, 418);
+            this.dgvEmployeeList.TabIndex = 5;
+            // 
+            // fFRUsersDataSet
+            // 
+            this.fFRUsersDataSet.DataSetName = "FFRUsersDataSet";
+            this.fFRUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeeInfoBindingSource
+            // 
+            this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
+            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet;
+            // 
+            // employeeInfoTableAdapter
+            // 
+            this.employeeInfoTableAdapter.ClearBeforeFill = true;
+            // 
+            // employeeIDDataGridViewTextBoxColumn
+            // 
+            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
+            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
+            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // middleNameDataGridViewTextBoxColumn
+            // 
+            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
+            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
+            this.middleNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionDataGridViewTextBoxColumn
+            // 
+            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
+            this.positionDataGridViewTextBoxColumn.HeaderText = "Position";
+            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
+            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // departmentDataGridViewTextBoxColumn
+            // 
+            this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
+            this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
+            this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
+            this.departmentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // jobStatusDataGridViewTextBoxColumn
+            // 
+            this.jobStatusDataGridViewTextBoxColumn.DataPropertyName = "JobStatus";
+            this.jobStatusDataGridViewTextBoxColumn.HeaderText = "JobStatus";
+            this.jobStatusDataGridViewTextBoxColumn.Name = "jobStatusDataGridViewTextBoxColumn";
+            this.jobStatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // EmployeeList
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(854, 592);
+>>>>>>> Stashed changes
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.label5);
@@ -468,6 +710,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EmployeeList_Load);
@@ -485,8 +728,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+<<<<<<< Updated upstream
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
+>>>>>>> Stashed changes
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,9 +762,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvEmployeeList;
+<<<<<<< Updated upstream
         private FFRUsersDataSet12 fFRUsersDataSet1;
         private System.Windows.Forms.BindingSource employeeInfoBindingSource;
         private FFRUsersDataSet12TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+=======
+        private FFRUsersDataSet9 fFRUsersDataSet;
+        private System.Windows.Forms.BindingSource employeeInfoBindingSource;
+        private FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+>>>>>>> Stashed changes
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
@@ -523,8 +778,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobStatusDataGridViewTextBoxColumn;
+<<<<<<< Updated upstream
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox7;
+=======
+>>>>>>> Stashed changes
     }
 }

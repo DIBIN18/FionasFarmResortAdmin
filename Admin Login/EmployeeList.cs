@@ -16,7 +16,10 @@ namespace Admin_Login
         string holderDateofBirth = "", holderDateHired = "";
         public EmployeeList()
         {
+<<<<<<< Updated upstream
             
+=======
+>>>>>>> Stashed changes
             InitializeComponent();           
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
@@ -64,6 +67,7 @@ namespace Admin_Login
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+<<<<<<< Updated upstream
             // TODO: This line of code loads data into the 'fFRUsersDataSet12.EmployeeInfo' table. You can move, or remove it, as needed.
             this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet1.EmployeeInfo);
 
@@ -143,5 +147,13 @@ namespace Admin_Login
                 MessageBox.Show("Archive Successful");
             }
         }
+=======
+            // TODO: This line of code loads data into the 'fFRUsersDataSet9.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
+            
+        }
+
+      
+>>>>>>> Stashed changes
     }
 }
