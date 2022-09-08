@@ -32,11 +32,13 @@ namespace Admin_Login
         }
         private void HolidaySettings_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'fFRUsersDataSet3.Holidays' table. You can move, or remove it, as needed.
+            //this.holidaysTableAdapter2.Fill(this.fFRUsersDataSet3.Holidays);
             // TODO: This line of code loads data into the 'fFRUsersDataSet2.Holidays' table. You can move, or remove it, as needed.
-            this.holidaysTableAdapter1.Fill(this.fFRUsersDataSet2.Holidays);
+            this.holidaysTableAdapter2.Fill(this.fFRUsersDataSet3.Holidays);
             connection.Close();
             connection.Open();
-            holidaysTableAdapter1.Fill(fFRUsersDataSet2.Holidays);
+            holidaysTableAdapter2.Fill(fFRUsersDataSet3.Holidays);
             cb_HolidayName.DataSource = null;
             Btn_Add_Click(sender, e);
             t_Done.Start();
