@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -60,11 +61,52 @@ namespace Admin_Login
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+
             // TODO: This line of code loads data into the 'fFRUsersDataSet9.EmployeeInfo' table. You can move, or remove it, as needed.
             this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
             
         }
 
-      
+        private void btnArchive(object sender, EventArgs e)
+        {   
+            if(dgvEmployeeList.CurrentRow.Selected = true)
+            {
+                
+                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
+                + "Insert INTO Archive (EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
+                "SELECT EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
+                "FROM EmployeeInfo WHERE EmployeeID = "+ dgvEmployeeList.CurrentRow.Cells[0].Value + " DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value, conn);
+
+                DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Archive Employee? "+ dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
+                }
+               
+                
+
+                ////MessageBox.Show(dgvEmployeeList.CurrentRow.Cells[1].Value + " " + dgvEmployeeList.CurrentRow.Cells[2].Value + " Sent  to Archive");
+                //this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
+            }
+
+        }
+
+        private void dgvCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dgvEmployeeList.CurrentRow.Selected = true;               
+            }
+        }
+
+        private void bntViewArchive(object sender, EventArgs e)
+        {
+            ArchivedEmployee archivedEmployee = new ArchivedEmployee();
+            archivedEmployee.ShowDialog();
+        }
     }
 }
