@@ -13,6 +13,8 @@ namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
+        //PAUL CONNECTION STRING
+        public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         public AddEmployee()
         {
             InitializeComponent();
@@ -20,10 +22,10 @@ namespace Admin_Login
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfoact(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender)" +
-                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContNumber,@DateHired,@Gender)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus)" +
+                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@Department,@Position,@JobStatus)", conn);
             cmd.Parameters.AddWithValue("@FirstName", txtfname.Text);
             cmd.Parameters.AddWithValue("@LastName", txtlname.Text);
             cmd.Parameters.AddWithValue("@MiddleName", txtmname.Text);
@@ -36,6 +38,10 @@ namespace Admin_Login
             cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text);
             cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Text);
             cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
+            cmd.Parameters.AddWithValue("@BirthDate", txtBirthDate.Value.ToString("dd-mm-yyyy"));
+            cmd.Parameters.AddWithValue("@Department",txtDepartment.Text);
+            cmd.Parameters.AddWithValue("@Position", txtPosition.Text);
+            cmd.Parameters.AddWithValue("@JobStatus", txtJobStatus.Text);
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Successfully failed!");

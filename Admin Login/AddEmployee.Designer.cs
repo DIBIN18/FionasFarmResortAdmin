@@ -31,7 +31,6 @@
             this.txtfname = new System.Windows.Forms.TextBox();
             this.txtlname = new System.Windows.Forms.TextBox();
             this.txtmname = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.txtSSSID = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +55,13 @@
             this.txtDateHired = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
             this.BtnBack = new System.Windows.Forms.Button();
+            this.txtBirthDate = new System.Windows.Forms.DateTimePicker();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtPosition = new System.Windows.Forms.TextBox();
+            this.txtJobStatus = new System.Windows.Forms.TextBox();
+            this.txtDepartment = new System.Windows.Forms.TextBox();
             this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet4TableAdapters.EmployeeInfoTableAdapter();
             this.SuspendLayout();
             // 
@@ -79,13 +85,6 @@
             this.txtmname.Name = "txtmname";
             this.txtmname.Size = new System.Drawing.Size(267, 20);
             this.txtmname.TabIndex = 2;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(166, 181);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(267, 20);
-            this.textBox4.TabIndex = 3;
             // 
             // txtSSSID
             // 
@@ -269,7 +268,7 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(549, 504);
+            this.btnRegister.Location = new System.Drawing.Point(559, 452);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
             this.btnRegister.TabIndex = 26;
@@ -279,13 +278,70 @@
             // 
             // BtnBack
             // 
-            this.BtnBack.Location = new System.Drawing.Point(728, 504);
+            this.BtnBack.Location = new System.Drawing.Point(673, 452);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(75, 23);
             this.BtnBack.TabIndex = 27;
             this.BtnBack.Text = "Back";
             this.BtnBack.UseVisualStyleBackColor = true;
             this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
+            // 
+            // txtBirthDate
+            // 
+            this.txtBirthDate.CustomFormat = "mm/dd/yyyy";
+            this.txtBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtBirthDate.Location = new System.Drawing.Point(166, 184);
+            this.txtBirthDate.Name = "txtBirthDate";
+            this.txtBirthDate.Size = new System.Drawing.Size(100, 20);
+            this.txtBirthDate.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(505, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Position";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(502, 181);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 13);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "JobStatus";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(502, 144);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 13);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Department";
+            // 
+            // txtPosition
+            // 
+            this.txtPosition.Location = new System.Drawing.Point(570, 104);
+            this.txtPosition.Name = "txtPosition";
+            this.txtPosition.Size = new System.Drawing.Size(200, 20);
+            this.txtPosition.TabIndex = 33;
+            // 
+            // txtJobStatus
+            // 
+            this.txtJobStatus.Location = new System.Drawing.Point(570, 178);
+            this.txtJobStatus.Name = "txtJobStatus";
+            this.txtJobStatus.Size = new System.Drawing.Size(200, 20);
+            this.txtJobStatus.TabIndex = 34;
+            // 
+            // txtDepartment
+            // 
+            this.txtDepartment.Location = new System.Drawing.Point(570, 140);
+            this.txtDepartment.Name = "txtDepartment";
+            this.txtDepartment.Size = new System.Drawing.Size(200, 20);
+            this.txtDepartment.TabIndex = 34;
             // 
             // employeeInfoTableAdapter
             // 
@@ -296,6 +352,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 555);
+            this.Controls.Add(this.txtDepartment);
+            this.Controls.Add(this.txtJobStatus);
+            this.Controls.Add(this.txtPosition);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.txtBirthDate);
             this.Controls.Add(this.BtnBack);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtDateHired);
@@ -320,11 +383,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtSSSID);
-            this.Controls.Add(this.textBox4);
             this.Controls.Add(this.txtmname);
             this.Controls.Add(this.txtlname);
             this.Controls.Add(this.txtfname);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddEmployee";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -336,7 +400,6 @@
         private System.Windows.Forms.TextBox txtfname;
         private System.Windows.Forms.TextBox txtlname;
         private System.Windows.Forms.TextBox txtmname;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtSSSID;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label1;
@@ -362,5 +425,12 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button BtnBack;
         private FFRUsersDataSet4TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+        private System.Windows.Forms.DateTimePicker txtBirthDate;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtPosition;
+        private System.Windows.Forms.TextBox txtJobStatus;
+        private System.Windows.Forms.TextBox txtDepartment;
     }
 }

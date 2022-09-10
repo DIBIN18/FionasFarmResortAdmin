@@ -59,6 +59,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.archiveTableAdapter = new Admin_Login.FFRUsersDataSet12TableAdapters.ArchiveTableAdapter();
+            this.fFRUsersDataSet16 = new Admin_Login.FFRUsersDataSet16();
+            this.archiveBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.archiveTableAdapter1 = new Admin_Login.FFRUsersDataSet16TableAdapters.ArchiveTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet12)).BeginInit();
@@ -67,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet16)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArchive
@@ -93,7 +98,7 @@
             this.departmentDataGridViewTextBoxColumn,
             this.positionDataGridViewTextBoxColumn,
             this.jobStatusDataGridViewTextBoxColumn});
-            this.dgvArchive.DataSource = this.archiveBindingSource;
+            this.dgvArchive.DataSource = this.archiveBindingSource1;
             this.dgvArchive.Location = new System.Drawing.Point(12, 52);
             this.dgvArchive.Name = "dgvArchive";
             this.dgvArchive.ReadOnly = true;
@@ -257,12 +262,12 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(26, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 23);
+            this.label1.Size = new System.Drawing.Size(76, 24);
             this.label1.TabIndex = 4;
             this.label1.Tag = "btn_AddNew";
             this.label1.Text = "Search";
@@ -300,12 +305,12 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(598, 16);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 23);
+            this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 7;
             this.label2.Tag = "btn_AddNew";
             this.label2.Text = "Restore";
@@ -330,12 +335,12 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(751, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 23);
+            this.label3.Size = new System.Drawing.Size(55, 24);
             this.label3.TabIndex = 10;
             this.label3.Tag = "btn_AddNew";
             this.label3.Text = "Back";
@@ -359,6 +364,20 @@
             // 
             this.archiveTableAdapter.ClearBeforeFill = true;
             // 
+            // fFRUsersDataSet16
+            // 
+            this.fFRUsersDataSet16.DataSetName = "FFRUsersDataSet16";
+            this.fFRUsersDataSet16.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // archiveBindingSource1
+            // 
+            this.archiveBindingSource1.DataMember = "Archive";
+            this.archiveBindingSource1.DataSource = this.fFRUsersDataSet16;
+            // 
+            // archiveTableAdapter1
+            // 
+            this.archiveTableAdapter1.ClearBeforeFill = true;
+            // 
             // ArchivedEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,7 +393,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dgvArchive);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArchivedEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ArchivedEmployee";
             this.Load += new System.EventHandler(this.ArchivedEmployee_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).EndInit();
@@ -385,6 +406,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet16)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -422,5 +445,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobStatusDataGridViewTextBoxColumn;
+        private FFRUsersDataSet16 fFRUsersDataSet16;
+        private System.Windows.Forms.BindingSource archiveBindingSource1;
+        private FFRUsersDataSet16TableAdapters.ArchiveTableAdapter archiveTableAdapter1;
     }
 }

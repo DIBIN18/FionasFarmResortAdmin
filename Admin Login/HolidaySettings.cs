@@ -18,7 +18,9 @@ namespace Admin_Login
         //CUNAN CONNECTION STRING
         //static readonly string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
-        static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //PAUL CONNECTION STRING
+        static readonly string connectionString = "Data Source=DESKTOP-0Q352R7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         static readonly SqlConnection connection = new SqlConnection(connectionString);
         static readonly SqlCommand command = new SqlCommand("select Holiday_ from Holidays", connection);
         static readonly SqlDataAdapter dataadapter = new SqlDataAdapter
@@ -32,13 +34,11 @@ namespace Admin_Login
         }
         private void HolidaySettings_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet3.Holidays' table. You can move, or remove it, as needed.
-            //this.holidaysTableAdapter2.Fill(this.fFRUsersDataSet3.Holidays);
-            // TODO: This line of code loads data into the 'fFRUsersDataSet2.Holidays' table. You can move, or remove it, as needed.
-            this.holidaysTableAdapter2.Fill(this.fFRUsersDataSet3.Holidays);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet13.Holidays' table. You can move, or remove it, as needed.
+            this.holidaysTableAdapter.Fill(this.fFRUsersDataSet13.Holidays);
             connection.Close();
             connection.Open();
-            holidaysTableAdapter2.Fill(fFRUsersDataSet3.Holidays);
+            holidaysTableAdapter.Fill(fFRUsersDataSet13.Holidays);
             cb_HolidayName.DataSource = null;
             Btn_Add_Click(sender, e);
             t_Done.Start();

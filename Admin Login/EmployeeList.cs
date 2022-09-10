@@ -12,6 +12,8 @@ namespace Admin_Login
 {
     public partial class EmployeeList : Form
     {
+        //PAUL CONNECTION STRING
+        public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         public EmployeeList()
         {
             InitializeComponent();           
@@ -61,10 +63,8 @@ namespace Admin_Login
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
-
-            // TODO: This line of code loads data into the 'fFRUsersDataSet9.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
-            
+            // TODO: This line of code loads data into the 'fFRUsersDataSet18.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet18.EmployeeInfo);
         }
 
         private void btnArchive(object sender, EventArgs e)
@@ -72,7 +72,7 @@ namespace Admin_Login
             if(dgvEmployeeList.CurrentRow.Selected = true)
             {
                 
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+                SqlConnection conn = new SqlConnection(connectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
                 + "Insert INTO Archive (EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
@@ -84,13 +84,9 @@ namespace Admin_Login
                 {
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
-                }
-               
-                
+                    this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet18.EmployeeInfo);
+                }      
 
-                ////MessageBox.Show(dgvEmployeeList.CurrentRow.Cells[1].Value + " " + dgvEmployeeList.CurrentRow.Cells[2].Value + " Sent  to Archive");
-                //this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
             }
 
         }
@@ -107,6 +103,17 @@ namespace Admin_Login
         {
             ArchivedEmployee archivedEmployee = new ArchivedEmployee();
             archivedEmployee.ShowDialog();
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(connectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [dbo].[EmployeeInfo] WHERE FirstName = '" + tb_Search.Text+"'",conn);
+            cmd.ExecuteNonQuery();
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet18.EmployeeInfo);
+            conn.Close();
         }
     }
 }

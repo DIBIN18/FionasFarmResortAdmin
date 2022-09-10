@@ -114,6 +114,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet12.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FFRUsersDataSet13.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet13.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet14.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet14.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet15.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FFRUsersDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -286,6 +316,72 @@
     </None>
     <None Include="FFRUsersDataSet12.xss">
       <DependentUpon>FFRUsersDataSet12.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet13.xsc">
+      <DependentUpon>FFRUsersDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet13.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet13.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet13.xss">
+      <DependentUpon>FFRUsersDataSet13.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet14.xsc">
+      <DependentUpon>FFRUsersDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet14.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet14.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet14.xss">
+      <DependentUpon>FFRUsersDataSet14.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet15.xsc">
+      <DependentUpon>FFRUsersDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet15.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet15.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet15.xss">
+      <DependentUpon>FFRUsersDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet16.xsc">
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet16.xss">
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet17.xsc">
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet17.xss">
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet18.xsc">
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet18.xss">
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
     </None>
     <None Include="FFRUsersDataSet2.xsc">
       <DependentUpon>FFRUsersDataSet2.xsd</DependentUpon>

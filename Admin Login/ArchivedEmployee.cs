@@ -13,10 +13,12 @@ namespace Admin_Login
 {
     public partial class ArchivedEmployee : Form
     {
+        //PAUL CONNECTION STRING
+        public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         public ArchivedEmployee()
         {
             InitializeComponent();
-            this.CenterToScreen();
+         
         }
 
         private void btnArchiveBack(object sender, EventArgs e)
@@ -29,8 +31,9 @@ namespace Admin_Login
 
         private void ArchivedEmployee_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet12.Archive' table. You can move, or remove it, as needed.
-            this.archiveTableAdapter.Fill(this.fFRUsersDataSet12.Archive);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet16.Archive' table. You can move, or remove it, as needed.
+            this.archiveTableAdapter1.Fill(this.fFRUsersDataSet16.Archive);
+         
 
         }
 
@@ -41,7 +44,7 @@ namespace Admin_Login
                 DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Restore Employee? " + dgvArchive.CurrentRow.Cells[1].Value.ToString() + " " + dgvArchive.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+                    SqlConnection conn = new SqlConnection(connectionString);
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
                     + "Insert INTO EmployeeInfo (FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
@@ -50,8 +53,9 @@ namespace Admin_Login
 
 
                     cmd.ExecuteNonQuery();
+                   
+                    this.archiveTableAdapter1.Fill(this.fFRUsersDataSet16.Archive);
                     conn.Close();
-                    this.archiveTableAdapter.Fill(this.fFRUsersDataSet12.Archive);
                 }
                 
             }
