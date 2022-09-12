@@ -22,8 +22,8 @@ namespace Admin_Login
         {
             SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfoact(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender)" +
-                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContNumber,@DateHired,@Gender)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender)" +
+                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender)", conn);
             cmd.Parameters.AddWithValue("@FirstName", txtfname.Text);
             cmd.Parameters.AddWithValue("@LastName", txtlname.Text);
             cmd.Parameters.AddWithValue("@MiddleName", txtmname.Text);

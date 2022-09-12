@@ -49,7 +49,6 @@
             this.jobStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.archiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fFRUsersDataSet12 = new Admin_Login.FFRUsersDataSet12();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -59,6 +58,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.archiveTableAdapter = new Admin_Login.FFRUsersDataSet12TableAdapters.ArchiveTableAdapter();
+            this.fFRUsersDataSet13 = new Admin_Login.FFRUsersDataSet13();
+            this.TB_SearchArchive = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.archiveBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet12)).BeginInit();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet13)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArchive
@@ -230,14 +232,6 @@
             this.fFRUsersDataSet12.DataSetName = "FFRUsersDataSet12";
             this.fFRUsersDataSet12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(151, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(418, 29);
-            this.textBox1.TabIndex = 2;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
@@ -359,6 +353,20 @@
             // 
             this.archiveTableAdapter.ClearBeforeFill = true;
             // 
+            // fFRUsersDataSet13
+            // 
+            this.fFRUsersDataSet13.DataSetName = "FFRUsersDataSet13";
+            this.fFRUsersDataSet13.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // TB_SearchArchive
+            // 
+            this.TB_SearchArchive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_SearchArchive.Location = new System.Drawing.Point(151, 12);
+            this.TB_SearchArchive.Name = "TB_SearchArchive";
+            this.TB_SearchArchive.Size = new System.Drawing.Size(418, 29);
+            this.TB_SearchArchive.TabIndex = 2;
+            this.TB_SearchArchive.TextChanged += new System.EventHandler(this.tbSearchArchive);
+            // 
             // ArchivedEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,7 +380,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TB_SearchArchive);
             this.Controls.Add(this.dgvArchive);
             this.Name = "ArchivedEmployee";
             this.Text = "ArchivedEmployee";
@@ -385,6 +393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,7 +402,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvArchive;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -422,5 +430,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobStatusDataGridViewTextBoxColumn;
+        private FFRUsersDataSet13 fFRUsersDataSet13;
+        private System.Windows.Forms.TextBox TB_SearchArchive;
     }
 }
