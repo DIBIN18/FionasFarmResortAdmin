@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.cb_SortBy = new System.Windows.Forms.ComboBox();
             this.lbl_SortBy = new System.Windows.Forms.Label();
@@ -42,33 +43,32 @@
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jobStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fFRUsersDataSet = new Admin_Login.FFRUsersDataSet9();
+            this.fFRUsersDataSet15 = new Admin_Login.FFRUsersDataSet15();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter();
             this.ArchivePictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.ArchivePictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet15TableAdapters.EmployeeInfoTableAdapter();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -97,25 +97,38 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(36, 6);
+            this.tb_Search.Location = new System.Drawing.Point(30, 6);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(259, 23);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
+            this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
             this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
+            this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Location = new System.Drawing.Point(308, 19);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 7;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
             // 
             // panel2
             // 
@@ -207,14 +220,14 @@
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
             this.middleNameDataGridViewTextBoxColumn,
-            this.positionDataGridViewTextBoxColumn,
             this.departmentDataGridViewTextBoxColumn,
+            this.positionDataGridViewTextBoxColumn,
             this.jobStatusDataGridViewTextBoxColumn});
             this.dgvEmployeeList.DataSource = this.employeeInfoBindingSource;
             this.dgvEmployeeList.Location = new System.Drawing.Point(26, 60);
             this.dgvEmployeeList.Name = "dgvEmployeeList";
             this.dgvEmployeeList.ReadOnly = true;
-            this.dgvEmployeeList.Size = new System.Drawing.Size(767, 418);
+            this.dgvEmployeeList.Size = new System.Drawing.Size(747, 410);
             this.dgvEmployeeList.TabIndex = 5;
             this.dgvEmployeeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellClick);
             // 
@@ -246,19 +259,19 @@
             this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
             this.middleNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // positionDataGridViewTextBoxColumn
-            // 
-            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
-            this.positionDataGridViewTextBoxColumn.HeaderText = "Position";
-            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
-            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // departmentDataGridViewTextBoxColumn
             // 
             this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
             this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
             this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
             this.departmentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // positionDataGridViewTextBoxColumn
+            // 
+            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
+            this.positionDataGridViewTextBoxColumn.HeaderText = "Position";
+            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
+            this.positionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // jobStatusDataGridViewTextBoxColumn
             // 
@@ -270,12 +283,12 @@
             // employeeInfoBindingSource
             // 
             this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
-            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet;
+            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet15;
             // 
-            // fFRUsersDataSet
+            // fFRUsersDataSet15
             // 
-            this.fFRUsersDataSet.DataSetName = "FFRUsersDataSet";
-            this.fFRUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.fFRUsersDataSet15.DataSetName = "FFRUsersDataSet15";
+            this.fFRUsersDataSet15.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label3
             // 
@@ -332,10 +345,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Employee ID";
             // 
-            // employeeInfoTableAdapter
-            // 
-            this.employeeInfoTableAdapter.ClearBeforeFill = true;
-            // 
             // ArchivePictureBoxLogo
             // 
             this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
@@ -364,18 +373,6 @@
             this.ArchivePictureBox.TabStop = false;
             this.ArchivePictureBox.Tag = "btn_Archive";
             this.ArchivePictureBox.Click += new System.EventHandler(this.btnArchive);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -435,12 +432,16 @@
             this.pictureBox7.Tag = "btn_Archive";
             this.pictureBox7.Click += new System.EventHandler(this.bntViewArchive);
             // 
+            // employeeInfoTableAdapter
+            // 
+            this.employeeInfoTableAdapter.ClearBeforeFill = true;
+            // 
             // EmployeeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(854, 592);
+            this.ClientSize = new System.Drawing.Size(848, 587);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
@@ -460,16 +461,16 @@
             this.Load += new System.EventHandler(this.EmployeeList_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBoxLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -500,17 +501,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvEmployeeList;
-        private FFRUsersDataSet9 fFRUsersDataSet;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private FFRUsersDataSet15 fFRUsersDataSet15;
         private System.Windows.Forms.BindingSource employeeInfoBindingSource;
-        private FFRUsersDataSet9TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+        private FFRUsersDataSet15TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn jobStatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }

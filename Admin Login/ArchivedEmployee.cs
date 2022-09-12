@@ -13,6 +13,7 @@ namespace Admin_Login
 {
     public partial class ArchivedEmployee : Form
     {
+        Login login = new Login();
         public ArchivedEmployee()
         {
             InitializeComponent();
@@ -29,7 +30,6 @@ namespace Admin_Login
 
         private void ArchivedEmployee_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet12.Archive' table. You can move, or remove it, as needed.
             this.archiveTableAdapter.Fill(this.fFRUsersDataSet12.Archive);
 
         }
@@ -41,7 +41,7 @@ namespace Admin_Login
                 DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Restore Employee? " + dgvArchive.CurrentRow.Cells[1].Value.ToString() + " " + dgvArchive.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+                    SqlConnection conn = new SqlConnection(login.connectionString);
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
                     + "Insert INTO EmployeeInfo (FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
@@ -63,6 +63,11 @@ namespace Admin_Login
             {
                 dgvArchive.CurrentRow.Selected = true;
             }
+        }
+
+        private void tbSearchArchive(object sender, EventArgs e)
+        {
+          
         }
     }
 }

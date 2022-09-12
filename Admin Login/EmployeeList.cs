@@ -12,6 +12,7 @@ namespace Admin_Login
 {
     public partial class EmployeeList : Form
     {
+        Login login = new Login();
         public EmployeeList()
         {
             InitializeComponent();           
@@ -43,6 +44,7 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
+            
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
@@ -55,43 +57,45 @@ namespace Admin_Login
 
         private void btnAddEmployee(object sender, EventArgs e)
         {
+            
             AddEmployee addEmployee = new AddEmployee();
             addEmployee.ShowDialog();
+            
         }
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'fFRUsersDataSet15.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet15.EmployeeInfo);
 
-            // TODO: This line of code loads data into the 'fFRUsersDataSet9.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
             
         }
 
         private void btnArchive(object sender, EventArgs e)
-        {   
-            if(dgvEmployeeList.CurrentRow.Selected = true)
+        {
+            if (dgvEmployeeList.CurrentRow.Selected = true)
             {
-                
-                SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+
+                SqlConnection conn = new SqlConnection(login.connectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
                 + "Insert INTO Archive (EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
                 "SELECT EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
-                "FROM EmployeeInfo WHERE EmployeeID = "+ dgvEmployeeList.CurrentRow.Cells[0].Value + " DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value, conn);
+                "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + " DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value, conn);
 
-                DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Archive Employee? "+ dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Archive Employee? " + dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     cmd.ExecuteNonQuery();
-                    conn.Close();
-                    this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
-                }
-               
-                
 
-                ////MessageBox.Show(dgvEmployeeList.CurrentRow.Cells[1].Value + " " + dgvEmployeeList.CurrentRow.Cells[2].Value + " Sent  to Archive");
-                //this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet.EmployeeInfo);
+                    conn.Close();
+                    Menu menu = (Menu)Application.OpenForms["Menu"];
+                    menu.Text = "Fiona's Farm and Resort - Employee List";
+                    menu.Menu_Load(menu, EventArgs.Empty);
+                }
+
             }
+          
 
         }
 
@@ -99,7 +103,7 @@ namespace Admin_Login
         {
             if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                dgvEmployeeList.CurrentRow.Selected = true;               
+                dgvEmployeeList.CurrentRow.Selected = true;
             }
         }
 
@@ -107,6 +111,31 @@ namespace Admin_Login
         {
             ArchivedEmployee archivedEmployee = new ArchivedEmployee();
             archivedEmployee.ShowDialog();
+        }
+
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            if (string.IsNullOrEmpty(tb_Search.Text))
+            {
+                SqlCommand cmd2 = new SqlCommand("Select * from EmployeeInfo", conn);
+                SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                DataTable dt2 = new DataTable();
+                sqlDataAdapter2.Fill(dt2);
+                dgvEmployeeList.DataSource = dt2;
+                conn.Close();
+            }
+            else if(tb_Search.Focused)
+            {
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo WHERE FirstName like '" + tb_Search.Text + "%'" + "OR LastName like '" + tb_Search.Text + "%'" + "OR EmployeeID Like '" + tb_Search.Text + "%'", conn);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sqlDataAdapter.Fill(dt);
+                dgvEmployeeList.DataSource = dt;
+                conn.Close();
+            }
         }
     }
 }
