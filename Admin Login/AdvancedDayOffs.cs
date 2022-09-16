@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Admin_Login
 {
     public partial class AdvancedDay_Offs : Form
     {
+        Login login = new Login();
         public AdvancedDay_Offs()
         {
             InitializeComponent();
@@ -50,6 +52,35 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
+        }
+
+        private void AdvancedDay_Offs_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'fFRUsersDataSet19.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet19.EmployeeInfo);
+
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            if (tb_Search.Text == null) {
+                this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet19.EmployeeInfo);
+                conn.Close();
+            }
+            else if (tb_Search.Focused) {
+                
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text+ "%'" + "OR FirstName Like'" + tb_Search.Text+ "%'",conn);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable tb = new DataTable();
+                sqlDataAdapter.Fill(tb);
+                dgvAdvancedDayOffs.DataSource = tb;
+                conn.Close();
+
+            }
+           
+
         }
     }
 }
