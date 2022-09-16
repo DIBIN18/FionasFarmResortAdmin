@@ -12,13 +12,9 @@ namespace Admin_Login
 {
     public partial class PayrollReport : Form
     {
+        Login login = new Login();
         private new string Name;
-        //DEVIN CONNECTION STRING
-        //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
-        //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
-        //JOVS CONNECTION STRING
-        public string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+
         public PayrollReport(string name)
         {
             InitializeComponent();
@@ -26,7 +22,7 @@ namespace Admin_Login
         }
         private void PayrollReport_Load(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             SqlCommand command = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
             command.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));
@@ -76,7 +72,7 @@ namespace Admin_Login
         }
         private void Dt_Date_ValueChanged(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
             HolidayCommand.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));

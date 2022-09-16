@@ -13,9 +13,12 @@ namespace Admin_Login
     public partial class EmployeeList : Form
     {
         Login login = new Login();
+        EmployeeProfile ep = new EmployeeProfile();
+
         public EmployeeList()
         {
-            InitializeComponent();           
+            InitializeComponent();
+
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -44,7 +47,7 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
-            
+
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
@@ -57,23 +60,24 @@ namespace Admin_Login
 
         private void btnAddEmployee(object sender, EventArgs e)
         {
-            
+
             AddEmployee addEmployee = new AddEmployee();
             addEmployee.ShowDialog();
-            
+
         }
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet15.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet15.EmployeeInfo);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet16.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet16.EmployeeInfo);
 
-            
+
+
         }
 
         private void btnArchive(object sender, EventArgs e)
         {
-            if (dgvEmployeeList.CurrentRow.Selected = true)
+            if (dgvEmployeeList.CurrentRow.Selected == true)
             {
 
                 SqlConnection conn = new SqlConnection(login.connectionString);
@@ -95,7 +99,7 @@ namespace Admin_Login
                 }
 
             }
-          
+
 
         }
 
@@ -104,6 +108,27 @@ namespace Admin_Login
             if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvEmployeeList.CurrentRow.Selected = true;
+                SqlConnection conn = new SqlConnection(login.connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, conn) ;
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+                ep.lblName.Text = dt.Rows[0][1].ToString();
+                ep.lblAge.Text = dt.Rows[0][17].ToString();
+                ep.lblMaritalStatus.Text = dt.Rows[0][9].ToString();
+                ep.lblContact.Text = dt.Rows[0][10].ToString();
+                ep.lblEmail.Text = dt.Rows[0][8].ToString();
+                ep.lblDateHired.Text = dt.Rows[0][11].ToString();
+                ep.lblGender.Text = dt.Rows[0][12].ToString();
+                ep.lblAddress.Text = dt.Rows[0][4].ToString();
+               // ep.lblEmploymentType.Text = dt.Rows[][].ToString();
+                ep.lblPosition.Text = dt.Rows[0][15].ToString();
+                ep.lblDepartment.Text = dt.Rows[0][14].ToString();
+                //ep.lblAccumulated.Text = dt.Rows[][].ToString();
+               // ep.lblStatus.Text = dt.Rows[][].ToString();
+               // ep.lblSchedule.Text = dt.Rows[][].ToString();
             }
         }
 
@@ -127,7 +152,7 @@ namespace Admin_Login
                 dgvEmployeeList.DataSource = dt2;
                 conn.Close();
             }
-            else if(tb_Search.Focused)
+            else if (tb_Search.Focused)
             {
                 SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo WHERE FirstName like '" + tb_Search.Text + "%'" + "OR LastName like '" + tb_Search.Text + "%'" + "OR EmployeeID Like '" + tb_Search.Text + "%'", conn);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
@@ -136,6 +161,11 @@ namespace Admin_Login
                 dgvEmployeeList.DataSource = dt;
                 conn.Close();
             }
+        }
+
+        private void dgvEmployeeList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {          
+            ep.ShowDialog();
         }
     }
 }

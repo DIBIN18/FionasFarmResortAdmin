@@ -89,6 +89,12 @@
     <Compile Include="EmployeeList.Designer.cs">
       <DependentUpon>EmployeeList.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeProfile.Designer.cs">
+      <DependentUpon>EmployeeProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="FFRUsersDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,6 +134,26 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet15.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet16.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet18.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet19.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet19.xsd</DependentUpon>
     </Compile>
     <Compile Include="FFRUsersDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -221,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeList.resx">
       <DependentUpon>EmployeeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeProfile.resx">
+      <DependentUpon>EmployeeProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HolidaySettings.resx">
       <DependentUpon>HolidaySettings.cs</DependentUpon>
@@ -334,6 +363,50 @@
     </None>
     <None Include="FFRUsersDataSet15.xss">
       <DependentUpon>FFRUsersDataSet15.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet16.xsc">
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet16.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet16.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet16.xss">
+      <DependentUpon>FFRUsersDataSet16.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet17.xsc">
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet17.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet17.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet17.xss">
+      <DependentUpon>FFRUsersDataSet17.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet18.xsc">
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet18.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet18.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet18.xss">
+      <DependentUpon>FFRUsersDataSet18.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet19.xsc">
+      <DependentUpon>FFRUsersDataSet19.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet19.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet19.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet19.xss">
+      <DependentUpon>FFRUsersDataSet19.xsd</DependentUpon>
     </None>
     <None Include="FFRUsersDataSet2.xsc">
       <DependentUpon>FFRUsersDataSet2.xsd</DependentUpon>

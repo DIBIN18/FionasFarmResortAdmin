@@ -13,6 +13,7 @@ namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
+        Login login = new Login();
         public AddEmployee()
         {
             InitializeComponent();
@@ -20,10 +21,11 @@ namespace Admin_Login
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-2NTMR5E\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True");
+            SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender)" +
-                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender)", conn);
+           
+            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus,Age)" +
+                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@Department,@Position,@JobStatus,@Age)", conn);
             cmd.Parameters.AddWithValue("@FirstName", txtfname.Text);
             cmd.Parameters.AddWithValue("@LastName", txtlname.Text);
             cmd.Parameters.AddWithValue("@MiddleName", txtmname.Text);
@@ -32,10 +34,18 @@ namespace Admin_Login
             cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
             cmd.Parameters.AddWithValue("@PHILHEALTH_NO", txtPhilhealthNo.Text);
             cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
-            cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtMarriageStatus.Text);
+            cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
             cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text);
-            cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Text);
+            cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
             cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
+            cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
+            cmd.Parameters.AddWithValue("@Department", txtDepartment.Text);
+            cmd.Parameters.AddWithValue("@Position", txtPosition.Text);
+            cmd.Parameters.AddWithValue("@JobStatus", txtJobStatus.Text);
+        
+            //Compute Age Using DateTimePicker
+            int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+            cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
             cmd.ExecuteNonQuery();
             conn.Close();
             MessageBox.Show("Successfully failed!");
@@ -59,18 +69,12 @@ namespace Admin_Login
             txtPagibigNo.Text = "";
             txtPhilhealthNo.Text = "";
             txtEmailAdd.Text = "";
-            txtMarriageStatus.Text = "";
+            txtCivilStatus.Text = "";
             txtContactNum.Text = "";
             txtDateHired.Text = "";
             txtGender.Text = "";
         }
-
-        private void AddEmployee_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
  }
-
 

@@ -30,7 +30,9 @@ namespace Admin_Login
 
         private void ArchivedEmployee_Load(object sender, EventArgs e)
         {
-            this.archiveTableAdapter.Fill(this.fFRUsersDataSet12.Archive);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet17.Archive' table. You can move, or remove it, as needed.
+            this.archiveTableAdapter.Fill(this.fFRUsersDataSet17.Archive);
+
 
         }
 
@@ -51,7 +53,7 @@ namespace Admin_Login
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    this.archiveTableAdapter.Fill(this.fFRUsersDataSet12.Archive);
+                    this.archiveTableAdapter.Fill(this.fFRUsersDataSet17.Archive);
                 }
                 
             }
