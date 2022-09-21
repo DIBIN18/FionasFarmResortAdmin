@@ -13,6 +13,7 @@ namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
+        int rate, EmployeeIDholder;
         Login login = new Login();
         public AddEmployee()
         {
@@ -24,8 +25,8 @@ namespace Admin_Login
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
            
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus,Age)" +
-                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@Department,@Position,@JobStatus,@Age)", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,DepartmentName,PositionName,EmploymentType,Age)" +
+                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@DepartmentName,@PositionName,@EmploymentType,@Age)", conn);
             cmd.Parameters.AddWithValue("@FirstName", txtfname.Text);
             cmd.Parameters.AddWithValue("@LastName", txtlname.Text);
             cmd.Parameters.AddWithValue("@MiddleName", txtmname.Text);
@@ -39,9 +40,9 @@ namespace Admin_Login
             cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
             cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
             cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
-            cmd.Parameters.AddWithValue("@Department", txtDepartment.Text);
-            cmd.Parameters.AddWithValue("@Position", txtPosition.Text);
-            cmd.Parameters.AddWithValue("@JobStatus", txtJobStatus.Text);
+            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartment.Text);
+            cmd.Parameters.AddWithValue("@PositionName", txtPosition.Text);
+            cmd.Parameters.AddWithValue("@EmploymentType", txtJobStatus.Text);
         
             //Compute Age Using DateTimePicker
             int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
@@ -50,6 +51,48 @@ namespace Admin_Login
             conn.Close();
             MessageBox.Show("Successfully failed!");
             clearAll();
+            Fill_Position_Tablesql();
+        }
+
+        public void Fill_Position_Tablesql()
+        {
+            if (txtPosition.SelectedItem.Equals("MANAGER"))
+            {
+                rate = 90;
+            }
+            else if (txtPosition.SelectedItem.Equals("CASHIER"))
+            {
+                rate = 63;
+            }
+            else if (txtPosition.SelectedItem.Equals("HOUSEKEEPING"))
+            {
+                rate = 56;
+            }
+            else if (txtPosition.SelectedItem.Equals("SECURITY GUARD"))
+            {
+                rate = 57;
+            }
+            else if (txtPosition.SelectedItem.Equals("LANDSCAPE ARTIST"))
+            {
+                rate = 55;
+            }
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd2 = new SqlCommand("SELECT MAX(EmployeeID) FROM EmployeeInfo; ", conn);
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd2);
+            adapter.Fill(dt);
+            cmd2.ExecuteNonQuery();
+            EmployeeIDholder = Convert.ToInt32(dt.Rows[0][0]);
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO Position(PositionName,DepartmentName,BasicRate,EmployeeID)" +
+                "VALUES(@PositionName,@DepartmentName,@BasicRate,@EmployeeID)", conn);
+            cmd.Parameters.AddWithValue("@PositionName", txtPosition.Text);
+            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartment.Text);
+            cmd.Parameters.AddWithValue("@BasicRate", rate);
+            cmd.Parameters.AddWithValue("@EmployeeID", EmployeeIDholder);
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
 
         private void BtnBack_Click(object sender, EventArgs e)

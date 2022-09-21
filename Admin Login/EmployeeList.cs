@@ -68,8 +68,9 @@ namespace Admin_Login
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet16.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet16.EmployeeInfo);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet20.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet20.EmployeeInfo);
+
 
 
 
