@@ -50,24 +50,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSchedule = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.lblAccumulated = new System.Windows.Forms.Label();
+            this.lblPosition = new System.Windows.Forms.Label();
+            this.lblEmploymentType = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAddFace = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblEmploymentType = new System.Windows.Forms.Label();
-            this.lblPosition = new System.Windows.Forms.Label();
-            this.lblAccumulated = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblSchedule = new System.Windows.Forms.Label();
-            this.lblDepartment = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -301,6 +302,142 @@
             this.panel1.Size = new System.Drawing.Size(507, 278);
             this.panel1.TabIndex = 58;
             // 
+            // lblSchedule
+            // 
+            this.lblSchedule.AutoSize = true;
+            this.lblSchedule.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSchedule.ForeColor = System.Drawing.Color.Gray;
+            this.lblSchedule.Location = new System.Drawing.Point(283, 232);
+            this.lblSchedule.Name = "lblSchedule";
+            this.lblSchedule.Size = new System.Drawing.Size(69, 21);
+            this.lblSchedule.TabIndex = 11;
+            this.lblSchedule.Text = "label22";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
+            this.lblStatus.Location = new System.Drawing.Point(283, 196);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(69, 21);
+            this.lblStatus.TabIndex = 10;
+            this.lblStatus.Text = "label21";
+            // 
+            // lblDepartment
+            // 
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDepartment.ForeColor = System.Drawing.Color.Gray;
+            this.lblDepartment.Location = new System.Drawing.Point(283, 124);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(69, 21);
+            this.lblDepartment.TabIndex = 9;
+            this.lblDepartment.Text = "label20";
+            // 
+            // lblAccumulated
+            // 
+            this.lblAccumulated.AutoSize = true;
+            this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
+            this.lblAccumulated.Location = new System.Drawing.Point(283, 160);
+            this.lblAccumulated.Name = "lblAccumulated";
+            this.lblAccumulated.Size = new System.Drawing.Size(69, 21);
+            this.lblAccumulated.TabIndex = 9;
+            this.lblAccumulated.Text = "label20";
+            // 
+            // lblPosition
+            // 
+            this.lblPosition.AutoSize = true;
+            this.lblPosition.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.ForeColor = System.Drawing.Color.Gray;
+            this.lblPosition.Location = new System.Drawing.Point(283, 89);
+            this.lblPosition.Name = "lblPosition";
+            this.lblPosition.Size = new System.Drawing.Size(69, 21);
+            this.lblPosition.TabIndex = 8;
+            this.lblPosition.Text = "label19";
+            // 
+            // lblEmploymentType
+            // 
+            this.lblEmploymentType.AutoSize = true;
+            this.lblEmploymentType.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmploymentType.ForeColor = System.Drawing.Color.Gray;
+            this.lblEmploymentType.Location = new System.Drawing.Point(283, 56);
+            this.lblEmploymentType.Name = "lblEmploymentType";
+            this.lblEmploymentType.Size = new System.Drawing.Size(69, 21);
+            this.lblEmploymentType.TabIndex = 7;
+            this.lblEmploymentType.Text = "label18";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(23, 233);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(92, 20);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Schedule:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(23, 197);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(69, 20);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Status:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(25, 160);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(201, 20);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Accumulated Day-offs:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(25, 124);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(113, 20);
+            this.label14.TabIndex = 3;
+            this.label14.Text = "Department:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(26, 91);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(83, 20);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Position:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(27, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(163, 20);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Employment Type:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(26, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 25);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "EMPLOYMENT";
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -360,147 +497,26 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // label7
+            // button1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 25);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "EMPLOYMENT";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(27, 56);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 20);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Employment Type:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(26, 91);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 20);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Position:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(25, 124);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(113, 20);
-            this.label14.TabIndex = 3;
-            this.label14.Text = "Department:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(25, 160);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(201, 20);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Accumulated Day-offs:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 197);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 20);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Status:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(23, 233);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(92, 20);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Schedule:";
-            // 
-            // lblEmploymentType
-            // 
-            this.lblEmploymentType.AutoSize = true;
-            this.lblEmploymentType.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmploymentType.ForeColor = System.Drawing.Color.Gray;
-            this.lblEmploymentType.Location = new System.Drawing.Point(283, 56);
-            this.lblEmploymentType.Name = "lblEmploymentType";
-            this.lblEmploymentType.Size = new System.Drawing.Size(69, 21);
-            this.lblEmploymentType.TabIndex = 7;
-            this.lblEmploymentType.Text = "label18";
-            // 
-            // lblPosition
-            // 
-            this.lblPosition.AutoSize = true;
-            this.lblPosition.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.ForeColor = System.Drawing.Color.Gray;
-            this.lblPosition.Location = new System.Drawing.Point(283, 89);
-            this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(69, 21);
-            this.lblPosition.TabIndex = 8;
-            this.lblPosition.Text = "label19";
-            // 
-            // lblAccumulated
-            // 
-            this.lblAccumulated.AutoSize = true;
-            this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
-            this.lblAccumulated.Location = new System.Drawing.Point(283, 160);
-            this.lblAccumulated.Name = "lblAccumulated";
-            this.lblAccumulated.Size = new System.Drawing.Size(69, 21);
-            this.lblAccumulated.TabIndex = 9;
-            this.lblAccumulated.Text = "label20";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(283, 196);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(69, 21);
-            this.lblStatus.TabIndex = 10;
-            this.lblStatus.Text = "label21";
-            // 
-            // lblSchedule
-            // 
-            this.lblSchedule.AutoSize = true;
-            this.lblSchedule.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchedule.ForeColor = System.Drawing.Color.Gray;
-            this.lblSchedule.Location = new System.Drawing.Point(283, 232);
-            this.lblSchedule.Name = "lblSchedule";
-            this.lblSchedule.Size = new System.Drawing.Size(69, 21);
-            this.lblSchedule.TabIndex = 11;
-            this.lblSchedule.Text = "label22";
-            // 
-            // lblDepartment
-            // 
-            this.lblDepartment.AutoSize = true;
-            this.lblDepartment.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDepartment.ForeColor = System.Drawing.Color.Gray;
-            this.lblDepartment.Location = new System.Drawing.Point(283, 124);
-            this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(69, 21);
-            this.lblDepartment.TabIndex = 9;
-            this.lblDepartment.Text = "label20";
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(878, 662);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 40);
+            this.button1.TabIndex = 64;
+            this.button1.Text = "Compute";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EmployeeProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1265, 750);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pictureBox1);
@@ -583,5 +599,6 @@
         public System.Windows.Forms.Label lblAccumulated;
         public System.Windows.Forms.Label lblPosition;
         public System.Windows.Forms.Label lblEmploymentType;
+        private System.Windows.Forms.Button button1;
     }
 }

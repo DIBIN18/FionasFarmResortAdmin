@@ -69,12 +69,15 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txtEmploymentType = new System.Windows.Forms.ComboBox();
             this.txtScheduleOut = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.FullName = new System.Windows.Forms.Label();
+            this.txtFullName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtfname
             // 
             this.txtfname.Location = new System.Drawing.Point(221, 75);
-            this.txtfname.Margin = new System.Windows.Forms.Padding(4);
+            this.txtfname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtfname.Name = "txtfname";
             this.txtfname.Size = new System.Drawing.Size(355, 22);
             this.txtfname.TabIndex = 0;
@@ -82,7 +85,7 @@
             // txtlname
             // 
             this.txtlname.Location = new System.Drawing.Point(221, 124);
-            this.txtlname.Margin = new System.Windows.Forms.Padding(4);
+            this.txtlname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtlname.Name = "txtlname";
             this.txtlname.Size = new System.Drawing.Size(355, 22);
             this.txtlname.TabIndex = 1;
@@ -90,7 +93,7 @@
             // txtmname
             // 
             this.txtmname.Location = new System.Drawing.Point(221, 177);
-            this.txtmname.Margin = new System.Windows.Forms.Padding(4);
+            this.txtmname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtmname.Name = "txtmname";
             this.txtmname.Size = new System.Drawing.Size(355, 22);
             this.txtmname.TabIndex = 2;
@@ -98,7 +101,7 @@
             // txtSSSID
             // 
             this.txtSSSID.Location = new System.Drawing.Point(221, 322);
-            this.txtSSSID.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSSSID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSSSID.Name = "txtSSSID";
             this.txtSSSID.Size = new System.Drawing.Size(355, 22);
             this.txtSSSID.TabIndex = 4;
@@ -106,7 +109,7 @@
             // txtAddress
             // 
             this.txtAddress.Location = new System.Drawing.Point(221, 274);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(355, 22);
             this.txtAddress.TabIndex = 5;
@@ -244,7 +247,7 @@
             // txtPagibigNo
             // 
             this.txtPagibigNo.Location = new System.Drawing.Point(221, 362);
-            this.txtPagibigNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPagibigNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPagibigNo.Name = "txtPagibigNo";
             this.txtPagibigNo.Size = new System.Drawing.Size(355, 22);
             this.txtPagibigNo.TabIndex = 19;
@@ -252,7 +255,7 @@
             // txtPhilhealthNo
             // 
             this.txtPhilhealthNo.Location = new System.Drawing.Point(221, 404);
-            this.txtPhilhealthNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPhilhealthNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPhilhealthNo.Name = "txtPhilhealthNo";
             this.txtPhilhealthNo.Size = new System.Drawing.Size(355, 22);
             this.txtPhilhealthNo.TabIndex = 20;
@@ -260,7 +263,7 @@
             // txtEmailAdd
             // 
             this.txtEmailAdd.Location = new System.Drawing.Point(221, 444);
-            this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmailAdd.Name = "txtEmailAdd";
             this.txtEmailAdd.Size = new System.Drawing.Size(355, 22);
             this.txtEmailAdd.TabIndex = 21;
@@ -268,7 +271,7 @@
             // txtContactNum
             // 
             this.txtContactNum.Location = new System.Drawing.Point(221, 542);
-            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.Size = new System.Drawing.Size(355, 22);
             this.txtContactNum.TabIndex = 23;
@@ -276,7 +279,7 @@
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(732, 620);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(100, 28);
             this.btnRegister.TabIndex = 26;
@@ -287,7 +290,7 @@
             // BtnBack
             // 
             this.BtnBack.Location = new System.Drawing.Point(971, 620);
-            this.BtnBack.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnBack.Name = "BtnBack";
             this.BtnBack.Size = new System.Drawing.Size(100, 28);
             this.BtnBack.TabIndex = 27;
@@ -306,6 +309,7 @@
             "Male",
             "Female"});
             this.txtGender.Location = new System.Drawing.Point(221, 586);
+            this.txtGender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(121, 24);
             this.txtGender.TabIndex = 28;
@@ -315,6 +319,7 @@
             this.txtDateHired.CustomFormat = "mm-dd-yyyy";
             this.txtDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateHired.Location = new System.Drawing.Point(221, 633);
+            this.txtDateHired.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDateHired.Name = "txtDateHired";
             this.txtDateHired.Size = new System.Drawing.Size(145, 22);
             this.txtDateHired.TabIndex = 30;
@@ -324,6 +329,7 @@
             this.txtDateofBirth.CustomFormat = "mm-dd-yyyy";
             this.txtDateofBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateofBirth.Location = new System.Drawing.Point(221, 226);
+            this.txtDateofBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDateofBirth.Name = "txtDateofBirth";
             this.txtDateofBirth.Size = new System.Drawing.Size(145, 22);
             this.txtDateofBirth.TabIndex = 31;
@@ -349,7 +355,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(650, 122);
+            this.label15.Location = new System.Drawing.Point(651, 122);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(55, 16);
             this.label15.TabIndex = 37;
@@ -364,6 +370,7 @@
             "PAYROLL",
             "MAINTINANCE"});
             this.txtDepartment.Location = new System.Drawing.Point(721, 76);
+            this.txtDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Size = new System.Drawing.Size(311, 24);
             this.txtDepartment.TabIndex = 38;
@@ -379,6 +386,7 @@
             "LANDSCAPE ARTIST",
             "ARCHETEC"});
             this.txtPosition.Location = new System.Drawing.Point(721, 128);
+            this.txtPosition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(311, 24);
             this.txtPosition.TabIndex = 39;
@@ -391,6 +399,7 @@
             "PROVATIONAL EMPLOYEE",
             "PERMANENT EMPLOYEE"});
             this.txtJobStatus.Location = new System.Drawing.Point(721, 181);
+            this.txtJobStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtJobStatus.Name = "txtJobStatus";
             this.txtJobStatus.Size = new System.Drawing.Size(311, 24);
             this.txtJobStatus.TabIndex = 40;
@@ -404,6 +413,7 @@
             "WIDOW",
             "ANNULLED"});
             this.txtCivilStatus.Location = new System.Drawing.Point(221, 495);
+            this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCivilStatus.Name = "txtCivilStatus";
             this.txtCivilStatus.Size = new System.Drawing.Size(355, 24);
             this.txtCivilStatus.TabIndex = 41;
@@ -412,9 +422,10 @@
             // 
             this.txtScheduleIn.CustomFormat = "hh-mm";
             this.txtScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtScheduleIn.Location = new System.Drawing.Point(737, 296);
+            this.txtScheduleIn.Location = new System.Drawing.Point(737, 295);
+            this.txtScheduleIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtScheduleIn.Name = "txtScheduleIn";
-            this.txtScheduleIn.Size = new System.Drawing.Size(126, 22);
+            this.txtScheduleIn.Size = new System.Drawing.Size(127, 22);
             this.txtScheduleIn.TabIndex = 42;
             // 
             // label16
@@ -422,7 +433,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.Control;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(637, 301);
+            this.label16.Location = new System.Drawing.Point(637, 302);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(81, 17);
             this.label16.TabIndex = 43;
@@ -433,7 +444,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.SystemColors.Control;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(637, 339);
+            this.label17.Location = new System.Drawing.Point(637, 338);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(94, 17);
             this.label17.TabIndex = 44;
@@ -451,7 +462,8 @@
             // txtEmploymentType
             // 
             this.txtEmploymentType.FormattingEnabled = true;
-            this.txtEmploymentType.Location = new System.Drawing.Point(721, 232);
+            this.txtEmploymentType.Location = new System.Drawing.Point(721, 231);
+            this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmploymentType.Name = "txtEmploymentType";
             this.txtEmploymentType.Size = new System.Drawing.Size(311, 24);
             this.txtEmploymentType.TabIndex = 45;
@@ -460,10 +472,38 @@
             // 
             this.txtScheduleOut.CustomFormat = "hh-mm";
             this.txtScheduleOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtScheduleOut.Location = new System.Drawing.Point(737, 339);
+            this.txtScheduleOut.Location = new System.Drawing.Point(737, 338);
+            this.txtScheduleOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtScheduleOut.Name = "txtScheduleOut";
-            this.txtScheduleOut.Size = new System.Drawing.Size(126, 22);
+            this.txtScheduleOut.Size = new System.Drawing.Size(127, 22);
             this.txtScheduleOut.TabIndex = 46;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "HH-MM-SS";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dateTimePicker1.Location = new System.Drawing.Point(737, 389);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(265, 22);
+            this.dateTimePicker1.TabIndex = 47;
+            // 
+            // FullName
+            // 
+            this.FullName.AutoSize = true;
+            this.FullName.Location = new System.Drawing.Point(52, 22);
+            this.FullName.Name = "FullName";
+            this.FullName.Size = new System.Drawing.Size(65, 16);
+            this.FullName.TabIndex = 48;
+            this.FullName.Text = "FullName";
+            // 
+            // txtFullName
+            // 
+            this.txtFullName.Location = new System.Drawing.Point(221, 22);
+            this.txtFullName.Name = "txtFullName";
+            this.txtFullName.Size = new System.Drawing.Size(355, 22);
+            this.txtFullName.TabIndex = 49;
             // 
             // AddEmployee
             // 
@@ -471,6 +511,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1120, 683);
             this.ControlBox = false;
+            this.Controls.Add(this.txtFullName);
+            this.Controls.Add(this.FullName);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtScheduleOut);
             this.Controls.Add(this.txtEmploymentType);
             this.Controls.Add(this.label17);
@@ -512,7 +555,7 @@
             this.Controls.Add(this.txtlname);
             this.Controls.Add(this.txtfname);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
@@ -565,5 +608,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox txtEmploymentType;
         private System.Windows.Forms.DateTimePicker txtScheduleOut;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label FullName;
+        private System.Windows.Forms.TextBox txtFullName;
     }
 }

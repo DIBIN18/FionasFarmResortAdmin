@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -36,8 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvAdvancedDayOffs = new System.Windows.Forms.DataGridView();
-            this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fFRUsersDataSet19 = new Admin_Login.FFRUsersDataSet19();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cb_SortBy = new System.Windows.Forms.ComboBox();
@@ -46,17 +43,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
-            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet19TableAdapters.EmployeeInfoTableAdapter();
-            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdvancedDayOffs)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet19)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -76,7 +64,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(730, 21);
+            this.label8.Location = new System.Drawing.Point(731, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(98, 27);
             this.label8.TabIndex = 3;
@@ -96,7 +84,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 21);
+            this.label4.Location = new System.Drawing.Point(29, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 27);
             this.label4.TabIndex = 0;
@@ -113,46 +101,29 @@
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(21, 87);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1102, 629);
+            this.panel3.Size = new System.Drawing.Size(1102, 628);
             this.panel3.TabIndex = 25;
             // 
             // dgvAdvancedDayOffs
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAdvancedDayOffs.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvAdvancedDayOffs.AutoGenerateColumns = false;
             this.dgvAdvancedDayOffs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAdvancedDayOffs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeIDDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.middleNameDataGridViewTextBoxColumn,
-            this.departmentDataGridViewTextBoxColumn,
-            this.positionDataGridViewTextBoxColumn});
-            this.dgvAdvancedDayOffs.DataSource = this.employeeInfoBindingSource;
-            this.dgvAdvancedDayOffs.Location = new System.Drawing.Point(54, 90);
+            this.dgvAdvancedDayOffs.Location = new System.Drawing.Point(79, 90);
+            this.dgvAdvancedDayOffs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvAdvancedDayOffs.Name = "dgvAdvancedDayOffs";
             this.dgvAdvancedDayOffs.RowHeadersWidth = 51;
             this.dgvAdvancedDayOffs.RowTemplate.Height = 24;
-            this.dgvAdvancedDayOffs.Size = new System.Drawing.Size(980, 498);
+            this.dgvAdvancedDayOffs.Size = new System.Drawing.Size(937, 498);
             this.dgvAdvancedDayOffs.TabIndex = 6;
-            // 
-            // employeeInfoBindingSource
-            // 
-            this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
-            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet19;
-            // 
-            // fFRUsersDataSet19
-            // 
-            this.fFRUsersDataSet19.DataSetName = "FFRUsersDataSet19";
-            this.fFRUsersDataSet19.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(914, 39);
+            this.label1.Location = new System.Drawing.Point(915, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 23);
             this.label1.TabIndex = 5;
@@ -184,6 +155,7 @@
             "Position",
             "Accumulated Day-offs"});
             this.cb_SortBy.Location = new System.Drawing.Point(112, 4);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_SortBy.Name = "cb_SortBy";
             this.cb_SortBy.Size = new System.Drawing.Size(320, 35);
             this.cb_SortBy.TabIndex = 10;
@@ -197,7 +169,8 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(686, 23);
+            this.panel2.Location = new System.Drawing.Point(685, 23);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(437, 45);
             this.panel2.TabIndex = 21;
@@ -207,7 +180,7 @@
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(12, 8);
+            this.lbl_SortBy.Location = new System.Drawing.Point(12, 7);
             this.lbl_SortBy.Name = "lbl_SortBy";
             this.lbl_SortBy.Size = new System.Drawing.Size(94, 27);
             this.lbl_SortBy.TabIndex = 11;
@@ -219,6 +192,7 @@
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Location = new System.Drawing.Point(264, 23);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(406, 45);
             this.panel1.TabIndex = 20;
@@ -228,6 +202,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(25, 34);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,78 +225,24 @@
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
             this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
-            // employeeInfoTableAdapter
-            // 
-            this.employeeInfoTableAdapter.ClearBeforeFill = true;
-            // 
-            // employeeIDDataGridViewTextBoxColumn
-            // 
-            this.employeeIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
-            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 15;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // middleNameDataGridViewTextBoxColumn
-            // 
-            this.middleNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
-            // 
-            // departmentDataGridViewTextBoxColumn
-            // 
-            this.departmentDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.departmentDataGridViewTextBoxColumn.DataPropertyName = "Department";
-            this.departmentDataGridViewTextBoxColumn.HeaderText = "Department";
-            this.departmentDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.departmentDataGridViewTextBoxColumn.Name = "departmentDataGridViewTextBoxColumn";
-            // 
-            // positionDataGridViewTextBoxColumn
-            // 
-            this.positionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.positionDataGridViewTextBoxColumn.DataPropertyName = "Position";
-            this.positionDataGridViewTextBoxColumn.HeaderText = "Position";
-            this.positionDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.positionDataGridViewTextBoxColumn.Name = "positionDataGridViewTextBoxColumn";
-            // 
             // AdvancedDay_Offs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1139, 728);
+            this.ClientSize = new System.Drawing.Size(1139, 729);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdvancedDay_Offs";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdvancedDay_Offs_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdvancedDayOffs)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet19)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -347,14 +268,5 @@
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAdvancedDayOffs;
-        private FFRUsersDataSet19 fFRUsersDataSet19;
-        private System.Windows.Forms.BindingSource employeeInfoBindingSource;
-        private FFRUsersDataSet19TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departmentDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn positionDataGridViewTextBoxColumn;
     }
 }

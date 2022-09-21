@@ -57,7 +57,15 @@ namespace Admin_Login
         private void AdvancedDay_Offs_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'fFRUsersDataSet19.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet19.EmployeeInfo);
+
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Select EmployeeID, FirstName, LastName, MiddleName, DepartmentName, PositionName  FROM EmployeeInfo",conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dgvAdvancedDayOffs.DataSource = dataTable;
+            conn.Close();
 
         }
 
@@ -66,8 +74,14 @@ namespace Admin_Login
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
             if (tb_Search.Text == null) {
-                this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet19.EmployeeInfo);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select EmployeeID, FirstName, LastName, MiddleName, DepartmentName, PositionName  FROM EmployeeInfo", conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dgvAdvancedDayOffs.DataSource = dataTable;
                 conn.Close();
+
             }
             else if (tb_Search.Focused) {
                 
