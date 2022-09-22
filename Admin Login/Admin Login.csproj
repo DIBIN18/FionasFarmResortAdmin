@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddDepartmentPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddDepartmentPosition.Designer.cs">
+      <DependentUpon>AddDepartmentPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet20.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FFRUsersDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet21.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FFRUsersDataSet22.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FFRUsersDataSet22.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FFRUsersDataSet3.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +248,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddDepartmentPosition.resx">
+      <DependentUpon>AddDepartmentPosition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
@@ -434,6 +453,28 @@
     </None>
     <None Include="FFRUsersDataSet20.xss">
       <DependentUpon>FFRUsersDataSet20.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet21.xsc">
+      <DependentUpon>FFRUsersDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet21.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet21.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet21.xss">
+      <DependentUpon>FFRUsersDataSet21.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet22.xsc">
+      <DependentUpon>FFRUsersDataSet22.xsd</DependentUpon>
+    </None>
+    <None Include="FFRUsersDataSet22.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FFRUsersDataSet22.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FFRUsersDataSet22.xss">
+      <DependentUpon>FFRUsersDataSet22.xsd</DependentUpon>
     </None>
     <None Include="FFRUsersDataSet3.xsc">
       <DependentUpon>FFRUsersDataSet3.xsd</DependentUpon>

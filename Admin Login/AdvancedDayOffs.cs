@@ -60,7 +60,7 @@ namespace Admin_Login
 
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("Select EmployeeID, FirstName, LastName, MiddleName, DepartmentName, PositionName  FROM EmployeeInfo",conn);
+            SqlCommand cmd = new SqlCommand("Select EmployeeID,EmployeeFullName, DepartmentName, PositionName  FROM EmployeeInfo",conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -75,7 +75,7 @@ namespace Admin_Login
             conn.Open();
             if (tb_Search.Text == null) {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("Select EmployeeID, FirstName, LastName, MiddleName, DepartmentName, PositionName  FROM EmployeeInfo", conn);
+                SqlCommand cmd = new SqlCommand("Select EmployeeID,EmployeeFullName, DepartmentName, PositionName  FROM EmployeeInfo", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
@@ -85,7 +85,7 @@ namespace Admin_Login
             }
             else if (tb_Search.Focused) {
                 
-                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text+ "%'" + "OR FirstName Like'" + tb_Search.Text+ "%'",conn);
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text+ "%'" + "OR EmployeeFullName Like'" + tb_Search.Text+ "%'",conn);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 sqlDataAdapter.Fill(tb);

@@ -33,6 +33,13 @@ namespace Admin_Login
                 lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
+            SqlCommand cmd = new SqlCommand("Select EmployeeID,Payroll_ID,BasicRate,TotalRecordHours,TotalOvertimeHours FROM Payroll",connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dataGridView1.DataSource = dt;
+
+
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {

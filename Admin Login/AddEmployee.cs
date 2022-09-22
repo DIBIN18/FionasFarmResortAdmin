@@ -25,11 +25,9 @@ namespace Admin_Login
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
            
-            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,DepartmentName,PositionName,EmploymentType,Age)" +
-                "VALUES(@FirstName,@LastName,@MiddleName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@DepartmentName,@PositionName,@EmploymentType,@Age)", conn);
-            cmd.Parameters.AddWithValue("@FirstName", txtfname.Text);
-            cmd.Parameters.AddWithValue("@LastName", txtlname.Text);
-            cmd.Parameters.AddWithValue("@MiddleName", txtmname.Text);
+            SqlCommand cmd = new SqlCommand("INSERT INTO EmployeeInfo(EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,DepartmentName,PositionName,EmploymentType,Age)" +
+                "VALUES(@EmployeeFullName,@Address,@SSS_ID,@PAGIBIG_NO,@PHILHEALTH_NO,@Email,@EmployeeMaritalStatus,@ContactNumber,@DateHired,@Gender,@BirthDate,@DepartmentName,@PositionName,@EmploymentType,@Age)", conn);
+            cmd.Parameters.AddWithValue("@FirstName", txtFullName.Text);
             cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
             cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
             cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
@@ -40,9 +38,9 @@ namespace Admin_Login
             cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
             cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
             cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
-            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartment.Text);
-            cmd.Parameters.AddWithValue("@PositionName", txtPosition.Text);
-            cmd.Parameters.AddWithValue("@EmploymentType", txtJobStatus.Text);
+            cmd.Parameters.AddWithValue("@DepartmentName", null);
+            cmd.Parameters.AddWithValue("@PositionName", null);
+            cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
         
             //Compute Age Using DateTimePicker
             int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
@@ -102,11 +100,20 @@ namespace Admin_Login
             menu.Menu_Load(menu, EventArgs.Empty);
             Dispose();
         }
+
+        private void txtDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //SqlConnection conn = new SqlConnection(login.connectionString);
+            //SqlCommand cmd = new SqlCommand("Select DepartmentName from Department");
+            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //DataTable dataTable = new DataTable();
+            //adapter.Fill(dataTable);
+            //txtDepartment.DataSource = dataTable;
+        }
+
         public void clearAll()
         {
-            txtfname.Text = "";
-            txtlname.Text = "";
-            txtmname.Text = "";
+            txtFullName.Text = "";
             txtAddress.Text = "";
             txtSSSID.Text = "";
             txtPagibigNo.Text = "";
@@ -116,6 +123,9 @@ namespace Admin_Login
             txtContactNum.Text = "";
             txtDateHired.Text = "";
             txtGender.Text = "";
+            txtEmploymentType.Text = "";
+            txtDepartment.Text = "";
+            txtPosition.Text = "";
         }
     }
 
