@@ -50,15 +50,13 @@
             this.ArchivePictureBox = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.fFRUsersDataSet20 = new Admin_Login.FFRUsersDataSet20();
+            this.fFRUsersDataSet21 = new Admin_Login.FFRUsersDataSet21();
             this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet20TableAdapters.EmployeeInfoTableAdapter();
+            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet21TableAdapters.EmployeeInfoTableAdapter();
             this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.middleNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employeeFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departmentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employmentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -71,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +78,12 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(41, 32);
+            this.label1.Location = new System.Drawing.Point(31, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 27);
+            this.label1.Size = new System.Drawing.Size(93, 24);
             this.label1.TabIndex = 1;
             this.label1.Tag = "btn_AddNew";
             this.label1.Text = "Add new";
@@ -94,12 +93,12 @@
             // 
             this.tb_Search.BackColor = System.Drawing.Color.White;
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(40, 7);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Search.Location = new System.Drawing.Point(30, 6);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(345, 29);
+            this.tb_Search.Size = new System.Drawing.Size(259, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
@@ -111,20 +110,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Controls.Add(this.pictureBox5);
-            this.panel1.Location = new System.Drawing.Point(411, 23);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(308, 19);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 45);
+            this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 7;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -134,10 +133,10 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(831, 23);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(623, 19);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(222, 45);
+            this.panel2.Size = new System.Drawing.Size(167, 37);
             this.panel2.TabIndex = 9;
             // 
             // cb_SortBy
@@ -147,7 +146,7 @@
             this.cb_SortBy.BackColor = System.Drawing.Color.White;
             this.cb_SortBy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cb_SortBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_SortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.cb_SortBy.Items.AddRange(new object[] {
             "Default",
@@ -155,10 +154,10 @@
             "Department",
             "Position",
             "Status"});
-            this.cb_SortBy.Location = new System.Drawing.Point(111, 4);
-            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cb_SortBy.Location = new System.Drawing.Point(83, 3);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(149, 35);
+            this.cb_SortBy.Size = new System.Drawing.Size(113, 30);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
@@ -168,11 +167,12 @@
             // lbl_SortBy
             // 
             this.lbl_SortBy.AutoSize = true;
-            this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_SortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(12, 7);
+            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
+            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(94, 27);
+            this.lbl_SortBy.Size = new System.Drawing.Size(73, 24);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -181,11 +181,12 @@
             this.ArchiveLabel.AutoSize = true;
             this.ArchiveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.ArchiveLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArchiveLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArchiveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArchiveLabel.ForeColor = System.Drawing.Color.White;
-            this.ArchiveLabel.Location = new System.Drawing.Point(228, 32);
+            this.ArchiveLabel.Location = new System.Drawing.Point(171, 26);
+            this.ArchiveLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ArchiveLabel.Name = "ArchiveLabel";
-            this.ArchiveLabel.Size = new System.Drawing.Size(99, 27);
+            this.ArchiveLabel.Size = new System.Drawing.Size(81, 24);
             this.ArchiveLabel.TabIndex = 11;
             this.ArchiveLabel.Tag = "btn_Archive";
             this.ArchiveLabel.Text = "Archive";
@@ -200,10 +201,10 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(21, 87);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(16, 71);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1102, 628);
+            this.panel3.Size = new System.Drawing.Size(827, 511);
             this.panel3.TabIndex = 16;
             // 
             // dgvEmployeeList
@@ -214,19 +215,16 @@
             this.dgvEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployeeList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.employeeIDDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.middleNameDataGridViewTextBoxColumn,
-            this.departmentNameDataGridViewTextBoxColumn,
-            this.positionNameDataGridViewTextBoxColumn,
+            this.employeeFullNameDataGridViewTextBoxColumn,
+            this.departmentIDDataGridViewTextBoxColumn,
+            this.positionIDDataGridViewTextBoxColumn,
             this.employmentTypeDataGridViewTextBoxColumn});
             this.dgvEmployeeList.DataSource = this.employeeInfoBindingSource;
-            this.dgvEmployeeList.Location = new System.Drawing.Point(55, 74);
-            this.dgvEmployeeList.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEmployeeList.Location = new System.Drawing.Point(41, 60);
             this.dgvEmployeeList.Name = "dgvEmployeeList";
             this.dgvEmployeeList.ReadOnly = true;
             this.dgvEmployeeList.RowHeadersWidth = 51;
-            this.dgvEmployeeList.Size = new System.Drawing.Size(996, 505);
+            this.dgvEmployeeList.Size = new System.Drawing.Size(747, 410);
             this.dgvEmployeeList.TabIndex = 5;
             this.dgvEmployeeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellClick);
             this.dgvEmployeeList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvEmployeeList_CellMouseDoubleClick);
@@ -234,50 +232,55 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(954, 21);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(594, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 27);
+            this.label3.Size = new System.Drawing.Size(179, 24);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Status";
+            this.label3.Text = "Employment Type";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(524, 21);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(318, 17);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 27);
+            this.label8.Size = new System.Drawing.Size(84, 24);
             this.label8.TabIndex = 3;
             this.label8.Text = "Position";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(722, 21);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(448, 17);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(145, 27);
+            this.label7.Size = new System.Drawing.Size(117, 24);
             this.label7.TabIndex = 2;
             this.label7.Text = "Department";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(343, 21);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(218, 17);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 27);
+            this.label6.Size = new System.Drawing.Size(65, 24);
             this.label6.TabIndex = 1;
             this.label6.Text = "Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(93, 21);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(37, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 27);
+            this.label4.Size = new System.Drawing.Size(129, 24);
             this.label4.TabIndex = 0;
             this.label4.Text = "Employee ID";
             // 
@@ -286,10 +289,10 @@
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
-            this.pictureBox6.Location = new System.Drawing.Point(1081, 30);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Location = new System.Drawing.Point(811, 24);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(27, 30);
+            this.pictureBox6.Size = new System.Drawing.Size(20, 24);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 19;
             this.pictureBox6.TabStop = false;
@@ -300,10 +303,10 @@
             // 
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox7.Location = new System.Drawing.Point(1065, 23);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Location = new System.Drawing.Point(799, 19);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(57, 43);
+            this.pictureBox7.Size = new System.Drawing.Size(43, 35);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox7.TabIndex = 17;
             this.pictureBox7.TabStop = false;
@@ -315,10 +318,10 @@
             this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.ArchivePictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchivePictureBoxLogo.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
-            this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(348, 30);
-            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(261, 24);
+            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArchivePictureBoxLogo.Name = "ArchivePictureBoxLogo";
-            this.ArchivePictureBoxLogo.Size = new System.Drawing.Size(27, 32);
+            this.ArchivePictureBoxLogo.Size = new System.Drawing.Size(20, 26);
             this.ArchivePictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArchivePictureBoxLogo.TabIndex = 12;
             this.ArchivePictureBoxLogo.TabStop = false;
@@ -329,10 +332,10 @@
             // 
             this.ArchivePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.ArchivePictureBox.Location = new System.Drawing.Point(216, 23);
-            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ArchivePictureBox.Location = new System.Drawing.Point(162, 19);
+            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArchivePictureBox.Name = "ArchivePictureBox";
-            this.ArchivePictureBox.Size = new System.Drawing.Size(184, 46);
+            this.ArchivePictureBox.Size = new System.Drawing.Size(138, 37);
             this.ArchivePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ArchivePictureBox.TabIndex = 10;
             this.ArchivePictureBox.TabStop = false;
@@ -344,10 +347,10 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(168, 30);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(126, 24);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(27, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -358,25 +361,25 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox1.Location = new System.Drawing.Point(27, 25);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(20, 20);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(184, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(138, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "btn_AddNew";
             this.pictureBox1.Click += new System.EventHandler(this.btnAddEmployee);
             // 
-            // fFRUsersDataSet20
+            // fFRUsersDataSet21
             // 
-            this.fFRUsersDataSet20.DataSetName = "FFRUsersDataSet20";
-            this.fFRUsersDataSet20.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.fFRUsersDataSet21.DataSetName = "FFRUsersDataSet21";
+            this.fFRUsersDataSet21.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // employeeInfoBindingSource
             // 
             this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
-            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet20;
+            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet21;
             // 
             // employeeInfoTableAdapter
             // 
@@ -386,71 +389,43 @@
             // 
             this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
             this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
             this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employeeIDDataGridViewTextBoxColumn.Width = 125;
             // 
-            // firstNameDataGridViewTextBoxColumn
+            // employeeFullNameDataGridViewTextBoxColumn
             // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.firstNameDataGridViewTextBoxColumn.Width = 125;
+            this.employeeFullNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeFullName";
+            this.employeeFullNameDataGridViewTextBoxColumn.HeaderText = "EmployeeFullName";
+            this.employeeFullNameDataGridViewTextBoxColumn.Name = "employeeFullNameDataGridViewTextBoxColumn";
+            this.employeeFullNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // lastNameDataGridViewTextBoxColumn
+            // departmentIDDataGridViewTextBoxColumn
             // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.lastNameDataGridViewTextBoxColumn.Width = 125;
+            this.departmentIDDataGridViewTextBoxColumn.DataPropertyName = "DepartmentID";
+            this.departmentIDDataGridViewTextBoxColumn.HeaderText = "DepartmentID";
+            this.departmentIDDataGridViewTextBoxColumn.Name = "departmentIDDataGridViewTextBoxColumn";
+            this.departmentIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // middleNameDataGridViewTextBoxColumn
+            // positionIDDataGridViewTextBoxColumn
             // 
-            this.middleNameDataGridViewTextBoxColumn.DataPropertyName = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.HeaderText = "MiddleName";
-            this.middleNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.middleNameDataGridViewTextBoxColumn.Name = "middleNameDataGridViewTextBoxColumn";
-            this.middleNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.middleNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // departmentNameDataGridViewTextBoxColumn
-            // 
-            this.departmentNameDataGridViewTextBoxColumn.DataPropertyName = "DepartmentName";
-            this.departmentNameDataGridViewTextBoxColumn.HeaderText = "DepartmentName";
-            this.departmentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.departmentNameDataGridViewTextBoxColumn.Name = "departmentNameDataGridViewTextBoxColumn";
-            this.departmentNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.departmentNameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // positionNameDataGridViewTextBoxColumn
-            // 
-            this.positionNameDataGridViewTextBoxColumn.DataPropertyName = "PositionName";
-            this.positionNameDataGridViewTextBoxColumn.HeaderText = "PositionName";
-            this.positionNameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.positionNameDataGridViewTextBoxColumn.Name = "positionNameDataGridViewTextBoxColumn";
-            this.positionNameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.positionNameDataGridViewTextBoxColumn.Width = 125;
+            this.positionIDDataGridViewTextBoxColumn.DataPropertyName = "PositionID";
+            this.positionIDDataGridViewTextBoxColumn.HeaderText = "PositionID";
+            this.positionIDDataGridViewTextBoxColumn.Name = "positionIDDataGridViewTextBoxColumn";
+            this.positionIDDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // employmentTypeDataGridViewTextBoxColumn
             // 
             this.employmentTypeDataGridViewTextBoxColumn.DataPropertyName = "EmploymentType";
             this.employmentTypeDataGridViewTextBoxColumn.HeaderText = "EmploymentType";
-            this.employmentTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.employmentTypeDataGridViewTextBoxColumn.Name = "employmentTypeDataGridViewTextBoxColumn";
             this.employmentTypeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.employmentTypeDataGridViewTextBoxColumn.Width = 125;
             // 
             // EmployeeList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1131, 722);
+            this.ClientSize = new System.Drawing.Size(848, 587);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
@@ -464,7 +439,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EmployeeList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EmployeeList_Load);
@@ -482,7 +457,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -512,15 +487,13 @@
         private System.Windows.Forms.DataGridView dgvEmployeeList;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private FFRUsersDataSet20 fFRUsersDataSet20;
+        private FFRUsersDataSet21 fFRUsersDataSet21;
         private System.Windows.Forms.BindingSource employeeInfoBindingSource;
-        private FFRUsersDataSet20TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
+        private FFRUsersDataSet21TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn middleNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departmentNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn positionNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employeeFullNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departmentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positionIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employmentTypeDataGridViewTextBoxColumn;
     }
 }

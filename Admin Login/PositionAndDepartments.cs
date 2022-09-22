@@ -51,5 +51,12 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
+
+        private void AddDepPos_Click(object sender, EventArgs e)
+        {
+            AddDepartmentPosition adp = new AddDepartmentPosition();
+            adp.ShowDialog();
+
+        }
     }
 }

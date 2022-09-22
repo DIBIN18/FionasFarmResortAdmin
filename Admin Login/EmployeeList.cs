@@ -68,8 +68,9 @@ namespace Admin_Login
 
         private void EmployeeList_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet20.EmployeeInfo' table. You can move, or remove it, as needed.
-            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet20.EmployeeInfo);
+            // TODO: This line of code loads data into the 'fFRUsersDataSet21.EmployeeInfo' table. You can move, or remove it, as needed.
+            this.employeeInfoTableAdapter.Fill(this.fFRUsersDataSet21.EmployeeInfo);
+    
 
 
 
@@ -84,8 +85,8 @@ namespace Admin_Login
                 SqlConnection conn = new SqlConnection(login.connectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
-                + "Insert INTO Archive (EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
-                "SELECT EmployeeID,FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
+                + "Insert INTO Archive (EmployeeID,EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
+                "SELECT EmployeeID,@EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
                 "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + " DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value, conn);
 
                 DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Archive Employee? " + dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo);
@@ -155,7 +156,7 @@ namespace Admin_Login
             }
             else if (tb_Search.Focused)
             {
-                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo WHERE FirstName like '" + tb_Search.Text + "%'" + "OR LastName like '" + tb_Search.Text + "%'" + "OR EmployeeID Like '" + tb_Search.Text + "%'", conn);
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo WHERE EmployeeFullName like '" + tb_Search.Text + "%'" + "OR EmployeeID Like '" + tb_Search.Text + "%'", conn);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sqlDataAdapter.Fill(dt);

@@ -30,8 +30,8 @@ namespace Admin_Login
 
         private void ArchivedEmployee_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet17.Archive' table. You can move, or remove it, as needed.
-            this.archiveTableAdapter.Fill(this.fFRUsersDataSet17.Archive);
+    
+
 
 
         }
@@ -46,14 +46,14 @@ namespace Admin_Login
                     SqlConnection conn = new SqlConnection(login.connectionString);
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
-                    + "Insert INTO EmployeeInfo (FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
-                    "SELECT FirstName,LastName,MiddleName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
+                    + "Insert INTO EmployeeInfo (EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
+                    "SELECT EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
                     "FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + " DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, conn);
 
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    this.archiveTableAdapter.Fill(this.fFRUsersDataSet17.Archive);
+                
                 }
                 
             }
