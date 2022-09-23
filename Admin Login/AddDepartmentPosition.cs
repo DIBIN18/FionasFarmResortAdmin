@@ -14,25 +14,27 @@ namespace Admin_Login
     public partial class AddDepartmentPosition : Form
     {
         AddEmployee ae = new AddEmployee();
+        Login login = new Login();
         public AddDepartmentPosition()
         {
             InitializeComponent();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            //SqlConnection conn = new SqlConnection();
-            //conn.Open();
-            //SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)",conn);
-            //SqlCommand cmd2 = new SqlCommand("Insert Into Position(PositionName)Values(@PositionName)", conn);
-            //cmd.Parameters.AddWithValue("@DepartmentName", txtAddDepartment.Text);
-            //cmd2.Parameters.AddWithValue("@PositionName", txtAddPosition.Text);
-
-        }
-
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddDepartment_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
+            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("New Department Has been Added");
+            txtDepartmentName.Text = "";
         }
     }
 }

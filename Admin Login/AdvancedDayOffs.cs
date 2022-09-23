@@ -54,7 +54,7 @@ namespace Admin_Login
             }
         }
 
-        private void AdvancedDay_Offs_Load(object sender, EventArgs e)
+        private void AdvancedDay_Offs_Load(object sender, EventArgs e) 
         {
             // TODO: This line of code loads data into the 'fFRUsersDataSet19.EmployeeInfo' table. You can move, or remove it, as needed.
 

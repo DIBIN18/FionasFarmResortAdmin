@@ -57,12 +57,14 @@ namespace Admin_Login
                     {
                         connection.Open();
                         SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
-                        + "Insert INTO EmployeeInfo (EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, PHILHEALTH_NO, Email, EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus )" +
-                        "SELECT EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHILHEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate,Department,Position,JobStatus " +
+                        + "Insert INTO EmployeeInfo (EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, PHIL_HEALTH_NO, Email, EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate )" +
+                        "SELECT EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHIL_HEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate " +
                         "FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + " DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, connection);
 
 
                         cmd.ExecuteNonQuery();
+
+                
                     }
                 }
                 

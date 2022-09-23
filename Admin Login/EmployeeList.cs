@@ -85,8 +85,8 @@ namespace Admin_Login
                 {
                     connection.Open();
 
-                    string query = //"SET IDENTITY_INSERT Archive ON " //SET IDENTITY_INSERT Archive ON 
-                    "Insert INTO Archive (" +
+                    string query = "SET IDENTITY_INSERT Archive ON " //SET IDENTITY_INSERT Archive ON 
+                    +"Insert INTO Archive (" +
                     "EmployeeID , EmployeeFullName, Address , SSS_ID , PAGIBIG_NO, PHIL_HEALTH_NO, " +
                     "Email, EmployeeMaritalStatus, ContactNumber, DateHired, Gender, BirthDate, DepartmentID, " +
                     "PositionID)" +
