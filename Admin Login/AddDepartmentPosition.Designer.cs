@@ -28,79 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtAddDepartment = new System.Windows.Forms.TextBox();
-            this.txtAddPosition = new System.Windows.Forms.TextBox();
-            this.Department = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDepartmentName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtPositionName = new System.Windows.Forms.TextBox();
+            this.txtBasicRate = new System.Windows.Forms.TextBox();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
+            this.btnAddDepartment = new System.Windows.Forms.Button();
+            this.btnAddPosition = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtAddDepartment
+            // label1
             // 
-            this.txtAddDepartment.Location = new System.Drawing.Point(217, 197);
-            this.txtAddDepartment.Multiline = true;
-            this.txtAddDepartment.Name = "txtAddDepartment";
-            this.txtAddDepartment.Size = new System.Drawing.Size(166, 30);
-            this.txtAddDepartment.TabIndex = 0;
-            // 
-            // txtAddPosition
-            // 
-            this.txtAddPosition.Location = new System.Drawing.Point(441, 197);
-            this.txtAddPosition.Multiline = true;
-            this.txtAddPosition.Name = "txtAddPosition";
-            this.txtAddPosition.Size = new System.Drawing.Size(157, 30);
-            this.txtAddPosition.TabIndex = 1;
-            // 
-            // Department
-            // 
-            this.Department.AutoSize = true;
-            this.Department.Location = new System.Drawing.Point(261, 152);
-            this.Department.Name = "Department";
-            this.Department.Size = new System.Drawing.Size(62, 13);
-            this.Department.TabIndex = 2;
-            this.Department.Text = "Department";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(120, 88);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Department";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(494, 152);
+            this.label2.Location = new System.Drawing.Point(436, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Position";
             // 
-            // btnAdd
+            // label3
             // 
-            this.btnAdd.Location = new System.Drawing.Point(339, 295);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(124, 41);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Department:";
+            // 
+            // txtDepartmentName
+            // 
+            this.txtDepartmentName.Location = new System.Drawing.Point(104, 124);
+            this.txtDepartmentName.Name = "txtDepartmentName";
+            this.txtDepartmentName.Size = new System.Drawing.Size(139, 20);
+            this.txtDepartmentName.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(330, 127);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Position Name:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(343, 190);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Basic Rate:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(343, 159);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Department:";
+            // 
+            // txtPositionName
+            // 
+            this.txtPositionName.Location = new System.Drawing.Point(414, 124);
+            this.txtPositionName.Name = "txtPositionName";
+            this.txtPositionName.Size = new System.Drawing.Size(139, 20);
+            this.txtPositionName.TabIndex = 7;
+            // 
+            // txtBasicRate
+            // 
+            this.txtBasicRate.Location = new System.Drawing.Point(414, 183);
+            this.txtBasicRate.Name = "txtBasicRate";
+            this.txtBasicRate.Size = new System.Drawing.Size(139, 20);
+            this.txtBasicRate.TabIndex = 8;
+            // 
+            // cmbDepartment
+            // 
+            this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(414, 156);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(139, 21);
+            this.cmbDepartment.TabIndex = 39;
+            // 
+            // btnAddDepartment
+            // 
+            this.btnAddDepartment.Location = new System.Drawing.Point(104, 159);
+            this.btnAddDepartment.Name = "btnAddDepartment";
+            this.btnAddDepartment.Size = new System.Drawing.Size(139, 23);
+            this.btnAddDepartment.TabIndex = 40;
+            this.btnAddDepartment.Text = "Add Department";
+            this.btnAddDepartment.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPosition
+            // 
+            this.btnAddPosition.Location = new System.Drawing.Point(414, 223);
+            this.btnAddPosition.Name = "btnAddPosition";
+            this.btnAddPosition.Size = new System.Drawing.Size(139, 23);
+            this.btnAddPosition.TabIndex = 41;
+            this.btnAddPosition.Text = "Add Position";
+            this.btnAddPosition.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(327, 368);
+            this.btnClose.Location = new System.Drawing.Point(266, 319);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(145, 43);
-            this.btnClose.TabIndex = 5;
+            this.btnClose.Size = new System.Drawing.Size(139, 23);
+            this.btnClose.TabIndex = 42;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click_1);
             // 
             // AddDepartmentPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(826, 508);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnAddPosition);
+            this.Controls.Add(this.btnAddDepartment);
+            this.Controls.Add(this.cmbDepartment);
+            this.Controls.Add(this.txtBasicRate);
+            this.Controls.Add(this.txtPositionName);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDepartmentName);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Department);
-            this.Controls.Add(this.txtAddPosition);
-            this.Controls.Add(this.txtAddDepartment);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddDepartmentPosition";
             this.Text = "AddDepartmentPosition";
             this.ResumeLayout(false);
@@ -110,11 +184,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtAddDepartment;
-        private System.Windows.Forms.TextBox txtAddPosition;
-        private System.Windows.Forms.Label Department;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDepartmentName;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtPositionName;
+        private System.Windows.Forms.TextBox txtBasicRate;
+        public System.Windows.Forms.ComboBox cmbDepartment;
+        private System.Windows.Forms.Button btnAddDepartment;
+        private System.Windows.Forms.Button btnAddPosition;
         private System.Windows.Forms.Button btnClose;
     }
 }
