@@ -52,9 +52,9 @@
             this.pb_Add = new System.Windows.Forms.PictureBox();
             this.cb_HolidayName = new System.Windows.Forms.ComboBox();
             this.t_Done = new System.Windows.Forms.Timer(this.components);
-            this.fFRUsersDataSet18 = new Admin_Login.FFRUsersDataSet18();
+            
             this.holidaysBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.holidaysTableAdapter = new Admin_Login.FFRUsersDataSet18TableAdapters.HolidaysTableAdapter();
+            
             this.holidayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fromDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_Delete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Edit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Add)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet18)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -364,17 +364,16 @@
             // 
             // fFRUsersDataSet18
             // 
-            this.fFRUsersDataSet18.DataSetName = "FFRUsersDataSet18";
-            this.fFRUsersDataSet18.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            
             // 
             // holidaysBindingSource
             // 
             this.holidaysBindingSource.DataMember = "Holidays";
-            this.holidaysBindingSource.DataSource = this.fFRUsersDataSet18;
+            
             // 
             // holidaysTableAdapter
             // 
-            this.holidaysTableAdapter.ClearBeforeFill = true;
+            
             // 
             // holidayDataGridViewTextBoxColumn
             // 
@@ -449,7 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pb_Delete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Edit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Add)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet18)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.holidaysBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -481,9 +480,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.ComboBox cb_HolidayName;
         private System.Windows.Forms.Timer t_Done;
-        private FFRUsersDataSet18 fFRUsersDataSet18;
         private System.Windows.Forms.BindingSource holidaysBindingSource;
-        private FFRUsersDataSet18TableAdapters.HolidaysTableAdapter holidaysTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn holidayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fromDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn toDataGridViewTextBoxColumn;

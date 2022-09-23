@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 namespace Admin_Login
 {
     public partial class AttendanceRecord : Form
     {
+        Login login = new Login();
         public AttendanceRecord()
         {
             InitializeComponent();
@@ -50,6 +52,20 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
+        }
+
+        private void AttendanceRecord_Load(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM AttendanceSheet";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                dgvAttendanceRecord.DataSource = data;
+            }
+
         }
     }
 }

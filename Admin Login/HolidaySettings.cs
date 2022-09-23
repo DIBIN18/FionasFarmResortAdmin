@@ -35,13 +35,11 @@ namespace Admin_Login
         }
         private void HolidaySettings_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet18.Holidays' table. You can move, or remove it, as needed.
-            this.holidaysTableAdapter.Fill(this.fFRUsersDataSet18.Holidays);
 
            
             connection.Close();
             connection.Open();
-            holidaysTableAdapter.Fill(fFRUsersDataSet18.Holidays);
+            //holidaysTableAdapter.Fill(fFRUsersDataSet18.Holidays);
             cb_HolidayName.DataSource = null;
             Btn_Add_Click(sender, e);
             t_Done.Start();

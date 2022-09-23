@@ -51,19 +51,18 @@
             this.txtDateofBirth = new System.Windows.Forms.DateTimePicker();
             this.Department = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtDepartment = new System.Windows.Forms.ComboBox();
-            this.txtPosition = new System.Windows.Forms.ComboBox();
+            this.cmbDepartment = new System.Windows.Forms.ComboBox();
+            this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.txtCivilStatus = new System.Windows.Forms.ComboBox();
-            this.txtScheduleIn = new System.Windows.Forms.DateTimePicker();
+            this.dtpScheduleIn = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txtEmploymentType = new System.Windows.Forms.ComboBox();
-            this.txtScheduleOut = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpScheduleOut = new System.Windows.Forms.DateTimePicker();
             this.FullName = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
-            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet4TableAdapters.EmployeeInfoTableAdapter();
+            this.cbAllowedOT = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtSSSID
@@ -225,7 +224,7 @@
             "Male",
             "Female"});
             this.txtGender.Location = new System.Drawing.Point(166, 391);
-            this.txtGender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGender.Margin = new System.Windows.Forms.Padding(2);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(92, 21);
             this.txtGender.TabIndex = 28;
@@ -235,7 +234,7 @@
             this.txtDateHired.CustomFormat = "mm-dd-yyyy";
             this.txtDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateHired.Location = new System.Drawing.Point(166, 429);
-            this.txtDateHired.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDateHired.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateHired.Name = "txtDateHired";
             this.txtDateHired.Size = new System.Drawing.Size(110, 20);
             this.txtDateHired.TabIndex = 30;
@@ -245,7 +244,7 @@
             this.txtDateofBirth.CustomFormat = "mm-dd-yyyy";
             this.txtDateofBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.txtDateofBirth.Location = new System.Drawing.Point(166, 99);
-            this.txtDateofBirth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDateofBirth.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateofBirth.Name = "txtDateofBirth";
             this.txtDateofBirth.Size = new System.Drawing.Size(110, 20);
             this.txtDateofBirth.TabIndex = 31;
@@ -263,69 +262,67 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(488, 99);
+            this.label15.Location = new System.Drawing.Point(493, 107);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(44, 13);
             this.label15.TabIndex = 37;
             this.label15.Text = "Position";
             // 
-            // txtDepartment
+            // cmbDepartment
             // 
-            this.txtDepartment.FormattingEnabled = true;
-            this.txtDepartment.Location = new System.Drawing.Point(541, 62);
-            this.txtDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtDepartment.Name = "txtDepartment";
-            this.txtDepartment.Size = new System.Drawing.Size(234, 21);
-            this.txtDepartment.TabIndex = 38;
-            this.txtDepartment.SelectedIndexChanged += new System.EventHandler(this.txtDepartment_SelectedIndexChanged);
+            this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartment.FormattingEnabled = true;
+            this.cmbDepartment.Location = new System.Drawing.Point(541, 62);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbDepartment.Name = "cmbDepartment";
+            this.cmbDepartment.Size = new System.Drawing.Size(234, 21);
+            this.cmbDepartment.TabIndex = 38;
+            this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
+            this.cmbDepartment.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtDepartment_MouseClick);
             // 
-            // txtPosition
+            // cmbPosition
             // 
-            this.txtPosition.FormattingEnabled = true;
-            this.txtPosition.Items.AddRange(new object[] {
-            "MANAGER",
-            "CASHIER",
-            "HOUSEKEEPING",
-            "SECURITY GUARD",
-            "LANDSCAPE ARTIST",
-            "ARCHETEC"});
-            this.txtPosition.Location = new System.Drawing.Point(541, 104);
-            this.txtPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtPosition.Name = "txtPosition";
-            this.txtPosition.Size = new System.Drawing.Size(234, 21);
-            this.txtPosition.TabIndex = 39;
+            this.cmbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPosition.FormattingEnabled = true;
+            this.cmbPosition.Location = new System.Drawing.Point(541, 104);
+            this.cmbPosition.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbPosition.Name = "cmbPosition";
+            this.cmbPosition.Size = new System.Drawing.Size(234, 21);
+            this.cmbPosition.TabIndex = 39;
+            this.cmbPosition.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPosition_MouseClick);
             // 
             // txtCivilStatus
             // 
             this.txtCivilStatus.FormattingEnabled = true;
             this.txtCivilStatus.Items.AddRange(new object[] {
-            "SINGE",
-            "MARIED",
-            "WIDOW",
-            "ANNULLED"});
+            "Single",
+            "Married",
+            "Widow",
+            "Widower",
+            "Anulled"});
             this.txtCivilStatus.Location = new System.Drawing.Point(166, 317);
-            this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtCivilStatus.Name = "txtCivilStatus";
             this.txtCivilStatus.Size = new System.Drawing.Size(267, 21);
             this.txtCivilStatus.TabIndex = 41;
             // 
-            // txtScheduleIn
+            // dtpScheduleIn
             // 
-            this.txtScheduleIn.CustomFormat = "hh-mm";
-            this.txtScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtScheduleIn.Location = new System.Drawing.Point(553, 240);
-            this.txtScheduleIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtScheduleIn.Name = "txtScheduleIn";
-            this.txtScheduleIn.Size = new System.Drawing.Size(96, 20);
-            this.txtScheduleIn.TabIndex = 42;
+            this.dtpScheduleIn.CustomFormat = "hh-mm";
+            this.dtpScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpScheduleIn.Location = new System.Drawing.Point(541, 177);
+            this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpScheduleIn.Name = "dtpScheduleIn";
+            this.dtpScheduleIn.Size = new System.Drawing.Size(144, 20);
+            this.dtpScheduleIn.TabIndex = 42;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.Control;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(478, 245);
+            this.label16.Location = new System.Drawing.Point(473, 180);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(64, 13);
@@ -337,7 +334,7 @@
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.SystemColors.Control;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(478, 275);
+            this.label17.Location = new System.Drawing.Point(465, 212);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(72, 13);
@@ -358,30 +355,20 @@
             // 
             this.txtEmploymentType.FormattingEnabled = true;
             this.txtEmploymentType.Location = new System.Drawing.Point(541, 138);
-            this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmploymentType.Name = "txtEmploymentType";
             this.txtEmploymentType.Size = new System.Drawing.Size(234, 21);
             this.txtEmploymentType.TabIndex = 45;
             // 
-            // txtScheduleOut
+            // dtpScheduleOut
             // 
-            this.txtScheduleOut.CustomFormat = "hh-mm";
-            this.txtScheduleOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.txtScheduleOut.Location = new System.Drawing.Point(553, 275);
-            this.txtScheduleOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtScheduleOut.Name = "txtScheduleOut";
-            this.txtScheduleOut.Size = new System.Drawing.Size(96, 20);
-            this.txtScheduleOut.TabIndex = 46;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "HH-MM-SS";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dateTimePicker1.Location = new System.Drawing.Point(553, 316);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 47;
+            this.dtpScheduleOut.CustomFormat = "hh-mm";
+            this.dtpScheduleOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpScheduleOut.Location = new System.Drawing.Point(541, 206);
+            this.dtpScheduleOut.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpScheduleOut.Name = "dtpScheduleOut";
+            this.dtpScheduleOut.Size = new System.Drawing.Size(144, 20);
+            this.dtpScheduleOut.TabIndex = 46;
             // 
             // FullName
             // 
@@ -396,14 +383,20 @@
             // txtFullName
             // 
             this.txtFullName.Location = new System.Drawing.Point(166, 56);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(267, 20);
             this.txtFullName.TabIndex = 49;
             // 
-            // employeeInfoTableAdapter
+            // cbAllowedOT
             // 
-            this.employeeInfoTableAdapter.ClearBeforeFill = true;
+            this.cbAllowedOT.AutoSize = true;
+            this.cbAllowedOT.Location = new System.Drawing.Point(541, 243);
+            this.cbAllowedOT.Name = "cbAllowedOT";
+            this.cbAllowedOT.Size = new System.Drawing.Size(108, 17);
+            this.cbAllowedOT.TabIndex = 51;
+            this.cbAllowedOT.Text = "Overtime Allowed";
+            this.cbAllowedOT.UseVisualStyleBackColor = true;
             // 
             // AddEmployee
             // 
@@ -411,18 +404,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 555);
             this.ControlBox = false;
+            this.Controls.Add(this.cbAllowedOT);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.FullName);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.txtScheduleOut);
+            this.Controls.Add(this.dtpScheduleOut);
             this.Controls.Add(this.txtEmploymentType);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.txtScheduleIn);
+            this.Controls.Add(this.dtpScheduleIn);
             this.Controls.Add(this.txtCivilStatus);
-            this.Controls.Add(this.txtPosition);
-            this.Controls.Add(this.txtDepartment);
+            this.Controls.Add(this.cmbPosition);
+            this.Controls.Add(this.cmbDepartment);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.Department);
             this.Controls.Add(this.txtDateofBirth);
@@ -451,6 +444,7 @@
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.AddEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,23 +469,22 @@
         private System.Windows.Forms.TextBox txtContactNum;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button BtnBack;
-        private FFRUsersDataSet4TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
         private System.Windows.Forms.ComboBox txtGender;
         private System.Windows.Forms.DateTimePicker txtDateHired;
         private System.Windows.Forms.DateTimePicker txtDateofBirth;
         private System.Windows.Forms.Label Department;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox txtCivilStatus;
-        private System.Windows.Forms.DateTimePicker txtScheduleIn;
+        private System.Windows.Forms.DateTimePicker dtpScheduleIn;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox txtEmploymentType;
-        private System.Windows.Forms.DateTimePicker txtScheduleOut;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpScheduleOut;
         private System.Windows.Forms.Label FullName;
         private System.Windows.Forms.TextBox txtFullName;
-        public System.Windows.Forms.ComboBox txtDepartment;
-        public System.Windows.Forms.ComboBox txtPosition;
+        public System.Windows.Forms.ComboBox cmbDepartment;
+        public System.Windows.Forms.ComboBox cmbPosition;
+        private System.Windows.Forms.CheckBox cbAllowedOT;
     }
 }

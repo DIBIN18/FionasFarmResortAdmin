@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 namespace Admin_Login
 {
     public partial class PositionAndDepartments : Form
     {
+        Login login = new Login();
         public PositionAndDepartments()
         {
             InitializeComponent();
@@ -57,6 +59,23 @@ namespace Admin_Login
             AddDepartmentPosition adp = new AddDepartmentPosition();
             adp.ShowDialog();
 
+        }
+
+        private void PositionAndDepartments_Load(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = 
+                    "SELECT Position.PositionID, Department.DepartmentName, Position.PositionName, Position.BasicRate " +
+                    "FROM Position " +
+                    "INNER JOIN Department ON Position.DepartmentID=Department.DepartmentID;";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                dgvPosAndDept.DataSource = data;
+            }
         }
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgvArchive = new System.Windows.Forms.DataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,41 +38,27 @@
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.TB_SearchArchive = new System.Windows.Forms.TextBox();
-            this.fFRUsersDataSet22 = new Admin_Login.FFRUsersDataSet22();
-            this.employeeInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeeInfoTableAdapter = new Admin_Login.FFRUsersDataSet22TableAdapters.EmployeeInfoTableAdapter();
-            this.employeeIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeFullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.positionIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employmentTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArchive)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvArchive
             // 
             this.dgvArchive.AllowUserToAddRows = false;
             this.dgvArchive.AllowUserToDeleteRows = false;
-            this.dgvArchive.AutoGenerateColumns = false;
+            this.dgvArchive.AllowUserToResizeColumns = false;
+            this.dgvArchive.AllowUserToResizeRows = false;
+            this.dgvArchive.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvArchive.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArchive.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeIDDataGridViewTextBoxColumn,
-            this.employeeFullNameDataGridViewTextBoxColumn,
-            this.departmentIDDataGridViewTextBoxColumn,
-            this.positionIDDataGridViewTextBoxColumn,
-            this.employmentTypeDataGridViewTextBoxColumn});
-            this.dgvArchive.DataSource = this.employeeInfoBindingSource;
             this.dgvArchive.Location = new System.Drawing.Point(12, 52);
             this.dgvArchive.Name = "dgvArchive";
             this.dgvArchive.ReadOnly = true;
             this.dgvArchive.RowHeadersWidth = 51;
+            this.dgvArchive.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvArchive.Size = new System.Drawing.Size(816, 491);
             this.dgvArchive.TabIndex = 0;
             this.dgvArchive.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArchiveCellClick);
@@ -84,7 +69,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(105, 12);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -112,7 +97,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox1.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -126,7 +111,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(677, 14);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -156,7 +141,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox4.Location = new System.Drawing.Point(580, 10);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(138, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -186,7 +171,7 @@
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox6.Location = new System.Drawing.Point(735, 10);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(86, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,55 +188,6 @@
             this.TB_SearchArchive.Size = new System.Drawing.Size(418, 29);
             this.TB_SearchArchive.TabIndex = 2;
             this.TB_SearchArchive.TextChanged += new System.EventHandler(this.tbSearchArchive);
-            // 
-            // fFRUsersDataSet22
-            // 
-            this.fFRUsersDataSet22.DataSetName = "FFRUsersDataSet22";
-            this.fFRUsersDataSet22.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeeInfoBindingSource
-            // 
-            this.employeeInfoBindingSource.DataMember = "EmployeeInfo";
-            this.employeeInfoBindingSource.DataSource = this.fFRUsersDataSet22;
-            // 
-            // employeeInfoTableAdapter
-            // 
-            this.employeeInfoTableAdapter.ClearBeforeFill = true;
-            // 
-            // employeeIDDataGridViewTextBoxColumn
-            // 
-            this.employeeIDDataGridViewTextBoxColumn.DataPropertyName = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.HeaderText = "EmployeeID";
-            this.employeeIDDataGridViewTextBoxColumn.Name = "employeeIDDataGridViewTextBoxColumn";
-            this.employeeIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employeeFullNameDataGridViewTextBoxColumn
-            // 
-            this.employeeFullNameDataGridViewTextBoxColumn.DataPropertyName = "EmployeeFullName";
-            this.employeeFullNameDataGridViewTextBoxColumn.HeaderText = "EmployeeFullName";
-            this.employeeFullNameDataGridViewTextBoxColumn.Name = "employeeFullNameDataGridViewTextBoxColumn";
-            this.employeeFullNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // departmentIDDataGridViewTextBoxColumn
-            // 
-            this.departmentIDDataGridViewTextBoxColumn.DataPropertyName = "DepartmentID";
-            this.departmentIDDataGridViewTextBoxColumn.HeaderText = "DepartmentID";
-            this.departmentIDDataGridViewTextBoxColumn.Name = "departmentIDDataGridViewTextBoxColumn";
-            this.departmentIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // positionIDDataGridViewTextBoxColumn
-            // 
-            this.positionIDDataGridViewTextBoxColumn.DataPropertyName = "PositionID";
-            this.positionIDDataGridViewTextBoxColumn.HeaderText = "PositionID";
-            this.positionIDDataGridViewTextBoxColumn.Name = "positionIDDataGridViewTextBoxColumn";
-            this.positionIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // employmentTypeDataGridViewTextBoxColumn
-            // 
-            this.employmentTypeDataGridViewTextBoxColumn.DataPropertyName = "EmploymentType";
-            this.employmentTypeDataGridViewTextBoxColumn.HeaderText = "EmploymentType";
-            this.employmentTypeDataGridViewTextBoxColumn.Name = "employmentTypeDataGridViewTextBoxColumn";
-            this.employmentTypeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ArchivedEmployee
             // 
@@ -279,8 +215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fFRUsersDataSet22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeInfoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -298,9 +232,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.TextBox TB_SearchArchive;
-        private FFRUsersDataSet22 fFRUsersDataSet22;
-        private System.Windows.Forms.BindingSource employeeInfoBindingSource;
-        private FFRUsersDataSet22TableAdapters.EmployeeInfoTableAdapter employeeInfoTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn employeeFullNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn departmentIDDataGridViewTextBoxColumn;
