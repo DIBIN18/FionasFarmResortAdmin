@@ -207,6 +207,11 @@ namespace Admin_Login
             }
         }
 
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
         public void clearAll()
         {
             txtFullName.Text = "";

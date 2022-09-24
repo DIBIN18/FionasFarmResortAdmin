@@ -86,6 +86,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1265, 66);
             this.panel2.TabIndex = 39;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label6
             // 
@@ -97,6 +98,7 @@
             this.label6.Size = new System.Drawing.Size(884, 52);
             this.label6.TabIndex = 4;
             this.label6.Text = "Fiona\'s Farm and Resort - EmployeeProfile";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // Logo
             // 
@@ -109,6 +111,7 @@
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 3;
             this.Logo.TabStop = false;
+            this.Logo.Click += new System.EventHandler(this.Logo_Click);
             // 
             // label1
             // 

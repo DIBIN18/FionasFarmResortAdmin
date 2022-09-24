@@ -52,6 +52,21 @@ namespace Admin_Login
             Console.WriteLine(GrossSalary);
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Logo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void getWorkHoursIncome()
         {
             SqlConnection conn = new SqlConnection(login.connectionString);
