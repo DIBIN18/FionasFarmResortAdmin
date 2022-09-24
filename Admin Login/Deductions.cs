@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace Admin_Login
 {
     public partial class Deductions : Form
     {
+        Login login = new Login();
         public Deductions()
         {
             InitializeComponent();
@@ -50,6 +52,27 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridView1.CurrentRow.Selected = true;
+            }
+
+        }
+
+        private void Deductions_Load(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select * from Deductions INNER JOIN EmployeeInfo " +
+                "ON Deductions.EmployeeID = EmployeeInfo.EmployeeID", conn);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sqlDataAdapter.Fill(dt);
+            dataGridView1.DataSource = dt;
         }
     }
 }

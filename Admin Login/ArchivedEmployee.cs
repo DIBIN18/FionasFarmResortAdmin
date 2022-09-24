@@ -56,8 +56,8 @@ namespace Admin_Login
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
                         connection.Open();
-                        SqlCommand cmd = new SqlCommand("SET IDENTITY_INSERT Archive ON "
-                        + "Insert INTO EmployeeInfo (EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, PHIL_HEALTH_NO, Email, EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate )" +
+                        SqlCommand cmd = new SqlCommand(//"SET IDENTITY_INSERT Archive ON"
+                        "Insert INTO EmployeeInfo (EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, PHIL_HEALTH_NO, Email, EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate )" +
                         "SELECT EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHIL_HEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate " +
                         "FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + " DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, connection);
 
