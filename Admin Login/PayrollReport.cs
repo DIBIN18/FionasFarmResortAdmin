@@ -36,7 +36,16 @@ namespace Admin_Login
                 lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
-            SqlCommand cmd = new SqlCommand("Select * from Computation",connection);
+            string query = "select A.EmployeeID , B.BasicRate , sum(TotalHours) as TotalHours, sum(TotalHours)-sum(OvertimeHours) as TotalRegularHours , sum(OvertimeHours) as OverTime , TotalDeductions , count(C.EmployeeID) as TotalWorkingDays " +
+                "from EmployeeInfo as A " +
+                "left join Position as B " +
+                "on A.PositionID = B.PositionID " +
+                "left join AttendanceSheet as C " +
+                "on A.EmployeeID = C.EmployeeID " +
+                "left join Deductions as D " +
+                "on A.EmployeeID = D.EmployeeID " +
+                "group by A.EmployeeID,B.BasicRate,D.TotalDeductions ";
+            SqlCommand cmd = new SqlCommand(query,connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
@@ -112,7 +121,18 @@ namespace Admin_Login
             tagaInsertPayroll();
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string filldt = "select * from Payroll ";
+            //string query = "select A.EmployeeID , BasicRate , sum(TotalHours) as TotalHours, sum(OvertimeHours) as TotalOvertime , 0.00 as RegularHollidayHours, 0.00 as SpecialHollidayHours, sum(Late) as TotalLate , TotalDeductions , count(C.EmployeeID) as TotalWorkingDays "+
+            //    "from EmployeeInfo as A "+
+            //    "left join Position as B "+
+            //    "on A.PositionID = B.PositionID "+            (pag na ayus na si Payroll table gagamitin ko to)
+            //    "left join AttendanceSheet as C "+
+            //    "on A.EmployeeID = C.EmployeeID "+
+            //    "left join Deductions as D "+
+            //    "on A.EmployeeID = D.EmployeeID "+
+            //    "group by A.EmployeeID,B.BasicRate,D.TotalDeductions";
+            getGrossSalary();
+            getNetSalary();
+            string filldt = "select * from Computation ";
             SqlCommand command2 = new SqlCommand(filldt, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command2);
             DataTable dt = new DataTable();
@@ -143,20 +163,51 @@ namespace Admin_Login
                 excelStream.Dispose();
             }
         }
+        public void getGrossSalary()
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand("update Computation set GrossSalary = (BasicRate*TotalHours) + ((BasicRate*OverTimeHours) * 0.25)", connection);
+            command.ExecuteNonQuery();
+        }
+        public void getNetSalary()
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand("update Computation set NetSalary = GrossSalary - Deduction", connection);
+            command.ExecuteNonQuery();
+        }
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            SqlCommand command = new SqlCommand("delete from Payroll", connection);
+            SqlCommand command = new SqlCommand("delete from Computation", connection);
             command.ExecuteNonQuery();
         }
         public void tagaInsertPayroll()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string ExportAndArchive = " insert into Payroll (EmployeeID,BasicRate,TotalRecordHours,TotalRegularhours,TotalOvertimeHours,GrossSalary) " +
-                   "select A.EmployeeID, A.BasicRate, A.TotalHours, A.TotalHours-A.OverTimeHours, A.OverTimeHours, A.GrossSalary from Computation A group by A.EmployeeID , A.BasicRate, A.TotalHours, A.OverTimeHours, A.GrossSalary " +
-                   " insert into PayrollArchive select * from Payroll ";
+            string ExportAndArchive = "insert into Computation (EmployeeID,BasicRate,TotalHours,OverTimeHours,RegularHollidayHours,SpecialHollidayHours,TotalLate,Deduction,TotalWorkDays) " +
+                "select A.EmployeeID , BasicRate , sum(TotalHours) as TotalHours, sum(OvertimeHours) as TotalOvertime , 0.00 as RegularHollidayHours, 0.00 as SpecialHollidayHours, sum(Late) as TotalLate , TotalDeductions , count(C.EmployeeID) as TotalWorkingDays " +
+                "from EmployeeInfo as A " +
+                "left join Position as B " +
+                "on A.PositionID = B.PositionID " +
+                "left join AttendanceSheet as C " +
+                "on A.EmployeeID = C.EmployeeID " +
+                "left join Deductions as D " +
+                "on A.EmployeeID = D.EmployeeID " +
+                "group by A.EmployeeID,B.BasicRate,D.TotalDeductions";
+            //string ExportAndArchive = "insert into Payroll (EmployeeID,BasicRate,TotalRecordHours,TotalRegularhours,TotalOvertimeHours,TotalDeductions )"+
+            //    "select A.EmployeeID , B.BasicRate , sum(TotalHours), sum(TotalHours)-sum(OvertimeHours) , sum(OvertimeHours) , TotalDeductions "+
+            //    "from EmployeeInfo as A "+
+            //    "left join Position as B "+
+            //    "on A.PositionID = B.PositionID "+            (aayusin ko pa yung payroll table, kay Compute table muna kukuha ng data pansamantagal)
+            //    "left join AttendanceSheet as C "+
+            //    "on A.EmployeeID = C.EmployeeID "+
+            //    "left join Deductions as D "+
+            //    "on A.EmployeeID = D.EmployeeID "+
+            //    "group by A.EmployeeID,B.BasicRate,D.TotalDeductions ";
             SqlCommand command = new SqlCommand(ExportAndArchive, connection);
             command.ExecuteNonQuery();
         }

@@ -123,12 +123,28 @@ namespace Admin_Login
 
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
-
+                insertNewEmployeeToDeductionTable();
                 MessageBox.Show("Successfully failed!");
                 clearAll();
             }
         }
-
+        public void insertNewEmployeeToDeductionTable()
+        {
+            string query = "insert into Deductions " +
+                           "(EmployeeID, " +
+                           "SSSContribution, " +
+                           "PagIbigContribution, " +
+                           "PhilHealthContribution, " +
+                           "OtherDeduction, " +
+                           "TotalDeductions)" +
+                           "select EmployeeID = MAX(A.EmployeeID) ,0.00, 0.00, 0.00, 0.00, 0.00 from EmployeeInfo as A";
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
         private void BtnBack_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];           
