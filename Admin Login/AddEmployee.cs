@@ -20,6 +20,9 @@ namespace Admin_Login
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
 
+        string selectedPositionName = "";
+        long selectedPositionId = 0;
+
         public AddEmployee()
         {
             InitializeComponent();
@@ -60,13 +63,41 @@ namespace Admin_Login
                 connection.Open();
 
                 string query = "INSERT INTO EmployeeInfo(" +
-                    "EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, " +
-                    "PHIL_HEALTH_NO, Email, EmployeeMaritalStatus, ContactNumber, " +
-                    "DateHired, Gender, BirthDate, EmploymentType, Age)" + //Tinangal ko muna yung DepartmentID, PositionID,
+                    "EmployeeFullName, " +
+                    "Address, " +
+                    "SSS_ID, " +
+                    "PAGIBIG_NO, " +
+                    "PHIL_HEALTH_NO, " +
+                    "Email, " +
+                    "EmployeeMaritalStatus, " +
+                    "ContactNumber, " +
+                    "DateHired, " +
+                    "Gender, " +
+                    "BirthDate, " +
+                    "EmploymentType, " +
+                    "Age," +
+                    "DepartmentID," +
+                    "PositionID," +
+                    "ScheduleIn," +
+                    "ScheduleOut)" + //Tinangal ko muna yung DepartmentID, PositionID,
                     "VALUES(" +
-                    "@EmployeeFullName, @Address, @SSS_ID, @PAGIBIG_NO, @PHIL_HEALTH_NO, @Email, " +
-                    "@EmployeeMaritalStatus, @ContactNumber, @DateHired, @Gender, @BirthDate, " +
-                    " @EmploymentType, @Age)"; //Tinangal ko muna DepartmentID, PositionID,
+                    "@EmployeeFullName, " +
+                    "@Address, " +
+                    "@SSS_ID, " +
+                    "@PAGIBIG_NO, " +
+                    "@PHIL_HEALTH_NO, " +
+                    "@Email, " +
+                    "@EmployeeMaritalStatus, " +
+                    "@ContactNumber, " +
+                    "@DateHired, " +
+                    "@Gender, " +
+                    "@BirthDate, " +
+                    "@EmploymentType, " +
+                    "@Age," +
+                    "@DepartmentID," +
+                    "@PositionID," +
+                    "@ScheduleIn," +
+                    "@ScheduleOut)";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
@@ -80,9 +111,11 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
                 cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
                 cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
-                //cmd.Parameters.AddWithValue("@DepartmentID", 0); //Temporary na 0 muna, Need ng Foreign key
-                //cmd.Parameters.AddWithValue("@PositionID", 0);  //Temporary na 0 muna, Need ng Foreign key
+                cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
+                cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
                 cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
+                cmd.Parameters.AddWithValue("@ScheduleIn", "sample");
+                cmd.Parameters.AddWithValue("@ScheduleOut", "sample");
                 //NEED PA I ADD ANG SCHEDULE IN AND OUT, PATI ALLOWED OVERTIME
 
                 //Compute Age Using DateTimePicker
@@ -91,54 +124,8 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
 
-                //connection.Close();
-
                 MessageBox.Show("Successfully failed!");
                 clearAll();
-                Fill_Position_Tablesql();
-            }
-        }
-
-        public void Fill_Position_Tablesql()
-        {
-            //if (txtPosition.SelectedItem.Equals("MANAGER"))
-            //{
-            //    rate = 90;
-            //}
-            //else if (txtPosition.SelectedItem.Equals("CASHIER"))
-            //{
-            //    rate = 63;
-            //}
-            //else if (txtPosition.SelectedItem.Equals("HOUSEKEEPING"))
-            //{
-            //    rate = 56;
-            //}
-            //else if (txtPosition.SelectedItem.Equals("SECURITY GUARD"))
-            //{
-            //    rate = 57;
-            //}
-            //else if (txtPosition.SelectedItem.Equals("LANDSCAPE ARTIST"))
-            //{
-            //    rate = 55;
-            //}
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                //connection.Open();
-                //SqlCommand cmd2 = new SqlCommand("SELECT MAX(EmployeeID) FROM EmployeeInfo; ", connection);
-                //DataTable dt = new DataTable();
-                //SqlDataAdapter adapter = new SqlDataAdapter(cmd2);
-                //adapter.Fill(dt);
-                //cmd2.ExecuteNonQuery();
-                //EmployeeIDholder = Convert.ToInt32(dt.Rows[0][0]);
-
-                //SqlCommand cmd = new SqlCommand("INSERT INTO Position(PositionName, DepartmentName, BasicRate, EmployeeID)" +
-                //    "VALUES(@PositionName,@DepartmentName,@BasicRate,@EmployeeID)", connection);
-                //cmd.Parameters.AddWithValue("@PositionID", txtPosition.Text);
-                //cmd.Parameters.AddWithValue("@DepartmentID", txtDepartment.Text);
-                //cmd.Parameters.AddWithValue("@BasicRate", rate);
-                //cmd.Parameters.AddWithValue("@EmployeeID", EmployeeIDholder);
-                //cmd.ExecuteNonQuery();
             }
         }
 
@@ -152,7 +139,6 @@ namespace Admin_Login
 
         private void txtDepartment_MouseClick(object sender, MouseEventArgs e)
         {
-            
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -165,6 +151,7 @@ namespace Admin_Login
                 cmbDepartment.DisplayMember = "DepartmentName";
                 cmbDepartment.DataSource = data.Tables["DepartmentName"];
                 cmbDepartment.SelectedIndex = -1;
+                cmbPosition.SelectedIndex = -1;
             }
         }
 
@@ -207,9 +194,26 @@ namespace Admin_Login
             }
         }
 
-        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbPosition_SelectionChangeCommitted(object sender, EventArgs e)
         {
-          
+            selectedPositionName = cmbPosition.GetItemText(cmbPosition.SelectedItem);
+            string query = "SELECT PositionID FROM Position WHERE PositionName='" + selectedPositionName + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        selectedPositionId = reader.GetInt64(0);
+                        reader.Close();
+                    }
+                }
+            }
         }
 
         public void clearAll()
