@@ -13,6 +13,7 @@ namespace Admin_Login
     public partial class Deductions : Form
     {
         Login login = new Login();
+      
         public Deductions()
         {
             InitializeComponent();
@@ -53,26 +54,56 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-
+     
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dataGridView1.CurrentRow.Selected = true;
-            }
+            //if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    if (dataGridView1.CurrentRow.Selected == true) { 
+            //    using (SqlConnection conn = new SqlConnection(login.connectionString))
+            //      {
+            //        conn.Open();
+            //        SqlCommand cmd = new SqlCommand("Select EmployeeID from Deductions", conn);
+            //        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            //        DataTable dt = new DataTable();
+            //        sqlDataAdapter.Fill(dt);
+                     
 
+            //        }
+            //   }
+            //}
         }
-
+     
         private void Deductions_Load(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from Deductions INNER JOIN EmployeeInfo " +
-                "ON Deductions.EmployeeID = EmployeeInfo.EmployeeID", conn);
+            SqlCommand cmd = new SqlCommand("select * from Deductions", conn);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);
             dataGridView1.DataSource = dt;
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+           
+                if (dataGridView1.CurrentRow.Selected == true)
+                {
+                    using (SqlConnection conn = new SqlConnection(login.connectionString))
+                    {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("Insert into Deductions(OtherDeduction) VALUES(@OtherDeduction)");
+                    cmd.Parameters.AddWithValue("@OtherDeduction",txtAdd.Text);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Other Deductions Has been Added to" + dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                    txtAdd.Text = "";
+
+                    }
+                }
+            
+
         }
     }
 }
