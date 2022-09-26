@@ -40,7 +40,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
-            this.txtAdd = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -53,9 +52,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(798, 21);
+            this.label8.Location = new System.Drawing.Point(598, 17);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(240, 27);
+            this.label8.Size = new System.Drawing.Size(196, 23);
             this.label8.TabIndex = 3;
             this.label8.Text = "Personal Deductions";
             // 
@@ -63,9 +63,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(489, 21);
+            this.label7.Location = new System.Drawing.Point(367, 17);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(204, 27);
+            this.label7.Size = new System.Drawing.Size(168, 23);
             this.label7.TabIndex = 2;
             this.label7.Text = "Tax Contributions";
             // 
@@ -73,9 +74,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(30, 21);
+            this.label4.Location = new System.Drawing.Point(22, 17);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(153, 27);
+            this.label4.Size = new System.Drawing.Size(126, 23);
             this.label4.TabIndex = 0;
             this.label4.Text = "Employee ID";
             // 
@@ -87,19 +89,23 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(21, 87);
+            this.panel3.Location = new System.Drawing.Point(16, 71);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1102, 629);
+            this.panel3.Size = new System.Drawing.Size(827, 511);
             this.panel3.TabIndex = 28;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(48, 66);
+            this.dataGridView1.Location = new System.Drawing.Point(36, 54);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1003, 535);
+            this.dataGridView1.Size = new System.Drawing.Size(752, 435);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -107,9 +113,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(288, 21);
+            this.label6.Location = new System.Drawing.Point(216, 17);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 27);
+            this.label6.Size = new System.Drawing.Size(67, 23);
             this.label6.TabIndex = 1;
             this.label6.Text = "Name";
             // 
@@ -127,9 +134,10 @@
             "Name",
             "Tax Contributions",
             "Personal Deductions"});
-            this.cb_SortBy.Location = new System.Drawing.Point(112, 4);
+            this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(320, 35);
+            this.cb_SortBy.Size = new System.Drawing.Size(241, 29);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
@@ -141,9 +149,10 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(686, 23);
+            this.panel2.Location = new System.Drawing.Point(401, 21);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(437, 45);
+            this.panel2.Size = new System.Drawing.Size(328, 37);
             this.panel2.TabIndex = 27;
             // 
             // lbl_SortBy
@@ -151,9 +160,10 @@
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(12, 8);
+            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
+            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(94, 27);
+            this.lbl_SortBy.Size = new System.Drawing.Size(78, 22);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -162,18 +172,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(264, 23);
+            this.panel1.Location = new System.Drawing.Point(17, 21);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(406, 45);
+            this.panel1.Size = new System.Drawing.Size(380, 37);
             this.panel1.TabIndex = 26;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -184,46 +196,39 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(48, 7);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Search.Location = new System.Drawing.Point(36, 6);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(345, 29);
+            this.tb_Search.Size = new System.Drawing.Size(259, 23);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
             this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
-            // txtAdd
-            // 
-            this.txtAdd.Location = new System.Drawing.Point(83, 41);
-            this.txtAdd.Multiline = true;
-            this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(122, 35);
-            this.txtAdd.TabIndex = 5;
-            // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(70, 12);
+            this.btnAdd.Location = new System.Drawing.Point(733, 21);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(147, 23);
+            this.btnAdd.Size = new System.Drawing.Size(110, 39);
             this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "Add OtherDeduction";
+            this.btnAdd.Text = "Save";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.btnSaveDeduction);
             // 
             // Deductions
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1139, 728);
+            this.ClientSize = new System.Drawing.Size(854, 592);
             this.ControlBox = false;
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtAdd);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Deductions";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Deductions_Load);
@@ -236,7 +241,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -254,7 +258,6 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox txtAdd;
         public System.Windows.Forms.Button btnAdd;
     }
 }

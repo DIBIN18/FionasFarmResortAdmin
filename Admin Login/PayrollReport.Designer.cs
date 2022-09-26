@@ -71,7 +71,10 @@
             // 
             // dgvDailyPayrollReport
             // 
-            this.dgvDailyPayrollReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvDailyPayrollReport.AllowUserToOrderColumns = true;
+            this.dgvDailyPayrollReport.AllowUserToResizeColumns = false;
+            this.dgvDailyPayrollReport.AllowUserToResizeRows = false;
+            this.dgvDailyPayrollReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDailyPayrollReport.Location = new System.Drawing.Point(3, 3);
             this.dgvDailyPayrollReport.Name = "dgvDailyPayrollReport";
             this.dgvDailyPayrollReport.Size = new System.Drawing.Size(819, 418);

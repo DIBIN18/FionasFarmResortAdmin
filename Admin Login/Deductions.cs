@@ -13,7 +13,9 @@ namespace Admin_Login
     public partial class Deductions : Form
     {
         Login login = new Login();
-      
+        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
+        BindingSource bindingSource = new BindingSource();
+        SqlCommandBuilder cmbl;
         public Deductions()
         {
             InitializeComponent();
@@ -68,43 +70,55 @@ namespace Admin_Login
         {
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from Deductions", conn);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            sqlDataAdapter.SelectCommand = new SqlCommand("select * from Deductions", conn);
+            cmbl = new SqlCommandBuilder(sqlDataAdapter);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);
-            dataGridView1.DataSource = dt;
+            bindingSource.DataSource = dt;
+            dataGridView1.DataSource = bindingSource;
         }
-
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnSaveDeduction(object sender, EventArgs e)// after ma edit sesave nya sa Database and matic compute ng TotalDeduction/reload
         {
-
-            if (dataGridView1.CurrentRow.Selected == true)
+            sqlDataAdapter.Update((DataTable)bindingSource.DataSource);
+            MessageBox.Show("SAVED");
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(login.connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE Deductions SET OtherDeduction = OtherDeduction + " + txtAdd.Text + " WHERE EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, conn);
-                    cmd.ExecuteNonQuery();
-
-                    DialogResult dialogResult = MessageBox.Show(
-                    "Deduction Added to " + dataGridView1.CurrentRow.Cells[0].Value);
-
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        SqlCommand cmd2 = new SqlCommand("Select * from Deductions", conn);
-                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd2);
-                        DataTable dt = new DataTable();
-                        sqlDataAdapter.Fill(dt);
-                        dataGridView1.DataSource = dt;
-                        txtAdd.Text = "";
-                        conn.Close();
-                    }
-
-
-                }
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE Deductions set TotalDeductions = SSSContribution+PagIbigContribution+PhilHealthContribution+OtherDeduction", connection);
+                cmd.ExecuteNonQuery();
+                Deductions_Load(this, null);
             }
-
-
         }
+        //private void btnAdd_Click(object sender, EventArgs e)
+        //{
+
+        //    //if (dataGridView1.CurrentRow.Selected == true)
+        //    //{
+        //    //    using (SqlConnection conn = new SqlConnection(login.connectionString))
+        //    //    {
+        //    //        conn.Open();
+        //    //        SqlCommand cmd = new SqlCommand("UPDATE Deductions SET OtherDeduction = OtherDeduction + " + txtAdd.Text + " WHERE EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, conn);
+        //    //        cmd.ExecuteNonQuery();
+
+        //    //        DialogResult dialogResult = MessageBox.Show(
+        //    //        "Deduction Added to " + dataGridView1.CurrentRow.Cells[0].Value);
+
+        //    //        if (dialogResult == DialogResult.OK)
+        //    //        {
+        //    //            SqlCommand cmd2 = new SqlCommand("Select * from Deductions", conn);
+        //    //            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd2);
+        //    //            DataTable dt = new DataTable();
+        //    //            sqlDataAdapter.Fill(dt);
+        //    //            dataGridView1.DataSource = dt;
+        //    //            txtAdd.Text = "";
+        //    //            conn.Close();
+        //    //        }
+
+
+        //    //    }
+        //    //}
+        //}
+
+
     }
 }
