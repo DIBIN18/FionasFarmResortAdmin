@@ -99,6 +99,9 @@ namespace Admin_Login
                     "@ScheduleIn," +
                     "@ScheduleOut)";
 
+                string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
+                string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
@@ -114,9 +117,9 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                 cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
                 cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
-                cmd.Parameters.AddWithValue("@ScheduleIn", "sample");
-                cmd.Parameters.AddWithValue("@ScheduleOut", "sample");
-                //NEED PA I ADD ANG SCHEDULE IN AND OUT, PATI ALLOWED OVERTIME
+                cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
+                cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
+                
 
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
@@ -138,6 +141,7 @@ namespace Admin_Login
                            "OtherDeduction, " +
                            "TotalDeductions)" +
                            "select EmployeeID = MAX(A.EmployeeID) ,0.00, 0.00, 0.00, 0.00, 0.00 from EmployeeInfo as A";
+            
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
