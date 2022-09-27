@@ -87,13 +87,37 @@ namespace Admin_Login
 
                     string query = //"SET IDENTITY_INSERT Archive ON " +
                     "Insert INTO Archive (" +
-                    "EmployeeID , EmployeeFullName, Address , SSS_ID , PAGIBIG_NO, PHIL_HEALTH_NO, " +
-                    "Email, EmployeeMaritalStatus, ContactNumber, DateHired, Gender, BirthDate, DepartmentID, " +
+                    "EmployeeID , " +
+                    "EmployeeFullName, " +
+                    "Address , " +
+                    "SSS_ID , " +
+                    "PAGIBIG_NO, " +
+                    "PHIL_HEALTH_NO, " +
+                    "Email, " +
+                    "EmployeeMaritalStatus, " +
+                    "ContactNumber, " +
+                    "DateHired, " +
+                    "Gender, " +
+                    "BirthDate, " +
+                    "DepartmentID, " +
                     "PositionID)" +
-                    "SELECT EmployeeID, EmployeeFullName , Address , SSS_ID, PAGIBIG_NO, PHIL_HEALTH_NO, Email, " +
-                    "EmployeeMaritalStatus, ContactNumber, DateHired, Gender, BirthDate, DepartmentID, PositionID " +
+                    "SELECT " +
+                    "EmployeeID, " +
+                    "EmployeeFullName , " +
+                    "Address , " +
+                    "SSS_ID, " +
+                    "PAGIBIG_NO, " +
+                    "PHIL_HEALTH_NO, " +
+                    "Email, " +
+                    "EmployeeMaritalStatus, " +
+                    "ContactNumber, " +
+                    "DateHired, " +
+                    "Gender, " +
+                    "BirthDate, " +
+                    "DepartmentID, " +
+                    "PositionID " +
                     "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
-                    " DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
+                    "DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
 
                     SqlCommand cmd = new SqlCommand(query, connection);
 
