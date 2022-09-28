@@ -41,7 +41,9 @@ namespace Admin_Login
         private int getNumberOfLate()
         {
             string query =
-                "SELECT COUNT(*) FROM AttendanceSheet WHERE Late=1";
+                "SELECT COUNT(*) FROM AttendanceSheet " +
+                "WHERE Late=1" +
+                "AND Date='" + DateTime.Now.ToString("MMMM d, yyyy") + "'";
 
             int count = 0;
 
@@ -81,11 +83,17 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                
                 string query = 
-                    "SELECT EmployeeInfo.EmployeeID, AttendanceSheet.TimeIn, AttendanceSheet.Late " +
-                    "FROM AttendanceSheet " +
-                    "INNER JOIN EmployeeInfo ON AttendanceSheet.EmployeeID=EmployeeInfo.EmployeeID " +
+                    "SELECT E.EmployeeFullName, " +
+                    "E.EmployeeID, " +
+                    "A.TimeIn," +
+                    "A.Late " +
+                    "FROM AttendanceSheet AS A " +
+                    "LEFT JOIN EmployeeInfo AS E " +
+                    "ON A.EmployeeID = E.EmployeeID " +
                     "WHERE Date='" + DateTime.Now.ToString("MMMM d, yyyy") + "'";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);

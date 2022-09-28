@@ -70,11 +70,11 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdvancedDayOffs.cs">
+    <Compile Include="Leave.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdvancedDayOffs.Designer.cs">
-      <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
+    <Compile Include="Leave.Designer.cs">
+      <DependentUpon>Leave.cs</DependentUpon>
     </Compile>
     <Compile Include="ArchivedEmployee.cs">
       <SubType>Form</SubType>
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdvancedDayOffs.resx">
-      <DependentUpon>AdvancedDayOffs.cs</DependentUpon>
+    <EmbeddedResource Include="Leave.resx">
+      <DependentUpon>Leave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ArchivedEmployee.resx">
       <DependentUpon>ArchivedEmployee.cs</DependentUpon>

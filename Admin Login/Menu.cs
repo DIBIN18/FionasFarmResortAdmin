@@ -22,6 +22,19 @@ namespace Admin_Login
             int height
             );
         string TitleExtension;
+
+        //Dropshadow
+        private const int CS_DropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+
         public Menu(string name)
         {
             InitializeComponent();
@@ -63,7 +76,7 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Advanced Day-Offs";
             TitleLabel.Text = TitleExtension;
-            AdvancedDay_Offs advanceddayoffs = new AdvancedDay_Offs
+            Leave advanceddayoffs = new Leave
             {
                 TopLevel = false
             };
