@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Admin_Login
 {
-    public partial class AdvancedDay_Offs : Form
+    public partial class Leave : Form
     {
         Login login = new Login();
-        public AdvancedDay_Offs()
+        public Leave()
         {
             InitializeComponent();
         }
@@ -54,47 +54,39 @@ namespace Admin_Login
             }
         }
 
-        private void AdvancedDay_Offs_Load(object sender, EventArgs e) 
-        {
-            // TODO: This line of code loads data into the 'fFRUsersDataSet19.EmployeeInfo' table. You can move, or remove it, as needed.
-
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Select EmployeeID,EmployeeFullName, DepartmentName, PositionName  FROM EmployeeInfo",conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            dgvAdvancedDayOffs.DataSource = dataTable;
-            conn.Close();
-
-        }
-
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            if (tb_Search.Text == null) {
+            if (tb_Search.Text == null)
+            {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("Select EmployeeID,EmployeeFullName, DepartmentName, PositionName  FROM EmployeeInfo", conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                dgvAdvancedDayOffs.DataSource = dataTable;
+                dgvLeave.DataSource = dataTable;
                 conn.Close();
 
             }
-            else if (tb_Search.Focused) {
-                
-                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text+ "%'" + "OR EmployeeFullName Like'" + tb_Search.Text+ "%'",conn);
+            else if (tb_Search.Focused)
+            {
+
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName Like'" + tb_Search.Text + "%'", conn);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable tb = new DataTable();
                 sqlDataAdapter.Fill(tb);
-                dgvAdvancedDayOffs.DataSource = tb;
+                dgvLeave.DataSource = tb;
                 conn.Close();
 
             }
-           
-
         }
+
+        private void AdvancedDay_Offs_Load(object sender, EventArgs e) 
+        {
+            
+        }
+
+        
     }
 }
