@@ -245,6 +245,7 @@
             // 
             // txtGender
             // 
+            this.txtGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGender.FormattingEnabled = true;
             this.txtGender.Items.AddRange(new object[] {
@@ -329,6 +330,7 @@
             // txtCivilStatus
             // 
             this.txtCivilStatus.DropDownHeight = 126;
+            this.txtCivilStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtCivilStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCivilStatus.FormattingEnabled = true;
             this.txtCivilStatus.IntegralHeight = false;
@@ -394,6 +396,7 @@
             // 
             // txtEmploymentType
             // 
+            this.txtEmploymentType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtEmploymentType.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmploymentType.FormattingEnabled = true;
             this.txtEmploymentType.Items.AddRange(new object[] {

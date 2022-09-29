@@ -70,6 +70,12 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddLeave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddLeave.Designer.cs">
+      <DependentUpon>AddLeave.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddLeave.resx">
+      <DependentUpon>AddLeave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>
