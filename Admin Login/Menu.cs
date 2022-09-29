@@ -74,7 +74,7 @@ namespace Admin_Login
         }
         private void Btn_AdvancedDayOffs_Click(object sender, EventArgs e)
         {
-            Text = TitleExtension = "Fiona's Farm and Resort - Advanced Day-Offs";
+            Text = TitleExtension = "Fiona's Farm and Resort - Leave";
             TitleLabel.Text = TitleExtension;
             Leave advanceddayoffs = new Leave
             {
