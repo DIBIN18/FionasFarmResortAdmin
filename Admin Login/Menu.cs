@@ -136,6 +136,13 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Settings";
             TitleLabel.Text = TitleExtension;
+            Settings settings = new Settings
+            {
+                TopLevel = false
+            };
+            pnl_Content.Controls.Add(settings);
+            settings.BringToFront();
+            settings.Show();
         }
         internal void Menu_Load(object sender, EventArgs e)
         {
@@ -188,7 +195,7 @@ namespace Admin_Login
                 this.label9.Font = new Font("Century Gothic", 14);
                 this.label10.Font = new Font("Century Gothic", 14);
             }
-            else if(this.Text == "Fiona's Farm and Resort - Advanced Day-Offs")
+            else if(this.Text == "Fiona's Farm and Resort - Leave")
             {
                 this.label4.Font = new Font("Century Gothic", 14, FontStyle.Bold);
                 this.label1.Font = new Font("Century Gothic", 14);

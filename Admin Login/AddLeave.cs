@@ -65,15 +65,17 @@ namespace Admin_Login
                     "EmployeeID," +
                     "StartDate," +
                     "EndDate," +
-                    "Reason)" +
+                    "Reason," +
+                    "Type)" +
                     "VALUES(" +
                     "@EmployeeID," +
                     "@StartDate," +
                     "@EndDate," +
-                    "@Reason)";
+                    "@Reason," +
+                    "@Type)";
 
-                string startDate = dtpStartDate.Value.ToString("MMMM dd, yyyy");
-                string endDate = dtpEndDate.Value.ToString("MMMM dd, yyyy");
+                string startDate = dtpStartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+                string endDate = dtpEndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
 
                 
 
@@ -82,6 +84,7 @@ namespace Admin_Login
                 command.Parameters.AddWithValue("@StartDate", startDate);
                 command.Parameters.AddWithValue("@EndDate", endDate);
                 command.Parameters.AddWithValue("@Reason", rtxtReason.Text);
+                command.Parameters.AddWithValue("@Type", cmbLeaveType.Text);
 
                 command.ExecuteNonQuery();
                 MessageBox.Show("Successfully Applied Leave to the employee");

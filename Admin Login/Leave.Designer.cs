@@ -35,9 +35,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbl_SortBy = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.btnAdd_Leave = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLeave)).BeginInit();
             this.panel2.SuspendLayout();
@@ -61,12 +61,12 @@
             this.dgvLeave.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvLeave.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLeave.Location = new System.Drawing.Point(13, 13);
+            this.dgvLeave.Location = new System.Drawing.Point(2, 2);
             this.dgvLeave.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLeave.Name = "dgvLeave";
             this.dgvLeave.RowHeadersWidth = 51;
             this.dgvLeave.RowTemplate.Height = 24;
-            this.dgvLeave.Size = new System.Drawing.Size(798, 484);
+            this.dgvLeave.Size = new System.Drawing.Size(821, 505);
             this.dgvLeave.TabIndex = 6;
             // 
             // cb_SortBy
@@ -128,6 +128,18 @@
             this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 20;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
+            // 
             // tb_Search
             // 
             this.tb_Search.BackColor = System.Drawing.Color.White;
@@ -146,25 +158,16 @@
             // 
             // btnAdd_Leave
             // 
+            this.btnAdd_Leave.BackColor = System.Drawing.Color.Green;
+            this.btnAdd_Leave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd_Leave.ForeColor = System.Drawing.Color.White;
             this.btnAdd_Leave.Location = new System.Drawing.Point(16, 19);
             this.btnAdd_Leave.Name = "btnAdd_Leave";
             this.btnAdd_Leave.Size = new System.Drawing.Size(166, 37);
             this.btnAdd_Leave.TabIndex = 7;
-            this.btnAdd_Leave.Text = "Add Leave";
-            this.btnAdd_Leave.UseVisualStyleBackColor = true;
+            this.btnAdd_Leave.Text = "Apply Leave";
+            this.btnAdd_Leave.UseVisualStyleBackColor = false;
             this.btnAdd_Leave.Click += new System.EventHandler(this.btnAdd_Leave_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
             // 
             // Leave
             // 

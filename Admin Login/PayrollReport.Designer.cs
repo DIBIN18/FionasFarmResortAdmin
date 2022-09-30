@@ -74,6 +74,7 @@
             this.dgvDailyPayrollReport.AllowUserToOrderColumns = true;
             this.dgvDailyPayrollReport.AllowUserToResizeColumns = false;
             this.dgvDailyPayrollReport.AllowUserToResizeRows = false;
+            this.dgvDailyPayrollReport.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDailyPayrollReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDailyPayrollReport.Location = new System.Drawing.Point(3, 3);
             this.dgvDailyPayrollReport.Name = "dgvDailyPayrollReport";
