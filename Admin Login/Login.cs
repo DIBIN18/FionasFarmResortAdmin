@@ -35,10 +35,23 @@ namespace Admin_Login
         //public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
 
         new string Name;
+        string userType = "";
         public Login()
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
+        }
+
+        //Dropshadow
+        private const int CS_DropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
         }
         private void NameText_Enter(object sender, EventArgs e)
         {
@@ -77,6 +90,31 @@ namespace Admin_Login
             }
         }
         private void LoginButton_Click(object sender, EventArgs e)
+        {
+            loginUser();
+        }
+        private void ExitIcon_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void Username_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginUser();
+            }
+        }
+
+        private void Password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginUser();
+            }
+        }
+
+        public void loginUser()
         {
             if (Username.Text == " Username" || Username.Text == "")
             {
@@ -127,10 +165,6 @@ namespace Admin_Login
                     }
                 }
             }
-        }
-        private void ExitIcon_Click(object sender, EventArgs e)
-        {
-            System.Environment.Exit(0);
         }
     }
 }

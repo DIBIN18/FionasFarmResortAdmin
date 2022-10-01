@@ -79,7 +79,8 @@ namespace Admin_Login
                     "DepartmentID," +
                     "PositionID," +
                     "ScheduleIn," +
-                    "ScheduleOut)" + //Tinangal ko muna yung DepartmentID, PositionID,
+                    "ScheduleOut," +
+                    "AccumulatedDayOffs)" +
                     "VALUES(" +
                     "@EmployeeFullName, " +
                     "@Address, " +
@@ -97,7 +98,8 @@ namespace Admin_Login
                     "@DepartmentID," +
                     "@PositionID," +
                     "@ScheduleIn," +
-                    "@ScheduleOut)";
+                    "@ScheduleOut," +
+                    "@AccumulatedDayOffs)";
 
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
@@ -119,7 +121,8 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
                 cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
                 cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
-                
+                cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
+
 
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;

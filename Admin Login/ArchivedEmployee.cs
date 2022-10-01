@@ -56,18 +56,60 @@ namespace Admin_Login
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
                         connection.Open();
+                        
                         SqlCommand cmd = new SqlCommand(//"SET IDENTITY_INSERT Archive ON"
-                        "Insert INTO EmployeeInfo (EmployeeFullName, Address, SSS_ID, PAGIBIG_NO, PHIL_HEALTH_NO, Email, EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate )" +
-                        "SELECT EmployeeFullName,Address,SSS_ID,PAGIBIG_NO,PHIL_HEALTH_NO,Email,EmployeeMaritalStatus,ContactNumber,DateHired,Gender,BirthDate " +
-                        "FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + " DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, connection);
-
-
+                        "Insert INTO EmployeeInfo (" +
+                        "EmployeeFullName, " +
+                        "Address, " +
+                        "SSS_ID, " +
+                        "PAGIBIG_NO, " +
+                        "PHIL_HEALTH_NO, " +
+                        "Email, " +
+                        "EmployeeMaritalStatus," +
+                        "ContactNumber," +
+                        "DateHired," +
+                        "Gender," +
+                        "BirthDate )" +
+                        "SELECT " +
+                        "EmployeeFullName," +
+                        "Address," +
+                        "SSS_ID," +
+                        "PAGIBIG_NO," +
+                        "PHIL_HEALTH_NO," +
+                        "Email," +
+                        "EmployeeMaritalStatus," +
+                        "ContactNumber," +
+                        "DateHired," +
+                        "Gender," +
+                        "BirthDate " +
+                        "FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + 
+                        " DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, 
+                        connection);
+                        
                         cmd.ExecuteNonQuery();
-
-                
                     }
+                    MessageBox.Show("Successfully Resored Employee");
+                    insertNewEmployeeToDeductionTable();
                 }
-                
+            }
+        }
+
+        public void insertNewEmployeeToDeductionTable()
+        {
+            string query = "insert into Deductions " +
+                           "(EmployeeID, " +
+                           "SSSContribution, " +
+                           "PagIbigContribution, " +
+                           "PhilHealthContribution, " +
+                           "OtherDeduction, " +
+                           "TotalDeductions)" +
+                           "select EmployeeID = MAX(A.EmployeeID) ,0.00, 0.00, 0.00, 0.00, 0.00 from EmployeeInfo as A";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
             }
         }
 

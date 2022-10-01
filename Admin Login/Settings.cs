@@ -31,5 +31,46 @@ namespace Admin_Login
                 dgvUsers.DataSource = data;
             }
         }
+
+        private void btnCreateBackup_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+                DateTime today = DateTime.Today;
+
+                string query =
+                    "BACKUP DATABASE FFRUsers " +
+                    "TO DISK = '" + path + "\\Database Backups\\Backup.bak'";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Backup Created Successfully");
+            }
+        }
+
+        private void btnRestoreDatabase_Click(object sender, EventArgs e)
+        {
+            //UNTESTED
+            //using (SqlConnection connection = new SqlConnection(login.connectionString))
+            //{
+            //    connection.Open();
+
+            //    var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+            //    DateTime today = DateTime.Today;
+
+            //    string query =
+            //        "RESTORE DATABASE FFRUsers " +
+            //        "FROM DISK = '" + path + "\\Database Backups\\FFRUsers.bak";
+
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.ExecuteNonQuery();
+            //    MessageBox.Show("Database Resotored Successfully");
+            //}
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace Admin_Login
 {
-    partial class AddLeave
+    partial class ApplyLeave
     {
         /// <summary>
         /// Required designer variable.
