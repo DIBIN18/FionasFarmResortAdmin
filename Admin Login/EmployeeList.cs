@@ -117,6 +117,7 @@ namespace Admin_Login
                     "DepartmentID, " +
                     "PositionID " +
                     "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
+                    "DELETE FROM Deductions WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value +
                     "DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
 
                     SqlCommand cmd = new SqlCommand(query, connection);

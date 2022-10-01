@@ -33,14 +33,14 @@ namespace Admin_Login
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnBrowseDirectory = new System.Windows.Forms.Button();
-            this.txtBackupDirectory = new System.Windows.Forms.TextBox();
             this.cmbBackupEvery = new System.Windows.Forms.ComboBox();
             this.btnRestoreDatabase = new System.Windows.Forms.Button();
             this.btnCreateBackup = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnBrowseDirectory = new System.Windows.Forms.Button();
+            this.txtBackupDirectory = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -95,27 +95,6 @@ namespace Admin_Login
             this.panel1.Size = new System.Drawing.Size(761, 244);
             this.panel1.TabIndex = 3;
             // 
-            // btnBrowseDirectory
-            // 
-            this.btnBrowseDirectory.BackColor = System.Drawing.Color.Green;
-            this.btnBrowseDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBrowseDirectory.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseDirectory.Location = new System.Drawing.Point(585, 79);
-            this.btnBrowseDirectory.Name = "btnBrowseDirectory";
-            this.btnBrowseDirectory.Size = new System.Drawing.Size(173, 33);
-            this.btnBrowseDirectory.TabIndex = 10;
-            this.btnBrowseDirectory.Text = "Browse Directory";
-            this.btnBrowseDirectory.UseVisualStyleBackColor = false;
-            // 
-            // txtBackupDirectory
-            // 
-            this.txtBackupDirectory.Enabled = false;
-            this.txtBackupDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBackupDirectory.Location = new System.Drawing.Point(259, 82);
-            this.txtBackupDirectory.Name = "txtBackupDirectory";
-            this.txtBackupDirectory.Size = new System.Drawing.Size(320, 26);
-            this.txtBackupDirectory.TabIndex = 9;
-            // 
             // cmbBackupEvery
             // 
             this.cmbBackupEvery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -142,6 +121,7 @@ namespace Admin_Login
             this.btnRestoreDatabase.TabIndex = 7;
             this.btnRestoreDatabase.Text = "Restore Database";
             this.btnRestoreDatabase.UseVisualStyleBackColor = false;
+            this.btnRestoreDatabase.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
             // 
             // btnCreateBackup
             // 
@@ -154,16 +134,7 @@ namespace Admin_Login
             this.btnCreateBackup.TabIndex = 4;
             this.btnCreateBackup.Text = "Create Backup";
             this.btnCreateBackup.UseVisualStyleBackColor = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(21, 87);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(178, 18);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Backup Directory:";
+            this.btnCreateBackup.Click += new System.EventHandler(this.btnCreateBackup_Click);
             // 
             // label3
             // 
@@ -184,6 +155,37 @@ namespace Admin_Login
             this.label2.Size = new System.Drawing.Size(208, 22);
             this.label2.TabIndex = 4;
             this.label2.Text = "Backup and Restore";
+            // 
+            // btnBrowseDirectory
+            // 
+            this.btnBrowseDirectory.BackColor = System.Drawing.Color.Green;
+            this.btnBrowseDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowseDirectory.ForeColor = System.Drawing.Color.White;
+            this.btnBrowseDirectory.Location = new System.Drawing.Point(585, 79);
+            this.btnBrowseDirectory.Name = "btnBrowseDirectory";
+            this.btnBrowseDirectory.Size = new System.Drawing.Size(173, 33);
+            this.btnBrowseDirectory.TabIndex = 10;
+            this.btnBrowseDirectory.Text = "Browse Directory";
+            this.btnBrowseDirectory.UseVisualStyleBackColor = false;
+            // 
+            // txtBackupDirectory
+            // 
+            this.txtBackupDirectory.Enabled = false;
+            this.txtBackupDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBackupDirectory.Location = new System.Drawing.Point(259, 82);
+            this.txtBackupDirectory.Name = "txtBackupDirectory";
+            this.txtBackupDirectory.Size = new System.Drawing.Size(320, 26);
+            this.txtBackupDirectory.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(21, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(178, 18);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Backup Directory:";
             // 
             // Settings
             // 
@@ -214,13 +216,13 @@ namespace Admin_Login
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddUser;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnBrowseDirectory;
-        private System.Windows.Forms.TextBox txtBackupDirectory;
         private System.Windows.Forms.ComboBox cmbBackupEvery;
         private System.Windows.Forms.Button btnRestoreDatabase;
         private System.Windows.Forms.Button btnCreateBackup;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBrowseDirectory;
+        private System.Windows.Forms.TextBox txtBackupDirectory;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -102,7 +102,7 @@ namespace Admin_Login
 
         private void btnAdd_Leave_Click(object sender, EventArgs e)
         {
-            AddLeave leave = new AddLeave();
+            ApplyLeave leave = new ApplyLeave();
             leave.ShowDialog();
         }
     }

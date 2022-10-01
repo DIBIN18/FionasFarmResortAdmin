@@ -11,10 +11,10 @@ using System.Data.SqlClient;
 
 namespace Admin_Login
 {
-    public partial class AddLeave : Form
+    public partial class ApplyLeave : Form
     {
         Login login = new Login();
-        public AddLeave()
+        public ApplyLeave()
         {
             InitializeComponent();
         }
