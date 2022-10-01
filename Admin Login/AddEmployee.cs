@@ -127,7 +127,7 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
                 insertNewEmployeeToDeductionTable();
-                MessageBox.Show("Successfully failed!");
+                MessageBox.Show("Successfully Added Employee!");
                 clearAll();
             }
         }
