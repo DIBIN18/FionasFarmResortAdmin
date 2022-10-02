@@ -39,6 +39,7 @@
             this.AddDepPos = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPosAndDept)).BeginInit();
             this.panel2.SuspendLayout();
@@ -88,7 +89,7 @@
             this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
             this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
             this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(224, 30);
+            this.cb_SortBy.Size = new System.Drawing.Size(89, 30);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
@@ -103,7 +104,7 @@
             this.panel2.Location = new System.Drawing.Point(531, 19);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(312, 37);
+            this.panel2.Size = new System.Drawing.Size(181, 37);
             this.panel2.TabIndex = 27;
             // 
             // lbl_SortBy
@@ -199,6 +200,20 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "btn_AddNew";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.Green;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(729, 19);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(110, 39);
+            this.btnEdit.TabIndex = 12;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // PositionAndDepartments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +221,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(854, 592);
             this.ControlBox = false;
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.AddDepPos);
             this.Controls.Add(this.pictureBox1);
@@ -243,5 +259,6 @@
         private System.Windows.Forms.Label AddDepPos;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.DataGridView dgvPosAndDept;
+        public System.Windows.Forms.Button btnEdit;
     }
 }

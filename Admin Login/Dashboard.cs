@@ -23,7 +23,7 @@ namespace Admin_Login
         private int getNumberOfTimedIn()
         {
             string query =
-                "SELECT COUNT(*) FROM AttendanceSheet WHERE Date='" + DateTime.Now.ToString("MMMM d, yyyy") + "'";
+                "SELECT COUNT(*) FROM AttendanceSheet WHERE Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
 
             int count = 0;
 
@@ -43,7 +43,7 @@ namespace Admin_Login
             string query =
                 "SELECT COUNT(*) FROM AttendanceSheet " +
                 "WHERE Late=1" +
-                "AND Date='" + DateTime.Now.ToString("MMMM d, yyyy") + "'";
+                "AND Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
 
             int count = 0;
 
@@ -92,7 +92,7 @@ namespace Admin_Login
                     "FROM AttendanceSheet AS A " +
                     "LEFT JOIN EmployeeInfo AS E " +
                     "ON A.EmployeeID = E.EmployeeID " +
-                    "WHERE Date='" + DateTime.Now.ToString("MMMM d, yyyy") + "'";
+                    "WHERE Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();

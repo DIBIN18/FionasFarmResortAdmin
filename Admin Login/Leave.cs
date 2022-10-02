@@ -82,7 +82,7 @@ namespace Admin_Login
             //}
         }
 
-        private void AdvancedDay_Offs_Load(object sender, EventArgs e) 
+        public void AdvancedDay_Offs_Load(object sender, EventArgs e) 
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {

@@ -154,13 +154,11 @@ namespace Admin_Login
             this.cmbLeaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLeaveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLeaveType.FormattingEnabled = true;
-            this.cmbLeaveType.Items.AddRange(new object[] {
-            "Sick Leave",
-            "Vacation Leave"});
             this.cmbLeaveType.Location = new System.Drawing.Point(661, 109);
             this.cmbLeaveType.Name = "cmbLeaveType";
             this.cmbLeaveType.Size = new System.Drawing.Size(174, 28);
             this.cmbLeaveType.TabIndex = 34;
+            this.cmbLeaveType.Click += new System.EventHandler(this.cmbLeaveType_Click);
             // 
             // label4
             // 
@@ -217,7 +215,7 @@ namespace Admin_Login
             this.label6.TabIndex = 57;
             this.label6.Text = "Employees";
             // 
-            // AddLeave
+            // ApplyLeave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -238,7 +236,7 @@ namespace Admin_Login
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAddLeave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AddLeave";
+            this.Name = "ApplyLeave";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddLeave";
             this.Load += new System.EventHandler(this.AddLeave_Load);

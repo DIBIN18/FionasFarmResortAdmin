@@ -14,6 +14,10 @@ namespace Admin_Login
     public partial class ApplyLeave : Form
     {
         Login login = new Login();
+
+        string selectedGender = "";
+        string selectedMaritalStatus = "";
+
         public ApplyLeave()
         {
             InitializeComponent();
@@ -22,6 +26,8 @@ namespace Admin_Login
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            Leave l = new Leave();
+            l.AdvancedDay_Offs_Load(null, null);
         }
 
         private const int CS_DropShadow = 0x00020000;
@@ -41,7 +47,8 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT EmployeeID, EmployeeFullName, LeaveCredits FROM EmployeeInfo";
+                string query = "SELECT EmployeeID, EmployeeFullName, LeaveCredits FROM EmployeeInfo WHERE EmploymentType='Regular'";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -52,6 +59,66 @@ namespace Admin_Login
         private void dgvAddLeave_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvAddLeave.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void cmbLeaveType_Click(object sender, EventArgs e)
+        {
+            string query = 
+                "SELECT Gender FROM EmployeeInfo WHERE EmployeeId='" + dgvAddLeave.CurrentRow.Cells[0].Value + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        selectedGender = reader.GetString(0);
+                        reader.Close();
+                    }
+                }
+            }
+
+            string query2 =
+                "SELECT EmployeeMaritalStatus FROM EmployeeInfo WHERE EmployeeId='" + dgvAddLeave.CurrentRow.Cells[0].Value + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        selectedMaritalStatus = reader.GetString(0);
+                        reader.Close();
+                    }
+                }
+            }
+
+            Console.WriteLine(selectedGender);
+            Console.WriteLine(selectedMaritalStatus);
+
+            if (selectedGender == "Male" && selectedMaritalStatus == "Married")
+            {
+                cmbLeaveType.Items.Clear();
+                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Paternity Leave" });
+            }
+            else if (selectedGender == "Female" && selectedMaritalStatus == "Married")
+            {
+                cmbLeaveType.Items.Clear();
+                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Maternity Leave" });
+            }
+            else
+            {
+                cmbLeaveType.Items.Clear();
+                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave"});
+            }
         }
 
         private void btnAddLeave_Click(object sender, EventArgs e)
