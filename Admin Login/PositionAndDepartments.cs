@@ -61,7 +61,7 @@ namespace Admin_Login
 
         }
 
-        private void PositionAndDepartments_Load(object sender, EventArgs e)
+        public void PositionAndDepartments_Load(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -76,6 +76,12 @@ namespace Admin_Login
                 adapter.Fill(data);
                 dgvPosAndDept.DataSource = data;
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            EditDepartmentPosition edp = new EditDepartmentPosition();
+            edp.ShowDialog();
         }
     }
 }

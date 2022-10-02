@@ -22,6 +22,18 @@ namespace Admin_Login
             InitializeComponent();
         }
 
+        //DROP SHADOw
+        private const int CS_DropShadow = 0x00020000;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DropShadow;
+                return cp;
+            }
+        }
+
         private void btnClose_Click_1(object sender, EventArgs e)
         {
             this.Close();

@@ -76,6 +76,12 @@
     <Compile Include="ApplyLeave.Designer.cs">
       <DependentUpon>ApplyLeave.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditDepartmentPosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditDepartmentPosition.Designer.cs">
+      <DependentUpon>EditDepartmentPosition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ApplyLeave.resx">
       <DependentUpon>ApplyLeave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditDepartmentPosition.resx">
+      <DependentUpon>EditDepartmentPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>
