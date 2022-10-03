@@ -44,7 +44,7 @@ namespace Admin_Login
 
                 string query =
                     "BACKUP DATABASE FFRUsers " +
-                    "TO DISK = '" + path + "\\Database Backups\\Backup.bak'";
+                    "TO DISK = '" + path + "\\Backup.bak'";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
