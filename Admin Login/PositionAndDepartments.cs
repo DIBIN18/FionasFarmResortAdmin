@@ -83,5 +83,14 @@ namespace Admin_Login
             EditDepartmentPosition edp = new EditDepartmentPosition();
             edp.ShowDialog();
         }
+
+        private void dgvPosAndDept_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPosAndDept.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dgvPosAndDept.CurrentRow.Selected = true;
+
+            }
+        }
     }
 }

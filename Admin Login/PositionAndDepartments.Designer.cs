@@ -53,10 +53,10 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dgvPosAndDept);
-            this.panel3.Location = new System.Drawing.Point(16, 71);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Location = new System.Drawing.Point(21, 87);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(827, 511);
+            this.panel3.Size = new System.Drawing.Size(1102, 628);
             this.panel3.TabIndex = 28;
             // 
             // dgvPosAndDept
@@ -67,10 +67,13 @@
             this.dgvPosAndDept.AllowUserToResizeRows = false;
             this.dgvPosAndDept.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPosAndDept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPosAndDept.Location = new System.Drawing.Point(7, 3);
+            this.dgvPosAndDept.Location = new System.Drawing.Point(9, 4);
+            this.dgvPosAndDept.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvPosAndDept.Name = "dgvPosAndDept";
-            this.dgvPosAndDept.Size = new System.Drawing.Size(815, 503);
+            this.dgvPosAndDept.RowHeadersWidth = 51;
+            this.dgvPosAndDept.Size = new System.Drawing.Size(1087, 619);
             this.dgvPosAndDept.TabIndex = 4;
+            this.dgvPosAndDept.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPosAndDept_CellClick);
             // 
             // cb_SortBy
             // 
@@ -86,10 +89,10 @@
             "Position",
             "Basic Rate",
             "Number of Employees"});
-            this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
-            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
+            this.cb_SortBy.Location = new System.Drawing.Point(112, 4);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(89, 30);
+            this.cb_SortBy.Size = new System.Drawing.Size(117, 37);
             this.cb_SortBy.TabIndex = 10;
             this.cb_SortBy.Text = "Default";
             this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
@@ -101,10 +104,10 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(531, 19);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(708, 23);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(181, 37);
+            this.panel2.Size = new System.Drawing.Size(241, 45);
             this.panel2.TabIndex = 27;
             // 
             // lbl_SortBy
@@ -112,10 +115,9 @@
             this.lbl_SortBy.AutoSize = true;
             this.lbl_SortBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
-            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_SortBy.Location = new System.Drawing.Point(12, 7);
             this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(73, 24);
+            this.lbl_SortBy.Size = new System.Drawing.Size(94, 29);
             this.lbl_SortBy.TabIndex = 11;
             this.lbl_SortBy.Text = "Sort by:";
             // 
@@ -124,20 +126,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(214, 19);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(285, 23);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 37);
+            this.panel1.Size = new System.Drawing.Size(406, 45);
             this.panel1.TabIndex = 26;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -148,10 +150,10 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(36, 6);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Search.Location = new System.Drawing.Point(48, 7);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(259, 21);
+            this.tb_Search.Size = new System.Drawing.Size(345, 27);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
@@ -164,10 +166,9 @@
             this.AddDepPos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddDepPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDepPos.ForeColor = System.Drawing.Color.White;
-            this.AddDepPos.Location = new System.Drawing.Point(20, 26);
-            this.AddDepPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AddDepPos.Location = new System.Drawing.Point(27, 32);
             this.AddDepPos.Name = "AddDepPos";
-            this.AddDepPos.Size = new System.Drawing.Size(157, 24);
+            this.AddDepPos.Size = new System.Drawing.Size(195, 29);
             this.AddDepPos.TabIndex = 30;
             this.AddDepPos.Tag = "btn_AddNew";
             this.AddDepPos.Text = "Add Dep. / Pos.";
@@ -178,10 +179,10 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddPositionOrDepartment_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(170, 21);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(227, 26);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 32);
+            this.pictureBox2.Size = new System.Drawing.Size(33, 39);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 31;
             this.pictureBox2.TabStop = false;
@@ -191,10 +192,10 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 19);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 23);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(188, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(251, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
@@ -205,10 +206,10 @@
             this.btnEdit.BackColor = System.Drawing.Color.Green;
             this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(729, 19);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Location = new System.Drawing.Point(972, 23);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(110, 39);
+            this.btnEdit.Size = new System.Drawing.Size(147, 48);
             this.btnEdit.TabIndex = 12;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -216,10 +217,10 @@
             // 
             // PositionAndDepartments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(854, 592);
+            this.ClientSize = new System.Drawing.Size(1139, 729);
             this.ControlBox = false;
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pictureBox2);
@@ -229,7 +230,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PositionAndDepartments";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PositionAndDepartments_Load);

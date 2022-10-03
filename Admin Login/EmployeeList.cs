@@ -156,21 +156,25 @@ namespace Admin_Login
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
 
+
                     ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
                     ep.lblName.Text = dt.Rows[0][1].ToString();
-                    ep.lblAge.Text = dt.Rows[0][17].ToString();
-                    ep.lblMaritalStatus.Text = dt.Rows[0][9].ToString();
-                    ep.lblContact.Text = dt.Rows[0][10].ToString();
-                    ep.lblEmail.Text = dt.Rows[0][8].ToString();
-                    ep.lblDateHired.Text = dt.Rows[0][11].ToString();
-                    ep.lblGender.Text = dt.Rows[0][12].ToString();
-                    ep.lblAddress.Text = dt.Rows[0][4].ToString();
-                    // ep.lblEmploymentType.Text = dt.Rows[][].ToString();
-                    ep.lblPosition.Text = dt.Rows[0][15].ToString();
-                    ep.lblDepartment.Text = dt.Rows[0][14].ToString();
-                    //ep.lblAccumulated.Text = dt.Rows[][].ToString();
-                    // ep.lblStatus.Text = dt.Rows[][].ToString();
-                    // ep.lblSchedule.Text = dt.Rows[][].ToString();
+                    ep.lblAddress.Text = dt.Rows[0][2].ToString();
+                    ep.lblEmail.Text = dt.Rows[0][6].ToString();
+                    ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+                    ep.lblContact.Text = dt.Rows[0][8].ToString();
+                    ep.lblDateHired.Text = dt.Rows[0][9].ToString();
+                    ep.lblGender.Text = dt.Rows[0][10].ToString();
+                    ep.lblAge.Text = dt.Rows[0][12].ToString();
+                    ep.lblDepartment.Text = dt.Rows[0][13].ToString();
+                    ep.lblPosition.Text = dt.Rows[0][14].ToString();
+                    ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+                    ep.lblScheduleIn.Text = dt.Rows[0][16].ToString();
+                    ep.lblScheduleOut.Text = dt.Rows[0][17].ToString();
+                    ep.lblAccumulated.Text = dt.Rows[0][19].ToString();
+
+
+
                 }
 
             }
