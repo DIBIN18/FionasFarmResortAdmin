@@ -50,6 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblScheduleOut = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.lblScheduleIn = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblDepartment = new System.Windows.Forms.Label();
@@ -69,8 +71,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.lblScheduleOut = new System.Windows.Forms.Label();
+            this.btnTrain = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -85,8 +86,9 @@
             this.panel2.Controls.Add(this.Logo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1265, 66);
+            this.panel2.Size = new System.Drawing.Size(949, 54);
             this.panel2.TabIndex = 39;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
@@ -95,9 +97,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 2);
+            this.label6.Location = new System.Drawing.Point(2, 2);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(884, 52);
+            this.label6.Size = new System.Drawing.Size(721, 42);
             this.label6.TabIndex = 4;
             this.label6.Text = "Fiona\'s Farm and Resort - EmployeeProfile";
             this.label6.Click += new System.EventHandler(this.label6_Click);
@@ -106,10 +109,10 @@
             // 
             this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(1183, 2);
-            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logo.Location = new System.Drawing.Point(887, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(57, 66);
+            this.Logo.Size = new System.Drawing.Size(43, 54);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 3;
             this.Logo.TabStop = false;
@@ -119,9 +122,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(317, 104);
+            this.label1.Location = new System.Drawing.Point(238, 84);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 19);
+            this.label1.Size = new System.Drawing.Size(98, 17);
             this.label1.TabIndex = 40;
             this.label1.Text = "Employee ID:";
             // 
@@ -129,18 +133,20 @@
             // 
             this.lblEmployeeID.AutoSize = true;
             this.lblEmployeeID.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeeID.Location = new System.Drawing.Point(476, 102);
+            this.lblEmployeeID.Location = new System.Drawing.Point(357, 83);
+            this.lblEmployeeID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmployeeID.Name = "lblEmployeeID";
-            this.lblEmployeeID.Size = new System.Drawing.Size(0, 21);
+            this.lblEmployeeID.Size = new System.Drawing.Size(0, 19);
             this.lblEmployeeID.TabIndex = 41;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(317, 134);
+            this.label3.Location = new System.Drawing.Point(238, 109);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 19);
+            this.label3.Size = new System.Drawing.Size(54, 17);
             this.label3.TabIndex = 42;
             this.label3.Text = "Name:";
             // 
@@ -148,18 +154,20 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(476, 135);
+            this.lblName.Location = new System.Drawing.Point(357, 110);
+            this.lblName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 21);
+            this.lblName.Size = new System.Drawing.Size(0, 19);
             this.lblName.TabIndex = 43;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(317, 163);
+            this.label5.Location = new System.Drawing.Point(238, 132);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 19);
+            this.label5.Size = new System.Drawing.Size(40, 17);
             this.label5.TabIndex = 44;
             this.label5.Text = "Age:";
             // 
@@ -167,27 +175,30 @@
             // 
             this.lblAge.AutoSize = true;
             this.lblAge.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAge.Location = new System.Drawing.Point(476, 166);
+            this.lblAge.Location = new System.Drawing.Point(357, 135);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(0, 21);
+            this.lblAge.Size = new System.Drawing.Size(0, 19);
             this.lblAge.TabIndex = 45;
             // 
             // lblMaritalStatus
             // 
             this.lblMaritalStatus.AutoSize = true;
             this.lblMaritalStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMaritalStatus.Location = new System.Drawing.Point(476, 194);
+            this.lblMaritalStatus.Location = new System.Drawing.Point(357, 158);
+            this.lblMaritalStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMaritalStatus.Name = "lblMaritalStatus";
-            this.lblMaritalStatus.Size = new System.Drawing.Size(0, 21);
+            this.lblMaritalStatus.Size = new System.Drawing.Size(0, 19);
             this.lblMaritalStatus.TabIndex = 46;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(315, 194);
+            this.label8.Location = new System.Drawing.Point(236, 158);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(119, 19);
+            this.label8.Size = new System.Drawing.Size(101, 17);
             this.label8.TabIndex = 47;
             this.label8.Text = "Marital Status:";
             // 
@@ -195,9 +206,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(315, 223);
+            this.label9.Location = new System.Drawing.Point(236, 181);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 19);
+            this.label9.Size = new System.Drawing.Size(97, 17);
             this.label9.TabIndex = 48;
             this.label9.Text = "Contact No#:";
             // 
@@ -205,18 +217,20 @@
             // 
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(476, 223);
+            this.lblContact.Location = new System.Drawing.Point(357, 181);
+            this.lblContact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(0, 21);
+            this.lblContact.Size = new System.Drawing.Size(0, 19);
             this.lblContact.TabIndex = 49;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(315, 252);
+            this.label11.Location = new System.Drawing.Point(236, 205);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 19);
+            this.label11.Size = new System.Drawing.Size(50, 17);
             this.label11.TabIndex = 50;
             this.label11.Text = "Email:";
             // 
@@ -224,9 +238,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(314, 282);
+            this.label12.Location = new System.Drawing.Point(236, 229);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 19);
+            this.label12.Size = new System.Drawing.Size(84, 17);
             this.label12.TabIndex = 51;
             this.label12.Text = "Date Hired:";
             // 
@@ -234,45 +249,50 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(476, 252);
+            this.lblEmail.Location = new System.Drawing.Point(357, 205);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(0, 21);
+            this.lblEmail.Size = new System.Drawing.Size(0, 19);
             this.lblEmail.TabIndex = 52;
             // 
             // lblDateHired
             // 
             this.lblDateHired.AutoSize = true;
             this.lblDateHired.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateHired.Location = new System.Drawing.Point(476, 282);
+            this.lblDateHired.Location = new System.Drawing.Point(357, 229);
+            this.lblDateHired.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateHired.Name = "lblDateHired";
-            this.lblDateHired.Size = new System.Drawing.Size(0, 21);
+            this.lblDateHired.Size = new System.Drawing.Size(0, 19);
             this.lblDateHired.TabIndex = 53;
             // 
             // lblGender
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(938, 100);
+            this.lblGender.Location = new System.Drawing.Point(704, 81);
+            this.lblGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(0, 21);
+            this.lblGender.Size = new System.Drawing.Size(0, 19);
             this.lblGender.TabIndex = 54;
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(938, 129);
+            this.lblAddress.Location = new System.Drawing.Point(704, 105);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(0, 21);
+            this.lblAddress.Size = new System.Drawing.Size(0, 19);
             this.lblAddress.TabIndex = 55;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(832, 131);
+            this.label2.Location = new System.Drawing.Point(624, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 19);
+            this.label2.Size = new System.Drawing.Size(65, 17);
             this.label2.TabIndex = 56;
             this.label2.Text = "Address:";
             // 
@@ -280,9 +300,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(837, 102);
+            this.label4.Location = new System.Drawing.Point(628, 83);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 19);
+            this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 57;
             this.label4.Text = "Gender:";
             // 
@@ -304,19 +325,43 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Location = new System.Drawing.Point(109, 356);
+            this.panel1.Location = new System.Drawing.Point(82, 289);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 278);
+            this.panel1.Size = new System.Drawing.Size(380, 226);
             this.panel1.TabIndex = 58;
+            // 
+            // lblScheduleOut
+            // 
+            this.lblScheduleOut.AutoSize = true;
+            this.lblScheduleOut.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScheduleOut.ForeColor = System.Drawing.Color.Gray;
+            this.lblScheduleOut.Location = new System.Drawing.Point(212, 198);
+            this.lblScheduleOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblScheduleOut.Name = "lblScheduleOut";
+            this.lblScheduleOut.Size = new System.Drawing.Size(0, 19);
+            this.lblScheduleOut.TabIndex = 13;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(16, 199);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 17);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Schedule Out:";
             // 
             // lblScheduleIn
             // 
             this.lblScheduleIn.AutoSize = true;
             this.lblScheduleIn.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleIn.ForeColor = System.Drawing.Color.Gray;
-            this.lblScheduleIn.Location = new System.Drawing.Point(283, 210);
+            this.lblScheduleIn.Location = new System.Drawing.Point(212, 171);
+            this.lblScheduleIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScheduleIn.Name = "lblScheduleIn";
-            this.lblScheduleIn.Size = new System.Drawing.Size(0, 21);
+            this.lblScheduleIn.Size = new System.Drawing.Size(0, 19);
             this.lblScheduleIn.TabIndex = 11;
             // 
             // lblStatus
@@ -324,9 +369,10 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(283, 178);
+            this.lblStatus.Location = new System.Drawing.Point(212, 145);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(0, 21);
+            this.lblStatus.Size = new System.Drawing.Size(0, 19);
             this.lblStatus.TabIndex = 10;
             // 
             // lblDepartment
@@ -334,9 +380,10 @@
             this.lblDepartment.AutoSize = true;
             this.lblDepartment.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDepartment.ForeColor = System.Drawing.Color.Gray;
-            this.lblDepartment.Location = new System.Drawing.Point(283, 112);
+            this.lblDepartment.Location = new System.Drawing.Point(212, 91);
+            this.lblDepartment.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDepartment.Name = "lblDepartment";
-            this.lblDepartment.Size = new System.Drawing.Size(0, 21);
+            this.lblDepartment.Size = new System.Drawing.Size(0, 19);
             this.lblDepartment.TabIndex = 9;
             // 
             // lblAccumulated
@@ -344,9 +391,10 @@
             this.lblAccumulated.AutoSize = true;
             this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
-            this.lblAccumulated.Location = new System.Drawing.Point(283, 145);
+            this.lblAccumulated.Location = new System.Drawing.Point(212, 118);
+            this.lblAccumulated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAccumulated.Name = "lblAccumulated";
-            this.lblAccumulated.Size = new System.Drawing.Size(0, 21);
+            this.lblAccumulated.Size = new System.Drawing.Size(0, 19);
             this.lblAccumulated.TabIndex = 9;
             // 
             // lblPosition
@@ -354,9 +402,10 @@
             this.lblPosition.AutoSize = true;
             this.lblPosition.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPosition.ForeColor = System.Drawing.Color.Gray;
-            this.lblPosition.Location = new System.Drawing.Point(283, 77);
+            this.lblPosition.Location = new System.Drawing.Point(212, 63);
+            this.lblPosition.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(0, 21);
+            this.lblPosition.Size = new System.Drawing.Size(0, 19);
             this.lblPosition.TabIndex = 8;
             // 
             // lblEmploymentType
@@ -364,18 +413,20 @@
             this.lblEmploymentType.AutoSize = true;
             this.lblEmploymentType.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmploymentType.ForeColor = System.Drawing.Color.Gray;
-            this.lblEmploymentType.Location = new System.Drawing.Point(283, 46);
+            this.lblEmploymentType.Location = new System.Drawing.Point(212, 37);
+            this.lblEmploymentType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmploymentType.Name = "lblEmploymentType";
-            this.lblEmploymentType.Size = new System.Drawing.Size(0, 21);
+            this.lblEmploymentType.Size = new System.Drawing.Size(0, 19);
             this.lblEmploymentType.TabIndex = 7;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(23, 215);
+            this.label17.Location = new System.Drawing.Point(17, 175);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(113, 20);
+            this.label17.Size = new System.Drawing.Size(98, 17);
             this.label17.TabIndex = 6;
             this.label17.Text = "Schedule In:";
             // 
@@ -383,9 +434,10 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(23, 183);
+            this.label16.Location = new System.Drawing.Point(17, 149);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(69, 20);
+            this.label16.Size = new System.Drawing.Size(59, 17);
             this.label16.TabIndex = 5;
             this.label16.Text = "Status:";
             // 
@@ -393,9 +445,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(25, 149);
+            this.label15.Location = new System.Drawing.Point(19, 121);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(201, 20);
+            this.label15.Size = new System.Drawing.Size(171, 17);
             this.label15.TabIndex = 4;
             this.label15.Text = "Accumulated Day-offs:";
             // 
@@ -403,9 +456,10 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(25, 115);
+            this.label14.Location = new System.Drawing.Point(19, 93);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(113, 20);
+            this.label14.Size = new System.Drawing.Size(97, 17);
             this.label14.TabIndex = 3;
             this.label14.Text = "Department:";
             // 
@@ -413,9 +467,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(26, 81);
+            this.label13.Location = new System.Drawing.Point(20, 66);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 20);
+            this.label13.Size = new System.Drawing.Size(71, 17);
             this.label13.TabIndex = 2;
             this.label13.Text = "Position:";
             // 
@@ -423,9 +478,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(27, 49);
+            this.label10.Location = new System.Drawing.Point(20, 40);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 20);
+            this.label10.Size = new System.Drawing.Size(141, 17);
             this.label10.TabIndex = 1;
             this.label10.Text = "Employment Type:";
             // 
@@ -433,19 +489,22 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 14);
+            this.label7.Location = new System.Drawing.Point(20, 11);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 25);
+            this.label7.Size = new System.Drawing.Size(129, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "EMPLOYMENT";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.btnTrain);
             this.panel3.Controls.Add(this.btnAddFace);
-            this.panel3.Location = new System.Drawing.Point(713, 356);
+            this.panel3.Location = new System.Drawing.Point(535, 289);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(454, 278);
+            this.panel3.Size = new System.Drawing.Size(340, 226);
             this.panel3.TabIndex = 59;
             // 
             // btnAddFace
@@ -454,18 +513,21 @@
             this.btnAddFace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFace.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddFace.ForeColor = System.Drawing.Color.White;
-            this.btnAddFace.Location = new System.Drawing.Point(165, 212);
+            this.btnAddFace.Location = new System.Drawing.Point(48, 175);
+            this.btnAddFace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddFace.Name = "btnAddFace";
-            this.btnAddFace.Size = new System.Drawing.Size(142, 40);
+            this.btnAddFace.Size = new System.Drawing.Size(106, 32);
             this.btnAddFace.TabIndex = 63;
             this.btnAddFace.Text = "Add Face +";
             this.btnAddFace.UseVisualStyleBackColor = false;
+            this.btnAddFace.Click += new System.EventHandler(this.btnAddFace_Click);
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(70, 101);
+            this.pictureBox1.Location = new System.Drawing.Point(52, 82);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(227, 198);
+            this.pictureBox1.Size = new System.Drawing.Size(170, 161);
             this.pictureBox1.TabIndex = 60;
             this.pictureBox1.TabStop = false;
             // 
@@ -476,9 +538,10 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(171, 662);
+            this.btnEdit.Location = new System.Drawing.Point(128, 538);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(142, 40);
+            this.btnEdit.Size = new System.Drawing.Size(106, 32);
             this.btnEdit.TabIndex = 62;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -490,9 +553,10 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(395, 662);
+            this.btnBack.Location = new System.Drawing.Point(296, 538);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(142, 40);
+            this.btnBack.Size = new System.Drawing.Size(106, 32);
             this.btnBack.TabIndex = 63;
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -504,39 +568,35 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(878, 662);
+            this.button1.Location = new System.Drawing.Point(658, 538);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 40);
+            this.button1.Size = new System.Drawing.Size(106, 32);
             this.button1.TabIndex = 64;
             this.button1.Text = "Compute";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label18
+            // btnTrain
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(22, 245);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(128, 20);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Schedule Out:";
-            // 
-            // lblScheduleOut
-            // 
-            this.lblScheduleOut.AutoSize = true;
-            this.lblScheduleOut.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScheduleOut.ForeColor = System.Drawing.Color.Gray;
-            this.lblScheduleOut.Location = new System.Drawing.Point(283, 244);
-            this.lblScheduleOut.Name = "lblScheduleOut";
-            this.lblScheduleOut.Size = new System.Drawing.Size(0, 21);
-            this.lblScheduleOut.TabIndex = 13;
+            this.btnTrain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTrain.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrain.ForeColor = System.Drawing.Color.White;
+            this.btnTrain.Location = new System.Drawing.Point(196, 175);
+            this.btnTrain.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTrain.Name = "btnTrain";
+            this.btnTrain.Size = new System.Drawing.Size(106, 32);
+            this.btnTrain.TabIndex = 64;
+            this.btnTrain.Text = "Train";
+            this.btnTrain.UseVisualStyleBackColor = false;
+            this.btnTrain.Click += new System.EventHandler(this.btnTrain_Click);
             // 
             // EmployeeProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1265, 750);
+            this.ClientSize = new System.Drawing.Size(949, 609);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEdit);
@@ -563,6 +623,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "EmployeeProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.EmployeeProfile_Load);
@@ -623,5 +684,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Label lblScheduleOut;
+        private System.Windows.Forms.Button btnTrain;
     }
 }

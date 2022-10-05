@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Admin_Login
 {
@@ -65,6 +66,18 @@ namespace Admin_Login
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAddFace_Click(object sender, EventArgs e)
+        {
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            Process.Start(path + "\\Collect Employee Dataset\\main.exe");
+        }
+
+        private void btnTrain_Click(object sender, EventArgs e)
+        {
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            Process.Start(path + "\\Train Employee Module\\train.exe");
         }
 
         public void getWorkHoursIncome()
