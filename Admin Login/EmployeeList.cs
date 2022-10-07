@@ -141,8 +141,60 @@ namespace Admin_Login
             }
         }
 
-        private void dgvCellClick(object sender, DataGridViewCellEventArgs e)
+        public string getDepartmentName(string selectedID)
         {
+            string query = "SELECT DepartmentName FROM Department WHERE DepartmentID='" + selectedID + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "No department yet";
+                    }
+                    reader.Close();
+                }
+            }
+        }
+
+        public string getPositionName(string selectedID)
+        {
+            string query = "SELECT PositionName FROM Position WHERE PositionID='" + selectedID + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "No position yet";
+                    }
+                    reader.Close();
+                }
+            }
+        }
+
+        public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(sender);
+            Console.WriteLine(e);
             if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvEmployeeList.CurrentRow.Selected = true;
@@ -166,17 +218,35 @@ namespace Admin_Login
                     ep.lblDateHired.Text = dt.Rows[0][9].ToString();
                     ep.lblGender.Text = dt.Rows[0][10].ToString();
                     ep.lblAge.Text = dt.Rows[0][12].ToString();
-                    ep.lblDepartment.Text = dt.Rows[0][13].ToString();
-                    ep.lblPosition.Text = dt.Rows[0][14].ToString();
+                    ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                    ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
                     ep.lblScheduleIn.Text = dt.Rows[0][16].ToString();
                     ep.lblScheduleOut.Text = dt.Rows[0][17].ToString();
                     ep.lblAccumulated.Text = dt.Rows[0][19].ToString();
+                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
+                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
+                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
+                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+                    ep.lblLeaveCredits.Text = dt.Rows[0][20].ToString();
+                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
+             
+                    ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
+                    ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][19].ToString();
+                    ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+                    ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+                    ep.txtLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
 
-
-
+                    ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                    ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+                    ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
                 }
-
             }
         }
 
@@ -185,7 +255,6 @@ namespace Admin_Login
             ArchivedEmployee archivedEmployee = new ArchivedEmployee();
             archivedEmployee.ShowDialog();
         }
-
 
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
@@ -221,9 +290,16 @@ namespace Admin_Login
             ep.ShowDialog();
         }
 
-        private void dgvEmployeeList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public string Get_Allowed_OT(string ot_status)
         {
-
+            if (ot_status == "True")
+            {
+                return "Yes";
+            }
+            else
+            {
+                return "No";
+            }
         }
     }
 }
