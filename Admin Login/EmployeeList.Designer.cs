@@ -80,7 +80,7 @@
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.tb_Search.Location = new System.Drawing.Point(30, 6);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(259, 21);
             this.tb_Search.TabIndex = 6;
@@ -95,7 +95,7 @@
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Location = new System.Drawing.Point(308, 19);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 7;
@@ -105,7 +105,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -118,7 +118,7 @@
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
             this.panel2.Location = new System.Drawing.Point(623, 19);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(167, 37);
             this.panel2.TabIndex = 9;
@@ -139,7 +139,7 @@
             "Position",
             "Status"});
             this.cb_SortBy.Location = new System.Drawing.Point(83, 3);
-            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
             this.cb_SortBy.Name = "cb_SortBy";
             this.cb_SortBy.Size = new System.Drawing.Size(113, 30);
             this.cb_SortBy.TabIndex = 10;
@@ -181,7 +181,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dgvEmployeeList);
             this.panel3.Location = new System.Drawing.Point(16, 71);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(827, 511);
             this.panel3.TabIndex = 16;
@@ -198,7 +198,6 @@
             this.dgvEmployeeList.Size = new System.Drawing.Size(816, 507);
             this.dgvEmployeeList.TabIndex = 5;
             this.dgvEmployeeList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellClick);
-            this.dgvEmployeeList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployeeList_CellContentClick);
             this.dgvEmployeeList.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvEmployeeList_CellMouseDoubleClick);
             // 
             // pictureBox6
@@ -207,7 +206,7 @@
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
             this.pictureBox6.Location = new System.Drawing.Point(811, 24);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(20, 24);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -221,7 +220,7 @@
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox7.Location = new System.Drawing.Point(799, 19);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(43, 35);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -236,7 +235,7 @@
             this.ArchivePictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchivePictureBoxLogo.Image = global::Admin_Login.Properties.Resources.Archive_Icon;
             this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(261, 24);
-            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
             this.ArchivePictureBoxLogo.Name = "ArchivePictureBoxLogo";
             this.ArchivePictureBoxLogo.Size = new System.Drawing.Size(20, 26);
             this.ArchivePictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -250,7 +249,7 @@
             this.ArchivePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.ArchivePictureBox.Location = new System.Drawing.Point(162, 19);
-            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(2);
             this.ArchivePictureBox.Name = "ArchivePictureBox";
             this.ArchivePictureBox.Size = new System.Drawing.Size(138, 37);
             this.ArchivePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -265,7 +264,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(126, 24);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -279,7 +278,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox1.Location = new System.Drawing.Point(20, 20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -307,7 +306,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeList";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.EmployeeList_Load);
