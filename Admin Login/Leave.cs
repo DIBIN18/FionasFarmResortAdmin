@@ -91,7 +91,8 @@ namespace Admin_Login
                     "SELECT L.LeaveID, E.EmployeeID, E.EmployeeFullName, L.StartDate, L.EndDate, L.Reason " +
                     "FROM Leave AS L " +
                     "LEFT JOIN EmployeeInfo AS E " +
-                    "ON L.EmployeeID = E.EmployeeID";
+                    "ON L.EmployeeID = E.EmployeeID";   
+
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
