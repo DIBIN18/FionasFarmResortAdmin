@@ -193,8 +193,6 @@ namespace Admin_Login
 
         public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(sender);
-            Console.WriteLine(e);
             if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvEmployeeList.CurrentRow.Selected = true;
@@ -246,6 +244,24 @@ namespace Admin_Login
                     ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
                     ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
                     ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
+
+                    ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
+                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+                    
+                    try
+                    {
+                        ep.dtpScheduleInEdit.Value = DateTime.Parse(dt.Rows[0][16].ToString());
+                        ep.dtpSchedOutEdit.Value = DateTime.Parse(dt.Rows[0][17].ToString());
+                    }
+                    catch (FormatException)
+                    {
+                        //If wala pang sched blank muna
+                        ep.dtpScheduleInEdit.Text = (dt.Rows[0][16].ToString());
+                        ep.dtpSchedOutEdit.Text = (dt.Rows[0][17].ToString());
+                    }
+
+                    //Console.WriteLine(DateTime.Parse(dt.Rows[0][9].ToString()));
                 }
             }
         }

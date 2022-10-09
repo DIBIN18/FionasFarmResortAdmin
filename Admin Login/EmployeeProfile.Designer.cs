@@ -50,6 +50,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtLeaveCreditsEdit = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.lblLeaveCredits = new System.Windows.Forms.Label();
             this.txtPagIbigEdit = new System.Windows.Forms.TextBox();
             this.txtPhilHealthEdit = new System.Windows.Forms.TextBox();
             this.txtSSSEdit = new System.Windows.Forms.TextBox();
@@ -60,12 +63,12 @@
             this.label20 = new System.Windows.Forms.Label();
             this.dtpSchedOutEdit = new System.Windows.Forms.DateTimePicker();
             this.dtpScheduleInEdit = new System.Windows.Forms.DateTimePicker();
-            this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
-            this.cmbDepartmentEdit = new System.Windows.Forms.ComboBox();
-            this.cmbPositionEdit = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnTrain = new System.Windows.Forms.Button();
             this.btnAddFace = new System.Windows.Forms.Button();
+            this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
+            this.cmbDepartmentEdit = new System.Windows.Forms.ComboBox();
+            this.cmbPositionEdit = new System.Windows.Forms.ComboBox();
             this.cmbEmploymentTypeEdit = new System.Windows.Forms.ComboBox();
             this.lblScheduleOut = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -77,12 +80,13 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblEmploymentType = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbProfilePic = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.txtNameEdit = new System.Windows.Forms.TextBox();
@@ -98,16 +102,14 @@
             this.lblBirthDate = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cmbOtAllowed = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblLeaveCredits = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtLeaveCreditsEdit = new System.Windows.Forms.TextBox();
             this.lblAllowedOT = new System.Windows.Forms.Label();
+            this.btnAddPfp = new System.Windows.Forms.Button();
+            this.btnChangePfp = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -130,9 +132,9 @@
             this.label6.Location = new System.Drawing.Point(2, 2);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(721, 42);
+            this.label6.Size = new System.Drawing.Size(289, 42);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Fiona\'s Farm and Resort - EmployeeProfile";
+            this.label6.Text = "EmployeeProfile";
             // 
             // Logo
             // 
@@ -307,7 +309,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(704, 105);
+            this.lblAddress.Location = new System.Drawing.Point(703, 115);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(0, 19);
@@ -372,11 +374,41 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label13);
-            this.panel1.Location = new System.Drawing.Point(52, 270);
+            this.panel1.Location = new System.Drawing.Point(52, 276);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(857, 250);
             this.panel1.TabIndex = 58;
+            // 
+            // txtLeaveCreditsEdit
+            // 
+            this.txtLeaveCreditsEdit.Location = new System.Drawing.Point(217, 147);
+            this.txtLeaveCreditsEdit.Name = "txtLeaveCreditsEdit";
+            this.txtLeaveCreditsEdit.Size = new System.Drawing.Size(180, 20);
+            this.txtLeaveCreditsEdit.TabIndex = 85;
+            this.txtLeaveCreditsEdit.Visible = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(21, 147);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(113, 17);
+            this.label25.TabIndex = 84;
+            this.label25.Text = "Leave Credits:";
+            // 
+            // lblLeaveCredits
+            // 
+            this.lblLeaveCredits.AutoSize = true;
+            this.lblLeaveCredits.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLeaveCredits.ForeColor = System.Drawing.Color.Gray;
+            this.lblLeaveCredits.Location = new System.Drawing.Point(212, 146);
+            this.lblLeaveCredits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLeaveCredits.Name = "lblLeaveCredits";
+            this.lblLeaveCredits.Size = new System.Drawing.Size(0, 19);
+            this.lblLeaveCredits.TabIndex = 83;
             // 
             // txtPagIbigEdit
             // 
@@ -483,38 +515,6 @@
             this.dtpScheduleInEdit.TabIndex = 72;
             this.dtpScheduleInEdit.Visible = false;
             // 
-            // txtAccumulatedDayOffEdit
-            // 
-            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(217, 120);
-            this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
-            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(180, 20);
-            this.txtAccumulatedDayOffEdit.TabIndex = 69;
-            this.txtAccumulatedDayOffEdit.Visible = false;
-            // 
-            // cmbDepartmentEdit
-            // 
-            this.cmbDepartmentEdit.FormattingEnabled = true;
-            this.cmbDepartmentEdit.Location = new System.Drawing.Point(216, 66);
-            this.cmbDepartmentEdit.Name = "cmbDepartmentEdit";
-            this.cmbDepartmentEdit.Size = new System.Drawing.Size(181, 21);
-            this.cmbDepartmentEdit.TabIndex = 71;
-            this.cmbDepartmentEdit.Visible = false;
-            this.cmbDepartmentEdit.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartmentEdit_SelectionChangeCommitted);
-            this.cmbDepartmentEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDepartmentEdit_KeyPress_1);
-            this.cmbDepartmentEdit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbDepartmentEdit_MouseClick);
-            // 
-            // cmbPositionEdit
-            // 
-            this.cmbPositionEdit.FormattingEnabled = true;
-            this.cmbPositionEdit.Location = new System.Drawing.Point(216, 94);
-            this.cmbPositionEdit.Name = "cmbPositionEdit";
-            this.cmbPositionEdit.Size = new System.Drawing.Size(181, 21);
-            this.cmbPositionEdit.TabIndex = 70;
-            this.cmbPositionEdit.Visible = false;
-            this.cmbPositionEdit.SelectionChangeCommitted += new System.EventHandler(this.cmbPositionEdit_SelectionChangeCommitted);
-            this.cmbPositionEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPositionEdit_KeyPress);
-            this.cmbPositionEdit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbPositionEdit_MouseClick);
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -556,12 +556,44 @@
             this.btnAddFace.UseVisualStyleBackColor = false;
             this.btnAddFace.Click += new System.EventHandler(this.btnAddFace_Click);
             // 
+            // txtAccumulatedDayOffEdit
+            // 
+            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(217, 120);
+            this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
+            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(180, 20);
+            this.txtAccumulatedDayOffEdit.TabIndex = 69;
+            this.txtAccumulatedDayOffEdit.Visible = false;
+            // 
+            // cmbDepartmentEdit
+            // 
+            this.cmbDepartmentEdit.FormattingEnabled = true;
+            this.cmbDepartmentEdit.Location = new System.Drawing.Point(216, 66);
+            this.cmbDepartmentEdit.Name = "cmbDepartmentEdit";
+            this.cmbDepartmentEdit.Size = new System.Drawing.Size(181, 21);
+            this.cmbDepartmentEdit.TabIndex = 71;
+            this.cmbDepartmentEdit.Visible = false;
+            this.cmbDepartmentEdit.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartmentEdit_SelectionChangeCommitted);
+            this.cmbDepartmentEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDepartmentEdit_KeyPress_1);
+            this.cmbDepartmentEdit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbDepartmentEdit_MouseClick);
+            // 
+            // cmbPositionEdit
+            // 
+            this.cmbPositionEdit.FormattingEnabled = true;
+            this.cmbPositionEdit.Location = new System.Drawing.Point(216, 94);
+            this.cmbPositionEdit.Name = "cmbPositionEdit";
+            this.cmbPositionEdit.Size = new System.Drawing.Size(181, 21);
+            this.cmbPositionEdit.TabIndex = 70;
+            this.cmbPositionEdit.Visible = false;
+            this.cmbPositionEdit.SelectionChangeCommitted += new System.EventHandler(this.cmbPositionEdit_SelectionChangeCommitted);
+            this.cmbPositionEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPositionEdit_KeyPress);
+            this.cmbPositionEdit.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbPositionEdit_MouseClick);
+            // 
             // cmbEmploymentTypeEdit
             // 
             this.cmbEmploymentTypeEdit.FormattingEnabled = true;
             this.cmbEmploymentTypeEdit.Items.AddRange(new object[] {
-            "Provisional",
-            "Regular"});
+            "Regular",
+            "Provisional"});
             this.cmbEmploymentTypeEdit.Location = new System.Drawing.Point(217, 38);
             this.cmbEmploymentTypeEdit.Name = "cmbEmploymentTypeEdit";
             this.cmbEmploymentTypeEdit.Size = new System.Drawing.Size(180, 21);
@@ -679,6 +711,17 @@
             this.label17.TabIndex = 6;
             this.label17.Text = "Schedule In:";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(451, 132);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(59, 17);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "Status:";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -734,17 +777,17 @@
             this.label13.TabIndex = 2;
             this.label13.Text = "Position:";
             // 
-            // pictureBox1
+            // pbProfilePic
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(52, 82);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 161);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 60;
-            this.pictureBox1.TabStop = false;
+            this.pbProfilePic.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pbProfilePic.InitialImage = null;
+            this.pbProfilePic.Location = new System.Drawing.Point(52, 82);
+            this.pbProfilePic.Margin = new System.Windows.Forms.Padding(2);
+            this.pbProfilePic.Name = "pbProfilePic";
+            this.pbProfilePic.Size = new System.Drawing.Size(170, 161);
+            this.pbProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbProfilePic.TabIndex = 60;
+            this.pbProfilePic.TabStop = false;
             // 
             // btnEdit
             // 
@@ -925,47 +968,7 @@
             this.cmbOtAllowed.Size = new System.Drawing.Size(121, 21);
             this.cmbOtAllowed.TabIndex = 85;
             this.cmbOtAllowed.Visible = false;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(451, 132);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 17);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Status:";
-            // 
-            // lblLeaveCredits
-            // 
-            this.lblLeaveCredits.AutoSize = true;
-            this.lblLeaveCredits.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLeaveCredits.ForeColor = System.Drawing.Color.Gray;
-            this.lblLeaveCredits.Location = new System.Drawing.Point(212, 146);
-            this.lblLeaveCredits.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLeaveCredits.Name = "lblLeaveCredits";
-            this.lblLeaveCredits.Size = new System.Drawing.Size(0, 19);
-            this.lblLeaveCredits.TabIndex = 83;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(21, 147);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(113, 17);
-            this.label25.TabIndex = 84;
-            this.label25.Text = "Leave Credits:";
-            // 
-            // txtLeaveCreditsEdit
-            // 
-            this.txtLeaveCreditsEdit.Location = new System.Drawing.Point(217, 147);
-            this.txtLeaveCreditsEdit.Name = "txtLeaveCreditsEdit";
-            this.txtLeaveCreditsEdit.Size = new System.Drawing.Size(180, 20);
-            this.txtLeaveCreditsEdit.TabIndex = 85;
-            this.txtLeaveCreditsEdit.Visible = false;
+            this.cmbOtAllowed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbOtAllowed_KeyPress);
             // 
             // lblAllowedOT
             // 
@@ -978,11 +981,35 @@
             this.lblAllowedOT.Size = new System.Drawing.Size(0, 19);
             this.lblAllowedOT.TabIndex = 86;
             // 
+            // btnAddPfp
+            // 
+            this.btnAddPfp.Location = new System.Drawing.Point(87, 248);
+            this.btnAddPfp.Name = "btnAddPfp";
+            this.btnAddPfp.Size = new System.Drawing.Size(105, 23);
+            this.btnAddPfp.TabIndex = 87;
+            this.btnAddPfp.Text = "Upload Photo";
+            this.btnAddPfp.UseVisualStyleBackColor = true;
+            this.btnAddPfp.Visible = false;
+            this.btnAddPfp.Click += new System.EventHandler(this.btnAddPfp_Click);
+            // 
+            // btnChangePfp
+            // 
+            this.btnChangePfp.Location = new System.Drawing.Point(87, 248);
+            this.btnChangePfp.Name = "btnChangePfp";
+            this.btnChangePfp.Size = new System.Drawing.Size(105, 23);
+            this.btnChangePfp.TabIndex = 88;
+            this.btnChangePfp.Text = "Remove Photo";
+            this.btnChangePfp.UseVisualStyleBackColor = true;
+            this.btnChangePfp.Visible = false;
+            this.btnChangePfp.Click += new System.EventHandler(this.btnChangePfp_Click);
+            // 
             // EmployeeProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 609);
+            this.Controls.Add(this.btnChangePfp);
+            this.Controls.Add(this.btnAddPfp);
             this.Controls.Add(this.cmbOtAllowed);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.btnSave);
@@ -998,7 +1025,7 @@
             this.Controls.Add(this.txtNameEdit);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbProfilePic);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -1031,7 +1058,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1052,7 +1079,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbProfilePic;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAddFace;
         public System.Windows.Forms.Label lblEmployeeID;
@@ -1112,7 +1139,9 @@
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.Label lblLeaveCredits;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ComboBox cmbOtAllowed;
         public System.Windows.Forms.Label lblAllowedOT;
+        public System.Windows.Forms.ComboBox cmbOtAllowed;
+        private System.Windows.Forms.Button btnAddPfp;
+        private System.Windows.Forms.Button btnChangePfp;
     }
 }
