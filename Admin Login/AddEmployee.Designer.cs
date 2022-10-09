@@ -478,9 +478,9 @@
             this.label1.Location = new System.Drawing.Point(3, 3);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(769, 42);
+            this.label1.Size = new System.Drawing.Size(357, 42);
             this.label1.TabIndex = 54;
-            this.label1.Text = "Fiona\'s Farm and Resort - AddNewEmployee";
+            this.label1.Text = "Add New Employee";
             // 
             // AddEmployee
             // 

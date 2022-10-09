@@ -43,6 +43,11 @@ namespace Admin_Login
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Employee List";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
+
             Edit_Mode_Off();
             this.Close();
         }
@@ -60,6 +65,19 @@ namespace Admin_Login
 
             dtpSchedOutEdit.Format = DateTimePickerFormat.Custom;
             dtpSchedOutEdit.CustomFormat = "hh:mm:ss tt";
+
+            try
+            {
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+                btnChangePfp.Visible = true;
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
+                btnAddPfp.Visible = true;
+            }
         }
 
         public void Edit_Mode()
@@ -149,11 +167,11 @@ namespace Admin_Login
             dtpDateOfBirth.Visible = false;
             cmbOtAllowed.Visible = false;
 
-            cmbDepartmentEdit.SelectedIndex = -1;
-            cmbEmploymentTypeEdit.SelectedIndex = -1;
-            cmbGenderEdit.SelectedIndex = -1;
-            cmbOtAllowed.SelectedIndex = -1;
-            cmbPositionEdit.SelectedIndex = -1;
+            //cmbDepartmentEdit.SelectedIndex = -1;
+            //cmbEmploymentTypeEdit.SelectedIndex = -1;
+            //cmbGenderEdit.SelectedIndex = -1;
+            //cmbOtAllowed.SelectedIndex = -1;
+            //cmbPositionEdit.SelectedIndex = -1;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -166,13 +184,10 @@ namespace Admin_Login
             int currentAge = DateTime.Today.Year - dtpDateOfBirth.Value.Year;
 
             string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
-            string schedOut = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
+            string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
 
             string deptId = Get_DepartmentID().ToString();
             string posId = Get_PositionID().ToString();
-
-            Console.WriteLine("Dept id: " + deptId);
-            Console.WriteLine("Pos id: " + posId);
 
             string query =
                 "UPDATE EmployeeInfo " +
@@ -210,7 +225,9 @@ namespace Admin_Login
             btnEdit.Visible = true;
 
             Edit_Mode_Off();
-            this.Close();
+            Reload_Profile(lblEmployeeID.Text.ToString());
+
+            //this.Close();
 
             //EmployeeProfile ep = new EmployeeProfile();
             //ep.ShowDialog();
@@ -314,13 +331,52 @@ namespace Admin_Login
 
         public int Set_Allowed_OT(string ot_stat)
         {
-            if (ot_stat == "Yex")
+            if (ot_stat == "Yes")
             {
                 return 1;
             }
             else
             {
                 return 0;
+            }
+        }
+
+        public void Reload_Profile(string profile_Id)
+        {
+            string currentProfile = lblEmployeeID.Text;
+
+            string query = "SELECT * FROM EmployeeInfo WHERE EmployeeID=" + currentProfile;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using(SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    reader.Read();
+
+                    lblName.Text = reader.GetString(1);
+                    lblAddress.Text = reader.GetString(2);
+                    lblSSS.Text = reader.GetString(3);
+                    lblPagIbig.Text = reader.GetString(4);
+                    lblPhilHealth.Text = reader.GetString(5);
+                    lblEmail.Text = reader.GetString(6);
+                    lblMaritalStatus.Text = reader.GetString(7);
+                    lblContact.Text = reader.GetInt64(8).ToString();
+                    lblDateHired.Text = reader.GetString(9);
+                    lblGender.Text = reader.GetString(10);
+                    lblBirthDate.Text = reader.GetDateTime(11).ToString();
+                    lblAge.Text = reader.GetInt32(12).ToString();
+                    lblDepartment.Text = Get_DepartmentName(reader.GetInt64(13).ToString());
+                    lblPosition.Text = Get_PositionName(reader.GetInt64(14).ToString());
+                    lblEmploymentType.Text = reader.GetString(15);
+                    lblScheduleIn.Text = reader.GetString(16);
+                    lblScheduleOut.Text = reader.GetString(17);
+                    lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(18));
+                    lblAccumulated.Text = reader.GetInt32(19).ToString();
+                    lblLeaveCredits.Text = reader.GetInt32(20).ToString();
+                }
             }
         }
 
@@ -351,6 +407,81 @@ namespace Admin_Login
             }
         }
 
+
+        public string Get_DepartmentName(string id)
+        {
+            string query2 = "SELECT DepartmentName FROM Department WHERE DepartmentID='" + id + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
+        public string Display_OT(string id, Boolean emp_ota)
+        {
+            string query2 = "SELECT AllowedOvertime FROM EmployeeInfo WHERE EmployeeID='" + id + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    reader.Read();
+                    if (reader.GetBoolean(0) == true)
+                    {
+                        return "Yes";
+                    }
+                    else
+                    {
+                        return "No";
+                    }
+                }
+            }
+        }
+
+
+        public string Get_PositionName(string id)
+        {
+            string query2 = "SELECT PositionName FROM Position WHERE PositionID='" + id + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
+
         public long Get_PositionID()
         {
             selectedPositionName = cmbPositionEdit.Text;
@@ -378,9 +509,10 @@ namespace Admin_Login
             }
         }
 
+
         private void cmbEmploymentTypeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = true;
+            //e.Handled = true;
         }
 
         private void cmbDepartmentEdit_KeyPress(object sender, KeyPressEventArgs e)
@@ -398,5 +530,58 @@ namespace Admin_Login
             e.Handled = true;
         }
 
+        private void cmbOtAllowed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void btnAddPfp_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files | *.png";
+            ofd.FilterIndex = 1;
+            ofd.Multiselect = false;
+
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+            string sourceFile = string.Empty;
+            string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sourceFile = ofd.FileName;
+            }
+
+            try
+            {
+                System.IO.File.Copy(sourceFile, targetPath);
+            }
+            catch (ArgumentException)
+            {
+               //Do nothing
+            }
+
+            //Load profile pic
+            try
+            {
+                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+                btnChangePfp.Visible = true;
+            }
+            catch (System.IO.FileNotFoundException)
+            {
+                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
+                btnAddPfp.Visible = true;
+            }
+        }
+
+        private void btnChangePfp_Click(object sender, EventArgs e)
+        {
+            //var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+            //pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
+            //btnAddPfp.Visible = true;
+
+            //System.IO.File.Delete(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+        }
     }
 }
