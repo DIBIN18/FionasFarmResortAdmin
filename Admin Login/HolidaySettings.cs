@@ -12,16 +12,16 @@ namespace Admin_Login
 {
     public partial class HolidaySettings : Form
     {
-        Login Login = new Login();
+        Login login = new Login();
         string ClickedButton, cb_HolidayName_Holder;
         //DEVIN CONNECTION STRING
         //static readonly string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
         //static readonly string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
-        //static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL CONNECTION STRING
-        static readonly string connectionString = "Data Source=DESKTOP-B80EBU7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //static readonly string connectionString = "Data Source=DESKTOP-B80EBU7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         static readonly SqlConnection connection = new SqlConnection(connectionString);
         static readonly SqlCommand command = new SqlCommand("select Holiday_ from Holidays", connection);
         static readonly SqlDataAdapter dataadapter = new SqlDataAdapter
@@ -35,11 +35,17 @@ namespace Admin_Login
         }
         private void HolidaySettings_Load(object sender, EventArgs e)
         {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Holidays";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                dg_HolidaysTable.DataSource = data;
+            }
 
-           
-            connection.Close();
-            connection.Open();
-            //holidaysTableAdapter.Fill(fFRUsersDataSet18.Holidays);
+
             cb_HolidayName.DataSource = null;
             Btn_Add_Click(sender, e);
             t_Done.Start();

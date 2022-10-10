@@ -50,7 +50,7 @@ namespace Admin_Login
             this.dgvUsers.AllowUserToResizeRows = false;
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(37, 54);
+            this.dgvUsers.Location = new System.Drawing.Point(37, 44);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.Size = new System.Drawing.Size(761, 150);
             this.dgvUsers.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace Admin_Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 29);
+            this.label1.Location = new System.Drawing.Point(33, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 22);
             this.label1.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace Admin_Login
             this.btnAddUser.BackColor = System.Drawing.Color.Green;
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddUser.Location = new System.Drawing.Point(37, 210);
+            this.btnAddUser.Location = new System.Drawing.Point(37, 200);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(183, 32);
             this.btnAddUser.TabIndex = 2;
@@ -84,9 +84,9 @@ namespace Admin_Login
             this.panel1.Controls.Add(this.btnCreateBackup);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(37, 260);
+            this.panel1.Location = new System.Drawing.Point(37, 238);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(761, 244);
+            this.panel1.Size = new System.Drawing.Size(761, 275);
             this.panel1.TabIndex = 3;
             // 
             // cmbBackupEvery
@@ -99,7 +99,7 @@ namespace Admin_Login
             "Weekly",
             "Monthly",
             "Annually"});
-            this.cmbBackupEvery.Location = new System.Drawing.Point(259, 49);
+            this.cmbBackupEvery.Location = new System.Drawing.Point(259, 69);
             this.cmbBackupEvery.Name = "cmbBackupEvery";
             this.cmbBackupEvery.Size = new System.Drawing.Size(185, 28);
             this.cmbBackupEvery.TabIndex = 8;
@@ -109,7 +109,7 @@ namespace Admin_Login
             this.btnRestoreDatabase.BackColor = System.Drawing.Color.Green;
             this.btnRestoreDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestoreDatabase.ForeColor = System.Drawing.Color.White;
-            this.btnRestoreDatabase.Location = new System.Drawing.Point(24, 145);
+            this.btnRestoreDatabase.Location = new System.Drawing.Point(24, 154);
             this.btnRestoreDatabase.Name = "btnRestoreDatabase";
             this.btnRestoreDatabase.Size = new System.Drawing.Size(170, 33);
             this.btnRestoreDatabase.TabIndex = 7;
@@ -122,7 +122,7 @@ namespace Admin_Login
             this.btnCreateBackup.BackColor = System.Drawing.Color.Green;
             this.btnCreateBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateBackup.ForeColor = System.Drawing.Color.White;
-            this.btnCreateBackup.Location = new System.Drawing.Point(25, 106);
+            this.btnCreateBackup.Location = new System.Drawing.Point(25, 115);
             this.btnCreateBackup.Name = "btnCreateBackup";
             this.btnCreateBackup.Size = new System.Drawing.Size(170, 33);
             this.btnCreateBackup.TabIndex = 4;
@@ -134,7 +134,7 @@ namespace Admin_Login
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(21, 52);
+            this.label3.Location = new System.Drawing.Point(21, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 18);
             this.label3.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace Admin_Login
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Courier New", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(21, 15);
+            this.label2.Location = new System.Drawing.Point(21, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 22);
             this.label2.TabIndex = 4;

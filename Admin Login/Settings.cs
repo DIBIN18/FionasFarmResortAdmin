@@ -72,5 +72,10 @@ namespace Admin_Login
             //    MessageBox.Show("Database Resotored Successfully");
             //}
         }
+
+        private void btnSSSRate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
