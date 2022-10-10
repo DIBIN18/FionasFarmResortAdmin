@@ -13,7 +13,7 @@ namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
-        int rate, EmployeeIDholder;
+        double SSS , PagIbig, PhilHealth;
 
         Login login = new Login();
 
@@ -143,7 +143,7 @@ namespace Admin_Login
                            "PhilHealthContribution, " +
                            "OtherDeduction, " +
                            "TotalDeductions)" +
-                           "select EmployeeID = MAX(A.EmployeeID) ,0.00, 0.00, 0.00, 0.00, 0.00 from EmployeeInfo as A";
+                           "select EmployeeID = MAX(A.EmployeeID) ,4.50, 2.00, 2.00, 0.00, 0.00 from EmployeeInfo as A";
             
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
