@@ -65,22 +65,21 @@ namespace Admin_Login
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dataGridView1.CurrentRow.Selected = true;
-               
-            
-              lblEmpID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                SqlConnection conn = new SqlConnection(login.connectionString);
+                SqlCommand cmd = new SqlCommand("select p.BasicRate From Position AS p JOIN EmployeeInfo AS e ON p.PositionID = e.PositionID Where e.EmployeeID  = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value, conn);
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                //txtRate.Text = dt.Rows[0][0].ToString();
+                lblRate.Text = dt.Rows[0][0].ToString();
+                lblEmpID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
               lblEmpName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
               lblDepartment.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
               lblPosition.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
             
             }
-            //SqlConnection conn = new SqlConnection(login.connectionString);
-            //conn.Open();
-            //SqlCommand cmd2 = new SqlCommand("Select * From Deductions Where EmployeeID = " + dataGridView1.CurrentRow.Cells[0], conn);
-            //SqlDataAdapter sda = new SqlDataAdapter(cmd2);
-            //DataTable dt = new DataTable();
-            //sda.Fill(dt);
-            //lbltotaldeduction.Text = dt.Rows[0][7].ToString();
-            //conn.Close();
+       
         }
      
         private void Deductions_Load(object sender, EventArgs e)
@@ -157,35 +156,6 @@ namespace Admin_Login
         }
 
 
-        //private void btnAdd_Click(object sender, EventArgs e)
-        //{
-
-        //    //if (dataGridView1.CurrentRow.Selected == true)
-        //    //{
-        //    //    using (SqlConnection conn = new SqlConnection(login.connectionString))
-        //    //    {
-        //    //        conn.Open();
-        //    //        SqlCommand cmd = new SqlCommand("UPDATE Deductions SET OtherDeduction = OtherDeduction + " + txtAdd.Text + " WHERE EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, conn);
-        //    //        cmd.ExecuteNonQuery();
-
-        //    //        DialogResult dialogResult = MessageBox.Show(
-        //    //        "Deduction Added to " + dataGridView1.CurrentRow.Cells[0].Value);
-
-        //    //        if (dialogResult == DialogResult.OK)
-        //    //        {
-        //    //            SqlCommand cmd2 = new SqlCommand("Select * from Deductions", conn);
-        //    //            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd2);
-        //    //            DataTable dt = new DataTable();
-        //    //            sqlDataAdapter.Fill(dt);
-        //    //            dataGridView1.DataSource = dt;
-        //    //            txtAdd.Text = "";
-        //    //            conn.Close();
-        //    //        }
-
-
-        //    //    }
-        //    //}
-        //}
 
 
     }
