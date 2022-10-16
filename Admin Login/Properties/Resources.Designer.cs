@@ -143,6 +143,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ApplyLeave_Icon {
+            get {
+                object obj = ResourceManager.GetObject("ApplyLeave_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Archive_Icon {
             get {
                 object obj = ResourceManager.GetObject("Archive_Icon", resourceCulture);
@@ -233,6 +243,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EditPositionAndDepartment_Icon {
+            get {
+                object obj = ResourceManager.GetObject("EditPositionAndDepartment_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap EmployeeList {
             get {
                 object obj = ResourceManager.GetObject("EmployeeList", resourceCulture);
@@ -266,6 +286,16 @@ namespace Admin_Login.Properties {
         internal static System.Drawing.Bitmap Exit_Icon1 {
             get {
                 object obj = ResourceManager.GetObject("Exit_Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Export_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Export_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

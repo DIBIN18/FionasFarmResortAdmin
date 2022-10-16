@@ -14,11 +14,11 @@ namespace Admin_Login
     {
         Login login = new Login();
         EmployeeProfile ep = new EmployeeProfile();
-
-        public EmployeeList()
+        private new string Name;
+        public EmployeeList(string name)
         {
             InitializeComponent();
-
+            Name = name;
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -60,8 +60,9 @@ namespace Admin_Login
 
         private void btnAddEmployee(object sender, EventArgs e)
         {
-            AddEmployee addEmployee = new AddEmployee();
-            addEmployee.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Add Employee";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
 
         private void EmployeeList_Load(object sender, EventArgs e)
@@ -76,7 +77,6 @@ namespace Admin_Login
                 dgvEmployeeList.DataSource = data;
             }
         }
-
         private void btnArchive(object sender, EventArgs e)
         {
             if (dgvEmployeeList.CurrentRow.Selected == true)
@@ -119,19 +119,15 @@ namespace Admin_Login
                     "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
                     "DELETE FROM Deductions WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value +
                     "DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
-
                     SqlCommand cmd = new SqlCommand(query, connection);
-
                     DialogResult dialogResult = MessageBox.Show(
                         " Are you sure you want to Archive Employee? " + 
                         dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + 
                         dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo
                     );
-
                     if (dialogResult == DialogResult.Yes)
                     {
                         cmd.ExecuteNonQuery();
-
                         connection.Close();
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Employee List";
@@ -140,16 +136,13 @@ namespace Admin_Login
                 }
             }
         }
-
         public string getDepartmentName(string selectedID)
         {
             string query = "SELECT DepartmentName FROM Department WHERE DepartmentID='" + selectedID + "'";
-
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 connection.Open();
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -165,16 +158,13 @@ namespace Admin_Login
                 }
             }
         }
-
         public string getPositionName(string selectedID)
         {
             string query = "SELECT PositionName FROM Position WHERE PositionID='" + selectedID + "'";
-
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 connection.Open();
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -190,23 +180,18 @@ namespace Admin_Login
                 }
             }
         }
-
         public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvEmployeeList.CurrentRow.Selected = true;
-
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
-                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" +
-                        dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
-
-
                     ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
                     ep.lblName.Text = dt.Rows[0][1].ToString();
                     ep.lblAddress.Text = dt.Rows[0][2].ToString();
@@ -228,7 +213,6 @@ namespace Admin_Login
                     ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
                     ep.lblLeaveCredits.Text = dt.Rows[0][20].ToString();
                     ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
-             
                     ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
                     ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
                     ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
@@ -238,17 +222,14 @@ namespace Admin_Login
                     ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
                     ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
                     ep.txtLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
-
                     ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
                     ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
                     ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
                     ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
-
                     ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
                     ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
-                    
                     try
                     {
                         ep.dtpScheduleInEdit.Value = DateTime.Parse(dt.Rows[0][16].ToString());
@@ -260,21 +241,18 @@ namespace Admin_Login
                         ep.dtpScheduleInEdit.Text = (dt.Rows[0][16].ToString());
                         ep.dtpSchedOutEdit.Text = (dt.Rows[0][17].ToString());
                     }
-
                     //Console.WriteLine(DateTime.Parse(dt.Rows[0][9].ToString()));
                 }
             }
         }
-
         private void bntViewArchive(object sender, EventArgs e)
         {
-            ArchivedEmployee archivedEmployee = new ArchivedEmployee();
-            archivedEmployee.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Archive Employee";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
-
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
-            
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -292,7 +270,6 @@ namespace Admin_Login
                         "Select * from EmployeeInfo WHERE " +
                         "EmployeeFullName like '" + tb_Search.Text + "%'" +
                         "OR EmployeeID Like '" + tb_Search.Text + "%'", connection);
-
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sqlDataAdapter.Fill(dt);
@@ -300,12 +277,10 @@ namespace Admin_Login
                 }
             }
         }
-
         private void dgvEmployeeList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {          
             ep.ShowDialog();
         }
-
         public string Get_Allowed_OT(string ot_status)
         {
             if (ot_status == "True")

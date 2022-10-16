@@ -17,7 +17,7 @@ namespace Admin_Login
     {
         Login login = new Login();
         private new string Name;
-
+        int i = 1;
         public PayrollReport(string name)
         {
             InitializeComponent();
@@ -50,8 +50,6 @@ namespace Admin_Login
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             dgvDailyPayrollReport.DataSource = dt;
-
-
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -114,55 +112,6 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Holiday Settings";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
-        int i = 1;
-        private void btnExportPayroll(object sender, EventArgs e)
-        {
-            tagadelete();
-            tagaInsertPayrollReport();
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-
-            string filldt = "select * from PayrollReport";
-            SqlCommand command2 = new SqlCommand(filldt, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command2);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            command2.ExecuteNonQuery();
-
-            //Export
-            DialogResult dialogResult = MessageBox.Show("Exporting as Excel file...", "PayrollReport", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                using (ExcelEngine engine = new ExcelEngine())
-                {
-                    IApplication application = engine.Excel;
-                    application.DefaultVersion = ExcelVersion.Xlsx;
-                    // Create a new workbook
-                    IWorkbook workbook = application.Workbooks.Create(1);
-                    IWorksheet Worksheet = workbook.Worksheets[0];
-                    // Import data from the data table
-                    //Worksheet.Range["I1"].Text = "FIONA'S FARM AND RESORT";
-                    Worksheet.ImportDataTable(dt, true, 2, 1, true);
-                    // Create Excel table or listobject and apply table style
-                    IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
-                    table.BuiltInTableStyle = TableBuiltInStyles.TableStyleLight11;
-                    // Autofit the columns
-                    Worksheet.UsedRange.AutofitColumns();
-                    // Save the file
-                    Stream excelStream = File.Create(Path.GetFullPath(@" DataTable - to - Excel" + i.ToString() + ".xlsx "));
-                    i++;
-                    workbook.SaveAs(excelStream);
-                    excelStream.Dispose();
-
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-            
-        }
-     
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -172,7 +121,6 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
-            
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             string query = "insert into PayrollReport "+
@@ -200,7 +148,6 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
-
         private void dgvDailyPayrollReport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -208,6 +155,44 @@ namespace Admin_Login
                 dgvDailyPayrollReport.CurrentRow.Selected = true;
             }
         }
-       
+        private void btn_Export_Click(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            string filldt = "select * from PayrollReport";
+            SqlCommand command2 = new SqlCommand(filldt, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command2);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            command2.ExecuteNonQuery();
+            //Export
+            DialogResult dialogResult = MessageBox.Show("Export as Excel file?", "PayrollReport", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                using (ExcelEngine engine = new ExcelEngine())
+                {
+                    IApplication application = engine.Excel;
+                    application.DefaultVersion = ExcelVersion.Xlsx;
+                    // Create a new workbook
+                    IWorkbook workbook = application.Workbooks.Create(1);
+                    IWorksheet Worksheet = workbook.Worksheets[0];
+                    // Import data from the data table
+                    //Worksheet.Range["I1"].Text = "FIONA'S FARM AND RESORT";
+                    Worksheet.ImportDataTable(dt, true, 2, 1, true);
+                    // Create Excel table or listobject and apply table style
+                    IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
+                    table.BuiltInTableStyle = TableBuiltInStyles.TableStyleLight11;
+                    // Autofit the columns
+                    Worksheet.UsedRange.AutofitColumns();
+                    // Save the file
+                    Stream excelStream = File.Create(Path.GetFullPath(@" DataTable - to - Excel" + i.ToString() + ".xlsx "));
+                    i++;
+                    workbook.SaveAs(excelStream);
+                    excelStream.Dispose();
+                }
+            }
+        }
     }
 }

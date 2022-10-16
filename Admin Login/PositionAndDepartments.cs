@@ -53,14 +53,11 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-
         private void AddDepPos_Click(object sender, EventArgs e)
         {
             AddDepartmentPosition adp = new AddDepartmentPosition();
             adp.ShowDialog();
-
         }
-
         public void PositionAndDepartments_Load(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -70,27 +67,23 @@ namespace Admin_Login
                     "SELECT Position.PositionID, Department.DepartmentName, Position.PositionName, Position.BasicRate " +
                     "FROM Position " +
                     "INNER JOIN Department ON Position.DepartmentID=Department.DepartmentID;";
-
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 dgvPosAndDept.DataSource = data;
             }
         }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            EditDepartmentPosition edp = new EditDepartmentPosition();
-            edp.ShowDialog();
-        }
-
         private void dgvPosAndDept_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvPosAndDept.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvPosAndDept.CurrentRow.Selected = true;
-
             }
+        }
+        private void btn_EditPositionAndDepartment_Click(object sender, EventArgs e)
+        {
+            EditDepartmentPosition edp = new EditDepartmentPosition();
+            edp.ShowDialog();
         }
     }
 }

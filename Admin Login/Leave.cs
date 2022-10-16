@@ -13,10 +13,11 @@ namespace Admin_Login
     public partial class Leave : Form
     {
         Login login = new Login();
-
-        public Leave()
+        private new string Name;
+        public Leave(string name)
         {
             InitializeComponent();
+            Name = name;
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -54,7 +55,6 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -81,7 +81,6 @@ namespace Admin_Login
             //    conn.Close();
             //}
         }
-
         public void AdvancedDay_Offs_Load(object sender, EventArgs e) 
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -92,19 +91,17 @@ namespace Admin_Login
                     "FROM Leave AS L " +
                     "LEFT JOIN EmployeeInfo AS E " +
                     "ON L.EmployeeID = E.EmployeeID";   
-
-
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 dgvLeave.DataSource = data;
             }
         }
-
-        private void btnAdd_Leave_Click(object sender, EventArgs e)
+        private void btn_ApplyLeave_Click(object sender, EventArgs e)
         {
-            ApplyLeave leave = new ApplyLeave();
-            leave.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Apply Leave";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }

@@ -64,25 +64,13 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Employee List";
             TitleLabel.Text = TitleExtension;
-            EmployeeList employeelist = new EmployeeList
+            EmployeeList employeelist = new EmployeeList(AdminName.Text)
             {
                 TopLevel = false
             };
             pnl_Content.Controls.Add(employeelist);
             employeelist.BringToFront();
             employeelist.Show();
-        }
-        private void Btn_AdvancedDayOffs_Click(object sender, EventArgs e)
-        {
-            Text = TitleExtension = "Fiona's Farm and Resort - Leave";
-            TitleLabel.Text = TitleExtension;
-            Leave advanceddayoffs = new Leave
-            {
-                TopLevel = false
-            };
-            pnl_Content.Controls.Add(advanceddayoffs);
-            advanceddayoffs.BringToFront();
-            advanceddayoffs.Show();
         }
         private void Btn_PositionAndDepartments_Click(object sender, EventArgs e)
         {
@@ -158,23 +146,49 @@ namespace Admin_Login
                 holidaysettings.BringToFront();
                 holidaysettings.Show();
             }
+            else if(Text == "Fiona's Farm and Resort - Add Employee")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Add Employee";
+                TitleLabel.Text = TitleExtension;
+                AddEmployee addemployee = new AddEmployee()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(addemployee);
+                addemployee.BringToFront();
+                addemployee.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Archive Employee")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Archive Employee";
+                TitleLabel.Text = TitleExtension;
+                ArchiveEmployee archiveemployee = new ArchiveEmployee()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(archiveemployee);
+                archiveemployee.BringToFront();
+                archiveemployee.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Apply Leave")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Apply leave";
+                TitleLabel.Text = TitleExtension;
+                ArchiveEmployee archiveemployee = new ArchiveEmployee()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(archiveemployee);
+                archiveemployee.BringToFront();
+                archiveemployee.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
             }
-           
-            //jovs
             else if (Text == "Fiona's Farm and Resort - Employee List")
             {
-                TitleExtension = "Fiona's Farm and Resort - Employee List";
-                TitleLabel.Text = TitleExtension;
-                EmployeeList employeeList = new EmployeeList()
-                {
-                    TopLevel = false
-                };
-                pnl_Content.Controls.Add(employeeList);
-                employeeList.BringToFront();
-                employeeList.Show();
+                Btn_EmployeeList_Click(sender, e);
             }
             else
             {
@@ -272,6 +286,18 @@ namespace Admin_Login
                 this.label9.Font = new Font("Century Gothic", 14);
                 this.label10.Font = new Font("Century Gothic", 14);
             }
+        }
+        private void Btn_Leave_Click(object sender, EventArgs e)
+        {
+            Text = TitleExtension = "Fiona's Farm and Resort - Leave";
+            TitleLabel.Text = TitleExtension;
+            Leave leave = new Leave(AdminName.Text)
+            {
+                TopLevel = false
+            };
+            pnl_Content.Controls.Add(leave);
+            leave.BringToFront();
+            leave.Show();
         }
     }
 }

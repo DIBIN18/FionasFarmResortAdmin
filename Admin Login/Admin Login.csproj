@@ -95,11 +95,11 @@
     <Compile Include="Leave.Designer.cs">
       <DependentUpon>Leave.cs</DependentUpon>
     </Compile>
-    <Compile Include="ArchivedEmployee.cs">
+    <Compile Include="ArchiveEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArchivedEmployee.Designer.cs">
-      <DependentUpon>ArchivedEmployee.cs</DependentUpon>
+    <Compile Include="ArchiveEmployee.Designer.cs">
+      <DependentUpon>ArchiveEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceRecord.cs">
       <SubType>Form</SubType>
@@ -185,8 +185,8 @@
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArchivedEmployee.resx">
-      <DependentUpon>ArchivedEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="ArchiveEmployee.resx">
+      <DependentUpon>ArchiveEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceRecord.resx">
       <DependentUpon>AttendanceRecord.cs</DependentUpon>
@@ -357,6 +357,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Clear_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ApplyLeave_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EditPositionAndDepartment_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
