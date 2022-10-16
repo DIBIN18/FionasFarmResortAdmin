@@ -169,6 +169,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="SSSRangeClass.cs" />
     <EmbeddedResource Include="AddDepartmentPosition.resx">
       <DependentUpon>AddDepartmentPosition.cs</DependentUpon>
     </EmbeddedResource>
