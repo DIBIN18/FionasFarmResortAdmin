@@ -172,15 +172,23 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
+            
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             string query = "insert into PayrollReport "+
-                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , sum(TotalHours) as TotalHours, "+
-                "sum(C.OvertimeHours) as OverTimeHours ,  count(C.RegularHoliday) as LegalHollidayHours, count(C.SpecialHoliday) as SpeciallHollidayHours, count(C.EmployeeID) as TotalWorkDays, " +
-                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) as GrossPay , sum(C.Late) as TotalLateHours ,0 as TotalUnderTimeHours, "+
-                "D.SSSContribution as SSSContribution, D.PagIbigContribution as PAGIBIGContribution , "+
-                "D.PhilHealthContribution as PHILHEALTHContribution ,D.OtherDeduction as OtherDeduction, "+
-                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) - D.TotalDeductions as NetPay, null " +
+                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , "+
+                "sum(TotalHours) as TotalHours , "+
+                "sum(C.OvertimeHours) as OverTimeHours , "+
+                "sum(C.RegularHolidayHours) as LegalHollidayHours, "+
+                "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, "+
+                "count(C.EmployeeID) as TotalWorkDays, "+
+                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , "+
+                "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , "+
+                "D.SSSContribution as SSSContribution , "+
+                "D.PagIbigContribution as PAGIBIGContribution , "+
+                "D.PhilHealthContribution as PHILHEALTHContribution , "+
+                "D.OtherDeduction as OtherDeduction , "+
+                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) - D.TotalDeductions as NetPay, null "+
                 "from EmployeeInfo as A "+
                 "left join Position as B "+
                 "on A.PositionID = B.PositionID "+
@@ -200,5 +208,6 @@ namespace Admin_Login
                 dgvDailyPayrollReport.CurrentRow.Selected = true;
             }
         }
+       
     }
 }
