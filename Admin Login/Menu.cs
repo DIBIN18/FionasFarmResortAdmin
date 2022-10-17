@@ -174,13 +174,13 @@ namespace Admin_Login
             {
                 TitleExtension = "Fiona's Farm and Resort - Apply leave";
                 TitleLabel.Text = TitleExtension;
-                ArchiveEmployee archiveemployee = new ArchiveEmployee()
+                ApplyLeave applyleave = new ApplyLeave()
                 {
                     TopLevel = false
                 };
-                pnl_Content.Controls.Add(archiveemployee);
-                archiveemployee.BringToFront();
-                archiveemployee.Show();
+                pnl_Content.Controls.Add(applyleave);
+                applyleave.BringToFront();
+                applyleave.Show();
             }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
@@ -189,6 +189,10 @@ namespace Admin_Login
             else if (Text == "Fiona's Farm and Resort - Employee List")
             {
                 Btn_EmployeeList_Click(sender, e);
+            }
+            else if (Text == "Fiona's Farm and Resort - Leave")
+            {
+                Btn_Leave_Click(sender, e);
             }
             else
             {

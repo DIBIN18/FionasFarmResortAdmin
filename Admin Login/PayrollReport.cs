@@ -17,6 +17,8 @@ namespace Admin_Login
     {
         Login login = new Login();
         private new string Name;
+        FolderBrowserDialog fbd = new FolderBrowserDialog();
+        string filepath = null;
         int i = 1;
         public PayrollReport(string name)
         {
@@ -187,10 +189,26 @@ namespace Admin_Login
                     // Autofit the columns
                     Worksheet.UsedRange.AutofitColumns();
                     // Save the file
-                    Stream excelStream = File.Create(Path.GetFullPath(@" DataTable - to - Excel" + i.ToString() + ".xlsx "));
-                    i++;
-                    workbook.SaveAs(excelStream);
-                    excelStream.Dispose();
+                    if (fbd.ShowDialog() == DialogResult.OK)
+                    {
+                        filepath = fbd.SelectedPath;
+                        FileInfo fi = new FileInfo(Path.GetFullPath(filepath + "\\PayrollReport.xlsx "));
+                        if (!fi.Exists)
+                        {
+                            Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport.xlsx "));
+                            workbook.SaveAs(excelStream);
+                            excelStream.Dispose();
+                            System.Diagnostics.Process.Start(filepath + "\\PayrollReport.xlsx ");
+                            i = i + 1;
+                        }
+                        else
+                        {
+                            Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport" + i + ".xlsx "));
+                            workbook.SaveAs(excelStream);
+                            excelStream.Dispose();
+                            System.Diagnostics.Process.Start(filepath + "\\PayrollReport" + i + ".xlsx ");
+                        }
+                    }
                 }
             }
         }
