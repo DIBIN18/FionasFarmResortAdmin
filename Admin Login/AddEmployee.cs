@@ -8,29 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
-        double SSS , PagIbig, PhilHealth;
-
         Login login = new Login();
-
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
-
         string selectedPositionName = "";
         long selectedPositionId = 0;
-
         public AddEmployee()
         {
             InitializeComponent();
         }
-
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
-
         protected override CreateParams CreateParams
         {
             get
@@ -40,7 +32,6 @@ namespace Admin_Login
                 return cp;
             }
         }
-
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             dtpScheduleIn.Format = DateTimePickerFormat.Time;
@@ -55,13 +46,80 @@ namespace Admin_Login
             dtpScheduleOut.Format = DateTimePickerFormat.Custom;
             dtpScheduleOut.CustomFormat = "hh:mm:ss tt";
         }
-
-        private void btnRegister_Click(object sender, EventArgs e)
+        public void insertNewEmployeeToDeductionTable()
+        {
+            string query = "insert into Deductions " +
+                           "(EmployeeID, " +
+                           "SSSContribution, " +
+                           "PagIbigContribution, " +
+                           "PhilHealthContribution, " +
+                           "OtherDeduction, " +
+                           "TotalDeductions)" +
+                           "select EmployeeID = MAX(A.EmployeeID) ,4.50, 2.00, 2.00, 0.00, 0.00 from EmployeeInfo as A";
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        private void txtDepartment_MouseClick(object sender, MouseEventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                string query =
+                    "SELECT DepartmentName FROM Department";
 
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataSet data = new DataSet();
+                adapter.Fill(data, "DepartmentName");
+                cmbDepartment.DisplayMember = "DepartmentName";
+                cmbDepartment.DataSource = data.Tables["DepartmentName"];
+                cmbDepartment.SelectedIndex = -1;
+                cmbPosition.SelectedIndex = -1;
+            }
+        }
+        private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
+            string query2 = "SELECT DepartmentID FROM Department WHERE DepartmentName='" + selectedDepartmentName + "'";
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        selectedDepartmentId = reader.GetInt64(0);
+                        reader.Close();
+                    }
+                }
+            }
+            cmbPosition.SelectedIndex = -1;
+        }
+        private void txtPosition_MouseClick(object sender, MouseEventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "SELECT PositionName FROM Position WHERE DepartmentID='" + selectedDepartmentId + "'";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataSet data = new DataSet();
+                adapter.Fill(data, "PositionName");
+                cmbPosition.DisplayMember = "PositionName";
+                cmbPosition.DataSource = data.Tables["PositionName"];
+            }
+        }
+        private void btn_Register_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
                 string query = "INSERT INTO EmployeeInfo(" +
                     "EmployeeFullName, " +
                     "Address, " +
@@ -100,10 +158,8 @@ namespace Admin_Login
                     "@ScheduleIn," +
                     "@ScheduleOut," +
                     "@AccumulatedDayOffs)";
-
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
-
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
@@ -112,7 +168,7 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", Int32.Parse(txtPhilhealthNo.Text));
                 cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
                 cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
-                cmd.Parameters.AddWithValue("@ContactNumber", Int32.Parse(txtContactNum.Text));
+                cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
                 cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
                 cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
                 cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
@@ -122,98 +178,13 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
                 cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                 cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
-
-
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
-
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
                 insertNewEmployeeToDeductionTable();
                 MessageBox.Show("Successfully Added Employee!");
                 clearAll();
-            }
-        }
-        public void insertNewEmployeeToDeductionTable()
-        {
-            string query = "insert into Deductions " +
-                           "(EmployeeID, " +
-                           "SSSContribution, " +
-                           "PagIbigContribution, " +
-                           "PhilHealthContribution, " +
-                           "OtherDeduction, " +
-                           "TotalDeductions)" +
-                           "select EmployeeID = MAX(A.EmployeeID) ,4.50, 2.00, 2.00, 0.00, 0.00 from EmployeeInfo as A";
-            
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-            }
-        }
-        private void BtnBack_Click(object sender, EventArgs e)
-        {
-            Menu menu = (Menu)Application.OpenForms["Menu"];           
-            menu.Text = "Fiona's Farm and Resort - Employee List";
-            menu.Menu_Load(menu, EventArgs.Empty);
-            Dispose();
-        }
-
-        private void txtDepartment_MouseClick(object sender, MouseEventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                string query =
-                    "SELECT DepartmentName FROM Department";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataSet data = new DataSet();
-                adapter.Fill(data, "DepartmentName");
-                cmbDepartment.DisplayMember = "DepartmentName";
-                cmbDepartment.DataSource = data.Tables["DepartmentName"];
-                cmbDepartment.SelectedIndex = -1;
-                cmbPosition.SelectedIndex = -1;
-            }
-        }
-
-        private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
-            string query2 = "SELECT DepartmentID FROM Department WHERE DepartmentName='" + selectedDepartmentName + "'";
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            using (SqlCommand command = new SqlCommand(query2, connection))
-            {
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        selectedDepartmentId = reader.GetInt64(0);
-                        reader.Close();
-                    }
-                }
-            }
-            cmbPosition.SelectedIndex = -1;
-        }
-
-        private void txtPosition_MouseClick(object sender, MouseEventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                string query =
-                    "SELECT PositionName FROM Position WHERE DepartmentID='" + selectedDepartmentId + "'";
-
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataSet data = new DataSet();
-                adapter.Fill(data, "PositionName");
-                cmbPosition.DisplayMember = "PositionName";
-                cmbPosition.DataSource = data.Tables["PositionName"];
             }
         }
 
@@ -226,7 +197,6 @@ namespace Admin_Login
             using (SqlCommand command = new SqlCommand(query, connection))
             {
                 connection.Open();
-
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -238,7 +208,6 @@ namespace Admin_Login
                 }
             }
         }
-
         public void clearAll()
         {
             txtFullName.Text = "";
@@ -255,6 +224,12 @@ namespace Admin_Login
             cmbDepartment.Text = "";
             cmbPosition.Text = "";
         }
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Employee List";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
+        }
     }
  }
-

@@ -60,11 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDepartmentPosition.cs">
+    <Compile Include="AddDepartmentAndPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDepartmentPosition.Designer.cs">
-      <DependentUpon>AddDepartmentPosition.cs</DependentUpon>
+    <Compile Include="AddDepartmentAndPosition.Designer.cs">
+      <DependentUpon>AddDepartmentAndPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="AddEmployee.cs">
       <SubType>Form</SubType>
@@ -78,11 +78,11 @@
     <Compile Include="ApplyLeave.Designer.cs">
       <DependentUpon>ApplyLeave.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditDepartmentPosition.cs">
+    <Compile Include="EditDepartmentAndPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditDepartmentPosition.Designer.cs">
-      <DependentUpon>EditDepartmentPosition.cs</DependentUpon>
+    <Compile Include="EditDepartmentAndPosition.Designer.cs">
+      <DependentUpon>EditDepartmentAndPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="FFRUsersDataSet20.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -155,11 +155,11 @@
     <Compile Include="PayrollReport.Designer.cs">
       <DependentUpon>PayrollReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="PositionAndDepartments.cs">
+    <Compile Include="DepartmentAndPosition.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PositionAndDepartments.Designer.cs">
-      <DependentUpon>PositionAndDepartments.cs</DependentUpon>
+    <Compile Include="DepartmentAndPosition.Designer.cs">
+      <DependentUpon>DepartmentAndPosition.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,8 +170,8 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SSSRangeClass.cs" />
-    <EmbeddedResource Include="AddDepartmentPosition.resx">
-      <DependentUpon>AddDepartmentPosition.cs</DependentUpon>
+    <EmbeddedResource Include="AddDepartmentAndPosition.resx">
+      <DependentUpon>AddDepartmentAndPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
@@ -179,8 +179,8 @@
     <EmbeddedResource Include="ApplyLeave.resx">
       <DependentUpon>ApplyLeave.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditDepartmentPosition.resx">
-      <DependentUpon>EditDepartmentPosition.cs</DependentUpon>
+    <EmbeddedResource Include="EditDepartmentAndPosition.resx">
+      <DependentUpon>EditDepartmentAndPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>
@@ -215,8 +215,8 @@
     <EmbeddedResource Include="PayrollReport.resx">
       <DependentUpon>PayrollReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PositionAndDepartments.resx">
-      <DependentUpon>PositionAndDepartments.cs</DependentUpon>
+    <EmbeddedResource Include="DepartmentAndPosition.resx">
+      <DependentUpon>DepartmentAndPosition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -366,6 +366,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Export_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Register_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Back_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddDepartment_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AddPosition_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveChanges_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />

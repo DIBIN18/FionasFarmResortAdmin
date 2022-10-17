@@ -16,14 +16,14 @@ namespace Admin_Login
     public partial class PayrollReport : Form
     {
         Login login = new Login();
-        private new string Name;
+        //private new string Name;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         string filepath = null;
         int i = 1;
-        public PayrollReport(string name)
+        public PayrollReport(/*string name*/)
         {
             InitializeComponent();
-            Name = name;
+            //Name = name;
         }
         private void PayrollReport_Load(object sender, EventArgs e)
         {
@@ -199,7 +199,7 @@ namespace Admin_Login
                             workbook.SaveAs(excelStream);
                             excelStream.Dispose();
                             System.Diagnostics.Process.Start(filepath + "\\PayrollReport.xlsx ");
-                            i = i + 1;
+                            i++;
                         }
                         else
                         {

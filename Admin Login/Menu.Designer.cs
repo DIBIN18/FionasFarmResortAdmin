@@ -175,15 +175,15 @@ namespace Admin_Login
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(83, 314);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(245, 22);
+            this.label5.Size = new System.Drawing.Size(295, 27);
             this.label5.TabIndex = 19;
-            this.label5.Tag = "btn_PositionAndDepartments";
-            this.label5.Text = "Position and Departments";
-            this.label5.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
+            this.label5.Tag = "btn_DepartmentAndPosition";
+            this.label5.Text = "Department and Position";
+            this.label5.Click += new System.EventHandler(this.Btn_DepartmentAndPosition_Click);
             // 
             // label6
             // 
@@ -481,8 +481,8 @@ namespace Admin_Login
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox10.TabIndex = 20;
             this.pictureBox10.TabStop = false;
-            this.pictureBox10.Tag = "btn_PositionAndDepartments";
-            this.pictureBox10.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
+            this.pictureBox10.Tag = "btn_DepartmentAndPosition";
+            this.pictureBox10.Click += new System.EventHandler(this.Btn_DepartmentAndPosition_Click);
             // 
             // pictureBox9
             // 
@@ -494,8 +494,8 @@ namespace Admin_Login
             this.pictureBox9.Size = new System.Drawing.Size(444, 58);
             this.pictureBox9.TabIndex = 18;
             this.pictureBox9.TabStop = false;
-            this.pictureBox9.Tag = "btn_PositionAndDepartments";
-            this.pictureBox9.Click += new System.EventHandler(this.Btn_PositionAndDepartments_Click);
+            this.pictureBox9.Tag = "btn_DepartmentAndPosition";
+            this.pictureBox9.Click += new System.EventHandler(this.Btn_DepartmentAndPosition_Click);
             // 
             // pictureBox11
             // 

@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Add_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Add_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Deductions_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Deductions_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -129,6 +126,9 @@
   </data>
   <data name="EditPositionAndDepartment_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EditPositionAndDepartment_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddDepartment_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddDepartment_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Timed-InToday_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Timed-InToday_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +157,14 @@
   <data name="PayrollReport_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PayrollReport_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Clear_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Clear_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="HolidaySettings_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HolidaySettings_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Register_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Register_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Edit_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,8 +175,17 @@
   <data name="Timed-In_Today_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Timed-In_Today_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Back_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AdvancedDay-Offs_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AdvancedDay-Offs_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddPosition_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AddPosition_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EmployeeList_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EmployeeList_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +205,8 @@
   <data name="Dashboard_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dashboard_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LateToday_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LateToday_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Add_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AddNew_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AddNew_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,8 +229,11 @@
   <data name="AbsentToday_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AbsentToday_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Clear_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Clear_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LateToday_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LateToday_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Export_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Export_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cancel_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,7 +244,7 @@
   <data name="Admin_Icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Admin_Icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Export_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Export_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SaveChanges_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SaveChanges_Icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

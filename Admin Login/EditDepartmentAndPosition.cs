@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Admin_Login
 {
-    public partial class EditDepartmentPosition : Form
+    public partial class EditDepartmentAndPosition : Form
     {
         Login login = new Login();
 
@@ -23,7 +23,7 @@ namespace Admin_Login
         BindingSource PbindingSource = new BindingSource();
         SqlCommandBuilder Pcmbl;
 
-        public EditDepartmentPosition()
+        public EditDepartmentAndPosition()
         {
             InitializeComponent();
         }
@@ -61,13 +61,11 @@ namespace Admin_Login
             PbindingSource.DataSource = pdt;
             dgvPositions.DataSource = PbindingSource;
             conn.Close();
-
             dgvDeparments.Columns["DepartmentID"].ReadOnly = true;
             dgvPositions.Columns["PositionId"].ReadOnly = true;
             dgvPositions.Columns["DepartmentID"].ReadOnly = true;
         }
-
-        private void btnSaveDepartment_Click(object sender, EventArgs e)
+        private void btn_SaveDepartmentChanges_Click(object sender, EventArgs e)
         {
             DsqlDataAdapter.Update((DataTable)DbindingSource.DataSource);
             MessageBox.Show("Department Changes Saced");
@@ -77,8 +75,7 @@ namespace Admin_Login
                 EditDepartmentPosition_Load(this, null);
             }
         }
-
-        private void btnSavePosition_Click(object sender, EventArgs e)
+        private void btn_SavePositionChanges_Click(object sender, EventArgs e)
         {
             PsqlDataAdapter.Update((DataTable)PbindingSource.DataSource);
             MessageBox.Show("Position Changes Saved");
@@ -88,10 +85,12 @@ namespace Admin_Login
                 EditDepartmentPosition_Load(this, null);
             }
         }
-
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btn_Back_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Department and Position";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
         }
     }
 }

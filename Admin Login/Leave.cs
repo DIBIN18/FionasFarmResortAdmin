@@ -13,11 +13,9 @@ namespace Admin_Login
     public partial class Leave : Form
     {
         Login login = new Login();
-        private new string Name;
-        public Leave(string name)
+        public Leave()
         {
             InitializeComponent();
-            Name = name;
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {

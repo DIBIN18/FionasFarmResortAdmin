@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace Admin_Login
 {
-    public partial class PositionAndDepartments : Form
+    public partial class DepartmentAndPosition : Form
     {
         Login login = new Login();
-        public PositionAndDepartments()
+        public DepartmentAndPosition()
         {
             InitializeComponent();
         }
@@ -53,11 +53,6 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-        private void AddDepPos_Click(object sender, EventArgs e)
-        {
-            AddDepartmentPosition adp = new AddDepartmentPosition();
-            adp.ShowDialog();
-        }
         public void PositionAndDepartments_Load(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -82,8 +77,15 @@ namespace Admin_Login
         }
         private void btn_EditPositionAndDepartment_Click(object sender, EventArgs e)
         {
-            EditDepartmentPosition edp = new EditDepartmentPosition();
-            edp.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Edit Department And Position";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
+        private void btn_AddDepPos_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Add Department And Position";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }

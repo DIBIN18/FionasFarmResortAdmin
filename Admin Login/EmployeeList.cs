@@ -14,11 +14,9 @@ namespace Admin_Login
     {
         Login login = new Login();
         EmployeeProfile ep = new EmployeeProfile();
-        private new string Name;
-        public EmployeeList(string name)
+        public EmployeeList()
         {
             InitializeComponent();
-            Name = name;
         }
         private void Cb_SortBy_Click(object sender, EventArgs e)
         {
@@ -47,7 +45,6 @@ namespace Admin_Login
                 cb_SortBy.Text = "Default";
                 cb_SortBy.ForeColor = Color.Silver;
             }
-
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
@@ -57,7 +54,6 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Black;
             }
         }
-
         private void btnAddEmployee(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -84,7 +80,6 @@ namespace Admin_Login
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
-
                     string query = //"SET IDENTITY_INSERT Archive ON " +
                     "Insert INTO Archive (" +
                     "EmployeeID , " +

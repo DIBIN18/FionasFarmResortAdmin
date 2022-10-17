@@ -8,20 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Admin_Login
 {
-    public partial class AddDepartmentPosition : Form
+    public partial class AddDepartmentAndPosition : Form
     {
         AddEmployee ae = new AddEmployee();
         Login login = new Login();
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
-        public AddDepartmentPosition()
+        public AddDepartmentAndPosition()
         {
             InitializeComponent();
         }
-
         //DROP SHADOw
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -33,12 +31,6 @@ namespace Admin_Login
                 return cp;
             }
         }
-
-        private void btnClose_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         // MAKE BASIC RATE TEXT BOX ACCEPT ONLY NUMBERS
         private void txtBasicRate_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -46,26 +38,12 @@ namespace Admin_Login
             {
                 e.Handled = true;
             }
-
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
-
-        private void btnAddDepartment_Click(object sender, EventArgs e)
-        {
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
-            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("New Department Has been Added");
-            txtDepartmentName.Text = "";
-        }
-
         private void cmbDepartment_MouseClick(object sender, MouseEventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -81,7 +59,6 @@ namespace Admin_Login
                 cmbDepartment.DataSource = data.Tables["DepartmentName"];
             }
         }
-
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
@@ -103,8 +80,18 @@ namespace Admin_Login
                 }
             }
         }
-
-        private void btnAddPosition_Click(object sender, EventArgs e)
+        private void btn_AddDepartment_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
+            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            MessageBox.Show("New Department Has been Added");
+            txtDepartmentName.Text = "";
+        }
+        private void btn_AddPosition_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -115,30 +102,31 @@ namespace Admin_Login
                     "VALUES" +
                     "(@PositionName, @DepartmentID, @BasicRate)",
                     connection);
-
                 // CONVERT STRING TO DECIMAL
                 decimal string_to_decimal;
                 if (Decimal.TryParse(txtBasicRate.Text, out string_to_decimal))
                 {
                     Console.WriteLine(string_to_decimal.ToString("0.##"));
                 }
-
                 else
                 {
                     Console.WriteLine("not a Decimal");
                 }
-
                 command.Parameters.AddWithValue("@PositionName", txtPositionName.Text);
                 command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                 command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
                 command.ExecuteNonQuery();
                 MessageBox.Show("New Position Has been Added");
-
                 txtPositionName.Text = "";
                 cmbDepartment.SelectedIndex = -1;
                 txtBasicRate.Text = "";
             }
         }
-
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Department and Position";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
     }
 }

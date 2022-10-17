@@ -22,7 +22,6 @@ namespace Admin_Login
             int height
             );
         string TitleExtension;
-
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -34,7 +33,6 @@ namespace Admin_Login
                 return cp;
             }
         }
-
         public Menu(string name)
         {
             InitializeComponent();
@@ -64,25 +62,13 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Employee List";
             TitleLabel.Text = TitleExtension;
-            EmployeeList employeelist = new EmployeeList(AdminName.Text)
+            EmployeeList employeelist = new EmployeeList
             {
                 TopLevel = false
             };
             pnl_Content.Controls.Add(employeelist);
             employeelist.BringToFront();
             employeelist.Show();
-        }
-        private void Btn_PositionAndDepartments_Click(object sender, EventArgs e)
-        {
-            Text = TitleExtension = "Fiona's Farm and Resort - Position and Departments";
-            TitleLabel.Text = TitleExtension;
-            PositionAndDepartments positionanddepartments = new PositionAndDepartments 
-            { 
-                TopLevel = false 
-            };
-            pnl_Content.Controls.Add(positionanddepartments);
-            positionanddepartments.BringToFront();
-            positionanddepartments.Show();
         }
         private void Btn_Deductions_Click(object sender, EventArgs e)
         {
@@ -112,7 +98,7 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Payroll Report";
             TitleLabel.Text = TitleExtension;
-            PayrollReport payrollreport = new PayrollReport(AdminName.Text)
+            PayrollReport payrollreport = new PayrollReport
             {
                 TopLevel = false
             };
@@ -182,6 +168,30 @@ namespace Admin_Login
                 applyleave.BringToFront();
                 applyleave.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Add Department And Position")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Add Department And Position";
+                TitleLabel.Text = TitleExtension;
+                AddDepartmentAndPosition adddepartmentandposition = new AddDepartmentAndPosition()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(adddepartmentandposition);
+                adddepartmentandposition.BringToFront();
+                adddepartmentandposition.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Edit Department And Position")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Edit Department And Position";
+                TitleLabel.Text = TitleExtension;
+                EditDepartmentAndPosition editdepartmentandposition = new EditDepartmentAndPosition()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(editdepartmentandposition);
+                editdepartmentandposition.BringToFront();
+                editdepartmentandposition.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
@@ -194,11 +204,14 @@ namespace Admin_Login
             {
                 Btn_Leave_Click(sender, e);
             }
+            else if(Text == "Fiona's Farm and Resort - Department and Position")
+            {
+                Btn_DepartmentAndPosition_Click(sender, e);
+            }
             else
             {
                 Btn_Dashboard_Click(sender, e);
             }
-
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -224,7 +237,7 @@ namespace Admin_Login
                 this.label9.Font = new Font("Century Gothic", 14);
                 this.label10.Font = new Font("Century Gothic", 14);
             }
-            else if (this.Text == "Fiona's Farm and Resort - Position and Departments")
+            else if (this.Text == "Fiona's Farm and Resort - Department and Position")
             {
                 this.label5.Font = new Font("Century Gothic", 14, FontStyle.Bold);
                 this.label1.Font = new Font("Century Gothic", 14);
@@ -295,13 +308,25 @@ namespace Admin_Login
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Leave";
             TitleLabel.Text = TitleExtension;
-            Leave leave = new Leave(AdminName.Text)
+            Leave leave = new Leave
             {
                 TopLevel = false
             };
             pnl_Content.Controls.Add(leave);
             leave.BringToFront();
             leave.Show();
+        }
+        private void Btn_DepartmentAndPosition_Click(object sender, EventArgs e)
+        {
+            Text = TitleExtension = "Fiona's Farm and Resort - Department and Position";
+            TitleLabel.Text = TitleExtension;
+            DepartmentAndPosition departmentandposition = new DepartmentAndPosition
+            {
+                TopLevel = false
+            };
+            pnl_Content.Controls.Add(departmentandposition);
+            departmentandposition.BringToFront();
+            departmentandposition.Show();
         }
     }
 }

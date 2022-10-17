@@ -265,7 +265,6 @@ namespace Admin_Login
                 }
             }
         }
-
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];

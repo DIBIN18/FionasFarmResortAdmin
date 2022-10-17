@@ -44,8 +44,6 @@
             this.txtPhilhealthNo = new System.Windows.Forms.TextBox();
             this.txtEmailAdd = new System.Windows.Forms.TextBox();
             this.txtContactNum = new System.Windows.Forms.TextBox();
-            this.btnRegister = new System.Windows.Forms.Button();
-            this.BtnBack = new System.Windows.Forms.Button();
             this.txtGender = new System.Windows.Forms.ComboBox();
             this.txtDateHired = new System.Windows.Forms.DateTimePicker();
             this.txtDateofBirth = new System.Windows.Forms.DateTimePicker();
@@ -62,13 +60,23 @@
             this.dtpScheduleOut = new System.Windows.Forms.DateTimePicker();
             this.FullName = new System.Windows.Forms.Label();
             this.txtFullName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSSSID
             // 
             this.txtSSSID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSSSID.Location = new System.Drawing.Point(192, 165);
-            this.txtSSSID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSSSID.Location = new System.Drawing.Point(215, 164);
+            this.txtSSSID.Margin = new System.Windows.Forms.Padding(4);
             this.txtSSSID.Multiline = true;
             this.txtSSSID.Name = "txtSSSID";
             this.txtSSSID.Size = new System.Drawing.Size(365, 47);
@@ -77,8 +85,8 @@
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(192, 85);
-            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAddress.Location = new System.Drawing.Point(215, 84);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(365, 47);
@@ -143,7 +151,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(622, 235);
+            this.label9.Location = new System.Drawing.Point(612, 235);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 22);
@@ -165,7 +173,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(622, 294);
+            this.label11.Location = new System.Drawing.Point(612, 294);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 22);
@@ -176,7 +184,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(622, 364);
+            this.label12.Location = new System.Drawing.Point(612, 364);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(130, 22);
@@ -187,7 +195,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(622, 413);
+            this.label13.Location = new System.Drawing.Point(612, 413);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(166, 22);
@@ -197,8 +205,8 @@
             // txtPagibigNo
             // 
             this.txtPagibigNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagibigNo.Location = new System.Drawing.Point(192, 246);
-            this.txtPagibigNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPagibigNo.Location = new System.Drawing.Point(215, 245);
+            this.txtPagibigNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPagibigNo.Multiline = true;
             this.txtPagibigNo.Name = "txtPagibigNo";
             this.txtPagibigNo.Size = new System.Drawing.Size(365, 43);
@@ -207,8 +215,8 @@
             // txtPhilhealthNo
             // 
             this.txtPhilhealthNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhilhealthNo.Location = new System.Drawing.Point(192, 322);
-            this.txtPhilhealthNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPhilhealthNo.Location = new System.Drawing.Point(215, 321);
+            this.txtPhilhealthNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhilhealthNo.Multiline = true;
             this.txtPhilhealthNo.Name = "txtPhilhealthNo";
             this.txtPhilhealthNo.Size = new System.Drawing.Size(365, 43);
@@ -217,8 +225,8 @@
             // txtEmailAdd
             // 
             this.txtEmailAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailAdd.Location = new System.Drawing.Point(192, 396);
-            this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAdd.Location = new System.Drawing.Point(215, 395);
+            this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAdd.Multiline = true;
             this.txtEmailAdd.Name = "txtEmailAdd";
             this.txtEmailAdd.Size = new System.Drawing.Size(363, 43);
@@ -227,40 +235,12 @@
             // txtContactNum
             // 
             this.txtContactNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNum.Location = new System.Drawing.Point(192, 471);
-            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactNum.Location = new System.Drawing.Point(215, 470);
+            this.txtContactNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNum.Multiline = true;
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.Size = new System.Drawing.Size(365, 40);
             this.txtContactNum.TabIndex = 23;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.BackColor = System.Drawing.Color.Green;
-            this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.Color.White;
-            this.btnRegister.Location = new System.Drawing.Point(406, 580);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(144, 44);
-            this.btnRegister.TabIndex = 26;
-            this.btnRegister.Text = "Register";
-            this.btnRegister.UseVisualStyleBackColor = false;
-            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
-            // 
-            // BtnBack
-            // 
-            this.BtnBack.BackColor = System.Drawing.Color.Green;
-            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnBack.ForeColor = System.Drawing.Color.White;
-            this.BtnBack.Location = new System.Drawing.Point(629, 580);
-            this.BtnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.BtnBack.Name = "BtnBack";
-            this.BtnBack.Size = new System.Drawing.Size(144, 46);
-            this.BtnBack.TabIndex = 27;
-            this.BtnBack.Text = "Back";
-            this.BtnBack.UseVisualStyleBackColor = false;
-            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // txtGender
             // 
@@ -303,7 +283,7 @@
             // 
             this.Department.AutoSize = true;
             this.Department.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Department.Location = new System.Drawing.Point(622, 18);
+            this.Department.Location = new System.Drawing.Point(612, 18);
             this.Department.Name = "Department";
             this.Department.Size = new System.Drawing.Size(130, 22);
             this.Department.TabIndex = 35;
@@ -313,7 +293,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(624, 82);
+            this.label15.Location = new System.Drawing.Point(614, 82);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(106, 22);
             this.label15.TabIndex = 37;
@@ -371,7 +351,7 @@
             this.dtpScheduleIn.CustomFormat = "hh-mm";
             this.dtpScheduleIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpScheduleIn.Location = new System.Drawing.Point(628, 504);
+            this.dtpScheduleIn.Location = new System.Drawing.Point(618, 504);
             this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpScheduleIn.Name = "dtpScheduleIn";
             this.dtpScheduleIn.Size = new System.Drawing.Size(207, 27);
@@ -382,7 +362,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.Control;
             this.label16.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(624, 471);
+            this.label16.Location = new System.Drawing.Point(614, 471);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(142, 22);
             this.label16.TabIndex = 43;
@@ -403,7 +383,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(622, 158);
+            this.label18.Location = new System.Drawing.Point(612, 158);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(190, 22);
             this.label18.TabIndex = 43;
@@ -447,12 +427,100 @@
             // txtFullName
             // 
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFullName.Location = new System.Drawing.Point(192, 12);
+            this.txtFullName.Location = new System.Drawing.Point(215, 11);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFullName.Multiline = true;
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(365, 47);
             this.txtFullName.TabIndex = 49;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(400, 588);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 29);
+            this.label1.TabIndex = 51;
+            this.label1.Tag = "btn_Register";
+            this.label1.Text = "Register";
+            this.label1.Click += new System.EventHandler(this.btn_Register_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(633, 588);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 29);
+            this.label2.TabIndex = 54;
+            this.label2.Tag = "btn_Back";
+            this.label2.Text = "Back";
+            this.label2.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Back_Icon;
+            this.pictureBox3.Location = new System.Drawing.Point(706, 584);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 55;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "btn_Back";
+            this.pictureBox3.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
+            this.pictureBox4.Location = new System.Drawing.Point(616, 580);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(144, 46);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 53;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Tag = "btn_Back";
+            this.pictureBox4.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::Admin_Login.Properties.Resources.Register_Icon;
+            this.pictureBox2.Location = new System.Drawing.Point(515, 588);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(27, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 52;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "btn_Register";
+            this.pictureBox2.Click += new System.EventHandler(this.btn_Register_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
+            this.pictureBox1.Location = new System.Drawing.Point(383, 580);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(184, 46);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "btn_Register";
+            this.pictureBox1.Click += new System.EventHandler(this.btn_Register_Click);
             // 
             // AddEmployee
             // 
@@ -460,6 +528,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1153, 734);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtFullName);
             this.Controls.Add(this.FullName);
             this.Controls.Add(this.dtpScheduleOut);
@@ -476,8 +550,6 @@
             this.Controls.Add(this.txtDateofBirth);
             this.Controls.Add(this.txtDateHired);
             this.Controls.Add(this.txtGender);
-            this.Controls.Add(this.BtnBack);
-            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtContactNum);
             this.Controls.Add(this.txtEmailAdd);
             this.Controls.Add(this.txtPhilhealthNo);
@@ -495,12 +567,17 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtSSSID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddEmployee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "btn_Back";
             this.Load += new System.EventHandler(this.AddEmployee_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,8 +600,6 @@
         private System.Windows.Forms.TextBox txtPhilhealthNo;
         private System.Windows.Forms.TextBox txtEmailAdd;
         private System.Windows.Forms.TextBox txtContactNum;
-        private System.Windows.Forms.Button btnRegister;
-        private System.Windows.Forms.Button BtnBack;
         private System.Windows.Forms.ComboBox txtGender;
         private System.Windows.Forms.DateTimePicker txtDateHired;
         private System.Windows.Forms.DateTimePicker txtDateofBirth;
@@ -541,5 +616,11 @@
         private System.Windows.Forms.TextBox txtFullName;
         public System.Windows.Forms.ComboBox cmbDepartment;
         public System.Windows.Forms.ComboBox cmbPosition;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
