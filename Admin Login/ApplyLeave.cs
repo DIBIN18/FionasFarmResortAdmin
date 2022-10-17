@@ -25,9 +25,9 @@ namespace Admin_Login
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Leave l = new Leave();
-            l.AdvancedDay_Offs_Load(null, null);
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Leave";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
 
         private const int CS_DropShadow = 0x00020000;
