@@ -18,7 +18,7 @@ namespace Admin_Login
         Login login = new Login();
         //private new string Name;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
-        PayrollIndividual payrollIndividual = new PayrollIndividual();
+        Payroll payrollIndividual = new Payroll();
         string filepath = null;
         int i = 1;
         public PayrollReport(/*string name*/)
@@ -108,12 +108,6 @@ namespace Admin_Login
                 lbl_Period.Text = "";
                 lbl_Holiday.Text = "";
             }
-        }
-        private void Btn_HolidaySettings_Click(object sender, EventArgs e)
-        {
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Holiday Settings";
-            menu.Menu_Load(menu, EventArgs.Empty);
         }
         public void tagadelete()
         {
@@ -213,10 +207,11 @@ namespace Admin_Login
                 }
             }
         }
-
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            payrollIndividual.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Payroll";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }

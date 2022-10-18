@@ -15,11 +15,11 @@ namespace Admin_Login
         Login login = new Login();
         string ClickedButton, cb_HolidayName_Holder;
         //DEVIN CONNECTION STRING
-        //static readonly string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        static readonly string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
         //static readonly string connectionString = "Data Source=DESKTOP-N4JRA7K\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
-        static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //static readonly string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL CONNECTION STRING
         //static readonly string connectionString = "Data Source=DESKTOP-B80EBU7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         static readonly SqlConnection connection = new SqlConnection(connectionString);
@@ -267,9 +267,7 @@ namespace Admin_Login
         }
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Payroll Report";
-            menu.Menu_Load(menu, EventArgs.Empty);
+            HolidaySettings_Load(sender, e);
         }
 
         private void Btn_Done_Click(object sender, EventArgs e)
