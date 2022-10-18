@@ -18,6 +18,7 @@ namespace Admin_Login
         Login login = new Login();
         //private new string Name;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
+        PayrollIndividual payrollIndividual = new PayrollIndividual();
         string filepath = null;
         int i = 1;
         public PayrollReport(/*string name*/)
@@ -38,15 +39,15 @@ namespace Admin_Login
                 lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
-            string query = "select A.EmployeeFullName, A.EmployeeID , B.BasicRate , sum(TotalHours) as TotalHours, sum(TotalHours)-sum(OvertimeHours) as TotalRegularHours , sum(OvertimeHours) as OverTime , TotalDeductions , count(C.EmployeeID) as TotalWorkingDays " +
-                "from EmployeeInfo as A " +
-                "left join Position as B " +
-                "on A.PositionID = B.PositionID " +
-                "left join AttendanceSheet as C " +
-                "on A.EmployeeID = C.EmployeeID " +
-                "left join Deductions as D " +
-                "on A.EmployeeID = D.EmployeeID " +
-                "group by A.EmployeeFullName,A.EmployeeID,B.BasicRate,D.TotalDeductions ";
+            string query = "select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime"+
+                " from EmployeeInfo as A "+
+                " left join Department as B "+
+                " on A.DepartmentID = B.DepartmentID "+
+                " left join Position as C "+
+                " on A.PositionID = C.PositionID "+
+                " left join AttendanceSheet as D "+
+                " on A.EmployeeID = D.EmployeeID "+
+                " group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate";
             SqlCommand cmd = new SqlCommand(query,connection);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -211,6 +212,11 @@ namespace Admin_Login
                     }
                 }
             }
+        }
+
+        private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            payrollIndividual.ShowDialog();
         }
     }
 }
