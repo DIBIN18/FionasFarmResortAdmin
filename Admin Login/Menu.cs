@@ -21,7 +21,7 @@ namespace Admin_Login
             int width,
             int height
             );
-        string TitleExtension, _EmployeeID, _EmployeeName, _Department, _Position ;
+        string TitleExtension;
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -118,17 +118,24 @@ namespace Admin_Login
             settings.BringToFront();
             settings.Show();
         }
+        string employeeid;
+        public string ValueHolder(string _EmployeeID)
+        {
+            employeeid = _EmployeeID;
+            return employeeid;
+        }
         internal void Menu_Load(object sender, EventArgs e)
         {
             if (Text == "Fiona's Farm and Resort - Payroll")
             {
+                Console.WriteLine("Hi");
                 TitleExtension = "Fiona's Farm and Resort - Payroll";
                 TitleLabel.Text = TitleExtension;
                 Payroll payroll = new Payroll()
                 {
                     TopLevel = false
                 };
-                //payroll.Dispose();
+                payroll.txtEmployeeID.Text = employeeid;
                 pnl_Content.Controls.Add(payroll);
                 payroll.BringToFront();
                 payroll.Show();

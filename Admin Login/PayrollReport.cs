@@ -15,7 +15,6 @@ namespace Admin_Login
 {
     public partial class PayrollReport : Form
     {
-        string _EmployeeID,_EmployeeName, _Department, _Position, ID;
         Login login = new Login();
         
         //private new string Name;
@@ -147,35 +146,6 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
         }
-        private void dgvDailyPayrollReport_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dgvDailyPayrollReport.CurrentRow.Selected = true;
-                ID = dgvDailyPayrollReport.Rows.Cells[0].Value;
-                //SqlConnection connection = new SqlConnection(login.connectionString);
-                //connection.Open();
-                //string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
-                //    "from EmployeeInfo as A " +
-                //    "left join Department as B " +
-                //    "on A.DepartmentID = B.DepartmentID " +
-                //    "left join Position as C " +
-                //    "on A.PositionID = C.PositionID " +
-                //    "where A.EmployeeID = " + dgvDailyPayrollReport.Rows[e.RowIndex].Cells[0].Value +
-                //    "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
-                //SqlCommand command = new SqlCommand(filldt, connection);
-                //SqlDataAdapter adapter = new SqlDataAdapter(command);
-                //DataTable datatable = new DataTable();
-                //adapter.Fill(datatable);
-
-                //payroll.txtEmployeeID.Text = datatable.Rows[0][0].ToString();
-                //payroll.txtEmployeeName.Text = datatable.Rows[0][1].ToString();
-                //payroll.txtDepartment.Text = datatable.Rows[0][2].ToString();
-                //payroll.txtPosition.Text = datatable.Rows[0][3].ToString();
-
-
-            }
-        }
         private void btn_Export_Click(object sender, EventArgs e)
         {
             tagadelete();
@@ -231,42 +201,48 @@ namespace Admin_Login
                 }
             }
         }
+        string employeeid;
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            //if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    dgvDailyPayrollReport.CurrentRow.Selected = true;
+            //    SqlConnection connection = new SqlConnection(login.connectionString);
+            //    connection.Open();
+            //    string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
+            //        "from EmployeeInfo as A " +
+            //        "left join Department as B " +
+            //        "on A.DepartmentID = B.DepartmentID " +
+            //        "left join Position as C " +
+            //        "on A.PositionID = C.PositionID " +
+            //        "where A.EmployeeID = " + dgvDailyPayrollReport.CurrentRow.Cells[0].Value +
+            //        "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
+            //    SqlCommand command = new SqlCommand(filldt, connection);
+            //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+            //    DataTable datatable = new DataTable();
+            //    adapter.Fill(datatable);
+
+            //    _EmployeeID = datatable.Rows[0][0].ToString();
+            //    _EmployeeName = datatable.Rows[0][1].ToString();
+            //    _Department = datatable.Rows[0][2].ToString();
+            //    _Position = datatable.Rows[0][3].ToString();
+            //    Payroll payroll = new Payroll();
+            //    payroll.txtEmployeeID.Text = _EmployeeID;
+            //    payroll.txtEmployeeName.Text = _EmployeeName;
+            //    payroll.txtDepartment.Text = _Department;
+            //    payroll.txtPosition.Text = _Position;
+
+            //}
+
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                dgvDailyPayrollReport.CurrentRow.Selected = true;
-                SqlConnection connection = new SqlConnection(login.connectionString);
-                connection.Open();
-                string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
-                    "from EmployeeInfo as A " +
-                    "left join Department as B " +
-                    "on A.DepartmentID = B.DepartmentID " +
-                    "left join Position as C " +
-                    "on A.PositionID = C.PositionID " +
-                    "where A.EmployeeID = " + dgvDailyPayrollReport.CurrentRow.Cells[0].Value +
-                    "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
-                SqlCommand command = new SqlCommand(filldt, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable datatable = new DataTable();
-                adapter.Fill(datatable);
-
-                _EmployeeID = datatable.Rows[0][0].ToString();
-                _EmployeeName = datatable.Rows[0][1].ToString();
-                _Department = datatable.Rows[0][2].ToString();
-                _Position = datatable.Rows[0][3].ToString();
-                Payroll payroll = new Payroll();
-                payroll.txtEmployeeID.Text = _EmployeeID;
-                payroll.txtEmployeeName.Text = _EmployeeName;
-                payroll.txtDepartment.Text = _Department;
-                payroll.txtPosition.Text = _Position;
-                
-            }
-            menu.Menu_Load(menu, EventArgs.Empty);
-
-
+                employeeid = dgvDailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
+                menu.ValueHolder(employeeid);
+                menu.Menu_Load(menu, EventArgs.Empty);
+            }   
         }
     }
 }
