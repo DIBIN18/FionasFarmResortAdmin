@@ -21,7 +21,7 @@ namespace Admin_Login
             int width,
             int height
             );
-        string TitleExtension;
+        string TitleExtension, _EmployeeID, _EmployeeName, _Department, _Position ;
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -128,6 +128,7 @@ namespace Admin_Login
                 {
                     TopLevel = false
                 };
+                //payroll.Dispose();
                 pnl_Content.Controls.Add(payroll);
                 payroll.BringToFront();
                 payroll.Show();
