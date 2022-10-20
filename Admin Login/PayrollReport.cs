@@ -16,12 +16,11 @@ namespace Admin_Login
     public partial class PayrollReport : Form
     {
         Login login = new Login();
-        
         //private new string Name;
         FolderBrowserDialog fbd = new FolderBrowserDialog();
-        string filepath = null;
+        string filepath = null, employeeid, employeename, department, position;
         int i = 1;
-        
+
         public PayrollReport(/*string name*/)
         {
             InitializeComponent();
@@ -201,29 +200,29 @@ namespace Admin_Login
                 }
             }
         }
-        string employeeid;
+        
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
             //if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             //{
             //    dgvDailyPayrollReport.CurrentRow.Selected = true;
-            //    SqlConnection connection = new SqlConnection(login.connectionString);
-            //    connection.Open();
-            //    string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
-            //        "from EmployeeInfo as A " +
-            //        "left join Department as B " +
-            //        "on A.DepartmentID = B.DepartmentID " +
-            //        "left join Position as C " +
-            //        "on A.PositionID = C.PositionID " +
-            //        "where A.EmployeeID = " + dgvDailyPayrollReport.CurrentRow.Cells[0].Value +
-            //        "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
-            //    SqlCommand command = new SqlCommand(filldt, connection);
-            //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-            //    DataTable datatable = new DataTable();
-            //    adapter.Fill(datatable);
+            //SqlConnection connection = new SqlConnection(login.connectionString);
+            //connection.Open();
+            //string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
+            //    "from EmployeeInfo as A " +
+            //    "left join Department as B " +
+            //    "on A.DepartmentID = B.DepartmentID " +
+            //    "left join Position as C " +
+            //    "on A.PositionID = C.PositionID " +
+            //    "where A.EmployeeID = " + dgvDailyPayrollReport.CurrentRow.Cells[0].Value +
+            //    "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
+            //SqlCommand command = new SqlCommand(filldt, connection);
+            //SqlDataAdapter adapter = new SqlDataAdapter(command);
+            //DataTable datatable = new DataTable();
+            //adapter.Fill(datatable);
 
-            //    _EmployeeID = datatable.Rows[0][0].ToString();
+            //    _EmployeeID = datatable.Rows[0][0].ToString()e
             //    _EmployeeName = datatable.Rows[0][1].ToString();
             //    _Department = datatable.Rows[0][2].ToString();
             //    _Position = datatable.Rows[0][3].ToString();
@@ -234,13 +233,18 @@ namespace Admin_Login
             //    payroll.txtPosition.Text = _Position;
 
             //}
-
+            /*SSSRangeClass range = new SSSRangeClass();*/
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 employeeid = dgvDailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
-                menu.ValueHolder(employeeid);
+                employeename = dgvDailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
+                department = dgvDailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
+                position = dgvDailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
+                /*EmployeeName = range.hold1;
+                Console.WriteLine(range.hold1);*/
+                menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }   
         }
