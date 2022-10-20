@@ -16,11 +16,10 @@ namespace Admin_Login
     public partial class PayrollReport : Form
     {
         Login login = new Login();
-        //private new string Name;
+        SSSRangeClass sssclass = new SSSRangeClass();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         string filepath = null, employeeid, employeename, department, position;
         int i = 1;
-
         public PayrollReport(/*string name*/)
         {
             InitializeComponent();
@@ -109,6 +108,7 @@ namespace Admin_Login
                 lbl_Holiday.Text = "";
             }
         }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -129,11 +129,11 @@ namespace Admin_Login
                 "count(C.EmployeeID) as TotalWorkDays, "+
                 "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , "+
                 "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , "+
-                "D.SSSContribution as SSSContribution , "+
-                "D.PagIbigContribution as PAGIBIGContribution , "+
-                "D.PhilHealthContribution as PHILHEALTHContribution , "+
+                "0 as SSSContribution , "+
+                "0 as PAGIBIGContribution , "+
+                "0 as PHILHEALTHContribution , "+
                 "D.OtherDeduction as OtherDeduction , "+
-                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) - D.TotalDeductions as NetPay, null "+
+                "0 as NetPay, null "+
                 "from EmployeeInfo as A "+
                 "left join Position as B "+
                 "on A.PositionID = B.PositionID "+
@@ -141,9 +141,11 @@ namespace Admin_Login
                 "on A.EmployeeID = C.EmployeeID "+
                 "left join Deductions as D "+
                 "on A.EmployeeID = D.EmployeeID "+
-                "group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";         
+                "where Date Between CONVERT(datetime, '"+ dtp_From.Text +"', 100) and CONVERT(datetime, '"+ dtp_To.Text +"', 100)"+
+                " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";         
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
+            sssclass.getSSSRange();
         }
         private void btn_Export_Click(object sender, EventArgs e)
         {
@@ -194,7 +196,7 @@ namespace Admin_Login
                             Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport" + i + ".xlsx "));
                             workbook.SaveAs(excelStream);
                             excelStream.Dispose();
-                            System.Diagnostics.Process.Start(filepath + "\\PayrollReport" + i + ".xlsx ");
+                            //System.Diagnostics.Process.Start(filepath + "\\PayrollReport" + i + ".xlsx ");
                         }
                     }
                 }
@@ -203,37 +205,7 @@ namespace Admin_Login
         
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            //if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            //{
-            //    dgvDailyPayrollReport.CurrentRow.Selected = true;
-            //SqlConnection connection = new SqlConnection(login.connectionString);
-            //connection.Open();
-            //string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
-            //    "from EmployeeInfo as A " +
-            //    "left join Department as B " +
-            //    "on A.DepartmentID = B.DepartmentID " +
-            //    "left join Position as C " +
-            //    "on A.PositionID = C.PositionID " +
-            //    "where A.EmployeeID = " + dgvDailyPayrollReport.CurrentRow.Cells[0].Value +
-            //    "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName";
-            //SqlCommand command = new SqlCommand(filldt, connection);
-            //SqlDataAdapter adapter = new SqlDataAdapter(command);
-            //DataTable datatable = new DataTable();
-            //adapter.Fill(datatable);
-
-            //    _EmployeeID = datatable.Rows[0][0].ToString()e
-            //    _EmployeeName = datatable.Rows[0][1].ToString();
-            //    _Department = datatable.Rows[0][2].ToString();
-            //    _Position = datatable.Rows[0][3].ToString();
-            //    Payroll payroll = new Payroll();
-            //    payroll.txtEmployeeID.Text = _EmployeeID;
-            //    payroll.txtEmployeeName.Text = _EmployeeName;
-            //    payroll.txtDepartment.Text = _Department;
-            //    payroll.txtPosition.Text = _Position;
-
-            //}
-            /*SSSRangeClass range = new SSSRangeClass();*/
+            sssclass.getSSSRange();         
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)

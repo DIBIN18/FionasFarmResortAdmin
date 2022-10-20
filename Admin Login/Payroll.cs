@@ -29,25 +29,7 @@ namespace Admin_Login
 
         public void Payroll_Load(object sender, EventArgs e)
         {
-            /*PayrollReport payrollReport = new PayrollReport();
-            //txtEmployeeID.Text dito mo ilalagay 'yung select, reference mo 'yung text ni txtEmployeeID
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-            string filldt = "select A.EmployeeID, EmployeeFullname,DepartmentName, PositionName " +
-                " from EmployeeInfo as A " +
-                " left join Department as B " +
-                " on A.DepartmentID = B.DepartmentID " +
-                " left join Position as C " +
-                " on A.PositionID = C.PositionID " +
-                " where A.EmployeeID = " + txtEmployeeID.Text +
-                " group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName ";
-            SqlCommand command = new SqlCommand(filldt, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable datatable = new DataTable();
-            adapter.Fill(datatable);
-            range.hold1 = datatable.Rows[0][1].ToString();*/
-
-
+            txtRegularHours.Text = "32123";
         }
     }
 }
