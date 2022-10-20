@@ -116,15 +116,8 @@ namespace Admin_Login
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
-        {
-      
-                txtSSS.Enabled = true;
-                txtpagibig.Enabled = true;
-                txtphilhealth.Enabled = true;
-                txtotherdeduction.Enabled = true;
-                txttin.Enabled = true;
-
-                
+        {       
+                txtotherdeduction.Enabled = true;            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -134,10 +127,8 @@ namespace Admin_Login
                 connection.Open();
                 dataGridView1.CurrentRow.Selected = true;
 
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Deductions set SSSContribution = @SSS, PagIbigContribution= @pagibig, PhilHealthContribution= @philhealth, OtherDeduction = @otherdeduction, TotalDeductions = @SSS + @pagibig + @philhealth + @otherdeduction where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, connection);
-                sqlCommand.Parameters.AddWithValue("@SSS", Convert.ToDecimal(txtSSS.Text));
-                sqlCommand.Parameters.AddWithValue("@pagibig", Convert.ToDecimal(txtpagibig.Text));
-                sqlCommand.Parameters.AddWithValue("@philhealth", Convert.ToDecimal(txtphilhealth.Text));
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Deductions set  OtherDeduction = @otherdeduction, TotalDeductions = SSSContribution + PagIbigContribution + PhilHealthContribution + @otherdeduction where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, connection);
+                
                 sqlCommand.Parameters.AddWithValue("@otherdeduction", Convert.ToDecimal(txtotherdeduction.Text));
                 sqlCommand.ExecuteNonQuery();
                 
