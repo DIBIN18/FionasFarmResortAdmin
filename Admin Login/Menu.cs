@@ -118,17 +118,23 @@ namespace Admin_Login
             settings.BringToFront();
             settings.Show();
         }
-        string employeeid;
-        public string ValueHolder(string _EmployeeID)
+        string employeeid, employeename, department, position;
+        public string ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position)
         {
             employeeid = _EmployeeID;
-            return employeeid;
+            employeename = _EmployeeName;
+            department = _Department;
+            position = _Position;
+            return null;
+            
+
+
+
         }
         internal void Menu_Load(object sender, EventArgs e)
         {
             if (Text == "Fiona's Farm and Resort - Payroll")
             {
-                Console.WriteLine("Hi");
                 TitleExtension = "Fiona's Farm and Resort - Payroll";
                 TitleLabel.Text = TitleExtension;
                 Payroll payroll = new Payroll()
@@ -136,6 +142,9 @@ namespace Admin_Login
                     TopLevel = false
                 };
                 payroll.txtEmployeeID.Text = employeeid;
+                payroll.txtEmployeeName.Text = employeename;
+                payroll.txtDepartment.Text = department;
+                payroll.txtPosition.Text = position;
                 pnl_Content.Controls.Add(payroll);
                 payroll.BringToFront();
                 payroll.Show();

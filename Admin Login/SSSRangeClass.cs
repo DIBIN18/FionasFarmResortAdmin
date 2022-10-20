@@ -12,6 +12,8 @@ namespace Admin_Login
     {
         Login login = new Login();
         double sssContributionEmployee, sssContributionEmployer;
+        public DataTable datatable = new DataTable();
+        public string hold1;
         public void getSSSRange()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
