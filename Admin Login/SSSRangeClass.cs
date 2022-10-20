@@ -11,19 +11,93 @@ namespace Admin_Login
     internal class SSSRangeClass
     {
         Login login = new Login();
-        double sssContributionEmployee, sssContributionEmployer;
+        double sssContributionEmployee, sssContributionEmployer, pagibicontribEmployee, pagibicontribEmployer, PhilhealthContrib;
         public DataTable datatable = new DataTable();
-        public string hold1;
+        public string EmployeeID;
+        double getGrossPay = 0;
+        public void UpdateEmployeeSSSColumn()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE PayrollReport " +
+                                "SET SSSContribution = " + sssContributionEmployee +
+                                "where EmployeeID = " + EmployeeID;
+                string query2 = "update Deductions " +
+                                "set SSSContribution = " + sssContributionEmployee +
+                                 "where EmployeeID = " + EmployeeID;
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd2 = new SqlCommand(query2, connection);
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+            }
+        }
+        public void UpdatePagibigContributionColumn()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                if (getGrossPay >= 5000)
+                {
+                    pagibicontribEmployee = 100;
+                    pagibicontribEmployer = 100;
+                }
+                else
+                {
+                    pagibicontribEmployee = getGrossPay * 0.02;
+                    pagibicontribEmployer = getGrossPay * 0.02;
+                }
+                connection.Open();
+                string query = "UPDATE PayrollReport " +
+                                "SET PAGIBIGContribution = " + pagibicontribEmployee +
+                                "where EmployeeID = " + EmployeeID;
+                string query2 = "update Deductions " +
+                                "set PagIbigContribution = " + pagibicontribEmployee +
+                                 "where EmployeeID = " + EmployeeID;
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd2 = new SqlCommand(query2, connection);
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+            }
+        }
+        public void UpdatePhilhealthContributionColumn()
+        {
+            PhilhealthContrib = getGrossPay * 0.04;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE PayrollReport " +
+                                "SET PhilHealthContribution = " + PhilhealthContrib +
+                                "where EmployeeID = " + EmployeeID;
+                string query2 = "update Deductions " +
+                                "set PhilHealthContribution = " + PhilhealthContrib +
+                                 "where EmployeeID = " + EmployeeID;
+                SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd2 = new SqlCommand(query2, connection);
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+            }
+        }
+        public void getNetPay()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "update PayrollReport "+
+                               "set NetSalary = GrossSalary - TotalDeductions from PayrollReport as A join Deductions as B on A.EmployeeID = B.EmployeeID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
         public void getSSSRange()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select BasicRate * (TotalHours - OverTimeHours) from PayrollReport";
+                string query = "select EmployeeID, BasicRate * (TotalHours - OverTimeHours) from PayrollReport";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                double getGrossPay = 0;
+               
                 foreach (DataRow dataRow in data.Rows)
                 {
                     foreach (var GrossPay in dataRow.ItemArray)
@@ -35,10 +109,9 @@ namespace Admin_Login
                         else
                         {
                             getGrossPay = Convert.ToDouble(GrossPay);
+                            EmployeeID = dataRow.ItemArray[0].ToString();
                         }
-
                         //(String.Format("{0:0.00}", GrossPay)
-                        //SSS Range Here (SSSTable)
                         if (getGrossPay >= 1000 && getGrossPay <= 3249.99)
                         {
                             sssContributionEmployee = 135.00;
@@ -309,8 +382,17 @@ namespace Admin_Login
                             sssContributionEmployer = 1700.00;
 
                         }
+                        else
+                        {
+                            sssContributionEmployee = 0;
+                            sssContributionEmployer = 0;
+                        }
                     }
+                    UpdateEmployeeSSSColumn();
+                    UpdatePagibigContributionColumn();
+                    UpdatePhilhealthContributionColumn();
                 }
+                getNetPay();
             }
 
         }
