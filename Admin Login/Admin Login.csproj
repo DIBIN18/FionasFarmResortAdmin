@@ -89,6 +89,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FFRUsersDataSet20.xsd</DependentUpon>
     </Compile>
+    <Compile Include="LeaveEmployeeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveEmployeeList.Designer.cs">
+      <DependentUpon>LeaveEmployeeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditDepartmentAndPosition.resx">
       <DependentUpon>EditDepartmentAndPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveEmployeeList.resx">
+      <DependentUpon>LeaveEmployeeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Leave.resx">
       <DependentUpon>Leave.cs</DependentUpon>

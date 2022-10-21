@@ -51,7 +51,7 @@ namespace Admin_Login
             this.dgvAddLeave.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAddLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAddLeave.Location = new System.Drawing.Point(35, 140);
-            this.dgvAddLeave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAddLeave.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAddLeave.Name = "dgvAddLeave";
             this.dgvAddLeave.ReadOnly = true;
             this.dgvAddLeave.RowHeadersWidth = 51;
@@ -96,7 +96,7 @@ namespace Admin_Login
             // 
             this.rtxtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtReason.Location = new System.Drawing.Point(579, 314);
-            this.rtxtReason.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rtxtReason.Margin = new System.Windows.Forms.Padding(4);
             this.rtxtReason.Name = "rtxtReason";
             this.rtxtReason.Size = new System.Drawing.Size(533, 243);
             this.rtxtReason.TabIndex = 4;
@@ -108,7 +108,7 @@ namespace Admin_Login
             this.btnAddLeave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddLeave.ForeColor = System.Drawing.Color.White;
             this.btnAddLeave.Location = new System.Drawing.Point(697, 581);
-            this.btnAddLeave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddLeave.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddLeave.Name = "btnAddLeave";
             this.btnAddLeave.Size = new System.Drawing.Size(124, 37);
             this.btnAddLeave.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace Admin_Login
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(881, 581);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(116, 37);
             this.btnClose.TabIndex = 33;
@@ -158,7 +158,7 @@ namespace Admin_Login
             this.cmbLeaveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLeaveType.FormattingEnabled = true;
             this.cmbLeaveType.Location = new System.Drawing.Point(881, 134);
-            this.cmbLeaveType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbLeaveType.Margin = new System.Windows.Forms.Padding(4);
             this.cmbLeaveType.Name = "cmbLeaveType";
             this.cmbLeaveType.Size = new System.Drawing.Size(231, 33);
             this.cmbLeaveType.TabIndex = 34;
@@ -204,7 +204,7 @@ namespace Admin_Login
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvAddLeave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ApplyLeave";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddLeave";
