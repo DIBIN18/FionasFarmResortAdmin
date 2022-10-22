@@ -202,7 +202,6 @@ namespace Admin_Login
                 }
             }
         }
-        
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             sssclass.getSSSRange();         
@@ -214,9 +213,7 @@ namespace Admin_Login
                 employeename = dgvDailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
                 department = dgvDailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
                 position = dgvDailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
-                /*EmployeeName = range.hold1;
-                Console.WriteLine(range.hold1);*/
-                menu.ValueHolder(employeeid, employeename, department, position);
+                menu.ValueHolder(employeeid, employeename, department, position, "");
                 menu.Menu_Load(menu, EventArgs.Empty);
             }   
         }

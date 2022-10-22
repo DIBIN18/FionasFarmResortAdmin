@@ -118,18 +118,14 @@ namespace Admin_Login
             settings.BringToFront();
             settings.Show();
         }
-        string employeeid, employeename, department, position;
-        public string ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position)
+        static string employeeid, employeename, department, position, schedule;
+        public void ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _Schedule)
         {
             employeeid = _EmployeeID;
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
-            return null;
-            
-
-
-
+            schedule = _Schedule;
         }
         internal void Menu_Load(object sender, EventArgs e)
         {
@@ -173,18 +169,6 @@ namespace Admin_Login
                 archiveemployee.BringToFront();
                 archiveemployee.Show();
             }
-            else if (Text == "Fiona's Farm and Resort - Apply Leave")
-            {
-                TitleExtension = "Fiona's Farm and Resort - Apply leave";
-                TitleLabel.Text = TitleExtension;
-                ApplyLeave applyleave = new ApplyLeave()
-                {
-                    TopLevel = false
-                };
-                pnl_Content.Controls.Add(applyleave);
-                applyleave.BringToFront();
-                applyleave.Show();
-            }
             else if (Text == "Fiona's Farm and Resort - Add Department And Position")
             {
                 TitleExtension = "Fiona's Farm and Resort - Add Department And Position";
@@ -209,6 +193,34 @@ namespace Admin_Login
                 editdepartmentandposition.BringToFront();
                 editdepartmentandposition.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Leave Employee List")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Leave Employee List";
+                TitleLabel.Text = TitleExtension;
+                LeaveEmployeeList leaveemployeelist = new LeaveEmployeeList()
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(leaveemployeelist);
+                leaveemployeelist.BringToFront();
+                leaveemployeelist.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Leave")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Leave";
+                TitleLabel.Text = TitleExtension;
+                Leave leave = new Leave()
+                {
+                    TopLevel = false
+                };
+                leave.txtEmployeeID.Text = employeeid;
+                leave.txtEmployeeName.Text = employeename;
+                leave.txtDepartment.Text = department;
+                leave.txtPosition.Text = position;
+                pnl_Content.Controls.Add(leave);
+                leave.BringToFront();
+                leave.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
@@ -216,10 +228,6 @@ namespace Admin_Login
             else if (Text == "Fiona's Farm and Resort - Employee List")
             {
                 Btn_EmployeeList_Click(sender, e);
-            }
-            else if (Text == "Fiona's Farm and Resort - Leave")
-            {
-                Btn_Leave_Click(sender, e);
             }
             else if(Text == "Fiona's Farm and Resort - Department and Position")
             {

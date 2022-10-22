@@ -20,6 +20,7 @@ namespace Admin_Login
         }
         Login login = new Login();
         public DataTable dt = new DataTable();
+        string employeeid, employeename, department, position, schedule;
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -60,7 +61,9 @@ namespace Admin_Login
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Leave";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
         public void Confirm()
         {
@@ -80,8 +83,8 @@ namespace Admin_Login
             SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(dt);
-            leavess.txtID.Text = dt.Rows[0][0].ToString(); ;
-            leavess.txtName.Text = dt.Rows[0][1].ToString();
+            leavess.txtEmployeeID.Text = dt.Rows[0][0].ToString(); ;
+            leavess.txtEmployeeName.Text = dt.Rows[0][1].ToString();
             leavess.txtDepartment.Text = dt.Rows[0][2].ToString();
             leavess.txtPosition.Text = dt.Rows[0][3].ToString();
             conn.Close();
@@ -95,13 +98,19 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Leave";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
-
-        private void dgvLeave_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvLeave_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Leave";
             if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                dgvLeave.CurrentRow.Selected = true;
-
+                employeeid = dgvLeave.CurrentRow.Cells[0].Value.ToString();
+                employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
+                department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
+                position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
+                schedule = dgvLeave.CurrentRow.Cells[4].Value.ToString();
+                menu.ValueHolder(employeeid, employeename, department, position, schedule);
+                menu.Menu_Load(menu, EventArgs.Empty);
             }
         }
     }

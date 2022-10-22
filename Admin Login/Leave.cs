@@ -38,34 +38,6 @@ namespace Admin_Login
         //}
 
 
-        public void AdvancedDay_Offs_Load(object sender, EventArgs e)
-        {
-
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                ////leaveEmployeeList.dgvLeave.CurrentRow.Cells[0].Value
-                //SqlCommand cmd = new SqlCommand("Select * from Leave",connection);
-                //DataTable dt = new DataTable();
-                //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                //sqlDataAdapter.Fill(dt);
-                //dgvShowLeave.DataSource = dt;
-                //dgvShowLeave.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            }
-        }
-        private void btn_ApplyLeave_Click(object sender, EventArgs e)
-        {
-            //Menu menu = (Menu)Application.OpenForms["Menu"];
-            //menu.Text = "Fiona's Farm and Resort - Apply Leave";
-            //menu.Menu_Load(menu, EventArgs.Empty);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {  
-            leaveEmployeeList.ShowDialog();
-        }
-
         private void cmbLeaveType_Click(object sender, EventArgs e)
         {
             string query =
@@ -174,8 +146,11 @@ namespace Admin_Login
                 command.ExecuteNonQuery();
             }
         }
-
-      
-        
+        private void Search_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Leave Employee List";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
     }
 }
