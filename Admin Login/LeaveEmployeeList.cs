@@ -19,7 +19,7 @@ namespace Admin_Login
             InitializeComponent();
         }
         Login login = new Login();
-        Leave leave = new Leave();
+        public DataTable dt = new DataTable();
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -60,31 +60,44 @@ namespace Admin_Login
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
+        public void Confirm()
+        {
 
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+       
+            adapter.Fill(dt);
+        }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-             
-               
-                SqlConnection conn = new SqlConnection(login.connectionString);
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                leave.txtID.Text = dt.Rows[0][0].ToString();
-                leave.txtName.Text = dt.Rows[0][1].ToString();
-                leave.txtDepartment.Text = dt.Rows[0][2].ToString();
-                leave.txtPosition.Text = dt.Rows[0][3].ToString();
-                this.Close();
-                conn.Close();
-            
+            Leave leavess = new Leave();
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+            leavess.txtID.Text = dt.Rows[0][0].ToString(); ;
+            leavess.txtName.Text = dt.Rows[0][1].ToString();
+            leavess.txtDepartment.Text = dt.Rows[0][2].ToString();
+            leavess.txtPosition.Text = dt.Rows[0][3].ToString();
+            conn.Close();
+            leavess.cmbLeaveType.Enabled = true;
+            leavess.rtxtReason.Enabled = true;
+            leavess.dtpStartDate.Enabled = true;
+            leavess.dtpEndDate.Enabled = true;
+            leavess.btnCancel.Enabled = true;
+            leavess.btnSubmit.Enabled = true;  
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Leave";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
 
         private void dgvLeave_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dgvLeave.CurrentRow.Selected = true;

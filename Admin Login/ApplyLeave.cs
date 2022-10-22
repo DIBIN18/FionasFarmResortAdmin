@@ -174,5 +174,10 @@ namespace Admin_Login
             }
 
         }
+
+        private void cmbLeaveType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
