@@ -20,7 +20,7 @@ namespace Admin_Login
         }
         Login login = new Login();
         public DataTable dt = new DataTable();
-        string employeeid, employeename, department, position, schedule;
+        string employeeid, employeename, department, position;
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -88,10 +88,10 @@ namespace Admin_Login
             leavess.txtDepartment.Text = dt.Rows[0][2].ToString();
             leavess.txtPosition.Text = dt.Rows[0][3].ToString();
             conn.Close();
-            leavess.cmbLeaveType.Enabled = true;
+            leavess.cmb_LeaveType.Enabled = true;
             leavess.rtxtReason.Enabled = true;
-            leavess.dtpStartDate.Enabled = true;
-            leavess.dtpEndDate.Enabled = true;
+            leavess.dtp_StartDate.Enabled = true;
+            leavess.dtp_EndDate.Enabled = true;
             leavess.btnCancel.Enabled = true;
             leavess.btnSubmit.Enabled = true;  
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -108,8 +108,7 @@ namespace Admin_Login
                 employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
                 department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
-                schedule = dgvLeave.CurrentRow.Cells[4].Value.ToString();
-                menu.ValueHolder(employeeid, employeename, department, position, schedule);
+                menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }
         }

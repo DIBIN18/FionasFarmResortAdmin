@@ -80,18 +80,18 @@ namespace Admin_Login
 
             if (selectedGender == "Male" && selectedMaritalStatus == "Married")
             {
-                cmbLeaveType.Items.Clear();
-                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Paternity Leave" });
+                cmb_LeaveType.Items.Clear();
+                cmb_LeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Paternity Leave" });
             }
             else if (selectedGender == "Female" && selectedMaritalStatus == "Married")
             {
-                cmbLeaveType.Items.Clear();
-                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Maternity Leave" });
+                cmb_LeaveType.Items.Clear();
+                cmb_LeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave", "Maternity Leave" });
             }
             else
             {
-                cmbLeaveType.Items.Clear();
-                cmbLeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave" });
+                cmb_LeaveType.Items.Clear();
+                cmb_LeaveType.Items.AddRange(new String[] { "Sick Leave", "Vacation Leave" });
             }
         }
 
@@ -115,8 +115,8 @@ namespace Admin_Login
                     "@Reason," +
                     "@Type)";
 
-                string startDate = dtpStartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-                string endDate = dtpEndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+                string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+                string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
 
 
 
@@ -125,7 +125,7 @@ namespace Admin_Login
                 command.Parameters.AddWithValue("@StartDate", startDate);
                 command.Parameters.AddWithValue("@EndDate", endDate);
                 command.Parameters.AddWithValue("@Reason", rtxtReason.Text);
-                command.Parameters.AddWithValue("@Type", cmbLeaveType.Text);
+                command.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                 command.ExecuteNonQuery();
                 MessageBox.Show("Successfully Applied Leave to the employee");
@@ -134,7 +134,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                int totalLeaveDays = (int)(dtpEndDate.Value - dtpStartDate.Value).TotalDays;
+                int totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
                 int employeeLeaveCredits = (int)leaveEmployeeList.dgvLeave.CurrentRow.Cells[2].Value;
                 int remainingCredits = employeeLeaveCredits - totalLeaveDays;
 
@@ -151,6 +151,21 @@ namespace Admin_Login
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Leave Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
+        }
+        private void Leave_Load(object sender, EventArgs e)
+        {
+            if(txtEmployeeID.Text != "")
+            {
+                cmb_LeaveType.Enabled = true;
+                dtp_StartDate.Enabled = true;
+                dtp_EndDate.Enabled = true;
+            }
+            else
+            {
+                cmb_LeaveType.Enabled = false;
+                dtp_StartDate.Enabled = false;
+                dtp_EndDate.Enabled = false;
+            }
         }
     }
 }

@@ -47,10 +47,10 @@
             this.rtxtReason = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtp_EndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtp_StartDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.cmbLeaveType = new System.Windows.Forms.ComboBox();
+            this.cmb_LeaveType = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -196,10 +196,10 @@
             this.groupBox2.Controls.Add(this.rtxtReason);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dtpEndDate);
-            this.groupBox2.Controls.Add(this.dtpStartDate);
+            this.groupBox2.Controls.Add(this.dtp_EndDate);
+            this.groupBox2.Controls.Add(this.dtp_StartDate);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.cmbLeaveType);
+            this.groupBox2.Controls.Add(this.cmb_LeaveType);
             this.groupBox2.Location = new System.Drawing.Point(12, 288);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
@@ -272,27 +272,27 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Start Date/Time";
             // 
-            // dtpEndDate
+            // dtp_EndDate
             // 
-            this.dtpEndDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dtpEndDate.Enabled = false;
-            this.dtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpEndDate.Location = new System.Drawing.Point(27, 225);
-            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(337, 30);
-            this.dtpEndDate.TabIndex = 7;
+            this.dtp_EndDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dtp_EndDate.Enabled = false;
+            this.dtp_EndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_EndDate.Location = new System.Drawing.Point(27, 225);
+            this.dtp_EndDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtp_EndDate.Name = "dtp_EndDate";
+            this.dtp_EndDate.Size = new System.Drawing.Size(337, 30);
+            this.dtp_EndDate.TabIndex = 7;
             // 
-            // dtpStartDate
+            // dtp_StartDate
             // 
-            this.dtpStartDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dtpStartDate.Enabled = false;
-            this.dtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpStartDate.Location = new System.Drawing.Point(23, 135);
-            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(341, 30);
-            this.dtpStartDate.TabIndex = 6;
+            this.dtp_StartDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            this.dtp_StartDate.Enabled = false;
+            this.dtp_StartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_StartDate.Location = new System.Drawing.Point(23, 135);
+            this.dtp_StartDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtp_StartDate.Name = "dtp_StartDate";
+            this.dtp_StartDate.Size = new System.Drawing.Size(341, 30);
+            this.dtp_StartDate.TabIndex = 6;
             // 
             // label7
             // 
@@ -304,17 +304,17 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "Type of Leave";
             // 
-            // cmbLeaveType
+            // cmb_LeaveType
             // 
-            this.cmbLeaveType.Enabled = false;
-            this.cmbLeaveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLeaveType.FormattingEnabled = true;
-            this.cmbLeaveType.Location = new System.Drawing.Point(183, 50);
-            this.cmbLeaveType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cmbLeaveType.Name = "cmbLeaveType";
-            this.cmbLeaveType.Size = new System.Drawing.Size(121, 28);
-            this.cmbLeaveType.TabIndex = 0;
-            this.cmbLeaveType.Click += new System.EventHandler(this.cmbLeaveType_Click);
+            this.cmb_LeaveType.Enabled = false;
+            this.cmb_LeaveType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmb_LeaveType.FormattingEnabled = true;
+            this.cmb_LeaveType.Location = new System.Drawing.Point(183, 50);
+            this.cmb_LeaveType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmb_LeaveType.Name = "cmb_LeaveType";
+            this.cmb_LeaveType.Size = new System.Drawing.Size(121, 28);
+            this.cmb_LeaveType.TabIndex = 0;
+            this.cmb_LeaveType.Click += new System.EventHandler(this.cmbLeaveType_Click);
             // 
             // Leave
             // 
@@ -330,6 +330,7 @@
             this.Name = "Leave";
             this.Tag = "btn_ApplyLeave";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Leave_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -359,8 +360,8 @@
         public System.Windows.Forms.Button btnSubmit;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.RichTextBox rtxtReason;
-        public System.Windows.Forms.DateTimePicker dtpEndDate;
-        public System.Windows.Forms.DateTimePicker dtpStartDate;
-        public System.Windows.Forms.ComboBox cmbLeaveType;
+        public System.Windows.Forms.DateTimePicker dtp_EndDate;
+        public System.Windows.Forms.DateTimePicker dtp_StartDate;
+        public System.Windows.Forms.ComboBox cmb_LeaveType;
     }
 }

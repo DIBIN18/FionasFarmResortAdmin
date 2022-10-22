@@ -118,14 +118,13 @@ namespace Admin_Login
             settings.BringToFront();
             settings.Show();
         }
-        static string employeeid, employeename, department, position, schedule;
-        public void ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _Schedule)
+        static string employeeid, employeename, department, position;
+        public void ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position)
         {
             employeeid = _EmployeeID;
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
-            schedule = _Schedule;
         }
         internal void Menu_Load(object sender, EventArgs e)
         {

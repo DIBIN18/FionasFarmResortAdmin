@@ -213,7 +213,7 @@ namespace Admin_Login
                 employeename = dgvDailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
                 department = dgvDailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
                 position = dgvDailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
-                menu.ValueHolder(employeeid, employeename, department, position, "");
+                menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }   
         }
