@@ -41,7 +41,7 @@ namespace Admin_Login
         private void cmbLeaveType_Click(object sender, EventArgs e)
         {
             string query =
-                "SELECT Gender FROM EmployeeInfo WHERE EmployeeId='" + leaveEmployeeList.dgvLeave.CurrentRow.Cells[0].Value + "'";
+                "SELECT Gender FROM EmployeeInfo WHERE EmployeeId = "+ txtEmployeeID.Text;
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -60,7 +60,7 @@ namespace Admin_Login
             }
 
             string query2 =
-               "SELECT EmployeeMaritalStatus FROM EmployeeInfo WHERE EmployeeId='" + leaveEmployeeList.dgvLeave.CurrentRow.Cells[0].Value + "'";
+               "SELECT EmployeeMaritalStatus FROM EmployeeInfo WHERE EmployeeId=" + txtEmployeeID.Text;
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query2, connection))
@@ -77,7 +77,7 @@ namespace Admin_Login
                     }
                 }
             }
-
+          
             if (selectedGender == "Male" && selectedMaritalStatus == "Married")
             {
                 cmb_LeaveType.Items.Clear();
@@ -159,12 +159,16 @@ namespace Admin_Login
                 cmb_LeaveType.Enabled = true;
                 dtp_StartDate.Enabled = true;
                 dtp_EndDate.Enabled = true;
+                rtxtReason.Enabled = true;
+
+
             }
             else
             {
                 cmb_LeaveType.Enabled = false;
                 dtp_StartDate.Enabled = false;
                 dtp_EndDate.Enabled = false;
+                rtxtReason.Enabled = false;
             }
         }
     }

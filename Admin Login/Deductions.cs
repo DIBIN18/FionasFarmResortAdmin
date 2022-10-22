@@ -23,10 +23,7 @@ namespace Admin_Login
 
            
         }
-        private void Cb_SortBy_Click(object sender, EventArgs e)
-        {
-            cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
+     
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
             if (tb_Search.Text == " Search")
@@ -41,22 +38,6 @@ namespace Admin_Login
             {
                 tb_Search.Text = " Search";
                 tb_Search.ForeColor = Color.Silver;
-            }
-        }
-        private void Cb_SortBy_Enter(object sender, EventArgs e)
-        {
-            if(cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Black;
-            }
-        }
-        private void Cb_SortBy_Leave(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Silver;
             }
         }
      
@@ -74,10 +55,14 @@ namespace Admin_Login
                 //txtRate.Text = dt.Rows[0][0].ToString();
                 lblRate.Text = dt.Rows[0][0].ToString();
                 lblEmpID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-              lblEmpName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-              lblDepartment.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-              lblPosition.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            
+                lblEmpName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lblDepartment.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                lblPosition.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                kuninSiKabawasan();
+                dtpFrom.Enabled = true;
+                dtpTo.Enabled = true;
+
             }
        
         }
@@ -138,16 +123,73 @@ namespace Admin_Login
                 txtpagibig.Text = "";
                 txtphilhealth.Text = "";
                 txtSSS.Text = "";
-
-
-           
-
-
             }
         }
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            kuninSiKabawasan();
+        }
 
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            kuninSiKabawasan();
+        }
+        public void kuninSiKabawasan()
+        {
+            SqlConnection sql = new SqlConnection(login.connectionString);
+            string command = "Select * from PayrollReport where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value;
+            SqlCommand cmd = new SqlCommand(command, sql);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
 
+            txtSSS.Text = dt.Rows[0][12].ToString();
+            txtpagibig.Text = dt.Rows[0][13].ToString();
+            txtphilhealth.Text = dt.Rows[0][14].ToString();
 
-
+        }
+        public void tagadelete()
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand("delete from PayrollReport", connection);
+            command.ExecuteNonQuery();
+        }
+        public void tagaInsertPayrollReport()
+        {
+            SSSRangeClass sssclass = new SSSRangeClass();
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            string query = "insert into PayrollReport " +
+                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
+                "sum(TotalHours) as TotalHours , " +
+                "sum(C.OvertimeHours) as OverTimeHours , " +
+                "sum(C.RegularHolidayHours) as LegalHollidayHours, " +
+                "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, " +
+                "count(C.EmployeeID) as TotalWorkDays, " +
+                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
+                "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , " +
+                "0 as SSSContribution , " +
+                "0 as PAGIBIGContribution , " +
+                "0 as PHILHEALTHContribution , " +
+                "D.OtherDeduction as OtherDeduction , " +
+                "0 as NetPay, null " +
+                "from EmployeeInfo as A " +
+                "left join Position as B " +
+                "on A.PositionID = B.PositionID " +
+                "left join AttendanceSheet as C " +
+                "on A.EmployeeID = C.EmployeeID " +
+                "left join Deductions as D " +
+                "on A.EmployeeID = D.EmployeeID " +
+                "where Date Between CONVERT(datetime, '" + dtpFrom.Text + "', 100) and CONVERT(datetime, '" + dtpTo.Text + "', 100)" +
+                " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.ExecuteNonQuery();
+            sssclass.getSSSRange();
+        }
     }
 }

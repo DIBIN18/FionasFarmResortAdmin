@@ -65,16 +65,7 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Leave";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
-        public void Confirm()
-        {
-
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-       
-            adapter.Fill(dt);
-        }
+    
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             Leave leavess = new Leave();
@@ -110,6 +101,7 @@ namespace Admin_Login
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
                 menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
+
             }
         }
     }
