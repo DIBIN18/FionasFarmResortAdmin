@@ -125,6 +125,7 @@ namespace Admin_Login
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
+            //typeofleave = _TypeofLeave;
         }
         internal void Menu_Load(object sender, EventArgs e)
         {
