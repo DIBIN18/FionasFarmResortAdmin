@@ -121,7 +121,7 @@ namespace Admin_Login
 
 
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@EmployeeID", leaveEmployeeList.dgvLeave.CurrentRow.Cells[0].Value);
+                command.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
                 command.Parameters.AddWithValue("@StartDate", startDate);
                 command.Parameters.AddWithValue("@EndDate", endDate);
                 command.Parameters.AddWithValue("@Reason", rtxtReason.Text);
@@ -141,7 +141,7 @@ namespace Admin_Login
                 string query =
                     "UPDATE EmployeeInfo " +
                     "SET LeaveCredits = " + remainingCredits +
-                    "WHERE EmployeeID = " + leaveEmployeeList.dgvLeave.CurrentRow.Cells[0].Value;
+                    "WHERE EmployeeID = " + txtEmployeeID.Text;
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
             }

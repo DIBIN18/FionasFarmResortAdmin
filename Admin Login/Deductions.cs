@@ -52,7 +52,6 @@ namespace Admin_Login
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
 
-                //txtRate.Text = dt.Rows[0][0].ToString();
                 lblRate.Text = dt.Rows[0][0].ToString();
                 lblEmpID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 lblEmpName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -86,18 +85,6 @@ namespace Admin_Login
             txtphilhealth.Enabled = false;
             txtotherdeduction.Enabled = false;
             txttin.Enabled = false;
-        }
-        private void btnSaveDeduction(object sender, EventArgs e)// after ma edit sesave nya sa Database and matic compute ng TotalDeduction/reload
-        {
-            //sqlDataAdapter.Update((DataTable)bindingSource.DataSource);
-            //MessageBox.Show("SAVED");
-            //using (SqlConnection connection = new SqlConnection(login.connectionString))
-            //{
-            //    connection.Open();
-            //    SqlCommand cmd = new SqlCommand("UPDATE Deductions set TotalDeductions = SSSContribution+PagIbigContribution+PhilHealthContribution+OtherDeduction", connection);
-            //    cmd.ExecuteNonQuery();
-            //    Deductions_Load(this, null);
-            //}
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -140,16 +127,35 @@ namespace Admin_Login
         }
         public void kuninSiKabawasan()
         {
-            SqlConnection sql = new SqlConnection(login.connectionString);
-            string command = "Select * from PayrollReport where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value;
-            SqlCommand cmd = new SqlCommand(command, sql);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
+            try
+            {
+                SqlConnection sql = new SqlConnection(login.connectionString);
+                string command = "Select * from PayrollReport where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value;
+                SqlCommand cmd = new SqlCommand(command, sql);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-            txtSSS.Text = dt.Rows[0][12].ToString();
-            txtpagibig.Text = dt.Rows[0][13].ToString();
-            txtphilhealth.Text = dt.Rows[0][14].ToString();
+                txtSSS.Text = dt.Rows[0][12].ToString();
+                txtpagibig.Text = dt.Rows[0][13].ToString();
+                txtphilhealth.Text = dt.Rows[0][14].ToString();
+            }catch(Exception e)
+            {
+                string name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                string datein = dtpFrom.Text;
+                string dateout = dtpTo.Text;
+                txtSSS.Text = "";
+                txtphilhealth.Text = "";
+                txtpagibig.Text = "";
+              
+                string message = " Does Not Have Existing record Between ";
+                DialogResult show = MessageBox.Show(name + message + datein + " And " + dateout , " Cannot Display ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (show == DialogResult.OK)
+                {
+                    dtpFrom.Enabled = false;
+                    dtpTo.Enabled = false;
+                }
+            }
 
         }
         public void tagadelete()
@@ -190,6 +196,30 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            if (string.IsNullOrEmpty(tb_Search.Text))
+            {
+                SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E " +
+                "JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID", connection);
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                dataGridView1.DataSource = dts;
+            }
+            else if (tb_Search.Focused)
+            {
+                SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID where E.EmployeeID like '" + tb_Search.Text +"%'" + "OR EmployeeFullName like'"+ tb_Search.Text + "%'" , connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                dataGridView1.DataSource = dts;
+            }
         }
     }
 }
