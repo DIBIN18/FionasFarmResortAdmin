@@ -109,6 +109,43 @@ namespace Admin_Login
             }
         }
 
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            if (string.IsNullOrEmpty(tb_Search.Text))
+            {
+                SqlCommand cmd = new SqlCommand("select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime" +
+                " from EmployeeInfo as A " +
+                " left join Department as B " +
+                " on A.DepartmentID = B.DepartmentID " +
+                " left join Position as C " +
+                " on A.PositionID = C.PositionID " +
+                " left join AttendanceSheet as D " +
+                " on A.EmployeeID = D.EmployeeID group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate", connection);
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                dgvDailyPayrollReport.DataSource = dts;
+            }
+            else if (tb_Search.Focused)
+            {
+                SqlCommand cmd = new SqlCommand("select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime" +
+                                " from EmployeeInfo as A " +
+                                " left join Department as B " +
+                                " on A.DepartmentID = B.DepartmentID " +
+                                " left join Position as C " +
+                                " on A.PositionID = C.PositionID " +
+                                " left join AttendanceSheet as D " +
+                                " on A.EmployeeID = D.EmployeeID where A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" + "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate", connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                dgvDailyPayrollReport.DataSource = dts;
+            }
+        }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
