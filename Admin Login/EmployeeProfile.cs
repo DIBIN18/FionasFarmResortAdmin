@@ -23,6 +23,8 @@ namespace Admin_Login
         string selectedPositionName = "";
         long selectedPositionId = 0;
 
+        string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
+
         public EmployeeProfile()
         {
             InitializeComponent();
@@ -78,6 +80,28 @@ namespace Admin_Login
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
                 btnAddPfp.Visible = true;
             }
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "IF NOT EXISTS (SELECT EmployeeID FROM EmployeeSchedule WHERE EmployeeID=" + lblEmployeeID.Text.ToString() + ") " +
+                    "BEGIN " +
+                    "INSERT INTO EmployeeSchedule (EmployeeID) VALUES (@EmployeeID) " +
+                    "END";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@EmployeeID", Int64.Parse(lblEmployeeID.Text));
+                cmd.ExecuteNonQuery();
+            }
+
+            cbMonday.Enabled = false;
+            cbTuesday.Enabled = false;
+            cbWednesday.Enabled = false;
+            cbThursday.Enabled = false;
+            cbFriday.Enabled = false;
+            cbSaturday.Enabled = false;
+            cbSunday.Enabled = false;
         }
 
         public void Edit_Mode()
@@ -122,6 +146,14 @@ namespace Admin_Login
             txtLeaveCreditsEdit.Visible = true;
             dtpDateOfBirth.Visible = true;
             cmbOtAllowed.Visible = true;
+
+            cbMonday.Enabled = true;
+            cbTuesday.Enabled = true;
+            cbWednesday.Enabled = true;
+            cbThursday.Enabled = true;
+            cbFriday.Enabled = true;
+            cbSaturday.Enabled = true;
+            cbSunday.Enabled = true;
         }
         
         public void Edit_Mode_Off()
@@ -172,6 +204,14 @@ namespace Admin_Login
             //cmbGenderEdit.SelectedIndex = -1;
             //cmbOtAllowed.SelectedIndex = -1;
             //cmbPositionEdit.SelectedIndex = -1;
+
+            cbMonday.Enabled = false;
+            cbTuesday.Enabled = false;
+            cbWednesday.Enabled = false;
+            cbThursday.Enabled = false;
+            cbFriday.Enabled = false;
+            cbSaturday.Enabled = false;
+            cbSunday.Enabled = false;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -214,11 +254,90 @@ namespace Admin_Login
                 "LeaveCredits = " + txtLeaveCreditsEdit.Text.ToString() + " " +
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
+            if (cbMonday.Checked)
+            {
+                Monday = "1";
+            }
+            else
+            {
+                Monday = "0";
+            }
+
+            if (cbTuesday.Checked)
+            {
+                Tuesday = "1";
+            }
+            else
+            {
+                Tuesday = "0";
+            }
+
+            if (cbWednesday.Checked)
+            {
+                Wednesday = "1";
+            }
+            else
+            {
+                Wednesday = "0";
+            }
+
+            if (cbThursday.Checked)
+            {
+                Thursday = "1";
+            }
+            else
+            {
+                Thursday = "0";
+            }
+
+            if (cbFriday.Checked)
+            {
+                Friday = "1";
+            }
+            else
+            {
+                Friday = "0";
+            }
+
+            if (cbSaturday.Checked)
+            {
+                Saturday = "1";
+            }
+            else
+            {
+                Saturday = "0";
+            }
+
+            if (cbSunday.Checked)
+            {
+                Sunday = "1";
+            }
+            else
+            {
+                Sunday = "0";
+            }
+
+            string scheduleQuery =
+                "UPDATE EmployeeSchedule " +
+                "SET " +
+                "ScheduleIn = '" + schedIn.ToUpper() + "', " +
+                "ScheduleOut = '" + schedOut.ToUpper() + "', " +
+                "Monday ='" + Monday + "', " +
+                "Tuesday ='" + Tuesday + "', " +
+                "Wednesday ='" + Wednesday + "', " +
+                "Thursday ='" + Thursday + "', " +
+                "Friday ='" + Friday + "', " +
+                "Saturday ='" + Saturday + "', " +
+                "Sunday ='" + Sunday + "' " +
+                "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
+                SqlCommand cmd2 = new SqlCommand(scheduleQuery, connection);
                 cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
             }
 
             btnSave.Visible = false;
@@ -363,7 +482,7 @@ namespace Admin_Login
                     lblPhilHealth.Text = reader.GetString(5);
                     lblEmail.Text = reader.GetString(6);
                     lblMaritalStatus.Text = reader.GetString(7);
-                    lblContact.Text = reader.GetInt64(8).ToString();
+                    lblContact.Text = reader.GetString(8);
                     lblDateHired.Text = reader.GetString(9);
                     lblGender.Text = reader.GetString(10);
                     lblBirthDate.Text = reader.GetDateTime(11).ToString();
@@ -513,6 +632,12 @@ namespace Admin_Login
         private void cmbEmploymentTypeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             //e.Handled = true;
+        }
+
+        private void btnAddSingleSched_Click(object sender, EventArgs e)
+        {
+            AddSingleSchedule ss = new AddSingleSchedule();
+            ss.ShowDialog();
         }
 
         private void cmbDepartmentEdit_KeyPress(object sender, KeyPressEventArgs e)

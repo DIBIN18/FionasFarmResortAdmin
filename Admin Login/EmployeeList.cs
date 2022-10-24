@@ -225,6 +225,7 @@ namespace Admin_Login
                     ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
                     ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
                     ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+
                     try
                     {
                         ep.dtpScheduleInEdit.Value = DateTime.Parse(dt.Rows[0][16].ToString());
@@ -236,7 +237,44 @@ namespace Admin_Login
                         ep.dtpScheduleInEdit.Text = (dt.Rows[0][16].ToString());
                         ep.dtpSchedOutEdit.Text = (dt.Rows[0][17].ToString());
                     }
-                    //Console.WriteLine(DateTime.Parse(dt.Rows[0][9].ToString()));
+
+                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                    {
+                        connection2.Open();
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                        DataTable dt2 = new DataTable();
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                        adapter2.Fill(dt2);
+
+                        if (dt2.Rows[0][4].ToString() == "True")
+                        {
+                            ep.cbMonday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][5].ToString() == "True")
+                        {
+                            ep.cbTuesday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][6].ToString() == "True")
+                        {
+                            ep.cbWednesday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][7].ToString() == "True")
+                        {
+                            ep.cbThursday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][8].ToString() == "True")
+                        {
+                            ep.cbFriday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][9].ToString() == "True")
+                        {
+                            ep.cbSaturday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][10].ToString() == "True")
+                        {
+                            ep.cbSunday.CheckState = CheckState.Checked;
+                        }
+                    }
                 }
             }
         }
