@@ -30,7 +30,6 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblEmployeeID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,7 +62,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.dtpSchedOutEdit = new System.Windows.Forms.DateTimePicker();
             this.dtpScheduleInEdit = new System.Windows.Forms.DateTimePicker();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnTrain = new System.Windows.Forms.Button();
             this.btnAddFace = new System.Windows.Forms.Button();
             this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
@@ -80,13 +78,11 @@
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblEmploymentType = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.pbProfilePic = new System.Windows.Forms.PictureBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.txtNameEdit = new System.Windows.Forms.TextBox();
@@ -105,11 +101,21 @@
             this.lblAllowedOT = new System.Windows.Forms.Label();
             this.btnAddPfp = new System.Windows.Forms.Button();
             this.btnChangePfp = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnAddSingleSched = new System.Windows.Forms.Button();
+            this.cbMonday = new System.Windows.Forms.CheckBox();
+            this.cbTuesday = new System.Windows.Forms.CheckBox();
+            this.cbWednesday = new System.Windows.Forms.CheckBox();
+            this.cbThursday = new System.Windows.Forms.CheckBox();
+            this.cbFriday = new System.Windows.Forms.CheckBox();
+            this.cbSaturday = new System.Windows.Forms.CheckBox();
+            this.cbSunday = new System.Windows.Forms.CheckBox();
+            this.pbProfilePic = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -135,18 +141,6 @@
             this.label6.Size = new System.Drawing.Size(289, 42);
             this.label6.TabIndex = 4;
             this.label6.Text = "EmployeeProfile";
-            // 
-            // Logo
-            // 
-            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(887, 2);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(43, 54);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logo.TabIndex = 3;
-            this.Logo.TabStop = false;
             // 
             // label1
             // 
@@ -340,6 +334,15 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.btnAddSingleSched);
+            this.panel1.Controls.Add(this.cbSunday);
+            this.panel1.Controls.Add(this.cbSaturday);
+            this.panel1.Controls.Add(this.cbFriday);
+            this.panel1.Controls.Add(this.cbThursday);
+            this.panel1.Controls.Add(this.cbWednesday);
+            this.panel1.Controls.Add(this.cbTuesday);
+            this.panel1.Controls.Add(this.cbMonday);
+            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.txtLeaveCreditsEdit);
             this.panel1.Controls.Add(this.label25);
             this.panel1.Controls.Add(this.lblLeaveCredits);
@@ -353,7 +356,6 @@
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.dtpSchedOutEdit);
             this.panel1.Controls.Add(this.dtpScheduleInEdit);
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.txtAccumulatedDayOffEdit);
             this.panel1.Controls.Add(this.cmbDepartmentEdit);
             this.panel1.Controls.Add(this.cmbPositionEdit);
@@ -368,7 +370,6 @@
             this.panel1.Controls.Add(this.lblPosition);
             this.panel1.Controls.Add(this.lblEmploymentType);
             this.panel1.Controls.Add(this.label17);
-            this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label10);
@@ -377,7 +378,7 @@
             this.panel1.Location = new System.Drawing.Point(52, 276);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(857, 250);
+            this.panel1.Size = new System.Drawing.Size(857, 286);
             this.panel1.TabIndex = 58;
             // 
             // txtLeaveCreditsEdit
@@ -412,7 +413,7 @@
             // 
             // txtPagIbigEdit
             // 
-            this.txtPagIbigEdit.Location = new System.Drawing.Point(590, 92);
+            this.txtPagIbigEdit.Location = new System.Drawing.Point(216, 232);
             this.txtPagIbigEdit.Name = "txtPagIbigEdit";
             this.txtPagIbigEdit.Size = new System.Drawing.Size(180, 20);
             this.txtPagIbigEdit.TabIndex = 82;
@@ -420,7 +421,7 @@
             // 
             // txtPhilHealthEdit
             // 
-            this.txtPhilHealthEdit.Location = new System.Drawing.Point(590, 63);
+            this.txtPhilHealthEdit.Location = new System.Drawing.Point(216, 204);
             this.txtPhilHealthEdit.Name = "txtPhilHealthEdit";
             this.txtPhilHealthEdit.Size = new System.Drawing.Size(180, 20);
             this.txtPhilHealthEdit.TabIndex = 81;
@@ -428,7 +429,7 @@
             // 
             // txtSSSEdit
             // 
-            this.txtSSSEdit.Location = new System.Drawing.Point(590, 34);
+            this.txtSSSEdit.Location = new System.Drawing.Point(216, 175);
             this.txtSSSEdit.Name = "txtSSSEdit";
             this.txtSSSEdit.Size = new System.Drawing.Size(180, 20);
             this.txtSSSEdit.TabIndex = 80;
@@ -439,7 +440,7 @@
             this.lblPagIbig.AutoSize = true;
             this.lblPagIbig.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPagIbig.ForeColor = System.Drawing.Color.Gray;
-            this.lblPagIbig.Location = new System.Drawing.Point(586, 91);
+            this.lblPagIbig.Location = new System.Drawing.Point(211, 232);
             this.lblPagIbig.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPagIbig.Name = "lblPagIbig";
             this.lblPagIbig.Size = new System.Drawing.Size(0, 19);
@@ -450,7 +451,7 @@
             this.lblPhilHealth.AutoSize = true;
             this.lblPhilHealth.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhilHealth.ForeColor = System.Drawing.Color.Gray;
-            this.lblPhilHealth.Location = new System.Drawing.Point(588, 63);
+            this.lblPhilHealth.Location = new System.Drawing.Point(211, 204);
             this.lblPhilHealth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPhilHealth.Name = "lblPhilHealth";
             this.lblPhilHealth.Size = new System.Drawing.Size(0, 19);
@@ -460,7 +461,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(451, 93);
+            this.label22.Location = new System.Drawing.Point(22, 235);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(98, 17);
@@ -471,7 +472,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(451, 64);
+            this.label21.Location = new System.Drawing.Point(22, 208);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(112, 17);
@@ -482,7 +483,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(451, 37);
+            this.label20.Location = new System.Drawing.Point(21, 181);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(63, 17);
@@ -495,7 +496,7 @@
             this.dtpSchedOutEdit.CustomFormat = "hh-mm";
             this.dtpSchedOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSchedOutEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpSchedOutEdit.Location = new System.Drawing.Point(216, 198);
+            this.dtpSchedOutEdit.Location = new System.Drawing.Point(555, 70);
             this.dtpSchedOutEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpSchedOutEdit.Name = "dtpSchedOutEdit";
             this.dtpSchedOutEdit.Size = new System.Drawing.Size(181, 23);
@@ -508,23 +509,12 @@
             this.dtpScheduleInEdit.CustomFormat = "hh-mm";
             this.dtpScheduleInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleInEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpScheduleInEdit.Location = new System.Drawing.Point(216, 171);
+            this.dtpScheduleInEdit.Location = new System.Drawing.Point(555, 38);
             this.dtpScheduleInEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpScheduleInEdit.Name = "dtpScheduleInEdit";
             this.dtpScheduleInEdit.Size = new System.Drawing.Size(181, 23);
             this.dtpScheduleInEdit.TabIndex = 72;
             this.dtpScheduleInEdit.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.Controls.Add(this.btnTrain);
-            this.panel3.Controls.Add(this.btnAddFace);
-            this.panel3.Location = new System.Drawing.Point(592, 175);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(245, 55);
-            this.panel3.TabIndex = 59;
             // 
             // btnTrain
             // 
@@ -532,7 +522,7 @@
             this.btnTrain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrain.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTrain.ForeColor = System.Drawing.Color.White;
-            this.btnTrain.Location = new System.Drawing.Point(131, 13);
+            this.btnTrain.Location = new System.Drawing.Point(803, 576);
             this.btnTrain.Margin = new System.Windows.Forms.Padding(2);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(106, 32);
@@ -547,10 +537,10 @@
             this.btnAddFace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddFace.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddFace.ForeColor = System.Drawing.Color.White;
-            this.btnAddFace.Location = new System.Drawing.Point(9, 13);
+            this.btnAddFace.Location = new System.Drawing.Point(662, 576);
             this.btnAddFace.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddFace.Name = "btnAddFace";
-            this.btnAddFace.Size = new System.Drawing.Size(106, 32);
+            this.btnAddFace.Size = new System.Drawing.Size(137, 32);
             this.btnAddFace.TabIndex = 63;
             this.btnAddFace.Text = "Add Face +";
             this.btnAddFace.UseVisualStyleBackColor = false;
@@ -606,17 +596,18 @@
             this.lblScheduleOut.AutoSize = true;
             this.lblScheduleOut.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleOut.ForeColor = System.Drawing.Color.Gray;
-            this.lblScheduleOut.Location = new System.Drawing.Point(212, 198);
+            this.lblScheduleOut.Location = new System.Drawing.Point(551, 69);
             this.lblScheduleOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScheduleOut.Name = "lblScheduleOut";
-            this.lblScheduleOut.Size = new System.Drawing.Size(0, 19);
+            this.lblScheduleOut.Size = new System.Drawing.Size(78, 19);
             this.lblScheduleOut.TabIndex = 13;
+            this.lblScheduleOut.Text = "sched out";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(16, 199);
+            this.label18.Location = new System.Drawing.Point(427, 70);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(111, 17);
@@ -628,18 +619,19 @@
             this.lblScheduleIn.AutoSize = true;
             this.lblScheduleIn.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScheduleIn.ForeColor = System.Drawing.Color.Gray;
-            this.lblScheduleIn.Location = new System.Drawing.Point(212, 171);
+            this.lblScheduleIn.Location = new System.Drawing.Point(551, 40);
             this.lblScheduleIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblScheduleIn.Name = "lblScheduleIn";
-            this.lblScheduleIn.Size = new System.Drawing.Size(0, 19);
+            this.lblScheduleIn.Size = new System.Drawing.Size(67, 19);
             this.lblScheduleIn.TabIndex = 11;
+            this.lblScheduleIn.Text = "sched in";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(588, 132);
+            this.lblStatus.Location = new System.Drawing.Point(843, 11);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 19);
@@ -650,7 +642,7 @@
             this.lblSSS.AutoSize = true;
             this.lblSSS.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSSS.ForeColor = System.Drawing.Color.Gray;
-            this.lblSSS.Location = new System.Drawing.Point(588, 35);
+            this.lblSSS.Location = new System.Drawing.Point(212, 175);
             this.lblSSS.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSSS.Name = "lblSSS";
             this.lblSSS.Size = new System.Drawing.Size(0, 19);
@@ -704,23 +696,12 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(17, 175);
+            this.label17.Location = new System.Drawing.Point(427, 40);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(98, 17);
             this.label17.TabIndex = 6;
             this.label17.Text = "Schedule In:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(451, 132);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(59, 17);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "Status:";
             // 
             // label15
             // 
@@ -777,18 +758,6 @@
             this.label13.TabIndex = 2;
             this.label13.Text = "Position:";
             // 
-            // pbProfilePic
-            // 
-            this.pbProfilePic.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.pbProfilePic.InitialImage = null;
-            this.pbProfilePic.Location = new System.Drawing.Point(52, 82);
-            this.pbProfilePic.Margin = new System.Windows.Forms.Padding(2);
-            this.pbProfilePic.Name = "pbProfilePic";
-            this.pbProfilePic.Size = new System.Drawing.Size(170, 161);
-            this.pbProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbProfilePic.TabIndex = 60;
-            this.pbProfilePic.TabStop = false;
-            // 
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -796,7 +765,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(52, 538);
+            this.btnEdit.Location = new System.Drawing.Point(52, 576);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(106, 32);
@@ -811,7 +780,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(172, 538);
+            this.btnBack.Location = new System.Drawing.Point(172, 576);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(106, 32);
@@ -924,7 +893,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(52, 538);
+            this.btnSave.Location = new System.Drawing.Point(52, 576);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(106, 32);
@@ -1003,12 +972,141 @@
             this.btnChangePfp.Visible = false;
             this.btnChangePfp.Click += new System.EventHandler(this.btnChangePfp_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(427, 108);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(159, 17);
+            this.label16.TabIndex = 86;
+            this.label16.Text = "Weekday Schedules:";
+            // 
+            // btnAddSingleSched
+            // 
+            this.btnAddSingleSched.BackColor = System.Drawing.Color.Green;
+            this.btnAddSingleSched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSingleSched.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddSingleSched.ForeColor = System.Drawing.Color.White;
+            this.btnAddSingleSched.Location = new System.Drawing.Point(587, 235);
+            this.btnAddSingleSched.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddSingleSched.Name = "btnAddSingleSched";
+            this.btnAddSingleSched.Size = new System.Drawing.Size(256, 32);
+            this.btnAddSingleSched.TabIndex = 89;
+            this.btnAddSingleSched.Text = "Add a one time schedule";
+            this.btnAddSingleSched.UseVisualStyleBackColor = false;
+            this.btnAddSingleSched.Click += new System.EventHandler(this.btnAddSingleSched_Click);
+            // 
+            // cbMonday
+            // 
+            this.cbMonday.AutoSize = true;
+            this.cbMonday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMonday.Location = new System.Drawing.Point(430, 137);
+            this.cbMonday.Name = "cbMonday";
+            this.cbMonday.Size = new System.Drawing.Size(82, 20);
+            this.cbMonday.TabIndex = 87;
+            this.cbMonday.Text = "Monday";
+            this.cbMonday.UseVisualStyleBackColor = true;
+            // 
+            // cbTuesday
+            // 
+            this.cbTuesday.AutoSize = true;
+            this.cbTuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTuesday.Location = new System.Drawing.Point(430, 164);
+            this.cbTuesday.Name = "cbTuesday";
+            this.cbTuesday.Size = new System.Drawing.Size(88, 20);
+            this.cbTuesday.TabIndex = 88;
+            this.cbTuesday.Text = "Tuesday";
+            this.cbTuesday.UseVisualStyleBackColor = true;
+            // 
+            // cbWednesday
+            // 
+            this.cbWednesday.AutoSize = true;
+            this.cbWednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbWednesday.Location = new System.Drawing.Point(430, 187);
+            this.cbWednesday.Name = "cbWednesday";
+            this.cbWednesday.Size = new System.Drawing.Size(110, 20);
+            this.cbWednesday.TabIndex = 89;
+            this.cbWednesday.Text = "Wednesday";
+            this.cbWednesday.UseVisualStyleBackColor = true;
+            // 
+            // cbThursday
+            // 
+            this.cbThursday.AutoSize = true;
+            this.cbThursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbThursday.Location = new System.Drawing.Point(579, 137);
+            this.cbThursday.Name = "cbThursday";
+            this.cbThursday.Size = new System.Drawing.Size(92, 20);
+            this.cbThursday.TabIndex = 90;
+            this.cbThursday.Text = "Thursday";
+            this.cbThursday.UseVisualStyleBackColor = true;
+            // 
+            // cbFriday
+            // 
+            this.cbFriday.AutoSize = true;
+            this.cbFriday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbFriday.Location = new System.Drawing.Point(579, 160);
+            this.cbFriday.Name = "cbFriday";
+            this.cbFriday.Size = new System.Drawing.Size(71, 20);
+            this.cbFriday.TabIndex = 91;
+            this.cbFriday.Text = "Friday";
+            this.cbFriday.UseVisualStyleBackColor = true;
+            // 
+            // cbSaturday
+            // 
+            this.cbSaturday.AutoSize = true;
+            this.cbSaturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSaturday.Location = new System.Drawing.Point(579, 187);
+            this.cbSaturday.Name = "cbSaturday";
+            this.cbSaturday.Size = new System.Drawing.Size(89, 20);
+            this.cbSaturday.TabIndex = 92;
+            this.cbSaturday.Text = "Saturday";
+            this.cbSaturday.UseVisualStyleBackColor = true;
+            // 
+            // cbSunday
+            // 
+            this.cbSunday.AutoSize = true;
+            this.cbSunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSunday.Location = new System.Drawing.Point(711, 137);
+            this.cbSunday.Name = "cbSunday";
+            this.cbSunday.Size = new System.Drawing.Size(79, 20);
+            this.cbSunday.TabIndex = 93;
+            this.cbSunday.Text = "Sunday";
+            this.cbSunday.UseVisualStyleBackColor = true;
+            // 
+            // pbProfilePic
+            // 
+            this.pbProfilePic.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.pbProfilePic.InitialImage = null;
+            this.pbProfilePic.Location = new System.Drawing.Point(52, 82);
+            this.pbProfilePic.Margin = new System.Windows.Forms.Padding(2);
+            this.pbProfilePic.Name = "pbProfilePic";
+            this.pbProfilePic.Size = new System.Drawing.Size(170, 161);
+            this.pbProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbProfilePic.TabIndex = 60;
+            this.pbProfilePic.TabStop = false;
+            // 
+            // Logo
+            // 
+            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
+            this.Logo.Location = new System.Drawing.Point(887, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(43, 54);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo.TabIndex = 3;
+            this.Logo.TabStop = false;
+            // 
             // EmployeeProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 609);
+            this.ClientSize = new System.Drawing.Size(949, 628);
+            this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnChangePfp);
+            this.Controls.Add(this.btnAddFace);
             this.Controls.Add(this.btnAddPfp);
             this.Controls.Add(this.cmbOtAllowed);
             this.Controls.Add(this.label23);
@@ -1054,11 +1152,10 @@
             this.Load += new System.EventHandler(this.EmployeeProfile_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1078,7 +1175,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pbProfilePic;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAddFace;
@@ -1138,10 +1234,18 @@
         public System.Windows.Forms.TextBox txtLeaveCreditsEdit;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.Label lblLeaveCredits;
-        private System.Windows.Forms.Label label16;
         public System.Windows.Forms.Label lblAllowedOT;
         public System.Windows.Forms.ComboBox cmbOtAllowed;
         private System.Windows.Forms.Button btnAddPfp;
         private System.Windows.Forms.Button btnChangePfp;
+        private System.Windows.Forms.Button btnAddSingleSched;
+        private System.Windows.Forms.Label label16;
+        public System.Windows.Forms.CheckBox cbSunday;
+        public System.Windows.Forms.CheckBox cbSaturday;
+        public System.Windows.Forms.CheckBox cbFriday;
+        public System.Windows.Forms.CheckBox cbThursday;
+        public System.Windows.Forms.CheckBox cbWednesday;
+        public System.Windows.Forms.CheckBox cbTuesday;
+        public System.Windows.Forms.CheckBox cbMonday;
     }
 }
