@@ -45,24 +45,7 @@ namespace Admin_Login
 
             dtpScheduleOut.Format = DateTimePickerFormat.Custom;
             dtpScheduleOut.CustomFormat = "hh:mm:ss tt";
-        }
-        public void insertNewEmployeeToDeductionTable()
-        {
-            string query = "insert into Deductions " +
-                           "(EmployeeID, " +
-                           "SSSContribution, " +
-                           "PagIbigContribution, " +
-                           "PhilHealthContribution, " +
-                           "OtherDeduction, " +
-                           "TotalDeductions)" +
-                           "select EmployeeID = MAX(A.EmployeeID) ,4.50, 2.00, 2.00, 0.00, 0.00 from EmployeeInfo as A";
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
-            }
-        }
+        }      
 
         public void insertNewEmployeeSchedule()
         {
@@ -200,7 +183,6 @@ namespace Admin_Login
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
-                insertNewEmployeeToDeductionTable();
                 insertNewEmployeeSchedule();
                 MessageBox.Show("Successfully Added Employee!");
 
