@@ -57,9 +57,13 @@
             // 
             // dgvAttendanceRecord
             // 
+            this.dgvAttendanceRecord.AllowUserToAddRows = false;
+            this.dgvAttendanceRecord.AllowUserToDeleteRows = false;
             this.dgvAttendanceRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttendanceRecord.Location = new System.Drawing.Point(3, 3);
             this.dgvAttendanceRecord.Name = "dgvAttendanceRecord";
+            this.dgvAttendanceRecord.ReadOnly = true;
+            this.dgvAttendanceRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAttendanceRecord.Size = new System.Drawing.Size(819, 503);
             this.dgvAttendanceRecord.TabIndex = 5;
             // 
@@ -159,6 +163,7 @@
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 30);
             this.dtp_Date.TabIndex = 26;
+            this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 
             // label1
             // 
