@@ -29,7 +29,7 @@ namespace Admin_Login
 
         public void Payroll_Load(object sender, EventArgs e)
         {
-            txtRegularHours.Text = "32123";
+            
         }
     }
 }

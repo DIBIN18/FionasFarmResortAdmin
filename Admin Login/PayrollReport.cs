@@ -146,6 +146,42 @@ namespace Admin_Login
             }
         }
 
+        private void cbSSS_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSSS.Checked)
+            {
+                sssclass.SSSON = "ON";
+            }
+            else
+            {
+                sssclass.SSSON = "OFF";
+            }
+        }
+
+        private void cbPAGIBIG_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPAGIBIG.Checked)
+            {
+                sssclass.PAGIBIGON = "ON";
+            }
+            else
+            {
+                sssclass.PAGIBIGON = "OFF";
+            }
+        }
+
+        private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPHILHEALTH.Checked)
+            {
+                sssclass.PHILHEALTHON = "ON";
+            }
+            else
+            {
+                sssclass.PHILHEALTHON = "OFF";
+            }
+        }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -169,6 +205,7 @@ namespace Admin_Login
                 "0 as SSSContribution , "+
                 "0 as PAGIBIGContribution , "+
                 "0 as PHILHEALTHContribution , "+
+                "0 as TAX, "+
                 "D.OtherDeduction as OtherDeduction , "+
                 "0 as NetPay, null "+
                 "from EmployeeInfo as A "+

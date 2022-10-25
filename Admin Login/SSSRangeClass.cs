@@ -11,10 +11,45 @@ namespace Admin_Login
     internal class SSSRangeClass
     {
         Login login = new Login();
-        double sssContributionEmployee, sssContributionEmployer, pagibicontribEmployee, pagibicontribEmployer, PhilhealthContrib;
+        double sssContributionEmployee, sssContributionEmployer, pagibicontribEmployee, pagibicontribEmployer, PhilhealthContrib, tax;
         public DataTable datatable = new DataTable();
-        public string EmployeeID;
+        public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON;
         double getGrossPay = 0;
+        public void getTAX()
+        {
+            if(getGrossPay * 24 <= 250000)
+            {
+                tax = 0;
+            }
+            else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
+            {
+                tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
+            }
+            else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
+            {
+                tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
+            }
+            else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
+            {
+                tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
+            }
+            else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
+            {
+                tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
+            }
+            else if (getGrossPay > 8000000)
+            {
+                tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
+            }
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "update PayrollReport set TAX = " + tax +
+                    " where EmployeeID = " + EmployeeID;
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
         public void UpdateEmployeeSSSColumn()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -83,13 +118,15 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "update PayrollReport "+
-                               "set NetSalary = GrossSalary - TotalDeductions from PayrollReport as A join Deductions as B on A.EmployeeID = B.EmployeeID";
+                               "set NetSalary = GrossSalary - (SSSContribution + PAGIBIGContribution + PHILHEALTHContribution + TAX) from PayrollReport "+
+                               "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
         }
         public void getSSSRange()
         {
+            PayrollReport payrollReport = new PayrollReport();
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -388,13 +425,27 @@ namespace Admin_Login
                             sssContributionEmployer = 0;
                         }
                     }
-                    UpdateEmployeeSSSColumn();
-                    UpdatePagibigContributionColumn();
-                    UpdatePhilhealthContributionColumn();
+                    if (SSSON == "ON")
+                    {
+                        UpdateEmployeeSSSColumn();
+                        getTAX();
+                        getNetPay();
+                    }
+                    if (PAGIBIGON == "ON")
+                    {
+                        UpdatePagibigContributionColumn();
+                        getTAX();
+                        getNetPay();
+                    }
+                    if (PHILHEALTHON == "ON")
+                    {
+                        UpdatePhilhealthContributionColumn();
+                        getTAX();
+                        getNetPay();
+                    }                   
                 }
-                getNetPay();
+               
             }
-
         }
     }
 }
