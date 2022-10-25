@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+
 namespace Admin_Login
 {
     public partial class EmployeeList : Form
@@ -66,7 +68,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM EmployeeInfo";
+                string query = "SELECT * FROM EmployeeInfo WHERE Status='Active'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -80,44 +82,48 @@ namespace Admin_Login
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
-                    string query = //"SET IDENTITY_INSERT Archive ON " +
-                    "Insert INTO Archive (" +
-                    "EmployeeID , " +
-                    "EmployeeFullName, " +
-                    "Address , " +
-                    "SSS_ID , " +
-                    "PAGIBIG_NO, " +
-                    "PHIL_HEALTH_NO, " +
-                    "Email, " +
-                    "EmployeeMaritalStatus, " +
-                    "ContactNumber, " +
-                    "DateHired, " +
-                    "Gender, " +
-                    "BirthDate, " +
-                    "DepartmentID, " +
-                    "PositionID)" +
-                    "SELECT " +
-                    "EmployeeID, " +
-                    "EmployeeFullName , " +
-                    "Address , " +
-                    "SSS_ID, " +
-                    "PAGIBIG_NO, " +
-                    "PHIL_HEALTH_NO, " +
-                    "Email, " +
-                    "EmployeeMaritalStatus, " +
-                    "ContactNumber, " +
-                    "DateHired, " +
-                    "Gender, " +
-                    "BirthDate, " +
-                    "DepartmentID, " +
-                    "PositionID " +
-                    "FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
-                    "DELETE FROM Deductions WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value +
-                    "DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
+                    //string query = //"SET IDENTITY_INSERT Archive ON " +
+                    //"Insert INTO Archive (" +
+                    //"EmployeeID , " +
+                    //"EmployeeFullName, " +
+                    //"Address , " +
+                    //"SSS_ID , " +
+                    //"PAGIBIG_NO, " +
+                    //"PHIL_HEALTH_NO, " +
+                    //"Email, " +
+                    //"EmployeeMaritalStatus, " +
+                    //"ContactNumber, " +
+                    //"DateHired, " +
+                    //"Gender, " +
+                    //"BirthDate, " +
+                    //"DepartmentID, " +
+                    //"PositionID)" +
+                    //"SELECT " +
+                    //"EmployeeID, " +
+                    //"EmployeeFullName , " +
+                    //"Address , " +
+                    //"SSS_ID, " +
+                    //"PAGIBIG_NO, " +
+                    //"PHIL_HEALTH_NO, " +
+                    //"Email, " +
+                    //"EmployeeMaritalStatus, " +
+                    //"ContactNumber, " +
+                    //"DateHired, " +
+                    //"Gender, " +
+                    //"BirthDate, " +
+                    //"DepartmentID, " +
+                    //"PositionID " +
+                    //"FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
+                    //"DELETE FROM Deductions WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value +
+                    //"DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
+
+                    string query =
+                        "UPDATE EmployeeInfo SET Status='Inactive' WHERE EmployeeID=" + dgvEmployeeList.CurrentRow.Cells[0].Value;
+
                     SqlCommand cmd = new SqlCommand(query, connection);
                     DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to Archive Employee? " + 
-                        dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " + 
+                        " Are you sure you want to Archive Employee? " +
+                        dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " +
                         dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo
                     );
                     if (dialogResult == DialogResult.Yes)
@@ -223,7 +229,7 @@ namespace Admin_Login
                     ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
                     ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
                     ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
-                    ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
+                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "M/dd/yyyy", CultureInfo.InvariantCulture);
                     ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
 
                     try
@@ -291,7 +297,7 @@ namespace Admin_Login
                 connection.Open();
                 if (string.IsNullOrEmpty(tb_Search.Text))
                 {
-                    SqlCommand cmd2 = new SqlCommand("Select * from EmployeeInfo", connection);
+                    SqlCommand cmd2 = new SqlCommand("Select * from EmployeeInfo where Status='Active'", connection);
                     SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
                     DataTable dt2 = new DataTable();
                     sqlDataAdapter2.Fill(dt2);

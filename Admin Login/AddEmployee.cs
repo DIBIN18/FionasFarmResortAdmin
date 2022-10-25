@@ -63,6 +63,21 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void insertNewEmployeeSchedule()
+        {
+            using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+            {
+                connection2.Open();
+                string query =
+                    "INSERT INTO EmployeeSchedule (EmployeeID) SELECT EmployeeID = MAX(A.EmployeeID) FROM EmployeeInfo as A";
+
+                SqlCommand cmd = new SqlCommand(query, connection2);
+                //cmd.Parameters.AddWithValue("@EmployeeID", Int64.Parse(dgvEmployeeList.CurrentRow.Cells[0].Value.ToString()));
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         private void txtDepartment_MouseClick(object sender, MouseEventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -138,7 +153,8 @@ namespace Admin_Login
                     "PositionID," +
                     "ScheduleIn," +
                     "ScheduleOut," +
-                    "AccumulatedDayOffs)" +
+                    "AccumulatedDayOffs," +
+                    "LeaveCredits)" +
                     "VALUES(" +
                     "@EmployeeFullName, " +
                     "@Address, " +
@@ -157,19 +173,20 @@ namespace Admin_Login
                     "@PositionID," +
                     "@ScheduleIn," +
                     "@ScheduleOut," +
-                    "@AccumulatedDayOffs)";
+                    "@AccumulatedDayOffs," +
+                    "@LeaveCredits)";
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                cmd.Parameters.AddWithValue("@SSS_ID", Int32.Parse(txtSSSID.Text));
-                cmd.Parameters.AddWithValue("@PAGIBIG_NO", Int32.Parse(txtPagibigNo.Text));
-                cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", Int32.Parse(txtPhilhealthNo.Text));
+                cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
+                cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
+                cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
                 cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
                 cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
                 cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
-                cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
+                cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/d/yyyy"));
                 cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
                 cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
                 cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
@@ -178,12 +195,15 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
                 cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                 cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
+                cmd.Parameters.AddWithValue("@LeaveCredits", 0);
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
                 insertNewEmployeeToDeductionTable();
+                insertNewEmployeeSchedule();
                 MessageBox.Show("Successfully Added Employee!");
+
                 clearAll();
             }
         }

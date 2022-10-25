@@ -39,6 +39,8 @@ namespace Admin_Login
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lblSingleSchedID = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +54,7 @@ namespace Admin_Login
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 44);
+            this.panel2.Size = new System.Drawing.Size(370, 44);
             this.panel2.TabIndex = 65;
             // 
             // label6
@@ -143,30 +145,57 @@ namespace Admin_Login
             this.label12.Location = new System.Drawing.Point(20, 75);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 17);
+            this.label12.Size = new System.Drawing.Size(48, 17);
             this.label12.TabIndex = 80;
-            this.label12.Text = "Date Hired:";
+            this.label12.Text = "Date :";
             // 
             // btnBack
             // 
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(332, 382);
+            this.btnBack.Location = new System.Drawing.Point(191, 190);
             this.btnBack.Margin = new System.Windows.Forms.Padding(2);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(106, 32);
             this.btnBack.TabIndex = 82;
-            this.btnBack.Text = "Back";
+            this.btnBack.Text = "Cancel";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.Green;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(61, 190);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(106, 32);
+            this.btnAdd.TabIndex = 83;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lblSingleSchedID
+            // 
+            this.lblSingleSchedID.AutoSize = true;
+            this.lblSingleSchedID.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSingleSchedID.Location = new System.Drawing.Point(20, 46);
+            this.lblSingleSchedID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSingleSchedID.Name = "lblSingleSchedID";
+            this.lblSingleSchedID.Size = new System.Drawing.Size(0, 17);
+            this.lblSingleSchedID.TabIndex = 84;
             // 
             // AddSingleSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(370, 267);
+            this.Controls.Add(this.lblSingleSchedID);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.label12);
@@ -199,5 +228,7 @@ namespace Admin_Login
         public System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.Label lblSingleSchedID;
     }
 }

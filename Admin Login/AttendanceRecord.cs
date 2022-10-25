@@ -56,16 +56,49 @@ namespace Admin_Login
 
         private void AttendanceRecord_Load(object sender, EventArgs e)
         {
+            dtp_Date.Format = DateTimePickerFormat.Custom;
+            dtp_Date.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT * FROM AttendanceSheet";
+                string query =
+                    "SELECT EmployeeInfo.EmployeeFullName, AttendanceSheet.* " +
+                    "FROM AttendanceSheet " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeInfo.EmployeeID = AttendanceSheet.EmployeeID " +
+                    "WHERE Date='" + date + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 dgvAttendanceRecord.DataSource = data;
             }
 
+        }
+
+        private void dtp_Date_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_Date.Format = DateTimePickerFormat.Custom;
+            dtp_Date.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+            Console.WriteLine(date);
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "SELECT EmployeeInfo.EmployeeFullName, AttendanceSheet.* " +
+                    "FROM AttendanceSheet " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeInfo.EmployeeID = AttendanceSheet.EmployeeID " +
+                    "WHERE Date='" + date + "'";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                dgvAttendanceRecord.DataSource = data;
+            }
         }
     }
 }

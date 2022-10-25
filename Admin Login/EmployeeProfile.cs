@@ -24,6 +24,7 @@ namespace Admin_Login
         long selectedPositionId = 0;
 
         string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
+        
 
         public EmployeeProfile()
         {
@@ -79,20 +80,6 @@ namespace Admin_Login
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
                 btnAddPfp.Visible = true;
-            }
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                string query =
-                    "IF NOT EXISTS (SELECT EmployeeID FROM EmployeeSchedule WHERE EmployeeID=" + lblEmployeeID.Text.ToString() + ") " +
-                    "BEGIN " +
-                    "INSERT INTO EmployeeSchedule (EmployeeID) VALUES (@EmployeeID) " +
-                    "END";
-
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@EmployeeID", Int64.Parse(lblEmployeeID.Text));
-                cmd.ExecuteNonQuery();
             }
 
             cbMonday.Enabled = false;
@@ -358,6 +345,7 @@ namespace Admin_Login
 
         private void btnAddFace_Click(object sender, EventArgs e)
         {
+            Clipboard.SetText(lblEmployeeID.Text.ToString());
             var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             Process.Start(path + "\\Collect Employee Dataset\\main.exe");
         }
@@ -634,9 +622,10 @@ namespace Admin_Login
             //e.Handled = true;
         }
 
-        private void btnAddSingleSched_Click(object sender, EventArgs e)
+        public void btnAddSingleSched_Click(object sender, EventArgs e)
         {
             AddSingleSchedule ss = new AddSingleSchedule();
+            ss.lblSingleSchedID.Text = lblEmployeeID.Text.ToString();
             ss.ShowDialog();
         }
 

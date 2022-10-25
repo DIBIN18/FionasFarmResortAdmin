@@ -229,7 +229,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(48)))), ((int)(((byte)(49)))));
-            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.AbsentToday_Icon1;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.EmployeeList;
             this.pictureBox5.Location = new System.Drawing.Point(764, 101);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
@@ -247,9 +247,9 @@
             this.label10.Location = new System.Drawing.Point(610, 61);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(171, 28);
+            this.label10.Size = new System.Drawing.Size(200, 28);
             this.label10.TabIndex = 21;
-            this.label10.Text = "Absent Today";
+            this.label10.Text = "Total Employees";
             // 
             // pictureBox6
             // 
