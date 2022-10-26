@@ -30,12 +30,12 @@ namespace Admin_Login
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             SqlCommand command = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            command.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));
+            command.Parameters.AddWithValue("@From_", dtp_From.Value.ToString("MMMM dd"));
             SqlDataReader Reader;
             Reader = command.ExecuteReader();
             if (Reader.Read())
             {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
+                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_From.Value.ToString(", yyyy");
                 lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
             }
             string query = "select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime"+
@@ -89,26 +89,6 @@ namespace Admin_Login
                 cb_SortBy.ForeColor = Color.Silver;
             }
         }
-        private void Dt_Date_ValueChanged(object sender, EventArgs e)
-        {
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-            SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            HolidayCommand.Parameters.AddWithValue("@From_", dtp_Date.Value.ToString("MMMM dd"));
-            SqlDataReader Reader;
-            Reader = HolidayCommand.ExecuteReader();
-            if (Reader.Read())
-            {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_Date.Value.ToString(", yyyy");
-                lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
-            }
-            else
-            {
-                lbl_Period.Text = "";
-                lbl_Holiday.Text = "";
-            }
-        }
-
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -179,6 +159,26 @@ namespace Admin_Login
             else
             {
                 sssclass.PHILHEALTHON = "OFF";
+            }
+        }
+
+        private void Dt_From_ValueChanged(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
+            HolidayCommand.Parameters.AddWithValue("@From_", dtp_From.Value.ToString("MMMM dd"));
+            SqlDataReader Reader;
+            Reader = HolidayCommand.ExecuteReader();
+            if (Reader.Read())
+            {
+                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_From.Value.ToString(", yyyy");
+                lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
+            }
+            else
+            {
+                lbl_Period.Text = "";
+                lbl_Holiday.Text = "";
             }
         }
 

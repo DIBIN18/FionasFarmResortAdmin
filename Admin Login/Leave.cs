@@ -134,9 +134,15 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sqlDataAdapter.Fill(dt);
+
                 int totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-                int employeeLeaveCredits = (int)leaveEmployeeList.dgvLeave.CurrentRow.Cells[2].Value;
-                int remainingCredits = employeeLeaveCredits - totalLeaveDays;
+                string employeeLeaveCredits = (string)dt.Rows[0][20].ToString();
+                int remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+
 
                 string query =
                     "UPDATE EmployeeInfo " +
@@ -144,6 +150,8 @@ namespace Admin_Login
                     "WHERE EmployeeID = " + txtEmployeeID.Text;
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
+
+                connection.Close();
             }
         }
         private void Search_Click(object sender, EventArgs e)
