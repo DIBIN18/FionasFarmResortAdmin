@@ -188,6 +188,7 @@ namespace Admin_Login
             this.lblSingleSchedID.Name = "lblSingleSchedID";
             this.lblSingleSchedID.Size = new System.Drawing.Size(0, 17);
             this.lblSingleSchedID.TabIndex = 84;
+            this.lblSingleSchedID.Visible = false;
             // 
             // AddSingleSchedule
             // 

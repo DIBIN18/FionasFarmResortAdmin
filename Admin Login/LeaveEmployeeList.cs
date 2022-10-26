@@ -65,34 +65,13 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Leave";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
-    
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            Leave leavess = new Leave();
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID where EmployeeID = " + dgvLeave.CurrentRow.Cells[0].Value, conn);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            adapter.Fill(dt);
-            leavess.txtEmployeeID.Text = dt.Rows[0][0].ToString(); ;
-            leavess.txtEmployeeName.Text = dt.Rows[0][1].ToString();
-            leavess.txtDepartment.Text = dt.Rows[0][2].ToString();
-            leavess.txtPosition.Text = dt.Rows[0][3].ToString();
-            conn.Close();
-            leavess.cmb_LeaveType.Enabled = true;
-            leavess.rtxtReason.Enabled = true;
-            leavess.dtp_StartDate.Enabled = true;
-            leavess.dtp_EndDate.Enabled = true;
-            leavess.btnCancel.Enabled = true;
-            leavess.btnSubmit.Enabled = true;  
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Leave";
-            menu.Menu_Load(menu, EventArgs.Empty);
-        }
         private void dgvLeave_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            Leave l = new Leave();
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Leave";
+            l.btnSubmit.Enabled = true;
+            l.btnCancel.Enabled = true;
             if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 employeeid = dgvLeave.CurrentRow.Cells[0].Value.ToString();
@@ -102,6 +81,7 @@ namespace Admin_Login
                 menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
 
+           
             }
         }
     }

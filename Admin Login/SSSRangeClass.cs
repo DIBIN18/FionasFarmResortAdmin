@@ -442,7 +442,9 @@ namespace Admin_Login
                         UpdatePhilhealthContributionColumn();
                         getTAX();
                         getNetPay();
-                    }                   
+                    }
+                    getTAX();
+                    getNetPay();
                 }
                
             }

@@ -137,7 +137,8 @@ namespace Admin_Login
                     "ScheduleIn," +
                     "ScheduleOut," +
                     "AccumulatedDayOffs," +
-                    "LeaveCredits)" +
+                    "LeaveCredits," +
+                    "Status)" +
                     "VALUES(" +
                     "@EmployeeFullName, " +
                     "@Address, " +
@@ -157,7 +158,8 @@ namespace Admin_Login
                     "@ScheduleIn," +
                     "@ScheduleOut," +
                     "@AccumulatedDayOffs," +
-                    "@LeaveCredits)";
+                    "@LeaveCredits," +
+                    "@Status)";
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -179,6 +181,7 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                 cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
                 cmd.Parameters.AddWithValue("@LeaveCredits", 0);
+                cmd.Parameters.AddWithValue("@Status", "Active");
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
