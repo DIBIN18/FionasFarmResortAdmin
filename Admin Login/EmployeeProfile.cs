@@ -130,7 +130,8 @@ namespace Admin_Login
             txtSSSEdit.Visible = true;
             txtPhilHealthEdit.Visible = true;
             txtPagIbigEdit.Visible = true;
-            txtLeaveCreditsEdit.Visible = true;
+            txtSickLeaveCreditsEdit.Visible = true;
+            lblVacationLeaveCredits.Visible = true;
             dtpDateOfBirth.Visible = true;
             cmbOtAllowed.Visible = true;
 
@@ -182,7 +183,8 @@ namespace Admin_Login
             txtSSSEdit.Visible = false;
             txtPhilHealthEdit.Visible = false;
             txtPagIbigEdit.Visible = false;
-            txtLeaveCreditsEdit.Visible = false;
+            txtSickLeaveCreditsEdit.Visible = false;
+            lblVacationLeaveCredits.Visible = false;
             dtpDateOfBirth.Visible = false;
             cmbOtAllowed.Visible = false;
 
@@ -238,7 +240,8 @@ namespace Admin_Login
                 "ScheduleOut = '" + schedOut.ToUpper() + "', " +
                 "AllowedOvertime = " + Set_Allowed_OT(cmbOtAllowed.Text.ToString()) + ", " +
                 "AccumulatedDayOffs = " + txtAccumulatedDayOffEdit.Text.ToString() + ", " +
-                "LeaveCredits = " + txtLeaveCreditsEdit.Text.ToString() + " " +
+                "SickLeaveCredits = " + txtSickLeaveCreditsEdit.Text.ToString() + ", " +
+                "VacationLeaveCredits = " + lblVacationLeaveCredits.Text.ToString() +
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
             if (cbMonday.Checked)
@@ -482,7 +485,8 @@ namespace Admin_Login
                     lblScheduleOut.Text = reader.GetString(17);
                     lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(18));
                     lblAccumulated.Text = reader.GetInt32(19).ToString();
-                    lblLeaveCredits.Text = reader.GetInt32(20).ToString();
+                    txtSickLeaveCreditsEdit.Text = reader.GetInt32(20).ToString();
+                    lblVacationLeaveCredits.Text = reader.GetInt32(21).ToString();
                 }
             }
         }

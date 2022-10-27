@@ -138,18 +138,35 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sqlDataAdapter.Fill(dt);
+                int totalLeaveDays;
+                string employeeLeaveCredits;
+                int remainingCredits;
 
-                int totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-                string employeeLeaveCredits = (string)dt.Rows[0][20].ToString();
-                int remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
-
-
-                string query =
-                    "UPDATE EmployeeInfo " +
-                    "SET LeaveCredits = " + remainingCredits +
-                    "WHERE EmployeeID = " + txtEmployeeID.Text;
-                SqlCommand command = new SqlCommand(query, connection);
-                command.ExecuteNonQuery();
+                if(cmb_LeaveType.Equals("Sick Leave"))
+                {
+                    totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                    employeeLeaveCredits = (string)dt.Rows[0][20].ToString();
+                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+                    string query =
+                   "UPDATE EmployeeInfo " +
+                   "SET SickLeaveCredits = " + remainingCredits +
+                   "WHERE EmployeeID = " + txtEmployeeID.Text;
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.ExecuteNonQuery();
+                }
+                else if(cmb_LeaveType.Equals("Vacation Leave"))
+                {
+                    totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                    employeeLeaveCredits = (string)dt.Rows[0][21].ToString();
+                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+                    string query =
+                   "UPDATE EmployeeInfo " +
+                   "SET VacationLeaveCredits = " + remainingCredits +
+                   "WHERE EmployeeID = " + txtEmployeeID.Text;
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.ExecuteNonQuery();
+                }
+             
 
                 connection.Close();
             }
@@ -177,6 +194,63 @@ namespace Admin_Login
                 dtp_StartDate.Enabled = false;
                 dtp_EndDate.Enabled = false;
                 rtxtReason.Enabled = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sqlDataAdapter.Fill(dt);
+                //int totalLeaveDays;
+                //string employeeLeaveCredits;
+                //int remainingCredits;
+                //totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                //employeeLeaveCredits = (string)dt.Rows[0][21].ToString();
+                //remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+                
+                if(cmb_LeaveType.SelectedText == "Sick Leave")
+                {
+                    MessageBox.Show("true");
+                }
+                else if (cmb_LeaveType.SelectedText == "Vacation Leave")
+                {
+                    MessageBox.Show("false");
+                }
+                
+                //if (cmb_LeaveType.SelectedText == "Sick Leave")
+                //{
+                //    totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                //    employeeLeaveCredits = (string)dt.Rows[0][20].ToString();
+                //    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+                //    MessageBox.Show(employeeLeaveCredits);
+                //    //string query =
+                //    //"UPDATE EmployeeInfo " +
+                //    //"SET SickLeaveCredits = " + remainingCredits +
+                //    //"WHERE EmployeeID = " + txtEmployeeID.Text;
+                //    // SqlCommand command = new SqlCommand(query, connection);
+                //    // command.ExecuteNonQuery();
+                //}
+                //else if (cmb_LeaveType.SelectedText == "Vacation Leave")
+                //{
+                //    totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                //    employeeLeaveCredits = (string)dt.Rows[0][21].ToString();
+                //    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+                //    MessageBox.Show(employeeLeaveCredits);
+                //    // string query =
+                //    //"UPDATE EmployeeInfo " +
+                //    //"SET VacationLeaveCredits = " + remainingCredits +
+                //    //"WHERE EmployeeID = " + txtEmployeeID.Text;
+                //    // SqlCommand command = new SqlCommand(query, connection);
+                //    // command.ExecuteNonQuery();
+                //}
+
+
+                connection.Close();
             }
         }
     }

@@ -51,6 +51,7 @@
             this.dtp_StartDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cmb_LeaveType = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.txtSchedule);
             this.groupBox1.Controls.Add(this.txtPosition);
             this.groupBox1.Controls.Add(this.txtDepartment);
@@ -332,6 +334,16 @@
             this.cmb_LeaveType.TabIndex = 0;
             this.cmb_LeaveType.Click += new System.EventHandler(this.cmbLeaveType_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(910, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 37);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Leave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -379,5 +391,6 @@
         public System.Windows.Forms.DateTimePicker dtp_EndDate;
         public System.Windows.Forms.DateTimePicker dtp_StartDate;
         public System.Windows.Forms.ComboBox cmb_LeaveType;
+        private System.Windows.Forms.Button button1;
     }
 }
