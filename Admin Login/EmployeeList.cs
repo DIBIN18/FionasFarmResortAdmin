@@ -222,7 +222,8 @@ namespace Admin_Login
                     ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
                     ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
                     ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
-                    ep.txtLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][21].ToString();
                     ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
