@@ -70,6 +70,7 @@ namespace Admin_Login
                     double philhealth = Convert.ToDouble(data.Rows[0][14]);
                     double tax = Convert.ToDouble(data.Rows[0][15]);
                     double netpay = Convert.ToDouble(data.Rows[0][17]);
+                    double totaldeduction = sss + pagibig + philhealth + tax;
 
                     txtRegularHours.Text = regularhrs.ToString();
                     txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
@@ -88,7 +89,7 @@ namespace Admin_Login
                     txtPagIbig.Text = pagibig.ToString("n2");
                     txtPhilHealth.Text = philhealth.ToString("n2");
                     txtTaxAmount.Text = tax.ToString("n2");
-                    txtTotalDeduction.Text = Convert.ToString(sss + pagibig + philhealth + tax);
+                    txtTotalDeduction.Text = totaldeduction.ToString("n2");
                     txtNetPay.Text = netpay.ToString("n2");
 
 
