@@ -17,30 +17,56 @@ namespace Admin_Login
         double getGrossPay = 0;
         public void getTAX()
         {
-            if(getGrossPay * 24 <= 250000)
+            //-------------------------------
+            if(getGrossPay <= 10416.99)
             {
                 tax = 0;
             }
-            else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
+            else if (getGrossPay > 10417 && getGrossPay < 16666)
             {
-                tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
+                tax = (getGrossPay - 10417) * 0.2;
             }
-            else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
+            else if (getGrossPay > 16667 && getGrossPay < 33332)
             {
-                tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
+                tax = ((getGrossPay - 16667) * 0.25) + 1250;
             }
-            else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
+            else if (getGrossPay > 33333 && getGrossPay < 83332)
             {
-                tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
+                tax = tax = ((getGrossPay - 33333) * 0.30) + 5416.67;
             }
-            else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
+            else if (getGrossPay > 83333 && getGrossPay < 333332)
             {
-                tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
+                tax = ((getGrossPay - 83333) * 0.32) + 20416.67;
             }
-            else if (getGrossPay > 8000000)
+            else if (getGrossPay > 333333)
             {
-                tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
+                tax = ((getGrossPay - 333333) * 0.35) + 100416.67;
             }
+            //------------------------------
+            //if (getGrossPay * 24 <= 250000)
+            //{
+            //    tax = 0;
+            //}
+            //else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
+            //{
+            //    tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
+            //}
+            //else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
+            //{
+            //    tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
+            //}
+            //else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
+            //{
+            //    tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
+            //}
+            //else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
+            //{
+            //    tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
+            //}
+            //else if (getGrossPay > 8000000)
+            //{
+            //    tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
+            //}
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
