@@ -32,7 +32,7 @@ namespace Admin_Login
             }
             else if (getGrossPay > 33333 && getGrossPay < 83332)
             {
-                tax = tax = ((getGrossPay - 33333) * 0.30) + 5416.67;
+                tax = ((getGrossPay - 33333) * 0.30) + 5416.67;
             }
             else if (getGrossPay > 83333 && getGrossPay < 333332)
             {
