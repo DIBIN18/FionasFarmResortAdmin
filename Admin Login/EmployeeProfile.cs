@@ -131,7 +131,7 @@ namespace Admin_Login
             txtPhilHealthEdit.Visible = true;
             txtPagIbigEdit.Visible = true;
             txtSickLeaveCreditsEdit.Visible = true;
-            lblVacationLeaveCredits.Visible = true;
+            txtVacationLeaveCreditsEdit.Visible = true;
             dtpDateOfBirth.Visible = true;
             cmbOtAllowed.Visible = true;
 
@@ -184,7 +184,7 @@ namespace Admin_Login
             txtPhilHealthEdit.Visible = false;
             txtPagIbigEdit.Visible = false;
             txtSickLeaveCreditsEdit.Visible = false;
-            lblVacationLeaveCredits.Visible = false;
+            txtVacationLeaveCreditsEdit.Visible = false;
             dtpDateOfBirth.Visible = false;
             cmbOtAllowed.Visible = false;
 
@@ -236,12 +236,10 @@ namespace Admin_Login
                 "DepartmentID = " + deptId.ToString() + ", " + 
                 "PositionID = " + posId.ToString() + ", " + 
                 "EmploymentType = '" + cmbEmploymentTypeEdit.Text.ToString() + "', " +
-                "ScheduleIn = '" + schedIn.ToUpper() + "', " +
-                "ScheduleOut = '" + schedOut.ToUpper() + "', " +
                 "AllowedOvertime = " + Set_Allowed_OT(cmbOtAllowed.Text.ToString()) + ", " +
                 "AccumulatedDayOffs = " + txtAccumulatedDayOffEdit.Text.ToString() + ", " +
                 "SickLeaveCredits = " + txtSickLeaveCreditsEdit.Text.ToString() + ", " +
-                "VacationLeaveCredits = " + lblVacationLeaveCredits.Text.ToString() +
+                "VacationLeaveCredits = " + txtVacationLeaveCreditsEdit.Text.ToString() +
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
             if (cbMonday.Checked)
@@ -481,12 +479,28 @@ namespace Admin_Login
                     lblDepartment.Text = Get_DepartmentName(reader.GetInt64(13).ToString());
                     lblPosition.Text = Get_PositionName(reader.GetInt64(14).ToString());
                     lblEmploymentType.Text = reader.GetString(15);
-                    lblScheduleIn.Text = reader.GetString(16);
-                    lblScheduleOut.Text = reader.GetString(17);
-                    lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(18));
-                    lblAccumulated.Text = reader.GetInt32(19).ToString();
-                    txtSickLeaveCreditsEdit.Text = reader.GetInt32(20).ToString();
-                    lblVacationLeaveCredits.Text = reader.GetInt32(21).ToString();
+                    //lblScheduleIn.Text = reader.GetString(16);
+                    //lblScheduleOut.Text = reader.GetString(17);
+                    lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(16));
+                    lblAccumulated.Text = reader.GetInt32(17).ToString();
+                    lblSickLeaveCredits.Text = reader.GetInt32(18).ToString();
+                    lblVacationLeaveCredits.Text = reader.GetInt32(20).ToString();
+                }
+            }
+
+            string query2 = "SELECT * FROM EmployeeSchedule WHERE EmployeeID=" + currentProfile;
+
+            using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+            using (SqlCommand command2 = new SqlCommand(query2, connection2))
+            {
+                connection2.Open();
+
+                using (SqlDataReader reader = command2.ExecuteReader())
+                {
+                    reader.Read();
+
+                    lblScheduleIn.Text = reader.GetString(2);
+                    lblScheduleOut.Text = reader.GetString(3);
                 }
             }
         }
@@ -695,6 +709,9 @@ namespace Admin_Login
         private void btnChangePfp_Click(object sender, EventArgs e)
         {
             //var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+            //var image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+            //image.Dispose();
 
             //pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
             //btnAddPfp.Visible = true;
