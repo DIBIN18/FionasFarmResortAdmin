@@ -49,15 +49,25 @@ namespace Admin_Login
 
         public void insertNewEmployeeSchedule()
         {
+            string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
+            string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+
             using (SqlConnection connection2 = new SqlConnection(login.connectionString))
             {
                 connection2.Open();
                 string query =
                     "INSERT INTO EmployeeSchedule (EmployeeID) SELECT EmployeeID = MAX(A.EmployeeID) FROM EmployeeInfo as A";
 
+                string query2 =
+                    "UPDATE EmployeeSchedule " +
+                    "SET ScheduleIn ='" + schedIn + "', " +
+                    "ScheduleOut ='" + schedOut +"' " +
+                    "WHERE EmployeeID = (SELECT MAX(EmployeeID) FROM EmployeeInfo)";
+
                 SqlCommand cmd = new SqlCommand(query, connection2);
-                //cmd.Parameters.AddWithValue("@EmployeeID", Int64.Parse(dgvEmployeeList.CurrentRow.Cells[0].Value.ToString()));
+                SqlCommand cmd2 = new SqlCommand(query2, connection2);
                 cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
             }
         }
 
@@ -134,10 +144,9 @@ namespace Admin_Login
                     "Age," +
                     "DepartmentID," +
                     "PositionID," +
-                    "ScheduleIn," +
-                    "ScheduleOut," +
                     "AccumulatedDayOffs," +
-                    "LeaveCredits," +
+                    "SickLeaveCredits," +
+                    "VacationLeaveCredits," +
                     "Status)" +
                     "VALUES(" +
                     "@EmployeeFullName, " +
@@ -155,10 +164,9 @@ namespace Admin_Login
                     "@Age," +
                     "@DepartmentID," +
                     "@PositionID," +
-                    "@ScheduleIn," +
-                    "@ScheduleOut," +
                     "@AccumulatedDayOffs," +
-                    "@LeaveCredits," +
+                    "@SickLeaveCredits," +
+                    "@VacationLeaveCredits," +
                     "@Status)";
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
@@ -171,16 +179,15 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
                 cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
                 cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
-                cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/d/yyyy"));
+                cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
                 cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
                 cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
                 cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                 cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
                 cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
-                cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
-                cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                 cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
-                cmd.Parameters.AddWithValue("@LeaveCredits", 0);
+                cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
+                cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
                 cmd.Parameters.AddWithValue("@Status", "Active");
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;

@@ -196,55 +196,44 @@ namespace Admin_Login
                     ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
                     ep.lblName.Text = dt.Rows[0][1].ToString();
                     ep.lblAddress.Text = dt.Rows[0][2].ToString();
+                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
+                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
+                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
                     ep.lblEmail.Text = dt.Rows[0][6].ToString();
                     ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
                     ep.lblContact.Text = dt.Rows[0][8].ToString();
                     ep.lblDateHired.Text = dt.Rows[0][9].ToString();
                     ep.lblGender.Text = dt.Rows[0][10].ToString();
                     ep.lblAge.Text = dt.Rows[0][12].ToString();
+                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
                     ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
-                    ep.lblScheduleIn.Text = dt.Rows[0][16].ToString();
-                    ep.lblScheduleOut.Text = dt.Rows[0][17].ToString();
-                    ep.lblAccumulated.Text = dt.Rows[0][19].ToString();
-                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
-                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
-                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
-                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
-                    ep.lblLeaveCredits.Text = dt.Rows[0][20].ToString();
-                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
+                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    ep.lblAccumulated.Text = dt.Rows[0][17].ToString();   
+                    ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+                    
+
                     ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
                     ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
-                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
-                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
-                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][19].ToString();
                     ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
-                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
                     ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
-                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
-                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][21].ToString();
+                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
                     ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
-                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
-                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
                     ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
-                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][18].ToString());
-                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "M/dd/yyyy", CultureInfo.InvariantCulture);
-                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
-
-                    try
-                    {
-                        ep.dtpScheduleInEdit.Value = DateTime.Parse(dt.Rows[0][16].ToString());
-                        ep.dtpSchedOutEdit.Value = DateTime.Parse(dt.Rows[0][17].ToString());
-                    }
-                    catch (FormatException)
-                    {
-                        //If wala pang sched blank muna
-                        ep.dtpScheduleInEdit.Text = (dt.Rows[0][16].ToString());
-                        ep.dtpSchedOutEdit.Text = (dt.Rows[0][17].ToString());
-                    }
-
+                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+                    ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                    
                     using (SqlConnection connection2 = new SqlConnection(login.connectionString))
                     {
                         connection2.Open();
@@ -252,6 +241,21 @@ namespace Admin_Login
                         DataTable dt2 = new DataTable();
                         SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
                         adapter2.Fill(dt2);
+
+                        ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
+                        ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+
+                        try
+                        {
+                            ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
+                            ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
+                        }
+                        catch (FormatException)
+                        {
+                            //If wala pang sched blank muna
+                            ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
+                            ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
+                        }
 
                         if (dt2.Rows[0][4].ToString() == "True")
                         {
