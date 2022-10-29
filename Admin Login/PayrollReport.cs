@@ -20,7 +20,7 @@ namespace Admin_Login
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         string filepath = null, employeeid, employeename, department, position;
         int i = 1;
-        
+
         public PayrollReport(/*string name*/)
         {
             InitializeComponent();
@@ -279,7 +279,7 @@ namespace Admin_Login
             //Export
             DialogResult dialogResult = MessageBox.Show("Export as Excel file?", "PayrollReport", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
-            {
+            {              
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
@@ -310,10 +310,19 @@ namespace Admin_Login
                         }
                         else
                         {
-                            Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport" + i + ".xlsx "));
-                            workbook.SaveAs(excelStream);
-                            excelStream.Dispose();
-                            //System.Diagnostics.Process.Start(filepath + "\\PayrollReport" + i + ".xlsx ");
+                            try
+                            {
+                                Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport(" + i + ").xlsx "));
+                                workbook.SaveAs(excelStream);
+                                excelStream.Dispose();
+                                System.Diagnostics.Process.Start(filepath + "\\PayrollReport(" + i + ").xlsx ");
+                                i++;
+                            }
+                            catch(Exception ex)
+                            {
+                                i++;
+                            }
+                            
                         }
                     }
                 }
