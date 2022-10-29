@@ -68,21 +68,23 @@ namespace Admin_Login
         private void dgvLeave_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Leave l = new Leave();
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Leave";
-            l.btnSubmit.Enabled = true;
-            l.btnCancel.Enabled = true;
+         
+
             if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 employeeid = dgvLeave.CurrentRow.Cells[0].Value.ToString();
                 employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
                 department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
+                Menu menu = (Menu)Application.OpenForms["Menu"];
+                menu.Text = "Fiona's Farm and Resort - Leave";
                 menu.ValueHolder(employeeid, employeename, department, position);
                 menu.Menu_Load(menu, EventArgs.Empty);
+               
 
-           
             }
+       
+         
         }
     }
 }
