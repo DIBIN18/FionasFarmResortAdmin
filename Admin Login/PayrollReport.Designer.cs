@@ -68,7 +68,7 @@
             this.panel3.Controls.Add(this.pictureBox3);
             this.panel3.Controls.Add(this.dgvDailyPayrollReport);
             this.panel3.Location = new System.Drawing.Point(16, 152);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(827, 426);
             this.panel3.TabIndex = 30;
@@ -79,7 +79,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.Export_Icon;
             this.pictureBox4.Location = new System.Drawing.Point(92, 354);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(21, 34);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -118,7 +118,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox3.Location = new System.Drawing.Point(15, 352);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(108, 37);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -147,7 +147,9 @@
             this.dgvDailyPayrollReport.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvDailyPayrollReport.Location = new System.Drawing.Point(3, 3);
             this.dgvDailyPayrollReport.Name = "dgvDailyPayrollReport";
+            this.dgvDailyPayrollReport.RowHeadersVisible = false;
             this.dgvDailyPayrollReport.RowHeadersWidth = 51;
+            this.dgvDailyPayrollReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDailyPayrollReport.Size = new System.Drawing.Size(819, 331);
             this.dgvDailyPayrollReport.TabIndex = 5;
             this.dgvDailyPayrollReport.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDailyPayrollReport_CellDoubleClick);
@@ -169,7 +171,7 @@
             this.dtp_To.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(497, 20);
-            this.dtp_To.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_To.Name = "dtp_To";
             this.dtp_To.Size = new System.Drawing.Size(224, 28);
             this.dtp_To.TabIndex = 37;
@@ -191,7 +193,7 @@
             this.dtp_From.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_From.Location = new System.Drawing.Point(250, 20);
-            this.dtp_From.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_From.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_From.Name = "dtp_From";
             this.dtp_From.Size = new System.Drawing.Size(224, 28);
             this.dtp_From.TabIndex = 31;
@@ -214,7 +216,7 @@
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.tb_Search.Location = new System.Drawing.Point(36, 6);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(259, 21);
             this.tb_Search.TabIndex = 6;
@@ -229,7 +231,7 @@
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Location = new System.Drawing.Point(314, 53);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(305, 37);
             this.panel1.TabIndex = 28;
@@ -239,7 +241,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -274,7 +276,7 @@
             "Deductions",
             "Net Pay"});
             this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
-            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
             this.cb_SortBy.Name = "cb_SortBy";
             this.cb_SortBy.Size = new System.Drawing.Size(132, 30);
             this.cb_SortBy.TabIndex = 10;
@@ -289,7 +291,7 @@
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
             this.panel2.Location = new System.Drawing.Point(630, 53);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(219, 37);
             this.panel2.TabIndex = 29;
@@ -355,7 +357,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PayrollReport";
             this.Tag = "btn_HolidaySettings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

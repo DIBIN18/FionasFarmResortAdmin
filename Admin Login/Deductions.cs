@@ -13,15 +13,16 @@ namespace Admin_Login
     public partial class Deductions : Form
     {
         Login login = new Login();
-        
+        SSSRangeClass sssclass = new SSSRangeClass();
         SqlCommandBuilder cmbl;
 
            
         public Deductions()
         {
             InitializeComponent();
-
-           
+            sssclass.SSSON = "ON";
+            sssclass.PAGIBIGON = "ON";
+            sssclass.PHILHEALTHON = "ON";
         }
      
         private void Tb_Search_Enter(object sender, EventArgs e)
@@ -46,21 +47,25 @@ namespace Admin_Login
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 dataGridView1.CurrentRow.Selected = true;
-                SqlConnection conn = new SqlConnection(login.connectionString);
-                SqlCommand cmd = new SqlCommand("select p.BasicRate From Position AS p JOIN EmployeeInfo AS e ON p.PositionID = e.PositionID Where e.EmployeeID  = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value, conn);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
+                //SqlConnection conn = new SqlConnection(login.connectionString);
+                //SqlCommand cmd = new SqlCommand("select p.BasicRate From Position AS p JOIN EmployeeInfo AS e ON p.PositionID = e.PositionID Where e.EmployeeID  = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value, conn);
+                //SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //sda.Fill(dt);
 
-                lblRate.Text = dt.Rows[0][0].ToString();
-                lblEmpID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                lblEmpName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                lblDepartment.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                lblPosition.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                //lblRate.Text = dt.Rows[0][0].ToString();
 
-                dtpFrom.Enabled = true;
-                dtpTo.Enabled = true;
-
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "select * from Deductions where EmployeeID = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    cmd2.ExecuteNonQuery();
+                    DataTable dts2 = new DataTable();
+                    sqlDataAdapter2.Fill(dts2);
+                    dgvDeductions.DataSource = dts2;
+                }  
             }
        
         }
@@ -76,39 +81,25 @@ namespace Admin_Login
             DataTable dts = new DataTable();
             sqlDataAdapter.Fill(dts);
             dataGridView1.DataSource = dts;
-
-
-
-            txtSSS.Enabled = false;
-            txtpagibig.Enabled = false;
-            txtphilhealth.Enabled = false;
-            txtotherdeduction.Enabled = false;
-            txttin.Enabled = false;
+           
         }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {       
-                txtotherdeduction.Enabled = true;            
-        }
+       
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
-                connection.Open();
-                dataGridView1.CurrentRow.Selected = true;
+                //connection.Open();
+                //dataGridView1.CurrentRow.Selected = true;
 
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Deductions set  OtherDeduction = @otherdeduction, TotalDeductions = SSSContribution + PagIbigContribution + PhilHealthContribution + @otherdeduction where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, connection);
+                //SqlCommand sqlCommand = new SqlCommand("UPDATE Deductions set  OtherDeduction = @otherdeduction, TotalDeductions = SSSContribution + PagIbigContribution + PhilHealthContribution + @otherdeduction where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, connection);
                 
-                sqlCommand.Parameters.AddWithValue("@otherdeduction", Convert.ToDecimal(txtotherdeduction.Text));
-                sqlCommand.ExecuteNonQuery();
+                //sqlCommand.Parameters.AddWithValue("@otherdeduction", Convert.ToDecimal(txtotherdeduction.Text));
+                //sqlCommand.ExecuteNonQuery();
                 
-                MessageBox.Show("Update Complete");
+                //MessageBox.Show("Update Complete");
             
-                txtotherdeduction.Text = "";
-                txtpagibig.Text = "";
-                txtphilhealth.Text = "";
-                txtSSS.Text = "";
+                //txtotherdeduction.Text = "";
             }
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
@@ -133,6 +124,12 @@ namespace Admin_Login
                 sqlDataAdapter.Fill(dts);
                 dataGridView1.DataSource = dts;
             }
+        }
+
+        private void btntesting_Click(object sender, EventArgs e)
+        {
+            Loan loan = new Loan();
+            loan.Show();
         }
     }
 }
