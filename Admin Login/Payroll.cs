@@ -17,7 +17,9 @@ namespace Admin_Login
         public Payroll()
         {
             InitializeComponent();
-            
+            sssclass.SSSON = "OFF";
+            sssclass.PAGIBIGON = "OFF";
+            sssclass.PHILHEALTHON = "OFF";
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
@@ -63,14 +65,13 @@ namespace Admin_Login
                     double regularholiday = Convert.ToDouble(data.Rows[0][6]);
                     double regularholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) * 2;
                     double specialholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) * 1.30;
-                    //double lateamount = Convert.ToDouble(data.Rows[0][10]) * Convert.ToDouble(data.Rows[0][3]);
-                    //double undertimeamount = Convert.ToDouble(data.Rows[0][11]) * Convert.ToDouble(data.Rows[0][3]);
                     double sss = Convert.ToDouble(data.Rows[0][12]);
                     double pagibig = Convert.ToDouble(data.Rows[0][13]);
                     double philhealth = Convert.ToDouble(data.Rows[0][14]);
                     double tax = Convert.ToDouble(data.Rows[0][15]);
                     double netpay = Convert.ToDouble(data.Rows[0][17]);
                     double totaldeduction = sss + pagibig + philhealth + tax;
+                    double grosspay = Convert.ToDouble(data.Rows[0][9]);
 
                     txtRegularHours.Text = regularhrs.ToString();
                     txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
@@ -80,11 +81,9 @@ namespace Admin_Login
                     txtRHolidayPay.Text = regularholidaypay.ToString("n2");
                     txtSpecialHoliday.Text = data.Rows[0][7].ToString();
                     txtSpHolidayPay.Text = specialholidaypay.ToString("n2");
-                    txtGrossPay.Text = data.Rows[0][9].ToString();
+                    txtGrossPay.Text = grosspay.ToString("n2");
                     txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][10]) * 60);
-                    //txtLateAmount.Text = lateamount.ToString("n2");
                     txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
-                    //txtUnderTimeAmount.Text = undertimeamount.ToString("n2");
                     txtSSS.Text = sss.ToString("n2");
                     txtPagIbig.Text = pagibig.ToString("n2");
                     txtPhilHealth.Text = philhealth.ToString("n2");
@@ -152,6 +151,9 @@ namespace Admin_Login
             {
                 sssclass.SSSON = "OFF";
             }
+            tagadelete();
+            tagaInsertPayrollReport();
+            getInfo();
         }
 
         private void cbPAGIBIG_CheckedChanged(object sender, EventArgs e)
@@ -164,6 +166,9 @@ namespace Admin_Login
             {
                 sssclass.PAGIBIGON = "OFF";
             }
+            tagadelete();
+            tagaInsertPayrollReport();
+            getInfo();
         }
 
         private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
@@ -176,6 +181,9 @@ namespace Admin_Login
             {
                 sssclass.PHILHEALTHON = "OFF";
             }
+            tagadelete();
+            tagaInsertPayrollReport();
+            getInfo();
         }
     }
 }

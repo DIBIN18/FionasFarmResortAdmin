@@ -20,9 +20,13 @@ namespace Admin_Login
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         string filepath = null, employeeid, employeename, department, position;
         int i = 1;
+        
         public PayrollReport(/*string name*/)
         {
             InitializeComponent();
+            cbSSS.Checked = true;
+            cbPAGIBIG.Checked = true;
+            cbPHILHEALTH.Checked = true;
             //Name = name;
         }
         private void PayrollReport_Load(object sender, EventArgs e)
@@ -180,6 +184,7 @@ namespace Admin_Login
                 lbl_Period.Text = "";
                 lbl_Holiday.Text = "";
             }
+            dtp_To.Value = dtp_From.Value.AddDays(14);
         }
 
         public void tagadelete()
@@ -220,7 +225,45 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
+            InserDeductionTable();
         }
+        public void InserDeductionTable()
+        {
+            string systemdate = "";
+            string dbsdate = "";
+            SqlConnection connection2 = new SqlConnection(login.connectionString);
+            
+                connection2.Open();
+                string query = "select * from Deductions";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection2);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                try
+                {
+
+                    systemdate = dtp_From.Text + " - " + dtp_To.Text;
+                    dbsdate = data.Rows[0][7].ToString();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+            
+
+            if (systemdate != dbsdate)
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
+                        " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
+                    SqlCommand cmd = new SqlCommand(query2, connection);
+                    cmd.ExecuteNonQuery();
+                }
+            }  
+        }      
         private void btn_Export_Click(object sender, EventArgs e)
         {
             tagadelete();
