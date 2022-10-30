@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgvEmployeeList = new System.Windows.Forms.DataGridView();
+            this.dgv_EmployeeList = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -61,7 +61,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_EmployeeList)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -110,23 +110,23 @@
             this.label3.TabIndex = 52;
             this.label3.Text = "Status:";
             // 
-            // dgvEmployeeList
+            // dgv_EmployeeList
             // 
-            this.dgvEmployeeList.AllowUserToAddRows = false;
-            this.dgvEmployeeList.AllowUserToDeleteRows = false;
-            this.dgvEmployeeList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvEmployeeList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dgvEmployeeList.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployeeList.Location = new System.Drawing.Point(13, 305);
-            this.dgvEmployeeList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dgvEmployeeList.Name = "dgvEmployeeList";
-            this.dgvEmployeeList.ReadOnly = true;
-            this.dgvEmployeeList.RowHeadersVisible = false;
-            this.dgvEmployeeList.RowHeadersWidth = 51;
-            this.dgvEmployeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployeeList.Size = new System.Drawing.Size(1155, 601);
-            this.dgvEmployeeList.TabIndex = 54;
+            this.dgv_EmployeeList.AllowUserToAddRows = false;
+            this.dgv_EmployeeList.AllowUserToDeleteRows = false;
+            this.dgv_EmployeeList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgv_EmployeeList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgv_EmployeeList.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_EmployeeList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_EmployeeList.Location = new System.Drawing.Point(13, 305);
+            this.dgv_EmployeeList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_EmployeeList.Name = "dgv_EmployeeList";
+            this.dgv_EmployeeList.ReadOnly = true;
+            this.dgv_EmployeeList.RowHeadersVisible = false;
+            this.dgv_EmployeeList.RowHeadersWidth = 51;
+            this.dgv_EmployeeList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_EmployeeList.Size = new System.Drawing.Size(1155, 601);
+            this.dgv_EmployeeList.TabIndex = 54;
             // 
             // label5
             // 
@@ -482,14 +482,14 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.dgvEmployeeList);
+            this.Controls.Add(this.dgv_EmployeeList);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Loan";
             this.Text = "Loan";
             this.Load += new System.EventHandler(this.Loan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_EmployeeList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -510,7 +510,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dgvEmployeeList;
+        private System.Windows.Forms.DataGridView dgv_EmployeeList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBox1;

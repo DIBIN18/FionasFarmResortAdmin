@@ -78,13 +78,9 @@ namespace Admin_Login
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
                 Menu menu = (Menu)Application.OpenForms["Menu"];
                 menu.Text = "Fiona's Farm and Resort - Leave";
-                menu.ValueHolder(employeeid, employeename, department, position);
+                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, "");
                 menu.Menu_Load(menu, EventArgs.Empty);
-               
-
             }
-       
-         
         }
     }
 }

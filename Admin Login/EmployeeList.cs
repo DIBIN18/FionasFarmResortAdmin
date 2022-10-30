@@ -15,7 +15,9 @@ namespace Admin_Login
     public partial class EmployeeList : Form
     {
         Login login = new Login();
-        EmployeeProfile ep = new EmployeeProfile();
+        EmployeeProfile employeeprofile = new EmployeeProfile();
+        static string employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact,
+            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits;
         public EmployeeList()
         {
             InitializeComponent();
@@ -72,12 +74,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                dgvEmployeeList.DataSource = data;
+                dgv_EmployeeList.DataSource = data;
             }
         }
         private void btnArchive(object sender, EventArgs e)
         {
-            if (dgvEmployeeList.CurrentRow.Selected == true)
+            if (dgv_EmployeeList.CurrentRow.Selected == true)
             {
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
@@ -118,13 +120,13 @@ namespace Admin_Login
                     //"DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
 
                     string query =
-                        "UPDATE EmployeeInfo SET Status='Inactive' WHERE EmployeeID=" + dgvEmployeeList.CurrentRow.Cells[0].Value;
+                        "UPDATE EmployeeInfo SET Status='Inactive' WHERE EmployeeID=" + dgv_EmployeeList.CurrentRow.Cells[0].Value;
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     DialogResult dialogResult = MessageBox.Show(
                         " Are you sure you want to Archive Employee? " +
-                        dgvEmployeeList.CurrentRow.Cells[1].Value.ToString() + " " +
-                        dgvEmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo
+                        dgv_EmployeeList.CurrentRow.Cells[1].Value.ToString() + " " +
+                        dgv_EmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo
                     );
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -183,13 +185,13 @@ namespace Admin_Login
         }
         public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvEmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            /*if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                dgvEmployeeList.CurrentRow.Selected = true;
+                dgv_EmployeeList.CurrentRow.Selected = true;
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
-                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
                     DataTable dt = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     adapter.Fill(dt);
@@ -237,7 +239,7 @@ namespace Admin_Login
                     using (SqlConnection connection2 = new SqlConnection(login.connectionString))
                     {
                         connection2.Open();
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgvEmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
                         DataTable dt2 = new DataTable();
                         SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
                         adapter2.Fill(dt2);
@@ -287,7 +289,7 @@ namespace Admin_Login
                         }
                     }
                 }
-            }
+            }*/
         }
         private void bntViewArchive(object sender, EventArgs e)
         {
@@ -306,7 +308,7 @@ namespace Admin_Login
                     SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
                     DataTable dt2 = new DataTable();
                     sqlDataAdapter2.Fill(dt2);
-                    dgvEmployeeList.DataSource = dt2;
+                    dgv_EmployeeList.DataSource = dt2;
                 }
                 else if (tb_Search.Focused)
                 {
@@ -317,13 +319,13 @@ namespace Admin_Login
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sqlDataAdapter.Fill(dt);
-                    dgvEmployeeList.DataSource = dt;
+                    dgv_EmployeeList.DataSource = dt;
                 }
             }
         }
         private void dgvEmployeeList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {          
-            ep.ShowDialog();
+            //ep.ShowDialog();
         }
         public string Get_Allowed_OT(string ot_status)
         {
@@ -335,6 +337,72 @@ namespace Admin_Login
             {
                 return "No";
             }
+        }
+
+        private void dgv_EmployeeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Payroll";
+            if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                employeeid = dgvDailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
+                employeename = dgvDailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
+                department = dgvDailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
+                position = dgvDailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
+
+
+
+                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position);
+                menu.Menu_Load(menu, EventArgs.Empty);
+            }*/
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+                employeeprofile.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+                employeeprofile.lblName.Text = dt.Rows[0][1].ToString();
+                employeeprofile.lblAddress.Text = dt.Rows[0][2].ToString();
+                employeeprofile.lblSSS.Text = dt.Rows[0][3].ToString();
+                employeeprofile.lblPagIbig.Text = dt.Rows[0][4].ToString();
+                employeeprofile.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+                employeeprofile.lblEmail.Text = dt.Rows[0][6].ToString();
+                employeeprofile.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+                employeeprofile.lblContact.Text = dt.Rows[0][8].ToString();
+                employeeprofile.lblDateHired.Text = dt.Rows[0][9].ToString();
+                employeeprofile.lblGender.Text = dt.Rows[0][10].ToString();
+                employeeprofile.lblAge.Text = dt.Rows[0][12].ToString();
+                employeeprofile.lblBirthDate.Text = dt.Rows[0][11].ToString();
+                employeeprofile.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                employeeprofile.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
+                employeeprofile.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+                employeeprofile.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                employeeprofile.lblAccumulated.Text = dt.Rows[0][17].ToString();
+                employeeprofile.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+                employeeprofile.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+                employeeprofile.txtNameEdit.Text = dt.Rows[0][1].ToString();
+                employeeprofile.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+                employeeprofile.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+                employeeprofile.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+                employeeprofile.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+                employeeprofile.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+                employeeprofile.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+                employeeprofile.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+                employeeprofile.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                employeeprofile.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+                employeeprofile.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+                employeeprofile.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                employeeprofile.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+                employeeprofile.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+                employeeprofile.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                employeeprofile.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+                employeeprofile.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+                employeeprofile.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+            }
+            employeeprofile.ShowDialog();
         }
     }
 }

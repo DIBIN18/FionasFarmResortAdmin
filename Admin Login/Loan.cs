@@ -28,7 +28,7 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                dgvEmployeeList.DataSource = data;
+                dgv_EmployeeList.DataSource = data;
             }
         }
     }

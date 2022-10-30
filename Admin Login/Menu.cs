@@ -22,6 +22,8 @@ namespace Admin_Login
             int height
             );
         string TitleExtension;
+        static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
+            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits;
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -102,6 +104,7 @@ namespace Admin_Login
             {
                 TopLevel = false
             };
+            payrollreport.dtp_From.Text = datefrom;
             pnl_Content.Controls.Add(payrollreport);
             payrollreport.BringToFront();
             payrollreport.Show();
@@ -118,14 +121,44 @@ namespace Admin_Login
             settings.BringToFront();
             settings.Show();
         }
-        static string employeeid, employeename, department, position;
-        public void ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position)
+        public void PayrollReport_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom)
         {
             employeeid = _EmployeeID;
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
+            datefrom = _DateFrom;
             //typeofleave = _TypeofLeave;
+        }
+        public void Payroll_ValueHolder(string _DateFrom)
+        {
+            datefrom = _DateFrom;
+        }
+        public void EmployeeList_ValueHolder(string _EmployeeID, string _EmployeeName, string _Address, string _SSS, 
+            string _PagIbig, string _PhilHealth, string _Email, string _MarialStatus, string _Contact, string _DateHired, 
+            string _Gender, string _Age, string _BirthDate, string _Department, string _Position, string _EmploymentType, 
+            string _AllowedOT, string _Accumulated, string _SickLeaveCredits, string _VacationLeaveCredits)
+        {
+            employeeid = _EmployeeID;
+            employeename = _EmployeeName;
+            address = _Address;
+            sss = _SSS;
+            pagibig = _PagIbig;
+            philhealth = _PhilHealth;
+            email = _Email;
+            maritalstatus = _MarialStatus;
+            contact = _Contact;
+            datehired = _DateHired;
+            gender = _Gender;
+            age = _Age;
+            birthdate = _BirthDate;
+            department = _Department;
+            position = _Position;
+            employmenttype = _EmploymentType;
+            allowedot = _AllowedOT;
+            accumulated = _Accumulated;
+            sickleavecredits = _SickLeaveCredits;
+            vacationleavecredits = _VacationLeaveCredits;
         }
         internal void Menu_Load(object sender, EventArgs e)
         {
@@ -141,6 +174,7 @@ namespace Admin_Login
                 payroll.txtEmployeeName.Text = employeename;
                 payroll.txtDepartment.Text = department;
                 payroll.txtPosition.Text = position;
+                payroll.dtpI_From.Text = datefrom;
                 pnl_Content.Controls.Add(payroll);
                 payroll.BringToFront();
                 payroll.Show();

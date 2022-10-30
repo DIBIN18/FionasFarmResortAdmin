@@ -18,7 +18,7 @@ namespace Admin_Login
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
-        string filepath = null, employeeid, employeename, department, position;
+        static string filepath = null, employeeid, employeename, department, position, datefrom;
         int i = 1;
 
         public PayrollReport(/*string name*/)
@@ -28,38 +28,6 @@ namespace Admin_Login
             cbPAGIBIG.Checked = true;
             cbPHILHEALTH.Checked = true;
             //Name = name;
-        }
-        private void PayrollReport_Load(object sender, EventArgs e)
-        {
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-            SqlCommand command = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            command.Parameters.AddWithValue("@From_", dtp_From.Value.ToString("MMMM dd"));
-            SqlDataReader Reader;
-            Reader = command.ExecuteReader();
-            if (Reader.Read())
-            {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_From.Value.ToString(", yyyy");
-                lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
-            }
-            string query = "select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime"+
-                " from EmployeeInfo as A "+
-                " left join Department as B "+
-                " on A.DepartmentID = B.DepartmentID "+
-                " left join Position as C "+
-                " on A.PositionID = C.PositionID "+
-                " left join AttendanceSheet as D "+
-                " on A.EmployeeID = D.EmployeeID "+
-                " group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate";
-            SqlCommand cmd = new SqlCommand(query,connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            dgvDailyPayrollReport.DataSource = dt;
-        }
-        private void Cb_SortBy_Click(object sender, EventArgs e)
-        {
-            cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
@@ -75,22 +43,6 @@ namespace Admin_Login
             {
                 tb_Search.Text = " Search";
                 tb_Search.ForeColor = Color.Silver;
-            }
-        }
-        private void Cb_SortBy_Enter(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Black;
-            }
-        }
-        private void Cb_SortBy_Leave(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Silver;
             }
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
@@ -111,7 +63,7 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
-                dgvDailyPayrollReport.DataSource = dts;
+                dgv_DailyPayrollReport.DataSource = dts;
             }
             else if (tb_Search.Focused)
             {
@@ -126,10 +78,9 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
-                dgvDailyPayrollReport.DataSource = dts;
+                dgv_DailyPayrollReport.DataSource = dts;
             }
         }
-
         private void cbSSS_CheckedChanged(object sender, EventArgs e)
         {
             if (cbSSS.Checked)
@@ -141,7 +92,6 @@ namespace Admin_Login
                 sssclass.SSSON = "OFF";
             }
         }
-
         private void cbPAGIBIG_CheckedChanged(object sender, EventArgs e)
         {
             if (cbPAGIBIG.Checked)
@@ -153,7 +103,6 @@ namespace Admin_Login
                 sssclass.PAGIBIGON = "OFF";
             }
         }
-
         private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
         {
             if (cbPHILHEALTH.Checked)
@@ -165,28 +114,17 @@ namespace Admin_Login
                 sssclass.PHILHEALTHON = "OFF";
             }
         }
-
         private void Dt_From_ValueChanged(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-            SqlCommand HolidayCommand = new SqlCommand("select Holiday_, To_, Type_ from Holidays where From_ = @From_", connection);
-            HolidayCommand.Parameters.AddWithValue("@From_", dtp_From.Value.ToString("MMMM dd"));
-            SqlDataReader Reader;
-            Reader = HolidayCommand.ExecuteReader();
-            if (Reader.Read())
+            try
             {
-                lbl_Period.Text = Reader.GetValue(1).ToString() + dtp_From.Value.ToString(", yyyy");
-                lbl_Holiday.Text = Reader.GetValue(0).ToString() + "|" + Reader.GetValue(2).ToString();
+                dtp_To.Value = dtp_From.Value.AddDays(14);
             }
-            else
+            catch(Exception ex)
             {
-                lbl_Period.Text = "";
-                lbl_Holiday.Text = "";
-            }
-            dtp_To.Value = dtp_From.Value.AddDays(14);
-        }
 
+            }
+        }
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -240,7 +178,6 @@ namespace Admin_Login
                 adapter.Fill(data);
                 try
                 {
-
                     systemdate = dtp_From.Text + " - " + dtp_To.Text;
                     dbsdate = data.Rows[0][7].ToString();
 
@@ -249,9 +186,6 @@ namespace Admin_Login
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-            
-
             if (systemdate != dbsdate)
             {
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -321,8 +255,7 @@ namespace Admin_Login
                             catch(Exception ex)
                             {
                                 i++;
-                            }
-                            
+                            }   
                         }
                     }
                 }
@@ -333,13 +266,14 @@ namespace Admin_Login
             sssclass.getSSSRange();         
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
-            if (dgvDailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                employeeid = dgvDailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
-                employeename = dgvDailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
-                department = dgvDailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
-                position = dgvDailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
-                menu.ValueHolder(employeeid, employeename, department, position);
+                employeeid = dgv_DailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
+                employeename = dgv_DailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
+                department = dgv_DailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
+                position = dgv_DailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
+                datefrom = dtp_From.Text;
+                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }   
         }

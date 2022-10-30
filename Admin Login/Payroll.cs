@@ -14,6 +14,7 @@ namespace Admin_Login
     {
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
+        static string datefrom;
         public Payroll()
         {
             InitializeComponent();
@@ -23,23 +24,18 @@ namespace Admin_Login
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
-
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll Report";
+            menu.Payroll_ValueHolder(datefrom);
             menu.Menu_Load(menu, EventArgs.Empty);
         }
-
         public void Payroll_Load(object sender, EventArgs e)
         {
-            
-        }
-
-        private void dtpI_From_ValueChanged(object sender, EventArgs e)
-        {
+            datefrom = dtpI_From.Text;
             tagadelete();
             tagaInsertPayrollReport();
             dtpI_To.Value = dtpI_From.Value.AddDays(14);
-            getInfo();           
+            getInfo();
         }
 
         private void dtpI_To_ValueChanged(object sender, EventArgs e)
@@ -90,14 +86,7 @@ namespace Admin_Login
                     txtTaxAmount.Text = tax.ToString("n2");
                     txtTotalDeduction.Text = totaldeduction.ToString("n2");
                     txtNetPay.Text = netpay.ToString("n2");
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Invalid Date selection or No record found");
-                }
-
+                }catch (Exception ex){}
             }
         }
         public void tagaInsertPayrollReport()
@@ -183,6 +172,13 @@ namespace Admin_Login
             }
             tagadelete();
             tagaInsertPayrollReport();
+            getInfo();
+        }
+        private void dtpI_From_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            dtpI_To.Value = dtpI_From.Value.AddDays(14);
             getInfo();
         }
     }
