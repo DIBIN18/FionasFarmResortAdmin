@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 
 namespace Admin_Login
 {
@@ -708,15 +709,19 @@ namespace Admin_Login
 
         private void btnChangePfp_Click(object sender, EventArgs e)
         {
+            // NEED TO FIX
+            //pbProfilePic.Image = null;
+
             //var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            //var image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-            //image.Dispose();
+            ////var image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+            //pbProfilePic.Dispose();
 
             //pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
             //btnAddPfp.Visible = true;
 
-            //System.IO.File.Delete(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+            ////System.IO.File.Delete(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+            //System.IO.File.Delete(path + "\\Profile\\Capture.png");
         }
     }
 }
