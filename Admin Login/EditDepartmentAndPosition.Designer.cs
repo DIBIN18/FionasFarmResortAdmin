@@ -32,7 +32,6 @@ namespace Admin_Login
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDeparments = new System.Windows.Forms.DataGridView();
-            this.dgvPositions = new System.Windows.Forms.DataGridView();
             this.AddDepPos = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,9 +42,15 @@ namespace Admin_Login
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtEditDepartmentName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtEditBasicRate = new System.Windows.Forms.TextBox();
+            this.txtEditPositionName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgvPositions = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparments)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -54,13 +59,14 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(19, 15);
+            this.label2.Location = new System.Drawing.Point(9, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 23);
             this.label2.TabIndex = 60;
@@ -70,7 +76,7 @@ namespace Admin_Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 14);
+            this.label1.Location = new System.Drawing.Point(9, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 23);
             this.label1.TabIndex = 59;
@@ -82,23 +88,11 @@ namespace Admin_Login
             this.dgvDeparments.AllowUserToDeleteRows = false;
             this.dgvDeparments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDeparments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeparments.Location = new System.Drawing.Point(28, 40);
+            this.dgvDeparments.Location = new System.Drawing.Point(13, 40);
             this.dgvDeparments.Name = "dgvDeparments";
             this.dgvDeparments.RowHeadersWidth = 51;
-            this.dgvDeparments.Size = new System.Drawing.Size(772, 137);
+            this.dgvDeparments.Size = new System.Drawing.Size(454, 194);
             this.dgvDeparments.TabIndex = 61;
-            // 
-            // dgvPositions
-            // 
-            this.dgvPositions.AllowUserToAddRows = false;
-            this.dgvPositions.AllowUserToDeleteRows = false;
-            this.dgvPositions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPositions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPositions.Location = new System.Drawing.Point(23, 41);
-            this.dgvPositions.Name = "dgvPositions";
-            this.dgvPositions.RowHeadersWidth = 51;
-            this.dgvPositions.Size = new System.Drawing.Size(777, 135);
-            this.dgvPositions.TabIndex = 62;
             // 
             // AddDepPos
             // 
@@ -107,7 +101,7 @@ namespace Admin_Login
             this.AddDepPos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddDepPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDepPos.ForeColor = System.Drawing.Color.White;
-            this.AddDepPos.Location = new System.Drawing.Point(248, 195);
+            this.AddDepPos.Location = new System.Drawing.Point(525, 210);
             this.AddDepPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AddDepPos.Name = "AddDepPos";
             this.AddDepPos.Size = new System.Drawing.Size(258, 24);
@@ -121,8 +115,8 @@ namespace Admin_Login
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(516, 192);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(787, 210);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -135,8 +129,8 @@ namespace Admin_Login
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox1.Location = new System.Drawing.Point(236, 188);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(507, 206);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(323, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -150,8 +144,8 @@ namespace Admin_Login
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(510, 192);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(787, 240);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -167,7 +161,7 @@ namespace Admin_Login
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(281, 190);
+            this.label3.Location = new System.Drawing.Point(558, 238);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(225, 24);
@@ -180,8 +174,8 @@ namespace Admin_Login
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox4.Location = new System.Drawing.Point(272, 183);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(549, 231);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(276, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -195,8 +189,8 @@ namespace Admin_Login
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Back_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(434, 543);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(432, 553);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(29, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -212,7 +206,7 @@ namespace Admin_Login
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(384, 543);
+            this.label4.Location = new System.Drawing.Point(382, 553);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 24);
@@ -225,8 +219,8 @@ namespace Admin_Login
             // 
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox6.Location = new System.Drawing.Point(371, 537);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Location = new System.Drawing.Point(369, 547);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(108, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -238,6 +232,8 @@ namespace Admin_Login
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.txtEditDepartmentName);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.dgvDeparments);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.AddDepPos);
@@ -245,21 +241,99 @@ namespace Admin_Login
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 246);
+            this.panel1.Size = new System.Drawing.Size(841, 246);
             this.panel1.TabIndex = 75;
+            // 
+            // txtEditDepartmentName
+            // 
+            this.txtEditDepartmentName.Enabled = false;
+            this.txtEditDepartmentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditDepartmentName.Location = new System.Drawing.Point(507, 75);
+            this.txtEditDepartmentName.Name = "txtEditDepartmentName";
+            this.txtEditDepartmentName.Size = new System.Drawing.Size(318, 26);
+            this.txtEditDepartmentName.TabIndex = 73;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(503, 53);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(154, 19);
+            this.label5.TabIndex = 72;
+            this.label5.Text = "Deparment Name:";
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel2.Controls.Add(this.dgvPositions);
+            this.panel2.Controls.Add(this.txtEditBasicRate);
+            this.panel2.Controls.Add(this.txtEditPositionName);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Location = new System.Drawing.Point(12, 273);
+            this.panel2.Location = new System.Drawing.Point(12, 264);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(824, 242);
+            this.panel2.Size = new System.Drawing.Size(841, 278);
             this.panel2.TabIndex = 76;
+            // 
+            // txtEditBasicRate
+            // 
+            this.txtEditBasicRate.Enabled = false;
+            this.txtEditBasicRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditBasicRate.Location = new System.Drawing.Point(507, 158);
+            this.txtEditBasicRate.Name = "txtEditBasicRate";
+            this.txtEditBasicRate.Size = new System.Drawing.Size(318, 26);
+            this.txtEditBasicRate.TabIndex = 74;
+            // 
+            // txtEditPositionName
+            // 
+            this.txtEditPositionName.Enabled = false;
+            this.txtEditPositionName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEditPositionName.Location = new System.Drawing.Point(507, 86);
+            this.txtEditPositionName.Name = "txtEditPositionName";
+            this.txtEditPositionName.Size = new System.Drawing.Size(318, 26);
+            this.txtEditPositionName.TabIndex = 74;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(503, 136);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(91, 19);
+            this.label7.TabIndex = 74;
+            this.label7.Text = "Basic Rate:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(503, 64);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(123, 19);
+            this.label6.TabIndex = 73;
+            this.label6.Text = "Position Name:";
+            // 
+            // dgvPositions
+            // 
+            this.dgvPositions.AllowUserToAddRows = false;
+            this.dgvPositions.AllowUserToDeleteRows = false;
+            this.dgvPositions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPositions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPositions.Location = new System.Drawing.Point(13, 41);
+            this.dgvPositions.Name = "dgvPositions";
+            this.dgvPositions.ReadOnly = true;
+            this.dgvPositions.RowHeadersWidth = 51;
+            this.dgvPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPositions.Size = new System.Drawing.Size(452, 227);
+            this.dgvPositions.TabIndex = 75;
             // 
             // EditDepartmentAndPosition
             // 
@@ -277,7 +351,6 @@ namespace Admin_Login
             this.Text = "EditDepartmentPosition";
             this.Load += new System.EventHandler(this.EditDepartmentPosition_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparments)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -288,6 +361,7 @@ namespace Admin_Login
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +371,6 @@ namespace Admin_Login
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDeparments;
-        private System.Windows.Forms.DataGridView dgvPositions;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label AddDepPos;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -309,5 +382,12 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtEditDepartmentName;
+        private System.Windows.Forms.TextBox txtEditBasicRate;
+        private System.Windows.Forms.TextBox txtEditPositionName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.DataGridView dgvPositions;
     }
 }
