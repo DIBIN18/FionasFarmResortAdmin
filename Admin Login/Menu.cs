@@ -38,7 +38,7 @@ namespace Admin_Login
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
-            timer1.Start();
+            t_Highlighter.Start();
         }
         private void Btn_SignOut_Click(object sender, EventArgs e)
         {
@@ -238,115 +238,149 @@ namespace Admin_Login
                 Btn_Dashboard_Click(sender, e);
             }
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void btn_Loan_Click(object sender, EventArgs e)
         {
-            if(this.Text == "Fiona's Farm and Resort - Employee List")
+            Text = TitleExtension = "Fiona's Farm and Resort - Loan";
+            TitleLabel.Text = TitleExtension;
+            Loan loan = new Loan
             {
-                this.label3.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                TopLevel = false
+            };
+            pnl_Content.Controls.Add(loan);
+            loan.BringToFront();
+            loan.Show();
+        }
+        private void t_Highlighter_Tick(object sender, EventArgs e)
+        {
+            if (this.Text == "Fiona's Farm and Resort - Employee List")
+            {
+                label3.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
-            else if(this.Text == "Fiona's Farm and Resort - Leave")
+            else if (this.Text == "Fiona's Farm and Resort - Leave")
             {
-                this.label4.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Department and Position")
             {
-                this.label5.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Deductions")
             {
-                this.label7.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Attendance Record")
             {
-                this.label8.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Payroll Report")
             {
-                this.label9.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Settings")
             {
-                this.label10.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Dashboard")
             {
-                this.label1.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
-                this.label13.Font = new Font("Century Gothic", 14);
+                label1.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label3.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Holiday Settings")
             {
-                this.label13.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                this.label1.Font = new Font("Century Gothic", 14);
-                this.label3.Font = new Font("Century Gothic", 14);
-                this.label4.Font = new Font("Century Gothic", 14);
-                this.label5.Font = new Font("Century Gothic", 14);
-                this.label7.Font = new Font("Century Gothic", 14);
-                this.label8.Font = new Font("Century Gothic", 14);
-                this.label9.Font = new Font("Century Gothic", 14);
-                this.label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label14.Font = new Font("Century Gothic", 14);
+            }
+            else if (this.Text == "Fiona's Farm and Resort - Loan")
+            {
+                label14.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+                label1.Font = new Font("Century Gothic", 14);
+                label3.Font = new Font("Century Gothic", 14);
+                label4.Font = new Font("Century Gothic", 14);
+                label5.Font = new Font("Century Gothic", 14);
+                label7.Font = new Font("Century Gothic", 14);
+                label8.Font = new Font("Century Gothic", 14);
+                label9.Font = new Font("Century Gothic", 14);
+                label10.Font = new Font("Century Gothic", 14);
+                label13.Font = new Font("Century Gothic", 14);
             }
         }
         private void Btn_Leave_Click(object sender, EventArgs e)
