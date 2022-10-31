@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-
 namespace Admin_Login
 {
     public partial class EmployeeList : Form
@@ -22,9 +21,11 @@ namespace Admin_Login
         {
             InitializeComponent();
         }
-        private void Cb_SortBy_Click(object sender, EventArgs e)
+        private void btn_ArchivedList_Click(object sender, EventArgs e)
         {
-            cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Archive Employee";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
         private void Tb_Search_Leave(object sender, EventArgs e)
         {
@@ -32,22 +33,6 @@ namespace Admin_Login
             {
                 tb_Search.Text = " Search";
                 tb_Search.ForeColor = Color.Silver;
-            }
-        }
-        private void Cb_SortBy_Enter(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Black;
-            }
-        }
-        private void Cb_SortBy_Leave(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Silver;
             }
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
@@ -290,12 +275,6 @@ namespace Admin_Login
                     }
                 }
             }*/
-        }
-        private void bntViewArchive(object sender, EventArgs e)
-        {
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Archive Employee";
-            menu.Menu_Load(menu, EventArgs.Empty);
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {

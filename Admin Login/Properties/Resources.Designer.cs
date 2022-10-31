@@ -193,6 +193,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ArchivedList_Icon {
+            get {
+                object obj = ResourceManager.GetObject("ArchivedList_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AttendanceRecord_Icon {
             get {
                 object obj = ResourceManager.GetObject("AttendanceRecord_Icon", resourceCulture);
@@ -443,9 +453,39 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap RoundedRectangle_Shape_Blue {
+            get {
+                object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RoundedRectangle_Shape_Green {
             get {
                 object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Green", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RoundedRectangle_Shape_Light_Blue {
+            get {
+                object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Light_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RoundedRectangle_Shape_Orange {
+            get {
+                object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Orange", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

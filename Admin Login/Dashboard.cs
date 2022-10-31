@@ -97,7 +97,7 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                dgvAttendanceToday.DataSource = data;
+                dgv_AttendanceToday.DataSource = data;
             }
 
             lbl_TimedInToday.Text = getNumberOfTimedIn().ToString();

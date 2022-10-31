@@ -17,13 +17,6 @@ namespace Admin_Login
         {
             InitializeComponent();
         }
-        private void btnArchiveBack(object sender, EventArgs e)
-        {
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Employee List";
-            menu.Menu_Load(menu, EventArgs.Empty);
-            Dispose();
-        }
         private void ArchivedEmployee_Load(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -33,26 +26,23 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-                dgvArchive.DataSource = data;
+                dgv_Archive.DataSource = data;
             }
         }
         private void btnRestore(object sender, EventArgs e)
         {
-            if (dgvArchive.CurrentRow.Selected == true)
+            if (dgv_Archive.CurrentRow.Selected == true)
             {
-                DialogResult dialogResult = MessageBox.Show(
-                    " Are you sure you want to Restore Employee? " 
-                    + dgvArchive.CurrentRow.Cells[1].Value.ToString() + " " 
-                    + dgvArchive.CurrentRow.Cells[2].Value.ToString(), 
+                DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Restore Employee? " 
+                    + dgv_Archive.CurrentRow.Cells[1].Value.ToString() + " " + dgv_Archive.CurrentRow.Cells[2].Value.ToString(), 
                     "Archive", MessageBoxButtons.YesNo);
-
                 if (dialogResult == DialogResult.Yes)
                 {
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
                         connection.Open();
                         string query =
-                        "UPDATE EmployeeInfo SET Status='Active' WHERE EmployeeID=" + dgvArchive.CurrentRow.Cells[0].Value;
+                        "UPDATE EmployeeInfo SET Status='Active' WHERE EmployeeID=" + dgv_Archive.CurrentRow.Cells[0].Value;
                         SqlCommand cmd = new SqlCommand(query,
                         //"Insert INTO EmployeeInfo (" +
                         //"EmployeeFullName, " +
@@ -105,31 +95,55 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
-        private void dgvArchiveCellClick(object sender, DataGridViewCellEventArgs e)
+        private void Tb_Search_TextChange(object sender, EventArgs e)
         {
-            if (dgvArchive.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
-                dgvArchive.CurrentRow.Selected = true;
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    SqlCommand cmd2 = new SqlCommand("Select EmployeeID, EmployeeFullName, Email, ContactNumber " +
+                        "from EmployeeInfo where Status = 'Inactive'", connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgv_Archive.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    SqlCommand cmd = new SqlCommand(
+                        "Select EmployeeID, EmployeeFullName, Email, ContactNumber from EmployeeInfo WHERE " +
+                        "EmployeeFullName like '" + tb_Search.Text + "%'" +
+                        "OR EmployeeID Like '" + tb_Search.Text + "%'", connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgv_Archive.DataSource = dt;
+                }
             }
         }
-        private void tbSearchArchive(object sender, EventArgs e)
+        private void tb_Search_Enter(object sender, EventArgs e)
         {
-
+            if (tb_Search.Text == " Search")
+            {
+                tb_Search.Text = "";
+                tb_Search.ForeColor = Color.Black;
+            }
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        private void tb_Search_Leave(object sender, EventArgs e)
         {
-
+            if (tb_Search.Text == "")
+            {
+                tb_Search.Text = " Search";
+                tb_Search.ForeColor = Color.Silver;
+            }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btn_Back_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Employee List";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
         }
     }
 }

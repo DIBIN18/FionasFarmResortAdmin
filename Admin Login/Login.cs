@@ -112,7 +112,6 @@ namespace Admin_Login
                 loginUser();
             }
         }
-
         public void loginUser()
         {
             if (Username.Text == " Username" || Username.Text == "")
@@ -128,16 +127,14 @@ namespace Admin_Login
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
-                    SqlCommand UsernameCommand = new SqlCommand("select Username_, User_ from Users where Username_ = @Username_", connection);
+                    SqlCommand UsernameCommand = new SqlCommand("select Username_, User_ from Users where " +
+                        "Username_ = @Username_", connection);
                     UsernameCommand.Parameters.AddWithValue("@Username_", Username.Text);
-
-                    SqlCommand PasswordCommand = new SqlCommand("select Password_ from Users where Password_ = @Password_", connection);
+                    SqlCommand PasswordCommand = new SqlCommand("select Password_ from Users " +
+                        "where Password_ = @Password_", connection);
                     PasswordCommand.Parameters.AddWithValue("@Password_", Password.Text);
-
                     SqlDataReader Reader;
                     Reader = UsernameCommand.ExecuteReader();
-
                     if (Reader.Read())
                     {
                         Name = Reader.GetValue(1).ToString();
