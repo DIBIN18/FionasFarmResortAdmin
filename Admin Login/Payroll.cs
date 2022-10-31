@@ -204,6 +204,7 @@ namespace Admin_Login
             try
             {
                 dtpI_To.Value = dtpI_From.Value.AddDays(14);
+                dtpI_To.MinDate = dtpI_From.Value;
             }
             catch (Exception ex) { }
             getInfo();
