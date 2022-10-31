@@ -190,10 +190,16 @@ namespace Admin_Login
                 sssclass.PHILHEALTHON = "OFF";
             }
         }
-        private void Dt_From_ValueChanged(object sender, EventArgs e)
+        private void dtp_From_ValueChanged(object sender, EventArgs e)
         {
-           
+            try
+            {
+                dtp_To.MinDate = dtp_From.Value;
+                dtp_To.Enabled = true;
+            }
+            catch(Exception ex) { }
         }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -238,11 +244,11 @@ namespace Admin_Login
         {
             string systemdate = "";
             string dbsdate = "";
-            SqlConnection connection2 = new SqlConnection(login.connectionString);
+            SqlConnection connection = new SqlConnection(login.connectionString);
             
-                connection2.Open();
+                connection.Open();
                 string query = "select * from Deductions";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection2);
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 try
@@ -255,17 +261,12 @@ namespace Admin_Login
                 {
                     
                 }
-            if (systemdate != dbsdate)
-            {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
-                    string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
-                        " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
-                    SqlCommand cmd = new SqlCommand(query2, connection);
-                    cmd.ExecuteNonQuery();
-                }
-            }  
+
+                string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
+                                " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
+                SqlCommand cmd = new SqlCommand(query2, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
         }      
         private void btn_Export_Click(object sender, EventArgs e)
         {

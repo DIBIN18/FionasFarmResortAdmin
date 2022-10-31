@@ -84,13 +84,8 @@ namespace Admin_Login
                 string query = "UPDATE PayrollReport " +
                                 "SET SSSContribution = " + sssContributionEmployee +
                                 "where EmployeeID = " + EmployeeID;
-                string query2 = "update Deductions " +
-                                "set SSSContribution = " + sssContributionEmployee +
-                                 "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
-                SqlCommand cmd2 = new SqlCommand(query2, connection);
                 cmd.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
             }
         }
         public void UpdatePagibigContributionColumn()
@@ -111,13 +106,8 @@ namespace Admin_Login
                 string query = "UPDATE PayrollReport " +
                                 "SET PAGIBIGContribution = " + pagibicontribEmployee +
                                 "where EmployeeID = " + EmployeeID;
-                string query2 = "update Deductions " +
-                                "set PagIbigContribution = " + pagibicontribEmployee +
-                                 "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
-                SqlCommand cmd2 = new SqlCommand(query2, connection);
                 cmd.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
             }
         }
         public void UpdatePhilhealthContributionColumn()
@@ -129,13 +119,8 @@ namespace Admin_Login
                 string query = "UPDATE PayrollReport " +
                                 "SET PhilHealthContribution = " + PhilhealthContrib +
                                 "where EmployeeID = " + EmployeeID;
-                string query2 = "update Deductions " +
-                                "set PhilHealthContribution = " + PhilhealthContrib +
-                                 "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
-                SqlCommand cmd2 = new SqlCommand(query2, connection);
                 cmd.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
             }
         }
         public void getNetPay()
@@ -454,20 +439,14 @@ namespace Admin_Login
                     if (SSSON == "ON")
                     {
                         UpdateEmployeeSSSColumn();
-                        getTAX();
-                        getNetPay();
                     }
                     if (PAGIBIGON == "ON")
                     {
                         UpdatePagibigContributionColumn();
-                        getTAX();
-                        getNetPay();
                     }
                     if (PHILHEALTHON == "ON")
                     {
                         UpdatePhilhealthContributionColumn();
-                        getTAX();
-                        getNetPay();
                     }
                     getTAX();
                     getNetPay();

@@ -20,9 +20,9 @@ namespace Admin_Login
         public Deductions()
         {
             InitializeComponent();
-            sssclass.SSSON = "ON";
-            sssclass.PAGIBIGON = "ON";
-            sssclass.PHILHEALTHON = "ON";
+            //cbSSS.Checked = true;
+            //cbPAGIBIG.Checked = true;
+            //cbPHILHEALTH.Checked = true;
         }
      
         private void Tb_Search_Enter(object sender, EventArgs e)
@@ -106,20 +106,21 @@ namespace Admin_Login
         }
         private void Deductions_Load(object sender, EventArgs e)
         {
-            cbSSS.Checked = true;
-            cbPAGIBIG.Checked = true;
-            cbPHILHEALTH.Checked = true;
-            dtp_From.Text = getLastPayrollDate().ToString();
-            dtp_From.Value = dtp_From.Value.AddDays(1);
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E " +
-                "JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID", conn);
-                
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            DataTable dts = new DataTable();
-            sqlDataAdapter.Fill(dts);
-            dataGridView1.DataSource = dts;
+            try
+            {
+                dtp_From.Text = getLastPayrollDate().ToString();
+                dtp_From.Value = dtp_From.Value.AddDays(1);
+                SqlConnection conn = new SqlConnection(login.connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E " +
+                    "JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID", conn);
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                dataGridView1.DataSource = dts;
+            }
+            catch(Exception ex) { }
            
         }
        
