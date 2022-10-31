@@ -20,6 +20,7 @@ namespace Admin_Login
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         static string filepath = null, employeeid, employeename, department, position, datefrom;
         int i = 1;
+        bool setdateFrom = true;
 
         public PayrollReport(/*string name*/)
         {
@@ -27,7 +28,6 @@ namespace Admin_Login
             cbSSS.Checked = true;
             cbPAGIBIG.Checked = true;
             cbPHILHEALTH.Checked = true;
-            //Name = name;
         }
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
@@ -45,21 +45,80 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Silver;
             }
         }
+        public string getLastPayrollDate()
+        {
+            string Date = "0";
+            Login login = new Login();
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "select  max(PayrollCoveredDate) from Deductions";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable data = new DataTable();
+                    adapter.Fill(data);
+                    Date = data.Rows[0][0].ToString().Substring(21);
+                }
+                catch (Exception ex)
+                {
+                    
+                }
+                return Date;
+            }
+        }
+        public string getQuery()
+        {
+            string command = " select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
+                          " sum(TotalHours) as TotalHours , " +
+                          " sum(C.OvertimeHours) as OverTimeHours , " +
+                          " sum(C.RegularHolidayHours) as LegalHollidayHours, " +
+                          " sum(C.SpecialHolidayHours) as SpeciallHollidayHours , " +
+                          " count(C.EmployeeID) as TotalWorkDays, " +
+                          " ((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
+                          " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
+                          " from EmployeeInfo as A " +
+                          " left join Position as B " +
+                          " on A.PositionID = B.PositionID " +
+                          " left join AttendanceSheet as C " +
+                          " on A.EmployeeID = C.EmployeeID " +
+                          " left join Deductions as D " +
+                          " on A.EmployeeID = D.EmployeeID " +
+                          "where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)" +
+                          " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
+            return command;
+        }
+        private void dtp_To_ValueChanged(object sender, EventArgs e)
+        {
+            PayrollReport_Load(this, null);
+        }
+        private void PayrollReport_Load(object sender, EventArgs e)
+        {
+            if (setdateFrom == true) 
+            {
+                try
+                {
+                    dtp_From.Text = getLastPayrollDate().ToString();
+                    dtp_From.Value = dtp_From.Value.AddDays(1);
+                    setdateFrom = false;
+                }
+                catch(Exception ex) { }
+            } 
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand cmd = new SqlCommand(getQuery(), connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dts = new DataTable();
+            sqlDataAdapter.Fill(dts);
+            dgv_DailyPayrollReport.DataSource = dts;
+        }
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             if (string.IsNullOrEmpty(tb_Search.Text))
             {
-                SqlCommand cmd = new SqlCommand("select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime" +
-                " from EmployeeInfo as A " +
-                " left join Department as B " +
-                " on A.DepartmentID = B.DepartmentID " +
-                " left join Position as C " +
-                " on A.PositionID = C.PositionID " +
-                " left join AttendanceSheet as D " +
-                " on A.EmployeeID = D.EmployeeID group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate", connection);
-
+                SqlCommand cmd = new SqlCommand(getQuery(), connection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
@@ -67,18 +126,35 @@ namespace Admin_Login
             }
             else if (tb_Search.Focused)
             {
-                SqlCommand cmd = new SqlCommand("select A.EmployeeID, EmployeeFullName, DepartmentName, PositionName, sum(TotalHours) as RegularWorkHours, C.BasicRate as HourlyRate, sum(OverTimeHours) as OverTime, sum(Late) as Tardiness, sum(UnderTimeHours) as UnderTime" +
-                                " from EmployeeInfo as A " +
-                                " left join Department as B " +
-                                " on A.DepartmentID = B.DepartmentID " +
-                                " left join Position as C " +
-                                " on A.PositionID = C.PositionID " +
-                                " left join AttendanceSheet as D " +
-                                " on A.EmployeeID = D.EmployeeID where A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" + "group by A.EmployeeID, A.EmployeeFullName, B.DepartmentName, C.PositionName, C.BasicRate", connection);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                DataTable dts = new DataTable();
-                sqlDataAdapter.Fill(dts);
-                dgv_DailyPayrollReport.DataSource = dts;
+                try
+                {
+                    SqlCommand cmd = new SqlCommand(" select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
+                          " sum(TotalHours) as TotalHours , " +
+                          " sum(C.OvertimeHours) as OverTimeHours , " +
+                          " sum(C.RegularHolidayHours) as LegalHollidayHours, " +
+                          " sum(C.SpecialHolidayHours) as SpeciallHollidayHours , " +
+                          " count(C.EmployeeID) as TotalWorkDays, " +
+                          " ((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
+                          " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
+                          " from EmployeeInfo as A " +
+                          " left join Position as B " +
+                          " on A.PositionID = B.PositionID " +
+                          " left join AttendanceSheet as C " +
+                          " on A.EmployeeID = C.EmployeeID " +
+                          " left join Deductions as D " +
+                          " on A.EmployeeID = D.EmployeeID " +
+                          " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
+                          " AND A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" +
+                          " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions", connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dts = new DataTable();
+                    sqlDataAdapter.Fill(dts);
+                    dgv_DailyPayrollReport.DataSource = dts;
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                }
             }
         }
         private void cbSSS_CheckedChanged(object sender, EventArgs e)
@@ -116,14 +192,7 @@ namespace Admin_Login
         }
         private void Dt_From_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
-                dtp_To.Value = dtp_From.Value.AddDays(14);
-            }
-            catch(Exception ex)
-            {
-
-            }
+           
         }
         public void tagadelete()
         {
@@ -184,7 +253,7 @@ namespace Admin_Login
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    
                 }
             if (systemdate != dbsdate)
             {
