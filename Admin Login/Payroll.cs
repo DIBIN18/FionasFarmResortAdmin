@@ -34,7 +34,11 @@ namespace Admin_Login
             datefrom = dtpI_From.Text;
             tagadelete();
             tagaInsertPayrollReport();
-            dtpI_To.Value = dtpI_From.Value.AddDays(14);
+            try
+            {
+                dtpI_To.Value = dtpI_From.Value.AddDays(14);
+            }
+            catch (Exception ex) { }
             getInfo();
         }
 
@@ -86,7 +90,26 @@ namespace Admin_Login
                     txtTaxAmount.Text = tax.ToString("n2");
                     txtTotalDeduction.Text = totaldeduction.ToString("n2");
                     txtNetPay.Text = netpay.ToString("n2");
-                }catch (Exception ex){}
+                }catch (Exception ex)
+                {
+                    txtRegularHours.Text = "";
+                    txtOvertimeMins.Text = "";
+                    txtOvertimePay.Text = "";
+                    txtRegularPay.Text = "";
+                    txtRegularHoliday.Text = "";
+                    txtRHolidayPay.Text = "";
+                    txtSpecialHoliday.Text = "";
+                    txtSpHolidayPay.Text = "";
+                    txtGrossPay.Text = "";
+                    txtTardinessMins.Text = "";
+                    txtUnderTimeMin.Text = "";
+                    txtSSS.Text = "";
+                    txtPagIbig.Text = "";
+                    txtPhilHealth.Text = "";
+                    txtTaxAmount.Text = "";
+                    txtTotalDeduction.Text = "";
+                    txtNetPay.Text = "";
+                }
             }
         }
         public void tagaInsertPayrollReport()
@@ -178,7 +201,11 @@ namespace Admin_Login
         {
             tagadelete();
             tagaInsertPayrollReport();
-            dtpI_To.Value = dtpI_From.Value.AddDays(14);
+            try
+            {
+                dtpI_To.Value = dtpI_From.Value.AddDays(14);
+            }
+            catch (Exception ex) { }
             getInfo();
         }
     }
