@@ -46,7 +46,7 @@
             this.panel1.Location = new System.Drawing.Point(11, 11);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 37);
+            this.panel1.Size = new System.Drawing.Size(754, 37);
             this.panel1.TabIndex = 21;
             // 
             // pictureBox5
@@ -70,7 +70,7 @@
             this.tb_Search.Location = new System.Drawing.Point(36, 6);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(259, 21);
+            this.tb_Search.Size = new System.Drawing.Size(704, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
@@ -80,8 +80,10 @@
             this.dgvLeave.AllowUserToAddRows = false;
             this.dgvLeave.AllowUserToDeleteRows = false;
             this.dgvLeave.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLeave.BackgroundColor = System.Drawing.Color.White;
             this.dgvLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLeave.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvLeave.GridColor = System.Drawing.Color.LightGray;
             this.dgvLeave.Location = new System.Drawing.Point(9, 52);
             this.dgvLeave.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLeave.Name = "dgvLeave";
@@ -89,7 +91,7 @@
             this.dgvLeave.RowHeadersWidth = 51;
             this.dgvLeave.RowTemplate.Height = 24;
             this.dgvLeave.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLeave.Size = new System.Drawing.Size(866, 511);
+            this.dgvLeave.Size = new System.Drawing.Size(866, 684);
             this.dgvLeave.TabIndex = 22;
             this.dgvLeave.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLeave_CellDoubleClick);
             // 
@@ -98,12 +100,12 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.Location = new System.Drawing.Point(387, 567);
+            this.btnCancel.Location = new System.Drawing.Point(769, 11);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(104, 36);
+            this.btnCancel.Size = new System.Drawing.Size(106, 37);
             this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "Back";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -112,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(886, 682);
+            this.ClientSize = new System.Drawing.Size(886, 747);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvLeave);
             this.Controls.Add(this.panel1);

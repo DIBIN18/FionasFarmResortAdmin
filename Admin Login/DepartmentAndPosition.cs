@@ -70,10 +70,10 @@ namespace Admin_Login
         }
         private void dgvPosAndDept_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvPosAndDept.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dgvPosAndDept.CurrentRow.Selected = true;
-            }
+            //if (dgvPosAndDept.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    dgvPosAndDept.CurrentRow.Selected = true;
+            //}
         }
         private void btn_EditPositionAndDepartment_Click(object sender, EventArgs e)
         {

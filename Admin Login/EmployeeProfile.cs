@@ -670,40 +670,42 @@ namespace Admin_Login
 
         private void btnAddPfp_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files | *.png";
-            ofd.FilterIndex = 1;
-            ofd.Multiselect = false;
-
-            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-
-            string sourceFile = string.Empty;
-            string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
-
-            if (ofd.ShowDialog() == DialogResult.OK)
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                sourceFile = ofd.FileName;
-            }
+                ofd.Filter = "Image Files | *.jpg;*.jpeg;*.png";
+                ofd.FilterIndex = 1;
+                ofd.Multiselect = false;
 
-            try
-            {
-                System.IO.File.Copy(sourceFile, targetPath);
-            }
-            catch (ArgumentException)
-            {
-               //Do nothing
-            }
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            //Load profile pic
-            try
-            {
-                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-                btnChangePfp.Visible = true;
-            }
-            catch (System.IO.FileNotFoundException)
-            {
-                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
-                btnAddPfp.Visible = true;
+                string sourceFile = string.Empty;
+                string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    sourceFile = ofd.FileName;
+                }
+
+                try
+                {
+                    System.IO.File.Copy(sourceFile, targetPath);
+                }
+                catch (ArgumentException)
+                {
+                    //Do nothing
+                }
+
+                //Load profile pic
+                try
+                {
+                    pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
+                    btnChangePfp.Visible = true;
+                }
+                catch (System.IO.FileNotFoundException)
+                {
+                    pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
+                    btnAddPfp.Visible = true;
+                }
             }
         }
 
@@ -721,7 +723,47 @@ namespace Admin_Login
             //btnAddPfp.Visible = true;
 
             ////System.IO.File.Delete(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-            //System.IO.File.Delete(path + "\\Profile\\Capture.png");
+
+            pbProfilePic.Image = null;
+            //pbProfilePic.Dispose();
+            
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+                string sourceFile = string.Empty;
+                string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
+
+                ofd.Filter = "Image Files | *.jpg;*.jpeg;*.png";
+                ofd.FilterIndex = 1;
+                ofd.Multiselect = false;
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    sourceFile = ofd.FileName;
+
+                    //delete here
+                    using (FileStream stream = new FileStream(targetPath, FileMode.Open, FileAccess.Read))
+                    {
+                        pbProfilePic.Image = Image.FromStream(stream);
+                        stream.Dispose();
+                    }
+                    //File.Delete(targetPath);
+                }
+
+                Console.WriteLine(sourceFile);
+                Console.WriteLine(targetPath);
+
+                //create file
+                try
+                {
+                    System.IO.File.Copy(sourceFile, targetPath);
+                }
+                catch (ArgumentException)
+                {
+                    //Do nothing
+                }
+            }
         }
     }
 }

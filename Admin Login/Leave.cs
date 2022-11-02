@@ -214,7 +214,7 @@ namespace Admin_Login
             txtEmployeeName.Text = "";
             txtPosition.Text = "";
             txtDepartment.Text = "";
-            txtSchedule.Text = "";
+            //txtSchedule.Text = "";
             cmb_LeaveType.Text = "";
             dtp_StartDate.Text = "";
             dtp_EndDate.Text = "";
@@ -224,7 +224,7 @@ namespace Admin_Login
             txtEmployeeName.Enabled = false;
             txtPosition.Enabled = false;
             txtDepartment.Enabled = false;
-            txtSchedule.Enabled = false;
+            //txtSchedule.Enabled = false;
     
        
 
@@ -244,7 +244,5 @@ namespace Admin_Login
                 btnCancel.Enabled = true;
             }
         }
-
-     
     }
 }

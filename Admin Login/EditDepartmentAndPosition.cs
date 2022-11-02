@@ -42,69 +42,83 @@ namespace Admin_Login
 
         private void EditDepartmentPosition_Load(object sender, EventArgs e)
         {
-            //SqlConnection conn = new SqlConnection(login.connectionString);
-
-            //conn.Open();
-            //DsqlDataAdapter.SelectCommand = new SqlCommand("SELECT DepartmentName FROM Department", conn);
-            //Dcmbl = new SqlCommandBuilder(DsqlDataAdapter);
-            //DataTable dt = new DataTable();
-            //DsqlDataAdapter.Fill(dt);
-            //DbindingSource.DataSource = dt;
-            //dgvDeparments.DataSource = DbindingSource;
-            //conn.Close();
-
-            //conn.Open();
-            //PsqlDataAdapter.SelectCommand = new SqlCommand("SELECT PositionName, BasicRate FROM Position", conn);
-            //Pcmbl = new SqlCommandBuilder(PsqlDataAdapter);
-            //DataTable pdt = new DataTable();
-            //PsqlDataAdapter.Fill(pdt);
-            //PbindingSource.DataSource = pdt;
-            //dgvPositions.DataSource = PbindingSource;
-            //conn.Close();
-            //dgvDeparments.Columns["DepartmentID"].ReadOnly = true;
-            //dgvPositions.Columns["PositionId"].ReadOnly = true;
-            //dgvPositions.Columns["DepartmentID"].ReadOnly = true;
-
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT DepartmentName FROM Department";
+                string query = 
+                    "SELECT * FROM Department";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 dgvDeparments.DataSource = data;
+                dgvDeparments.Columns["DepartmentID"].Visible = false;
             }
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query2 = "SELECT PositionName, BasicRate FROM Position";
+                string query2 = 
+                    "SELECT * FROM Position";
                 SqlDataAdapter adapter2 = new SqlDataAdapter(query2, connection);
                 DataTable data2 = new DataTable();
                 adapter2.Fill(data2);
                 dgvPositions.DataSource = data2;
+                dgvPositions.Columns["PositionID"].Visible = false;
+                dgvPositions.Columns["DepartmentID"].Visible = false;
             }
-
         }
         private void btn_SaveDepartmentChanges_Click(object sender, EventArgs e)
         {
-            //DsqlDataAdapter.Update((DataTable)DbindingSource.DataSource);
-            //MessageBox.Show("Department Changes Saced");
-            //using (SqlConnection connection = new SqlConnection(login.connectionString))
-            //{
-            //    connection.Open();
-            //    EditDepartmentPosition_Load(this, null);
-            //}
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                if (dgvDeparments.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dgvDeparments.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgvDeparments.Rows[selectedrowindex];
+                    string cellValue = Convert.ToString(selectedRow.Cells["DepartmentID"].Value);
+
+                    connection.Open();
+                    string query = 
+                        "UPDATE Department " +
+                        "SET DepartmentName='" + txtEditDepartmentName.Text + "'" +
+                        "WHERE DepartmentID=" + cellValue;
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Department Name Successfully Changed");
+                    txtEditDepartmentName.Clear();
+                    loadDgvDept();
+                }
+            }
         }
         private void btn_SavePositionChanges_Click(object sender, EventArgs e)
         {
-            //PsqlDataAdapter.Update((DataTable)PbindingSource.DataSource);
-            //MessageBox.Show("Position Changes Saved");
-            //using (SqlConnection connection = new SqlConnection(login.connectionString))
-            //{
-            //    connection.Open();
-            //    EditDepartmentPosition_Load(this, null);
-            //}
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                if (dgvPositions.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dgvPositions.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgvPositions.Rows[selectedrowindex];
+                    string cellValue = Convert.ToString(selectedRow.Cells["PositionID"].Value);
+
+                    connection.Open();
+                    string query =
+                        "UPDATE Position " +
+                        "SET " +
+                        "PositionName='" + txtEditPositionName.Text + "', " +
+                        "BasicRate=" + txtEditBasicRate.Text + " " +
+                        "WHERE PositionID=" + cellValue;
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Position Changes Successfully Changed");
+                    txtEditPositionName.Clear();
+                    txtEditBasicRate.Clear();
+                    loadDgvPos();
+                }
+            }
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
@@ -112,6 +126,70 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Department and Position";
             menu.Menu_Load(menu, EventArgs.Empty);
             Dispose();
+        }
+
+        private void dgvDeparments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Department WHERE DepartmentID=" + dgvDeparments.Rows[e.RowIndex].Cells[0].Value;
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                txtEditDepartmentName.Text = dt.Rows[0][1].ToString();
+            }
+        }
+
+        private void dgvPositions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Position WHERE PositionID=" + dgvPositions.Rows[e.RowIndex].Cells[0].Value;
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(dt);
+
+                txtEditPositionName.Text = dt.Rows[0][1].ToString();
+                txtEditBasicRate.Text = dt.Rows[0][3].ToString();
+            }
+        }
+
+        public void loadDgvDept()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "SELECT * FROM Department";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                dgvDeparments.DataSource = data;
+                dgvDeparments.Columns["DepartmentID"].Visible = false;
+            }
+        }
+
+        public void loadDgvPos()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query2 =
+                    "SELECT * FROM Position";
+                SqlDataAdapter adapter2 = new SqlDataAdapter(query2, connection);
+                DataTable data2 = new DataTable();
+                adapter2.Fill(data2);
+                dgvPositions.DataSource = data2;
+                dgvPositions.Columns["PositionID"].Visible = false;
+                dgvPositions.Columns["DepartmentID"].Visible = false;
+            }
         }
     }
 }

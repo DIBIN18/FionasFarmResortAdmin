@@ -68,7 +68,6 @@ namespace Admin_Login
         private void dgvLeave_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Leave l = new Leave();
-         
 
             if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
@@ -76,6 +75,28 @@ namespace Admin_Login
                 employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
                 department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
+
+                //Didisplay ang schedule kapag nakapili na ng employee
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+
+                    string query = 
+                        "SELECT * FROM EmployeeSchedule WHERE EmployeeID=" + employeeid;
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+
+                    l.lblSchedStart.Text = dt.Rows[0][2].ToString();
+                    l.lblScedEnd.Text = dt.Rows[0][3].ToString();
+
+                    Console.WriteLine(dt.Rows[0][2].ToString());
+                    Console.WriteLine(dt.Rows[0][3].ToString());
+                    Console.WriteLine(employeeid);
+                }
+
                 Menu menu = (Menu)Application.OpenForms["Menu"];
                 menu.Text = "Fiona's Farm and Resort - Leave";
                 menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, "");
