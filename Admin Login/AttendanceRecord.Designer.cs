@@ -49,22 +49,24 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dgvAttendanceRecord);
-            this.panel3.Location = new System.Drawing.Point(14, 67);
+            this.panel3.Location = new System.Drawing.Point(9, 51);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(827, 511);
+            this.panel3.Size = new System.Drawing.Size(867, 685);
             this.panel3.TabIndex = 25;
             // 
             // dgvAttendanceRecord
             // 
             this.dgvAttendanceRecord.AllowUserToAddRows = false;
             this.dgvAttendanceRecord.AllowUserToDeleteRows = false;
+            this.dgvAttendanceRecord.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceRecord.Location = new System.Drawing.Point(3, 3);
+            this.dgvAttendanceRecord.Location = new System.Drawing.Point(3, 1);
             this.dgvAttendanceRecord.Name = "dgvAttendanceRecord";
             this.dgvAttendanceRecord.ReadOnly = true;
+            this.dgvAttendanceRecord.RowHeadersVisible = false;
             this.dgvAttendanceRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceRecord.Size = new System.Drawing.Size(819, 503);
+            this.dgvAttendanceRecord.Size = new System.Drawing.Size(860, 678);
             this.dgvAttendanceRecord.TabIndex = 5;
             // 
             // panel2
@@ -72,7 +74,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.cb_SortBy);
             this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(622, 15);
+            this.panel2.Location = new System.Drawing.Point(654, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(219, 37);
@@ -120,10 +122,10 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(306, 15);
+            this.panel1.Location = new System.Drawing.Point(306, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 37);
+            this.panel1.Size = new System.Drawing.Size(344, 37);
             this.panel1.TabIndex = 20;
             // 
             // pictureBox5
@@ -158,7 +160,7 @@
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(79, 19);
+            this.dtp_Date.Location = new System.Drawing.Point(79, 10);
             this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 30);
@@ -169,7 +171,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 21);
+            this.label1.Location = new System.Drawing.Point(9, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 26);
@@ -181,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(854, 592);
+            this.ClientSize = new System.Drawing.Size(884, 745);
             this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp_Date);
