@@ -20,7 +20,7 @@ namespace Admin_Login
         }
         Login login = new Login();
         public DataTable dt = new DataTable();
-        string employeeid, employeename, department, position;
+        string employeeid, employeename, department, position, schedule;
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -50,6 +50,8 @@ namespace Admin_Login
 
         private void LeaveEmployeeList_Load(object sender, EventArgs e)
         {
+
+
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID", conn);
@@ -57,6 +59,9 @@ namespace Admin_Login
             DataTable dt = new DataTable();
             adapter.Fill(dt);
             dgvLeave.DataSource = dt;
+
+            this.dgvLeave.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 15);
+
             conn.Close();
         }
         private void btnCancel_Click(object sender, EventArgs e)
@@ -81,20 +86,17 @@ namespace Admin_Login
                 {
                     connection.Open();
 
-                    string query = 
+                    string query =
                         "SELECT * FROM EmployeeSchedule WHERE EmployeeID=" + employeeid;
 
                     SqlCommand cmd = new SqlCommand(query, connection);
-                    DataTable dt = new DataTable();
+                    DataTable dts = new DataTable();
                     SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
+                    adapter.Fill(dts);
 
-                    l.lblSchedStart.Text = dt.Rows[0][2].ToString();
-                    l.lblScedEnd.Text = dt.Rows[0][3].ToString();
-
-                    Console.WriteLine(dt.Rows[0][2].ToString());
-                    Console.WriteLine(dt.Rows[0][3].ToString());
-                    Console.WriteLine(employeeid);
+                    //Laman ng schedule kapag i didisplay sa leave
+                    //pakilagay nalang, natangal ko yung textbox
+                    schedule = dts.Rows[0][2].ToString() + " - " + dts.Rows[0][3].ToString();
                 }
 
                 Menu menu = (Menu)Application.OpenForms["Menu"];
