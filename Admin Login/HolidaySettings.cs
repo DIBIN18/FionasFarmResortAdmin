@@ -42,6 +42,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dg_HolidaysTable.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dg_HolidaysTable.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dg_HolidaysTable.DataSource = data;
             }
 

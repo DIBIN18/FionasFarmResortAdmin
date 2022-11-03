@@ -17,10 +17,7 @@ namespace Admin_Login
         {
             InitializeComponent();
         }
-        private void Cb_SortBy_Click(object sender, EventArgs e)
-        {
-            cb_SortBy.DropDownStyle = ComboBoxStyle.DropDownList;
-        }
+
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
             if (tb_Search.Text == " Search")
@@ -35,22 +32,6 @@ namespace Admin_Login
             {
                 tb_Search.Text = " Search";
                 tb_Search.ForeColor = Color.Silver;
-            }
-        }
-        private void Cb_SortBy_Enter(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Black;
-            }
-        }
-        private void Cb_SortBy_Leave(object sender, EventArgs e)
-        {
-            if (cb_SortBy.Text == "Default")
-            {
-                cb_SortBy.Text = "Default";
-                cb_SortBy.ForeColor = Color.Silver;
             }
         }
 
@@ -72,6 +53,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgvAttendanceRecord.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvAttendanceRecord.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvAttendanceRecord.DataSource = data;
             }
 
@@ -82,8 +69,6 @@ namespace Admin_Login
             dtp_Date.Format = DateTimePickerFormat.Custom;
             dtp_Date.CustomFormat = "MMMM dd, yyyy";
             string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
-
-            Console.WriteLine(date);
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -99,6 +84,16 @@ namespace Admin_Login
                 adapter.Fill(data);
                 dgvAttendanceRecord.DataSource = data;
             }
+        }
+
+        private void btn_addAttendance(object sender, EventArgs e)
+        {
+            //open add attendance window
+            //AddAttendance aa = new AddAttendance();
+            //aa.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Add Attendance";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }

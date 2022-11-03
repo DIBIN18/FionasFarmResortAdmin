@@ -14,7 +14,7 @@ namespace Admin_Login
     public partial class EmployeeList : Form
     {
         Login login = new Login();
-        EmployeeProfile employeeprofile = new EmployeeProfile();
+        EmployeeProfile ep = new EmployeeProfile();
         static string employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact,
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits;
         public EmployeeList()
@@ -59,6 +59,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgv_EmployeeList.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgv_EmployeeList.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgv_EmployeeList.DataSource = data;
             }
         }
@@ -170,111 +176,111 @@ namespace Admin_Login
         }
         public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
-            {
-                dgv_EmployeeList.CurrentRow.Selected = true;
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-                    ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
-                    ep.lblName.Text = dt.Rows[0][1].ToString();
-                    ep.lblAddress.Text = dt.Rows[0][2].ToString();
-                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
-                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
-                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
-                    ep.lblEmail.Text = dt.Rows[0][6].ToString();
-                    ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
-                    ep.lblContact.Text = dt.Rows[0][8].ToString();
-                    ep.lblDateHired.Text = dt.Rows[0][9].ToString();
-                    ep.lblGender.Text = dt.Rows[0][10].ToString();
-                    ep.lblAge.Text = dt.Rows[0][12].ToString();
-                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
-                    ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                    ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
-                    ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
-                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                    ep.lblAccumulated.Text = dt.Rows[0][17].ToString();   
-                    ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
-                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
-                    
+            //if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            //{
+            //    dgv_EmployeeList.CurrentRow.Selected = true;
+            //    using (SqlConnection connection = new SqlConnection(login.connectionString))
+            //    {
+            //        connection.Open();
+            //        SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+            //        DataTable dt = new DataTable();
+            //        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //        adapter.Fill(dt);
+            //        ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+            //        ep.lblName.Text = dt.Rows[0][1].ToString();
+            //        ep.lblAddress.Text = dt.Rows[0][2].ToString();
+            //        ep.lblSSS.Text = dt.Rows[0][3].ToString();
+            //        ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
+            //        ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+            //        ep.lblEmail.Text = dt.Rows[0][6].ToString();
+            //        ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+            //        ep.lblContact.Text = dt.Rows[0][8].ToString();
+            //        ep.lblDateHired.Text = dt.Rows[0][9].ToString();
+            //        ep.lblGender.Text = dt.Rows[0][10].ToString();
+            //        ep.lblAge.Text = dt.Rows[0][12].ToString();
+            //        ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
+            //        ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+            //        ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
+            //        ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+            //        ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+            //        ep.lblAccumulated.Text = dt.Rows[0][17].ToString();
+            //        ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+            //        ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
 
-                    ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
-                    ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
-                    ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
-                    ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
-                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
-                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
-                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
-                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
-                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
-                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
-                    ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                    ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
-                    ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
-                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
-                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
-                    ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
-                    
-                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
-                    {
-                        connection2.Open();
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
-                        DataTable dt2 = new DataTable();
-                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
-                        adapter2.Fill(dt2);
 
-                        ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
-                        ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+            //        ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
+            //        ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+            //        ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+            //        ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+            //        ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+            //        ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+            //        ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+            //        ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+            //        ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            //        ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+            //        ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+            //        ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+            //        ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+            //        ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+            //        ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+            //        ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+            //        ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+            //        ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
 
-                        try
-                        {
-                            ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
-                            ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
-                        }
-                        catch (FormatException)
-                        {
-                            //If wala pang sched blank muna
-                            ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
-                            ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
-                        }
+            //        using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+            //        {
+            //            connection2.Open();
+            //            SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+            //            DataTable dt2 = new DataTable();
+            //            SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+            //            adapter2.Fill(dt2);
 
-                        if (dt2.Rows[0][4].ToString() == "True")
-                        {
-                            ep.cbMonday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][5].ToString() == "True")
-                        {
-                            ep.cbTuesday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][6].ToString() == "True")
-                        {
-                            ep.cbWednesday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][7].ToString() == "True")
-                        {
-                            ep.cbThursday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][8].ToString() == "True")
-                        {
-                            ep.cbFriday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][9].ToString() == "True")
-                        {
-                            ep.cbSaturday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][10].ToString() == "True")
-                        {
-                            ep.cbSunday.CheckState = CheckState.Checked;
-                        }
-                    }
-                }
-            }*/
+            //            ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
+            //            ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+
+            //            try
+            //            {
+            //                ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
+            //                ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
+            //            }
+            //            catch (FormatException)
+            //            {
+            //                //If wala pang sched blank muna
+            //                ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
+            //                ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
+            //            }
+
+            //            if (dt2.Rows[0][4].ToString() == "True")
+            //            {
+            //                ep.cbMonday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][5].ToString() == "True")
+            //            {
+            //                ep.cbTuesday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][6].ToString() == "True")
+            //            {
+            //                ep.cbWednesday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][7].ToString() == "True")
+            //            {
+            //                ep.cbThursday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][8].ToString() == "True")
+            //            {
+            //                ep.cbFriday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][9].ToString() == "True")
+            //            {
+            //                ep.cbSaturday.CheckState = CheckState.Checked;
+            //            }
+            //            if (dt2.Rows[0][10].ToString() == "True")
+            //            {
+            //                ep.cbSunday.CheckState = CheckState.Checked;
+            //            }
+            //        }
+            //    }
+            //}
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
@@ -335,53 +341,165 @@ namespace Admin_Login
                 menu.Menu_Load(menu, EventArgs.Empty);
             }*/
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            //using (SqlConnection connection = new SqlConnection(login.connectionString))
+            //{
+            //    connection.Open();
+            //    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+            //    DataTable dt = new DataTable();
+            //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //    adapter.Fill(dt);
+            //    employeeprofile.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+            //    employeeprofile.lblName.Text = dt.Rows[0][1].ToString();
+            //    employeeprofile.lblAddress.Text = dt.Rows[0][2].ToString();
+            //    employeeprofile.lblSSS.Text = dt.Rows[0][3].ToString();
+            //    employeeprofile.lblPagIbig.Text = dt.Rows[0][4].ToString();
+            //    employeeprofile.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+            //    employeeprofile.lblEmail.Text = dt.Rows[0][6].ToString();
+            //    employeeprofile.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+            //    employeeprofile.lblContact.Text = dt.Rows[0][8].ToString();
+            //    employeeprofile.lblDateHired.Text = dt.Rows[0][9].ToString();
+            //    employeeprofile.lblGender.Text = dt.Rows[0][10].ToString();
+            //    employeeprofile.lblAge.Text = dt.Rows[0][12].ToString();
+            //    employeeprofile.lblBirthDate.Text = dt.Rows[0][11].ToString();
+            //    employeeprofile.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+            //    employeeprofile.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
+            //    employeeprofile.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+            //    employeeprofile.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+            //    employeeprofile.lblAccumulated.Text = dt.Rows[0][17].ToString();
+            //    employeeprofile.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+            //    employeeprofile.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+            //    employeeprofile.txtNameEdit.Text = dt.Rows[0][1].ToString();
+            //    employeeprofile.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+            //    employeeprofile.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+            //    employeeprofile.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+            //    employeeprofile.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+            //    employeeprofile.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+            //    employeeprofile.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+            //    employeeprofile.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+            //    employeeprofile.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+            //    employeeprofile.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+            //    employeeprofile.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+            //    employeeprofile.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+            //    employeeprofile.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+            //    employeeprofile.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+            //    employeeprofile.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+            //    employeeprofile.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+            //    employeeprofile.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+            //    employeeprofile.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+            //}
+            //employeeprofile.ShowDialog();
+
+
+            // MAKA COMMENT YAPA ING KEKA BAP
+            // LAGE KEPA ITANG LUMA PARA KENG PRESENTATION KAYBAT KANITA TULU MUNE ING GAGAWAN MU
+
+            if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                connection.Open();
-                SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
-                DataTable dt = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
-                employeeprofile.lblEmployeeID.Text = dt.Rows[0][0].ToString();
-                employeeprofile.lblName.Text = dt.Rows[0][1].ToString();
-                employeeprofile.lblAddress.Text = dt.Rows[0][2].ToString();
-                employeeprofile.lblSSS.Text = dt.Rows[0][3].ToString();
-                employeeprofile.lblPagIbig.Text = dt.Rows[0][4].ToString();
-                employeeprofile.lblPhilHealth.Text = dt.Rows[0][5].ToString();
-                employeeprofile.lblEmail.Text = dt.Rows[0][6].ToString();
-                employeeprofile.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
-                employeeprofile.lblContact.Text = dt.Rows[0][8].ToString();
-                employeeprofile.lblDateHired.Text = dt.Rows[0][9].ToString();
-                employeeprofile.lblGender.Text = dt.Rows[0][10].ToString();
-                employeeprofile.lblAge.Text = dt.Rows[0][12].ToString();
-                employeeprofile.lblBirthDate.Text = dt.Rows[0][11].ToString();
-                employeeprofile.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                employeeprofile.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
-                employeeprofile.lblEmploymentType.Text = dt.Rows[0][15].ToString();
-                employeeprofile.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                employeeprofile.lblAccumulated.Text = dt.Rows[0][17].ToString();
-                employeeprofile.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
-                employeeprofile.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
-                employeeprofile.txtNameEdit.Text = dt.Rows[0][1].ToString();
-                employeeprofile.txtAddressEdit.Text = dt.Rows[0][2].ToString();
-                employeeprofile.txtSSSEdit.Text = dt.Rows[0][3].ToString();
-                employeeprofile.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
-                employeeprofile.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
-                employeeprofile.txtEmailEdit.Text = dt.Rows[0][6].ToString();
-                employeeprofile.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
-                employeeprofile.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
-                employeeprofile.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                employeeprofile.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
-                employeeprofile.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
-                employeeprofile.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                employeeprofile.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
-                employeeprofile.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
-                employeeprofile.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                employeeprofile.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
-                employeeprofile.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
-                employeeprofile.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                dgv_EmployeeList.CurrentRow.Selected = true;
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
+                    ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+                    ep.lblName.Text = dt.Rows[0][1].ToString();
+                    ep.lblAddress.Text = dt.Rows[0][2].ToString();
+                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
+                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
+                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+                    ep.lblEmail.Text = dt.Rows[0][6].ToString();
+                    ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+                    ep.lblContact.Text = dt.Rows[0][8].ToString();
+                    ep.lblDateHired.Text = dt.Rows[0][9].ToString();
+                    ep.lblGender.Text = dt.Rows[0][10].ToString();
+                    ep.lblAge.Text = dt.Rows[0][12].ToString();
+                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
+                    ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                    ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
+                    ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    ep.lblAccumulated.Text = dt.Rows[0][17].ToString();
+                    ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+
+
+                    ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
+                    ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+                    ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+                    ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+                    ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                    ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+                    ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+                    ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+
+                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                    {
+                        connection2.Open();
+                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                        DataTable dt2 = new DataTable();
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                        adapter2.Fill(dt2);
+
+                        ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
+                        ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+
+                        try
+                        {
+                            ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
+                            ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
+                        }
+                        catch (FormatException)
+                        {
+                            //If wala pang sched blank muna
+                            ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
+                            ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
+                        }
+
+                        if (dt2.Rows[0][4].ToString() == "True")
+                        {
+                            ep.cbMonday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][5].ToString() == "True")
+                        {
+                            ep.cbTuesday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][6].ToString() == "True")
+                        {
+                            ep.cbWednesday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][7].ToString() == "True")
+                        {
+                            ep.cbThursday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][8].ToString() == "True")
+                        {
+                            ep.cbFriday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][9].ToString() == "True")
+                        {
+                            ep.cbSaturday.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][10].ToString() == "True")
+                        {
+                            ep.cbSunday.CheckState = CheckState.Checked;
+                        }
+                    }
+                }
             }
-            employeeprofile.ShowDialog();
+            ep.ShowDialog();
+
         }
     }
 }

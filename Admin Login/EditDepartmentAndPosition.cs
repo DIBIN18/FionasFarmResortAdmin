@@ -50,6 +50,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgvDeparments.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvDeparments.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvDeparments.DataSource = data;
                 dgvDeparments.Columns["DepartmentID"].Visible = false;
             }
@@ -62,6 +68,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter2 = new SqlDataAdapter(query2, connection);
                 DataTable data2 = new DataTable();
                 adapter2.Fill(data2);
+
+                // Column font
+                this.dgvPositions.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvPositions.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvPositions.DataSource = data2;
                 dgvPositions.Columns["PositionID"].Visible = false;
                 dgvPositions.Columns["DepartmentID"].Visible = false;

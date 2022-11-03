@@ -110,6 +110,12 @@ namespace Admin_Login
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dts = new DataTable();
             sqlDataAdapter.Fill(dts);
+
+            // Column font
+            this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+            // Row font
+            this.dgv_DailyPayrollReport.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
             dgv_DailyPayrollReport.DataSource = dts;
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
