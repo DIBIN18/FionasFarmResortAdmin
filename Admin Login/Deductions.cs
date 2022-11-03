@@ -62,6 +62,12 @@ namespace Admin_Login
                     cmd2.ExecuteNonQuery();
                     DataTable dts2 = new DataTable();
                     sqlDataAdapter2.Fill(dts2);
+
+                    // Column font
+                    this.dgvDeductions.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                    // Row font
+                    this.dgvDeductions.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                     dgvDeductions.DataSource = dts2;
 
                     lblName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
@@ -118,6 +124,12 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
+
+                // Column font
+                this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dataGridView1.DataSource = dts;
             }
             catch(Exception ex) { }

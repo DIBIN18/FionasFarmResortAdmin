@@ -65,6 +65,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgvPosAndDept.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvPosAndDept.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvPosAndDept.DataSource = data;
             }
         }

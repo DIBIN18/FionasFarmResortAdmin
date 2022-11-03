@@ -74,7 +74,7 @@ namespace Admin_Login
             {
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-                btnChangePfp.Visible = true;
+                //btnChangePfp.Visible = true;
             }
             catch (System.IO.FileNotFoundException)
             {
@@ -699,7 +699,7 @@ namespace Admin_Login
                 try
                 {
                     pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-                    btnChangePfp.Visible = true;
+                    //btnChangePfp.Visible = true;
                 }
                 catch (System.IO.FileNotFoundException)
                 {

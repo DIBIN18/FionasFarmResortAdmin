@@ -30,19 +30,20 @@
         {
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvAttendanceRecord = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cb_SortBy = new System.Windows.Forms.ComboBox();
-            this.lbl_SortBy = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.AddAttendance = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceRecord)).BeginInit();
-            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -59,6 +60,10 @@
             // 
             this.dgvAttendanceRecord.AllowUserToAddRows = false;
             this.dgvAttendanceRecord.AllowUserToDeleteRows = false;
+            this.dgvAttendanceRecord.AllowUserToResizeColumns = false;
+            this.dgvAttendanceRecord.AllowUserToResizeRows = false;
+            this.dgvAttendanceRecord.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvAttendanceRecord.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvAttendanceRecord.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAttendanceRecord.Location = new System.Drawing.Point(3, 1);
@@ -69,60 +74,12 @@
             this.dgvAttendanceRecord.Size = new System.Drawing.Size(860, 678);
             this.dgvAttendanceRecord.TabIndex = 5;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.cb_SortBy);
-            this.panel2.Controls.Add(this.lbl_SortBy);
-            this.panel2.Location = new System.Drawing.Point(654, 6);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(219, 37);
-            this.panel2.TabIndex = 21;
-            // 
-            // cb_SortBy
-            // 
-            this.cb_SortBy.AccessibleDescription = "";
-            this.cb_SortBy.AccessibleName = "";
-            this.cb_SortBy.BackColor = System.Drawing.Color.White;
-            this.cb_SortBy.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cb_SortBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.cb_SortBy.Items.AddRange(new object[] {
-            "Default",
-            "Name",
-            "Time Period",
-            "Late",
-            "Overtime"});
-            this.cb_SortBy.Location = new System.Drawing.Point(84, 3);
-            this.cb_SortBy.Margin = new System.Windows.Forms.Padding(2);
-            this.cb_SortBy.Name = "cb_SortBy";
-            this.cb_SortBy.Size = new System.Drawing.Size(132, 29);
-            this.cb_SortBy.TabIndex = 10;
-            this.cb_SortBy.Text = "Default";
-            this.cb_SortBy.Click += new System.EventHandler(this.Cb_SortBy_Click);
-            this.cb_SortBy.Enter += new System.EventHandler(this.Cb_SortBy_Enter);
-            this.cb_SortBy.Leave += new System.EventHandler(this.Cb_SortBy_Leave);
-            // 
-            // lbl_SortBy
-            // 
-            this.lbl_SortBy.AutoSize = true;
-            this.lbl_SortBy.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_SortBy.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.lbl_SortBy.Location = new System.Drawing.Point(9, 6);
-            this.lbl_SortBy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl_SortBy.Name = "lbl_SortBy";
-            this.lbl_SortBy.Size = new System.Drawing.Size(78, 22);
-            this.lbl_SortBy.TabIndex = 11;
-            this.lbl_SortBy.Text = "Sort by:";
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(306, 6);
+            this.panel1.Location = new System.Drawing.Point(532, 7);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(344, 37);
@@ -160,7 +117,7 @@
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(79, 10);
+            this.dtp_Date.Location = new System.Drawing.Point(305, 11);
             this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 30);
@@ -171,12 +128,58 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 12);
+            this.label1.Location = new System.Drawing.Point(235, 13);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 26);
             this.label1.TabIndex = 5;
+            this.label1.Tag = "btnAddAttendance";
             this.label1.Text = "Date:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = global::Admin_Login.Properties.Resources.LateToday_Icon1;
+            this.pictureBox2.Location = new System.Drawing.Point(188, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 34;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Tag = "btnAddAttendance";
+            this.pictureBox2.Click += new System.EventHandler(this.btn_addAttendance);
+            // 
+            // AddAttendance
+            // 
+            this.AddAttendance.AutoSize = true;
+            this.AddAttendance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
+            this.AddAttendance.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddAttendance.ForeColor = System.Drawing.Color.White;
+            this.AddAttendance.Location = new System.Drawing.Point(26, 14);
+            this.AddAttendance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AddAttendance.Name = "AddAttendance";
+            this.AddAttendance.Size = new System.Drawing.Size(160, 24);
+            this.AddAttendance.TabIndex = 33;
+            this.AddAttendance.Tag = "btnAddAttendance";
+            this.AddAttendance.Text = "Add Attendance";
+            this.AddAttendance.Click += new System.EventHandler(this.btn_addAttendance);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
+            this.pictureBox1.Location = new System.Drawing.Point(7, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(227, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "btnAddAttendance";
+            this.pictureBox1.Click += new System.EventHandler(this.btn_addAttendance);
             // 
             // AttendanceRecord
             // 
@@ -185,10 +188,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 745);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.AddAttendance);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtp_Date);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -197,11 +202,11 @@
             this.Load += new System.EventHandler(this.AttendanceRecord_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAttendanceRecord)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,14 +215,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox cb_SortBy;
-        private System.Windows.Forms.Label lbl_SortBy;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.DateTimePicker dtp_Date;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvAttendanceRecord;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label AddAttendance;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

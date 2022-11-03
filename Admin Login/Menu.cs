@@ -255,6 +255,30 @@ namespace Admin_Login
                 leave.BringToFront();
                 leave.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Add Attendance")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Add Attendance";
+                TitleLabel.Text = TitleExtension;
+                AddAttendance addAttendance = new AddAttendance();
+                {
+                    addAttendance.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(addAttendance);
+                addAttendance.BringToFront();
+                addAttendance.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Attendance Record")
+            {
+                Text = TitleExtension = "Fiona's Farm and Resort - Attendance Record";
+                TitleLabel.Text = TitleExtension;
+                AttendanceRecord attendancerecord = new AttendanceRecord
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(attendancerecord);
+                attendancerecord.BringToFront();
+                attendancerecord.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);

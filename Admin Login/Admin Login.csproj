@@ -60,6 +60,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAttendance.Designer.cs">
+      <DependentUpon>AddAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddDepartmentAndPosition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,9 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SSSRangeClass.cs" />
+    <EmbeddedResource Include="AddAttendance.resx">
+      <DependentUpon>AddAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddDepartmentAndPosition.resx">
       <DependentUpon>AddDepartmentAndPosition.cs</DependentUpon>
     </EmbeddedResource>
