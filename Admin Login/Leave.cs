@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.XlsIO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +15,7 @@ namespace Admin_Login
     {
         Login login = new Login();
         LeaveEmployeeList leaveEmployeeList = new LeaveEmployeeList();
-        int totalLeaveDays;
-        string employeeLeaveCredits;
-        int remainingCredits;
+    
         public Leave()
         {
             InitializeComponent();
@@ -99,41 +98,7 @@ namespace Admin_Login
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-
-                string query =
-                    "INSERT INTO Leave (" +
-                    "EmployeeID," +
-                    "StartDate," +
-                    "EndDate," +
-                    "Reason," +
-                    "Type)" +
-                    "VALUES(" +
-                    "@EmployeeID," +
-                    "@StartDate," +
-                    "@EndDate," +
-                    "@Reason," +
-                    "@Type)";
-
-                string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-                string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-
-
-
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
-                command.Parameters.AddWithValue("@StartDate", startDate);
-                command.Parameters.AddWithValue("@EndDate", endDate);
-                command.Parameters.AddWithValue("@Reason", rtxtReason.Text);
-                command.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
-
-                command.ExecuteNonQuery();
-                MessageBox.Show("Successfully Applied Leave to the employee");
-                rtxtReason.Text = " ";
-            }
+        {  
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
 
@@ -148,33 +113,133 @@ namespace Admin_Login
                 if (cmb_LeaveType.Text.ToString() == "Sick Leave")
                 {
                     totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-                    employeeLeaveCredits = (string)dt.Rows[0][18].ToString();
+                    employeeLeaveCredits = dt.Rows[0][18].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
-                    string query =
-                    "UPDATE EmployeeInfo " +
-                    "SET SickLeaveCredits = " + remainingCredits +
-                    "WHERE EmployeeID = " + txtEmployeeID.Text;
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.ExecuteNonQuery();
+                    int ZeroRemaining = 0;
+                    if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
+                    {
+                       DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                    else
+                    {
+                        string query =
+                           "UPDATE EmployeeInfo " +
+                           "SET SickLeaveCredits = " + remainingCredits +
+                           "WHERE EmployeeID = " + txtEmployeeID.Text;
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.ExecuteNonQuery();
+                        //----------INSERTING DETAILS--------
+                        string query2 =
+                           "INSERT INTO Leave (" +
+                           "EmployeeID," +
+                           "StartDate," +
+                           "EndDate," +
+                           "Reason," +
+                           "Type)" +
+                           "VALUES(" +
+                           "@EmployeeID," +
+                           "@StartDate," +
+                           "@EndDate," +
+                           "@Reason," +
+                           "@Type)";
+
+                        string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+                        string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+
+
+
+                        SqlCommand command2 = new SqlCommand(query2, connection);
+                        command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
+                        command2.Parameters.AddWithValue("@StartDate", startDate);
+                        command2.Parameters.AddWithValue("@EndDate", endDate);
+                        command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
+                        command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
+
+                        command2.ExecuteNonQuery();
+
+
+                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        if(d == DialogResult.OK)
+                        {
+                            rtxtReason.Text = " ";
+                            cmb_LeaveType.Text = " ";
+                            dtp_StartDate.Value = DateTime.Now;
+                            dtp_EndDate.Value = DateTime.Now;
+                        }
+
+                    }
+
+
                 }
 
-                else if(cmb_LeaveType.Text.ToString() == "Vacation Leave")
+                else if (cmb_LeaveType.Text.ToString() == "Vacation Leave")
                 {
                     totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-                    employeeLeaveCredits = (string)dt.Rows[0][20].ToString();
+                    employeeLeaveCredits = dt.Rows[0][20].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
-                    string query =
-                   "UPDATE EmployeeInfo " +
-                   "SET VacationLeaveCredits = " + remainingCredits +
-                   "WHERE EmployeeID = " + txtEmployeeID.Text;
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.ExecuteNonQuery();
+                    int ZeroRemaining = 0;
+                    if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
+                    {
+                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                    else
+                    {
+                        string query =
+                           "UPDATE EmployeeInfo " +
+                           "SET VacationLeaveCredits = " + remainingCredits +
+                           "WHERE EmployeeID = " + txtEmployeeID.Text;
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.ExecuteNonQuery();
+                        //----------INSERTING DETAILS--------
+                        string query2 =
+                           "INSERT INTO Leave (" +
+                           "EmployeeID," +
+                           "StartDate," +
+                           "EndDate," +
+                           "Reason," +
+                           "Type)" +
+                           "VALUES(" +
+                           "@EmployeeID," +
+                           "@StartDate," +
+                           "@EndDate," +
+                           "@Reason," +
+                           "@Type)";
+
+                        string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+                        string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
+
+
+
+                        SqlCommand command2 = new SqlCommand(query2, connection);
+                        command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
+                        command2.Parameters.AddWithValue("@StartDate", startDate);
+                        command2.Parameters.AddWithValue("@EndDate", endDate);
+                        command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
+                        command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
+
+                        command2.ExecuteNonQuery();
+
+
+                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        if (d == DialogResult.OK)
+                        {
+                            rtxtReason.Text = " ";
+                            cmb_LeaveType.Text = " ";
+                            dtp_StartDate.Value = DateTime.Now;
+                            dtp_EndDate.Value = DateTime.Now;
+                        }
+
+                    }
                 }
-             
+
 
                 connection.Close();
             }
-           
+
             cmb_LeaveType.Text = "";
             dtp_StartDate.Text = "";
             dtp_EndDate.Text = "";
@@ -244,5 +309,7 @@ namespace Admin_Login
                 btnCancel.Enabled = true;
             }
         }
+
+      
     }
 }
