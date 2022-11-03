@@ -52,9 +52,6 @@
             this.Search = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblSchedStart = new System.Windows.Forms.Label();
-            this.lblScedEnd = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +61,7 @@
             this.txtPosition.Enabled = false;
             this.txtPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPosition.Location = new System.Drawing.Point(485, 97);
-            this.txtPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPosition.Margin = new System.Windows.Forms.Padding(2);
             this.txtPosition.Multiline = true;
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(178, 26);
@@ -75,7 +72,7 @@
             this.txtDepartment.Enabled = false;
             this.txtDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartment.Location = new System.Drawing.Point(485, 59);
-            this.txtDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.txtDepartment.Multiline = true;
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Size = new System.Drawing.Size(178, 26);
@@ -86,7 +83,7 @@
             this.txtEmployeeName.Enabled = false;
             this.txtEmployeeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeName.Location = new System.Drawing.Point(163, 95);
-            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeName.Multiline = true;
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(178, 26);
@@ -97,7 +94,7 @@
             this.txtEmployeeID.Enabled = false;
             this.txtEmployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeID.Location = new System.Drawing.Point(163, 62);
-            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeID.Multiline = true;
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(178, 26);
@@ -165,7 +162,7 @@
             this.btnSubmit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSubmit.Location = new System.Drawing.Point(622, 420);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(106, 32);
             this.btnSubmit.TabIndex = 13;
@@ -180,7 +177,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Location = new System.Drawing.Point(742, 420);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 32);
             this.btnCancel.TabIndex = 12;
@@ -204,7 +201,7 @@
             this.rtxtReason.Enabled = false;
             this.rtxtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtReason.Location = new System.Drawing.Point(348, 104);
-            this.rtxtReason.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtxtReason.Margin = new System.Windows.Forms.Padding(2);
             this.rtxtReason.Name = "rtxtReason";
             this.rtxtReason.Size = new System.Drawing.Size(495, 301);
             this.rtxtReason.TabIndex = 10;
@@ -239,7 +236,7 @@
             this.dtp_EndDate.Enabled = false;
             this.dtp_EndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_EndDate.Location = new System.Drawing.Point(11, 257);
-            this.dtp_EndDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_EndDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_EndDate.Name = "dtp_EndDate";
             this.dtp_EndDate.Size = new System.Drawing.Size(288, 26);
             this.dtp_EndDate.TabIndex = 7;
@@ -250,7 +247,7 @@
             this.dtp_StartDate.Enabled = false;
             this.dtp_StartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_StartDate.Location = new System.Drawing.Point(11, 168);
-            this.dtp_StartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_StartDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_StartDate.Name = "dtp_StartDate";
             this.dtp_StartDate.Size = new System.Drawing.Size(288, 26);
             this.dtp_StartDate.TabIndex = 6;
@@ -277,7 +274,7 @@
             "Paternity Leave",
             "Maternity Leave"});
             this.cmb_LeaveType.Location = new System.Drawing.Point(148, 69);
-            this.cmb_LeaveType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_LeaveType.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_LeaveType.Name = "cmb_LeaveType";
             this.cmb_LeaveType.Size = new System.Drawing.Size(151, 25);
             this.cmb_LeaveType.TabIndex = 0;
@@ -286,9 +283,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.lblScedEnd);
-            this.panel1.Controls.Add(this.lblSchedStart);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.label5);
@@ -358,39 +352,6 @@
             this.label1.TabIndex = 59;
             this.label1.Text = "Leave Application";
             // 
-            // lblSchedStart
-            // 
-            this.lblSchedStart.AutoSize = true;
-            this.lblSchedStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchedStart.Location = new System.Drawing.Point(159, 132);
-            this.lblSchedStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSchedStart.Name = "lblSchedStart";
-            this.lblSchedStart.Size = new System.Drawing.Size(82, 21);
-            this.lblSchedStart.TabIndex = 60;
-            this.lblSchedStart.Text = "00:00 AM";
-            // 
-            // lblScedEnd
-            // 
-            this.lblScedEnd.AutoSize = true;
-            this.lblScedEnd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScedEnd.Location = new System.Drawing.Point(264, 132);
-            this.lblScedEnd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblScedEnd.Name = "lblScedEnd";
-            this.lblScedEnd.Size = new System.Drawing.Size(78, 21);
-            this.lblScedEnd.TabIndex = 61;
-            this.lblScedEnd.Text = "00:00 PM";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(245, 132);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(15, 21);
-            this.label14.TabIndex = 62;
-            this.label14.Text = "-";
-            // 
             // Leave
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,7 +362,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Leave";
             this.Tag = "btn_ApplyLeave";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -439,8 +400,5 @@
         private System.Windows.Forms.Button Search;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label14;
-        public System.Windows.Forms.Label lblScedEnd;
-        public System.Windows.Forms.Label lblSchedStart;
     }
 }
