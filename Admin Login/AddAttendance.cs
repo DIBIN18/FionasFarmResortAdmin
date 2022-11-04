@@ -22,6 +22,95 @@ namespace Admin_Login
             InitializeComponent();
         }
 
+        // Attendance Constaraints (not implemented yet)
+        public Boolean checkAllowedOT(string emp_id)
+        {
+            string query2 = "SELECT AllowedOvertime FROM EmployeeInfo WHERE EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+        }
+
+        public Boolean checkAllowedDay(string emp_id)
+        {
+            string sDate = dtp_Date.Text.ToString();
+            DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
+
+            int dy = datevalue.Day;
+            int mn = datevalue.Month;
+            int yy = datevalue.Year;
+
+            DateTime findWeek = new DateTime(yy, mn, dy);
+            string dayofweek = findWeek.ToString("dddd");
+
+            string query2 = "SELECT " + dayofweek + " FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+        }
+
+        public Boolean checkSingleSched(string emp_id, string date)
+        {
+            string singleSchedDate = "";
+            string query2 = "SELECT Date FROM SingleSchedule WHERE Date='" + date + "' AND EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        singleSchedDate = reader.GetString(0);
+
+                        if (singleSchedDate == date)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         private void back_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
