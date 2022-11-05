@@ -130,6 +130,16 @@ namespace Admin_Login
             datefrom = _DateFrom;
             //typeofleave = _TypeofLeave;
         }
+        public void Leave_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom, string _SickLeaveCredits, string _VacationLeaveCredits)
+        {
+            employeeid = _EmployeeID;
+            employeename = _EmployeeName;
+            department = _Department;
+            position = _Position;
+            datefrom = _DateFrom;
+            sickleavecredits = _SickLeaveCredits;
+            vacationleavecredits = _VacationLeaveCredits;
+        }
         public void Payroll_ValueHolder(string _DateFrom)
         {
             datefrom = _DateFrom;
@@ -251,6 +261,9 @@ namespace Admin_Login
                 leave.txtEmployeeName.Text = employeename;
                 leave.txtDepartment.Text = department;
                 leave.txtPosition.Text = position;
+                leave.txtSchedule.Text = datefrom;
+                leave.txtSLeaveCredits.Text = sickleavecredits;
+                leave.txtVLeaveCredits.Text = vacationleavecredits;
                 pnl_Content.Controls.Add(leave);
                 leave.BringToFront();
                 leave.Show();
