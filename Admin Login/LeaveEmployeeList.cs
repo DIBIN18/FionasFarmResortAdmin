@@ -20,7 +20,7 @@ namespace Admin_Login
         }
         Login login = new Login();
         public DataTable dt = new DataTable();
-        string employeeid, employeename, department, position, schedule;
+        string employeeid, employeename, department, position, schedule, sick_leave_credits, vacation_leave_credits;
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             //SqlConnection conn = new SqlConnection(login.connectionString);
@@ -50,17 +50,29 @@ namespace Admin_Login
 
         private void LeaveEmployeeList_Load(object sender, EventArgs e)
         {
-
-
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName from EmployeeInfo AS e join Department AS d on e.DepartmentID = d.DepartmentID join Position As p on e.PositionID = p.PositionID", conn);
+            SqlCommand cmd = new SqlCommand(
+                "select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName, e.SickLeaveCredits, e.VacationLeaveCredits " +
+                "from EmployeeInfo AS e " +
+                "join Department AS d " +
+                "on e.DepartmentID = d.DepartmentID " +
+                "join Position As p " +
+                "on e.PositionID = p.PositionID"
+                , conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt);
+
+            //dgvLeave.Columns["SickLeaveCredits"].Visible = false;
+            //dgvLeave.Columns["VacationLeaveCredits"].Visible = false;
+
             dgvLeave.DataSource = dt;
 
-            this.dgvLeave.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 15);
+            // Column font
+            this.dgvLeave.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+            // Row font
+            this.dgvLeave.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
             conn.Close();
         }
@@ -80,6 +92,9 @@ namespace Admin_Login
                 employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
                 department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
                 position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
+                sick_leave_credits = dgvLeave.CurrentRow.Cells[4].Value.ToString();
+                vacation_leave_credits = dgvLeave.CurrentRow.Cells[5].Value.ToString();
+                schedule = getSchedIn(employeeid) + " - " + getSchedOut(employeeid);
 
                 //Didisplay ang schedule kapag nakapili na ng employee
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -101,9 +116,58 @@ namespace Admin_Login
 
                 Menu menu = (Menu)Application.OpenForms["Menu"];
                 menu.Text = "Fiona's Farm and Resort - Leave";
-                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, "");
+                menu.Leave_ValueHolder(employeeid, employeename, department, position, schedule, sick_leave_credits, vacation_leave_credits);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }
         }
+
+        public string getSchedIn(string emp_id)
+        {
+            string query2 =
+                "SELECT ScheduleIn FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "No Schedule in yet";
+                    }
+                }
+            }
+        }
+
+        public string getSchedOut(string emp_id)
+        {
+            string query2 =
+                "SELECT ScheduleOut FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "No Schedule out yet";
+                    }
+                }
+            }
+        }
+
+
+
     }
 }
