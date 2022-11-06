@@ -61,7 +61,7 @@ namespace Admin_Login
                 string query = 
                     "SELECT Position.PositionID, Department.DepartmentName, Position.PositionName, Position.BasicRate " +
                     "FROM Position " +
-                    "INNER JOIN Department ON Position.DepartmentID=Department.DepartmentID;";
+                    "INNER JOIN Department ON Position.DepartmentID=Department.DepartmentID WHERE Custom=0;";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);

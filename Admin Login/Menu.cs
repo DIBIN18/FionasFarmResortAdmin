@@ -23,7 +23,7 @@ namespace Admin_Login
             );
         string TitleExtension;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
-            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits;
+            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched;
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -136,7 +136,7 @@ namespace Admin_Login
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
-            datefrom = _DateFrom;
+            sched = _DateFrom;
             sickleavecredits = _SickLeaveCredits;
             vacationleavecredits = _VacationLeaveCredits;
         }
@@ -261,7 +261,7 @@ namespace Admin_Login
                 leave.txtEmployeeName.Text = employeename;
                 leave.txtDepartment.Text = department;
                 leave.txtPosition.Text = position;
-                leave.txtSchedule.Text = datefrom;
+                leave.txtSchedule.Text = sched;
                 leave.txtSLeaveCredits.Text = sickleavecredits;
                 leave.txtVLeaveCredits.Text = vacationleavecredits;
                 pnl_Content.Controls.Add(leave);

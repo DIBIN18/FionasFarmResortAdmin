@@ -64,7 +64,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query2 = 
-                    "SELECT * FROM Position";
+                    "SELECT * FROM Position WHERE Custom=0";
                 SqlDataAdapter adapter2 = new SqlDataAdapter(query2, connection);
                 DataTable data2 = new DataTable();
                 adapter2.Fill(data2);
@@ -77,6 +77,8 @@ namespace Admin_Login
                 dgvPositions.DataSource = data2;
                 dgvPositions.Columns["PositionID"].Visible = false;
                 dgvPositions.Columns["DepartmentID"].Visible = false;
+                dgvPositions.Columns["PreviousPosID"].Visible = false;
+                dgvPositions.Columns["Custom"].Visible = false;
             }
         }
         private void btn_SaveDepartmentChanges_Click(object sender, EventArgs e)

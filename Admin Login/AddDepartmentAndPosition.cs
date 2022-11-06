@@ -102,6 +102,7 @@ namespace Admin_Login
                     "VALUES" +
                     "(@PositionName, @DepartmentID, @BasicRate)",
                     connection);
+
                 // CONVERT STRING TO DECIMAL
                 decimal string_to_decimal;
                 if (Decimal.TryParse(txtBasicRate.Text, out string_to_decimal))
@@ -112,6 +113,7 @@ namespace Admin_Login
                 {
                     Console.WriteLine("not a Decimal");
                 }
+
                 command.Parameters.AddWithValue("@PositionName", txtPositionName.Text);
                 command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                 command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
