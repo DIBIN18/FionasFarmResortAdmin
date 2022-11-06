@@ -70,12 +70,12 @@ namespace Admin_Login
         public string getQuery()
         {
             string command = " select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
-                          " sum(TotalHours) as TotalHours , " +
+                          " sum(RegularHours) + sum(OvertimeHours) as TotalHours , " +
                           " sum(C.OvertimeHours) as OverTimeHours , " +
                           " sum(C.RegularHolidayHours) as LegalHollidayHours, " +
                           " sum(C.SpecialHolidayHours) as SpeciallHollidayHours , " +
                           " count(C.EmployeeID) as TotalWorkDays, " +
-                          " ((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
+                          " (sum(RegularHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
                           " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
                           " from EmployeeInfo as A " +
                           " left join Position as B " +
@@ -135,12 +135,12 @@ namespace Admin_Login
                 try
                 {
                     SqlCommand cmd = new SqlCommand(" select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
-                          " sum(TotalHours) as TotalHours , " +
+                          " sum(RegularHours) + sum(OvertimeHours) as TotalHours , " +
                           " sum(C.OvertimeHours) as OverTimeHours , " +
                           " sum(C.RegularHolidayHours) as LegalHollidayHours, " +
                           " sum(C.SpecialHolidayHours) as SpeciallHollidayHours , " +
                           " count(C.EmployeeID) as TotalWorkDays, " +
-                          " ((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
+                          " (sum(RegularHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
                           " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
                           " from EmployeeInfo as A " +
                           " left join Position as B " +
@@ -219,12 +219,12 @@ namespace Admin_Login
             connection.Open();
             string query = "insert into PayrollReport "+
                 "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , "+
-                "sum(TotalHours) as TotalHours , "+
+                "sum(RegularHours) as TotalHours , "+
                 "sum(C.OvertimeHours) as OverTimeHours , "+
                 "sum(C.RegularHolidayHours) as LegalHollidayHours, "+
                 "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, "+
                 "count(C.EmployeeID) as TotalWorkDays, "+
-                "((sum(TotalHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , "+
+                "((sum(RegularHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
                 "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , "+
                 "0 as SSSContribution , "+
                 "0 as PAGIBIGContribution , "+
@@ -342,12 +342,22 @@ namespace Admin_Login
             sssclass.getSSSRange();         
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            string query = "select A.EmployeeID , A.EmployeeFullName, C.DepartmentName , B.PositionName "+
+                           " from EmployeeInfo as A "+
+                           " join Position as B on A.PositionID = B.PositionID "+
+                           " join Department as C on A.DepartmentID = C.DepartmentID "+
+                           " where A.EmployeeID = " + dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[0].Value;
+            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+            DataTable data = new DataTable();
+            adapter.Fill(data);
             if (dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
                 employeeid = dgv_DailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
                 employeename = dgv_DailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
-                department = dgv_DailyPayrollReport.CurrentRow.Cells[2].Value.ToString();
-                position = dgv_DailyPayrollReport.CurrentRow.Cells[3].Value.ToString();
+                department = data.Rows[0][2].ToString();
+                position = data.Rows[0][3].ToString();
                 datefrom = dtp_From.Text;
                 menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom);
                 menu.Menu_Load(menu, EventArgs.Empty);
