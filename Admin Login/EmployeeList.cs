@@ -75,40 +75,6 @@ namespace Admin_Login
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
-                    //string query = //"SET IDENTITY_INSERT Archive ON " +
-                    //"Insert INTO Archive (" +
-                    //"EmployeeID , " +
-                    //"EmployeeFullName, " +
-                    //"Address , " +
-                    //"SSS_ID , " +
-                    //"PAGIBIG_NO, " +
-                    //"PHIL_HEALTH_NO, " +
-                    //"Email, " +
-                    //"EmployeeMaritalStatus, " +
-                    //"ContactNumber, " +
-                    //"DateHired, " +
-                    //"Gender, " +
-                    //"BirthDate, " +
-                    //"DepartmentID, " +
-                    //"PositionID)" +
-                    //"SELECT " +
-                    //"EmployeeID, " +
-                    //"EmployeeFullName , " +
-                    //"Address , " +
-                    //"SSS_ID, " +
-                    //"PAGIBIG_NO, " +
-                    //"PHIL_HEALTH_NO, " +
-                    //"Email, " +
-                    //"EmployeeMaritalStatus, " +
-                    //"ContactNumber, " +
-                    //"DateHired, " +
-                    //"Gender, " +
-                    //"BirthDate, " +
-                    //"DepartmentID, " +
-                    //"PositionID " +
-                    //"FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value + 
-                    //"DELETE FROM Deductions WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value +
-                    //"DELETE FROM EmployeeInfo WHERE EmployeeID = " + dgvEmployeeList.CurrentRow.Cells[0].Value;
 
                     string query =
                         "UPDATE EmployeeInfo SET Status='Inactive' WHERE EmployeeID=" + dgv_EmployeeList.CurrentRow.Cells[0].Value;
@@ -391,7 +357,7 @@ namespace Admin_Login
 
 
             // MAKA COMMENT YAPA ING KEKA BAP
-            // LAGE KEPA ITANG LUMA PARA KENG PRESENTATION KAYBAT KANITA TULU MUNE ING GAGAWAN MU
+            // LAGE KEPA ITANG LUMA PARA KENG PRESENTATION KAYBAT KANITA TULUY MUNE ING GAGAWAN MU
 
             if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
@@ -496,10 +462,57 @@ namespace Admin_Login
                             ep.cbSunday.CheckState = CheckState.Checked;
                         }
                     }
+
+                    using (SqlConnection connection3 = new SqlConnection(login.connectionString))
+                    {
+                        connection3.Open();
+
+                        string query = "SELECT BasicRate, Custom FROM Position WHERE PositionID=" + getPosID(dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                        SqlCommand cmd3 = new SqlCommand(query, connection3);
+                        DataTable dt3 = new DataTable();
+                        SqlDataAdapter adapter3 = new SqlDataAdapter(cmd3);
+                        adapter3.Fill(dt3);
+
+                        if (dt3.Rows[0][1].ToString() == "True")
+                        {
+                            ep.lblCustomRate.Text = dt3.Rows[0][0].ToString();
+                        }
+                        else
+                        {
+                            ep.lblCustomRate.Text = "None";
+                        }
+                    }
                 }
             }
             ep.ShowDialog();
 
+        }
+
+        public Int64 getPosID(string emp_id)
+        {
+            string query = "SELECT PositionID FROM EmployeeInfo WHERE EmployeeID=" + emp_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                        reader.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Position");
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }

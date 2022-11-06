@@ -114,6 +114,7 @@ namespace Admin_Login
             lblSSS.Visible = false;
             lblPhilHealth.Visible = false;
             lblPagIbig.Visible = false;
+            
 
             txtNameEdit.Visible = true;
             cmbMaritalStatusEdit.Visible = true;
@@ -135,6 +136,7 @@ namespace Admin_Login
             txtVacationLeaveCreditsEdit.Visible = true;
             dtpDateOfBirth.Visible = true;
             cmbOtAllowed.Visible = true;
+            
 
             cbMonday.Enabled = true;
             cbTuesday.Enabled = true;
@@ -167,6 +169,7 @@ namespace Admin_Login
             lblSSS.Visible = true;
             lblPhilHealth.Visible = true;
             lblPagIbig.Visible = true;
+          
 
             txtNameEdit.Visible = false;
             cmbMaritalStatusEdit.Visible = false;
@@ -648,6 +651,87 @@ namespace Admin_Login
             ss.ShowDialog();
         }
 
+        private void btnSetCustomRate_Click(object sender, EventArgs e)
+        {
+            txtCustomRate.Visible = true;
+            txtCustomRate.Text = lblCustomRate.Text;
+            lblCustomRate.Visible = false;
+
+            btnSetCustomRate.Visible = false;
+            btnSaveCustomRate.Visible = true;
+            btnRemoveCustomRate.Visible = true;
+        }
+
+        private void btnSaveCustomRate_Click(object sender, EventArgs e)
+        {
+            string query =
+                "INSERT INTO Position " +
+                "(PositionName, DepartmentID, BasicRate, PreviousPosID, Custom) " +
+                "VALUES (@PositionName, @DepartmentID, @BasicRate, @PreviousPosID, @Custom)";
+
+            string query2 =
+                "UPDATE EmployeeInfo " +
+                "SET PositionID = (SELECT MAX(PositionID) FROM Position) " +
+                "WHERE EmployeeID=" + lblEmployeeID.Text.ToString();
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+
+                SqlCommand cmd1 = new SqlCommand(query, connection);
+                SqlCommand cmd2 = new SqlCommand(query2, connection);
+
+                // CONVERT STRING TO DECIMAL
+                decimal string_to_decimal;
+                if (Decimal.TryParse(txtCustomRate.Text, out string_to_decimal))
+                {
+                    Console.WriteLine(string_to_decimal.ToString("0.##"));
+                }
+                else
+                {
+                    Console.WriteLine("not a Decimal");
+                }
+
+                cmd1.Parameters.AddWithValue("@PositionName", lblPosition.Text.ToString());
+                cmd1.Parameters.AddWithValue("@DepartmentID", getDeptIDfromLabel());
+                cmd1.Parameters.AddWithValue("@BasicRate", string_to_decimal);
+                cmd1.Parameters.AddWithValue("@PreviousPosID", getPosIDfromLabel());
+                cmd1.Parameters.AddWithValue("@Custom", 1);
+                cmd1.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+            }
+            MessageBox.Show("Custom Basic Rate has been set");
+
+            lblCustomRate.Text = txtCustomRate.Text;
+            lblCustomRate.Visible = true;
+            txtCustomRate.Visible = false;
+            txtCustomRate.Text = "";
+            btnSetCustomRate.Visible = true;
+            btnSaveCustomRate.Visible = false;
+            btnRemoveCustomRate.Visible = false;
+        }
+
+        private void btnRemoveCustomRate_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+
+                string query =
+                "UPDATE EmployeeInfo " +
+                "SET PositionID=" + getPrevPosID().ToString() +
+                "WHERE EmployeeID=" + lblEmployeeID.Text.ToString();
+
+                SqlCommand cmd1 = new SqlCommand(query, connection);
+                cmd1.ExecuteNonQuery();
+            }
+            MessageBox.Show("Employee Basic Rate Has Been Set to Default According To Position");
+            lblCustomRate.Text = "None";
+            lblCustomRate.Visible = true;
+            txtCustomRate.Visible = false;
+            btnRemoveCustomRate.Visible = false;
+        }
+
         private void cmbDepartmentEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -662,6 +746,8 @@ namespace Admin_Login
         {
             e.Handled = true;
         }
+
+        
 
         private void cmbOtAllowed_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -762,6 +848,83 @@ namespace Admin_Login
                 catch (ArgumentException)
                 {
                     //Do nothing
+                }
+            }
+        }
+
+        public Int64 getDeptIDfromLabel()
+        {
+            string query = "SELECT DepartmentID FROM EmployeeInfo WHERE EmployeeID='" + lblEmployeeID.Text.ToString() + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                        reader.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Position");
+                        return 0;
+                    }
+                }
+            }
+        }
+
+        public Int64 getPosIDfromLabel()
+        {
+            string query = "SELECT PositionID FROM EmployeeInfo WHERE EmployeeID='" + lblEmployeeID.Text.ToString() + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                        reader.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Position");
+                        return 0;
+                    }
+                }
+            }
+        }
+
+        public Int64 getPrevPosID()
+        {
+            string query = "SELECT PreviousPosID FROM Position WHERE PositionID='" + getPosIDfromLabel() + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Position");
+                        return 0;
+                    }
                 }
             }
         }

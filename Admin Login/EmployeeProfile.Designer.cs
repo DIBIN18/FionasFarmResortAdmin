@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblEmployeeID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -117,48 +114,21 @@
             this.pbProfilePic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label26 = new System.Windows.Forms.Label();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            this.Logo = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.lblCustomRate = new System.Windows.Forms.Label();
+            this.txtCustomRate = new System.Windows.Forms.TextBox();
+            this.btnSetCustomRate = new System.Windows.Forms.Button();
+            this.btnRemoveCustomRate = new System.Windows.Forms.Button();
+            this.btnSaveCustomRate = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.Logo);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(949, 54);
-            this.panel2.TabIndex = 39;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(2, 2);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(289, 42);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "EmployeeProfile";
-            // 
-            // Logo
-            // 
-            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(887, 2);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(43, 54);
-            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Logo.TabIndex = 3;
-            this.Logo.TabStop = false;
             // 
             // label1
             // 
@@ -307,7 +277,7 @@
             // 
             this.lblDateHired.AutoSize = true;
             this.lblDateHired.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDateHired.Location = new System.Drawing.Point(703, 144);
+            this.lblDateHired.Location = new System.Drawing.Point(711, 144);
             this.lblDateHired.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateHired.Name = "lblDateHired";
             this.lblDateHired.Size = new System.Drawing.Size(85, 19);
@@ -318,7 +288,7 @@
             // 
             this.lblGender.AutoSize = true;
             this.lblGender.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGender.Location = new System.Drawing.Point(703, 65);
+            this.lblGender.Location = new System.Drawing.Point(711, 65);
             this.lblGender.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(66, 19);
@@ -329,7 +299,7 @@
             // 
             this.lblAddress.AutoSize = true;
             this.lblAddress.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddress.Location = new System.Drawing.Point(703, 94);
+            this.lblAddress.Location = new System.Drawing.Point(711, 94);
             this.lblAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(69, 19);
@@ -975,7 +945,7 @@
             this.cmbGenderEdit.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.cmbGenderEdit.Location = new System.Drawing.Point(707, 66);
+            this.cmbGenderEdit.Location = new System.Drawing.Point(715, 66);
             this.cmbGenderEdit.Name = "cmbGenderEdit";
             this.cmbGenderEdit.Size = new System.Drawing.Size(176, 21);
             this.cmbGenderEdit.TabIndex = 67;
@@ -1003,7 +973,7 @@
             this.dtpDateHiredEdit.CustomFormat = "M/d/yyyy";
             this.dtpDateHiredEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateHiredEdit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateHiredEdit.Location = new System.Drawing.Point(707, 144);
+            this.dtpDateHiredEdit.Location = new System.Drawing.Point(715, 144);
             this.dtpDateHiredEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateHiredEdit.Name = "dtpDateHiredEdit";
             this.dtpDateHiredEdit.Size = new System.Drawing.Size(176, 20);
@@ -1013,7 +983,7 @@
             // 
             // txtAddressEdit
             // 
-            this.txtAddressEdit.Location = new System.Drawing.Point(707, 92);
+            this.txtAddressEdit.Location = new System.Drawing.Point(715, 92);
             this.txtAddressEdit.Name = "txtAddressEdit";
             this.txtAddressEdit.Size = new System.Drawing.Size(176, 20);
             this.txtAddressEdit.TabIndex = 71;
@@ -1036,7 +1006,7 @@
             this.dtpDateOfBirth.CustomFormat = "mm-dd-yyyy";
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(707, 118);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(715, 118);
             this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(176, 20);
@@ -1065,7 +1035,7 @@
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirthDate.ForeColor = System.Drawing.Color.Black;
-            this.lblBirthDate.Location = new System.Drawing.Point(712, 119);
+            this.lblBirthDate.Location = new System.Drawing.Point(720, 119);
             this.lblBirthDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(76, 19);
@@ -1089,7 +1059,7 @@
             this.cmbOtAllowed.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cmbOtAllowed.Location = new System.Drawing.Point(707, 169);
+            this.cmbOtAllowed.Location = new System.Drawing.Point(715, 172);
             this.cmbOtAllowed.Name = "cmbOtAllowed";
             this.cmbOtAllowed.Size = new System.Drawing.Size(176, 21);
             this.cmbOtAllowed.TabIndex = 85;
@@ -1101,7 +1071,7 @@
             this.lblAllowedOT.AutoSize = true;
             this.lblAllowedOT.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAllowedOT.ForeColor = System.Drawing.Color.Gray;
-            this.lblAllowedOT.Location = new System.Drawing.Point(703, 171);
+            this.lblAllowedOT.Location = new System.Drawing.Point(711, 171);
             this.lblAllowedOT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAllowedOT.Name = "lblAllowedOT";
             this.lblAllowedOT.Size = new System.Drawing.Size(96, 19);
@@ -1177,11 +1147,116 @@
             this.label26.TabIndex = 97;
             this.label26.Text = "SCHEDULE";
             // 
+            // Logo
+            // 
+            this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
+            this.Logo.Location = new System.Drawing.Point(887, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(43, 54);
+            this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Logo.TabIndex = 3;
+            this.Logo.TabStop = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.Logo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(949, 54);
+            this.panel2.TabIndex = 39;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(2, 2);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(289, 42);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "EmployeeProfile";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(564, 201);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(138, 17);
+            this.label27.TabIndex = 95;
+            this.label27.Text = "Custom Basic Rate:";
+            // 
+            // lblCustomRate
+            // 
+            this.lblCustomRate.AutoSize = true;
+            this.lblCustomRate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCustomRate.ForeColor = System.Drawing.Color.Gray;
+            this.lblCustomRate.Location = new System.Drawing.Point(716, 199);
+            this.lblCustomRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCustomRate.Name = "lblCustomRate";
+            this.lblCustomRate.Size = new System.Drawing.Size(46, 19);
+            this.lblCustomRate.TabIndex = 96;
+            this.lblCustomRate.Text = "None";
+            // 
+            // txtCustomRate
+            // 
+            this.txtCustomRate.Location = new System.Drawing.Point(715, 198);
+            this.txtCustomRate.Name = "txtCustomRate";
+            this.txtCustomRate.Size = new System.Drawing.Size(176, 20);
+            this.txtCustomRate.TabIndex = 97;
+            this.txtCustomRate.Visible = false;
+            // 
+            // btnSetCustomRate
+            // 
+            this.btnSetCustomRate.Location = new System.Drawing.Point(759, 226);
+            this.btnSetCustomRate.Name = "btnSetCustomRate";
+            this.btnSetCustomRate.Size = new System.Drawing.Size(81, 23);
+            this.btnSetCustomRate.TabIndex = 98;
+            this.btnSetCustomRate.Text = "SET";
+            this.btnSetCustomRate.UseVisualStyleBackColor = true;
+            this.btnSetCustomRate.Click += new System.EventHandler(this.btnSetCustomRate_Click);
+            // 
+            // btnRemoveCustomRate
+            // 
+            this.btnRemoveCustomRate.Location = new System.Drawing.Point(810, 226);
+            this.btnRemoveCustomRate.Name = "btnRemoveCustomRate";
+            this.btnRemoveCustomRate.Size = new System.Drawing.Size(81, 23);
+            this.btnRemoveCustomRate.TabIndex = 99;
+            this.btnRemoveCustomRate.Text = "REMOVE";
+            this.btnRemoveCustomRate.UseVisualStyleBackColor = true;
+            this.btnRemoveCustomRate.Visible = false;
+            this.btnRemoveCustomRate.Click += new System.EventHandler(this.btnRemoveCustomRate_Click);
+            // 
+            // btnSaveCustomRate
+            // 
+            this.btnSaveCustomRate.Location = new System.Drawing.Point(715, 226);
+            this.btnSaveCustomRate.Name = "btnSaveCustomRate";
+            this.btnSaveCustomRate.Size = new System.Drawing.Size(81, 23);
+            this.btnSaveCustomRate.TabIndex = 100;
+            this.btnSaveCustomRate.Text = "SAVE";
+            this.btnSaveCustomRate.UseVisualStyleBackColor = true;
+            this.btnSaveCustomRate.Visible = false;
+            this.btnSaveCustomRate.Click += new System.EventHandler(this.btnSaveCustomRate_Click);
+            // 
             // EmployeeProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(949, 628);
+            this.Controls.Add(this.btnSetCustomRate);
+            this.Controls.Add(this.btnSaveCustomRate);
+            this.Controls.Add(this.btnRemoveCustomRate);
+            this.Controls.Add(this.txtCustomRate);
+            this.Controls.Add(this.lblCustomRate);
+            this.Controls.Add(this.label27);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnChangePfp);
@@ -1229,23 +1304,20 @@
             this.Name = "EmployeeProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.EmployeeProfile_Load);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
@@ -1269,7 +1341,6 @@
         public System.Windows.Forms.Label lblGender;
         public System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
@@ -1333,5 +1404,14 @@
         public System.Windows.Forms.Label lblVacationLeaveCredits;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label27;
+        public System.Windows.Forms.Label lblCustomRate;
+        public System.Windows.Forms.TextBox txtCustomRate;
+        private System.Windows.Forms.Button btnSetCustomRate;
+        private System.Windows.Forms.Button btnRemoveCustomRate;
+        private System.Windows.Forms.Button btnSaveCustomRate;
     }
 }
