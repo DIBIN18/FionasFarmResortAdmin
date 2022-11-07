@@ -17,6 +17,7 @@ namespace Admin_Login
         long selectedDepartmentId = 0;
         string selectedPositionName = "";
         long selectedPositionId = 0;
+        string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
         public AddEmployee()
         {
             InitializeComponent();
@@ -52,6 +53,69 @@ namespace Admin_Login
             string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
 
+            if (cbMonday.Checked)
+            {
+                Monday = "1";
+            }
+            else
+            {
+                Monday = "0";
+            }
+
+            if (cbTuesday.Checked)
+            {
+                Tuesday = "1";
+            }
+            else
+            {
+                Tuesday = "0";
+            }
+
+            if (cbWednesday.Checked)
+            {
+                Wednesday = "1";
+            }
+            else
+            {
+                Wednesday = "0";
+            }
+
+            if (cbThursday.Checked)
+            {
+                Thursday = "1";
+            }
+            else
+            {
+                Thursday = "0";
+            }
+
+            if (cbFriday.Checked)
+            {
+                Friday = "1";
+            }
+            else
+            {
+                Friday = "0";
+            }
+
+            if (cbSaturday.Checked)
+            {
+                Saturday = "1";
+            }
+            else
+            {
+                Saturday = "0";
+            }
+
+            if (cbSunday.Checked)
+            {
+                Sunday = "1";
+            }
+            else
+            {
+                Sunday = "0";
+            }
+
             using (SqlConnection connection2 = new SqlConnection(login.connectionString))
             {
                 connection2.Open();
@@ -61,7 +125,14 @@ namespace Admin_Login
                 string query2 =
                     "UPDATE EmployeeSchedule " +
                     "SET ScheduleIn ='" + schedIn + "', " +
-                    "ScheduleOut ='" + schedOut +"' " +
+                    "ScheduleOut ='" + schedOut +"', " +
+                    "Monday ='" + Monday + "', " +
+                    "Tuesday ='" + Tuesday + "', " +
+                    "Wednesday ='" + Wednesday + "', " +
+                    "Thursday ='" + Thursday + "', " +
+                    "Friday ='" + Friday + "', " +
+                    "Saturday ='" + Saturday + "', " +
+                    "Sunday ='" + Sunday + "' " +
                     "WHERE EmployeeID = (SELECT MAX(EmployeeID) FROM EmployeeInfo)";
 
                 SqlCommand cmd = new SqlCommand(query, connection2);
@@ -171,6 +242,7 @@ namespace Admin_Login
                 string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
                 SqlCommand cmd = new SqlCommand(query, connection);
+
                 cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
                 cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
                 cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
@@ -189,10 +261,12 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
                 cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
                 cmd.Parameters.AddWithValue("@Status", "Active");
+
                 //Compute Age Using DateTimePicker
                 int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
                 cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                 cmd.ExecuteNonQuery();
+
                 insertNewEmployeeSchedule();
                 MessageBox.Show("Successfully Added Employee!");
 
