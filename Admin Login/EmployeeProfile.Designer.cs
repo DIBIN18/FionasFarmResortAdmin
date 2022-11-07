@@ -510,7 +510,7 @@
             // 
             // txtAccumulatedDayOffEdit
             // 
-            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(213, 128);
+            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(213, 127);
             this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
             this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(219, 20);
             this.txtAccumulatedDayOffEdit.TabIndex = 69;
@@ -582,7 +582,7 @@
             this.lblAccumulated.AutoSize = true;
             this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
-            this.lblAccumulated.Location = new System.Drawing.Point(211, 127);
+            this.lblAccumulated.Location = new System.Drawing.Point(209, 125);
             this.lblAccumulated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAccumulated.Name = "lblAccumulated";
             this.lblAccumulated.Size = new System.Drawing.Size(165, 19);
@@ -1006,7 +1006,7 @@
             this.dtpDateOfBirth.CustomFormat = "mm-dd-yyyy";
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDateOfBirth.Location = new System.Drawing.Point(715, 118);
+            this.dtpDateOfBirth.Location = new System.Drawing.Point(715, 117);
             this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(176, 20);
@@ -1035,7 +1035,7 @@
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirthDate.ForeColor = System.Drawing.Color.Black;
-            this.lblBirthDate.Location = new System.Drawing.Point(720, 119);
+            this.lblBirthDate.Location = new System.Drawing.Point(711, 118);
             this.lblBirthDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBirthDate.Name = "lblBirthDate";
             this.lblBirthDate.Size = new System.Drawing.Size(76, 19);
@@ -1199,7 +1199,7 @@
             this.lblCustomRate.AutoSize = true;
             this.lblCustomRate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomRate.ForeColor = System.Drawing.Color.Gray;
-            this.lblCustomRate.Location = new System.Drawing.Point(716, 199);
+            this.lblCustomRate.Location = new System.Drawing.Point(711, 200);
             this.lblCustomRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCustomRate.Name = "lblCustomRate";
             this.lblCustomRate.Size = new System.Drawing.Size(46, 19);
@@ -1208,7 +1208,7 @@
             // 
             // txtCustomRate
             // 
-            this.txtCustomRate.Location = new System.Drawing.Point(715, 198);
+            this.txtCustomRate.Location = new System.Drawing.Point(715, 201);
             this.txtCustomRate.Name = "txtCustomRate";
             this.txtCustomRate.Size = new System.Drawing.Size(176, 20);
             this.txtCustomRate.TabIndex = 97;
