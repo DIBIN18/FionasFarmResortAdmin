@@ -15,6 +15,7 @@ namespace Admin_Login
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
         static string datefrom;
+        bool setdateFrom = true;
         public Payroll()
         {
             InitializeComponent();
@@ -29,24 +30,66 @@ namespace Admin_Login
             menu.Payroll_ValueHolder(datefrom);
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+        public string getLastPayrollDate()
+        {
+            string Date = "0";
+            Login login = new Login();
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "select  max(PayrollCoveredDate) from Deductions";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable data = new DataTable();
+                    adapter.Fill(data);
+                    Date = data.Rows[0][0].ToString().Substring(21);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return Date;
+            }
+        }
         public void Payroll_Load(object sender, EventArgs e)
         {
-            datefrom = dtpI_From.Text;
-            tagadelete();
-            tagaInsertPayrollReport();
+            dtpI_From.MaxDate = dtpI_To.Value;
+            dtpI_To.MaxDate = DateTime.Now;
             try
             {
-                dtpI_To.Value = dtpI_From.Value.AddDays(14);
+                dtpI_To.Value = DateTime.Now;
             }
             catch (Exception ex) { }
+            if (setdateFrom == true)
+            {
+                try
+                {
+                    dtpI_From.Text = getLastPayrollDate().ToString();
+                    dtpI_From.Value = dtpI_From.Value.AddDays(1);
+                    setdateFrom = false;
+                }
+                catch (Exception ex) { }
+            }
+            tagadelete();
+            tagaInsertPayrollReport();
             getInfo();
         }
-
+        private void dtpI_From_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            getInfo();
+            dtpI_From.MaxDate = dtpI_To.Value;
+            dtpI_To.MaxDate = DateTime.Now;
+        }
         private void dtpI_To_ValueChanged(object sender, EventArgs e)
         {
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();
+            dtpI_From.MaxDate = dtpI_To.Value;
+            dtpI_To.MaxDate = DateTime.Now;
         }
         public void getInfo()
         {
@@ -59,7 +102,7 @@ namespace Admin_Login
                 adapter.Fill(data);
                 try
                 {
-                    double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString()) - Convert.ToDouble(data.Rows[0][5].ToString()) - Convert.ToDouble(data.Rows[0][6].ToString()) - Convert.ToDouble(data.Rows[0][7].ToString());
+                    double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString());
                     double regulaypay = regularhrs * Convert.ToDouble(data.Rows[0][3].ToString());
                     double overtimepay = Convert.ToDouble(data.Rows[0][5]) * (Convert.ToDouble(data.Rows[0][3]) * 1.30);
                     double regularholiday = Convert.ToDouble(data.Rows[0][6]);
@@ -90,7 +133,8 @@ namespace Admin_Login
                     txtTaxAmount.Text = tax.ToString("n2");
                     txtTotalDeduction.Text = totaldeduction.ToString("n2");
                     txtNetPay.Text = netpay.ToString("n2");
-                }catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     txtRegularHours.Text = "";
                     txtOvertimeMins.Text = "";
@@ -197,17 +241,6 @@ namespace Admin_Login
             tagaInsertPayrollReport();
             getInfo();
         }
-        private void dtpI_From_ValueChanged(object sender, EventArgs e)
-        {
-            tagadelete();
-            tagaInsertPayrollReport();
-            try
-            {
-                dtpI_To.Value = dtpI_From.Value.AddDays(14);
-                dtpI_To.MinDate = dtpI_From.Value;
-            }
-            catch (Exception ex) { }
-            getInfo();
-        }
+
     }
 }
