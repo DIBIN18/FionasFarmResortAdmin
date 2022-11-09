@@ -244,12 +244,12 @@
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(330, 31);
             this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
-            this.dtp_To.MaxDate = new System.DateTime(2022, 11, 15, 0, 0, 0, 0);
+            this.dtp_To.MaxDate = new System.DateTime(2040, 12, 31, 0, 0, 0, 0);
+            this.dtp_To.MinDate = new System.DateTime(2010, 12, 31, 0, 0, 0, 0);
             this.dtp_To.Name = "dtp_To";
             this.dtp_To.Size = new System.Drawing.Size(224, 23);
             this.dtp_To.TabIndex = 37;
