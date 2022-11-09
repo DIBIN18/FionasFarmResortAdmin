@@ -62,7 +62,7 @@ namespace Admin_Login
                 }
                 catch (Exception ex)
                 {
-
+                    
                 }
                 return Date;
             }
@@ -111,7 +111,7 @@ namespace Admin_Login
             catch (Exception ex)
             {
             }
-            if (setdateFrom == true)
+            if (setdateFrom == true) 
             {
                 try
                 {
@@ -119,7 +119,7 @@ namespace Admin_Login
                     dtp_From.Value = dtp_From.Value.AddDays(1);
                     setdateFrom = false;
                 }
-                catch (Exception ex) { }
+                catch(Exception ex) { }
             }
             dgvDatechangeLoad();
         }
@@ -217,7 +217,7 @@ namespace Admin_Login
                 sssclass.PHILHEALTHON = "OFF";
             }
         }
-
+        
 
         public void tagadelete()
         {
@@ -230,30 +230,30 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "insert into PayrollReport " +
-                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
-                "sum(RegularHours) as TotalHours , " +
-                "sum(C.OvertimeHours) as OverTimeHours , " +
-                "sum(C.RegularHolidayHours) as LegalHollidayHours, " +
-                "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, " +
-                "count(C.EmployeeID) as TotalWorkDays, " +
+            string query = "insert into PayrollReport "+
+                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , "+
+                "sum(RegularHours) as TotalHours , "+
+                "sum(C.OvertimeHours) as OverTimeHours , "+
+                "sum(C.RegularHolidayHours) as LegalHollidayHours, "+
+                "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, "+
+                "count(C.EmployeeID) as TotalWorkDays, "+
                 "((sum(RegularHours)-sum(C.OvertimeHours))*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
-                "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , " +
-                "0 as SSSContribution , " +
-                "0 as PAGIBIGContribution , " +
-                "0 as PHILHEALTHContribution , " +
-                "0 as TAX, " +
-                "D.OtherDeduction as OtherDeduction , " +
-                "0 as NetPay, null " +
-                "from EmployeeInfo as A " +
-                "left join Position as B " +
-                "on A.PositionID = B.PositionID " +
-                "left join AttendanceSheet as C " +
-                "on A.EmployeeID = C.EmployeeID " +
-                "left join Deductions as D " +
-                "on A.EmployeeID = D.EmployeeID " +
-                "where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)" +
-                " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
+                "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , "+
+                "0 as SSSContribution , "+
+                "0 as PAGIBIGContribution , "+
+                "0 as PHILHEALTHContribution , "+
+                "0 as TAX, "+
+                "D.OtherDeduction as OtherDeduction , "+
+                "0 as NetPay, null "+
+                "from EmployeeInfo as A "+
+                "left join Position as B "+
+                "on A.PositionID = B.PositionID "+
+                "left join AttendanceSheet as C "+
+                "on A.EmployeeID = C.EmployeeID "+
+                "left join Deductions as D "+
+                "on A.EmployeeID = D.EmployeeID "+
+                "where Date Between CONVERT(datetime, '"+ dtp_From.Text +"', 100) and CONVERT(datetime, '"+ dtp_To.Text +"', 100)"+
+                " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";         
             SqlCommand command = new SqlCommand(query, connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
@@ -264,29 +264,29 @@ namespace Admin_Login
             string systemdate = "";
             string dbsdate = "";
             SqlConnection connection = new SqlConnection(login.connectionString);
+            
+                connection.Open();
+                string query = "select * from Deductions";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                try
+                {
+                    systemdate = dtp_From.Text + " - " + dtp_To.Text;
+                    dbsdate = data.Rows[0][7].ToString();
 
-            connection.Open();
-            string query = "select * from Deductions";
-            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            DataTable data = new DataTable();
-            adapter.Fill(data);
-            try
-            {
-                systemdate = dtp_From.Text + " - " + dtp_To.Text;
-                dbsdate = data.Rows[0][7].ToString();
+                }
+                catch (Exception ex)
+                {
+                    
+                }
 
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-            string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
-                            " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
-            SqlCommand cmd = new SqlCommand(query2, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
-        }
+                string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
+                                " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
+                SqlCommand cmd = new SqlCommand(query2, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+        }      
         private void btn_Export_Click(object sender, EventArgs e)
         {
             tagadelete();
@@ -302,7 +302,7 @@ namespace Admin_Login
             //Export
             DialogResult dialogResult = MessageBox.Show("Export as Excel file?", "PayrollReport", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
-            {
+            {              
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
@@ -341,10 +341,10 @@ namespace Admin_Login
                                 System.Diagnostics.Process.Start(filepath + "\\PayrollReport(" + i + ").xlsx ");
                                 i++;
                             }
-                            catch (Exception ex)
+                            catch(Exception ex)
                             {
                                 i++;
-                            }
+                            }   
                         }
                     }
                 }
@@ -352,15 +352,15 @@ namespace Admin_Login
         }
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            sssclass.getSSSRange();
+            sssclass.getSSSRange();         
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "select A.EmployeeID , A.EmployeeFullName, C.DepartmentName , B.PositionName " +
-                           " from EmployeeInfo as A " +
-                           " join Position as B on A.PositionID = B.PositionID " +
-                           " join Department as C on A.DepartmentID = C.DepartmentID " +
+            string query = "select A.EmployeeID , A.EmployeeFullName, C.DepartmentName , B.PositionName "+
+                           " from EmployeeInfo as A "+
+                           " join Position as B on A.PositionID = B.PositionID "+
+                           " join Department as C on A.DepartmentID = C.DepartmentID "+
                            " where A.EmployeeID = " + dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[0].Value;
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable data = new DataTable();
@@ -374,7 +374,7 @@ namespace Admin_Login
                 datefrom = dtp_From.Text;
                 menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom);
                 menu.Menu_Load(menu, EventArgs.Empty);
-            }
+            }   
         }
     }
 }

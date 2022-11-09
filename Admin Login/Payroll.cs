@@ -60,7 +60,7 @@ namespace Admin_Login
             {
                 dtpI_To.Value = DateTime.Now;
             }
-            catch (Exception ex) { }
+            catch(Exception ex) { }
             if (setdateFrom == true)
             {
                 try
@@ -72,7 +72,7 @@ namespace Admin_Login
                 catch (Exception ex) { }
             }
             tagadelete();
-            tagaInsertPayrollReport();
+            tagaInsertPayrollReport();         
             getInfo();
         }
         private void dtpI_From_ValueChanged(object sender, EventArgs e)
@@ -133,8 +133,7 @@ namespace Admin_Login
                     txtTaxAmount.Text = tax.ToString("n2");
                     txtTotalDeduction.Text = totaldeduction.ToString("n2");
                     txtNetPay.Text = netpay.ToString("n2");
-                }
-                catch (Exception ex)
+                }catch (Exception ex)
                 {
                     txtRegularHours.Text = "";
                     txtOvertimeMins.Text = "";
@@ -241,6 +240,6 @@ namespace Admin_Login
             tagaInsertPayrollReport();
             getInfo();
         }
-
+        
     }
 }
