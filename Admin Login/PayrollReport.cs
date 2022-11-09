@@ -78,22 +78,39 @@ namespace Admin_Login
                           " (sum(RegularHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
                           " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
                           " from EmployeeInfo as A " +
-                          " left join Position as B " +
+                          "  join Position as B " +
                           " on A.PositionID = B.PositionID " +
-                          " left join AttendanceSheet as C " +
+                          "  join AttendanceSheet as C " +
                           " on A.EmployeeID = C.EmployeeID " +
-                          " left join Deductions as D " +
+                          "  join Deductions as D " +
                           " on A.EmployeeID = D.EmployeeID " +
                           "where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)" +
                           " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
             return command;
         }
+        private void dtp_From_ValueChanged(object sender, EventArgs e)
+        {
+            dgvDatechangeLoad();
+            dtp_From.MaxDate = dtp_To.Value;
+            dtp_To.MaxDate = DateTime.Now;
+        }
         private void dtp_To_ValueChanged(object sender, EventArgs e)
         {
-            PayrollReport_Load(this, null);
+            dgvDatechangeLoad();
+            dtp_From.MaxDate = dtp_To.Value;
+            dtp_To.MaxDate = DateTime.Now;
         }
         private void PayrollReport_Load(object sender, EventArgs e)
         {
+            dtp_From.MaxDate = dtp_To.Value;
+            dtp_To.MaxDate = DateTime.Now;
+            try
+            {
+                dtp_To.Value = DateTime.Now;
+            }
+            catch (Exception ex)
+            {
+            }
             if (setdateFrom == true) 
             {
                 try
@@ -103,7 +120,11 @@ namespace Admin_Login
                     setdateFrom = false;
                 }
                 catch(Exception ex) { }
-            } 
+            }
+            dgvDatechangeLoad();
+        }
+        public void dgvDatechangeLoad()
+        {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             SqlCommand cmd = new SqlCommand(getQuery(), connection);
@@ -196,15 +217,7 @@ namespace Admin_Login
                 sssclass.PHILHEALTHON = "OFF";
             }
         }
-        private void dtp_From_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                //dtp_To.MinDate = dtp_From.Value;
-                dtp_To.Enabled = true;
-            }
-            catch(Exception ex) { }
-        }
+        
 
         public void tagadelete()
         {
