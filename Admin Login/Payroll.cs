@@ -56,7 +56,11 @@ namespace Admin_Login
         {
             dtpI_From.MaxDate = dtpI_To.Value;
             dtpI_To.MaxDate = DateTime.Now;
-            dtpI_To.Value = DateTime.Now;
+            try
+            {
+                dtpI_To.Value = DateTime.Now;
+            }
+            catch(Exception ex) { }
             if (setdateFrom == true)
             {
                 try
@@ -98,7 +102,7 @@ namespace Admin_Login
                 adapter.Fill(data);
                 try
                 {
-                    double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString()) - Convert.ToDouble(data.Rows[0][5].ToString()) - Convert.ToDouble(data.Rows[0][6].ToString()) - Convert.ToDouble(data.Rows[0][7].ToString());
+                    double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString());
                     double regulaypay = regularhrs * Convert.ToDouble(data.Rows[0][3].ToString());
                     double overtimepay = Convert.ToDouble(data.Rows[0][5]) * (Convert.ToDouble(data.Rows[0][3]) * 1.30);
                     double regularholiday = Convert.ToDouble(data.Rows[0][6]);

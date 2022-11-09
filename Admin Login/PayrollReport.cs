@@ -78,11 +78,11 @@ namespace Admin_Login
                           " (sum(RegularHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
                           " sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime " +
                           " from EmployeeInfo as A " +
-                          "  join Position as B " +
+                          " left join Position as B " +
                           " on A.PositionID = B.PositionID " +
-                          "  join AttendanceSheet as C " +
+                          " left join AttendanceSheet as C " +
                           " on A.EmployeeID = C.EmployeeID " +
-                          "  join Deductions as D " +
+                          " left join Deductions as D " +
                           " on A.EmployeeID = D.EmployeeID " +
                           "where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)" +
                           " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
