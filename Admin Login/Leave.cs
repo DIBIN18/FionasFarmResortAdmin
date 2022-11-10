@@ -149,12 +149,10 @@ namespace Admin_Login
                            "@Reason," +
                            "@Type)";
 
-                        string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-                        string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
                         SqlCommand command2 = new SqlCommand(query2, connection);
                         command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
-                        command2.Parameters.AddWithValue("@StartDate", startDate);
-                        command2.Parameters.AddWithValue("@EndDate", endDate);
+                        command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
                         command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
@@ -209,14 +207,11 @@ namespace Admin_Login
                            "@Reason," +
                            "@Type)";
 
-                        string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-                        string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-
 
                         SqlCommand command2 = new SqlCommand(query2, connection);
                         command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
-                        command2.Parameters.AddWithValue("@StartDate", startDate);
-                        command2.Parameters.AddWithValue("@EndDate", endDate);
+                        command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
                         command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 

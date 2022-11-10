@@ -43,20 +43,20 @@
             this.rtxtReason = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dtp_EndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtp_StartDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.cmb_LeaveType = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtVLeaveCredits = new System.Windows.Forms.TextBox();
+            this.txtSLeaveCredits = new System.Windows.Forms.TextBox();
+            this.txtSchedule = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.Search = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtSchedule = new System.Windows.Forms.TextBox();
-            this.txtSLeaveCredits = new System.Windows.Forms.TextBox();
-            this.txtVLeaveCredits = new System.Windows.Forms.TextBox();
+            this.dtp_StartDate = new System.Windows.Forms.DateTimePicker();
+            this.dtp_EndDate = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             this.txtPosition.Enabled = false;
             this.txtPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPosition.Location = new System.Drawing.Point(568, 97);
-            this.txtPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPosition.Margin = new System.Windows.Forms.Padding(2);
             this.txtPosition.Multiline = true;
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(178, 26);
@@ -77,7 +77,7 @@
             this.txtDepartment.Enabled = false;
             this.txtDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDepartment.Location = new System.Drawing.Point(568, 59);
-            this.txtDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.txtDepartment.Multiline = true;
             this.txtDepartment.Name = "txtDepartment";
             this.txtDepartment.Size = new System.Drawing.Size(178, 26);
@@ -88,7 +88,7 @@
             this.txtEmployeeName.Enabled = false;
             this.txtEmployeeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeName.Location = new System.Drawing.Point(228, 95);
-            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeName.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeName.Multiline = true;
             this.txtEmployeeName.Name = "txtEmployeeName";
             this.txtEmployeeName.Size = new System.Drawing.Size(178, 26);
@@ -99,7 +99,7 @@
             this.txtEmployeeID.Enabled = false;
             this.txtEmployeeID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmployeeID.Location = new System.Drawing.Point(228, 62);
-            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmployeeID.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmployeeID.Multiline = true;
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(178, 26);
@@ -167,7 +167,7 @@
             this.btnSubmit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSubmit.Location = new System.Drawing.Point(622, 391);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSubmit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(106, 32);
             this.btnSubmit.TabIndex = 13;
@@ -182,7 +182,7 @@
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
             this.btnCancel.Location = new System.Drawing.Point(742, 391);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(106, 32);
             this.btnCancel.TabIndex = 12;
@@ -206,7 +206,7 @@
             this.rtxtReason.Enabled = false;
             this.rtxtReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtReason.Location = new System.Drawing.Point(348, 104);
-            this.rtxtReason.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rtxtReason.Margin = new System.Windows.Forms.Padding(2);
             this.rtxtReason.Name = "rtxtReason";
             this.rtxtReason.Size = new System.Drawing.Size(495, 260);
             this.rtxtReason.TabIndex = 10;
@@ -235,28 +235,6 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Start Date:";
             // 
-            // dtp_EndDate
-            // 
-            this.dtp_EndDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dtp_EndDate.Enabled = false;
-            this.dtp_EndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_EndDate.Location = new System.Drawing.Point(11, 257);
-            this.dtp_EndDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtp_EndDate.Name = "dtp_EndDate";
-            this.dtp_EndDate.Size = new System.Drawing.Size(288, 26);
-            this.dtp_EndDate.TabIndex = 7;
-            // 
-            // dtp_StartDate
-            // 
-            this.dtp_StartDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.dtp_StartDate.Enabled = false;
-            this.dtp_StartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_StartDate.Location = new System.Drawing.Point(11, 168);
-            this.dtp_StartDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtp_StartDate.Name = "dtp_StartDate";
-            this.dtp_StartDate.Size = new System.Drawing.Size(288, 26);
-            this.dtp_StartDate.TabIndex = 6;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -280,7 +258,7 @@
             "Paternity Leave",
             "Maternity Leave"});
             this.cmb_LeaveType.Location = new System.Drawing.Point(148, 69);
-            this.cmb_LeaveType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmb_LeaveType.Margin = new System.Windows.Forms.Padding(2);
             this.cmb_LeaveType.Name = "cmb_LeaveType";
             this.cmb_LeaveType.Size = new System.Drawing.Size(151, 25);
             this.cmb_LeaveType.TabIndex = 0;
@@ -310,6 +288,61 @@
             this.panel1.Size = new System.Drawing.Size(862, 282);
             this.panel1.TabIndex = 76;
             // 
+            // txtVLeaveCredits
+            // 
+            this.txtVLeaveCredits.Enabled = false;
+            this.txtVLeaveCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVLeaveCredits.Location = new System.Drawing.Point(228, 174);
+            this.txtVLeaveCredits.Margin = new System.Windows.Forms.Padding(2);
+            this.txtVLeaveCredits.Multiline = true;
+            this.txtVLeaveCredits.Name = "txtVLeaveCredits";
+            this.txtVLeaveCredits.Size = new System.Drawing.Size(178, 26);
+            this.txtVLeaveCredits.TabIndex = 64;
+            // 
+            // txtSLeaveCredits
+            // 
+            this.txtSLeaveCredits.Enabled = false;
+            this.txtSLeaveCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSLeaveCredits.Location = new System.Drawing.Point(228, 134);
+            this.txtSLeaveCredits.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSLeaveCredits.Multiline = true;
+            this.txtSLeaveCredits.Name = "txtSLeaveCredits";
+            this.txtSLeaveCredits.Size = new System.Drawing.Size(178, 26);
+            this.txtSLeaveCredits.TabIndex = 63;
+            // 
+            // txtSchedule
+            // 
+            this.txtSchedule.Enabled = false;
+            this.txtSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSchedule.Location = new System.Drawing.Point(119, 219);
+            this.txtSchedule.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSchedule.Multiline = true;
+            this.txtSchedule.Name = "txtSchedule";
+            this.txtSchedule.Size = new System.Drawing.Size(287, 26);
+            this.txtSchedule.TabIndex = 62;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(9, 176);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(198, 21);
+            this.label13.TabIndex = 61;
+            this.label13.Text = "Vacation Leave Credits:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(9, 139);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(154, 21);
+            this.label12.TabIndex = 60;
+            this.label12.Text = "Sick Leave Credits:";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -326,7 +359,7 @@
             this.Search.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Search.ForeColor = System.Drawing.SystemColors.Control;
             this.Search.Location = new System.Drawing.Point(637, 226);
-            this.Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Search.Margin = new System.Windows.Forms.Padding(2);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(208, 34);
             this.Search.TabIndex = 14;
@@ -337,13 +370,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.dtp_EndDate);
+            this.panel2.Controls.Add(this.dtp_StartDate);
             this.panel2.Controls.Add(this.btnSubmit);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.btnCancel);
-            this.panel2.Controls.Add(this.dtp_EndDate);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.dtp_StartDate);
             this.panel2.Controls.Add(this.rtxtReason);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.cmb_LeaveType);
@@ -363,60 +396,29 @@
             this.label1.TabIndex = 59;
             this.label1.Text = "Leave Application";
             // 
-            // label12
+            // dtp_StartDate
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(9, 139);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 21);
-            this.label12.TabIndex = 60;
-            this.label12.Text = "Sick Leave Credits:";
+            this.dtp_StartDate.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_StartDate.Enabled = false;
+            this.dtp_StartDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_StartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_StartDate.Location = new System.Drawing.Point(15, 173);
+            this.dtp_StartDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_StartDate.Name = "dtp_StartDate";
+            this.dtp_StartDate.Size = new System.Drawing.Size(284, 30);
+            this.dtp_StartDate.TabIndex = 78;
             // 
-            // label13
+            // dtp_EndDate
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(9, 176);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(198, 21);
-            this.label13.TabIndex = 61;
-            this.label13.Text = "Vacation Leave Credits:";
-            // 
-            // txtSchedule
-            // 
-            this.txtSchedule.Enabled = false;
-            this.txtSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSchedule.Location = new System.Drawing.Point(119, 219);
-            this.txtSchedule.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSchedule.Multiline = true;
-            this.txtSchedule.Name = "txtSchedule";
-            this.txtSchedule.Size = new System.Drawing.Size(287, 26);
-            this.txtSchedule.TabIndex = 62;
-            // 
-            // txtSLeaveCredits
-            // 
-            this.txtSLeaveCredits.Enabled = false;
-            this.txtSLeaveCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSLeaveCredits.Location = new System.Drawing.Point(228, 134);
-            this.txtSLeaveCredits.Margin = new System.Windows.Forms.Padding(2);
-            this.txtSLeaveCredits.Multiline = true;
-            this.txtSLeaveCredits.Name = "txtSLeaveCredits";
-            this.txtSLeaveCredits.Size = new System.Drawing.Size(178, 26);
-            this.txtSLeaveCredits.TabIndex = 63;
-            // 
-            // txtVLeaveCredits
-            // 
-            this.txtVLeaveCredits.Enabled = false;
-            this.txtVLeaveCredits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVLeaveCredits.Location = new System.Drawing.Point(228, 174);
-            this.txtVLeaveCredits.Margin = new System.Windows.Forms.Padding(2);
-            this.txtVLeaveCredits.Multiline = true;
-            this.txtVLeaveCredits.Name = "txtVLeaveCredits";
-            this.txtVLeaveCredits.Size = new System.Drawing.Size(178, 26);
-            this.txtVLeaveCredits.TabIndex = 64;
+            this.dtp_EndDate.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_EndDate.Enabled = false;
+            this.dtp_EndDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_EndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EndDate.Location = new System.Drawing.Point(15, 258);
+            this.dtp_EndDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_EndDate.Name = "dtp_EndDate";
+            this.dtp_EndDate.Size = new System.Drawing.Size(284, 30);
+            this.dtp_EndDate.TabIndex = 79;
             // 
             // Leave
             // 
@@ -428,7 +430,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Leave";
             this.Tag = "btn_ApplyLeave";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -458,8 +460,6 @@
         public System.Windows.Forms.Button btnSubmit;
         public System.Windows.Forms.Button btnCancel;
         public System.Windows.Forms.RichTextBox rtxtReason;
-        public System.Windows.Forms.DateTimePicker dtp_EndDate;
-        public System.Windows.Forms.DateTimePicker dtp_StartDate;
         public System.Windows.Forms.ComboBox cmb_LeaveType;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
@@ -471,5 +471,7 @@
         public System.Windows.Forms.TextBox txtSchedule;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DateTimePicker dtp_EndDate;
+        private System.Windows.Forms.DateTimePicker dtp_StartDate;
     }
 }
