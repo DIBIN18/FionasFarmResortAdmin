@@ -159,10 +159,8 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-                        Menu menu = (Menu)Application.OpenForms["Menu"];
-                        menu.Text = "Fiona's Farm and Resort - Leave Employee List";
-                        menu.Menu_Load(menu, EventArgs.Empty);
-                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
+                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total SickLeaveCredits: "+remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if(d == DialogResult.OK)
                         {
                             addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
@@ -170,6 +168,9 @@ namespace Admin_Login
                             cmb_LeaveType.Text = " ";
                             dtp_StartDate.Value = DateTime.Now;
                             dtp_EndDate.Value = DateTime.Now;
+                            Menu menu = (Menu)Application.OpenForms["Menu"];
+                            menu.Text = "Fiona's Farm and Resort - Leave";
+                            menu.Menu_Load(menu, EventArgs.Empty);
                         }
                     }
                 }
@@ -220,11 +221,9 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-                        Menu menu = (Menu)Application.OpenForms["Menu"];
-                        menu.Text = "Fiona's Farm and Resort - Leave Employee List";
-                        menu.Menu_Load(menu, EventArgs.Empty);
+                   
 
-                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total VacationLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (d == DialogResult.OK)
                         {
                             addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
@@ -232,6 +231,9 @@ namespace Admin_Login
                             cmb_LeaveType.Text = " ";
                             dtp_StartDate.Value = DateTime.Now;
                             dtp_EndDate.Value = DateTime.Now;
+                            Menu menu = (Menu)Application.OpenForms["Menu"];
+                            menu.Text = "Fiona's Farm and Resort - Leave";
+                            menu.Menu_Load(menu, EventArgs.Empty);
                         }
 
                     }
@@ -240,11 +242,6 @@ namespace Admin_Login
 
                 connection.Close();
             }
-
-            cmb_LeaveType.Text = "";
-            dtp_StartDate.Text = "";
-            dtp_EndDate.Text = "";
-            rtxtReason.Text = "";
         }
 
         public static string ConvertDateTimeFormat(string input, string inputFormat, string outputFormat, IFormatProvider culture)
