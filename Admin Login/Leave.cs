@@ -116,7 +116,16 @@ namespace Admin_Login
                 {
                     // Nilagay ko yung +1 sa totalLeaveDays, di tama kasi yung bilang
                     //totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-                    totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+
+                    if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
+                    {
+                        totalLeaveDays = 1;
+                    }
+                    else
+                    {
+                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                    }
+
 
                     employeeLeaveCredits = dt.Rows[0][18].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
@@ -175,7 +184,15 @@ namespace Admin_Login
 
                 else if (cmb_LeaveType.Text.ToString() == "Vacation Leave")
                 {
-                    totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
+                    if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
+                    {
+                        totalLeaveDays = 1;
+                    }
+                    else
+                    {
+                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                    }
+
                     employeeLeaveCredits = dt.Rows[0][20].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
                     int ZeroRemaining = 0;
@@ -250,6 +267,19 @@ namespace Admin_Login
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Leave Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
+
+            int totalLeaveDays = 0;
+
+            if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
+            {
+                totalLeaveDays = 1;
+            }
+            else
+            {
+                totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+            }
+
+            Console.WriteLine(totalLeaveDays);
         }
         private void Leave_Load(object sender, EventArgs e)
         {
@@ -377,18 +407,24 @@ namespace Admin_Login
                     "LeaveID," +
                     "EmployeeID," +
                     "Days," +
-                    "TotalLeavePay) " +
+                    "TotalLeavePay," +
+                    "StartDate," +
+                    "EndDate) " +
                     "VALUES(" +
                     "@LeaveID," +
                     "@EmployeeID," +
                     "@Days," +
-                    "@TotalLeavePay)";
+                    "@TotalLeavePay," +
+                    "@StartDate," +
+                    "@EndDate)";
 
                 SqlCommand command2 = new SqlCommand(query, connection);
                 command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
                 command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
                 command2.Parameters.AddWithValue("@Days", totalLeaveDays);
                 command2.Parameters.AddWithValue("@TotalLeavePay", totalLeavePay);
+                command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
+                command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
                 command2.ExecuteNonQuery();
             }
         }
