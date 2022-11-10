@@ -151,9 +151,6 @@ namespace Admin_Login
 
                         string startDate = dtp_StartDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
                         string endDate = dtp_EndDate.Value.ToString("MM/dd/yyyy hh:mm:ss");
-
-
-
                         SqlCommand command2 = new SqlCommand(query2, connection);
                         command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
                         command2.Parameters.AddWithValue("@StartDate", startDate);
@@ -162,8 +159,10 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-
-                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave Employee List";
+                        menu.Menu_Load(menu, EventArgs.Empty);
+                        DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if(d == DialogResult.OK)
                         {
                             addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
@@ -221,7 +220,9 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave Employee List";
+                        menu.Menu_Load(menu, EventArgs.Empty);
 
                         DialogResult d = MessageBox.Show("SuccessFull", "Goods na sya", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                         if (d == DialogResult.OK)

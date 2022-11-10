@@ -200,7 +200,7 @@ namespace Admin_Login
         {
             try
             {
-                dtp_To.MinDate = dtp_From.Value;
+                //dtp_To.MinDate = dtp_From.Value;
                 dtp_To.Enabled = true;
             }
             catch(Exception ex) { }
