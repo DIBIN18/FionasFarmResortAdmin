@@ -13,7 +13,7 @@ namespace Admin_Login
         Login login = new Login();
         double sssContributionEmployee, sssContributionEmployer, pagibicontribEmployee, pagibicontribEmployer, PhilhealthContrib, tax;
         public DataTable datatable = new DataTable();
-        public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON;
+        public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
         double getGrossPay = 0;
         public void getTAX()
         {
@@ -452,6 +452,20 @@ namespace Admin_Login
                     getNetPay();
                 }
                
+            }
+        }
+        public void getPaidLeave()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "select sum(TotalLeavePay) from LeavePay where StartDate between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) " +
+                    " and EndDate between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) group by EmployeeID";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                //Console.WriteLine(data.Rows[0][0]);
+                //Console.WriteLine(data.Rows[1][0]);
             }
         }
     }
