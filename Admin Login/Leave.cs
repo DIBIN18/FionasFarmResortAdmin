@@ -9,13 +9,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace Admin_Login
 {
     public partial class Leave : Form
     {
         Login login = new Login();
         LeaveEmployeeList leaveEmployeeList = new LeaveEmployeeList();
-    
+
         public Leave()
         {
             InitializeComponent();
@@ -43,7 +45,7 @@ namespace Admin_Login
         private void cmbLeaveType_Click(object sender, EventArgs e)
         {
             string query =
-                "SELECT Gender FROM EmployeeInfo WHERE EmployeeId = "+ txtEmployeeID.Text;
+                "SELECT Gender FROM EmployeeInfo WHERE EmployeeId = " + txtEmployeeID.Text;
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query, connection))
@@ -79,7 +81,7 @@ namespace Admin_Login
                     }
                 }
             }
-          
+
             if (selectedGender == "Male" && selectedMaritalStatus == "Married")
             {
                 cmb_LeaveType.Items.Clear();
@@ -98,7 +100,7 @@ namespace Admin_Login
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
-        {  
+        {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
 
@@ -133,7 +135,7 @@ namespace Admin_Login
 
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
-                       DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -166,9 +168,9 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-                       
-                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total SickLeaveCredits: "+remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if(d == DialogResult.OK)
+
+                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total SickLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (d == DialogResult.OK)
                         {
                             addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
                             rtxtReason.Text = " ";
@@ -233,7 +235,7 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
 
                         command2.ExecuteNonQuery();
-                   
+
 
                         DialogResult d = MessageBox.Show("SuccessFul", "Your Total VacationLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (d == DialogResult.OK)
@@ -247,19 +249,16 @@ namespace Admin_Login
                             menu.Text = "Fiona's Farm and Resort - Leave";
                             menu.Menu_Load(menu, EventArgs.Empty);
                         }
-
                     }
                 }
-
-
                 connection.Close();
             }
         }
 
-        public static string ConvertDateTimeFormat(string input, string inputFormat, string outputFormat, IFormatProvider culture)
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
         {
-            DateTime dateTime = DateTime.ParseExact(input, inputFormat, culture);
-            return dateTime.ToString(outputFormat, culture);
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                yield return day;
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -267,19 +266,6 @@ namespace Admin_Login
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Leave Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
-
-            int totalLeaveDays = 0;
-
-            if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
-            {
-                totalLeaveDays = 1;
-            }
-            else
-            {
-                totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
-            }
-
-            Console.WriteLine(totalLeaveDays);
         }
         private void Leave_Load(object sender, EventArgs e)
         {
@@ -339,36 +325,7 @@ namespace Admin_Login
         }
 
 
-
-
         // Leave Payment Codes
-        public decimal getEmployeeBasicRate(string emp_id)
-        {
-            string query2 =
-                "SELECT Position.BasicRate " +
-                "FROM EmployeeInfo " +
-                "INNER JOIN Position " +
-                "ON EmployeeInfo.PositionID = Position.PositionID WHERE EmployeeID=" + emp_id;
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            using (SqlCommand command = new SqlCommand(query2, connection))
-            {
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        return reader.GetDecimal(0);
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-
-                }
-            }
-        }
-
         public Int64 getLatestLeaveID()
         {
             string query2 =
@@ -396,38 +353,32 @@ namespace Admin_Login
 
         public void addLeavePayDetails(int num_of_days, string emp_id)
         {
-            int totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
-            decimal totalLeavePay = (getEmployeeBasicRate(emp_id) * Convert.ToDecimal(8)) * Convert.ToDecimal(num_of_days);
+            // Add duplicate date constraint
+            DateTime StartDate = DateTime.Parse(dtp_StartDate.Text.ToString());
+            DateTime EndDate = DateTime.Parse(dtp_EndDate.Text.ToString());
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            foreach (DateTime day in EachDay(StartDate, EndDate))
             {
-                connection.Open();
-                string query =
-                    "INSERT INTO LeavePay (" +
-                    "LeaveID," +
-                    "EmployeeID," +
-                    "Days," +
-                    "TotalLeavePay," +
-                    "StartDate," +
-                    "EndDate) " +
-                    "VALUES(" +
-                    "@LeaveID," +
-                    "@EmployeeID," +
-                    "@Days," +
-                    "@TotalLeavePay," +
-                    "@StartDate," +
-                    "@EndDate)";
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query =
+                        "INSERT INTO LeavePay (" +
+                        "LeaveID," +
+                        "EmployeeID," +
+                        "Date) " +
+                        "VALUES(" +
+                        "@LeaveID," +
+                        "@EmployeeID," +
+                        "@Date)";
 
-                SqlCommand command2 = new SqlCommand(query, connection);
-                command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
-                command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
-                command2.Parameters.AddWithValue("@Days", totalLeaveDays);
-                command2.Parameters.AddWithValue("@TotalLeavePay", totalLeavePay);
-                command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
-                command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
-                command2.ExecuteNonQuery();
+                    SqlCommand command2 = new SqlCommand(query, connection);
+                    command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
+                    command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
+                    command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                    command2.ExecuteNonQuery();
+                }
             }
         }
-
     }
 }
