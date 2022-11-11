@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -174,14 +174,14 @@
             this.dgv_DailyPayrollReport.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgv_DailyPayrollReport.BackgroundColor = System.Drawing.Color.White;
             this.dgv_DailyPayrollReport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_DailyPayrollReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DailyPayrollReport.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_DailyPayrollReport.Location = new System.Drawing.Point(18, 15);
@@ -197,6 +197,7 @@
             // cbPHILHEALTH
             // 
             this.cbPHILHEALTH.AutoSize = true;
+            this.cbPHILHEALTH.Enabled = false;
             this.cbPHILHEALTH.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPHILHEALTH.Location = new System.Drawing.Point(261, 7);
             this.cbPHILHEALTH.Name = "cbPHILHEALTH";
@@ -209,6 +210,7 @@
             // cbPAGIBIG
             // 
             this.cbPAGIBIG.AutoSize = true;
+            this.cbPAGIBIG.Enabled = false;
             this.cbPAGIBIG.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPAGIBIG.Location = new System.Drawing.Point(163, 7);
             this.cbPAGIBIG.Name = "cbPAGIBIG";
@@ -221,6 +223,7 @@
             // cbSSS
             // 
             this.cbSSS.AutoSize = true;
+            this.cbSSS.Enabled = false;
             this.cbSSS.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSSS.Location = new System.Drawing.Point(92, 7);
             this.cbSSS.Name = "cbSSS";
@@ -244,7 +247,6 @@
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(330, 31);
@@ -397,7 +399,6 @@
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.DataGridView dgv_DailyPayrollReport;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtp_To;
         private System.Windows.Forms.CheckBox cbSSS;
         private System.Windows.Forms.CheckBox cbPAGIBIG;
         private System.Windows.Forms.CheckBox cbPHILHEALTH;
@@ -408,5 +409,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox2;
+        public System.Windows.Forms.DateTimePicker dtp_To;
     }
 }
