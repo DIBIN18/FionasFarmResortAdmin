@@ -17,6 +17,7 @@ namespace Admin_Login
     {
         Login login = new Login();
         string employee_id = "", schedule_in = "", schedule_out = "";
+        string EDIT_employee_id = "", EDIT_time_in = "", EDIT_time_out = "";
 
         public AddAttendance()
         {
@@ -122,6 +123,7 @@ namespace Admin_Login
 
         private void AddAttendance_Load(object sender, EventArgs e)
         {
+            //Load Add Attendance DGV
             dtpScheduleInEdit.Format = DateTimePickerFormat.Time;
             dtpScheduleInEdit.ShowUpDown = true;
 
@@ -160,6 +162,48 @@ namespace Admin_Login
                 dgvEmployees.Columns["ScheduleID"].Visible = false;
                 dgvEmployees.Columns["EmployeeID"].Visible = false;
             }
+
+            //Load Edit Attendance DGV
+            dtpEditTimeIn.Format = DateTimePickerFormat.Time;
+            dtpEditTimeIn.ShowUpDown = true;
+
+            dtpEditTimeOut.Format = DateTimePickerFormat.Time;
+            dtpEditTimeOut.ShowUpDown = true;
+
+            dtpEditTimeIn.Format = DateTimePickerFormat.Custom;
+            dtpEditTimeIn.CustomFormat = "hh:mm:ss tt";
+
+            dtpEditTimeOut.Format = DateTimePickerFormat.Custom;
+            dtpEditTimeOut.CustomFormat = "hh:mm:ss tt";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = 
+                    "SELECT " +
+                    "AttendanceSheet.AttendanceID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "AttendanceSheet.TimeIn, " +
+                    "AttendanceSheet.TimeOut, " +
+                    "AttendanceSheet.Date " +
+                    "FROM AttendanceSheet " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON AttendanceSheet.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active'";
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+
+                this.dgvEditAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                this.dgvEditAttendance.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
+                dgvEditAttendance.DataSource = data;
+                dgvEditAttendance.Columns["AttendanceID"].Visible = false;
+                dgvEditAttendance.Columns["EmployeeID"].Visible = false;
+            }
+
         }
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -598,6 +642,52 @@ namespace Admin_Login
                 MessageBox.Show("Attendance Added");
             }
         }
+
+        private void btnAddMode_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible= true;
+            pnlEdit.Visible= false;
+        }
+
+        
+
+
+        //
+        //  EDITING MODE CODE
+        //
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible = false;
+            pnlEdit.Visible = true;
+        }
+
+
+        private void btnBackEdit_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Attendance Record";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
+        }
+
+        private void dgvEditAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dtpEditTimeIn.Enabled = true;
+            dtpEditTimeOut.Enabled = true;
+            dtpEditDate.Enabled = true;
+
+            EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
+            lblEditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
+            EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString();
+            EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+            lblEditBreakPeriod.Text = getEmployeeBreakTime(EDIT_employee_id);
+
+            dtpEditTimeIn.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
+            dtpEditTimeOut.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+            dtpEditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString());
+        }
+
 
     }
 }
