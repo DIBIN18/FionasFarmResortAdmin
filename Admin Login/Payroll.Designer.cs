@@ -84,6 +84,10 @@
             this.cbSSS = new System.Windows.Forms.CheckBox();
             this.cbPAGIBIG = new System.Windows.Forms.CheckBox();
             this.cbPHILHEALTH = new System.Windows.Forms.CheckBox();
+            this.txtLeavedays = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtLeavePay = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -192,6 +196,10 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox2.Controls.Add(this.txtLeavePay);
+            this.groupBox2.Controls.Add(this.label24);
+            this.groupBox2.Controls.Add(this.txtLeavedays);
+            this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.txtGrossPay);
             this.groupBox2.Controls.Add(this.txtSpHolidayPay);
@@ -213,7 +221,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(17, 245);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 358);
+            this.groupBox2.Size = new System.Drawing.Size(376, 412);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Earnings";
@@ -222,7 +230,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(37, 321);
+            this.label13.Location = new System.Drawing.Point(37, 374);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(83, 18);
             this.label13.TabIndex = 21;
@@ -232,7 +240,7 @@
             // 
             this.txtGrossPay.Enabled = false;
             this.txtGrossPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrossPay.Location = new System.Drawing.Point(176, 323);
+            this.txtGrossPay.Location = new System.Drawing.Point(176, 376);
             this.txtGrossPay.Multiline = true;
             this.txtGrossPay.Name = "txtGrossPay";
             this.txtGrossPay.Size = new System.Drawing.Size(156, 19);
@@ -242,7 +250,7 @@
             // 
             this.txtSpHolidayPay.Enabled = false;
             this.txtSpHolidayPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpHolidayPay.Location = new System.Drawing.Point(176, 287);
+            this.txtSpHolidayPay.Location = new System.Drawing.Point(176, 345);
             this.txtSpHolidayPay.Multiline = true;
             this.txtSpHolidayPay.Name = "txtSpHolidayPay";
             this.txtSpHolidayPay.Size = new System.Drawing.Size(156, 19);
@@ -252,7 +260,7 @@
             // 
             this.txtRHolidayPay.Enabled = false;
             this.txtRHolidayPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRHolidayPay.Location = new System.Drawing.Point(175, 215);
+            this.txtRHolidayPay.Location = new System.Drawing.Point(175, 208);
             this.txtRHolidayPay.Multiline = true;
             this.txtRHolidayPay.Name = "txtRHolidayPay";
             this.txtRHolidayPay.Size = new System.Drawing.Size(156, 19);
@@ -262,7 +270,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(37, 285);
+            this.label12.Location = new System.Drawing.Point(37, 343);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(122, 18);
             this.label12.TabIndex = 16;
@@ -272,7 +280,7 @@
             // 
             this.txtOvertimePay.Enabled = false;
             this.txtOvertimePay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOvertimePay.Location = new System.Drawing.Point(175, 143);
+            this.txtOvertimePay.Location = new System.Drawing.Point(175, 136);
             this.txtOvertimePay.Multiline = true;
             this.txtOvertimePay.Name = "txtOvertimePay";
             this.txtOvertimePay.Size = new System.Drawing.Size(156, 19);
@@ -282,7 +290,7 @@
             // 
             this.txtRegularPay.Enabled = false;
             this.txtRegularPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegularPay.Location = new System.Drawing.Point(176, 73);
+            this.txtRegularPay.Location = new System.Drawing.Point(176, 68);
             this.txtRegularPay.Multiline = true;
             this.txtRegularPay.Name = "txtRegularPay";
             this.txtRegularPay.Size = new System.Drawing.Size(156, 19);
@@ -292,7 +300,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(36, 214);
+            this.label11.Location = new System.Drawing.Point(36, 207);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 18);
             this.label11.TabIndex = 15;
@@ -302,7 +310,7 @@
             // 
             this.txtSpecialHoliday.Enabled = false;
             this.txtSpecialHoliday.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpecialHoliday.Location = new System.Drawing.Point(175, 251);
+            this.txtSpecialHoliday.Location = new System.Drawing.Point(175, 244);
             this.txtSpecialHoliday.Multiline = true;
             this.txtSpecialHoliday.Name = "txtSpecialHoliday";
             this.txtSpecialHoliday.Size = new System.Drawing.Size(156, 19);
@@ -312,7 +320,7 @@
             // 
             this.txtRegularHoliday.Enabled = false;
             this.txtRegularHoliday.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegularHoliday.Location = new System.Drawing.Point(176, 179);
+            this.txtRegularHoliday.Location = new System.Drawing.Point(176, 172);
             this.txtRegularHoliday.Multiline = true;
             this.txtRegularHoliday.Name = "txtRegularHoliday";
             this.txtRegularHoliday.Size = new System.Drawing.Size(156, 19);
@@ -322,7 +330,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(37, 71);
+            this.label9.Location = new System.Drawing.Point(37, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(100, 18);
             this.label9.TabIndex = 13;
@@ -332,7 +340,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(36, 249);
+            this.label8.Location = new System.Drawing.Point(36, 242);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(129, 18);
             this.label8.TabIndex = 12;
@@ -342,7 +350,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(36, 142);
+            this.label10.Location = new System.Drawing.Point(36, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 18);
             this.label10.TabIndex = 14;
@@ -352,7 +360,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(37, 178);
+            this.label7.Location = new System.Drawing.Point(37, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 18);
             this.label7.TabIndex = 11;
@@ -372,7 +380,7 @@
             // 
             this.txtOvertimeMins.Enabled = false;
             this.txtOvertimeMins.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOvertimeMins.Location = new System.Drawing.Point(175, 107);
+            this.txtOvertimeMins.Location = new System.Drawing.Point(175, 102);
             this.txtOvertimeMins.Multiline = true;
             this.txtOvertimeMins.Name = "txtOvertimeMins";
             this.txtOvertimeMins.Size = new System.Drawing.Size(156, 19);
@@ -392,7 +400,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(36, 106);
+            this.label6.Location = new System.Drawing.Point(36, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 18);
             this.label6.TabIndex = 10;
@@ -420,7 +428,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(428, 245);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 358);
+            this.groupBox3.Size = new System.Drawing.Size(386, 411);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Deductions";
@@ -616,7 +624,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(54, 627);
+            this.label23.Location = new System.Drawing.Point(185, 679);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(87, 23);
             this.label23.TabIndex = 33;
@@ -626,7 +634,7 @@
             // 
             this.txtNetPay.Enabled = false;
             this.txtNetPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNetPay.Location = new System.Drawing.Point(167, 623);
+            this.txtNetPay.Location = new System.Drawing.Point(298, 675);
             this.txtNetPay.Multiline = true;
             this.txtNetPay.Name = "txtNetPay";
             this.txtNetPay.Size = new System.Drawing.Size(228, 32);
@@ -637,8 +645,8 @@
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Back_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(499, 623);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(630, 675);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -654,7 +662,7 @@
             this.label20.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(444, 627);
+            this.label20.Location = new System.Drawing.Point(575, 679);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(55, 24);
@@ -667,8 +675,8 @@
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox4.Location = new System.Drawing.Point(431, 621);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(562, 673);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(108, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -712,6 +720,46 @@
             this.cbPHILHEALTH.Text = "PHILHEALTH";
             this.cbPHILHEALTH.UseVisualStyleBackColor = true;
             this.cbPHILHEALTH.CheckedChanged += new System.EventHandler(this.cbPHILHEALTH_CheckedChanged);
+            // 
+            // txtLeavedays
+            // 
+            this.txtLeavedays.Enabled = false;
+            this.txtLeavedays.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLeavedays.Location = new System.Drawing.Point(175, 280);
+            this.txtLeavedays.Multiline = true;
+            this.txtLeavedays.Name = "txtLeavedays";
+            this.txtLeavedays.Size = new System.Drawing.Size(156, 19);
+            this.txtLeavedays.TabIndex = 23;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(36, 278);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(96, 18);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Leave days:";
+            // 
+            // txtLeavePay
+            // 
+            this.txtLeavePay.Enabled = false;
+            this.txtLeavePay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLeavePay.Location = new System.Drawing.Point(175, 313);
+            this.txtLeavePay.Multiline = true;
+            this.txtLeavePay.Name = "txtLeavePay";
+            this.txtLeavePay.Size = new System.Drawing.Size(156, 19);
+            this.txtLeavePay.TabIndex = 25;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(36, 311);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(90, 18);
+            this.label24.TabIndex = 24;
+            this.label24.Text = "Leave pay:";
             // 
             // Payroll
             // 
@@ -813,5 +861,9 @@
         private System.Windows.Forms.CheckBox cbPAGIBIG;
         private System.Windows.Forms.CheckBox cbPHILHEALTH;
         public System.Windows.Forms.DateTimePicker dtpI_From;
+        public System.Windows.Forms.TextBox txtLeavePay;
+        private System.Windows.Forms.Label label24;
+        public System.Windows.Forms.TextBox txtLeavedays;
+        private System.Windows.Forms.Label label18;
     }
 }

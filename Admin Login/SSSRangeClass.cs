@@ -242,21 +242,7 @@ namespace Admin_Login
                         else
                         {
                             getGrossPay = Convert.ToDouble(GrossPay);
-                            EmployeeID = dataRow.ItemArray[0].ToString();
-                            //if (string.IsNullOrEmpty(EmployeeIDComp))
-                            //{
-                            //    EmployeeIDComp = EmployeeID;
-                            //    getPaidLeave();
-                            //}
-                            //else if (EmployeeIDComp != EmployeeID)
-                            //{
-                            //    EmployeeIDComp = EmployeeID;
-                            //    getPaidLeave();
-                            //}
-                            //else
-                            //{
-                            //    getPaidLeave();
-                            //}                           
+                            EmployeeID = dataRow.ItemArray[0].ToString();                                                
                         }
                         //(String.Format("{0:0.00}", GrossPay)
                         if (getGrossPay >= 1000 && getGrossPay <= 3249.99)

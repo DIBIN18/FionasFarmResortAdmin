@@ -49,13 +49,16 @@ namespace Admin_Login
                 }
                 catch (Exception ex) { }
             }
-
+            sssclass.dateFrom = dtpI_From.Text;
+            sssclass.dateTo = dtpI_To.Text;
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();
         }
         private void dtpI_From_ValueChanged(object sender, EventArgs e)
         {
+            sssclass.dateFrom = dtpI_From.Text;
+            sssclass.dateTo = dtpI_To.Text;
             checkContrib();
             tagadelete();
             tagaInsertPayrollReport();
@@ -65,6 +68,8 @@ namespace Admin_Login
         }
         private void dtpI_To_ValueChanged(object sender, EventArgs e)
         {
+            sssclass.dateFrom = dtpI_From.Text;
+            sssclass.dateTo = dtpI_To.Text;
             checkContrib();
             tagadelete();
             tagaInsertPayrollReport();
@@ -118,6 +123,7 @@ namespace Admin_Login
                     double tax = Convert.ToDouble(data.Rows[0][16]);
                     double netpay = Convert.ToDouble(data.Rows[0][18]);
                     double grosspay = Convert.ToDouble(data.Rows[0][10]);
+                    double leavepay = (Convert.ToDouble(data.Rows[0][9]) * 8) * Convert.ToDouble(data.Rows[0][3]);
 
                     txtRegularHours.Text = regularhrs.ToString();
                     txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
@@ -128,13 +134,21 @@ namespace Admin_Login
                     txtSpecialHoliday.Text = data.Rows[0][7].ToString();
                     txtSpHolidayPay.Text = specialholidaypay.ToString("n2");
                     txtGrossPay.Text = grosspay.ToString("n2");
+                    if (string.IsNullOrEmpty(txtLeavedays.Text))
+                    {
+                        txtLeavedays.Text = "0";
+                        txtLeavePay.Text = "0.00";
+                    }
+                    else
+                    {
+                        txtLeavedays.Text = data.Rows[0][9].ToString();
+                        txtLeavePay.Text = leavepay.ToString("n2");
+                    }
                     try
                     {
                         double sss = Convert.ToDouble(data.Rows[0][13]);
                         txtSSS.Text = sss.ToString("n2");
                         txtTotalDeduction.Text = Convert.ToString(sss + tax);
-
-
                     }
                     catch (Exception ex) { txtSSS.Text = "0.00"; }
                     try
@@ -259,6 +273,5 @@ namespace Admin_Login
             tagaInsertPayrollReport();
             getInfo();
         }
-
     }
 }
