@@ -23,7 +23,7 @@ namespace Admin_Login
             );
         string TitleExtension;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
-            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched;
+            datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -170,6 +170,10 @@ namespace Admin_Login
             sickleavecredits = _SickLeaveCredits;
             vacationleavecredits = _VacationLeaveCredits;
         }
+        public void Deductions_ValueHolder(string _DeductionsValueHolder)
+        {
+            deductionsvalueholder = _DeductionsValueHolder;
+        }
         internal void Menu_Load(object sender, EventArgs e)
         {
             if (Text == "Fiona's Farm and Resort - Payroll")
@@ -292,6 +296,19 @@ namespace Admin_Login
                 attendancerecord.BringToFront();
                 attendancerecord.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Deduction Records")
+            {
+                Text = TitleExtension = "Fiona's Farm and Resort - Deduction Records";
+                TitleLabel.Text = TitleExtension;
+                DeductionRecords deductionrecords = new DeductionRecords
+                {
+                    TopLevel = false
+                };
+                pnl_Content.Controls.Add(deductionrecords);
+                deductionrecords.lblValueHolder.Text = deductionsvalueholder;
+                deductionrecords.BringToFront();
+                deductionrecords.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
@@ -311,7 +328,7 @@ namespace Admin_Login
         }
         private void btn_Loan_Click(object sender, EventArgs e)
         {
-            Text = TitleExtension = "Fiona's Farm and Resort - Loan";
+            /*Text = TitleExtension = "Fiona's Farm and Resort - Loan";
             TitleLabel.Text = TitleExtension;
             Loan loan = new Loan
             {
@@ -319,7 +336,7 @@ namespace Admin_Login
             };
             pnl_Content.Controls.Add(loan);
             loan.BringToFront();
-            loan.Show();
+            loan.Show();*/
         }
         private void t_Highlighter_Tick(object sender, EventArgs e)
         {
@@ -334,7 +351,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Leave")
             {
@@ -347,7 +364,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Department and Position")
             {
@@ -360,7 +377,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Deductions")
             {
@@ -373,7 +390,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Attendance Record")
             {
@@ -386,7 +403,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Payroll Report")
             {
@@ -399,7 +416,7 @@ namespace Admin_Login
                 label3.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Settings")
             {
@@ -412,7 +429,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label3.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Dashboard")
             {
@@ -425,7 +442,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
             else if (this.Text == "Fiona's Farm and Resort - Holiday Settings")
             {
@@ -438,9 +455,9 @@ namespace Admin_Login
                 label8.Font = new Font("Century Gothic", 14);
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
-                label14.Font = new Font("Century Gothic", 14);
+                //label14.Font = new Font("Century Gothic", 14);
             }
-            else if (this.Text == "Fiona's Farm and Resort - Loan")
+            /*else if (this.Text == "Fiona's Farm and Resort - Loan")
             {
                 label14.Font = new Font("Century Gothic", 14, FontStyle.Bold);
                 label1.Font = new Font("Century Gothic", 14);
@@ -452,7 +469,7 @@ namespace Admin_Login
                 label9.Font = new Font("Century Gothic", 14);
                 label10.Font = new Font("Century Gothic", 14);
                 label13.Font = new Font("Century Gothic", 14);
-            }
+            }*/
         }
         private void Btn_Leave_Click(object sender, EventArgs e)
         {

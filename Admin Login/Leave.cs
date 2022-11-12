@@ -297,7 +297,9 @@ namespace Admin_Login
             txtEmployeeName.Text = "";
             txtPosition.Text = "";
             txtDepartment.Text = "";
-            //txtSchedule.Text = "";
+            txtSLeaveCredits.Text = "";
+            txtVLeaveCredits.Text = "";
+            txtSchedule.Text = "";
             cmb_LeaveType.Text = "";
             dtp_StartDate.Text = "";
             dtp_EndDate.Text = "";

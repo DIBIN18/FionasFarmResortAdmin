@@ -16,6 +16,7 @@ namespace Admin_Login
         SSSRangeClass sssclass = new SSSRangeClass();
         SqlCommandBuilder cmbl;
         bool addOtherDucution = false;
+        String ValueHolder;
            
         public Deductions()
         {
@@ -53,7 +54,13 @@ namespace Admin_Login
             //lblRate.Text = dt.Rows[0][0].ToString();
             try
             {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                ValueHolder = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                Menu menu = (Menu)Application.OpenForms["Menu"];
+                menu.Text = "Fiona's Farm and Resort - Deduction Records";
+                menu.Deductions_ValueHolder(ValueHolder);
+                menu.Menu_Load(menu, EventArgs.Empty);
+
+                /*using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
                     string query = "select * from Deductions where EmployeeID = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value;
@@ -62,7 +69,7 @@ namespace Admin_Login
                     cmd2.ExecuteNonQuery();
                     DataTable dts2 = new DataTable();
                     sqlDataAdapter2.Fill(dts2);
-
+                    
                     // Column font
                     this.dgvDeductions.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
                     // Row font
@@ -74,7 +81,7 @@ namespace Admin_Login
                     tagadelete();
                     tagaInsertPayrollReport();                  
                     getDeductions();
-                }
+                }*/
             }
             catch(Exception ex) { }
         }
