@@ -64,23 +64,35 @@ namespace Admin_Login
             dtpSchedOutEdit.Format = DateTimePickerFormat.Time;
             dtpSchedOutEdit.ShowUpDown = true;
 
+            dtpBreakPeriod.Format = DateTimePickerFormat.Time;
+            dtpBreakPeriod.ShowUpDown = true;
+
             dtpScheduleInEdit.Format = DateTimePickerFormat.Custom;
             dtpScheduleInEdit.CustomFormat = "hh:mm:ss tt";
 
             dtpSchedOutEdit.Format = DateTimePickerFormat.Custom;
             dtpSchedOutEdit.CustomFormat = "hh:mm:ss tt";
 
+            dtpBreakPeriod.Format = DateTimePickerFormat.Custom;
+            dtpBreakPeriod.CustomFormat = "hh:mm:ss tt";
+
             try
             {
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-                pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-                //btnChangePfp.Visible = true;
+                
+                if (File.Exists(path + "\\images\\" + lblEmployeeID.Text.ToString() + "\\5.png"))
+                {
+                    pbProfilePic.Image = Image.FromFile(path + "\\images\\" + lblEmployeeID.Text.ToString() + "\\5.png");
+                }
+                else
+                {
+                    pbProfilePic.Image = Image.FromFile(path + "\\images\\" + lblEmployeeID.Text.ToString() + "\\5.jpg");
+                }
             }
             catch (System.IO.FileNotFoundException)
             {
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
-                btnAddPfp.Visible = true;
             }
 
             cbMonday.Enabled = false;
@@ -114,6 +126,7 @@ namespace Admin_Login
             lblSSS.Visible = false;
             lblPhilHealth.Visible = false;
             lblPagIbig.Visible = false;
+            lblBreakPeriod.Visible = false;
             
 
             txtNameEdit.Visible = true;
@@ -136,6 +149,7 @@ namespace Admin_Login
             txtVacationLeaveCreditsEdit.Visible = true;
             dtpDateOfBirth.Visible = true;
             cmbOtAllowed.Visible = true;
+            dtpBreakPeriod.Visible = true;
             
 
             cbMonday.Enabled = true;
@@ -169,6 +183,7 @@ namespace Admin_Login
             lblSSS.Visible = true;
             lblPhilHealth.Visible = true;
             lblPagIbig.Visible = true;
+            lblBreakPeriod.Visible = true;
           
 
             txtNameEdit.Visible = false;
@@ -191,6 +206,7 @@ namespace Admin_Login
             txtVacationLeaveCreditsEdit.Visible = false;
             dtpDateOfBirth.Visible = false;
             cmbOtAllowed.Visible = false;
+            dtpBreakPeriod.Visible = false;
 
             //cmbDepartmentEdit.SelectedIndex = -1;
             //cmbEmploymentTypeEdit.SelectedIndex = -1;
@@ -218,6 +234,7 @@ namespace Admin_Login
 
             string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
+            string breakPer = dtpBreakPeriod.Value.ToString("hh:mm:ss tt");
 
             string deptId = Get_DepartmentID().ToString();
             string posId = Get_PositionID().ToString();
@@ -320,7 +337,8 @@ namespace Admin_Login
                 "Thursday ='" + Thursday + "', " +
                 "Friday ='" + Friday + "', " +
                 "Saturday ='" + Saturday + "', " +
-                "Sunday ='" + Sunday + "' " +
+                "Sunday ='" + Sunday + "', " +
+                "BreakPeriod ='" + breakPer.ToUpper() + "' " +
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -483,8 +501,6 @@ namespace Admin_Login
                     lblDepartment.Text = Get_DepartmentName(reader.GetInt64(13).ToString());
                     lblPosition.Text = Get_PositionName(reader.GetInt64(14).ToString());
                     lblEmploymentType.Text = reader.GetString(15);
-                    //lblScheduleIn.Text = reader.GetString(16);
-                    //lblScheduleOut.Text = reader.GetString(17);
                     lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(16));
                     lblAccumulated.Text = reader.GetInt32(17).ToString();
                     lblSickLeaveCredits.Text = reader.GetInt32(18).ToString();
@@ -505,6 +521,7 @@ namespace Admin_Login
 
                     lblScheduleIn.Text = reader.GetString(2);
                     lblScheduleOut.Text = reader.GetString(3);
+                    lblBreakPeriod.Text = reader.GetString(11);
                 }
             }
         }
@@ -535,7 +552,6 @@ namespace Admin_Login
                 }
             }
         }
-
 
         public string Get_DepartmentName(string id)
         {
@@ -585,7 +601,6 @@ namespace Admin_Login
             }
         }
 
-
         public string Get_PositionName(string id)
         {
             string query2 = "SELECT PositionName FROM Position WHERE PositionID='" + id + "'";
@@ -609,7 +624,6 @@ namespace Admin_Login
                 }
             }
         }
-
 
         public long Get_PositionID()
         {
@@ -637,7 +651,6 @@ namespace Admin_Login
                 }
             }
         }
-
 
         private void cmbEmploymentTypeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -747,109 +760,9 @@ namespace Admin_Login
             e.Handled = true;
         }
 
-        
-
         private void cmbOtAllowed_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
-        }
-
-        private void btnAddPfp_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                ofd.Filter = "Image Files | *.jpg;*.jpeg;*.png";
-                ofd.FilterIndex = 1;
-                ofd.Multiselect = false;
-
-                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-
-                string sourceFile = string.Empty;
-                string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    sourceFile = ofd.FileName;
-                }
-
-                try
-                {
-                    System.IO.File.Copy(sourceFile, targetPath);
-                }
-                catch (ArgumentException)
-                {
-                    //Do nothing
-                }
-
-                //Load profile pic
-                try
-                {
-                    pbProfilePic.Image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-                    //btnChangePfp.Visible = true;
-                }
-                catch (System.IO.FileNotFoundException)
-                {
-                    pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
-                    btnAddPfp.Visible = true;
-                }
-            }
-        }
-
-        private void btnChangePfp_Click(object sender, EventArgs e)
-        {
-            // NEED TO FIX
-            //pbProfilePic.Image = null;
-
-            //var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-
-            ////var image = Image.FromFile(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-            //pbProfilePic.Dispose();
-
-            //pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
-            //btnAddPfp.Visible = true;
-
-            ////System.IO.File.Delete(path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png");
-
-            pbProfilePic.Image = null;
-            //pbProfilePic.Dispose();
-            
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-
-                string sourceFile = string.Empty;
-                string targetPath = path + "\\Profile\\" + lblEmployeeID.Text.ToString() + ".png";
-
-                ofd.Filter = "Image Files | *.jpg;*.jpeg;*.png";
-                ofd.FilterIndex = 1;
-                ofd.Multiselect = false;
-
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    sourceFile = ofd.FileName;
-
-                    //delete here
-                    using (FileStream stream = new FileStream(targetPath, FileMode.Open, FileAccess.Read))
-                    {
-                        pbProfilePic.Image = Image.FromStream(stream);
-                        stream.Dispose();
-                    }
-                    //File.Delete(targetPath);
-                }
-
-                Console.WriteLine(sourceFile);
-                Console.WriteLine(targetPath);
-
-                //create file
-                try
-                {
-                    System.IO.File.Copy(sourceFile, targetPath);
-                }
-                catch (ArgumentException)
-                {
-                    //Do nothing
-                }
-            }
         }
 
         public Int64 getDeptIDfromLabel()

@@ -52,6 +52,7 @@ namespace Admin_Login
         {
             string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+            string breakPer = dtpBreakPeriod.Value.ToString("hh:mm:ss tt");
 
             if (cbMonday.Checked)
             {
@@ -124,15 +125,16 @@ namespace Admin_Login
 
                 string query2 =
                     "UPDATE EmployeeSchedule " +
-                    "SET ScheduleIn ='" + schedIn + "', " +
-                    "ScheduleOut ='" + schedOut +"', " +
+                    "SET ScheduleIn ='" + schedIn.ToUpper() + "', " +
+                    "ScheduleOut ='" + schedOut.ToUpper() +"', " +
                     "Monday ='" + Monday + "', " +
                     "Tuesday ='" + Tuesday + "', " +
                     "Wednesday ='" + Wednesday + "', " +
                     "Thursday ='" + Thursday + "', " +
                     "Friday ='" + Friday + "', " +
                     "Saturday ='" + Saturday + "', " +
-                    "Sunday ='" + Sunday + "' " +
+                    "Sunday ='" + Sunday + "', " +
+                    "BreakPeriod='" + breakPer.ToUpper() + "' " +
                     "WHERE EmployeeID = (SELECT MAX(EmployeeID) FROM EmployeeInfo)";
 
                 SqlCommand cmd = new SqlCommand(query, connection2);
