@@ -197,7 +197,6 @@
             // cbPHILHEALTH
             // 
             this.cbPHILHEALTH.AutoSize = true;
-            this.cbPHILHEALTH.Enabled = false;
             this.cbPHILHEALTH.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPHILHEALTH.Location = new System.Drawing.Point(261, 7);
             this.cbPHILHEALTH.Name = "cbPHILHEALTH";
@@ -210,7 +209,6 @@
             // cbPAGIBIG
             // 
             this.cbPAGIBIG.AutoSize = true;
-            this.cbPAGIBIG.Enabled = false;
             this.cbPAGIBIG.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPAGIBIG.Location = new System.Drawing.Point(163, 7);
             this.cbPAGIBIG.Name = "cbPAGIBIG";
@@ -223,7 +221,6 @@
             // cbSSS
             // 
             this.cbSSS.AutoSize = true;
-            this.cbSSS.Enabled = false;
             this.cbSSS.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSSS.Location = new System.Drawing.Point(92, 7);
             this.cbSSS.Name = "cbSSS";

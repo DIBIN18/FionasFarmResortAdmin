@@ -302,7 +302,6 @@
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(242, 6);
@@ -328,7 +327,6 @@
             // dtp_From
             // 
             this.dtp_From.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_From.Enabled = false;
             this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_From.Location = new System.Drawing.Point(68, 6);

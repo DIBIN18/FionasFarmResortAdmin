@@ -49,7 +49,8 @@ namespace Admin_Login
             string command = "select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours,"+
                 " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours,"+
                 " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays,"+
-                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay"+
+                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, "+
+                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours " +
                 " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID"+
                 " inner join Position as C on B.PositionID = C.PositionID"+
                 " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)"+
@@ -60,11 +61,11 @@ namespace Admin_Login
         {
             dgvDatechangeLoad();
             dtp_From.MaxDate = dtp_To.Value;
-            dtp_To.MaxDate = DateTime.Now;
+            dtp_To.MaxDate = DateTime.Now;           
         }
         private void dtp_To_ValueChanged(object sender, EventArgs e)
         {
-            dgvDatechangeLoad();
+            
             dtp_From.MaxDate = dtp_To.Value;
             dtp_To.MaxDate = DateTime.Now;
             string date = dtp_To.Text;
@@ -90,6 +91,7 @@ namespace Admin_Login
                 cbPAGIBIG.Checked = true;
                 cbPHILHEALTH.Checked = true;
             }
+            dgvDatechangeLoad();           
         }
         private void PayrollReport_Load(object sender, EventArgs e)
         {
@@ -98,6 +100,19 @@ namespace Admin_Login
             try
             {
                 dtp_To.Value = DateTime.Now;
+            }
+            catch (Exception ex) { }
+            if (setdateFrom == true)
+            {
+                try
+                {
+                    dtp_From.Value = dtp_To.Value.AddDays(-15);
+                    setdateFrom = false;
+                }
+                catch (Exception ex) { }
+            }
+            try
+            {
                 string date = dtp_To.Text;
                 string day_To = "0";
                 for (int i = 0; i < date.Length; i++)
@@ -124,33 +139,34 @@ namespace Admin_Login
             catch (Exception ex)
             {
             }
-            if (setdateFrom == true)
-            {
-                try
-                {
-                    dtp_From.Value = dtp_From.Value.AddDays(-15);
-                    setdateFrom = false;
-                }
-                catch (Exception ex) { }
-            }
-            
-            
         }
         public void dgvDatechangeLoad()
         {
+            sssclass.dateFrom = dtp_From.Text;
+            sssclass.dateTo = dtp_To.Text;
+            tagadelete();
+            tagaInsertPayrollReport();
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            SqlCommand cmd = new SqlCommand(getQuery(), connection);
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            DataTable dts = new DataTable();
-            sqlDataAdapter.Fill(dts);
+            string filldt = "select * from PayrollReport";
+            SqlCommand command2 = new SqlCommand(filldt, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command2);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            command2.ExecuteNonQuery();
+            //SqlConnection connection = new SqlConnection(login.connectionString);
+            //connection.Open();
+            //SqlCommand cmd = new SqlCommand(getQuery(), connection);
+            //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            //DataTable dts = new DataTable();
+            //sqlDataAdapter.Fill(dts);
 
             // Column font
             this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
             // Row font
             this.dgv_DailyPayrollReport.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
-            dgv_DailyPayrollReport.DataSource = dts;
+            dgv_DailyPayrollReport.DataSource = dt;
         }
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
@@ -158,7 +174,7 @@ namespace Admin_Login
             connection.Open();
             if (string.IsNullOrEmpty(tb_Search.Text))
             {
-                SqlCommand cmd = new SqlCommand(getQuery(), connection);
+                SqlCommand cmd = new SqlCommand("select * from PayrollReport ", connection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
@@ -168,15 +184,16 @@ namespace Admin_Login
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
-                          " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
-                          " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
-                          " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay" +
-                          " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
-                          " inner join Position as C on B.PositionID = C.PositionID" +
-                          " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
-                          " AND A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" +
-                          " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate", connection);
+                    //SqlCommand cmd = new SqlCommand("select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
+                    //      " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
+                    //      " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
+                    //      " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay" +
+                    //      " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
+                    //      " inner join Position as C on B.PositionID = C.PositionID" +
+                    //      " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
+                    //      " AND A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" +
+                    //      " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate", connection);
+                    SqlCommand cmd = new SqlCommand("select * from PayrollReport where EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeName like'" + tb_Search.Text + "%'", connection);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dts = new DataTable();
                     sqlDataAdapter.Fill(dts);
@@ -198,6 +215,7 @@ namespace Admin_Login
             {
                 sssclass.SSSON = "OFF";
             }
+            dgvDatechangeLoad();
         }
         private void cbPAGIBIG_CheckedChanged(object sender, EventArgs e)
         {
@@ -209,6 +227,7 @@ namespace Admin_Login
             {
                 sssclass.PAGIBIGON = "OFF";
             }
+            dgvDatechangeLoad();
         }
         private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
         {
@@ -220,6 +239,7 @@ namespace Admin_Login
             {
                 sssclass.PHILHEALTHON = "OFF";
             }
+            dgvDatechangeLoad();
         }
 
 
@@ -234,7 +254,7 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary)";
+            string query = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime)";
             SqlCommand command = new SqlCommand(query + getQuery(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
@@ -270,7 +290,8 @@ namespace Admin_Login
         }
         private void btn_Export_Click(object sender, EventArgs e)
         {
-            
+            sssclass.dateFrom = dtp_From.Text;
+            sssclass.dateTo = dtp_To.Text;
             tagadelete();
             tagaInsertPayrollReport();
             SqlConnection connection = new SqlConnection(login.connectionString);

@@ -32,7 +32,7 @@ namespace Admin_Login
         }
         
         public void Payroll_Load(object sender, EventArgs e)
-        {
+        {        
             dtpI_From.MaxDate = dtpI_To.Value;
             dtpI_To.MaxDate = DateTime.Now;
             try
@@ -49,12 +49,14 @@ namespace Admin_Login
                 }
                 catch (Exception ex) { }
             }
+
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();
         }
         private void dtpI_From_ValueChanged(object sender, EventArgs e)
         {
+            checkContrib();
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();
@@ -63,11 +65,38 @@ namespace Admin_Login
         }
         private void dtpI_To_ValueChanged(object sender, EventArgs e)
         {
+            checkContrib();
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();
             dtpI_From.MaxDate = dtpI_To.Value;
             dtpI_To.MaxDate = DateTime.Now;
+        }
+        public void checkContrib()
+        {
+            string date = dtpI_To.Text;
+            string day_To = "0";
+            for (int i = 0; i < date.Length; i++)
+            {
+                if (date[i] == ' ')
+                {
+                    day_To = date.Substring(i + 1, 2);
+                    i = i + 10;
+                }
+            }
+            if (day_To == "15")
+            {
+                cbSSS.Checked = true;
+                cbPAGIBIG.Checked = false;
+                cbPHILHEALTH.Checked = false;
+            }
+            else if (day_To == "30")
+            {
+                cbSSS.Checked = false;
+                cbPAGIBIG.Checked = true;
+                cbPHILHEALTH.Checked = true;
+            }
+            
         }
         public void getInfo()
         {
@@ -79,20 +108,16 @@ namespace Admin_Login
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 try
-                {
+                {                   
                     double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString());
                     double regulaypay = regularhrs * Convert.ToDouble(data.Rows[0][3].ToString());
                     double overtimepay = Convert.ToDouble(data.Rows[0][5]) * (Convert.ToDouble(data.Rows[0][3]) * 1.30);
                     double regularholiday = Convert.ToDouble(data.Rows[0][6]);
-                    double regularholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) * 2;
-                    double specialholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) * 1.30;
-                    double sss = Convert.ToDouble(data.Rows[0][12]);
-                    double pagibig = Convert.ToDouble(data.Rows[0][13]);
-                    double philhealth = Convert.ToDouble(data.Rows[0][14]);
-                    double tax = Convert.ToDouble(data.Rows[0][15]);
-                    double netpay = Convert.ToDouble(data.Rows[0][17]);
-                    double totaldeduction = sss + pagibig + philhealth + tax;
-                    double grosspay = Convert.ToDouble(data.Rows[0][9]);
+                    double regularholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) ;
+                    double specialholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][7])) * 0.30;                                      
+                    double tax = Convert.ToDouble(data.Rows[0][16]);
+                    double netpay = Convert.ToDouble(data.Rows[0][18]);
+                    double grosspay = Convert.ToDouble(data.Rows[0][10]);
 
                     txtRegularHours.Text = regularhrs.ToString();
                     txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
@@ -103,13 +128,28 @@ namespace Admin_Login
                     txtSpecialHoliday.Text = data.Rows[0][7].ToString();
                     txtSpHolidayPay.Text = specialholidaypay.ToString("n2");
                     txtGrossPay.Text = grosspay.ToString("n2");
-                    txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][10]) * 60);
-                    txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
-                    txtSSS.Text = sss.ToString("n2");
-                    txtPagIbig.Text = pagibig.ToString("n2");
-                    txtPhilHealth.Text = philhealth.ToString("n2");
+                    try
+                    {
+                        double sss = Convert.ToDouble(data.Rows[0][13]);
+                        txtSSS.Text = sss.ToString("n2");
+                        txtTotalDeduction.Text = Convert.ToString(sss + tax);
+
+
+                    }
+                    catch (Exception ex) { txtSSS.Text = "0.00"; }
+                    try
+                    {                     
+                        double pagibig = Convert.ToDouble(data.Rows[0][14]);
+                        txtPagIbig.Text = pagibig.ToString("n2");
+                        double philhealth = Convert.ToDouble(data.Rows[0][15]);
+                        txtPhilHealth.Text = philhealth.ToString("n2");
+                        txtTotalDeduction.Text = Convert.ToString(pagibig + philhealth + tax);
+                    }
+                    catch (Exception ex) { txtPagIbig.Text = "0.00"; txtPhilHealth.Text = "0.00"; }
+                    txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
+                    txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][12]) * 60);                   
                     txtTaxAmount.Text = tax.ToString("n2");
-                    txtTotalDeduction.Text = totaldeduction.ToString("n2");
+                    
                     txtNetPay.Text = netpay.ToString("n2");
                 }
                 catch (Exception ex)
@@ -136,36 +176,12 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
+            string insert = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime ) ";
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "insert into PayrollReport " +
-                "select A.EmployeeID, A.EmployeeFullName as Employee, B.PositionName as Position, B.BasicRate , " +
-                "sum(RegularHours) + sum(OvertimeHours) as TotalHours , " +
-                "sum(C.OvertimeHours) as OverTimeHours , " +
-                "sum(C.RegularHolidayHours) as LegalHollidayHours, " +
-                "sum(C.SpecialHolidayHours) as SpeciallHollidayHours, " +
-                "count(C.EmployeeID) as TotalWorkDays, " +
-                "(sum(RegularHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)+((sum(C.OvertimeHours)*B.BasicRate)*0.30)) + ((sum(C.RegularHolidayHours)* B.BasicRate)+ ((sum(C.SpecialHolidayHours) * B.BasicRate) * 0.30)) as GrossPay , " +
-                "sum(C.Late) as TotalLateHours , sum(C.UndertimeHours) as TotalUnderTime , " +
-                "0 as SSSContribution , " +
-                "0 as PAGIBIGContribution , " +
-                "0 as PHILHEALTHContribution , " +
-                "0 as TAX, " +
-                "D.OtherDeduction as OtherDeduction , " +
-                "0 as NetPay, null " +
-                "from EmployeeInfo as A " +
-                "left join Position as B " +
-                "on A.PositionID = B.PositionID " +
-                "left join AttendanceSheet as C " +
-                "on A.EmployeeID = C.EmployeeID " +
-                "left join Deductions as D " +
-                "on A.EmployeeID = D.EmployeeID " +
-                "where Date Between CONVERT(datetime, '" + dtpI_From.Text + "', 100) and CONVERT(datetime, '" + dtpI_To.Text + "', 100)" +
-                " group by A.EmployeeID,A.EmployeeFullName, B.PositionName,B.BasicRate,D.SSSContribution,D.PagIbigContribution,D.PhilHealthContribution,D.OtherDeduction,D.TotalDeductions";
-            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command = new SqlCommand(insert + getQuery(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
-            Console.WriteLine();
         }
         public void tagadelete()
         {
@@ -174,16 +190,32 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand("delete from PayrollReport", connection);
             command.ExecuteNonQuery();
         }
-
+        public string getQuery()
+        {
+            string command = "select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
+                " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
+                " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
+                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, " +
+                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours " +
+                " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
+                " inner join Position as C on B.PositionID = C.PositionID" +
+                " where Date Between CONVERT(datetime, '" + dtpI_From.Text + "', 100) and CONVERT(datetime, '" + dtpI_To.Text + "', 100)" +
+                " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate";
+            return command;
+        }
         private void cbSSS_CheckedChanged(object sender, EventArgs e)
         {
             if (cbSSS.Checked)
             {
                 sssclass.SSSON = "ON";
+                cbPHILHEALTH.Checked = false;
+                cbPAGIBIG.Checked = false;
             }
             else
             {
                 sssclass.SSSON = "OFF";
+                cbPHILHEALTH.Checked = true;
+                cbPAGIBIG.Checked = true;
             }
             tagadelete();
             tagaInsertPayrollReport();
@@ -195,10 +227,14 @@ namespace Admin_Login
             if (cbPAGIBIG.Checked)
             {
                 sssclass.PAGIBIGON = "ON";
+                cbPHILHEALTH.Checked = true;
+                cbSSS.Checked = false;
             }
             else
             {
                 sssclass.PAGIBIGON = "OFF";
+                cbPHILHEALTH.Checked = false;
+                cbSSS.Checked = true;
             }
             tagadelete();
             tagaInsertPayrollReport();
@@ -206,14 +242,18 @@ namespace Admin_Login
         }
 
         private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
-        {
+        {                
             if (cbPHILHEALTH.Checked)
             {
                 sssclass.PHILHEALTHON = "ON";
+                cbPAGIBIG.Checked = true;
+                cbSSS.Checked = false;
             }
             else
             {
                 sssclass.PHILHEALTHON = "OFF";
+                cbPAGIBIG.Checked = false;
+                cbSSS.Checked = true;
             }
             tagadelete();
             tagaInsertPayrollReport();
