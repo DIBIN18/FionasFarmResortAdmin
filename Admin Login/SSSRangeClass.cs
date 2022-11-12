@@ -177,10 +177,8 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
-        public void getSSSRange()
+        public void addleavePayToGrosspay()
         {
-            getLeaveDays();
-            PayrollReport payrollReport = new PayrollReport();
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -188,7 +186,6 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
-               
                 foreach (DataRow dataRow in data.Rows)
                 {
                     foreach (var GrossPay in dataRow.ItemArray)
@@ -214,7 +211,52 @@ namespace Admin_Login
                             else
                             {
                                 getPaidLeave();
-                            }                           
+                            }
+                        }
+                    }
+                }
+            }
+                
+        }
+        public void getSSSRange()
+        {
+            getLeaveDays();
+            addleavePayToGrosspay();
+            PayrollReport payrollReport = new PayrollReport();
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "select EmployeeID, GrossSalary from PayrollReport";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+               
+                foreach (DataRow dataRow in data.Rows)
+                {
+                    foreach (var GrossPay in dataRow.ItemArray)
+                    {
+                        if (GrossPay is DBNull)
+                        {
+                            getGrossPay = 0;
+                        }
+                        else
+                        {
+                            getGrossPay = Convert.ToDouble(GrossPay);
+                            EmployeeID = dataRow.ItemArray[0].ToString();
+                            //if (string.IsNullOrEmpty(EmployeeIDComp))
+                            //{
+                            //    EmployeeIDComp = EmployeeID;
+                            //    getPaidLeave();
+                            //}
+                            //else if (EmployeeIDComp != EmployeeID)
+                            //{
+                            //    EmployeeIDComp = EmployeeID;
+                            //    getPaidLeave();
+                            //}
+                            //else
+                            //{
+                            //    getPaidLeave();
+                            //}                           
                         }
                         //(String.Format("{0:0.00}", GrossPay)
                         if (getGrossPay >= 1000 && getGrossPay <= 3249.99)
