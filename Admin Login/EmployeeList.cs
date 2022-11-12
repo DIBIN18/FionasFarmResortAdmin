@@ -420,6 +420,7 @@ namespace Admin_Login
 
                         ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
                         ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+                        ep.lblBreakPeriod.Text = dt2.Rows[0][11].ToString();
 
                         try
                         {

@@ -43,20 +43,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(11, 11);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(15, 14);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(754, 37);
+            this.panel1.Size = new System.Drawing.Size(1005, 45);
             this.panel1.TabIndex = 21;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -67,10 +67,10 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(36, 6);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Search.Location = new System.Drawing.Point(48, 7);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(704, 21);
+            this.tb_Search.Size = new System.Drawing.Size(939, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
@@ -84,14 +84,15 @@
             this.dgvLeave.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLeave.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLeave.GridColor = System.Drawing.Color.LightGray;
-            this.dgvLeave.Location = new System.Drawing.Point(9, 52);
-            this.dgvLeave.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvLeave.Location = new System.Drawing.Point(12, 64);
+            this.dgvLeave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLeave.Name = "dgvLeave";
             this.dgvLeave.ReadOnly = true;
+            this.dgvLeave.RowHeadersVisible = false;
             this.dgvLeave.RowHeadersWidth = 51;
             this.dgvLeave.RowTemplate.Height = 24;
             this.dgvLeave.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLeave.Size = new System.Drawing.Size(866, 684);
+            this.dgvLeave.Size = new System.Drawing.Size(1155, 842);
             this.dgvLeave.TabIndex = 22;
             this.dgvLeave.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLeave_CellDoubleClick);
             // 
@@ -100,10 +101,10 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCancel.Location = new System.Drawing.Point(769, 11);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancel.Location = new System.Drawing.Point(1025, 14);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(106, 37);
+            this.btnCancel.Size = new System.Drawing.Size(141, 46);
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Back";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -111,15 +112,15 @@
             // 
             // LeaveEmployeeList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(886, 747);
+            this.ClientSize = new System.Drawing.Size(1181, 919);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.dgvLeave);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LeaveEmployeeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

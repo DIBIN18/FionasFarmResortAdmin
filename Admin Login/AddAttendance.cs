@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 
 namespace Admin_Login
 {
@@ -145,7 +146,8 @@ namespace Admin_Login
                     "EmployeeSchedule.ScheduleOut " +
                     "FROM EmployeeSchedule " +
                     "INNER JOIN EmployeeInfo " +
-                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID";
+                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active'";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -170,6 +172,7 @@ namespace Admin_Login
             lblEmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
+            lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
 
             Update();
         }
@@ -199,7 +202,7 @@ namespace Admin_Login
                 lblRegHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblSpecHolHours.Text = "0.00";
@@ -212,7 +215,7 @@ namespace Admin_Login
                 lblSpecHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblRegHolHours.Text = "0.00";
@@ -225,7 +228,7 @@ namespace Admin_Login
                 lblSpecHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblRegHolHours.Text = "0.00";
@@ -241,6 +244,7 @@ namespace Admin_Login
 
 
         // ATTENDANCE DATA
+        // add weekdays allowed constraints
         public string getLate(string schedIn, string schedOut, string timeIn)
         {
             TimeSpan start = TimeSpan.Parse(schedIn);
@@ -267,21 +271,66 @@ namespace Admin_Login
             return Convert.ToDecimal(ts.TotalHours).ToString("#.00");
         }
 
-        public string getRegularHours(string timeIn, string schedOut)
+        public string getRegularHours(string timeIn, string timeOut)
         {
-            // BREAK HOURS NOT SUBTRACTED YET
             TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(schedOut).Subtract(DateTime.Parse(timeIn));
+            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
 
             // 24 Hour format to decimal
             decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.00"));
 
-            if (reg_hours >= Convert.ToDecimal("08.00"))
+            // Trigger Employee Break
+            string break_time = getEmployeeBreakTime(employee_id);
+
+            DateTime gtimein = DateTime.ParseExact(timeIn,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan Btimein = gtimein.TimeOfDay;
+
+            DateTime gsout = DateTime.ParseExact(timeOut,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan Bsout = gsout.TimeOfDay;
+
+            DateTime gBreak = DateTime.ParseExact(break_time,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan bBreak = gBreak.TimeOfDay;
+
+            if ((bBreak > Btimein) && (bBreak < Bsout))
+            {
+                reg_hours = reg_hours - 1.00m;
+            }
+
+            // Limit Regular Hours to 8.00
+            decimal max_reg_hours = 08.00m;
+
+            if (reg_hours >= max_reg_hours)
             {
                 reg_hours = Convert.ToDecimal("08.00");
             }
 
             return reg_hours.ToString();
+        }
+
+        public string getEmployeeBreakTime(string employee_id)
+        {
+            string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + employee_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "";
+                    }
+
+                }
+            }
         }
 
         public string getOverTimeHours(string schedOut, string timeOut)
@@ -363,7 +412,7 @@ namespace Admin_Login
             lblRegHours.Text =
                 getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
             lblOTHours.Text =
@@ -401,7 +450,7 @@ namespace Admin_Login
                 lblRegHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblSpecHolHours.Text = "0.00";
@@ -414,7 +463,7 @@ namespace Admin_Login
                 lblSpecHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblRegHolHours.Text = "0.00";
@@ -427,7 +476,7 @@ namespace Admin_Login
                 lblSpecHolHours.Text =
                     getRegularHours(
                     dtpScheduleInEdit.Text.ToString().ToUpper(),
-                    schedule_out.ToUpper()
+                    dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
                 lblRegHolHours.Text = "0.00";

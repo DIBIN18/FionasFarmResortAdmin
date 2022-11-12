@@ -49,38 +49,12 @@ namespace Admin_Login
                         connection.Open();
                         string query =
                         "UPDATE EmployeeInfo SET Status='Active' WHERE EmployeeID=" + dgv_Archive.CurrentRow.Cells[0].Value;
-                        SqlCommand cmd = new SqlCommand(query,
-                        //"Insert INTO EmployeeInfo (" +
-                        //"EmployeeFullName, " +
-                        //"Address, " +
-                        //"SSS_ID, " +
-                        //"PAGIBIG_NO, " +
-                        //"PHIL_HEALTH_NO, " +
-                        //"Email, " +
-                        //"EmployeeMaritalStatus," +
-                        //"ContactNumber," +
-                        //"DateHired," +
-                        //"Gender," +
-                        //"BirthDate )" +
-                        //"SELECT " +
-                        //"EmployeeFullName," +
-                        //"Address," +
-                        //"SSS_ID," +
-                        //"PAGIBIG_NO," +
-                        //"PHIL_HEALTH_NO," +
-                        //"Email," +
-                        //"EmployeeMaritalStatus," +
-                        //"ContactNumber," +
-                        //"DateHired," +
-                        //"Gender," +
-                        //"BirthDate " +
-                        //"FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value + 
-                        //" DELETE FROM Archive WHERE EmployeeID = " + dgvArchive.CurrentRow.Cells[0].Value, 
-                        connection);
+                        SqlCommand cmd = new SqlCommand(query,connection);
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Successfully Restored Employee");
                     insertNewEmployeeToDeductionTable();
+                    RefreshTable();
                 }
             }
         }
@@ -150,6 +124,20 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
             Dispose();
+        }
+        public void RefreshTable()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT EmployeeID, EmployeeFullName, Email, ContactNumber FROM EmployeeInfo WHERE Status='Inactive'";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                this.dgv_Archive.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                this.dgv_Archive.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+                dgv_Archive.DataSource = data;
+            }
         }
     }
 }

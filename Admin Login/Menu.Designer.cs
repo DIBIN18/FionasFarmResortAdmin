@@ -110,7 +110,7 @@ namespace Admin_Login
             this.TitleLabel.ForeColor = System.Drawing.Color.White;
             this.TitleLabel.Location = new System.Drawing.Point(17, 9);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(0, 44);
+            this.TitleLabel.Size = new System.Drawing.Size(0, 37);
             this.TitleLabel.TabIndex = 2;
             // 
             // AdminName
@@ -121,7 +121,7 @@ namespace Admin_Login
             this.AdminName.ForeColor = System.Drawing.Color.White;
             this.AdminName.Location = new System.Drawing.Point(101, 86);
             this.AdminName.Name = "AdminName";
-            this.AdminName.Size = new System.Drawing.Size(0, 39);
+            this.AdminName.Size = new System.Drawing.Size(0, 32);
             this.AdminName.TabIndex = 6;
             // 
             // label1
@@ -133,7 +133,7 @@ namespace Admin_Login
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(83, 91);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 27);
+            this.label1.Size = new System.Drawing.Size(113, 22);
             this.label1.TabIndex = 8;
             this.label1.Tag = "btn_Dashboard";
             this.label1.Text = "Dashboard";
@@ -150,7 +150,7 @@ namespace Admin_Login
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(7, 206);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 27);
+            this.label2.Size = new System.Drawing.Size(107, 22);
             this.label2.TabIndex = 11;
             this.label2.Text = "Employees";
             // 
@@ -163,7 +163,7 @@ namespace Admin_Login
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(83, 192);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(166, 27);
+            this.label3.Size = new System.Drawing.Size(131, 22);
             this.label3.TabIndex = 13;
             this.label3.Tag = "btn_EmployeeList";
             this.label3.Text = "Employee List";
@@ -178,7 +178,7 @@ namespace Admin_Login
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(83, 257);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 27);
+            this.label4.Size = new System.Drawing.Size(69, 22);
             this.label4.TabIndex = 16;
             this.label4.Tag = "btn_Leave";
             this.label4.Text = "Leave";
@@ -193,7 +193,7 @@ namespace Admin_Login
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(83, 324);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(295, 27);
+            this.label5.Size = new System.Drawing.Size(238, 22);
             this.label5.TabIndex = 19;
             this.label5.Tag = "btn_DepartmentAndPosition";
             this.label5.Text = "Department and Position";
@@ -207,7 +207,7 @@ namespace Admin_Login
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(7, 443);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 27);
+            this.label6.Size = new System.Drawing.Size(69, 22);
             this.label6.TabIndex = 21;
             this.label6.Text = "Payroll";
             // 
@@ -220,7 +220,7 @@ namespace Admin_Login
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(83, 498);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(141, 27);
+            this.label7.Size = new System.Drawing.Size(114, 22);
             this.label7.TabIndex = 23;
             this.label7.Tag = "btn_Deductions";
             this.label7.Text = "Deductions";
@@ -235,7 +235,7 @@ namespace Admin_Login
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(83, 564);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(238, 27);
+            this.label8.Size = new System.Drawing.Size(197, 22);
             this.label8.TabIndex = 26;
             this.label8.Tag = "btn_AttendanceRecord";
             this.label8.Text = "Attendance Record";
@@ -250,7 +250,7 @@ namespace Admin_Login
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(83, 628);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(170, 27);
+            this.label9.Size = new System.Drawing.Size(136, 22);
             this.label9.TabIndex = 29;
             this.label9.Tag = "btn_PayrollReport";
             this.label9.Text = "Payroll Report";
@@ -265,7 +265,7 @@ namespace Admin_Login
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(27, 923);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(98, 27);
+            this.label10.Size = new System.Drawing.Size(80, 22);
             this.label10.TabIndex = 31;
             this.label10.Tag = "btn_Settings";
             this.label10.Text = "Settings";
@@ -280,7 +280,7 @@ namespace Admin_Login
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(247, 922);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 27);
+            this.label11.Size = new System.Drawing.Size(88, 22);
             this.label11.TabIndex = 33;
             this.label11.Tag = "btn_SignOut";
             this.label11.Text = "Sign Out";
@@ -357,7 +357,7 @@ namespace Admin_Login
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(83, 434);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(68, 27);
+            this.label14.Size = new System.Drawing.Size(56, 22);
             this.label14.TabIndex = 45;
             this.label14.Tag = "btn_Loan";
             this.label14.Text = "Loan";
@@ -385,7 +385,7 @@ namespace Admin_Login
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(79, 748);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(192, 27);
+            this.label13.Size = new System.Drawing.Size(153, 22);
             this.label13.TabIndex = 42;
             this.label13.Tag = "btn_HolidaySettings";
             this.label13.Text = "Holiday Settings";
@@ -427,7 +427,7 @@ namespace Admin_Login
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(12, 690);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(109, 27);
+            this.label12.Size = new System.Drawing.Size(85, 22);
             this.label12.TabIndex = 40;
             this.label12.Text = "Holidays";
             // 
@@ -667,7 +667,7 @@ namespace Admin_Login
             // 
             this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(1455, 1);
+            this.Logo.Location = new System.Drawing.Point(1515, 2);
             this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(57, 66);
