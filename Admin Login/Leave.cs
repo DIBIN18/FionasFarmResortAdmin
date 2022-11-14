@@ -24,23 +24,6 @@ namespace Admin_Login
         }
         string selectedGender = "";
         string selectedMaritalStatus = "";
-        //private void Tb_Search_Enter(object sender, EventArgs e)
-        //{
-        //    if (tb_Search.Text == " Search")
-        //    {
-        //        tb_Search.Text = "";
-        //        tb_Search.ForeColor = Color.Black;
-        //    }
-        //}
-        //private void Tb_Search_Leave(object sender, EventArgs e)
-        //{
-        //    if (tb_Search.Text == "")
-        //    {
-        //        tb_Search.Text = " Search";
-        //        tb_Search.ForeColor = Color.Silver;
-        //    }
-        //}
-
 
         private void cmbLeaveType_Click(object sender, EventArgs e)
         {
@@ -116,9 +99,6 @@ namespace Admin_Login
 
                 if (cmb_LeaveType.Text.ToString() == "Sick Leave")
                 {
-                    // Nilagay ko yung +1 sa totalLeaveDays, di tama kasi yung bilang
-                    //totalLeaveDays = (int)(dtp_EndDate.Value - dtp_StartDate.Value).TotalDays;
-
                     if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
                     {
                         totalLeaveDays = 1;
@@ -127,7 +107,6 @@ namespace Admin_Login
                     {
                         totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
                     }
-
 
                     employeeLeaveCredits = dt.Rows[0][18].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
@@ -255,10 +234,11 @@ namespace Admin_Login
             }
         }
 
-        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        private void btnViewLeaveList_Click(object sender, EventArgs e)
         {
-            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
-                yield return day;
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Applied Leave List";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -316,18 +296,38 @@ namespace Admin_Login
         {
             if (rtxtReason.Text == "")
             {
-                btnSubmit.Enabled = false;
-                btnCancel.Enabled = false;
+                lblCancel.Enabled = false;
+                pbCancel.Enabled = false;
+                pbCancelShape.Enabled = false;
+
+                lblApplyLeave.Enabled = false;
+                pbApplyLeave.Enabled = false;
+                pbApplyLeaveShape.Enabled = false;  
             }
             else
             {
-                btnSubmit.Enabled = true;
-                btnCancel.Enabled = true;
+                lblCancel.Enabled = true;
+                pbCancel.Enabled = true;
+                pbCancelShape.Enabled = true;
+
+                lblApplyLeave.Enabled = true;
+                pbApplyLeave.Enabled = true;
+                pbApplyLeaveShape.Enabled = true;
             }
         }
 
 
+        //
         // Leave Payment Codes
+        //
+
+        // Insert Dates from given range
+        public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
+        {
+            for (var day = from.Date; day.Date <= thru.Date; day = day.AddDays(1))
+                yield return day;
+        }
+
         public Int64 getLatestLeaveID()
         {
             string query2 =
@@ -382,5 +382,7 @@ namespace Admin_Login
                 }
             }
         }
+
+        
     }
 }

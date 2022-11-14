@@ -309,6 +309,18 @@ namespace Admin_Login
                 deductionrecords.BringToFront();
                 deductionrecords.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Applied Leave List")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Applied Leave List";
+                TitleLabel.Text = TitleExtension;
+                AppliedLeaveList appliedLeaveList = new AppliedLeaveList();
+                {
+                    appliedLeaveList.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(appliedLeaveList);
+                appliedLeaveList.BringToFront();
+                appliedLeaveList.Show();
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
