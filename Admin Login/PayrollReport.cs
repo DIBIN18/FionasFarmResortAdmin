@@ -258,9 +258,9 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand(query + getQuery(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
-            InserDeductionTable();
+
         }
-        public void InserDeductionTable()
+        public void InsertDeductionTable()
         {
             string systemdate = "";
             string dbsdate = "";
@@ -306,6 +306,7 @@ namespace Admin_Login
             DialogResult dialogResult = MessageBox.Show("Export as Excel file?", "PayrollReport", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                InsertDeductionTable();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
