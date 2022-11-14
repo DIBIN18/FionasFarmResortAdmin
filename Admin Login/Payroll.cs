@@ -117,13 +117,13 @@ namespace Admin_Login
                     double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString());
                     double regulaypay = regularhrs * Convert.ToDouble(data.Rows[0][3].ToString());
                     double overtimepay = Convert.ToDouble(data.Rows[0][5]) * (Convert.ToDouble(data.Rows[0][3]) * 1.30);
-                    double regularholiday = Convert.ToDouble(data.Rows[0][6]);
+                    //double regularholiday = Convert.ToDouble(data.Rows[0][6]);
                     double regularholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) ;
                     double specialholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][7])) * 0.30;                                      
                     double tax = Convert.ToDouble(data.Rows[0][16]);
                     double netpay = Convert.ToDouble(data.Rows[0][18]);
                     double grosspay = Convert.ToDouble(data.Rows[0][10]);
-                    double leavepay = (Convert.ToDouble(data.Rows[0][9]) * 8) * Convert.ToDouble(data.Rows[0][3]);
+                    
 
                     txtRegularHours.Text = regularhrs.ToString();
                     txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
@@ -134,16 +134,26 @@ namespace Admin_Login
                     txtSpecialHoliday.Text = data.Rows[0][7].ToString();
                     txtSpHolidayPay.Text = specialholidaypay.ToString("n2");
                     txtGrossPay.Text = grosspay.ToString("n2");
-                    if (string.IsNullOrEmpty(txtLeavedays.Text))
+                    try
+                    {
+                        double leavepay = (Convert.ToDouble(data.Rows[0][9]) * 8) * Convert.ToDouble(data.Rows[0][3]);
+                        if (string.IsNullOrEmpty(txtLeavedays.Text))
+                        {
+                            txtLeavedays.Text = "0";
+                            txtLeavePay.Text = "0.00";
+                        }
+                        else
+                        {
+                            txtLeavedays.Text = data.Rows[0][9].ToString();
+                            txtLeavePay.Text = leavepay.ToString("n2");
+                        }
+                    }
+                    catch (Exception ex)
                     {
                         txtLeavedays.Text = "0";
                         txtLeavePay.Text = "0.00";
                     }
-                    else
-                    {
-                        txtLeavedays.Text = data.Rows[0][9].ToString();
-                        txtLeavePay.Text = leavepay.ToString("n2");
-                    }
+
                     try
                     {
                         double sss = Convert.ToDouble(data.Rows[0][13]);
@@ -152,7 +162,7 @@ namespace Admin_Login
                     }
                     catch (Exception ex) { txtSSS.Text = "0.00"; }
                     try
-                    {                     
+                    {
                         double pagibig = Convert.ToDouble(data.Rows[0][14]);
                         txtPagIbig.Text = pagibig.ToString("n2");
                         double philhealth = Convert.ToDouble(data.Rows[0][15]);
@@ -161,9 +171,9 @@ namespace Admin_Login
                     }
                     catch (Exception ex) { txtPagIbig.Text = "0.00"; txtPhilHealth.Text = "0.00"; }
                     txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
-                    txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][12]) * 60);                   
+                    txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][12]) * 60);
                     txtTaxAmount.Text = tax.ToString("n2");
-                    
+
                     txtNetPay.Text = netpay.ToString("n2");
                 }
                 catch (Exception ex)
@@ -185,6 +195,7 @@ namespace Admin_Login
                     txtTaxAmount.Text = "";
                     txtTotalDeduction.Text = "";
                     txtNetPay.Text = "";
+                    Console.WriteLine("something wrong!");
                 }
             }
         }

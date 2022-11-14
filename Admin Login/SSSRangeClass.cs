@@ -226,7 +226,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, GrossSalary from PayrollReport";
+                string query = "select EmployeeID, BasicRate * coalesce(((TotalHours-OverTimeHours)+(PaidLeaveDays*8)), TotalHours) from PayrollReport";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
