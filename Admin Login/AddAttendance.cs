@@ -175,7 +175,7 @@ namespace Admin_Login
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
             lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
-            Console.WriteLine("Clicked");
+            
             Update();
         }
 
@@ -396,7 +396,7 @@ namespace Admin_Login
             }
         }
 
-        public string CheckLeave(string date, string employee_id)
+        public bool CheckLeave(string date, string employee_id)
         {
             string query2 =
                 "SELECT Date FROM LeavePay WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
@@ -410,13 +410,12 @@ namespace Admin_Login
                     if (reader.HasRows)
                     {
                         reader.Read();
-                        return reader.GetString(0);
+                        return true;
                     }
                     else
                     {
-                        return "";
+                        return false;
                     }
-
                 }
             }
         }
@@ -613,72 +612,79 @@ namespace Admin_Login
 
             string aid = yy + mn + dy + employee_id;
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if (CheckLeave(dtp_Date.Text.ToString(), employee_id) == false)
             {
-                connection.Open();
-                string query =
-                    "INSERT INTO AttendanceSheet(" +
-                    "AttendanceID," +
-                    "EmployeeID," +
-                    "TimeIn," +
-                    "TimeOut," +
-                    "Date," +
-                    "TotalHours," +
-                    "RegularHours," +
-                    "OvertimeHours," +
-                    "Late," +
-                    "RegularHoliday," +
-                    "SpecialHoliday," +
-                    "RegularHolidayHours," +
-                    "SpecialHolidayHours," +
-                    "UndertimeHours," +
-                    "PositionID," +
-                    "MinutesLate," +
-                    "MinuteRateLoss) " +
-                    "VALUES (" +
-                    "@AttendanceID," +
-                    "@EmployeeID," +
-                    "@TimeIn," +
-                    "@TimeOut," +
-                    "@Date," +
-                    "@TotalHours," +
-                    "@RegularHours," +
-                    "@OvertimeHours," +
-                    "@Late," +
-                    "@RegularHoliday," +
-                    "@SpecialHoliday," +
-                    "@RegularHolidayHours," +
-                    "@SpecialHolidayHours," +
-                    "@UndertimeHours," +
-                    "@PositionID," +
-                    "@MinutesLate," +
-                    "@MinuteRateLoss) ";
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query =
+                        "INSERT INTO AttendanceSheet(" +
+                        "AttendanceID," +
+                        "EmployeeID," +
+                        "TimeIn," +
+                        "TimeOut," +
+                        "Date," +
+                        "TotalHours," +
+                        "RegularHours," +
+                        "OvertimeHours," +
+                        "Late," +
+                        "RegularHoliday," +
+                        "SpecialHoliday," +
+                        "RegularHolidayHours," +
+                        "SpecialHolidayHours," +
+                        "UndertimeHours," +
+                        "PositionID," +
+                        "MinutesLate," +
+                        "MinuteRateLoss) " +
+                        "VALUES (" +
+                        "@AttendanceID," +
+                        "@EmployeeID," +
+                        "@TimeIn," +
+                        "@TimeOut," +
+                        "@Date," +
+                        "@TotalHours," +
+                        "@RegularHours," +
+                        "@OvertimeHours," +
+                        "@Late," +
+                        "@RegularHoliday," +
+                        "@SpecialHoliday," +
+                        "@RegularHolidayHours," +
+                        "@SpecialHolidayHours," +
+                        "@UndertimeHours," +
+                        "@PositionID," +
+                        "@MinutesLate," +
+                        "@MinuteRateLoss) ";
 
-                string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
-                string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
+                    string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
+                    string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
 
-                SqlCommand cmd = new SqlCommand(query, connection);
+                    SqlCommand cmd = new SqlCommand(query, connection);
 
-                cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
-                cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
-                cmd.Parameters.AddWithValue("@TimeIn", schedIn.ToUpper());
-                cmd.Parameters.AddWithValue("@TimeOut", schedOut.ToUpper());
-                cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
-                cmd.Parameters.AddWithValue("@TotalHours", Convert.ToDecimal(lblTotalHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHours", Convert.ToDecimal(lblRegHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@Overtimehours", Convert.ToDecimal(lblOTHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@Late", yntoboolean(lblLate.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegHol.Text.ToString()));
-                cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecHol.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHolidayHours", Convert.ToDecimal(lblRegHolHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@SpecialHolidayHours", Convert.ToDecimal(lblSpecHolHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@UndertimeHours", Convert.ToDecimal(lblUndertimeHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
-                cmd.Parameters.AddWithValue("@MinutesLate", minutes_late);
-                cmd.Parameters.AddWithValue("@MinuteRateLoss", RateLoss);
-                cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
+                    cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
+                    cmd.Parameters.AddWithValue("@TimeIn", schedIn.ToUpper());
+                    cmd.Parameters.AddWithValue("@TimeOut", schedOut.ToUpper());
+                    cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
+                    cmd.Parameters.AddWithValue("@TotalHours", Convert.ToDecimal(lblTotalHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHours", Convert.ToDecimal(lblRegHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Overtimehours", Convert.ToDecimal(lblOTHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Late", yntoboolean(lblLate.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegHol.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecHol.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHolidayHours", Convert.ToDecimal(lblRegHolHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SpecialHolidayHours", Convert.ToDecimal(lblSpecHolHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@UndertimeHours", Convert.ToDecimal(lblUndertimeHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
+                    cmd.Parameters.AddWithValue("@MinutesLate", minutes_late);
+                    cmd.Parameters.AddWithValue("@MinuteRateLoss", RateLoss);
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Attendance Added");
+                    MessageBox.Show("Attendance Added");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
             }
         }
 
@@ -688,12 +694,20 @@ namespace Admin_Login
             pnlEdit.Visible = false;
         }
 
-        
+
 
 
         //
         //  EDITING MODE CODE
         //
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible = false;
+            pnlEdit.Visible = true;
+
+            RefreshEditDgvTable();
+        }
 
         public void RefreshEditDgvTable()
         {
@@ -737,14 +751,6 @@ namespace Admin_Login
                 dgvEditAttendance.Columns["AttendanceID"].Visible = false;
                 dgvEditAttendance.Columns["EmployeeID"].Visible = false;
             }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            pnlAdd.Visible = false;
-            pnlEdit.Visible = true;
-
-            RefreshEditDgvTable();
         }
 
         private void btnBackEdit_Click(object sender, EventArgs e)
@@ -1001,39 +1007,45 @@ namespace Admin_Login
             string minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm")).ToString();
             decimal RateLoss = (getBasicRate(EDIT_employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if(CheckLeave(dtpEditDate.Text.ToString(), EDIT_employee_id) == false)
             {
-                connection.Open();
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
 
-                string query =
-                    "UPDATE AttendanceSheet " +
-                    "SET " +
-                    "AttendanceID= " + aid + ", " + 
-                    "EmployeeID= " + EDIT_employee_id + ", " + 
-                    "TimeIn= '" + schedIn.ToUpper() + "', " + 
-                    "TimeOut= '" + schedOut.ToUpper() + "', " + 
-                    "Date= '" + dtpEditDate.Text.ToString() + "', " + 
-                    "TotalHours= " + lblEditTotalHours.Text.ToString() + ", " + 
-                    "RegularHours= " + lblEditRegHours.Text.ToString() + ", " + 
-                    "OvertimeHours= " + lblEditOTHours.Text.ToString() + ", " + 
-                    "Late= " + yntoboolean(lblEditLate.Text.ToString()).ToString() + ", " + 
-                    "RegularHoliday= " + yntoboolean(lblEditRegHol.Text.ToString()).ToString() + ", " + 
-                    "SpecialHoliday= " + yntoboolean(lblEditSpecHol.Text.ToString()).ToString() + ", " + 
-                    "RegularHolidayHours= " + lblEditRegHolHours.Text.ToString() + ", " + 
-                    "SpecialHolidayHours= " + lblEditSpecHolHours.Text.ToString() + ", " +
-                    "UndertimeHours= " + lblEditUndertimeHours.Text.ToString() + ", " +
-                    "PositionID= " + getPositionID(EDIT_employee_id).ToString() + ", " +
-                    "MinutesLate=" + minutes_late + ", " +
-                    "MinuteRateLoss=" + RateLoss.ToString() + " " +
-                    "WHERE AttendanceID=" + Attendance_ID;
+                    string query =
+                        "UPDATE AttendanceSheet " +
+                        "SET " +
+                        "AttendanceID= " + aid + ", " +
+                        "EmployeeID= " + EDIT_employee_id + ", " +
+                        "TimeIn= '" + schedIn.ToUpper() + "', " +
+                        "TimeOut= '" + schedOut.ToUpper() + "', " +
+                        "Date= '" + dtpEditDate.Text.ToString() + "', " +
+                        "TotalHours= " + lblEditTotalHours.Text.ToString() + ", " +
+                        "RegularHours= " + lblEditRegHours.Text.ToString() + ", " +
+                        "OvertimeHours= " + lblEditOTHours.Text.ToString() + ", " +
+                        "Late= " + yntoboolean(lblEditLate.Text.ToString()).ToString() + ", " +
+                        "RegularHoliday= " + yntoboolean(lblEditRegHol.Text.ToString()).ToString() + ", " +
+                        "SpecialHoliday= " + yntoboolean(lblEditSpecHol.Text.ToString()).ToString() + ", " +
+                        "RegularHolidayHours= " + lblEditRegHolHours.Text.ToString() + ", " +
+                        "SpecialHolidayHours= " + lblEditSpecHolHours.Text.ToString() + ", " +
+                        "UndertimeHours= " + lblEditUndertimeHours.Text.ToString() + ", " +
+                        "PositionID= " + getPositionID(EDIT_employee_id).ToString() + ", " +
+                        "MinutesLate=" + minutes_late + ", " +
+                        "MinuteRateLoss=" + RateLoss.ToString() + " " +
+                        "WHERE AttendanceID=" + Attendance_ID;
 
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Attendance Record Successfully Updated");
-                RefreshEditDgvTable();
+                    MessageBox.Show("Attendance Record Successfully Updated");
+                    RefreshEditDgvTable();
+                }
             }
-
+            else
+            {
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
+            }
         }
     }
 }
