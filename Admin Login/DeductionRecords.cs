@@ -36,6 +36,16 @@ namespace Admin_Login
                 sqlDataAdapter2.Fill(dts2);
                 dgvDeductions.DataSource = dts2;
             }
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "select * from OtherDeductions where EmployeeID = '" + ValueHolder + "';";
+                SqlCommand cmd2 = new SqlCommand(query, connection);
+                SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                DataTable dts2 = new DataTable();
+                sqlDataAdapter2.Fill(dts2);
+                dataGridView1.DataSource = dts2;
+            }
         }
     }
 }

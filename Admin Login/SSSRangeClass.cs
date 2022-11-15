@@ -131,6 +131,18 @@ namespace Admin_Login
                 string query = "update PayrollReport " +
                                "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + ")" +
                                "where EmployeeID = " + EmployeeID;
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void UpdateOtherDeduction()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "update OtherDeductions " +
+                               "set TotalOtherDeductions = TotalOtherDeductions -DeductionPerCompensation";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
@@ -190,6 +202,7 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void addleavePayToGrosspay()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))

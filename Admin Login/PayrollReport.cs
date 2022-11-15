@@ -283,7 +283,7 @@ namespace Admin_Login
             }
 
             string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
-                            " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
+                            " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, A.OtherDeduction , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
             SqlCommand cmd = new SqlCommand(query2, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
@@ -307,6 +307,7 @@ namespace Admin_Login
             if (dialogResult == DialogResult.Yes)
             {
                 InsertDeductionTable();
+                sssclass.UpdateOtherDeduction();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
