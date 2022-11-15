@@ -123,13 +123,26 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
-        public void getNetPay()
+        public void getOtherDeduction()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                string query = "update PayrollReport " +
+                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + ")" +
+                               "where EmployeeID = " + EmployeeID;
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void getNetPay()
+        {
+            getOtherDeduction();
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
                 string query = "update PayrollReport "+
-                               "set NetSalary = GrossSalary - (Coalesce(SSSContribution,0) + Coalesce(PAGIBIGContribution,0) + Coalesce(PHILHEALTHContribution,0) + Coalesce(TAX,0)) from PayrollReport " +
+                               "set NetSalary = GrossSalary - (Coalesce(SSSContribution,0) + Coalesce(PAGIBIGContribution,0) + Coalesce(PHILHEALTHContribution,0) + Coalesce(TAX,0) + Coalesce(OtherDeduction,0)) from PayrollReport " +
                                "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
