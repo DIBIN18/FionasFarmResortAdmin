@@ -167,11 +167,14 @@ namespace Admin_Login
                         txtPagIbig.Text = pagibig.ToString("n2");
                         double philhealth = Convert.ToDouble(data.Rows[0][15]);
                         txtPhilHealth.Text = philhealth.ToString("n2");
-                        txtTotalDeduction.Text = Convert.ToString(pagibig + philhealth + tax);
+                        double totaldeduc = pagibig + philhealth + tax;
+                        txtTotalDeduction.Text = totaldeduc.ToString("n2");
                     }
                     catch (Exception ex) { txtPagIbig.Text = "0.00"; txtPhilHealth.Text = "0.00"; }
                     txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
+                    txtLateAmount.Text = Convert.ToString(Convert.ToDouble(txtTardinessMins.Text) * (Convert.ToDouble(data.Rows[0][3].ToString())/60));
                     txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][12]) * 60);
+                    txtUndertimeAmount.Text = Convert.ToString(Convert.ToDouble(txtUnderTimeMin.Text) * (Convert.ToDouble(data.Rows[0][3].ToString()) / 60));
                     txtTaxAmount.Text = tax.ToString("n2");
 
                     txtNetPay.Text = netpay.ToString("n2");
@@ -195,7 +198,7 @@ namespace Admin_Login
                     txtTaxAmount.Text = "";
                     txtTotalDeduction.Text = "";
                     txtNetPay.Text = "";
-                    Console.WriteLine("something wrong!");
+                    //Console.WriteLine("something wrong!");
                 }
             }
         }
