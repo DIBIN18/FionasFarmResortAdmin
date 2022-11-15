@@ -194,12 +194,12 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.PictureBox Logo;
-        private System.Windows.Forms.TextBox Username;
         private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Label UsernameError;
         private System.Windows.Forms.Label PasswordError;
         private System.Windows.Forms.PictureBox ExitIcon;
+        public System.Windows.Forms.TextBox Username;
     }
 }
 
