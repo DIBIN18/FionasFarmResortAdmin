@@ -61,7 +61,7 @@ namespace Admin_Login
         private int getNumberOfAbsent()
         {
             string query =
-                "SELECT COUNT(*) FROM EmployeeInfo";
+                "SELECT COUNT(*) FROM EmployeeInfo WHERE Status='Active'";
 
             int count = 0;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Threading;
 
 namespace Admin_Login
 {
@@ -175,7 +175,7 @@ namespace Admin_Login
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
             lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
-
+            Console.WriteLine("Clicked");
             Update();
         }
 
@@ -262,6 +262,21 @@ namespace Admin_Login
             {
                 return "No";
             }
+        }
+
+        public int getMinutesLate(string schedIn, string timeIn)
+        {
+            TimeSpan ts = new TimeSpan();
+            ts = DateTime.Parse(timeIn).Subtract(DateTime.Parse(schedIn));
+
+            int mins_late = Convert.ToInt32(ts.TotalMinutes);
+
+            if (mins_late > 480)
+            {
+                mins_late = 480;
+            }
+
+            return mins_late;
         }
 
         public string getTotalHours(string timeIn, string timeOut)
@@ -377,6 +392,31 @@ namespace Admin_Login
                     {
                         return "None";
                     }
+                }
+            }
+        }
+
+        public string CheckLeave(string date, string employee_id)
+        {
+            string query2 =
+                "SELECT Date FROM LeavePay WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "";
+                    }
+
                 }
             }
         }
@@ -515,6 +555,35 @@ namespace Admin_Login
             }
         }
 
+        public decimal getBasicRate(string employee_id)
+        {
+            string query2 = 
+                "SELECT BasicRate FROM Position " +
+                "WHERE PositionID = " +
+                "(SELECT PositionID " +
+                "FROM EmployeeInfo " +
+                "WHERE EmployeeID=" + employee_id + ")";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetDecimal(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                }
+            }
+        }
+
         public int yntoboolean(string yn)
         {
             if (yn == "Yes")
@@ -531,6 +600,12 @@ namespace Admin_Login
         {
             string sDate = dtp_Date.Text.ToString();
             DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
+
+            DateTime sched_in_24 = DateTime.Parse(schedule_in);
+            DateTime time_in_24 = DateTime.Parse(dtpScheduleInEdit.Text.ToString().ToUpper());
+
+            int minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
+            decimal RateLoss = (getBasicRate(employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
 
             string dy = datevalue.Day.ToString();
             string mn = datevalue.Month.ToString();
@@ -557,7 +632,9 @@ namespace Admin_Login
                     "RegularHolidayHours," +
                     "SpecialHolidayHours," +
                     "UndertimeHours," +
-                    "PositionID) " +
+                    "PositionID," +
+                    "MinutesLate," +
+                    "MinuteRateLoss) " +
                     "VALUES (" +
                     "@AttendanceID," +
                     "@EmployeeID," +
@@ -573,7 +650,9 @@ namespace Admin_Login
                     "@RegularHolidayHours," +
                     "@SpecialHolidayHours," +
                     "@UndertimeHours," +
-                    "@PositionID) ";
+                    "@PositionID," +
+                    "@MinutesLate," +
+                    "@MinuteRateLoss) ";
 
                 string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
                 string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
@@ -595,6 +674,8 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@SpecialHolidayHours", Convert.ToDecimal(lblSpecHolHours.Text.ToString()));
                 cmd.Parameters.AddWithValue("@UndertimeHours", Convert.ToDecimal(lblUndertimeHours.Text.ToString()));
                 cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
+                cmd.Parameters.AddWithValue("@MinutesLate", minutes_late);
+                cmd.Parameters.AddWithValue("@MinuteRateLoss", RateLoss);
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Attendance Added");
@@ -604,7 +685,7 @@ namespace Admin_Login
         private void btnAddMode_Click(object sender, EventArgs e)
         {
             pnlAdd.Visible= true;
-            pnlEdit.Visible= false;
+            pnlEdit.Visible = false;
         }
 
         
@@ -914,6 +995,12 @@ namespace Admin_Login
             string schedIn = dtpEditTimeIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpEditTimeOut.Value.ToString("hh:mm:ss tt");
 
+            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
+            DateTime time_in_24 = DateTime.Parse(dtpEditTimeIn.Text.ToString().ToUpper());
+
+            string minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm")).ToString();
+            decimal RateLoss = (getBasicRate(EDIT_employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -935,7 +1022,9 @@ namespace Admin_Login
                     "RegularHolidayHours= " + lblEditRegHolHours.Text.ToString() + ", " + 
                     "SpecialHolidayHours= " + lblEditSpecHolHours.Text.ToString() + ", " +
                     "UndertimeHours= " + lblEditUndertimeHours.Text.ToString() + ", " +
-                    "PositionID= " + getPositionID(EDIT_employee_id).ToString() + " " + 
+                    "PositionID= " + getPositionID(EDIT_employee_id).ToString() + ", " +
+                    "MinutesLate=" + minutes_late + ", " +
+                    "MinuteRateLoss=" + RateLoss.ToString() + " " +
                     "WHERE AttendanceID=" + Attendance_ID;
 
                 SqlCommand cmd = new SqlCommand(query, connection);

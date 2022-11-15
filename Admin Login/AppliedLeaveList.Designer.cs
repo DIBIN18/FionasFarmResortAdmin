@@ -73,7 +73,7 @@
             this.dgvLeaveList.RowHeadersWidth = 51;
             this.dgvLeaveList.RowTemplate.Height = 24;
             this.dgvLeaveList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLeaveList.Size = new System.Drawing.Size(1155, 415);
+            this.dgvLeaveList.Size = new System.Drawing.Size(1155, 826);
             this.dgvLeaveList.TabIndex = 25;
             // 
             // panel1
@@ -122,6 +122,7 @@
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(297, 30);
             this.dtp_Date.TabIndex = 27;
+            this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 
             // label1
             // 
