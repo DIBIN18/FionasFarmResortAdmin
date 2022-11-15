@@ -44,7 +44,6 @@
             this.dtp_From = new System.Windows.Forms.DateTimePicker();
             this.cbPAGIBIG = new System.Windows.Forms.CheckBox();
             this.cbSSS = new System.Windows.Forms.CheckBox();
-            this.tbAddOtherDeduction = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -53,10 +52,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbLoanType = new System.Windows.Forms.ComboBox();
-            this.lblLoanType = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tbPLeaveDays = new System.Windows.Forms.TextBox();
             this.tbWorkHours = new System.Windows.Forms.TextBox();
@@ -68,13 +64,17 @@
             this.tbOtherDeduction = new System.Windows.Forms.TextBox();
             this.lblAddDeduct = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.scrollNum = new System.Windows.Forms.NumericUpDown();
+            this.tbAddOtherDeduction = new System.Windows.Forms.TextBox();
+            this.lblIteration = new System.Windows.Forms.Label();
+            this.tbScrollNum = new System.Windows.Forms.NumericUpDown();
+            this.dtStart = new System.Windows.Forms.DateTimePicker();
+            this.lbStart = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scrollNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -179,20 +179,22 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.scrollNum);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.lblAddDeduct);
+            this.panel5.Controls.Add(this.lbStart);
+            this.panel5.Controls.Add(this.dtStart);
+            this.panel5.Controls.Add(this.lblIteration);
+            this.panel5.Controls.Add(this.tbScrollNum);
             this.panel5.Controls.Add(this.tbOtherDeduction);
             this.panel5.Controls.Add(this.tbTAX);
+            this.panel5.Controls.Add(this.tbAddOtherDeduction);
             this.panel5.Controls.Add(this.tbPHILHEALTH);
             this.panel5.Controls.Add(this.tbPAGIBIG);
             this.panel5.Controls.Add(this.tbSSS);
             this.panel5.Controls.Add(this.tbBasicGross);
+            this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.tbWorkHours);
             this.panel5.Controls.Add(this.tbPLeaveDays);
+            this.panel5.Controls.Add(this.lblAddDeduct);
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.lblLoanType);
-            this.panel5.Controls.Add(this.cbLoanType);
             this.panel5.Controls.Add(this.txtName);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Controls.Add(this.label4);
@@ -201,7 +203,6 @@
             this.panel5.Controls.Add(this.dtp_From);
             this.panel5.Controls.Add(this.cbPAGIBIG);
             this.panel5.Controls.Add(this.cbSSS);
-            this.panel5.Controls.Add(this.tbAddOtherDeduction);
             this.panel5.Controls.Add(this.lblName);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label12);
@@ -210,7 +211,6 @@
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.tbDescription);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label3);
             this.panel5.Location = new System.Drawing.Point(452, 9);
             this.panel5.Name = "panel5";
@@ -251,7 +251,6 @@
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(74, 77);
@@ -261,6 +260,7 @@
             this.dtp_To.Size = new System.Drawing.Size(343, 30);
             this.dtp_To.TabIndex = 38;
             this.dtp_To.Value = new System.DateTime(2022, 10, 31, 0, 0, 0, 0);
+            this.dtp_To.ValueChanged += new System.EventHandler(this.dtp_To_ValueChanged);
             // 
             // cbPHILHEALTH
             // 
@@ -278,7 +278,6 @@
             // dtp_From
             // 
             this.dtp_From.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_From.Enabled = false;
             this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_From.Location = new System.Drawing.Point(74, 45);
@@ -287,6 +286,7 @@
             this.dtp_From.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtp_From.Size = new System.Drawing.Size(343, 30);
             this.dtp_From.TabIndex = 35;
+            this.dtp_From.ValueChanged += new System.EventHandler(this.dtp_From_ValueChanged);
             // 
             // cbPAGIBIG
             // 
@@ -313,16 +313,6 @@
             this.cbSSS.Text = "SSS:";
             this.cbSSS.UseVisualStyleBackColor = true;
             this.cbSSS.CheckedChanged += new System.EventHandler(this.cbSSS_CheckedChanged);
-            // 
-            // tbAddOtherDeduction
-            // 
-            this.tbAddOtherDeduction.Enabled = false;
-            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAddOtherDeduction.Location = new System.Drawing.Point(284, 441);
-            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
-            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
-            this.tbAddOtherDeduction.TabIndex = 58;
             // 
             // lblName
             // 
@@ -367,7 +357,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 558);
+            this.label10.Location = new System.Drawing.Point(2, 546);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(269, 23);
             this.label10.TabIndex = 44;
@@ -387,10 +377,10 @@
             // 
             this.tbDescription.BackColor = System.Drawing.Color.White;
             this.tbDescription.Enabled = false;
-            this.tbDescription.Location = new System.Drawing.Point(7, 584);
+            this.tbDescription.Location = new System.Drawing.Point(6, 572);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(418, 139);
+            this.tbDescription.Size = new System.Drawing.Size(409, 151);
             this.tbDescription.TabIndex = 42;
             // 
             // label8
@@ -403,16 +393,6 @@
             this.label8.TabIndex = 41;
             this.label8.Text = "Other Deduction:";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 513);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(266, 22);
-            this.label7.TabIndex = 40;
-            this.label7.Text = "Payment Iteration (Months):";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -422,31 +402,6 @@
             this.label3.Size = new System.Drawing.Size(229, 23);
             this.label3.TabIndex = 36;
             this.label3.Text = "Next Payroll Deductions";
-            // 
-            // cbLoanType
-            // 
-            this.cbLoanType.Enabled = false;
-            this.cbLoanType.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLoanType.FormattingEnabled = true;
-            this.cbLoanType.Items.AddRange(new object[] {
-            "COPANY loan",
-            "SSS loan",
-            "PAGIBIG loan",
-            "OTHER"});
-            this.cbLoanType.Location = new System.Drawing.Point(284, 476);
-            this.cbLoanType.Name = "cbLoanType";
-            this.cbLoanType.Size = new System.Drawing.Size(135, 29);
-            this.cbLoanType.TabIndex = 66;
-            // 
-            // lblLoanType
-            // 
-            this.lblLoanType.AutoSize = true;
-            this.lblLoanType.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoanType.Location = new System.Drawing.Point(8, 479);
-            this.lblLoanType.Name = "lblLoanType";
-            this.lblLoanType.Size = new System.Drawing.Size(160, 22);
-            this.lblLoanType.TabIndex = 67;
-            this.lblLoanType.Text = "Deduction type:";
             // 
             // label1
             // 
@@ -543,36 +498,84 @@
             this.lblAddDeduct.AutoSize = true;
             this.lblAddDeduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lblAddDeduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblAddDeduct.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAddDeduct.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddDeduct.ForeColor = System.Drawing.Color.White;
-            this.lblAddDeduct.Location = new System.Drawing.Point(5, 442);
+            this.lblAddDeduct.Location = new System.Drawing.Point(8, 436);
             this.lblAddDeduct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddDeduct.Name = "lblAddDeduct";
-            this.lblAddDeduct.Size = new System.Drawing.Size(50, 23);
+            this.lblAddDeduct.Size = new System.Drawing.Size(51, 22);
             this.lblAddDeduct.TabIndex = 79;
             this.lblAddDeduct.Tag = "";
             this.lblAddDeduct.Text = "Add";
-            this.lblAddDeduct.Click += new System.EventHandler(this.AddDeduct);
+            this.lblAddDeduct.Click += new System.EventHandler(this.btnAddOtherDeduction);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(62, 442);
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label6.Location = new System.Drawing.Point(59, 436);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 22);
+            this.label6.Size = new System.Drawing.Size(166, 22);
             this.label6.TabIndex = 80;
-            this.label6.Text = "Deduction:";
+            this.label6.Text = "Other Deduction";
+            this.label6.Click += new System.EventHandler(this.btnAddOtherDeduction);
             // 
-            // scrollNum
+            // tbAddOtherDeduction
             // 
-            this.scrollNum.Enabled = false;
-            this.scrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scrollNum.Location = new System.Drawing.Point(284, 510);
-            this.scrollNum.Name = "scrollNum";
-            this.scrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.scrollNum.Size = new System.Drawing.Size(133, 31);
-            this.scrollNum.TabIndex = 82;
+            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAddOtherDeduction.Location = new System.Drawing.Point(282, 433);
+            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
+            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
+            this.tbAddOtherDeduction.TabIndex = 83;
+            this.tbAddOtherDeduction.Visible = false;
+            // 
+            // lblIteration
+            // 
+            this.lblIteration.AutoSize = true;
+            this.lblIteration.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIteration.Location = new System.Drawing.Point(5, 470);
+            this.lblIteration.Name = "lblIteration";
+            this.lblIteration.Size = new System.Drawing.Size(266, 22);
+            this.lblIteration.TabIndex = 84;
+            this.lblIteration.Text = "Payment Iteration (Months):";
+            this.lblIteration.Visible = false;
+            // 
+            // tbScrollNum
+            // 
+            this.tbScrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbScrollNum.Location = new System.Drawing.Point(282, 467);
+            this.tbScrollNum.Name = "tbScrollNum";
+            this.tbScrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbScrollNum.Size = new System.Drawing.Size(135, 31);
+            this.tbScrollNum.TabIndex = 85;
+            this.tbScrollNum.Visible = false;
+            // 
+            // dtStart
+            // 
+            this.dtStart.CustomFormat = "MMMM dd, yyyy";
+            this.dtStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStart.Location = new System.Drawing.Point(198, 503);
+            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtStart.Name = "dtStart";
+            this.dtStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtStart.Size = new System.Drawing.Size(219, 30);
+            this.dtStart.TabIndex = 86;
+            this.dtStart.Visible = false;
+            // 
+            // lbStart
+            // 
+            this.lbStart.AutoSize = true;
+            this.lbStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStart.Location = new System.Drawing.Point(3, 509);
+            this.lbStart.Name = "lbStart";
+            this.lbStart.Size = new System.Drawing.Size(82, 22);
+            this.lbStart.TabIndex = 88;
+            this.lbStart.Text = "Start at:";
+            this.lbStart.Visible = false;
             // 
             // Deductions
             // 
@@ -596,7 +599,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scrollNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -618,9 +621,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbAddOtherDeduction;
         private System.Windows.Forms.CheckBox cbPHILHEALTH;
         private System.Windows.Forms.CheckBox cbPAGIBIG;
         private System.Windows.Forms.CheckBox cbSSS;
@@ -629,8 +630,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Label lblLoanType;
-        private System.Windows.Forms.ComboBox cbLoanType;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbPLeaveDays;
         private System.Windows.Forms.TextBox tbOtherDeduction;
@@ -642,6 +641,10 @@
         private System.Windows.Forms.TextBox tbWorkHours;
         private System.Windows.Forms.Label lblAddDeduct;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown scrollNum;
+        private System.Windows.Forms.TextBox tbAddOtherDeduction;
+        private System.Windows.Forms.Label lblIteration;
+        private System.Windows.Forms.NumericUpDown tbScrollNum;
+        private System.Windows.Forms.Label lbStart;
+        public System.Windows.Forms.DateTimePicker dtStart;
     }
 }

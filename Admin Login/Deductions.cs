@@ -58,12 +58,16 @@ namespace Admin_Login
                 try
                 {
                     double regularhrs = Convert.ToDouble(dts.Rows[0][3].ToString()) * Convert.ToDouble(dts.Rows[0][4].ToString());
-                    Console.WriteLine(dts.Rows[0][0]);
                     tbWorkHours.Text = dts.Rows[0][4].ToString();
                     tbPLeaveDays.Text = dts.Rows[0][9].ToString();
                     tbBasicGross.Text = regularhrs.ToString("n2");
                     tbTAX.Text = dts.Rows[0][15].ToString();
                     tbOtherDeduction.Text = dts.Rows[0][16].ToString();
+                    tbOtherDeduction.Text = dts.Rows[0][17].ToString();
+                    if (string.IsNullOrEmpty(tbPLeaveDays.Text))
+                    {
+                        tbPLeaveDays.Text = "0";
+                    }
                     if (string.IsNullOrEmpty(tbSSS.Text))
                     {
                         tbSSS.Text = "0.00";
@@ -92,6 +96,7 @@ namespace Admin_Login
                     tbPAGIBIG.Text = "0.00";
                     tbPHILHEALTH.Text = "0.00";
                     tbTAX.Text = "0.00";
+                    tbOtherDeduction.Text = "0.00";
                     Console.WriteLine("Wala sya sa Date");
                 }
             }
@@ -210,23 +215,7 @@ namespace Admin_Login
             }
 
         }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                //connection.Open();
-                //dataGridView1.CurrentRow.Selected = true;
-
-                //SqlCommand sqlCommand = new SqlCommand("UPDATE Deductions set  OtherDeduction = @otherdeduction, TotalDeductions = SSSContribution + PagIbigContribution + PhilHealthContribution + @otherdeduction where EmployeeID = " + dataGridView1.CurrentRow.Cells[0].Value, connection);
-
-                //sqlCommand.Parameters.AddWithValue("@otherdeduction", Convert.ToDecimal(txtotherdeduction.Text));
-                //sqlCommand.ExecuteNonQuery();
-
-                //MessageBox.Show("Update Complete");
-
-                //txtotherdeduction.Text = "";
-            }
-        }
+ 
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -250,46 +239,47 @@ namespace Admin_Login
                 dataGridView1.DataSource = dts;
             }
         }
-        private void AddDeduct(object sender, EventArgs e)
+        private void btnAddOtherDeduction(object sender, EventArgs e)
         {
             if (addOtherDucution == false)
             {
                 lblAddDeduct.Text = "Save";
-                tbAddOtherDeduction.Enabled = true;
+                tbAddOtherDeduction.Visible = true;
+                tbScrollNum.Visible = true;
+                lblIteration.Visible = true;
+                lbStart.Visible = true;
+                dtStart.Visible = true;
                 tbDescription.Enabled = true;
-                cbLoanType.Enabled = true;
-                scrollNum.Enabled = true;
                 addOtherDucution = true;
             }
             else
             {
-                tbAddOtherDeduction.Enabled = false;
+                tbAddOtherDeduction.Visible = false;
+                tbScrollNum.Visible = false;
+                lblIteration.Visible = false;
+                lbStart.Visible = false;
+                dtStart.Visible = false;
                 tbDescription.Enabled = false;
-                cbLoanType.Enabled = false;
-                scrollNum.Enabled = false;
                 addOtherDucution = false;
                 lblAddDeduct.Text = "Add";
+                AddOtherDeduction();
             }
         }
-        
-        public void addOtherdeduction()
+        public void AddOtherDeduction()
         {
-            SqlConnection connection = new SqlConnection(login.connectionString);
+            try
             {
-                try
+                SqlConnection connection = new SqlConnection(login.connectionString);
                 {
                     connection.Open();
-                    string query = "INSERT INTO OtherDeductions " +
-                                    " values()";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable data = new DataTable();
+                    double quotient = Convert.ToDouble(tbAddOtherDeduction.Text) / Convert.ToDouble(tbScrollNum.Value);
+                    string query = "Insert into OtherDeductions (EmployeeID,TotalOtherDeductions,DeductionPerCompensation,Iterations,Description,StartDate)" +
+                                   "Values(" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "," + Convert.ToDouble(tbAddOtherDeduction.Text) + ","+quotient+"," + tbScrollNum.Value + ",'" + tbDescription.Text + "','" + dtStart.Text+"')";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
         public string getQuery()
         {
@@ -297,7 +287,7 @@ namespace Admin_Login
                 " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
                 " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
                 " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, " +
-                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours " +
+                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours,0.00 as OtherDeduction " +
                 " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
                 " inner join Position as C on B.PositionID = C.PositionID" +
                 " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
@@ -315,7 +305,7 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string insert = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime ) ";
+            string insert = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime,OtherDeduction ) ";
             SqlCommand command = new SqlCommand(insert + getQuery(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
@@ -415,6 +405,20 @@ namespace Admin_Login
                 }*/
             }
             catch (Exception ex) { }
+        }
+
+        private void dtp_From_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            getDeductions();
+        }
+
+        private void dtp_To_ValueChanged(object sender, EventArgs e)
+        {
+            tagadelete();
+            tagaInsertPayrollReport();
+            getDeductions();
         }
     }
 }
