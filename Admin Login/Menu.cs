@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -37,10 +38,27 @@ namespace Admin_Login
         }
         public Menu(string name)
         {
+            Login login = new Login();
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
             t_Highlighter.Start();
+           
+            if (name == "HR")
+            {
+                pictureBox7.Enabled = false;
+                pictureBox9.Enabled = false;
+                pictureBox11.Enabled = false;
+                pictureBox13.Enabled = false;
+                pictureBox15.Enabled = false;
+                pictureBox1.Enabled = false;
+                label4.Enabled = false;
+                label5.Enabled = false;
+                label7.Enabled = false;
+                label8.Enabled = false;
+                label9.Enabled = false;
+                label13.Enabled = false;
+            }
         }
         private void Btn_SignOut_Click(object sender, EventArgs e)
         {
