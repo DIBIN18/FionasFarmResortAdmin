@@ -57,26 +57,57 @@ namespace Admin_Login
             dtpSchedOut.CustomFormat = "hh:mm:ss tt";
         }
 
+        public bool CheckLeave(string date, string employee_id)
+        {
+            string query2 =
+                "SELECT Date FROM LeavePay WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpSchedOut.Value.ToString("hh:mm:ss tt");
             string date = dtpDate.Value.ToString("MMMM dd, yyyy");
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if (CheckLeave(date, lblSingleSchedID.Text.ToString()) == false)
             {
-                connection.Open();
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
 
-                string query =
-                    "INSERT INTO SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date) VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
+                    string query =
+                        "INSERT INTO SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date) VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
 
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@ScheduleIn", schedIn);
-                cmd.Parameters.AddWithValue("@ScheduleOut", schedOut);
-                cmd.Parameters.AddWithValue("@Date", date);
-                cmd.Parameters.AddWithValue("@EmployeeID", lblSingleSchedID.Text.ToString());
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Successfully Added Single Schedule");
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@ScheduleIn", schedIn);
+                    cmd.Parameters.AddWithValue("@ScheduleOut", schedOut);
+                    cmd.Parameters.AddWithValue("@Date", date);
+                    cmd.Parameters.AddWithValue("@EmployeeID", lblSingleSchedID.Text.ToString());
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Successfully Added Single Schedule");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, single schedule can not be added");
             }
         }
     }
