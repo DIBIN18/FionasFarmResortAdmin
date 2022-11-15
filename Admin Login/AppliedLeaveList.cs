@@ -26,9 +26,13 @@ namespace Admin_Login
             menu.Menu_Load(menu, EventArgs.Empty);
         }
 
-        private void AppliedLeaveList_Load(object sender, EventArgs e)
+        public void UpdateTable()
         {
-            string query = 
+            dtp_Date.Format = DateTimePickerFormat.Custom;
+            dtp_Date.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+            string query =
                 "SELECT " +
                 "EmployeeInfo.EmployeeFullName, " +
                 "Leave.Type, Leave.Reason, " +
@@ -37,7 +41,8 @@ namespace Admin_Login
                 "INNER JOIN EmployeeInfo " +
                 "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
                 "INNER JOIN Leave " +
-                "ON LeavePay.LeaveID = Leave.LeaveID";
+                "ON LeavePay.LeaveID = Leave.LeaveID " +
+                "WHERE Date = '" + date + "'";
 
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
@@ -52,9 +57,17 @@ namespace Admin_Login
             // Row font
             this.dgvLeaveList.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
-            dgvLeaveList.DataSource = dt;  
+            dgvLeaveList.DataSource = dt;
         }
 
+        private void AppliedLeaveList_Load(object sender, EventArgs e)
+        {
+            UpdateTable();
+        }
 
+        private void dtp_Date_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateTable();
+        }
     }
 }
