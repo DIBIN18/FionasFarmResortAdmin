@@ -59,7 +59,7 @@ namespace Admin_Login
                 "on e.DepartmentID = d.DepartmentID " +
                 "join Position As p " +
                 "on e.PositionID = p.PositionID " +
-                "where Status='Active'"
+                "where Status='Active' and EmploymentType='Regular'"
                 , conn);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
