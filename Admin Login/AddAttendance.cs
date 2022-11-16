@@ -169,6 +169,7 @@ namespace Admin_Login
             dtpScheduleInEdit.Enabled = true;
             dtpSchedOutEdit.Enabled = true;
             dtp_Date.Enabled = true;
+            cbAllowOT.Enabled= true;
 
             employee_id = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
             lblEmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -431,6 +432,18 @@ namespace Admin_Login
             return u_hours.ToString();
         }
 
+        private void cbAllowOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAllowOT.Checked)
+            {
+                Update();
+            }
+            else
+            {
+                lblOTHours.Text = "0.000";
+            }
+        }
+
         public void Update()
         {
             DateTime sched_in_24 = DateTime.Parse(schedule_in);
@@ -456,11 +469,14 @@ namespace Admin_Login
                     dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
-            lblOTHours.Text =
+            if (cbAllowOT.Checked)
+            {
+                lblOTHours.Text =
                 getOverTimeHours(
                     schedule_out,
                     dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
+            }
 
             lblUndertimeHours.Text =
                 getUndertimeHours(
@@ -766,6 +782,7 @@ namespace Admin_Login
             dtpEditTimeIn.Enabled = true;
             dtpEditTimeOut.Enabled = true;
             dtpEditDate.Enabled = true;
+            cbEditAllowOT.Enabled = true;   
 
             Attendance_ID = dgvEditAttendance.Rows[e.RowIndex].Cells[0].Value.ToString();
             EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
@@ -818,7 +835,18 @@ namespace Admin_Login
             return reg_hours.ToString();
         }
 
-        
+        private void cbEditAllowOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEditAllowOT.Checked)
+            {
+                UpdateEditMode();
+            }
+            else
+            {
+                lblEditOTHours.Text = "0.000";
+            }
+        }
+
         public void UpdateEditMode()
         {
             DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
@@ -844,11 +872,14 @@ namespace Admin_Login
                     dtpEditTimeOut.Text.ToString().ToUpper()
                 );
 
-            lblEditOTHours.Text =
+            if (cbEditAllowOT.Checked)
+            {
+                lblEditOTHours.Text =
                 getOverTimeHours(
                     EDIT_time_out,
                     dtpEditTimeOut.Text.ToString().ToUpper()
                 );
+            }
 
             lblEditUndertimeHours.Text =
                 getUndertimeHours(

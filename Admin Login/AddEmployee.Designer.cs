@@ -96,7 +96,7 @@
             this.txtSSSID.Location = new System.Drawing.Point(782, 42);
             this.txtSSSID.Margin = new System.Windows.Forms.Padding(4);
             this.txtSSSID.Name = "txtSSSID";
-            this.txtSSSID.Size = new System.Drawing.Size(369, 34);
+            this.txtSSSID.Size = new System.Drawing.Size(369, 28);
             this.txtSSSID.TabIndex = 4;
             // 
             // txtAddress
@@ -105,7 +105,7 @@
             this.txtAddress.Location = new System.Drawing.Point(202, 251);
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(397, 36);
+            this.txtAddress.Size = new System.Drawing.Size(397, 30);
             this.txtAddress.TabIndex = 5;
             // 
             // label4
@@ -115,7 +115,7 @@
             this.label4.Location = new System.Drawing.Point(10, 254);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 27);
+            this.label4.Size = new System.Drawing.Size(88, 22);
             this.label4.TabIndex = 9;
             this.label4.Text = "Address:";
             // 
@@ -126,7 +126,7 @@
             this.label8.Location = new System.Drawing.Point(10, 173);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(80, 27);
+            this.label8.Size = new System.Drawing.Size(61, 22);
             this.label8.TabIndex = 13;
             this.label8.Text = "Email:";
             // 
@@ -137,7 +137,7 @@
             this.label9.Location = new System.Drawing.Point(10, 91);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(172, 27);
+            this.label9.Size = new System.Drawing.Size(137, 22);
             this.label9.TabIndex = 14;
             this.label9.Text = "Marital Status:";
             // 
@@ -148,7 +148,7 @@
             this.label10.Location = new System.Drawing.Point(10, 129);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(154, 27);
+            this.label10.Size = new System.Drawing.Size(127, 22);
             this.label10.TabIndex = 15;
             this.label10.Text = "Contact no.:";
             // 
@@ -159,7 +159,7 @@
             this.label11.Location = new System.Drawing.Point(10, 213);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(105, 27);
+            this.label11.Size = new System.Drawing.Size(87, 22);
             this.label11.TabIndex = 16;
             this.label11.Text = "Gender:";
             // 
@@ -170,7 +170,7 @@
             this.label12.Location = new System.Drawing.Point(606, 92);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(140, 27);
+            this.label12.Size = new System.Drawing.Size(113, 22);
             this.label12.TabIndex = 17;
             this.label12.Text = "Date Hired:";
             // 
@@ -181,7 +181,7 @@
             this.label13.Location = new System.Drawing.Point(606, 52);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(156, 27);
+            this.label13.Size = new System.Drawing.Size(128, 22);
             this.label13.TabIndex = 18;
             this.label13.Text = "Date of Birth:";
             // 
@@ -191,7 +191,7 @@
             this.txtPagibigNo.Location = new System.Drawing.Point(782, 84);
             this.txtPagibigNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPagibigNo.Name = "txtPagibigNo";
-            this.txtPagibigNo.Size = new System.Drawing.Size(369, 34);
+            this.txtPagibigNo.Size = new System.Drawing.Size(369, 28);
             this.txtPagibigNo.TabIndex = 19;
             // 
             // txtPhilhealthNo
@@ -200,7 +200,7 @@
             this.txtPhilhealthNo.Location = new System.Drawing.Point(782, 126);
             this.txtPhilhealthNo.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhilhealthNo.Name = "txtPhilhealthNo";
-            this.txtPhilhealthNo.Size = new System.Drawing.Size(369, 34);
+            this.txtPhilhealthNo.Size = new System.Drawing.Size(369, 28);
             this.txtPhilhealthNo.TabIndex = 20;
             // 
             // txtEmailAdd
@@ -209,7 +209,7 @@
             this.txtEmailAdd.Location = new System.Drawing.Point(202, 170);
             this.txtEmailAdd.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAdd.Name = "txtEmailAdd";
-            this.txtEmailAdd.Size = new System.Drawing.Size(397, 34);
+            this.txtEmailAdd.Size = new System.Drawing.Size(397, 28);
             this.txtEmailAdd.TabIndex = 21;
             // 
             // txtContactNum
@@ -218,7 +218,7 @@
             this.txtContactNum.Location = new System.Drawing.Point(202, 126);
             this.txtContactNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNum.Name = "txtContactNum";
-            this.txtContactNum.Size = new System.Drawing.Size(397, 36);
+            this.txtContactNum.Size = new System.Drawing.Size(397, 30);
             this.txtContactNum.TabIndex = 23;
             // 
             // txtGender
@@ -232,7 +232,7 @@
             this.txtGender.Location = new System.Drawing.Point(202, 210);
             this.txtGender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtGender.Name = "txtGender";
-            this.txtGender.Size = new System.Drawing.Size(397, 35);
+            this.txtGender.Size = new System.Drawing.Size(397, 29);
             this.txtGender.TabIndex = 28;
             // 
             // txtDateHired
@@ -244,7 +244,7 @@
             this.txtDateHired.Location = new System.Drawing.Point(782, 85);
             this.txtDateHired.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDateHired.Name = "txtDateHired";
-            this.txtDateHired.Size = new System.Drawing.Size(370, 36);
+            this.txtDateHired.Size = new System.Drawing.Size(370, 30);
             this.txtDateHired.TabIndex = 30;
             // 
             // txtDateofBirth
@@ -256,7 +256,7 @@
             this.txtDateofBirth.Location = new System.Drawing.Point(782, 45);
             this.txtDateofBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDateofBirth.Name = "txtDateofBirth";
-            this.txtDateofBirth.Size = new System.Drawing.Size(370, 36);
+            this.txtDateofBirth.Size = new System.Drawing.Size(370, 30);
             this.txtDateofBirth.TabIndex = 31;
             // 
             // cmbDepartment
@@ -267,7 +267,7 @@
             this.cmbDepartment.Location = new System.Drawing.Point(252, 83);
             this.cmbDepartment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(347, 35);
+            this.cmbDepartment.Size = new System.Drawing.Size(347, 29);
             this.cmbDepartment.TabIndex = 38;
             this.cmbDepartment.SelectionChangeCommitted += new System.EventHandler(this.cmbDepartment_SelectionChangeCommitted);
             this.cmbDepartment.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtDepartment_MouseClick);
@@ -280,7 +280,7 @@
             this.cmbPosition.Location = new System.Drawing.Point(252, 124);
             this.cmbPosition.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPosition.Name = "cmbPosition";
-            this.cmbPosition.Size = new System.Drawing.Size(347, 35);
+            this.cmbPosition.Size = new System.Drawing.Size(347, 29);
             this.cmbPosition.TabIndex = 39;
             this.cmbPosition.SelectionChangeCommitted += new System.EventHandler(this.cmbPosition_SelectionChangeCommitted);
             this.cmbPosition.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtPosition_MouseClick);
@@ -292,7 +292,7 @@
             this.txtCivilStatus.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCivilStatus.FormattingEnabled = true;
             this.txtCivilStatus.IntegralHeight = false;
-            this.txtCivilStatus.ItemHeight = 27;
+            this.txtCivilStatus.ItemHeight = 21;
             this.txtCivilStatus.Items.AddRange(new object[] {
             "Single",
             "Married",
@@ -302,7 +302,7 @@
             this.txtCivilStatus.Location = new System.Drawing.Point(202, 85);
             this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCivilStatus.Name = "txtCivilStatus";
-            this.txtCivilStatus.Size = new System.Drawing.Size(397, 35);
+            this.txtCivilStatus.Size = new System.Drawing.Size(397, 29);
             this.txtCivilStatus.TabIndex = 41;
             // 
             // dtpScheduleIn
@@ -314,7 +314,7 @@
             this.dtpScheduleIn.Location = new System.Drawing.Point(202, 42);
             this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpScheduleIn.Name = "dtpScheduleIn";
-            this.dtpScheduleIn.Size = new System.Drawing.Size(397, 36);
+            this.dtpScheduleIn.Size = new System.Drawing.Size(397, 30);
             this.dtpScheduleIn.TabIndex = 42;
             this.dtpScheduleIn.Value = new System.DateTime(2022, 11, 7, 8, 0, 0, 0);
             // 
@@ -325,7 +325,7 @@
             this.label16.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.Location = new System.Drawing.Point(11, 49);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(150, 27);
+            this.label16.Size = new System.Drawing.Size(122, 22);
             this.label16.TabIndex = 43;
             this.label16.Text = "Schedule In:";
             // 
@@ -336,7 +336,7 @@
             this.label17.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(11, 89);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(172, 27);
+            this.label17.Size = new System.Drawing.Size(141, 22);
             this.label17.TabIndex = 44;
             this.label17.Text = "Schedule Out:";
             // 
@@ -346,12 +346,12 @@
             this.txtEmploymentType.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmploymentType.FormattingEnabled = true;
             this.txtEmploymentType.Items.AddRange(new object[] {
-            "Provisional",
+            "Contractual",
             "Regular"});
             this.txtEmploymentType.Location = new System.Drawing.Point(252, 42);
             this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmploymentType.Name = "txtEmploymentType";
-            this.txtEmploymentType.Size = new System.Drawing.Size(347, 35);
+            this.txtEmploymentType.Size = new System.Drawing.Size(347, 29);
             this.txtEmploymentType.TabIndex = 45;
             // 
             // dtpScheduleOut
@@ -362,7 +362,7 @@
             this.dtpScheduleOut.Location = new System.Drawing.Point(202, 82);
             this.dtpScheduleOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpScheduleOut.Name = "dtpScheduleOut";
-            this.dtpScheduleOut.Size = new System.Drawing.Size(397, 36);
+            this.dtpScheduleOut.Size = new System.Drawing.Size(397, 30);
             this.dtpScheduleOut.TabIndex = 46;
             this.dtpScheduleOut.Value = new System.DateTime(2022, 11, 7, 17, 0, 0, 0);
             // 
@@ -372,7 +372,7 @@
             this.FullName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FullName.Location = new System.Drawing.Point(10, 49);
             this.FullName.Name = "FullName";
-            this.FullName.Size = new System.Drawing.Size(125, 27);
+            this.FullName.Size = new System.Drawing.Size(98, 22);
             this.FullName.TabIndex = 48;
             this.FullName.Text = "FullName:";
             // 
@@ -382,7 +382,7 @@
             this.txtFullName.Location = new System.Drawing.Point(202, 45);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(397, 36);
+            this.txtFullName.Size = new System.Drawing.Size(397, 30);
             this.txtFullName.TabIndex = 49;
             // 
             // label1
@@ -394,7 +394,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(414, 876);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 29);
+            this.label1.Size = new System.Drawing.Size(87, 24);
             this.label1.TabIndex = 51;
             this.label1.Tag = "btn_Register";
             this.label1.Text = "Register";
@@ -409,7 +409,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(647, 876);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 29);
+            this.label2.Size = new System.Drawing.Size(55, 24);
             this.label2.TabIndex = 54;
             this.label2.Tag = "btn_Back";
             this.label2.Text = "Back";
@@ -502,7 +502,7 @@
             this.label22.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.Location = new System.Drawing.Point(606, 129);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(143, 27);
+            this.label22.Size = new System.Drawing.Size(116, 22);
             this.label22.TabIndex = 76;
             this.label22.Text = "Pag-Ibig ID:";
             // 
@@ -512,7 +512,7 @@
             this.label21.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(606, 87);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(162, 27);
+            this.label21.Size = new System.Drawing.Size(128, 22);
             this.label21.TabIndex = 75;
             this.label21.Text = "PhilHealth ID:";
             // 
@@ -522,7 +522,7 @@
             this.label20.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(606, 45);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(80, 27);
+            this.label20.Size = new System.Drawing.Size(66, 22);
             this.label20.TabIndex = 74;
             this.label20.Text = "SSS ID:";
             // 
@@ -532,7 +532,7 @@
             this.label14.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.Location = new System.Drawing.Point(10, 86);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(156, 27);
+            this.label14.Size = new System.Drawing.Size(128, 22);
             this.label14.TabIndex = 3;
             this.label14.Text = "Department:";
             // 
@@ -542,7 +542,7 @@
             this.label19.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(11, 45);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(222, 27);
+            this.label19.Size = new System.Drawing.Size(178, 22);
             this.label19.TabIndex = 1;
             this.label19.Text = "Employment Type:";
             // 
@@ -552,7 +552,7 @@
             this.label23.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.Location = new System.Drawing.Point(11, 10);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(323, 27);
+            this.label23.Size = new System.Drawing.Size(267, 23);
             this.label23.TabIndex = 0;
             this.label23.Text = "EMPLOYMENT INFORMATION";
             // 
@@ -562,7 +562,7 @@
             this.label26.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(10, 127);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(105, 27);
+            this.label26.Size = new System.Drawing.Size(82, 22);
             this.label26.TabIndex = 2;
             this.label26.Text = "Position:";
             // 
@@ -599,7 +599,7 @@
             this.label18.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(10, 10);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(287, 27);
+            this.label18.Size = new System.Drawing.Size(238, 23);
             this.label18.TabIndex = 0;
             this.label18.Text = "EMPLOYEE INFORMATION";
             // 
@@ -636,7 +636,7 @@
             this.dtpBreakPeriod.Location = new System.Drawing.Point(202, 122);
             this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpBreakPeriod.Name = "dtpBreakPeriod";
-            this.dtpBreakPeriod.Size = new System.Drawing.Size(397, 36);
+            this.dtpBreakPeriod.Size = new System.Drawing.Size(397, 30);
             this.dtpBreakPeriod.TabIndex = 101;
             this.dtpBreakPeriod.Value = new System.DateTime(2022, 11, 12, 12, 0, 0, 0);
             // 
@@ -646,7 +646,7 @@
             this.label28.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(11, 129);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(160, 27);
+            this.label28.Size = new System.Drawing.Size(129, 22);
             this.label28.TabIndex = 99;
             this.label28.Text = "Break Period:";
             // 
@@ -657,7 +657,7 @@
             this.cbSunday.Location = new System.Drawing.Point(1022, 45);
             this.cbSunday.Margin = new System.Windows.Forms.Padding(4);
             this.cbSunday.Name = "cbSunday";
-            this.cbSunday.Size = new System.Drawing.Size(117, 31);
+            this.cbSunday.Size = new System.Drawing.Size(98, 27);
             this.cbSunday.TabIndex = 100;
             this.cbSunday.Text = "Sunday";
             this.cbSunday.UseVisualStyleBackColor = true;
@@ -668,7 +668,7 @@
             this.label24.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(10, 10);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(285, 27);
+            this.label24.Size = new System.Drawing.Size(236, 23);
             this.label24.TabIndex = 0;
             this.label24.Text = "SCHEDULE INFORMATION";
             // 
@@ -679,7 +679,7 @@
             this.cbSaturday.Location = new System.Drawing.Point(820, 123);
             this.cbSaturday.Margin = new System.Windows.Forms.Padding(4);
             this.cbSaturday.Name = "cbSaturday";
-            this.cbSaturday.Size = new System.Drawing.Size(132, 31);
+            this.cbSaturday.Size = new System.Drawing.Size(112, 27);
             this.cbSaturday.TabIndex = 99;
             this.cbSaturday.Text = "Saturday";
             this.cbSaturday.UseVisualStyleBackColor = true;
@@ -691,7 +691,7 @@
             this.cbMonday.Location = new System.Drawing.Point(611, 45);
             this.cbMonday.Margin = new System.Windows.Forms.Padding(4);
             this.cbMonday.Name = "cbMonday";
-            this.cbMonday.Size = new System.Drawing.Size(127, 31);
+            this.cbMonday.Size = new System.Drawing.Size(106, 27);
             this.cbMonday.TabIndex = 94;
             this.cbMonday.Text = "Monday";
             this.cbMonday.UseVisualStyleBackColor = true;
@@ -703,7 +703,7 @@
             this.cbFriday.Location = new System.Drawing.Point(820, 84);
             this.cbFriday.Margin = new System.Windows.Forms.Padding(4);
             this.cbFriday.Name = "cbFriday";
-            this.cbFriday.Size = new System.Drawing.Size(101, 31);
+            this.cbFriday.Size = new System.Drawing.Size(86, 27);
             this.cbFriday.TabIndex = 98;
             this.cbFriday.Text = "Friday";
             this.cbFriday.UseVisualStyleBackColor = true;
@@ -715,7 +715,7 @@
             this.cbTuesday.Location = new System.Drawing.Point(611, 84);
             this.cbTuesday.Margin = new System.Windows.Forms.Padding(4);
             this.cbTuesday.Name = "cbTuesday";
-            this.cbTuesday.Size = new System.Drawing.Size(126, 31);
+            this.cbTuesday.Size = new System.Drawing.Size(105, 27);
             this.cbTuesday.TabIndex = 95;
             this.cbTuesday.Text = "Tuesday";
             this.cbTuesday.UseVisualStyleBackColor = true;
@@ -727,7 +727,7 @@
             this.cbWednesday.Location = new System.Drawing.Point(611, 123);
             this.cbWednesday.Margin = new System.Windows.Forms.Padding(4);
             this.cbWednesday.Name = "cbWednesday";
-            this.cbWednesday.Size = new System.Drawing.Size(167, 31);
+            this.cbWednesday.Size = new System.Drawing.Size(139, 27);
             this.cbWednesday.TabIndex = 96;
             this.cbWednesday.Text = "Wednesday";
             this.cbWednesday.UseVisualStyleBackColor = true;
@@ -739,7 +739,7 @@
             this.cbThursday.Location = new System.Drawing.Point(820, 45);
             this.cbThursday.Margin = new System.Windows.Forms.Padding(4);
             this.cbThursday.Name = "cbThursday";
-            this.cbThursday.Size = new System.Drawing.Size(132, 31);
+            this.cbThursday.Size = new System.Drawing.Size(110, 27);
             this.cbThursday.TabIndex = 97;
             this.cbThursday.Text = "Thursday";
             this.cbThursday.UseVisualStyleBackColor = true;

@@ -13,6 +13,8 @@ namespace Admin_Login
 {
     public partial class AppliedLeaveList : Form
     {
+        string SelectedLeaveRecordID = "";
+
         Login login = new Login();
         public AppliedLeaveList()
         {
@@ -34,6 +36,7 @@ namespace Admin_Login
 
             string query =
                 "SELECT " +
+                "LeavePay.LeaveRecordID, " + 
                 "EmployeeInfo.EmployeeFullName, " +
                 "Leave.Type, Leave.Reason, " +
                 "LeavePay.Date " +
@@ -52,12 +55,13 @@ namespace Admin_Login
             DataTable dt = new DataTable();
             adapter.Fill(dt);
 
-            // Column font
             this.dgvLeaveList.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
-            // Row font
             this.dgvLeaveList.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
             dgvLeaveList.DataSource = dt;
+
+            dgvLeaveList.Columns["LeaveRecordID"].Visible = false;
+            conn.Close();
         }
 
         private void AppliedLeaveList_Load(object sender, EventArgs e)
@@ -68,6 +72,35 @@ namespace Admin_Login
         private void dtp_Date_ValueChanged(object sender, EventArgs e)
         {
             UpdateTable();
+        }
+
+        private void dgvLeaveList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectedLeaveRecordID = dgvLeaveList.Rows[e.RowIndex].Cells[0].Value.ToString();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            // Returning leave credits are not applied yet
+
+            DialogResult dialogResult = 
+                MessageBox.Show("Are you sure you want to remove the applied leave?", 
+                                "Remove Applied Leave",MessageBoxButtons.YesNo);
+
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                string query =
+                "DELETE FROM LeavePay WHERE LeaveRecordID=" + SelectedLeaveRecordID;
+
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+                    UpdateTable();
+                }
+            }
         }
     }
 }
