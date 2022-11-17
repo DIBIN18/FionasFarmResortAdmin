@@ -24,26 +24,103 @@ namespace Admin_Login
             Settings settings = new Settings();
             using (SqlConnection con = new SqlConnection(login.connectionString))
             {
+            
                 try
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("Insert into Users(User_,Username_,Password_)Values(@User,@Username,@Password) ", con);
+                    SqlCommand cmd = new SqlCommand("Insert into Users(User_,Username_,Password_,DashBoard,EmployeeList,Leave,DepartmentPosition,Deductions,AttendanceRecord,PayrollReport,HolidaySetting,Settings)Values(@User,@Username,@Password,@DashBoard,@EmployeeList,@Leave,@DepartmentPosition,@Deductions,@AttendanceRecord,@PayrollReport,@HolidaySetting,@Settings) ", con);
                     cmd.Parameters.AddWithValue("@User", cmbUserName.Text);
                     cmd.Parameters.AddWithValue("@Username", txtUser.Text);
                     cmd.Parameters.AddWithValue("@Password", txtPass.Text);
+                    
+                    if(DashBoard.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@DashBoard", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@DashBoard", 0);
+                    }
+                    if(EmployeeList.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeList", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@EmployeeList", 0);
+                    }
+                    if (Leave.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@Leave", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Leave", 0);
+                    }
+                    if (DepartmentPosition.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@DepartmentPosition", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@DepartmentPosition", 0);
+                    }
+                    if (Deductions.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@Deductions", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Deductions", 0);
+                    }
+                    if (AttendanceRecord.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@AttendanceRecord", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@AttendanceRecord", 0);
+                    }
+                    if(PayrollReport.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@PayrollReport", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@PayrollReport", 0);
+                    }
+                    if (HolidaySetting.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@HolidaySetting", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@HolidaySetting", 0);
+                    }
+                    if (Settings.Checked == true)
+                    {
+                        cmd.Parameters.AddWithValue("@Settings", 1);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@Settings", 0);
+                    }
                     cmd.ExecuteNonQuery();
-                    DialogResult dr = MessageBox.Show("New User Has beed Added!", "New User: " + settings.dgvUsers.Rows[0].Cells[0].Value, MessageBoxButtons.OK);
-                    if (dr == DialogResult.OK)
+                    DialogResult dialogResult = MessageBox.Show("New User Has beed Added!", "Successful!" , MessageBoxButtons.OK);
+                    if (dialogResult == DialogResult.OK)
                     {
                         cmbUserName.Text = "";
                         txtPass.Text = "";
                         txtUser.Text = "";
+                        
                     }
                     con.Close();
-                }catch(Exception ex)
+                }
+                catch(Exception ex)
                 {
                    //Some Errors!
                 }
+               
             }
 
         }

@@ -43,9 +43,27 @@ namespace Admin_Login
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
             t_Highlighter.Start();
-           
-            if (name == "HR")
+            bool istrue = true;
+            bool isFalse = false;
+            SqlConnection con = new SqlConnection(login.connectionString);
+            SqlCommand cmd = new SqlCommand("Select * from Users Where User_ = '" + name + "'", con);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            string dashboard = dataTable.Rows[0][4].ToString();
+            string EmployeeList = dataTable.Rows[0][5].ToString();
+            string Leave = dataTable.Rows[0][6].ToString();
+            string DepartmentAndPosition = dataTable.Rows[0][7].ToString();
+            string Deductions = dataTable.Rows[0][8].ToString();
+            string AttendanceRecord = dataTable.Rows[0][9].ToString();
+            string PayrollReport = dataTable.Rows[0][10].ToString();
+            string HolidaySetting = dataTable.Rows[0][11].ToString();
+            string Settings = dataTable.Rows[0][12].ToString();
+            if (name == dataTable.Rows[0][1].ToString())
             {
+                label3.Enabled = false;
+                label1.Enabled = false;
+                pictureBox3.Enabled = false;
                 pictureBox7.Enabled = false;
                 pictureBox9.Enabled = false;
                 pictureBox11.Enabled = false;
@@ -58,7 +76,114 @@ namespace Admin_Login
                 label8.Enabled = false;
                 label9.Enabled = false;
                 label13.Enabled = false;
+                label10.Enabled = false; //settings
+                //DASHBOARD
+                if (dashboard.ToString() == istrue.ToString())
+                {
+                    label1.Enabled = true;
+                    pictureBox3.Enabled = true;
+                }
+                else
+                {
+                    label1.Enabled = false;
+                    pictureBox3.Enabled = false;
+                }
+                //EmployeeList
+                if (EmployeeList.ToString() == istrue.ToString())
+                {
+                    label3.Enabled = true;
+                    pictureBox5.Enabled = true;
+                }
+                else
+                {
+                    label3.Enabled = false;
+                    pictureBox5.Enabled = false;
+                }
+                //Leave
+                if (Leave.ToString() == istrue.ToString())
+                {
+                    label4.Enabled = true;
+                    pictureBox7.Enabled = true;
+                }
+                else
+                {
+                    label4.Enabled = false;
+                    pictureBox7.Enabled = false;
+                }
+                //DepartmentPosition
+                if (DepartmentAndPosition.ToString() == istrue.ToString())
+                {
+                    label5.Enabled = true;
+                    pictureBox9.Enabled = true;
+                }
+                else
+                {
+                    label5.Enabled = false;
+                    pictureBox9.Enabled = false;
+                }
+                //Deductions
+                if (Deductions.ToString() == istrue.ToString())
+                {
+                    label7.Enabled = true;
+                    pictureBox11.Enabled = true;
+                }
+                else
+                {
+
+                    label7.Enabled = false;
+                    pictureBox11.Enabled = false;
+                }
+                //AttendanceRecord
+                if (AttendanceRecord.ToString() == istrue.ToString())
+                {
+                    label8.Enabled = true;
+                 
+                }
+                else
+                {
+
+                    label8.Enabled = false;
+                
+                }
+                //PayrolLReport
+                if (PayrollReport.ToString() == istrue.ToString())
+                {
+                    label9.Enabled = true;
+                    pictureBox15.Enabled = true;
+                }
+                else
+                {
+
+                    label9.Enabled = false;
+                    pictureBox15.Enabled = false;
+
+                }
+                //HolidaySetting
+                if (HolidaySetting.ToString() == istrue.ToString())
+                {
+                    label13.Enabled = true;
+                    pictureBox1.Enabled = true;
+                }
+                else
+                {
+
+                    label13.Enabled = false;
+                    pictureBox1.Enabled = false;
+
+                }
+                //HolidaySetting
+                if (Settings.ToString() == istrue.ToString())
+                {
+                    label10.Enabled = true;
+                    
+                }
+                else
+                {
+
+                    label10.Enabled = false;
+                }
             }
+
         }
         private void Btn_SignOut_Click(object sender, EventArgs e)
         {
