@@ -25,6 +25,12 @@ namespace Admin_Login
         string TitleExtension;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -171,7 +177,7 @@ namespace Admin_Login
                     pictureBox1.Enabled = false;
 
                 }
-                //HolidaySetting
+                //Setting
                 if (Settings.ToString() == istrue.ToString())
                 {
                     label10.Enabled = true;
