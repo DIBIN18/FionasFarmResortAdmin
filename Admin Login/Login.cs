@@ -25,7 +25,7 @@ namespace Admin_Login
         //DEVIN CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL CONNECTION STRING
@@ -35,7 +35,7 @@ namespace Admin_Login
         //PAUL HIRAMLAPTOP
         //public string connectionString = @"Data Source=LAPTOP-73509PLO\SQLEXPRESS;Initial Catalog = FFRUsers; Integrated Security = True;MultipleActiveResultSets=True";
         //SAMPLE
-        public string connectionString = @"Data Source=DESKTOP-9EK0A1F\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //public string connectionString = @"Data Source=DESKTOP-9EK0A1F\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         new string Name;
         string userType;
         public Login()
