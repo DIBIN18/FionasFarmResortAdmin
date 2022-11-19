@@ -78,11 +78,23 @@
     <Compile Include="AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewUser.Designer.cs">
+      <DependentUpon>AddNewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddSingleSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddSingleSchedule.Designer.cs">
       <DependentUpon>AddSingleSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppliedLeaveList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppliedLeaveList.Designer.cs">
+      <DependentUpon>AppliedLeaveList.cs</DependentUpon>
     </Compile>
     <Compile Include="DeductionRecords.cs">
       <SubType>Form</SubType>
@@ -209,8 +221,14 @@
     <EmbeddedResource Include="AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddNewUser.resx">
+      <DependentUpon>AddNewUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddSingleSchedule.resx">
       <DependentUpon>AddSingleSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppliedLeaveList.resx">
+      <DependentUpon>AppliedLeaveList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeductionRecords.resx">
       <DependentUpon>DeductionRecords.cs</DependentUpon>
@@ -447,6 +465,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ArchivedList_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundedRectangle_Shape_Red1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />

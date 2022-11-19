@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Threading;
 
 namespace Admin_Login
 {
@@ -17,6 +17,7 @@ namespace Admin_Login
     {
         Login login = new Login();
         string employee_id = "", schedule_in = "", schedule_out = "";
+        string EDIT_employee_id = "", EDIT_time_in = "", EDIT_time_out = "", Attendance_ID = "";
 
         public AddAttendance()
         {
@@ -122,6 +123,7 @@ namespace Admin_Login
 
         private void AddAttendance_Load(object sender, EventArgs e)
         {
+            //Load Add Attendance DGV
             dtpScheduleInEdit.Format = DateTimePickerFormat.Time;
             dtpScheduleInEdit.ShowUpDown = true;
 
@@ -167,13 +169,14 @@ namespace Admin_Login
             dtpScheduleInEdit.Enabled = true;
             dtpSchedOutEdit.Enabled = true;
             dtp_Date.Enabled = true;
+            cbAllowOT.Enabled= true;
 
             employee_id = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
             lblEmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
             lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
-
+            
             Update();
         }
 
@@ -262,13 +265,28 @@ namespace Admin_Login
             }
         }
 
+        public int getMinutesLate(string schedIn, string timeIn)
+        {
+            TimeSpan ts = new TimeSpan();
+            ts = DateTime.Parse(timeIn).Subtract(DateTime.Parse(schedIn));
+
+            int mins_late = Convert.ToInt32(ts.TotalMinutes);
+
+            if (mins_late > 480)
+            {
+                mins_late = 480;
+            }
+
+            return mins_late;
+        }
+
         public string getTotalHours(string timeIn, string timeOut)
         {
             TimeSpan ts = new TimeSpan();
             ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
 
                    // 24 Hour format to decimal
-            return Convert.ToDecimal(ts.TotalHours).ToString("#.00");
+            return Convert.ToDecimal(ts.TotalHours).ToString("#.000");
         }
 
         public string getRegularHours(string timeIn, string timeOut)
@@ -277,7 +295,7 @@ namespace Admin_Login
             ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
 
             // 24 Hour format to decimal
-            decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.00"));
+            decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
 
             // Trigger Employee Break
             string break_time = getEmployeeBreakTime(employee_id);
@@ -339,7 +357,7 @@ namespace Admin_Login
             ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(schedOut));
 
             // 24 Hour format to decimal
-            decimal ot_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.00"));
+            decimal ot_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
 
             if (ot_hours >= Convert.ToDecimal("04.00"))
             {
@@ -379,15 +397,51 @@ namespace Admin_Login
             }
         }
 
+        public bool CheckLeave(string date, string employee_id)
+        {
+            string query2 =
+                "SELECT Date FROM LeavePay WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         public string getUndertimeHours(string schedOut, string timeOut)
         {
             TimeSpan ts = new TimeSpan();
             ts = DateTime.Parse(schedOut).Subtract(DateTime.Parse(timeOut));
 
             // 24 Hour format to decimal
-            decimal u_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.00"));
+            decimal u_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
 
             return u_hours.ToString();
+        }
+
+        private void cbAllowOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbAllowOT.Checked)
+            {
+                Update();
+            }
+            else
+            {
+                lblOTHours.Text = "0.000";
+            }
         }
 
         public void Update()
@@ -415,11 +469,14 @@ namespace Admin_Login
                     dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
 
-            lblOTHours.Text =
+            if (cbAllowOT.Checked)
+            {
+                lblOTHours.Text =
                 getOverTimeHours(
                     schedule_out,
                     dtpSchedOutEdit.Text.ToString().ToUpper()
                 );
+            }
 
             lblUndertimeHours.Text =
                 getUndertimeHours(
@@ -513,6 +570,35 @@ namespace Admin_Login
             }
         }
 
+        public decimal getBasicRate(string employee_id)
+        {
+            string query2 = 
+                "SELECT BasicRate FROM Position " +
+                "WHERE PositionID = " +
+                "(SELECT PositionID " +
+                "FROM EmployeeInfo " +
+                "WHERE EmployeeID=" + employee_id + ")";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetDecimal(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                }
+            }
+        }
+
         public int yntoboolean(string yn)
         {
             if (yn == "Yes")
@@ -530,74 +616,467 @@ namespace Admin_Login
             string sDate = dtp_Date.Text.ToString();
             DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
 
+            DateTime sched_in_24 = DateTime.Parse(schedule_in);
+            DateTime time_in_24 = DateTime.Parse(dtpScheduleInEdit.Text.ToString().ToUpper());
+
+            int minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
+            decimal RateLoss = (getBasicRate(employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
+
             string dy = datevalue.Day.ToString();
             string mn = datevalue.Month.ToString();
             string yy = datevalue.Year.ToString();
 
             string aid = yy + mn + dy + employee_id;
 
+            if (CheckLeave(dtp_Date.Text.ToString(), employee_id) == false)
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query =
+                        "INSERT INTO AttendanceSheet(" +
+                        "AttendanceID," +
+                        "EmployeeID," +
+                        "TimeIn," +
+                        "TimeOut," +
+                        "Date," +
+                        "TotalHours," +
+                        "RegularHours," +
+                        "OvertimeHours," +
+                        "Late," +
+                        "RegularHoliday," +
+                        "SpecialHoliday," +
+                        "RegularHolidayHours," +
+                        "SpecialHolidayHours," +
+                        "UndertimeHours," +
+                        "PositionID," +
+                        "MinutesLate," +
+                        "MinuteRateLoss) " +
+                        "VALUES (" +
+                        "@AttendanceID," +
+                        "@EmployeeID," +
+                        "@TimeIn," +
+                        "@TimeOut," +
+                        "@Date," +
+                        "@TotalHours," +
+                        "@RegularHours," +
+                        "@OvertimeHours," +
+                        "@Late," +
+                        "@RegularHoliday," +
+                        "@SpecialHoliday," +
+                        "@RegularHolidayHours," +
+                        "@SpecialHolidayHours," +
+                        "@UndertimeHours," +
+                        "@PositionID," +
+                        "@MinutesLate," +
+                        "@MinuteRateLoss) ";
+
+                    string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
+                    string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
+                    cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
+                    cmd.Parameters.AddWithValue("@TimeIn", schedIn.ToUpper());
+                    cmd.Parameters.AddWithValue("@TimeOut", schedOut.ToUpper());
+                    cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
+                    cmd.Parameters.AddWithValue("@TotalHours", Convert.ToDecimal(lblTotalHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHours", Convert.ToDecimal(lblRegHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Overtimehours", Convert.ToDecimal(lblOTHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Late", yntoboolean(lblLate.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegHol.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecHol.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHolidayHours", Convert.ToDecimal(lblRegHolHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SpecialHolidayHours", Convert.ToDecimal(lblSpecHolHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@UndertimeHours", Convert.ToDecimal(lblUndertimeHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
+                    cmd.Parameters.AddWithValue("@MinutesLate", minutes_late);
+                    cmd.Parameters.AddWithValue("@MinuteRateLoss", RateLoss);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Attendance Added");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
+            }
+        }
+
+        private void btnAddMode_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible= true;
+            pnlEdit.Visible = false;
+        }
+
+
+
+
+        //
+        //  EDITING MODE CODE
+        //
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            pnlAdd.Visible = false;
+            pnlEdit.Visible = true;
+
+            RefreshEditDgvTable();
+        }
+
+        public void RefreshEditDgvTable()
+        {
+            //Load Edit Attendance DGV
+            dtpEditTimeIn.Format = DateTimePickerFormat.Time;
+            dtpEditTimeIn.ShowUpDown = true;
+
+            dtpEditTimeOut.Format = DateTimePickerFormat.Time;
+            dtpEditTimeOut.ShowUpDown = true;
+
+            dtpEditTimeIn.Format = DateTimePickerFormat.Custom;
+            dtpEditTimeIn.CustomFormat = "hh:mm:ss tt";
+
+            dtpEditTimeOut.Format = DateTimePickerFormat.Custom;
+            dtpEditTimeOut.CustomFormat = "hh:mm:ss tt";
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
                 string query =
-                    "INSERT INTO AttendanceSheet(" +
-                    "AttendanceID," +
-                    "EmployeeID," +
-                    "TimeIn," +
-                    "TimeOut," +
-                    "Date," +
-                    "TotalHours," +
-                    "RegularHours," +
-                    "OvertimeHours," +
-                    "Late," +
-                    "RegularHoliday," +
-                    "SpecialHoliday," +
-                    "RegularHolidayHours," +
-                    "SpecialHolidayHours," +
-                    "UndertimeHours," +
-                    "PositionID) " +
-                    "VALUES (" +
-                    "@AttendanceID," +
-                    "@EmployeeID," +
-                    "@TimeIn," +
-                    "@TimeOut," +
-                    "@Date," +
-                    "@TotalHours," +
-                    "@RegularHours," +
-                    "@OvertimeHours," +
-                    "@Late," +
-                    "@RegularHoliday," +
-                    "@SpecialHoliday," +
-                    "@RegularHolidayHours," +
-                    "@SpecialHolidayHours," +
-                    "@UndertimeHours," +
-                    "@PositionID) ";
+                    "SELECT " +
+                    "AttendanceSheet.AttendanceID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "AttendanceSheet.TimeIn, " +
+                    "AttendanceSheet.TimeOut, " +
+                    "AttendanceSheet.Date " +
+                    "FROM AttendanceSheet " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON AttendanceSheet.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active'";
 
-                string schedIn = dtpScheduleInEdit.Value.ToString("hh:mm:ss tt");
-                string schedOut = dtpSchedOutEdit.Value.ToString("hh:mm:ss tt");
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
 
-                SqlCommand cmd = new SqlCommand(query, connection);
+                this.dgvEditAttendance.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                this.dgvEditAttendance.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
-                cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
-                cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
-                cmd.Parameters.AddWithValue("@TimeIn", schedIn);
-                cmd.Parameters.AddWithValue("@TimeOut", schedOut);
-                cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
-                cmd.Parameters.AddWithValue("@TotalHours", Convert.ToDecimal(lblTotalHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHours", Convert.ToDecimal(lblRegHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@Overtimehours", Convert.ToDecimal(lblOTHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@Late", yntoboolean(lblLate.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegHol.Text.ToString()));
-                cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecHol.Text.ToString()));
-                cmd.Parameters.AddWithValue("@RegularHolidayHours", Convert.ToDecimal(lblRegHolHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@SpecialHolidayHours", Convert.ToDecimal(lblSpecHolHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@UndertimeHours", Convert.ToDecimal(lblUndertimeHours.Text.ToString()));
-                cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Attendance Added");
+                dgvEditAttendance.DataSource = data;
+                dgvEditAttendance.Columns["AttendanceID"].Visible = false;
+                dgvEditAttendance.Columns["EmployeeID"].Visible = false;
             }
         }
 
+        private void btnBackEdit_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Attendance Record";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
+        }
+
+        private void dgvEditAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dtpEditTimeIn.Enabled = true;
+            dtpEditTimeOut.Enabled = true;
+            dtpEditDate.Enabled = true;
+            cbEditAllowOT.Enabled = true;   
+
+            Attendance_ID = dgvEditAttendance.Rows[e.RowIndex].Cells[0].Value.ToString();
+            EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
+            lblEditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
+            EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString();
+            EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+            lblEditBreakPeriod.Text = getEmployeeBreakTime(EDIT_employee_id);
+
+            dtpEditTimeIn.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
+            dtpEditTimeOut.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+            dtpEditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString());
+        }
+
+        public string getRegularHoursEdit(string timeIn, string timeOut)
+        {
+            TimeSpan ts = new TimeSpan();
+            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
+
+            // 24 Hour format to decimal
+            decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
+
+            // Trigger Employee Break
+            string break_time = getEmployeeBreakTime(EDIT_employee_id);
+
+            DateTime gtimein = DateTime.ParseExact(timeIn,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan Btimein = gtimein.TimeOfDay;
+
+            DateTime gsout = DateTime.ParseExact(timeOut,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan Bsout = gsout.TimeOfDay;
+
+            DateTime gBreak = DateTime.ParseExact(break_time,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan bBreak = gBreak.TimeOfDay;
+
+            if ((bBreak > Btimein) && (bBreak < Bsout))
+            {
+                reg_hours = reg_hours - 1.00m;
+            }
+
+            // Limit Regular Hours to 8.00
+            decimal max_reg_hours = 08.00m;
+
+            if (reg_hours >= max_reg_hours)
+            {
+                reg_hours = Convert.ToDecimal("08.00");
+            }
+
+            return reg_hours.ToString();
+        }
+
+        private void cbEditAllowOT_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbEditAllowOT.Checked)
+            {
+                UpdateEditMode();
+            }
+            else
+            {
+                lblEditOTHours.Text = "0.000";
+            }
+        }
+
+        public void UpdateEditMode()
+        {
+            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
+            DateTime sched_out_24 = DateTime.Parse(EDIT_time_out);
+            DateTime time_in_24 = DateTime.Parse(dtpEditTimeIn.Text.ToString().ToUpper());
+
+            lblEditLate.Text =
+                getLate(
+                    sched_in_24.ToString("HH:mm"),
+                    sched_out_24.ToString("HH:mm"),
+                    time_in_24.ToString("HH:mm")
+                );
+
+            lblEditTotalHours.Text =
+                getTotalHours(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+            lblEditRegHours.Text =
+                getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+            if (cbEditAllowOT.Checked)
+            {
+                lblEditOTHours.Text =
+                getOverTimeHours(
+                    EDIT_time_out,
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+            }
+
+            lblEditUndertimeHours.Text =
+                getUndertimeHours(
+                    EDIT_time_out,
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+            if (lblEditOTHours.Text.Contains("-"))
+            {
+                lblEditOTHours.Text = "0.00";
+            }
+
+            if (lblEditUndertimeHours.Text.Contains("-"))
+            {
+                lblEditUndertimeHours.Text = "0.00";
+            }
+
+            dtpEditDate.Format = DateTimePickerFormat.Custom;
+            dtpEditDate.CustomFormat = "MMMM dd, yyyy";
+            string date = dtpEditDate.Value.ToString("MMMM dd, yyyy");
+
+
+            if (CheckHoliday(date) == "Regular Holiday")
+            {
+                lblEditRegHol.Text = "Yes";
+                lblEditSpecHol.Text = "No";
+
+                lblEditRegHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditSpecHolHours.Text = "0.00";
+            }
+            else if (CheckHoliday(date) == "Special Non-Working Holiday")
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "Yes";
+
+                lblEditSpecHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditRegHolHours.Text = "0.00";
+            }
+            else if (CheckHoliday(date) == "Special Working Holiday")
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "Yes";
+
+                lblEditSpecHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditRegHolHours.Text = "0.00";
+            }
+            else
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "No";
+                lblEditRegHolHours.Text = "0.00";
+                lblEditSpecHolHours.Text = "0.00";
+            }
+        }
+
+        //
+        //  DTP FUNCTIONS
+        //
+
+        private void dtpEditTimeIn_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateEditMode();
+        }
+
+        private void dtpEditTimeOut_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateEditMode();
+        }
+
+        private void dtpEditDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpEditDate.Format = DateTimePickerFormat.Custom;
+            dtpEditDate.CustomFormat = "MMMM dd, yyyy";
+            string date = dtpEditDate.Value.ToString("MMMM dd, yyyy");
+
+            if (CheckHoliday(date) == "Regular Holiday")
+            {
+                lblEditRegHol.Text = "Yes";
+                lblEditSpecHol.Text = "No";
+
+                lblEditRegHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditSpecHolHours.Text = "0.00";
+            }
+            else if (CheckHoliday(date) == "Special Non-Working Holiday")
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "Yes";
+
+                lblEditSpecHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditRegHolHours.Text = "0.00";
+            }
+            else if (CheckHoliday(date) == "Special Working Holiday")
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "Yes";
+
+                lblEditSpecHolHours.Text =
+                    getRegularHoursEdit(
+                    dtpEditTimeIn.Text.ToString().ToUpper(),
+                    dtpEditTimeOut.Text.ToString().ToUpper()
+                );
+
+                lblEditRegHolHours.Text = "0.00";
+            }
+            else
+            {
+                lblEditRegHol.Text = "No";
+                lblEditSpecHol.Text = "No";
+                lblEditRegHolHours.Text = "0.00";
+                lblEditSpecHolHours.Text = "0.00";
+            }
+        }
+
+        private void btn_UpdateEdit_Click(object sender, EventArgs e)
+        {
+            string sDate = dtpEditDate.Text.ToString();
+            DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
+
+            string dy = datevalue.Day.ToString();
+            string mn = datevalue.Month.ToString();
+            string yy = datevalue.Year.ToString();
+
+            string aid = yy + mn + dy + EDIT_employee_id;
+
+            string schedIn = dtpEditTimeIn.Value.ToString("hh:mm:ss tt");
+            string schedOut = dtpEditTimeOut.Value.ToString("hh:mm:ss tt");
+
+            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
+            DateTime time_in_24 = DateTime.Parse(dtpEditTimeIn.Text.ToString().ToUpper());
+
+            string minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm")).ToString();
+            decimal RateLoss = (getBasicRate(EDIT_employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
+
+            if(CheckLeave(dtpEditDate.Text.ToString(), EDIT_employee_id) == false)
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+
+                    string query =
+                        "UPDATE AttendanceSheet " +
+                        "SET " +
+                        "AttendanceID= " + aid + ", " +
+                        "EmployeeID= " + EDIT_employee_id + ", " +
+                        "TimeIn= '" + schedIn.ToUpper() + "', " +
+                        "TimeOut= '" + schedOut.ToUpper() + "', " +
+                        "Date= '" + dtpEditDate.Text.ToString() + "', " +
+                        "TotalHours= " + lblEditTotalHours.Text.ToString() + ", " +
+                        "RegularHours= " + lblEditRegHours.Text.ToString() + ", " +
+                        "OvertimeHours= " + lblEditOTHours.Text.ToString() + ", " +
+                        "Late= " + yntoboolean(lblEditLate.Text.ToString()).ToString() + ", " +
+                        "RegularHoliday= " + yntoboolean(lblEditRegHol.Text.ToString()).ToString() + ", " +
+                        "SpecialHoliday= " + yntoboolean(lblEditSpecHol.Text.ToString()).ToString() + ", " +
+                        "RegularHolidayHours= " + lblEditRegHolHours.Text.ToString() + ", " +
+                        "SpecialHolidayHours= " + lblEditSpecHolHours.Text.ToString() + ", " +
+                        "UndertimeHours= " + lblEditUndertimeHours.Text.ToString() + ", " +
+                        "PositionID= " + getPositionID(EDIT_employee_id).ToString() + ", " +
+                        "MinutesLate=" + minutes_late + ", " +
+                        "MinuteRateLoss=" + RateLoss.ToString() + " " +
+                        "WHERE AttendanceID=" + Attendance_ID;
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Attendance Record Successfully Updated");
+                    RefreshEditDgvTable();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
+            }
+        }
     }
 }

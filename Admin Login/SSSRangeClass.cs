@@ -123,13 +123,38 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
-        public void getNetPay()
+        public void getOtherDeduction()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                string query = "update PayrollReport " +
+                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + ")" +
+                               "where EmployeeID = " + EmployeeID;
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void UpdateOtherDeduction()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "update OtherDeductions " +
+                               "set TotalOtherDeductions = TotalOtherDeductions -DeductionPerCompensation";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void getNetPay()
+        {
+            getOtherDeduction();
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
                 string query = "update PayrollReport "+
-                               "set NetSalary = GrossSalary - (Coalesce(SSSContribution,0) + Coalesce(PAGIBIGContribution,0) + Coalesce(PHILHEALTHContribution,0) + Coalesce(TAX,0)) from PayrollReport " +
+                               "set NetSalary = GrossSalary - (Coalesce(SSSContribution,0) + Coalesce(PAGIBIGContribution,0) + Coalesce(PHILHEALTHContribution,0) + Coalesce(TAX,0) + Coalesce(OtherDeduction,0)) from PayrollReport " +
                                "where EmployeeID = " + EmployeeID;
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
@@ -177,6 +202,7 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void addleavePayToGrosspay()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -226,7 +252,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, GrossSalary from PayrollReport";
+                string query = "select EmployeeID, BasicRate * coalesce(((TotalHours-OverTimeHours)+(PaidLeaveDays*8)), TotalHours) from PayrollReport";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);

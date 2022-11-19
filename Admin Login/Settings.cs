@@ -80,7 +80,8 @@ namespace Admin_Login
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-
+            AddNewUser addNewUser = new AddNewUser();
+            addNewUser.ShowDialog();
         }
     }
 }

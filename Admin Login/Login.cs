@@ -23,7 +23,7 @@ namespace Admin_Login
             int height
             );
         //DEVIN CONNECTION STRING
-        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
         //public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
@@ -34,6 +34,8 @@ namespace Admin_Login
         //public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL HIRAMLAPTOP
         //public string connectionString = @"Data Source=LAPTOP-73509PLO\SQLEXPRESS;Initial Catalog = FFRUsers; Integrated Security = True;MultipleActiveResultSets=True";
+        //SAMPLE
+        public string connectionString = @"Data Source=DESKTOP-9EK0A1F\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         new string Name;
         string userType;
         public Login()
@@ -135,15 +137,16 @@ namespace Admin_Login
                     PasswordCommand.Parameters.AddWithValue("@Password_", Password.Text);
                     SqlDataReader Reader;
                     Reader = UsernameCommand.ExecuteReader();
-                    if (Reader.Read())
+                    if (Reader.Read())//if Match
                     {
                         Name = Reader.GetValue(1).ToString();
                         Reader = PasswordCommand.ExecuteReader();
                         if (Reader.Read())
-                        {
+                        {                          
                             Menu menu = new Menu(Name);
                             this.Hide();
                             menu.ShowDialog();
+                          
                         }
                         else
                         {
@@ -161,6 +164,11 @@ namespace Admin_Login
                     }
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

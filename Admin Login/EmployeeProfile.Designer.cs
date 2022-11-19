@@ -528,8 +528,8 @@
             // 
             this.cmbEmploymentTypeEdit.FormattingEnabled = true;
             this.cmbEmploymentTypeEdit.Items.AddRange(new object[] {
-            "Regular",
-            "Provisional"});
+            "Contractual",
+            "Regular"});
             this.cmbEmploymentTypeEdit.Location = new System.Drawing.Point(285, 57);
             this.cmbEmploymentTypeEdit.Margin = new System.Windows.Forms.Padding(4);
             this.cmbEmploymentTypeEdit.Name = "cmbEmploymentTypeEdit";

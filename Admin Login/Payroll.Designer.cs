@@ -38,6 +38,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtLeavePay = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtLeavedays = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txtGrossPay = new System.Windows.Forms.TextBox();
             this.txtSpHolidayPay = new System.Windows.Forms.TextBox();
@@ -84,15 +88,17 @@
             this.cbSSS = new System.Windows.Forms.CheckBox();
             this.cbPAGIBIG = new System.Windows.Forms.CheckBox();
             this.cbPHILHEALTH = new System.Windows.Forms.CheckBox();
-            this.txtLeavedays = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.txtLeavePay = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtLateAmount = new System.Windows.Forms.TextBox();
+            this.txtUndertimeAmount = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -225,6 +231,46 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Earnings";
+            // 
+            // txtLeavePay
+            // 
+            this.txtLeavePay.Enabled = false;
+            this.txtLeavePay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLeavePay.Location = new System.Drawing.Point(175, 313);
+            this.txtLeavePay.Multiline = true;
+            this.txtLeavePay.Name = "txtLeavePay";
+            this.txtLeavePay.Size = new System.Drawing.Size(156, 19);
+            this.txtLeavePay.TabIndex = 25;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(36, 311);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(90, 18);
+            this.label24.TabIndex = 24;
+            this.label24.Text = "Leave pay:";
+            // 
+            // txtLeavedays
+            // 
+            this.txtLeavedays.Enabled = false;
+            this.txtLeavedays.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLeavedays.Location = new System.Drawing.Point(175, 280);
+            this.txtLeavedays.Multiline = true;
+            this.txtLeavedays.Name = "txtLeavedays";
+            this.txtLeavedays.Size = new System.Drawing.Size(156, 19);
+            this.txtLeavedays.TabIndex = 23;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(36, 278);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(96, 18);
+            this.label18.TabIndex = 22;
+            this.label18.Text = "Leave days:";
             // 
             // label13
             // 
@@ -411,24 +457,20 @@
             this.groupBox3.BackColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox3.Controls.Add(this.txtTaxAmount);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.txtUnderTimeMin);
-            this.groupBox3.Controls.Add(this.label25);
             this.groupBox3.Controls.Add(this.txtTotalDeduction);
             this.groupBox3.Controls.Add(this.txtOtherDeductions);
             this.groupBox3.Controls.Add(this.txtPagIbig);
             this.groupBox3.Controls.Add(this.txtPhilHealth);
             this.groupBox3.Controls.Add(this.txtSSS);
-            this.groupBox3.Controls.Add(this.txtTardinessMins);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(428, 245);
+            this.groupBox3.Location = new System.Drawing.Point(447, 417);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 411);
+            this.groupBox3.Size = new System.Drawing.Size(397, 238);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Deductions";
@@ -437,7 +479,7 @@
             // 
             this.txtTaxAmount.Enabled = false;
             this.txtTaxAmount.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTaxAmount.Location = new System.Drawing.Point(162, 267);
+            this.txtTaxAmount.Location = new System.Drawing.Point(195, 175);
             this.txtTaxAmount.Multiline = true;
             this.txtTaxAmount.Name = "txtTaxAmount";
             this.txtTaxAmount.Size = new System.Drawing.Size(157, 19);
@@ -447,7 +489,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(14, 267);
+            this.label26.Location = new System.Drawing.Point(47, 175);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(36, 18);
             this.label26.TabIndex = 37;
@@ -457,17 +499,17 @@
             // 
             this.txtUnderTimeMin.Enabled = false;
             this.txtUnderTimeMin.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnderTimeMin.Location = new System.Drawing.Point(160, 81);
+            this.txtUnderTimeMin.Location = new System.Drawing.Point(194, 95);
             this.txtUnderTimeMin.Multiline = true;
             this.txtUnderTimeMin.Name = "txtUnderTimeMin";
-            this.txtUnderTimeMin.Size = new System.Drawing.Size(159, 19);
+            this.txtUnderTimeMin.Size = new System.Drawing.Size(161, 19);
             this.txtUnderTimeMin.TabIndex = 34;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(12, 80);
+            this.label25.Location = new System.Drawing.Point(46, 95);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(131, 18);
             this.label25.TabIndex = 33;
@@ -477,7 +519,7 @@
             // 
             this.txtTotalDeduction.Enabled = false;
             this.txtTotalDeduction.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalDeduction.Location = new System.Drawing.Point(162, 303);
+            this.txtTotalDeduction.Location = new System.Drawing.Point(195, 211);
             this.txtTotalDeduction.Multiline = true;
             this.txtTotalDeduction.Name = "txtTotalDeduction";
             this.txtTotalDeduction.Size = new System.Drawing.Size(157, 19);
@@ -487,7 +529,7 @@
             // 
             this.txtOtherDeductions.Enabled = false;
             this.txtOtherDeductions.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOtherDeductions.Location = new System.Drawing.Point(162, 232);
+            this.txtOtherDeductions.Location = new System.Drawing.Point(195, 140);
             this.txtOtherDeductions.Multiline = true;
             this.txtOtherDeductions.Name = "txtOtherDeductions";
             this.txtOtherDeductions.Size = new System.Drawing.Size(157, 19);
@@ -497,7 +539,7 @@
             // 
             this.txtPagIbig.Enabled = false;
             this.txtPagIbig.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagIbig.Location = new System.Drawing.Point(162, 197);
+            this.txtPagIbig.Location = new System.Drawing.Point(195, 105);
             this.txtPagIbig.Multiline = true;
             this.txtPagIbig.Name = "txtPagIbig";
             this.txtPagIbig.Size = new System.Drawing.Size(157, 19);
@@ -507,7 +549,7 @@
             // 
             this.txtPhilHealth.Enabled = false;
             this.txtPhilHealth.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhilHealth.Location = new System.Drawing.Point(162, 160);
+            this.txtPhilHealth.Location = new System.Drawing.Point(195, 68);
             this.txtPhilHealth.Multiline = true;
             this.txtPhilHealth.Name = "txtPhilHealth";
             this.txtPhilHealth.Size = new System.Drawing.Size(157, 19);
@@ -517,7 +559,7 @@
             // 
             this.txtSSS.Enabled = false;
             this.txtSSS.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSSS.Location = new System.Drawing.Point(162, 124);
+            this.txtSSS.Location = new System.Drawing.Point(195, 32);
             this.txtSSS.Multiline = true;
             this.txtSSS.Name = "txtSSS";
             this.txtSSS.Size = new System.Drawing.Size(157, 19);
@@ -527,7 +569,7 @@
             // 
             this.txtTardinessMins.Enabled = false;
             this.txtTardinessMins.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTardinessMins.Location = new System.Drawing.Point(158, 42);
+            this.txtTardinessMins.Location = new System.Drawing.Point(194, 35);
             this.txtTardinessMins.Multiline = true;
             this.txtTardinessMins.Name = "txtTardinessMins";
             this.txtTardinessMins.Size = new System.Drawing.Size(161, 19);
@@ -537,7 +579,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(14, 231);
+            this.label21.Location = new System.Drawing.Point(47, 139);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(140, 18);
             this.label21.TabIndex = 26;
@@ -547,7 +589,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(14, 303);
+            this.label19.Location = new System.Drawing.Point(47, 211);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(133, 18);
             this.label19.TabIndex = 23;
@@ -557,7 +599,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(14, 195);
+            this.label17.Location = new System.Drawing.Point(47, 103);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(74, 18);
             this.label17.TabIndex = 21;
@@ -567,7 +609,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(14, 159);
+            this.label16.Location = new System.Drawing.Point(47, 67);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 18);
             this.label16.TabIndex = 20;
@@ -577,7 +619,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(14, 124);
+            this.label15.Location = new System.Drawing.Point(47, 32);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(36, 18);
             this.label15.TabIndex = 19;
@@ -587,7 +629,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(10, 41);
+            this.label14.Location = new System.Drawing.Point(46, 34);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(119, 18);
             this.label14.TabIndex = 18;
@@ -721,45 +763,64 @@
             this.cbPHILHEALTH.UseVisualStyleBackColor = true;
             this.cbPHILHEALTH.CheckedChanged += new System.EventHandler(this.cbPHILHEALTH_CheckedChanged);
             // 
-            // txtLeavedays
+            // label27
             // 
-            this.txtLeavedays.Enabled = false;
-            this.txtLeavedays.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLeavedays.Location = new System.Drawing.Point(175, 280);
-            this.txtLeavedays.Multiline = true;
-            this.txtLeavedays.Name = "txtLeavedays";
-            this.txtLeavedays.Size = new System.Drawing.Size(156, 19);
-            this.txtLeavedays.TabIndex = 23;
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(47, 65);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(69, 18);
+            this.label27.TabIndex = 39;
+            this.label27.Text = "Amount:";
             // 
-            // label18
+            // label28
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(36, 278);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(96, 18);
-            this.label18.TabIndex = 22;
-            this.label18.Text = "Leave days:";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(47, 125);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(69, 18);
+            this.label28.TabIndex = 40;
+            this.label28.Text = "Amount:";
             // 
-            // txtLeavePay
+            // txtLateAmount
             // 
-            this.txtLeavePay.Enabled = false;
-            this.txtLeavePay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLeavePay.Location = new System.Drawing.Point(175, 313);
-            this.txtLeavePay.Multiline = true;
-            this.txtLeavePay.Name = "txtLeavePay";
-            this.txtLeavePay.Size = new System.Drawing.Size(156, 19);
-            this.txtLeavePay.TabIndex = 25;
+            this.txtLateAmount.Enabled = false;
+            this.txtLateAmount.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLateAmount.Location = new System.Drawing.Point(194, 65);
+            this.txtLateAmount.Multiline = true;
+            this.txtLateAmount.Name = "txtLateAmount";
+            this.txtLateAmount.Size = new System.Drawing.Size(161, 19);
+            this.txtLateAmount.TabIndex = 41;
             // 
-            // label24
+            // txtUndertimeAmount
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(36, 311);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(90, 18);
-            this.label24.TabIndex = 24;
-            this.label24.Text = "Leave pay:";
+            this.txtUndertimeAmount.Enabled = false;
+            this.txtUndertimeAmount.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUndertimeAmount.Location = new System.Drawing.Point(194, 125);
+            this.txtUndertimeAmount.Multiline = true;
+            this.txtUndertimeAmount.Name = "txtUndertimeAmount";
+            this.txtUndertimeAmount.Size = new System.Drawing.Size(161, 19);
+            this.txtUndertimeAmount.TabIndex = 42;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox4.Controls.Add(this.txtUndertimeAmount);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.txtLateAmount);
+            this.groupBox4.Controls.Add(this.txtTardinessMins);
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.label25);
+            this.groupBox4.Controls.Add(this.label27);
+            this.groupBox4.Controls.Add(this.txtUnderTimeMin);
+            this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(447, 245);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(397, 159);
+            this.groupBox4.TabIndex = 43;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Late/Undertime";
             // 
             // Payroll
             // 
@@ -767,6 +828,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(870, 747);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.cbPHILHEALTH);
             this.Controls.Add(this.cbPAGIBIG);
             this.Controls.Add(this.cbSSS);
@@ -777,8 +839,8 @@
             this.Controls.Add(this.label23);
             this.Controls.Add(this.txtPosition);
             this.Controls.Add(this.txtDepartment);
-            this.Controls.Add(this.txtEmployeeName);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.txtEmployeeName);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtEmployeeID);
             this.Controls.Add(this.label4);
@@ -798,6 +860,8 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -865,5 +929,10 @@
         private System.Windows.Forms.Label label24;
         public System.Windows.Forms.TextBox txtLeavedays;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        public System.Windows.Forms.TextBox txtLateAmount;
+        public System.Windows.Forms.TextBox txtUndertimeAmount;
+        private System.Windows.Forms.GroupBox groupBox4;
     }
 }

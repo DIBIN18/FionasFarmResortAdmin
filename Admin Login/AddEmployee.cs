@@ -41,11 +41,17 @@ namespace Admin_Login
             dtpScheduleOut.Format = DateTimePickerFormat.Time;
             dtpScheduleOut.ShowUpDown = true;
 
+            dtpBreakPeriod.Format = DateTimePickerFormat.Time;
+            dtpBreakPeriod.ShowUpDown = true;
+
             dtpScheduleIn.Format = DateTimePickerFormat.Custom;
             dtpScheduleIn.CustomFormat = "hh:mm:ss tt";
 
             dtpScheduleOut.Format = DateTimePickerFormat.Custom;
             dtpScheduleOut.CustomFormat = "hh:mm:ss tt";
+
+            dtpBreakPeriod.Format = DateTimePickerFormat.Custom;
+            dtpBreakPeriod.CustomFormat = "hh:mm:ss tt";
         }      
 
         public void insertNewEmployeeSchedule()

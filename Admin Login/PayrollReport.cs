@@ -50,7 +50,7 @@ namespace Admin_Login
                 " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours,"+
                 " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays,"+
                 " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, "+
-                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours " +
+                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours, 0.00 as OtherDeduction " +
                 " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID"+
                 " inner join Position as C on B.PositionID = C.PositionID"+
                 " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)"+
@@ -254,13 +254,13 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime)";
+            string query = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime,OtherDeduction)";
             SqlCommand command = new SqlCommand(query + getQuery(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
-            InserDeductionTable();
+
         }
-        public void InserDeductionTable()
+        public void InsertDeductionTable()
         {
             string systemdate = "";
             string dbsdate = "";
@@ -283,7 +283,7 @@ namespace Admin_Login
             }
 
             string query2 = "insert into Deductions (EmployeeID,SSSContribution,PagIbigContribution,PhilHealthContribution,OtherDeduction,TotalDeductions,PayrollCoveredDate)" +
-                            " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, 0 , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
+                            " select A.EmployeeID, A.SSSContribution, A.PAGIBIGContribution, A.PHILHEALTHContribution, A.OtherDeduction , A.SSSContribution + A.PAGIBIGContribution + A.PHILHEALTHContribution,'" + dtp_From.Text + " - " + dtp_To.Text + "' from PayrollReport as A ";
             SqlCommand cmd = new SqlCommand(query2, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
@@ -306,6 +306,8 @@ namespace Admin_Login
             DialogResult dialogResult = MessageBox.Show("Export as Excel file?", "PayrollReport", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                InsertDeductionTable();
+                sssclass.UpdateOtherDeduction();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
