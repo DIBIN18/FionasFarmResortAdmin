@@ -19,7 +19,9 @@ namespace Admin_Login
         string employee_id = "", schedule_in = "", schedule_out = "";
         string EDIT_employee_id = "", EDIT_time_in = "", EDIT_time_out = "", Attendance_ID = "";
 
-        
+        int grace_minutes = 0;
+        bool grace_on = false;
+
         public AddAttendance()
         {
             InitializeComponent();
@@ -268,9 +270,16 @@ namespace Admin_Login
                 mins_late = 480;
             }
 
-            if (mins_late < 0)
+            if (mins_late < 0 || mins_late <= 10)
             {
+                grace_minutes = mins_late;
+                grace_on = true;
                 mins_late= 0;
+            }
+            else
+            {
+                grace_on= false;
+                grace_minutes = mins_late + 1;
             }
 
             return mins_late;
@@ -305,6 +314,11 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
@@ -333,6 +347,11 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -363,6 +382,11 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
@@ -391,6 +415,11 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -421,6 +450,11 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
@@ -449,6 +483,11 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -487,7 +526,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
             else if (sched_in_24 < time_in_24 && sched_out_24 <= time_out_24)
             {
@@ -501,7 +547,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
             else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
             {
@@ -516,7 +569,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
             else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
             {
@@ -525,7 +585,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
             else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
             {
@@ -540,7 +607,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
             else
             {
@@ -555,7 +629,14 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                return Convert.ToInt32(time.Minute);
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
             }
         }
 
