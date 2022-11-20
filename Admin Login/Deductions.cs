@@ -164,7 +164,7 @@ namespace Admin_Login
                         dtp_To.Value = dtp_From.Value.AddDays(14);
                     }
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ dtp_To.Text = DateTime.Now.ToString(); dtp_From.Text = DateTime.Now.ToString(); }
                 sssclass.dateFrom = dtp_From.Text;
                 sssclass.dateTo = dtp_To.Text;
                 SqlConnection conn = new SqlConnection(login.connectionString);
@@ -281,19 +281,6 @@ namespace Admin_Login
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        public string getQuery()
-        {
-            string command = "select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
-                " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
-                " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
-                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, " +
-                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours,0.00 as OtherDeduction " +
-                " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
-                " inner join Position as C on B.PositionID = C.PositionID" +
-                " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
-                " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate";
-            return command;
-        }
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -305,8 +292,7 @@ namespace Admin_Login
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string insert = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime,OtherDeduction ) ";
-            SqlCommand command = new SqlCommand(insert + getQuery(), connection);
+            SqlCommand command = new SqlCommand(sssclass.ComputeGrossPay(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
         }

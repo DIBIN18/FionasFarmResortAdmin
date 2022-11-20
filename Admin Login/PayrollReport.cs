@@ -42,21 +42,7 @@ namespace Admin_Login
                 tb_Search.Text = " Search";
                 tb_Search.ForeColor = Color.Silver;
             }
-        }
-        
-        public string getQuery()
-        {
-            string command = "select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours,"+
-                " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours,"+
-                " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays,"+
-                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, "+
-                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours, 0.00 as OtherDeduction " +
-                " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID"+
-                " inner join Position as C on B.PositionID = C.PositionID"+
-                " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100)"+
-                " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate";
-            return command;
-        }
+        }      
         private void dtp_From_ValueChanged(object sender, EventArgs e)
         {
             dgvDatechangeLoad();
@@ -252,10 +238,11 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
+            sssclass.dateFrom = dtp_From.Text;
+            sssclass.dateTo = dtp_To.Text;
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            string query = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime,OtherDeduction)";
-            SqlCommand command = new SqlCommand(query + getQuery(), connection);
+            SqlCommand command = new SqlCommand(sssclass.ComputeGrossPay(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
 

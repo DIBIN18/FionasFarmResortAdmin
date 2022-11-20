@@ -15,6 +15,20 @@ namespace Admin_Login
         public DataTable datatable = new DataTable();
         public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo, EmployeeIDComp;
         double getGrossPay = 0;
+        public string ComputeGrossPay()
+        {
+            string query = "insert into PayrollReport " +
+                           "select A.EmployeeID, EmployeeFullname, PositionName, C.BasicRate, sum(A.Hours)+(sum(A.Minutes)/60) as TotalHours, " +
+                           "(sum(A.Minutes)-(sum(A.Minutes)/60)*60) as Minutes,(sum(A.OT_Hours)*C.BasicRate)*1.30 as OTPay, ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) as LegalHolidayPay, " +
+                           "((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60) as SpecialHolidayPay, count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays, " +
+                           "((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30) as GrossPay, " +
+                           "sum(A.Late_Minutes) as MinutesLate, (sum(Undertime_Hours)*60)+sum(Undertime_Minutes) as MinutesUnderTime, 0,0,0,0,0,0,' ' " +
+                           "from AttendanceRecord as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID " +
+                           "inner join Position as C on A.PositionID = C.PositionID " +
+                           "where A.Date Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) " +
+                           "group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate ";
+            return query;
+        }
         public void getTAX()
         {
             //-------------------------------
@@ -171,9 +185,9 @@ namespace Admin_Login
                         " SELECT @i = (count(A.EmployeeID)*8)*B.BasicRate from LeavePay as A join EmployeeInfo as C on A.EmployeeID = C.EmployeeID left join Position as B on C.PositionID = B.PositionID " +
                         "where Date between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) and A.EmployeeID =" + EmployeeIDComp +
                         "group by B.BasicRate " +
-                        " select Coalesce (@i + (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)), " +
-                        " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30))) " +
-                        " from AttendanceSheet as A inner join Position as C on A.PositionID = C.PositionID where EmployeeID = " + EmployeeIDComp +
+                        " select Coalesce (@i + ((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30), " +
+                        " ((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30)) " +
+                        " from AttendanceRecord as A inner join Position as C on A.PositionID = C.PositionID where EmployeeID = " + EmployeeIDComp +
                         " and Date between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) group by C.BasicRate";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable data = new DataTable();
@@ -208,7 +222,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, BasicRate * (TotalHours - OverTimeHours) from PayrollReport";
+                string query = "select EmployeeID, (BasicRate * TotalHours) + ((BasicRate/60)*Minutes) from PayrollReport ";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -242,7 +256,7 @@ namespace Admin_Login
                     }
                 }
             }
-                
+
         }
         public void getSSSRange()
         {
@@ -252,7 +266,7 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, BasicRate * coalesce(((TotalHours-OverTimeHours)+(PaidLeaveDays*8)), TotalHours) from PayrollReport";
+                string query = "select EmployeeID, (BasicRate * TotalHours) + ((BasicRate/60)*Minutes) from PayrollReport ";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
