@@ -25,12 +25,32 @@ namespace Admin_Login
         string TitleExtension;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
-
-        private void label14_Click(object sender, EventArgs e)
+        private void btn_Schedules_Click(object sender, EventArgs e)
+        {
+            Text = TitleExtension = "Fiona's Farm and Resort - Schedules";
+            TitleLabel.Text = TitleExtension;
+            Schedules schedules = new Schedules
+            {
+                TopLevel = false
+            };
+            pnl_Content.Controls.Add(schedules);
+            schedules.BringToFront();
+            schedules.Show();
+            lbl_Schedules.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+        }
+        private void btn_Minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
         protected override CreateParams CreateParams
@@ -48,7 +68,6 @@ namespace Admin_Login
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
-            t_Highlighter.Start();
             bool istrue = true;
            
             SqlConnection con = new SqlConnection(login.connectionString);
@@ -67,8 +86,8 @@ namespace Admin_Login
             string Settings = dataTable.Rows[0][12].ToString();
             if (name == dataTable.Rows[0][1].ToString())
             {
-                label3.Enabled = false;
-                label1.Enabled = false;
+                lbl_EmployeeList.Enabled = false;
+                lbl_Dashboard.Enabled = false;
                 pictureBox3.Enabled = false;
                 pictureBox7.Enabled = false;
                 pictureBox9.Enabled = false;
@@ -76,117 +95,117 @@ namespace Admin_Login
                 pictureBox13.Enabled = false;
                 pictureBox15.Enabled = false;
                 pictureBox1.Enabled = false;
-                label4.Enabled = false;
-                label5.Enabled = false;
-                label7.Enabled = false;
-                label8.Enabled = false;
-                label9.Enabled = false;
-                label13.Enabled = false;
-                label10.Enabled = false; //settings
+                lbl_Leave.Enabled = false;
+                lbl_DepartmentAndPosition.Enabled = false;
+                lbl_Deductions.Enabled = false;
+                lbl_AttendanceRecord.Enabled = false;
+                lbl_PayrollReport.Enabled = false;
+                lbl_HolidaySettings.Enabled = false;
+                lbl_Settings.Enabled = false; //settings
                 //DASHBOARD
                 if (dashboard.ToString() == istrue.ToString())
                 {
-                    label1.Enabled = true;
+                    lbl_Dashboard.Enabled = true;
                     pictureBox3.Enabled = true;
                 }
                 else
                 {
-                    label1.Enabled = false;
+                    lbl_Dashboard.Enabled = false;
                     pictureBox3.Enabled = false;
                 }
                 //EmployeeList
                 if (EmployeeList.ToString() == istrue.ToString())
                 {
-                    label3.Enabled = true;
+                    lbl_EmployeeList.Enabled = true;
                     pictureBox5.Enabled = true;
                 }
                 else
                 {
-                    label3.Enabled = false;
+                    lbl_EmployeeList.Enabled = false;
                     pictureBox5.Enabled = false;
                 }
                 //Leave
                 if (Leave.ToString() == istrue.ToString())
                 {
-                    label4.Enabled = true;
+                    lbl_Leave.Enabled = true;
                     pictureBox7.Enabled = true;
                 }
                 else
                 {
-                    label4.Enabled = false;
+                    lbl_Leave.Enabled = false;
                     pictureBox7.Enabled = false;
                 }
                 //DepartmentPosition
                 if (DepartmentAndPosition.ToString() == istrue.ToString())
                 {
-                    label5.Enabled = true;
+                    lbl_DepartmentAndPosition.Enabled = true;
                     pictureBox9.Enabled = true;
                 }
                 else
                 {
-                    label5.Enabled = false;
+                    lbl_DepartmentAndPosition.Enabled = false;
                     pictureBox9.Enabled = false;
                 }
                 //Deductions
                 if (Deductions.ToString() == istrue.ToString())
                 {
-                    label7.Enabled = true;
+                    lbl_Deductions.Enabled = true;
                     pictureBox11.Enabled = true;
                 }
                 else
                 {
 
-                    label7.Enabled = false;
+                    lbl_Deductions.Enabled = false;
                     pictureBox11.Enabled = false;
                 }
                 //AttendanceRecord
                 if (AttendanceRecord.ToString() == istrue.ToString())
                 {
-                    label8.Enabled = true;
+                    lbl_AttendanceRecord.Enabled = true;
                  
                 }
                 else
                 {
 
-                    label8.Enabled = false;
+                    lbl_AttendanceRecord.Enabled = false;
                 
                 }
                 //PayrolLReport
                 if (PayrollReport.ToString() == istrue.ToString())
                 {
-                    label9.Enabled = true;
+                    lbl_PayrollReport.Enabled = true;
                     pictureBox15.Enabled = true;
                 }
                 else
                 {
 
-                    label9.Enabled = false;
+                    lbl_PayrollReport.Enabled = false;
                     pictureBox15.Enabled = false;
 
                 }
                 //HolidaySetting
                 if (HolidaySetting.ToString() == istrue.ToString())
                 {
-                    label13.Enabled = true;
+                    lbl_HolidaySettings.Enabled = true;
                     pictureBox1.Enabled = true;
                 }
                 else
                 {
 
-                    label13.Enabled = false;
+                    lbl_HolidaySettings.Enabled = false;
                     pictureBox1.Enabled = false;
 
                 }
                 //Setting
                 if (Settings.ToString() == istrue.ToString())
                 {
-                    label10.Enabled = true;
+                    lbl_Settings.Enabled = true;
                     
                 }
                 else
                 {
 
-                    label10.Enabled = false;
+                    lbl_Settings.Enabled = false;
                 }
             }
 
@@ -208,6 +227,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(dashboard);
             dashboard.BringToFront();
             dashboard.Show();
+            lbl_Dashboard.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_EmployeeList_Click(object sender, EventArgs e)
         {
@@ -220,6 +249,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(employeelist);
             employeelist.BringToFront();
             employeelist.Show();
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_Deductions_Click(object sender, EventArgs e)
         {
@@ -232,6 +271,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(deductions);
             deductions.BringToFront();
             deductions.Show();
+            lbl_Deductions.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_AttendanceRecord_Click(object sender, EventArgs e)
         {
@@ -244,6 +293,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(attendancerecord);
             attendancerecord.BringToFront();
             attendancerecord.Show();
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_PayrollReport_Click(object sender, EventArgs e)
         {
@@ -257,6 +316,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(payrollreport);
             payrollreport.BringToFront();
             payrollreport.Show();
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_Settings_Click(object sender, EventArgs e)
         {
@@ -269,6 +338,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(settings);
             settings.BringToFront();
             settings.Show();
+            lbl_Settings.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         public void PayrollReport_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom)
         {
@@ -470,6 +549,14 @@ namespace Admin_Login
                 appliedLeaveList.BringToFront();
                 appliedLeaveList.Show();
             }
+            else if(Text == "Fiona's Farm and Resort - Leave")
+            {
+                Btn_Leave_Click(sender, e);
+            }
+            else if (Text == "Fiona's Farm and Resort - Deductions")
+            {
+                Btn_Deductions_Click(sender, e);
+            }
             else if (Text == "Fiona's Farm and Resort - Payroll Report")
             {
                 Btn_PayrollReport_Click(sender, e);
@@ -487,151 +574,6 @@ namespace Admin_Login
                 Btn_Dashboard_Click(sender, e);
             }
         }
-        private void btn_Loan_Click(object sender, EventArgs e)
-        {
-            /*Text = TitleExtension = "Fiona's Farm and Resort - Loan";
-            TitleLabel.Text = TitleExtension;
-            Loan loan = new Loan
-            {
-                TopLevel = false
-            };
-            pnl_Content.Controls.Add(loan);
-            loan.BringToFront();
-            loan.Show();*/
-        }
-        private void t_Highlighter_Tick(object sender, EventArgs e)
-        {
-            if (this.Text == "Fiona's Farm and Resort - Employee List")
-            {
-                label3.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Leave")
-            {
-                label4.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Department and Position")
-            {
-                label5.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Deductions")
-            {
-                label7.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Attendance Record")
-            {
-                label8.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Payroll Report")
-            {
-                label9.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Settings")
-            {
-                label10.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Dashboard")
-            {
-                label1.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label3.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            else if (this.Text == "Fiona's Farm and Resort - Holiday Settings")
-            {
-                label13.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                //label14.Font = new Font("Century Gothic", 14);
-            }
-            /*else if (this.Text == "Fiona's Farm and Resort - Loan")
-            {
-                label14.Font = new Font("Century Gothic", 14, FontStyle.Bold);
-                label1.Font = new Font("Century Gothic", 14);
-                label3.Font = new Font("Century Gothic", 14);
-                label4.Font = new Font("Century Gothic", 14);
-                label5.Font = new Font("Century Gothic", 14);
-                label7.Font = new Font("Century Gothic", 14);
-                label8.Font = new Font("Century Gothic", 14);
-                label9.Font = new Font("Century Gothic", 14);
-                label10.Font = new Font("Century Gothic", 14);
-                label13.Font = new Font("Century Gothic", 14);
-            }*/
-        }
         private void Btn_Leave_Click(object sender, EventArgs e)
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Leave";
@@ -643,6 +585,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(leave);
             leave.BringToFront();
             leave.Show();
+            lbl_Leave.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void Btn_DepartmentAndPosition_Click(object sender, EventArgs e)
         {
@@ -655,6 +607,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(departmentandposition);
             departmentandposition.BringToFront();
             departmentandposition.Show();
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
         private void btn_HolidaySettings_Click(object sender, EventArgs e)
         {
@@ -667,6 +629,16 @@ namespace Admin_Login
             pnl_Content.Controls.Add(holidaysettings);
             holidaysettings.BringToFront();
             holidaysettings.Show();
+            lbl_HolidaySettings.Font = new Font("Century Gothic", 14, FontStyle.Bold);
+            lbl_Dashboard.Font = new Font("Century Gothic", 14);
+            lbl_EmployeeList.Font = new Font("Century Gothic", 14);
+            lbl_Leave.Font = new Font("Century Gothic", 14);
+            lbl_DepartmentAndPosition.Font = new Font("Century Gothic", 14);
+            lbl_Deductions.Font = new Font("Century Gothic", 14);
+            lbl_AttendanceRecord.Font = new Font("Century Gothic", 14);
+            lbl_PayrollReport.Font = new Font("Century Gothic", 14);
+            lbl_Settings.Font = new Font("Century Gothic", 14);
+            lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
     }
 }

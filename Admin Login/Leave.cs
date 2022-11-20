@@ -271,7 +271,7 @@ namespace Admin_Login
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        public void btnCancel_Click(object sender, EventArgs e)
         {
             txtEmployeeID.Text = "";
             txtEmployeeName.Text = "";
@@ -291,7 +291,6 @@ namespace Admin_Login
             txtDepartment.Enabled = false;
             //txtSchedule.Enabled = false;
         }
-
         private void rtxtReason_TextChanged(object sender, EventArgs e)
         {
             if (rtxtReason.Text == "")
