@@ -21,10 +21,12 @@ namespace Admin_Login
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            dgvUsers.ReadOnly = false;
+            btnSave.Visible = false;
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT User_, Username_ FROM Users";
+                string query = "SELECT User_, Username_,DashBoard,EmployeeList,Leave,DepartmentPosition,Deductions,AttendanceRecord,PayrollReport,HolidaySetting,Settings FROM Users";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -82,6 +84,49 @@ namespace Admin_Login
         {
             AddNewUser addNewUser = new AddNewUser();
             addNewUser.ShowDialog();
+        }
+
+        private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)//edit
+        {
+            dgvUsers.ReadOnly = false;
+            btnEdit.Visible = false;
+            btnSave.Visible = true;
+            Login login = new Login();
+         
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            btnSave.Visible = false;
+            btnEdit.Visible = true;
+            dgvUsers.ReadOnly = true;
+            using (SqlConnection con = new SqlConnection(login.connectionString))
+            {
+                for(int i = 0; i < dgvUsers.Rows.Count; i++)
+                {
+                    con.Open();
+                    SqlCommand command = new SqlCommand("Update Users SET DashBoard=@DashBoard,EmployeeList=@EmployeeList,Leave=@Leave,DepartmentPosition=@DepartmentPosition,Deductions=@Deductions,AttendanceRecord=@AttendanceRecord,PayrollReport=@PayrollReport,HolidaySetting=@HolidaySetting,Settings=@Settings", con);
+                    command.Parameters.AddWithValue("@DashBoard", dgvUsers.Rows[i].Cells[2].Value);
+                    command.Parameters.AddWithValue("@EmployeeList", dgvUsers.Rows[i].Cells[3].Value);
+                    command.Parameters.AddWithValue("@Leave", dgvUsers.Rows[i].Cells[4].Value);
+                    command.Parameters.AddWithValue("@DepartmentPosition", dgvUsers.Rows[i].Cells[5].Value);
+                    command.Parameters.AddWithValue("@Deductions", dgvUsers.Rows[i].Cells[6].Value);
+                    command.Parameters.AddWithValue("@AttendanceRecord", dgvUsers.Rows[i].Cells[7].Value);
+                    command.Parameters.AddWithValue("@PayrollReport", dgvUsers.Rows[i].Cells[8].Value);
+                    command.Parameters.AddWithValue("@HolidaySetting", dgvUsers.Rows[i].Cells[9].Value);
+                    command.Parameters.AddWithValue("@Settings", dgvUsers.Rows[i].Cells[10].Value);
+                    command.ExecuteNonQuery();
+                    con.Close();
+
+                }
+                MessageBox.Show("Update Succesful!");
+            }
         }
     }
 }

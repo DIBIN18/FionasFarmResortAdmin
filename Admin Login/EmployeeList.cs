@@ -17,6 +17,12 @@ namespace Admin_Login
         EmployeeProfile ep = new EmployeeProfile();
         static string employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact,
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits;
+
+        private void dgv_EmployeeList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         public EmployeeList()
         {
             InitializeComponent();
