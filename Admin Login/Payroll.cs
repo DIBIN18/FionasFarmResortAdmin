@@ -114,75 +114,7 @@ namespace Admin_Login
                 adapter.Fill(data);
                 try
                 {                   
-                    double regularhrs = Convert.ToDouble(data.Rows[0][4].ToString());
-                    double regulaypay = regularhrs * Convert.ToDouble(data.Rows[0][3].ToString());
-                    double overtimepay = Convert.ToDouble(data.Rows[0][5]) * (Convert.ToDouble(data.Rows[0][3]) * 1.30);
-                    double regularholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][6])) ;
-                    double specialholidaypay = (Convert.ToDouble(data.Rows[0][3]) * Convert.ToDouble(data.Rows[0][7])) * 0.30;                                      
-                    double tax = Convert.ToDouble(data.Rows[0][16]);
-                    double netpay = Convert.ToDouble(data.Rows[0][18]);
-                    double grosspay = Convert.ToDouble(data.Rows[0][10]);
-                    double otherdeduction = Convert.ToDouble(data.Rows[0][17]);
-
-
-                    txtRegularHours.Text = regularhrs.ToString();
-                    txtOvertimeMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][5]) * 60);
-                    txtOvertimePay.Text = overtimepay.ToString("n2");
-                    txtRegularPay.Text = regulaypay.ToString("n2");
-                    txtRegularHoliday.Text = data.Rows[0][6].ToString();
-                    txtRHolidayPay.Text = regularholidaypay.ToString("n2");
-                    txtSpecialHoliday.Text = data.Rows[0][7].ToString();
-                    txtSpHolidayPay.Text = specialholidaypay.ToString("n2");
-                    txtGrossPay.Text = grosspay.ToString("n2");
-                    txtOtherDeductions.Text = otherdeduction.ToString("n2");
-                    if (otherdeduction == 0 || double.IsNaN(Convert.ToDouble(otherdeduction)))
-                    {
-                        txtOtherDeductions.Text = "0.00";
-                    }
-                    try
-                    {
-                        double leavepay = (Convert.ToDouble(data.Rows[0][9]) * 8) * Convert.ToDouble(data.Rows[0][3]);
-                        if (string.IsNullOrEmpty(txtLeavedays.Text))
-                        {
-                            txtLeavedays.Text = "0";
-                            txtLeavePay.Text = "0.00";
-                        }
-                        else
-                        {
-                            txtLeavedays.Text = data.Rows[0][9].ToString();
-                            txtLeavePay.Text = leavepay.ToString("n2");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        txtLeavedays.Text = "0";
-                        txtLeavePay.Text = "0.00";
-                    }
-
-                    try
-                    {
-                        double sss = Convert.ToDouble(data.Rows[0][13]);
-                        txtSSS.Text = sss.ToString("n2");
-                        txtTotalDeduction.Text = Convert.ToString(sss + tax + Convert.ToDouble(data.Rows[0][17]));
-                    }
-                    catch (Exception ex) { txtSSS.Text = "0.00"; }
-                    try
-                    {
-                        double pagibig = Convert.ToDouble(data.Rows[0][14]);
-                        txtPagIbig.Text = pagibig.ToString("n2");
-                        double philhealth = Convert.ToDouble(data.Rows[0][15]);
-                        txtPhilHealth.Text = philhealth.ToString("n2");
-                        double totaldeduc = pagibig + philhealth + tax + Convert.ToDouble(data.Rows[0][17]);
-                        txtTotalDeduction.Text = totaldeduc.ToString("n2");
-                    }
-                    catch (Exception ex) { txtPagIbig.Text = "0.00"; txtPhilHealth.Text = "0.00"; }
-                    txtTardinessMins.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][11]) * 60);
-                    txtLateAmount.Text = Convert.ToString(Convert.ToDouble(txtTardinessMins.Text) * (Convert.ToDouble(data.Rows[0][3].ToString())/60));
-                    txtUnderTimeMin.Text = Convert.ToString(Convert.ToInt32(data.Rows[0][12]) * 60);
-                    txtUndertimeAmount.Text = Convert.ToString(Convert.ToDouble(txtUnderTimeMin.Text) * (Convert.ToDouble(data.Rows[0][3].ToString()) / 60));
-                    txtTaxAmount.Text = tax.ToString("n2");
-
-                    txtNetPay.Text = netpay.ToString("n2");
+                   
                 }
                 catch (Exception ex)
                 {
@@ -209,10 +141,11 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
-            string insert = "Insert into PayrollReport (EmployeeID,EmployeeName,Position,BasicRate,TotalHours,OverTimeHours,LegalHollidayHours,SpecialHollidayHours,TotalWorkDays,PaidLeaveDays,GrossSalary,TotalLate,TotalUnderTime,OtherDeduction ) ";
+            sssclass.dateFrom = dtpI_From.Text;
+            sssclass.dateTo = dtpI_To.Text;
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
-            SqlCommand command = new SqlCommand(insert + getQuery(), connection);
+            SqlCommand command = new SqlCommand(sssclass.ComputeGrossPay(), connection);
             command.ExecuteNonQuery();
             sssclass.getSSSRange();
         }
@@ -223,19 +156,7 @@ namespace Admin_Login
             SqlCommand command = new SqlCommand("delete from PayrollReport", connection);
             command.ExecuteNonQuery();
         }
-        public string getQuery()
-        {
-            string command = "select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
-                " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
-                " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
-                " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay, " +
-                " sum(Late) as TotalLate, sum(UndertimeHours) as TotalUnderTimeHours,0.00 as OtherDeduction " +
-                " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
-                " inner join Position as C on B.PositionID = C.PositionID" +
-                " where Date Between CONVERT(datetime, '" + dtpI_From.Text + "', 100) and CONVERT(datetime, '" + dtpI_To.Text + "', 100)" +
-                " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate";
-            return command;
-        }
+
         private void cbSSS_CheckedChanged(object sender, EventArgs e)
         {
             if (cbSSS.Checked)
