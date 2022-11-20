@@ -28,29 +28,6 @@ namespace Admin_Login
         }
 
         // Attendance Constaraints (not implemented yet)
-        public Boolean checkAllowedOT(string emp_id)
-        {
-            string query2 = "SELECT AllowedOvertime FROM EmployeeInfo WHERE EmployeeID=" + emp_id;
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            using (SqlCommand command = new SqlCommand(query2, connection))
-            {
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        return reader.GetBoolean(0);
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-                }
-            }
-        }
-
         public Boolean checkAllowedDay(string emp_id)
         {
             string sDate = dtp_Date.Text.ToString();
@@ -249,15 +226,6 @@ namespace Admin_Login
             }
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            DateTime sched_in_24 = DateTime.Parse("08:00");
-            DateTime sched_out_24 = DateTime.Parse("17:00");
-            DateTime time_in_24 = DateTime.Parse(dtpTimeInAdd.Text.ToString().ToUpper());
-            DateTime time_out_24 = DateTime.Parse(dtpTimeOutAdd.Text.ToString().ToUpper());
-
-        }
-
         public int getMinutesLate(string schedIn, string timeIn)
         {
             TimeSpan ts = new TimeSpan();
@@ -322,7 +290,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -356,7 +323,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -390,7 +356,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -424,7 +389,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -458,7 +422,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -492,7 +455,6 @@ namespace Admin_Login
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
-                    Console.WriteLine("Break Triggered");
                     hour = hour - 1;
                 }
 
@@ -714,9 +676,11 @@ namespace Admin_Login
             return Convert.ToInt32(time.Minute);
         }
 
-        public string getEmployeeBreakTime(string employee_id)
+        public string getEmployeeBreakTime(string emp_id)
         {
-            string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + employee_id;
+            ////Console.WriteLine(employee_id);
+            string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+ 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query2, connection))
             {
@@ -785,139 +749,6 @@ namespace Admin_Login
                 }
             }
         }
-
-
-
-
-        // ATTENDANCE DATA
-        // add weekdays allowed constraints
-        public string getLate(string schedIn, string schedOut, string timeIn)
-        {
-            TimeSpan start = TimeSpan.Parse(schedIn);
-            TimeSpan end = TimeSpan.Parse(schedOut);
-            TimeSpan time_in = TimeSpan.Parse(timeIn);
-
-            if ((time_in > start) && (time_in < end))
-            {
-                return "Yes";
-            }
-            else
-            {
-                return "No";
-            }
-        }
-
-        public string getTotalHours(string timeIn, string timeOut)
-        {
-            TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
-
-                   // 24 Hour format to decimal
-            return Convert.ToDecimal(ts.TotalHours).ToString("#.000");
-        }
-
-        public string getRegularHours(string timeIn, string timeOut)
-        {
-            TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
-
-            // 24 Hour format to decimal
-            decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
-
-            // Trigger Employee Break
-            string break_time = getEmployeeBreakTime(employee_id);
-
-            DateTime gtimein = DateTime.ParseExact(timeIn,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan Btimein = gtimein.TimeOfDay;
-
-            DateTime gsout = DateTime.ParseExact(timeOut,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan Bsout = gsout.TimeOfDay;
-
-            DateTime gBreak = DateTime.ParseExact(break_time,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan bBreak = gBreak.TimeOfDay;
-
-            if ((bBreak > Btimein) && (bBreak < Bsout))
-            {
-                reg_hours = reg_hours - 1.00m;
-            }
-
-            // Limit Regular Hours to 8.00
-            decimal max_reg_hours = 08.00m;
-
-            if (reg_hours >= max_reg_hours)
-            {
-                reg_hours = Convert.ToDecimal("08.00");
-            }
-
-            return reg_hours.ToString();
-        }
-
-        public string getOverTimeHours(string schedOut, string timeOut)
-        {
-            TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(schedOut));
-
-            // 24 Hour format to decimal
-            decimal ot_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
-
-            if (ot_hours >= Convert.ToDecimal("04.00"))
-            {
-                ot_hours = Convert.ToDecimal("04.00");
-
-                if (ot_hours < Convert.ToDecimal("0.00"))
-                {
-                    ot_hours = Convert.ToDecimal("0.00");
-                }
-            }
-
-            return ot_hours.ToString();
-        }
-
-        public string getUndertimeHours(string schedOut, string timeOut)
-        {
-            TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(schedOut).Subtract(DateTime.Parse(timeOut));
-
-            // 24 Hour format to decimal
-            decimal u_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
-
-            return u_hours.ToString();
-        }
-
-        public decimal getBasicRate(string employee_id)
-        {
-            string query2 =
-                "SELECT BasicRate FROM Position " +
-                "WHERE PositionID = " +
-                "(SELECT PositionID " +
-                "FROM EmployeeInfo " +
-                "WHERE EmployeeID=" + employee_id + ")";
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            using (SqlCommand command = new SqlCommand(query2, connection))
-            {
-                connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        return reader.GetDecimal(0);
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-
-                }
-            }
-        }
-
-
-
 
         public void Update()
         {
@@ -1169,33 +1000,32 @@ namespace Admin_Login
         public void RefreshEditDgvTable()
         {
             //Load Edit Attendance DGV
-            dtpEditTimeIn.Format = DateTimePickerFormat.Time;
-            dtpEditTimeIn.ShowUpDown = true;
+            dtpTimeInEdit.Format = DateTimePickerFormat.Time;
+            dtpTimeInEdit.ShowUpDown = true;
 
-            dtpEditTimeOut.Format = DateTimePickerFormat.Time;
-            dtpEditTimeOut.ShowUpDown = true;
+            dtpTimeOutEdit.Format = DateTimePickerFormat.Time;
+            dtpTimeOutEdit.ShowUpDown = true;
 
-            dtpEditTimeIn.Format = DateTimePickerFormat.Custom;
-            dtpEditTimeIn.CustomFormat = "hh:mm:ss tt";
+            dtpTimeInEdit.Format = DateTimePickerFormat.Custom;
+            dtpTimeInEdit.CustomFormat = "hh:mm:ss tt";
 
-            dtpEditTimeOut.Format = DateTimePickerFormat.Custom;
-            dtpEditTimeOut.CustomFormat = "hh:mm:ss tt";
+            dtpTimeOutEdit.Format = DateTimePickerFormat.Custom;
+            dtpTimeOutEdit.CustomFormat = "hh:mm:ss tt";
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
                 string query =
                     "SELECT " +
-                    "AttendanceSheet.AttendanceID, " +
+                    "AttendanceRecord.AttendanceID, " +
                     "EmployeeInfo.EmployeeID, " +
                     "EmployeeInfo.EmployeeFullName, " +
-                    "AttendanceSheet.TimeIn, " +
-                    "AttendanceSheet.TimeOut, " +
-                    "AttendanceSheet.Date " +
-                    "FROM AttendanceSheet " +
+                    "AttendanceRecord.Date, " +
+                    "AttendanceRecord.TimeIn, " +
+                    "AttendanceRecord.TimeOut " +
+                    "FROM Attendancerecord " +
                     "INNER JOIN EmployeeInfo " +
-                    "ON AttendanceSheet.EmployeeID = EmployeeInfo.EmployeeID " +
-                    "WHERE Status='Active'";
+                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID ORDER BY Date";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -1218,177 +1048,613 @@ namespace Admin_Login
             Dispose();
         }
 
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            DateTime sched_in_24 = DateTime.Parse("08:00");
+            DateTime sched_out_24 = DateTime.Parse("17:00");
+            DateTime time_in_24 = DateTime.Parse(dtpTimeInAdd.Text.ToString().ToUpper());
+            DateTime time_out_24 = DateTime.Parse(dtpTimeOutAdd.Text.ToString().ToUpper());
+
+            Console.WriteLine(GetEmployeeSchedIn(EDIT_employee_id));
+            Console.WriteLine(GetEmployeeSchedOut(EDIT_employee_id));
+        }
+
         private void dgvEditAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dtpEditTimeIn.Enabled = true;
-            dtpEditTimeOut.Enabled = true;
-            dtpEditDate.Enabled = true;
-            cbEditAllowOT.Enabled = true;   
+            dtpTimeInEdit.Enabled = true;
+            dtpTimeOutEdit.Enabled = true;
+            dtp_EditDate.Enabled = true;
+            cb_EditAllowOT.Enabled = true;   
 
             Attendance_ID = dgvEditAttendance.Rows[e.RowIndex].Cells[0].Value.ToString();
             EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
-            lblEditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
-            EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString();
-            EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
-            lblEditBreakPeriod.Text = getEmployeeBreakTime(EDIT_employee_id);
+            lbl_EditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
+            EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+            EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
+            lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
 
-            dtpEditTimeIn.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
-            dtpEditTimeOut.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
-            dtpEditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString());
-        }
+            dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+            dtpTimeOutEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString());
+            dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
 
-        public string getRegularHoursEdit(string timeIn, string timeOut)
-        {
-            TimeSpan ts = new TimeSpan();
-            ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(timeIn));
-
-            // 24 Hour format to decimal
-            decimal reg_hours = Convert.ToDecimal(Convert.ToDecimal(ts.TotalHours).ToString("#.000"));
-
-            // Trigger Employee Break
-            string break_time = getEmployeeBreakTime(EDIT_employee_id);
-
-            DateTime gtimein = DateTime.ParseExact(timeIn,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan Btimein = gtimein.TimeOfDay;
-
-            DateTime gsout = DateTime.ParseExact(timeOut,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan Bsout = gsout.TimeOfDay;
-
-            DateTime gBreak = DateTime.ParseExact(break_time,
-                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
-            TimeSpan bBreak = gBreak.TimeOfDay;
-
-            if ((bBreak > Btimein) && (bBreak < Bsout))
-            {
-                reg_hours = reg_hours - 1.00m;
-            }
-
-            // Limit Regular Hours to 8.00
-            decimal max_reg_hours = 08.00m;
-
-            if (reg_hours >= max_reg_hours)
-            {
-                reg_hours = Convert.ToDecimal("08.00");
-            }
-
-            return reg_hours.ToString();
+            UpdateEditMode();
         }
 
         private void cbEditAllowOT_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbEditAllowOT.Checked)
+            if (cb_EditAllowOT.Checked)
             {
                 UpdateEditMode();
             }
             else
             {
-                lblEditOTHours.Text = "0.000";
+                lbl_EditOTHours.Text = "0";
             }
         }
 
-        
+
+
+
+
+        // ADD Employee schedule here
+
+        public string GetEmployeeSchedIn(string emp_id)
+        {
+            string query2 =
+                "SELECT ScheduleIn FROM EmployeeSchedule " +
+                "WHERE EmployeeID = " + emp_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
+        public string GetEmployeeSchedOut(string emp_id)
+        {
+            string query2 =
+                "SELECT ScheduleOut FROM EmployeeSchedule " +
+                "WHERE EmployeeID = " + emp_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
+        public string GetEmployeeBreakTimeEdit(string emp_id)
+        {
+            string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+            Console.WriteLine("Emp id: " + emp_id);
+            Console.WriteLine(query2);
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "";
+                    }
+
+                }
+            }
+        }
+
+
+        // TIME VALUES EDIT MODE
+        public int GetHoursEDIT(string sched_in, string sched_out)
+        {
+            DateTime sched_in_24 = DateTime.Parse(GetEmployeeSchedIn(EDIT_employee_id));
+            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
+            DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
+
+            // Trigger Employee Break
+            string break_time = GetEmployeeBreakTimeEdit(EDIT_employee_id);
+
+            DateTime gBreak = DateTime.ParseExact(break_time,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan bBreak = gBreak.TimeOfDay;
+
+
+            if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
+            {
+                // Early time in but not early time out
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour Limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+            else if (sched_in_24 < time_in_24 && sched_out_24 <= time_out_24)
+            {
+                // Late time in but not early time out
+                string time_interval = (sched_out_24 - time_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour Limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+            else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
+            {
+                // Early time out but not late
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            {
+                // Late time in and early time out
+                string time_interval = (time_out_24 - time_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+            else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
+            {
+                // Early time in and late time out
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+            else
+            {
+                // Time in and time out are okay, limiter can be triggered
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+                int hour = Convert.ToInt32(time.Hour);
+
+                if (grace_on == true)
+                {
+                    return 8;
+                }
+
+                // Break time trigger
+                if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
+                {
+                    hour = hour - 1;
+                }
+
+                // 8 Hour limiter
+                if (hour > 8)
+                {
+                    hour = 8;
+                }
+
+                return hour;
+            }
+        }
+
+        public int GetMinutesEDIT(string sched_in, string sched_out)
+        {
+            DateTime sched_in_24 = DateTime.Parse(GetEmployeeSchedIn(EDIT_employee_id));
+            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
+            DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
+
+            if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
+            {
+                // Early time in but not early time out
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+            else if (sched_in_24 < time_in_24 && sched_out_24 <= time_out_24)
+            {
+                // Late time in but not early time out
+                string time_interval = (sched_out_24 - time_in_24).ToString();
+
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+            else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
+            {
+                // Early time out but not late
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            {
+                // Late time in and early time out
+                string time_interval = (time_out_24 - time_in_24).ToString();
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+            else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
+            {
+                // Early time in and late time out
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+            else
+            {
+                // Time in and time out are okay, limiter can be triggered
+                string time_interval = (time_out_24 - sched_in_24).ToString();
+
+                // Outside of schedule time in/out buffer
+                if (time_interval.Contains("-"))
+                {
+                    return 0;
+                }
+
+                DateTime time = DateTime.Parse(time_interval);
+
+                if (grace_minutes <= 10)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return Convert.ToInt32(time.Minute);
+                }
+            }
+        }
+
+        public int GetUndertimeHoursEDIT(string schedOut)
+        {
+            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
+
+            string time_interval = (sched_out_24 - time_out_24).ToString();
+
+            // Outside of schedule time in/out buffer
+            if (time_interval.Contains("-"))
+            {
+                return 0;
+            }
+
+            DateTime time = DateTime.Parse(time_interval);
+
+            return Convert.ToInt32(time.Hour);
+        }
+
+        public int GetUndertimeMinutesEDIT(string schedOut)
+        {
+            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
+
+            string time_interval = (sched_out_24 - time_out_24).ToString();
+
+            // Outside of schedule time in/out buffer
+            if (time_interval.Contains("-"))
+            {
+                return 0;
+            }
+
+            DateTime time = DateTime.Parse(time_interval);
+
+            return Convert.ToInt32(time.Minute);
+        }
+
         public void UpdateEditMode()
         {
-            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
+            DateTime sched_in_24 = DateTime.Parse(GetEmployeeSchedIn(EDIT_employee_id));
             DateTime sched_out_24 = DateTime.Parse(EDIT_time_out);
-            DateTime time_in_24 = DateTime.Parse(dtpEditTimeIn.Text.ToString().ToUpper());
+            DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
 
-            lblEditLate.Text =
-                getLate(
+            dtp_EditDate.Format = DateTimePickerFormat.Custom;
+            dtp_EditDate.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_EditDate.Value.ToString("MMMM dd, yyyy");
+
+            lbl_EditLateMinutes.Text =
+                getMinutesLate(
                     sched_in_24.ToString("HH:mm"),
-                    sched_out_24.ToString("HH:mm"),
                     time_in_24.ToString("HH:mm")
-                );
+                ).ToString();
 
-            lblEditTotalHours.Text =
-                getTotalHours(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+            lbl_EditHours.Text =
+                GetHoursEDIT(
+                    sched_in_24.ToString("HH:mm"),
+                    sched_out_24.ToString("HH:mm")
+                ).ToString();
 
-            lblEditRegHours.Text =
-                getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+            lbl_EditMinutes.Text =
+                GetMinutesEDIT(
+                    sched_in_24.ToString("HH:mm"),
+                    sched_out_24.ToString("HH:mm")
+                ).ToString();
 
-            if (cbEditAllowOT.Checked)
+            if (cb_EditAllowOT.Checked)
             {
-                lblEditOTHours.Text =
-                getOverTimeHours(
-                    EDIT_time_out,
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditOTHours.Text =
+                GetOTHours(
+                    GetEmployeeSchedOut(EDIT_employee_id),
+                    dtpTimeOutEdit.Text.ToString().ToUpper()
+                ).ToString();
             }
 
-            lblEditUndertimeHours.Text =
-                getUndertimeHours(
-                    EDIT_time_out,
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+            lbl_EditUhours.Text =
+                GetUndertimeHoursEDIT(sched_out_24.ToString("HH:mm")).ToString();
 
-            if (lblEditOTHours.Text.Contains("-"))
-            {
-                lblEditOTHours.Text = "0.00";
-            }
+            lbl_EditUMins.Text =
+                GetUndertimeMinutesEDIT(sched_out_24.ToString("HH:mm")).ToString();
 
-            if (lblEditUndertimeHours.Text.Contains("-"))
-            {
-                lblEditUndertimeHours.Text = "0.00";
-            }
-
-            dtpEditDate.Format = DateTimePickerFormat.Custom;
-            dtpEditDate.CustomFormat = "MMMM dd, yyyy";
-            string date = dtpEditDate.Value.ToString("MMMM dd, yyyy");
 
 
             if (CheckHoliday(date) == "Regular Holiday")
             {
-                lblEditRegHol.Text = "Yes";
-                lblEditSpecHol.Text = "No";
+                lbl_EditRegH.Text = "Yes";
+                lbl_EditSpecH.Text = "No";
 
-                lblEditRegHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditRegHHours.Text =
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditSpecHolHours.Text = "0.00";
+                lbl_EditRegHMins.Text =
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditSpecHHours.Text = "0";
+                lbl_EditSpecHMins.Text = "0";
             }
             else if (CheckHoliday(date) == "Special Non-Working Holiday")
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "Yes";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "Yes";
 
-                lblEditSpecHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditSpecHHours.Text =
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditRegHolHours.Text = "0.00";
+                lbl_EditSpecHMins.Text =
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
             }
             else if (CheckHoliday(date) == "Special Working Holiday")
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "Yes";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "Yes";
 
-                lblEditSpecHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditSpecHHours.Text =
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditRegHolHours.Text = "0.00";
+                lbl_EditSpecHMins.Text =
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
             }
             else
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "No";
-                lblEditRegHolHours.Text = "0.00";
-                lblEditSpecHolHours.Text = "0.00";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "No";
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
+                lbl_EditSpecHHours.Text = "0";
+                lbl_EditSpecHMins.Text = "0";
             }
         }
 
@@ -1408,61 +1674,70 @@ namespace Admin_Login
 
         private void dtpEditDate_ValueChanged(object sender, EventArgs e)
         {
-            dtpEditDate.Format = DateTimePickerFormat.Custom;
-            dtpEditDate.CustomFormat = "MMMM dd, yyyy";
-            string date = dtpEditDate.Value.ToString("MMMM dd, yyyy");
+            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
+            DateTime sched_out_24 = DateTime.Parse(EDIT_time_out);
+            DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
+
+            dtp_EditDate.Format = DateTimePickerFormat.Custom;
+            dtp_EditDate.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_EditDate.Value.ToString("MMMM dd, yyyy");
 
             if (CheckHoliday(date) == "Regular Holiday")
             {
-                lblEditRegHol.Text = "Yes";
-                lblEditSpecHol.Text = "No";
+                lbl_EditRegH.Text = "Yes";
+                lbl_EditSpecH.Text = "No";
 
-                lblEditRegHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditRegHHours.Text =
+                    GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditSpecHolHours.Text = "0.00";
+                lbl_EditRegHMins.Text =
+                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditSpecHHours.Text = "0";
+                lbl_EditSpecHMins.Text = "0";
             }
             else if (CheckHoliday(date) == "Special Non-Working Holiday")
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "Yes";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "Yes";
 
-                lblEditSpecHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditSpecHHours.Text =
+                        GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditRegHolHours.Text = "0.00";
+                lbl_EditSpecHMins.Text =
+                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
             }
             else if (CheckHoliday(date) == "Special Working Holiday")
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "Yes";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "Yes";
 
-                lblEditSpecHolHours.Text =
-                    getRegularHoursEdit(
-                    dtpEditTimeIn.Text.ToString().ToUpper(),
-                    dtpEditTimeOut.Text.ToString().ToUpper()
-                );
+                lbl_EditSpecHHours.Text =
+                        GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
-                lblEditRegHolHours.Text = "0.00";
+                lbl_EditSpecHMins.Text =
+                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
             }
             else
             {
-                lblEditRegHol.Text = "No";
-                lblEditSpecHol.Text = "No";
-                lblEditRegHolHours.Text = "0.00";
-                lblEditSpecHolHours.Text = "0.00";
+                lbl_EditRegH.Text = "No";
+                lbl_EditSpecH.Text = "No";
+                lbl_EditRegHHours.Text = "0";
+                lbl_EditRegHMins.Text = "0";
+                lbl_EditSpecHHours.Text = "0";
+                lbl_EditSpecHMins.Text = "0";
             }
         }
 
         private void btn_UpdateEdit_Click(object sender, EventArgs e)
         {
-            string sDate = dtpEditDate.Text.ToString();
+            string sDate = dtp_EditDate.Text.ToString();
             DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
 
             string dy = datevalue.Day.ToString();
@@ -1471,41 +1746,36 @@ namespace Admin_Login
 
             string aid = yy + mn + dy + EDIT_employee_id;
 
-            string schedIn = dtpEditTimeIn.Value.ToString("hh:mm:ss tt");
-            string schedOut = dtpEditTimeOut.Value.ToString("hh:mm:ss tt");
+            string schedIn = dtpTimeInEdit.Value.ToString("hh:mm:ss tt");
+            string schedOut = dtpTimeOutEdit.Value.ToString("hh:mm:ss tt");
 
-            DateTime sched_in_24 = DateTime.Parse(EDIT_time_in);
-            DateTime time_in_24 = DateTime.Parse(dtpEditTimeIn.Text.ToString().ToUpper());
-
-            string minutes_late = getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm")).ToString();
-            decimal RateLoss = (getBasicRate(EDIT_employee_id) / 60.00m) * getMinutesLate(sched_in_24.ToString("HH:mm"), time_in_24.ToString("HH:mm"));
-
-            if(CheckLeave(dtpEditDate.Text.ToString(), EDIT_employee_id) == false)
+            if(CheckLeave(dtp_EditDate.Text.ToString(), EDIT_employee_id) == false)
             {
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
 
                     string query =
-                        "UPDATE AttendanceSheet " +
+                        "UPDATE AttendanceRecord " +
                         "SET " +
                         "AttendanceID= " + aid + ", " +
                         "EmployeeID= " + EDIT_employee_id + ", " +
+                        "PositionID= " + getPositionID(EDIT_employee_id) + ", " +
+                        "Date= '" + dtp_EditDate.Text.ToString() + "', " +
                         "TimeIn= '" + schedIn.ToUpper() + "', " +
                         "TimeOut= '" + schedOut.ToUpper() + "', " +
-                        "Date= '" + dtpEditDate.Text.ToString() + "', " +
-                        "TotalHours= " + lblEditTotalHours.Text.ToString() + ", " +
-                        "RegularHours= " + lblEditRegHours.Text.ToString() + ", " +
-                        "OvertimeHours= " + lblEditOTHours.Text.ToString() + ", " +
-                        "Late= " + yntoboolean(lblEditLate.Text.ToString()).ToString() + ", " +
-                        "RegularHoliday= " + yntoboolean(lblEditRegHol.Text.ToString()).ToString() + ", " +
-                        "SpecialHoliday= " + yntoboolean(lblEditSpecHol.Text.ToString()).ToString() + ", " +
-                        "RegularHolidayHours= " + lblEditRegHolHours.Text.ToString() + ", " +
-                        "SpecialHolidayHours= " + lblEditSpecHolHours.Text.ToString() + ", " +
-                        "UndertimeHours= " + lblEditUndertimeHours.Text.ToString() + ", " +
-                        "PositionID= " + getPositionID(EDIT_employee_id).ToString() + ", " +
-                        "MinutesLate=" + minutes_late + ", " +
-                        "MinuteRateLoss=" + RateLoss.ToString() + " " +
+                        "Hours= " + lbl_EditHours.Text.ToString() + ", " +
+                        "Minutes= " + lbl_EditMinutes.Text.ToString() + ", " +
+                        "OT_Hours= " + lbl_EditOTHours.Text.ToString() + ", " +
+                        "Late_Minutes= " + lbl_EditLateMinutes.Text.ToString() + ", " +
+                        "Undertime_Hours= " + lbl_EditUhours.Text.ToString() + ", " +
+                        "Undertime_Minutes= " + lbl_EditUMins.Text.ToString() + ", " +
+                        "RegularHoliday= " + yntoboolean(lbl_EditRegH.Text.ToString()).ToString() + ", " +
+                        "RH_Hours= " + lbl_EditRegHHours.Text.ToString() + ", " +
+                        "RH_Minutes= " + lbl_EditRegHMins.Text.ToString() + ", " +
+                        "SpecialHoliday=" + yntoboolean(lbl_EditSpecH.Text.ToString()).ToString() + ", " +
+                        "SH_Hours=" + lbl_EditSpecHHours.Text.ToString() + ", " +
+                        "SH_Minutes=" + lbl_EditSpecHMins.Text.ToString() + " " +
                         "WHERE AttendanceID=" + Attendance_ID;
 
                     SqlCommand cmd = new SqlCommand(query, connection);
