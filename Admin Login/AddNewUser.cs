@@ -129,6 +129,14 @@ namespace Admin_Login
         {
             cmbUserName.Items.Add("HR");
             cmbUserName.Items.Add("timekeeper");
+            
+        }
+
+        private void lblCancel_Click(object sender, EventArgs e)
+        {
+            Font font = new Font(lblCancel.Font, FontStyle.Underline);
+            lblCancel.Font = font;
+            this.Close();
         }
     }
 }

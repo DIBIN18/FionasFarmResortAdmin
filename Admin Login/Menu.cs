@@ -28,7 +28,7 @@ namespace Admin_Login
 
         private void label14_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.WindowState = FormWindowState.Minimized;
         }
 
         //Dropshadow
@@ -50,7 +50,7 @@ namespace Admin_Login
             AdminName.Text = name;
             t_Highlighter.Start();
             bool istrue = true;
-            bool isFalse = false;
+           
             SqlConnection con = new SqlConnection(login.connectionString);
             SqlCommand cmd = new SqlCommand("Select * from Users Where User_ = '" + name + "'", con);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
