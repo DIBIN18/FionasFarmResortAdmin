@@ -156,7 +156,6 @@ namespace Admin_Login
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
             lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
-            
             Update();
         }
 
@@ -620,7 +619,7 @@ namespace Admin_Login
             ts = DateTime.Parse(timeOut).Subtract(DateTime.Parse(schedOut));
 
             // 24 Hour format to decimal
-            int ot_hours = Convert.ToInt32(Convert.ToInt32(ts.TotalHours));
+            int ot_hours = Convert.ToInt32(Convert.ToInt32(ts.Hours));
 
             if (ot_hours >= Convert.ToInt32("4"))
             {
@@ -678,9 +677,8 @@ namespace Admin_Login
 
         public string getEmployeeBreakTime(string emp_id)
         {
-            ////Console.WriteLine(employee_id);
             string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
- 
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query2, connection))
             {
@@ -1048,17 +1046,6 @@ namespace Admin_Login
             Dispose();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            DateTime sched_in_24 = DateTime.Parse("08:00");
-            DateTime sched_out_24 = DateTime.Parse("17:00");
-            DateTime time_in_24 = DateTime.Parse(dtpTimeInAdd.Text.ToString().ToUpper());
-            DateTime time_out_24 = DateTime.Parse(dtpTimeOutAdd.Text.ToString().ToUpper());
-
-            Console.WriteLine(GetEmployeeSchedIn(EDIT_employee_id));
-            Console.WriteLine(GetEmployeeSchedOut(EDIT_employee_id));
-        }
-
         private void dgvEditAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dtpTimeInEdit.Enabled = true;
@@ -1074,7 +1061,15 @@ namespace Admin_Login
             lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
 
             dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
-            dtpTimeOutEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString());
+
+            string timeOut = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+            if (dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString().Equals(""))
+            {
+                timeOut = "05:00:00 PM";
+            }
+
+            dtpTimeOutEdit.Value = DateTime.Parse(timeOut);
             dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
 
             UpdateEditMode();
@@ -1093,11 +1088,7 @@ namespace Admin_Login
         }
 
 
-
-
-
         // ADD Employee schedule here
-
         public string GetEmployeeSchedIn(string emp_id)
         {
             string query2 =
@@ -1150,9 +1141,9 @@ namespace Admin_Login
 
         public string GetEmployeeBreakTimeEdit(string emp_id)
         {
+            
             string query2 = "SELECT BreakPeriod FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
-            Console.WriteLine("Emp id: " + emp_id);
-            Console.WriteLine(query2);
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             using (SqlCommand command = new SqlCommand(query2, connection))
             {
@@ -1526,7 +1517,7 @@ namespace Admin_Login
 
         public int GetUndertimeHoursEDIT(string schedOut)
         {
-            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime sched_out_24 = DateTime.Parse(schedOut);
             DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
 
             string time_interval = (sched_out_24 - time_out_24).ToString();
@@ -1544,7 +1535,7 @@ namespace Admin_Login
 
         public int GetUndertimeMinutesEDIT(string schedOut)
         {
-            DateTime sched_out_24 = DateTime.Parse(GetEmployeeSchedOut(EDIT_employee_id));
+            DateTime sched_out_24 = DateTime.Parse(schedOut);
             DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
 
             string time_interval = (sched_out_24 - time_out_24).ToString();
@@ -1562,6 +1553,13 @@ namespace Admin_Login
 
         public void UpdateEditMode()
         {
+            // Time in from Python and Time out in C#
+            if (EDIT_time_out.Equals(""))
+            {
+                EDIT_time_out = "05:00:00 PM";
+            }
+
+
             DateTime sched_in_24 = DateTime.Parse(GetEmployeeSchedIn(EDIT_employee_id));
             DateTime sched_out_24 = DateTime.Parse(EDIT_time_out);
             DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
@@ -1688,10 +1686,10 @@ namespace Admin_Login
                 lbl_EditSpecH.Text = "No";
 
                 lbl_EditRegHHours.Text =
-                    GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditRegHMins.Text =
-                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditSpecHHours.Text = "0";
                 lbl_EditSpecHMins.Text = "0";
@@ -1702,10 +1700,10 @@ namespace Admin_Login
                 lbl_EditSpecH.Text = "Yes";
 
                 lbl_EditSpecHHours.Text =
-                        GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditSpecHMins.Text =
-                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditRegHHours.Text = "0";
                 lbl_EditRegHMins.Text = "0";
@@ -1716,10 +1714,10 @@ namespace Admin_Login
                 lbl_EditSpecH.Text = "Yes";
 
                 lbl_EditSpecHHours.Text =
-                        GetHours(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetHoursEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditSpecHMins.Text =
-                    GetMinutes(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
+                    GetMinutesEDIT(sched_in_24.ToString("HH:mm"), sched_out_24.ToString("HH:mm")).ToString();
 
                 lbl_EditRegHHours.Text = "0";
                 lbl_EditRegHMins.Text = "0";

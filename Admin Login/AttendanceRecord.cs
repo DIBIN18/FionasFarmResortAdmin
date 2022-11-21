@@ -45,10 +45,19 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query =
-                    "SELECT EmployeeInfo.EmployeeFullName, AttendanceSheet.* " +
-                    "FROM AttendanceSheet " +
+                    "SELECT " +
+                    "ROW_NUMBER() OVER (ORDER BY TimeIn ASC) AS Count, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "AttendanceRecord.Date, " +
+                    "AttendanceRecord.TimeIn, " +
+                    "AttendanceRecord.TimeOut, " +
+                    "AttendanceRecord.Hours, " +
+                    "AttendanceRecord.Minutes, " +
+                    "AttendanceRecord.OT_Hours " +
+                    "FROM AttendanceRecord " +
                     "INNER JOIN EmployeeInfo " +
-                    "ON EmployeeInfo.EmployeeID = AttendanceSheet.EmployeeID " +
+                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID " +
                     "WHERE Date='" + date + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -74,10 +83,19 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query =
-                    "SELECT EmployeeInfo.EmployeeFullName, AttendanceSheet.* " +
-                    "FROM AttendanceSheet " +
+                    "SELECT " +
+                    "ROW_NUMBER() OVER (ORDER BY TimeIn ASC) AS Count, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "AttendanceRecord.Date, " +
+                    "AttendanceRecord.TimeIn, " +
+                    "AttendanceRecord.TimeOut, " +
+                    "AttendanceRecord.Hours, " +
+                    "AttendanceRecord.Minutes, " +
+                    "AttendanceRecord.OT_Hours " +
+                    "FROM AttendanceRecord " +
                     "INNER JOIN EmployeeInfo " +
-                    "ON EmployeeInfo.EmployeeID = AttendanceSheet.EmployeeID " +
+                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID " +
                     "WHERE Date='" + date + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -88,9 +106,6 @@ namespace Admin_Login
 
         private void btn_addAttendance(object sender, EventArgs e)
         {
-            //open add attendance window
-            //AddAttendance aa = new AddAttendance();
-            //aa.ShowDialog();
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Add Attendance";
             menu.Menu_Load(menu, EventArgs.Empty);
