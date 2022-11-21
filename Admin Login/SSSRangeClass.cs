@@ -13,21 +13,36 @@ namespace Admin_Login
         Login login = new Login();
         double sssContributionEmployee = 0, sssContributionEmployer, pagibicontribEmployee = 0, pagibicontribEmployer = 0, PhilhealthContrib = 0, tax;
         public DataTable datatable = new DataTable();
-        public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo, EmployeeIDComp;
+        public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
         double getGrossPay = 0;
         public string ComputeGrossPay()
         {
             string query = "insert into PayrollReport " +
                            "select A.EmployeeID, EmployeeFullname, PositionName, C.BasicRate, sum(A.Hours)+(sum(A.Minutes)/60) as TotalHours, " +
                            "(sum(A.Minutes)-(sum(A.Minutes)/60)*60) as Minutes,(sum(A.OT_Hours)*C.BasicRate)*1.30 as OTPay, ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) as LegalHolidayPay, " +
-                           "((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60) as SpecialHolidayPay, count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays, " +
-                           "((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30) as GrossPay, " +
+                           "(((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30) as SpecialHolidayPay, count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays, " +
+                           "(sum(A.Hours)*C.BasicRate) + ((C.BasicRate/60)*sum(Minutes))+((sum(A.OT_Hours)*C.BasicRate)*1.30)+(((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60))+((((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30))  as GrossPay, " +
                            "sum(A.Late_Minutes) as MinutesLate, (sum(Undertime_Hours)*60)+sum(Undertime_Minutes) as MinutesUnderTime, 0,0,0,0,0,0,' ' " +
                            "from AttendanceRecord as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID " +
                            "inner join Position as C on A.PositionID = C.PositionID " +
                            "where A.Date Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) " +
                            "group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate ";
             return query;
+        }
+        public void AddLeavePay()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "declare @i int = 1, @x int, @id int " +
+                               "select @x = count(EmployeeID) from PayrollReport while (@i <= @x) begin " +
+                               "select top (@i) @id = EmployeeID from PayrollReport update PayrollReport " +
+                               "set GrossSalary =  (select GrossSalary + coalesce(((sum(PaidLeaveDays)*8)*BasicRate),0) from PayrollReport where EmployeeID = @id group by GrossSalary,BasicRate) " +
+                               "where EmployeeID = @id set @i = @i + 1 end";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+            }
         }
         public void getTAX()
         {
@@ -156,7 +171,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "update OtherDeductions " +
-                               "set TotalOtherDeductions = TotalOtherDeductions -DeductionPerCompensation";
+                               "set TotalOtherDeductions = TotalOtherDeductions - DeductionPerCompensation";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
@@ -174,35 +189,7 @@ namespace Admin_Login
                 cmd.ExecuteNonQuery();
             }
         }
-        public void getPaidLeave()
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
-                    string query = "Declare @i decimal (8,2) " +
-                        " SELECT @i = (count(A.EmployeeID)*8)*B.BasicRate from LeavePay as A join EmployeeInfo as C on A.EmployeeID = C.EmployeeID left join Position as B on C.PositionID = B.PositionID " +
-                        "where Date between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) and A.EmployeeID =" + EmployeeIDComp +
-                        "group by B.BasicRate " +
-                        " select Coalesce (@i + ((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30), " +
-                        " ((sum(A.Hours)+(sum(A.Minutes)/60))*C.BasicRate)+((sum(A.OT_Hours)*C.BasicRate)*1.30) + ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) + (((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30)) " +
-                        " from AttendanceRecord as A inner join Position as C on A.PositionID = C.PositionID where EmployeeID = " + EmployeeIDComp +
-                        " and Date between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) group by C.BasicRate";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                    DataTable data = new DataTable();
-                    adapter.Fill(data);
-                    double update = Convert.ToDouble(data.Rows[0][0].ToString());
-                    string query2 = "update PayrollReport " +
-                                   "set GrossSalary = " + update +
-                                   "where EmployeeID = " + EmployeeIDComp;
-                    SqlCommand cmd = new SqlCommand(query2, connection);
-                    cmd.ExecuteNonQuery();
 
-                }
-            }
-            catch (Exception ex) { }
-        }
         public void getLeaveDays()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -217,56 +204,17 @@ namespace Admin_Login
             }
         }
 
-        public void addleavePayToGrosspay()
-        {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            {
-                connection.Open();
-                string query = "select EmployeeID, (BasicRate * TotalHours) + ((BasicRate/60)*Minutes) from PayrollReport ";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable data = new DataTable();
-                adapter.Fill(data);
-                foreach (DataRow dataRow in data.Rows)
-                {
-                    foreach (var GrossPay in dataRow.ItemArray)
-                    {
-                        if (GrossPay is DBNull)
-                        {
-                            getGrossPay = 0;
-                        }
-                        else
-                        {
-                            getGrossPay = Convert.ToDouble(GrossPay);
-                            EmployeeID = dataRow.ItemArray[0].ToString();
-                            if (string.IsNullOrEmpty(EmployeeIDComp))
-                            {
-                                EmployeeIDComp = EmployeeID;
-                                getPaidLeave();
-                            }
-                            else if (EmployeeIDComp != EmployeeID)
-                            {
-                                EmployeeIDComp = EmployeeID;
-                                getPaidLeave();
-                            }
-                            else
-                            {
-                                getPaidLeave();
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
+        
         public void getSSSRange()
         {
             getLeaveDays();
-            addleavePayToGrosspay();
+            AddLeavePay();
             PayrollReport payrollReport = new PayrollReport();
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, (BasicRate * TotalHours) + ((BasicRate/60)*Minutes) from PayrollReport ";
+                string query = "select EmployeeID, (BasicRate * TotalHours) + ((BasicRate/60)*Minutes) + coalesce(((sum(PaidLeaveDays)*8)*BasicRate),0) "+
+                               "from PayrollReport group by EmployeeID,BasicRate,TotalHours,Minutes";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);

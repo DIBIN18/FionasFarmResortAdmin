@@ -170,15 +170,6 @@ namespace Admin_Login
             {
                 try
                 {
-                    //SqlCommand cmd = new SqlCommand("select A.EmployeeID, B.EmployeeFullName, C.PositionName, C.BasicRate , sum(A.RegularHours) + sum(A.OvertimeHours) as TotalHours," +
-                    //      " sum(A.OvertimeHours) as OverTime, sum(RegularHolidayHours) as LegalHolidayHours, sum(SpecialHolidayHours) as SpecialHolidayHours," +
-                    //      " count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays," +
-                    //      " (sum(A.RegularHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)+((sum(A.OvertimeHours)*C.BasicRate)*0.30)) + ((sum(A.RegularHolidayHours)* C.BasicRate)+ ((sum(A.SpecialHolidayHours) * C.BasicRate) * 0.30)) as GrossPay" +
-                    //      " from AttendanceSheet as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID" +
-                    //      " inner join Position as C on B.PositionID = C.PositionID" +
-                    //      " where Date Between CONVERT(datetime, '" + dtp_From.Text + "', 100) and CONVERT(datetime, '" + dtp_To.Text + "', 100) " +
-                    //      " AND A.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'" +
-                    //      " group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate", connection);
                     SqlCommand cmd = new SqlCommand("select * from PayrollReport where EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeName like'" + tb_Search.Text + "%'", connection);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dts = new DataTable();
