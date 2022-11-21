@@ -82,16 +82,6 @@ namespace Admin_Login
             this.label19 = new System.Windows.Forms.Label();
             this.btn_Edit = new System.Windows.Forms.PictureBox();
             this.pnlEdit = new System.Windows.Forms.Panel();
-            this.btn_UpdateEdit = new System.Windows.Forms.PictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.btnBackEdit = new System.Windows.Forms.PictureBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.dgvEditAttendance = new System.Windows.Forms.DataGridView();
-            this.label49 = new System.Windows.Forms.Label();
-            this.btnTest = new System.Windows.Forms.Button();
             this.lbl_EditSpecHMins = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.lbl_EditSpecHHours = new System.Windows.Forms.Label();
@@ -128,6 +118,15 @@ namespace Admin_Login
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
+            this.btn_UpdateEdit = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.btnBackEdit = new System.Windows.Forms.PictureBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.dgvEditAttendance = new System.Windows.Forms.DataGridView();
+            this.label49 = new System.Windows.Forms.Label();
             this.pnlAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -194,19 +193,19 @@ namespace Admin_Login
             this.pnlAdd.Controls.Add(this.label5);
             this.pnlAdd.Controls.Add(this.dgvEmployees);
             this.pnlAdd.Controls.Add(this.label1);
-            this.pnlAdd.Location = new System.Drawing.Point(16, 65);
-            this.pnlAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAdd.Location = new System.Drawing.Point(12, 53);
             this.pnlAdd.Name = "pnlAdd";
-            this.pnlAdd.Size = new System.Drawing.Size(1149, 842);
+            this.pnlAdd.Size = new System.Drawing.Size(862, 684);
             this.pnlAdd.TabIndex = 76;
             // 
             // lblSpecHMins
             // 
             this.lblSpecHMins.AutoSize = true;
             this.lblSpecHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecHMins.Location = new System.Drawing.Point(1100, 677);
+            this.lblSpecHMins.Location = new System.Drawing.Point(825, 550);
+            this.lblSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHMins.Name = "lblSpecHMins";
-            this.lblSpecHMins.Size = new System.Drawing.Size(21, 23);
+            this.lblSpecHMins.Size = new System.Drawing.Size(19, 21);
             this.lblSpecHMins.TabIndex = 125;
             this.lblSpecHMins.Text = "0";
             // 
@@ -214,9 +213,10 @@ namespace Admin_Login
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(905, 677);
+            this.label52.Location = new System.Drawing.Point(679, 550);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(127, 23);
+            this.label52.Size = new System.Drawing.Size(106, 21);
             this.label52.TabIndex = 124;
             this.label52.Text = "S.H. Minutes:";
             // 
@@ -224,9 +224,10 @@ namespace Admin_Login
             // 
             this.lblSpecHHours.AutoSize = true;
             this.lblSpecHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecHHours.Location = new System.Drawing.Point(865, 677);
+            this.lblSpecHHours.Location = new System.Drawing.Point(649, 550);
+            this.lblSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHHours.Name = "lblSpecHHours";
-            this.lblSpecHHours.Size = new System.Drawing.Size(21, 23);
+            this.lblSpecHHours.Size = new System.Drawing.Size(19, 21);
             this.lblSpecHHours.TabIndex = 123;
             this.lblSpecHHours.Text = "0";
             // 
@@ -234,9 +235,10 @@ namespace Admin_Login
             // 
             this.lblSpecH.AutoSize = true;
             this.lblSpecH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecH.Location = new System.Drawing.Point(865, 643);
+            this.lblSpecH.Location = new System.Drawing.Point(649, 522);
+            this.lblSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecH.Name = "lblSpecH";
-            this.lblSpecH.Size = new System.Drawing.Size(21, 23);
+            this.lblSpecH.Size = new System.Drawing.Size(19, 21);
             this.lblSpecH.TabIndex = 122;
             this.lblSpecH.Text = "0";
             // 
@@ -244,9 +246,10 @@ namespace Admin_Login
             // 
             this.lblRegHMins.AutoSize = true;
             this.lblRegHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegHMins.Location = new System.Drawing.Point(1100, 588);
+            this.lblRegHMins.Location = new System.Drawing.Point(825, 478);
+            this.lblRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHMins.Name = "lblRegHMins";
-            this.lblRegHMins.Size = new System.Drawing.Size(21, 23);
+            this.lblRegHMins.Size = new System.Drawing.Size(19, 21);
             this.lblRegHMins.TabIndex = 121;
             this.lblRegHMins.Text = "0";
             // 
@@ -254,9 +257,10 @@ namespace Admin_Login
             // 
             this.lblRegHHours.AutoSize = true;
             this.lblRegHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegHHours.Location = new System.Drawing.Point(865, 588);
+            this.lblRegHHours.Location = new System.Drawing.Point(649, 478);
+            this.lblRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHHours.Name = "lblRegHHours";
-            this.lblRegHHours.Size = new System.Drawing.Size(21, 23);
+            this.lblRegHHours.Size = new System.Drawing.Size(19, 21);
             this.lblRegHHours.TabIndex = 120;
             this.lblRegHHours.Text = "0";
             // 
@@ -264,9 +268,10 @@ namespace Admin_Login
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(904, 588);
+            this.label29.Location = new System.Drawing.Point(678, 478);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(129, 23);
+            this.label29.Size = new System.Drawing.Size(108, 21);
             this.label29.TabIndex = 119;
             this.label29.Text = "R.H. Minutes:";
             // 
@@ -274,9 +279,10 @@ namespace Admin_Login
             // 
             this.lblRegH.AutoSize = true;
             this.lblRegH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegH.Location = new System.Drawing.Point(865, 549);
+            this.lblRegH.Location = new System.Drawing.Point(649, 446);
+            this.lblRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegH.Name = "lblRegH";
-            this.lblRegH.Size = new System.Drawing.Size(21, 23);
+            this.lblRegH.Size = new System.Drawing.Size(19, 21);
             this.lblRegH.TabIndex = 118;
             this.lblRegH.Text = "0";
             // 
@@ -284,9 +290,10 @@ namespace Admin_Login
             // 
             this.lblUmins.AutoSize = true;
             this.lblUmins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUmins.Location = new System.Drawing.Point(1100, 492);
+            this.lblUmins.Location = new System.Drawing.Point(825, 400);
+            this.lblUmins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUmins.Name = "lblUmins";
-            this.lblUmins.Size = new System.Drawing.Size(21, 23);
+            this.lblUmins.Size = new System.Drawing.Size(19, 21);
             this.lblUmins.TabIndex = 117;
             this.lblUmins.Text = "0";
             // 
@@ -294,9 +301,10 @@ namespace Admin_Login
             // 
             this.lblUhours.AutoSize = true;
             this.lblUhours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUhours.Location = new System.Drawing.Point(865, 492);
+            this.lblUhours.Location = new System.Drawing.Point(649, 400);
+            this.lblUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUhours.Name = "lblUhours";
-            this.lblUhours.Size = new System.Drawing.Size(21, 23);
+            this.lblUhours.Size = new System.Drawing.Size(19, 21);
             this.lblUhours.TabIndex = 116;
             this.lblUhours.Text = "0";
             // 
@@ -304,9 +312,10 @@ namespace Admin_Login
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(905, 492);
+            this.label25.Location = new System.Drawing.Point(679, 400);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(166, 23);
+            this.label25.Size = new System.Drawing.Size(138, 21);
             this.label25.TabIndex = 115;
             this.label25.Text = "Undertime Mins.:";
             // 
@@ -314,9 +323,10 @@ namespace Admin_Login
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(645, 492);
+            this.label24.Location = new System.Drawing.Point(484, 400);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(174, 23);
+            this.label24.Size = new System.Drawing.Size(142, 21);
             this.label24.TabIndex = 114;
             this.label24.Text = "Undertime Hours:";
             // 
@@ -324,9 +334,10 @@ namespace Admin_Login
             // 
             this.lblOTHours.AutoSize = true;
             this.lblOTHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOTHours.Location = new System.Drawing.Point(865, 452);
+            this.lblOTHours.Location = new System.Drawing.Point(649, 367);
+            this.lblOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOTHours.Name = "lblOTHours";
-            this.lblOTHours.Size = new System.Drawing.Size(21, 23);
+            this.lblOTHours.Size = new System.Drawing.Size(19, 21);
             this.lblOTHours.TabIndex = 113;
             this.lblOTHours.Text = "0";
             // 
@@ -334,9 +345,10 @@ namespace Admin_Login
             // 
             this.lblMinsLate.AutoSize = true;
             this.lblMinsLate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinsLate.Location = new System.Drawing.Point(1100, 402);
+            this.lblMinsLate.Location = new System.Drawing.Point(825, 327);
+            this.lblMinsLate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMinsLate.Name = "lblMinsLate";
-            this.lblMinsLate.Size = new System.Drawing.Size(21, 23);
+            this.lblMinsLate.Size = new System.Drawing.Size(19, 21);
             this.lblMinsLate.TabIndex = 112;
             this.lblMinsLate.Text = "0";
             // 
@@ -344,9 +356,10 @@ namespace Admin_Login
             // 
             this.lblMins.AutoSize = true;
             this.lblMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMins.Location = new System.Drawing.Point(865, 402);
+            this.lblMins.Location = new System.Drawing.Point(649, 327);
+            this.lblMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMins.Name = "lblMins";
-            this.lblMins.Size = new System.Drawing.Size(21, 23);
+            this.lblMins.Size = new System.Drawing.Size(19, 21);
             this.lblMins.TabIndex = 111;
             this.lblMins.Text = "0";
             // 
@@ -354,9 +367,10 @@ namespace Admin_Login
             // 
             this.lblHours.AutoSize = true;
             this.lblHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHours.Location = new System.Drawing.Point(865, 366);
+            this.lblHours.Location = new System.Drawing.Point(649, 297);
+            this.lblHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHours.Name = "lblHours";
-            this.lblHours.Size = new System.Drawing.Size(21, 23);
+            this.lblHours.Size = new System.Drawing.Size(19, 21);
             this.lblHours.TabIndex = 110;
             this.lblHours.Text = "0";
             // 
@@ -365,9 +379,10 @@ namespace Admin_Login
             this.cbAllowOT.AutoSize = true;
             this.cbAllowOT.Enabled = false;
             this.cbAllowOT.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAllowOT.Location = new System.Drawing.Point(1006, 269);
+            this.cbAllowOT.Location = new System.Drawing.Point(754, 219);
+            this.cbAllowOT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAllowOT.Name = "cbAllowOT";
-            this.cbAllowOT.Size = new System.Drawing.Size(119, 27);
+            this.cbAllowOT.Size = new System.Drawing.Size(98, 25);
             this.cbAllowOT.TabIndex = 109;
             this.cbAllowOT.Text = "Allow OT";
             this.cbAllowOT.UseVisualStyleBackColor = true;
@@ -377,9 +392,10 @@ namespace Admin_Login
             // 
             this.lblBreakPeriod.AutoSize = true;
             this.lblBreakPeriod.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBreakPeriod.Location = new System.Drawing.Point(803, 270);
+            this.lblBreakPeriod.Location = new System.Drawing.Point(602, 219);
+            this.lblBreakPeriod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBreakPeriod.Name = "lblBreakPeriod";
-            this.lblBreakPeriod.Size = new System.Drawing.Size(31, 23);
+            this.lblBreakPeriod.Size = new System.Drawing.Size(25, 21);
             this.lblBreakPeriod.TabIndex = 108;
             this.lblBreakPeriod.Text = "---";
             // 
@@ -387,9 +403,10 @@ namespace Admin_Login
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(645, 270);
+            this.label4.Location = new System.Drawing.Point(484, 219);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 23);
+            this.label4.Size = new System.Drawing.Size(109, 21);
             this.label4.TabIndex = 107;
             this.label4.Text = "Break Period:";
             // 
@@ -398,10 +415,10 @@ namespace Admin_Login
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.Export_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(883, 778);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(662, 632);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 38);
+            this.pictureBox1.Size = new System.Drawing.Size(20, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 97;
             this.pictureBox1.TabStop = false;
@@ -415,9 +432,10 @@ namespace Admin_Login
             this.Add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Add.ForeColor = System.Drawing.Color.White;
-            this.Add.Location = new System.Drawing.Point(812, 782);
+            this.Add.Location = new System.Drawing.Point(609, 635);
+            this.Add.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(59, 29);
+            this.Add.Size = new System.Drawing.Size(48, 24);
             this.Add.TabIndex = 96;
             this.Add.Tag = "btn_Add";
             this.Add.Text = "Add";
@@ -427,10 +445,10 @@ namespace Admin_Login
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox2.Location = new System.Drawing.Point(795, 774);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(596, 629);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(144, 46);
+            this.pictureBox2.Size = new System.Drawing.Size(108, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 95;
             this.pictureBox2.TabStop = false;
@@ -441,10 +459,9 @@ namespace Admin_Login
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(640, 315);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(480, 256);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(262, 27);
+            this.label17.Size = new System.Drawing.Size(216, 23);
             this.label17.TabIndex = 94;
             this.label17.Text = "Attendance Recorded";
             // 
@@ -452,10 +469,9 @@ namespace Admin_Login
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(640, 49);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(480, 40);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(164, 27);
+            this.label16.Size = new System.Drawing.Size(135, 23);
             this.label16.TabIndex = 93;
             this.label16.Text = "Set Date Time";
             // 
@@ -466,10 +482,10 @@ namespace Admin_Login
             this.dtp_Date.Enabled = false;
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(807, 218);
-            this.dtp_Date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtp_Date.Location = new System.Drawing.Point(605, 177);
+            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtp_Date.Name = "dtp_Date";
-            this.dtp_Date.Size = new System.Drawing.Size(297, 36);
+            this.dtp_Date.Size = new System.Drawing.Size(224, 30);
             this.dtp_Date.TabIndex = 77;
             this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 
@@ -480,10 +496,10 @@ namespace Admin_Login
             this.dtpTimeOutAdd.Enabled = false;
             this.dtpTimeOutAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTimeOutAdd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTimeOutAdd.Location = new System.Drawing.Point(807, 174);
-            this.dtpTimeOutAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpTimeOutAdd.Location = new System.Drawing.Point(605, 141);
+            this.dtpTimeOutAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpTimeOutAdd.Name = "dtpTimeOutAdd";
-            this.dtpTimeOutAdd.Size = new System.Drawing.Size(297, 30);
+            this.dtpTimeOutAdd.Size = new System.Drawing.Size(224, 26);
             this.dtpTimeOutAdd.TabIndex = 92;
             this.dtpTimeOutAdd.Value = new System.DateTime(2022, 11, 3, 17, 0, 0, 0);
             this.dtpTimeOutAdd.ValueChanged += new System.EventHandler(this.dtpSchedOutEdit_ValueChanged);
@@ -495,10 +511,10 @@ namespace Admin_Login
             this.dtpTimeInAdd.Enabled = false;
             this.dtpTimeInAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTimeInAdd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTimeInAdd.Location = new System.Drawing.Point(807, 130);
-            this.dtpTimeInAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpTimeInAdd.Location = new System.Drawing.Point(605, 106);
+            this.dtpTimeInAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpTimeInAdd.Name = "dtpTimeInAdd";
-            this.dtpTimeInAdd.Size = new System.Drawing.Size(297, 30);
+            this.dtpTimeInAdd.Size = new System.Drawing.Size(224, 26);
             this.dtpTimeInAdd.TabIndex = 91;
             this.dtpTimeInAdd.Value = new System.DateTime(2022, 11, 3, 8, 0, 0, 0);
             this.dtpTimeInAdd.ValueChanged += new System.EventHandler(this.dtpScheduleInEdit_ValueChanged);
@@ -507,9 +523,10 @@ namespace Admin_Login
             // 
             this.lblEmployeeName.AutoSize = true;
             this.lblEmployeeName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmployeeName.Location = new System.Drawing.Point(803, 87);
+            this.lblEmployeeName.Location = new System.Drawing.Point(602, 71);
+            this.lblEmployeeName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEmployeeName.Name = "lblEmployeeName";
-            this.lblEmployeeName.Size = new System.Drawing.Size(208, 23);
+            this.lblEmployeeName.Size = new System.Drawing.Size(163, 21);
             this.lblEmployeeName.TabIndex = 90;
             this.lblEmployeeName.Text = "Select an Employee";
             // 
@@ -517,9 +534,10 @@ namespace Admin_Login
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(644, 452);
+            this.label15.Location = new System.Drawing.Point(483, 367);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(165, 23);
+            this.label15.Size = new System.Drawing.Size(134, 21);
             this.label15.TabIndex = 89;
             this.label15.Text = "Overtime Hours:";
             // 
@@ -527,9 +545,10 @@ namespace Admin_Login
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(645, 677);
+            this.label13.Location = new System.Drawing.Point(484, 550);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 23);
+            this.label13.Size = new System.Drawing.Size(87, 21);
             this.label13.TabIndex = 88;
             this.label13.Text = "S.H. Hours:";
             // 
@@ -537,9 +556,10 @@ namespace Admin_Login
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(645, 588);
+            this.label14.Location = new System.Drawing.Point(484, 478);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 23);
+            this.label14.Size = new System.Drawing.Size(89, 21);
             this.label14.TabIndex = 87;
             this.label14.Text = "R.H. Hours:";
             // 
@@ -547,9 +567,10 @@ namespace Admin_Login
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(644, 643);
+            this.label12.Location = new System.Drawing.Point(483, 522);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(150, 23);
+            this.label12.Size = new System.Drawing.Size(118, 21);
             this.label12.TabIndex = 86;
             this.label12.Text = "Spec. Holiday:";
             // 
@@ -557,9 +578,10 @@ namespace Admin_Login
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(645, 549);
+            this.label11.Location = new System.Drawing.Point(484, 446);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(138, 23);
+            this.label11.Size = new System.Drawing.Size(110, 21);
             this.label11.TabIndex = 85;
             this.label11.Text = "Reg. Holiday:";
             // 
@@ -567,9 +589,10 @@ namespace Admin_Login
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(905, 402);
+            this.label10.Location = new System.Drawing.Point(679, 327);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(136, 23);
+            this.label10.Size = new System.Drawing.Size(114, 21);
             this.label10.TabIndex = 84;
             this.label10.Text = "Minutes Late:";
             // 
@@ -577,9 +600,10 @@ namespace Admin_Login
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(645, 402);
+            this.label9.Location = new System.Drawing.Point(484, 327);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 23);
+            this.label9.Size = new System.Drawing.Size(75, 21);
             this.label9.TabIndex = 83;
             this.label9.Text = "Minutes:";
             // 
@@ -587,9 +611,10 @@ namespace Admin_Login
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(644, 366);
+            this.label8.Location = new System.Drawing.Point(483, 297);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 23);
+            this.label8.Size = new System.Drawing.Size(56, 21);
             this.label8.TabIndex = 82;
             this.label8.Text = "Hours:";
             // 
@@ -597,9 +622,10 @@ namespace Admin_Login
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(645, 220);
+            this.label6.Location = new System.Drawing.Point(484, 179);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 23);
+            this.label6.Size = new System.Drawing.Size(54, 21);
             this.label6.TabIndex = 80;
             this.label6.Text = "Date:";
             // 
@@ -607,9 +633,10 @@ namespace Admin_Login
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(644, 174);
+            this.label3.Location = new System.Drawing.Point(483, 141);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.Size = new System.Drawing.Size(85, 21);
             this.label3.TabIndex = 79;
             this.label3.Text = "Time Out:";
             // 
@@ -617,9 +644,10 @@ namespace Admin_Login
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(644, 87);
+            this.label2.Location = new System.Drawing.Point(483, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 23);
+            this.label2.Size = new System.Drawing.Size(90, 21);
             this.label2.TabIndex = 78;
             this.label2.Text = "Employee:";
             // 
@@ -628,10 +656,10 @@ namespace Admin_Login
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Back_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(1071, 778);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(803, 632);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(39, 38);
+            this.pictureBox5.Size = new System.Drawing.Size(29, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 77;
             this.pictureBox5.TabStop = false;
@@ -645,9 +673,10 @@ namespace Admin_Login
             this.back.Cursor = System.Windows.Forms.Cursors.Hand;
             this.back.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.back.ForeColor = System.Drawing.Color.White;
-            this.back.Location = new System.Drawing.Point(1000, 782);
+            this.back.Location = new System.Drawing.Point(750, 635);
+            this.back.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(70, 29);
+            this.back.Size = new System.Drawing.Size(55, 24);
             this.back.TabIndex = 76;
             this.back.Tag = "btn_Back";
             this.back.Text = "Back";
@@ -657,10 +686,10 @@ namespace Admin_Login
             // 
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox6.Location = new System.Drawing.Point(983, 774);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Location = new System.Drawing.Point(737, 629);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(144, 46);
+            this.pictureBox6.Size = new System.Drawing.Size(108, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 75;
             this.pictureBox6.TabStop = false;
@@ -671,9 +700,10 @@ namespace Admin_Login
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(645, 130);
+            this.label5.Location = new System.Drawing.Point(484, 106);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 23);
+            this.label5.Size = new System.Drawing.Size(69, 21);
             this.label5.TabIndex = 72;
             this.label5.Text = "Time In:";
             // 
@@ -686,14 +716,13 @@ namespace Admin_Login
             this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(17, 49);
-            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEmployees.Location = new System.Drawing.Point(13, 40);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
             this.dgvEmployees.RowHeadersWidth = 51;
             this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployees.Size = new System.Drawing.Size(605, 770);
+            this.dgvEmployees.Size = new System.Drawing.Size(454, 626);
             this.dgvEmployees.TabIndex = 61;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
             // 
@@ -701,10 +730,9 @@ namespace Admin_Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 27);
+            this.label1.Size = new System.Drawing.Size(165, 23);
             this.label1.TabIndex = 59;
             this.label1.Text = "Select Employee";
             // 
@@ -713,10 +741,10 @@ namespace Admin_Login
             this.btnAddMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.btnAddMode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddMode.Image = global::Admin_Login.Properties.Resources.Export_Icon;
-            this.btnAddMode.Location = new System.Drawing.Point(252, 14);
-            this.btnAddMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddMode.Location = new System.Drawing.Point(189, 11);
+            this.btnAddMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAddMode.Name = "btnAddMode";
-            this.btnAddMode.Size = new System.Drawing.Size(27, 38);
+            this.btnAddMode.Size = new System.Drawing.Size(20, 31);
             this.btnAddMode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnAddMode.TabIndex = 111;
             this.btnAddMode.TabStop = false;
@@ -730,9 +758,10 @@ namespace Admin_Login
             this.label18.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(32, 16);
+            this.label18.Location = new System.Drawing.Point(24, 13);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(196, 29);
+            this.label18.Size = new System.Drawing.Size(160, 24);
             this.label18.TabIndex = 110;
             this.label18.Tag = "btn_AddMode";
             this.label18.Text = "Add Attendance";
@@ -742,10 +771,10 @@ namespace Admin_Login
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox4.Location = new System.Drawing.Point(15, 10);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(11, 8);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(296, 46);
+            this.pictureBox4.Size = new System.Drawing.Size(222, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 109;
             this.pictureBox4.TabStop = false;
@@ -757,10 +786,10 @@ namespace Admin_Login
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.btnEdit.Location = new System.Drawing.Point(567, 14);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEdit.Location = new System.Drawing.Point(425, 11);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(27, 38);
+            this.btnEdit.Size = new System.Drawing.Size(20, 31);
             this.btnEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEdit.TabIndex = 114;
             this.btnEdit.TabStop = false;
@@ -774,9 +803,10 @@ namespace Admin_Login
             this.label19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(345, 16);
+            this.label19.Location = new System.Drawing.Point(259, 13);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(196, 29);
+            this.label19.Size = new System.Drawing.Size(158, 24);
             this.label19.TabIndex = 113;
             this.label19.Tag = "btn_EditMode";
             this.label19.Text = "Edit Attendance";
@@ -786,10 +816,10 @@ namespace Admin_Login
             // 
             this.btn_Edit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Edit.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
-            this.btn_Edit.Location = new System.Drawing.Point(329, 10);
-            this.btn_Edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_Edit.Location = new System.Drawing.Point(247, 8);
+            this.btn_Edit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_Edit.Name = "btn_Edit";
-            this.btn_Edit.Size = new System.Drawing.Size(296, 46);
+            this.btn_Edit.Size = new System.Drawing.Size(222, 37);
             this.btn_Edit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_Edit.TabIndex = 112;
             this.btn_Edit.TabStop = false;
@@ -844,22 +874,430 @@ namespace Admin_Login
             this.pnlEdit.Controls.Add(this.pictureBox12);
             this.pnlEdit.Controls.Add(this.dgvEditAttendance);
             this.pnlEdit.Controls.Add(this.label49);
-            this.pnlEdit.Location = new System.Drawing.Point(16, 62);
-            this.pnlEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlEdit.Location = new System.Drawing.Point(12, 50);
             this.pnlEdit.Name = "pnlEdit";
-            this.pnlEdit.Size = new System.Drawing.Size(1153, 842);
+            this.pnlEdit.Size = new System.Drawing.Size(865, 684);
             this.pnlEdit.TabIndex = 109;
             this.pnlEdit.Visible = false;
+            // 
+            // lbl_EditSpecHMins
+            // 
+            this.lbl_EditSpecHMins.AutoSize = true;
+            this.lbl_EditSpecHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecHMins.Location = new System.Drawing.Point(826, 560);
+            this.lbl_EditSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditSpecHMins.Name = "lbl_EditSpecHMins";
+            this.lbl_EditSpecHMins.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditSpecHMins.TabIndex = 161;
+            this.lbl_EditSpecHMins.Text = "0";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(680, 560);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(106, 21);
+            this.label20.TabIndex = 160;
+            this.label20.Text = "S.H. Minutes:";
+            // 
+            // lbl_EditSpecHHours
+            // 
+            this.lbl_EditSpecHHours.AutoSize = true;
+            this.lbl_EditSpecHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecHHours.Location = new System.Drawing.Point(650, 560);
+            this.lbl_EditSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditSpecHHours.Name = "lbl_EditSpecHHours";
+            this.lbl_EditSpecHHours.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditSpecHHours.TabIndex = 159;
+            this.lbl_EditSpecHHours.Text = "0";
+            // 
+            // lbl_EditSpecH
+            // 
+            this.lbl_EditSpecH.AutoSize = true;
+            this.lbl_EditSpecH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecH.Location = new System.Drawing.Point(650, 532);
+            this.lbl_EditSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditSpecH.Name = "lbl_EditSpecH";
+            this.lbl_EditSpecH.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditSpecH.TabIndex = 158;
+            this.lbl_EditSpecH.Text = "0";
+            // 
+            // lbl_EditRegHMins
+            // 
+            this.lbl_EditRegHMins.AutoSize = true;
+            this.lbl_EditRegHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegHMins.Location = new System.Drawing.Point(826, 488);
+            this.lbl_EditRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditRegHMins.Name = "lbl_EditRegHMins";
+            this.lbl_EditRegHMins.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditRegHMins.TabIndex = 157;
+            this.lbl_EditRegHMins.Text = "0";
+            // 
+            // lbl_EditRegHHours
+            // 
+            this.lbl_EditRegHHours.AutoSize = true;
+            this.lbl_EditRegHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegHHours.Location = new System.Drawing.Point(650, 488);
+            this.lbl_EditRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditRegHHours.Name = "lbl_EditRegHHours";
+            this.lbl_EditRegHHours.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditRegHHours.TabIndex = 156;
+            this.lbl_EditRegHHours.Text = "0";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(679, 488);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(108, 21);
+            this.label27.TabIndex = 155;
+            this.label27.Text = "R.H. Minutes:";
+            // 
+            // lbl_EditRegH
+            // 
+            this.lbl_EditRegH.AutoSize = true;
+            this.lbl_EditRegH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegH.Location = new System.Drawing.Point(650, 456);
+            this.lbl_EditRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditRegH.Name = "lbl_EditRegH";
+            this.lbl_EditRegH.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditRegH.TabIndex = 154;
+            this.lbl_EditRegH.Text = "0";
+            // 
+            // lbl_EditUMins
+            // 
+            this.lbl_EditUMins.AutoSize = true;
+            this.lbl_EditUMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditUMins.Location = new System.Drawing.Point(826, 410);
+            this.lbl_EditUMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditUMins.Name = "lbl_EditUMins";
+            this.lbl_EditUMins.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditUMins.TabIndex = 153;
+            this.lbl_EditUMins.Text = "0";
+            // 
+            // lbl_EditUhours
+            // 
+            this.lbl_EditUhours.AutoSize = true;
+            this.lbl_EditUhours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditUhours.Location = new System.Drawing.Point(650, 410);
+            this.lbl_EditUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditUhours.Name = "lbl_EditUhours";
+            this.lbl_EditUhours.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditUhours.TabIndex = 152;
+            this.lbl_EditUhours.Text = "0";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(680, 410);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(138, 21);
+            this.label34.TabIndex = 151;
+            this.label34.Text = "Undertime Mins.:";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Location = new System.Drawing.Point(484, 410);
+            this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(142, 21);
+            this.label35.TabIndex = 150;
+            this.label35.Text = "Undertime Hours:";
+            // 
+            // lbl_EditOTHours
+            // 
+            this.lbl_EditOTHours.AutoSize = true;
+            this.lbl_EditOTHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditOTHours.Location = new System.Drawing.Point(650, 377);
+            this.lbl_EditOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditOTHours.Name = "lbl_EditOTHours";
+            this.lbl_EditOTHours.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditOTHours.TabIndex = 149;
+            this.lbl_EditOTHours.Text = "0";
+            // 
+            // lbl_EditLateMinutes
+            // 
+            this.lbl_EditLateMinutes.AutoSize = true;
+            this.lbl_EditLateMinutes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditLateMinutes.Location = new System.Drawing.Point(826, 336);
+            this.lbl_EditLateMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditLateMinutes.Name = "lbl_EditLateMinutes";
+            this.lbl_EditLateMinutes.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditLateMinutes.TabIndex = 148;
+            this.lbl_EditLateMinutes.Text = "0";
+            // 
+            // lbl_EditMinutes
+            // 
+            this.lbl_EditMinutes.AutoSize = true;
+            this.lbl_EditMinutes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditMinutes.Location = new System.Drawing.Point(650, 336);
+            this.lbl_EditMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditMinutes.Name = "lbl_EditMinutes";
+            this.lbl_EditMinutes.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditMinutes.TabIndex = 147;
+            this.lbl_EditMinutes.Text = "0";
+            // 
+            // lbl_EditHours
+            // 
+            this.lbl_EditHours.AutoSize = true;
+            this.lbl_EditHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditHours.Location = new System.Drawing.Point(650, 307);
+            this.lbl_EditHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditHours.Name = "lbl_EditHours";
+            this.lbl_EditHours.Size = new System.Drawing.Size(19, 21);
+            this.lbl_EditHours.TabIndex = 146;
+            this.lbl_EditHours.Text = "0";
+            // 
+            // cb_EditAllowOT
+            // 
+            this.cb_EditAllowOT.AutoSize = true;
+            this.cb_EditAllowOT.Enabled = false;
+            this.cb_EditAllowOT.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_EditAllowOT.Location = new System.Drawing.Point(755, 228);
+            this.cb_EditAllowOT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_EditAllowOT.Name = "cb_EditAllowOT";
+            this.cb_EditAllowOT.Size = new System.Drawing.Size(98, 25);
+            this.cb_EditAllowOT.TabIndex = 145;
+            this.cb_EditAllowOT.Text = "Allow OT";
+            this.cb_EditAllowOT.UseVisualStyleBackColor = true;
+            this.cb_EditAllowOT.CheckedChanged += new System.EventHandler(this.cbEditAllowOT_CheckedChanged);
+            // 
+            // lbl_EditBreakPeriod
+            // 
+            this.lbl_EditBreakPeriod.AutoSize = true;
+            this.lbl_EditBreakPeriod.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditBreakPeriod.Location = new System.Drawing.Point(603, 229);
+            this.lbl_EditBreakPeriod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditBreakPeriod.Name = "lbl_EditBreakPeriod";
+            this.lbl_EditBreakPeriod.Size = new System.Drawing.Size(25, 21);
+            this.lbl_EditBreakPeriod.TabIndex = 144;
+            this.lbl_EditBreakPeriod.Text = "---";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(484, 229);
+            this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(109, 21);
+            this.label41.TabIndex = 143;
+            this.label41.Text = "Break Period:";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(481, 266);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(216, 23);
+            this.label42.TabIndex = 142;
+            this.label42.Text = "Attendance Recorded";
+            // 
+            // dtp_EditDate
+            // 
+            this.dtp_EditDate.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_EditDate.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_EditDate.Enabled = false;
+            this.dtp_EditDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_EditDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_EditDate.Location = new System.Drawing.Point(606, 187);
+            this.dtp_EditDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_EditDate.Name = "dtp_EditDate";
+            this.dtp_EditDate.Size = new System.Drawing.Size(224, 30);
+            this.dtp_EditDate.TabIndex = 127;
+            this.dtp_EditDate.ValueChanged += new System.EventHandler(this.dtpEditDate_ValueChanged);
+            // 
+            // dtpTimeOutEdit
+            // 
+            this.dtpTimeOutEdit.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTimeOutEdit.CustomFormat = "hh-mm";
+            this.dtpTimeOutEdit.Enabled = false;
+            this.dtpTimeOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTimeOutEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTimeOutEdit.Location = new System.Drawing.Point(606, 151);
+            this.dtpTimeOutEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpTimeOutEdit.Name = "dtpTimeOutEdit";
+            this.dtpTimeOutEdit.Size = new System.Drawing.Size(224, 26);
+            this.dtpTimeOutEdit.TabIndex = 141;
+            this.dtpTimeOutEdit.Value = new System.DateTime(2022, 11, 3, 17, 0, 0, 0);
+            this.dtpTimeOutEdit.ValueChanged += new System.EventHandler(this.dtpEditTimeOut_ValueChanged);
+            // 
+            // dtpTimeInEdit
+            // 
+            this.dtpTimeInEdit.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTimeInEdit.CustomFormat = "hh-mm";
+            this.dtpTimeInEdit.Enabled = false;
+            this.dtpTimeInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTimeInEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpTimeInEdit.Location = new System.Drawing.Point(606, 115);
+            this.dtpTimeInEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpTimeInEdit.Name = "dtpTimeInEdit";
+            this.dtpTimeInEdit.Size = new System.Drawing.Size(224, 26);
+            this.dtpTimeInEdit.TabIndex = 140;
+            this.dtpTimeInEdit.Value = new System.DateTime(2022, 11, 3, 8, 0, 0, 0);
+            this.dtpTimeInEdit.ValueChanged += new System.EventHandler(this.dtpEditTimeIn_ValueChanged);
+            // 
+            // lbl_EditEmployeeName
+            // 
+            this.lbl_EditEmployeeName.AutoSize = true;
+            this.lbl_EditEmployeeName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditEmployeeName.Location = new System.Drawing.Point(603, 80);
+            this.lbl_EditEmployeeName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl_EditEmployeeName.Name = "lbl_EditEmployeeName";
+            this.lbl_EditEmployeeName.Size = new System.Drawing.Size(163, 21);
+            this.lbl_EditEmployeeName.TabIndex = 139;
+            this.lbl_EditEmployeeName.Text = "Select an Employee";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(484, 377);
+            this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(134, 21);
+            this.label44.TabIndex = 138;
+            this.label44.Text = "Overtime Hours:";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(484, 560);
+            this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(87, 21);
+            this.label45.TabIndex = 137;
+            this.label45.Text = "S.H. Hours:";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(484, 488);
+            this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(89, 21);
+            this.label46.TabIndex = 136;
+            this.label46.Text = "R.H. Hours:";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(484, 532);
+            this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(118, 21);
+            this.label48.TabIndex = 135;
+            this.label48.Text = "Spec. Holiday:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(484, 456);
+            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(110, 21);
+            this.label50.TabIndex = 134;
+            this.label50.Text = "Reg. Holiday:";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(680, 336);
+            this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(114, 21);
+            this.label51.TabIndex = 133;
+            this.label51.Text = "Minutes Late:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(484, 336);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(75, 21);
+            this.label53.TabIndex = 132;
+            this.label53.Text = "Minutes:";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(484, 307);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(56, 21);
+            this.label54.TabIndex = 131;
+            this.label54.Text = "Hours:";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(484, 188);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(54, 21);
+            this.label55.TabIndex = 130;
+            this.label55.Text = "Date:";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label56.Location = new System.Drawing.Point(484, 151);
+            this.label56.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(85, 21);
+            this.label56.TabIndex = 129;
+            this.label56.Text = "Time Out:";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label57.Location = new System.Drawing.Point(484, 80);
+            this.label57.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(90, 21);
+            this.label57.TabIndex = 128;
+            this.label57.Text = "Employee:";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(484, 115);
+            this.label58.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(69, 21);
+            this.label58.TabIndex = 126;
+            this.label58.Text = "Time In:";
             // 
             // btn_UpdateEdit
             // 
             this.btn_UpdateEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.btn_UpdateEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_UpdateEdit.Image = global::Admin_Login.Properties.Resources.Export_Icon;
-            this.btn_UpdateEdit.Location = new System.Drawing.Point(883, 778);
-            this.btn_UpdateEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btn_UpdateEdit.Location = new System.Drawing.Point(662, 632);
+            this.btn_UpdateEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_UpdateEdit.Name = "btn_UpdateEdit";
-            this.btn_UpdateEdit.Size = new System.Drawing.Size(27, 38);
+            this.btn_UpdateEdit.Size = new System.Drawing.Size(20, 31);
             this.btn_UpdateEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_UpdateEdit.TabIndex = 97;
             this.btn_UpdateEdit.TabStop = false;
@@ -873,9 +1311,10 @@ namespace Admin_Login
             this.label31.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label31.ForeColor = System.Drawing.Color.White;
-            this.label31.Location = new System.Drawing.Point(773, 782);
+            this.label31.Location = new System.Drawing.Point(580, 635);
+            this.label31.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(97, 29);
+            this.label31.Size = new System.Drawing.Size(76, 24);
             this.label31.TabIndex = 96;
             this.label31.Tag = "btn_Update";
             this.label31.Text = "Update";
@@ -885,10 +1324,10 @@ namespace Admin_Login
             // 
             this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox10.Location = new System.Drawing.Point(756, 774);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Location = new System.Drawing.Point(567, 629);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(183, 46);
+            this.pictureBox10.Size = new System.Drawing.Size(137, 37);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox10.TabIndex = 95;
             this.pictureBox10.TabStop = false;
@@ -899,10 +1338,9 @@ namespace Admin_Login
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(640, 49);
-            this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label33.Location = new System.Drawing.Point(480, 40);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(212, 27);
+            this.label33.Size = new System.Drawing.Size(177, 23);
             this.label33.TabIndex = 93;
             this.label33.Text = "Update Date Time";
             // 
@@ -911,10 +1349,10 @@ namespace Admin_Login
             this.btnBackEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.btnBackEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackEdit.Image = global::Admin_Login.Properties.Resources.Back_Icon;
-            this.btnBackEdit.Location = new System.Drawing.Point(1071, 778);
-            this.btnBackEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBackEdit.Location = new System.Drawing.Point(803, 632);
+            this.btnBackEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnBackEdit.Name = "btnBackEdit";
-            this.btnBackEdit.Size = new System.Drawing.Size(39, 38);
+            this.btnBackEdit.Size = new System.Drawing.Size(29, 31);
             this.btnBackEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnBackEdit.TabIndex = 77;
             this.btnBackEdit.TabStop = false;
@@ -928,9 +1366,10 @@ namespace Admin_Login
             this.label47.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label47.ForeColor = System.Drawing.Color.White;
-            this.label47.Location = new System.Drawing.Point(1000, 782);
+            this.label47.Location = new System.Drawing.Point(750, 635);
+            this.label47.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(70, 29);
+            this.label47.Size = new System.Drawing.Size(55, 24);
             this.label47.TabIndex = 76;
             this.label47.Tag = "btn_Back";
             this.label47.Text = "Back";
@@ -940,10 +1379,10 @@ namespace Admin_Login
             // 
             this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox12.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox12.Location = new System.Drawing.Point(983, 774);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox12.Location = new System.Drawing.Point(737, 629);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(144, 46);
+            this.pictureBox12.Size = new System.Drawing.Size(108, 37);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox12.TabIndex = 75;
             this.pictureBox12.TabStop = false;
@@ -959,14 +1398,13 @@ namespace Admin_Login
             this.dgvEditAttendance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvEditAttendance.BackgroundColor = System.Drawing.Color.White;
             this.dgvEditAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEditAttendance.Location = new System.Drawing.Point(17, 49);
-            this.dgvEditAttendance.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvEditAttendance.Location = new System.Drawing.Point(13, 40);
             this.dgvEditAttendance.Name = "dgvEditAttendance";
             this.dgvEditAttendance.ReadOnly = true;
             this.dgvEditAttendance.RowHeadersVisible = false;
             this.dgvEditAttendance.RowHeadersWidth = 51;
             this.dgvEditAttendance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEditAttendance.Size = new System.Drawing.Size(605, 770);
+            this.dgvEditAttendance.Size = new System.Drawing.Size(454, 626);
             this.dgvEditAttendance.TabIndex = 61;
             this.dgvEditAttendance.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEditAttendance_CellClick);
             // 
@@ -974,408 +1412,18 @@ namespace Admin_Login
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(12, 17);
-            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label49.Location = new System.Drawing.Point(9, 14);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(308, 27);
+            this.label49.Size = new System.Drawing.Size(253, 23);
             this.label49.TabIndex = 59;
             this.label49.Text = "Select Attendance Record";
             // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(999, 16);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(163, 36);
-            this.btnTest.TabIndex = 115;
-            this.btnTest.Text = "test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // lbl_EditSpecHMins
-            // 
-            this.lbl_EditSpecHMins.AutoSize = true;
-            this.lbl_EditSpecHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecHMins.Location = new System.Drawing.Point(1101, 689);
-            this.lbl_EditSpecHMins.Name = "lbl_EditSpecHMins";
-            this.lbl_EditSpecHMins.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditSpecHMins.TabIndex = 161;
-            this.lbl_EditSpecHMins.Text = "0";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(906, 689);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(127, 23);
-            this.label20.TabIndex = 160;
-            this.label20.Text = "S.H. Minutes:";
-            // 
-            // lbl_EditSpecHHours
-            // 
-            this.lbl_EditSpecHHours.AutoSize = true;
-            this.lbl_EditSpecHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecHHours.Location = new System.Drawing.Point(866, 689);
-            this.lbl_EditSpecHHours.Name = "lbl_EditSpecHHours";
-            this.lbl_EditSpecHHours.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditSpecHHours.TabIndex = 159;
-            this.lbl_EditSpecHHours.Text = "0";
-            // 
-            // lbl_EditSpecH
-            // 
-            this.lbl_EditSpecH.AutoSize = true;
-            this.lbl_EditSpecH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecH.Location = new System.Drawing.Point(866, 655);
-            this.lbl_EditSpecH.Name = "lbl_EditSpecH";
-            this.lbl_EditSpecH.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditSpecH.TabIndex = 158;
-            this.lbl_EditSpecH.Text = "0";
-            // 
-            // lbl_EditRegHMins
-            // 
-            this.lbl_EditRegHMins.AutoSize = true;
-            this.lbl_EditRegHMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegHMins.Location = new System.Drawing.Point(1101, 600);
-            this.lbl_EditRegHMins.Name = "lbl_EditRegHMins";
-            this.lbl_EditRegHMins.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditRegHMins.TabIndex = 157;
-            this.lbl_EditRegHMins.Text = "0";
-            // 
-            // lbl_EditRegHHours
-            // 
-            this.lbl_EditRegHHours.AutoSize = true;
-            this.lbl_EditRegHHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegHHours.Location = new System.Drawing.Point(866, 600);
-            this.lbl_EditRegHHours.Name = "lbl_EditRegHHours";
-            this.lbl_EditRegHHours.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditRegHHours.TabIndex = 156;
-            this.lbl_EditRegHHours.Text = "0";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(905, 600);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(129, 23);
-            this.label27.TabIndex = 155;
-            this.label27.Text = "R.H. Minutes:";
-            // 
-            // lbl_EditRegH
-            // 
-            this.lbl_EditRegH.AutoSize = true;
-            this.lbl_EditRegH.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegH.Location = new System.Drawing.Point(866, 561);
-            this.lbl_EditRegH.Name = "lbl_EditRegH";
-            this.lbl_EditRegH.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditRegH.TabIndex = 154;
-            this.lbl_EditRegH.Text = "0";
-            // 
-            // lbl_EditUMins
-            // 
-            this.lbl_EditUMins.AutoSize = true;
-            this.lbl_EditUMins.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditUMins.Location = new System.Drawing.Point(1101, 504);
-            this.lbl_EditUMins.Name = "lbl_EditUMins";
-            this.lbl_EditUMins.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditUMins.TabIndex = 153;
-            this.lbl_EditUMins.Text = "0";
-            // 
-            // lbl_EditUhours
-            // 
-            this.lbl_EditUhours.AutoSize = true;
-            this.lbl_EditUhours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditUhours.Location = new System.Drawing.Point(866, 504);
-            this.lbl_EditUhours.Name = "lbl_EditUhours";
-            this.lbl_EditUhours.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditUhours.TabIndex = 152;
-            this.lbl_EditUhours.Text = "0";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(906, 504);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(166, 23);
-            this.label34.TabIndex = 151;
-            this.label34.Text = "Undertime Mins.:";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(646, 504);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(174, 23);
-            this.label35.TabIndex = 150;
-            this.label35.Text = "Undertime Hours:";
-            // 
-            // lbl_EditOTHours
-            // 
-            this.lbl_EditOTHours.AutoSize = true;
-            this.lbl_EditOTHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditOTHours.Location = new System.Drawing.Point(866, 464);
-            this.lbl_EditOTHours.Name = "lbl_EditOTHours";
-            this.lbl_EditOTHours.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditOTHours.TabIndex = 149;
-            this.lbl_EditOTHours.Text = "0";
-            // 
-            // lbl_EditLateMinutes
-            // 
-            this.lbl_EditLateMinutes.AutoSize = true;
-            this.lbl_EditLateMinutes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditLateMinutes.Location = new System.Drawing.Point(1101, 414);
-            this.lbl_EditLateMinutes.Name = "lbl_EditLateMinutes";
-            this.lbl_EditLateMinutes.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditLateMinutes.TabIndex = 148;
-            this.lbl_EditLateMinutes.Text = "0";
-            // 
-            // lbl_EditMinutes
-            // 
-            this.lbl_EditMinutes.AutoSize = true;
-            this.lbl_EditMinutes.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditMinutes.Location = new System.Drawing.Point(866, 414);
-            this.lbl_EditMinutes.Name = "lbl_EditMinutes";
-            this.lbl_EditMinutes.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditMinutes.TabIndex = 147;
-            this.lbl_EditMinutes.Text = "0";
-            // 
-            // lbl_EditHours
-            // 
-            this.lbl_EditHours.AutoSize = true;
-            this.lbl_EditHours.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditHours.Location = new System.Drawing.Point(866, 378);
-            this.lbl_EditHours.Name = "lbl_EditHours";
-            this.lbl_EditHours.Size = new System.Drawing.Size(21, 23);
-            this.lbl_EditHours.TabIndex = 146;
-            this.lbl_EditHours.Text = "0";
-            // 
-            // cb_EditAllowOT
-            // 
-            this.cb_EditAllowOT.AutoSize = true;
-            this.cb_EditAllowOT.Enabled = false;
-            this.cb_EditAllowOT.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_EditAllowOT.Location = new System.Drawing.Point(1007, 281);
-            this.cb_EditAllowOT.Name = "cb_EditAllowOT";
-            this.cb_EditAllowOT.Size = new System.Drawing.Size(119, 27);
-            this.cb_EditAllowOT.TabIndex = 145;
-            this.cb_EditAllowOT.Text = "Allow OT";
-            this.cb_EditAllowOT.UseVisualStyleBackColor = true;
-            this.cb_EditAllowOT.CheckedChanged += new System.EventHandler(this.cbEditAllowOT_CheckedChanged);
-            // 
-            // lbl_EditBreakPeriod
-            // 
-            this.lbl_EditBreakPeriod.AutoSize = true;
-            this.lbl_EditBreakPeriod.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditBreakPeriod.Location = new System.Drawing.Point(804, 282);
-            this.lbl_EditBreakPeriod.Name = "lbl_EditBreakPeriod";
-            this.lbl_EditBreakPeriod.Size = new System.Drawing.Size(31, 23);
-            this.lbl_EditBreakPeriod.TabIndex = 144;
-            this.lbl_EditBreakPeriod.Text = "---";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(646, 282);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(136, 23);
-            this.label41.TabIndex = 143;
-            this.label41.Text = "Break Period:";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(641, 327);
-            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(262, 27);
-            this.label42.TabIndex = 142;
-            this.label42.Text = "Attendance Recorded";
-            // 
-            // dtp_EditDate
-            // 
-            this.dtp_EditDate.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_EditDate.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_EditDate.Enabled = false;
-            this.dtp_EditDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_EditDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_EditDate.Location = new System.Drawing.Point(808, 230);
-            this.dtp_EditDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtp_EditDate.Name = "dtp_EditDate";
-            this.dtp_EditDate.Size = new System.Drawing.Size(297, 36);
-            this.dtp_EditDate.TabIndex = 127;
-            this.dtp_EditDate.ValueChanged += new System.EventHandler(this.dtpEditDate_ValueChanged);
-            // 
-            // dtpTimeOutEdit
-            // 
-            this.dtpTimeOutEdit.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTimeOutEdit.CustomFormat = "hh-mm";
-            this.dtpTimeOutEdit.Enabled = false;
-            this.dtpTimeOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTimeOutEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTimeOutEdit.Location = new System.Drawing.Point(808, 186);
-            this.dtpTimeOutEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpTimeOutEdit.Name = "dtpTimeOutEdit";
-            this.dtpTimeOutEdit.Size = new System.Drawing.Size(297, 30);
-            this.dtpTimeOutEdit.TabIndex = 141;
-            this.dtpTimeOutEdit.Value = new System.DateTime(2022, 11, 3, 17, 0, 0, 0);
-            this.dtpTimeOutEdit.ValueChanged += new System.EventHandler(this.dtpEditTimeOut_ValueChanged);
-            // 
-            // dtpTimeInEdit
-            // 
-            this.dtpTimeInEdit.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTimeInEdit.CustomFormat = "hh-mm";
-            this.dtpTimeInEdit.Enabled = false;
-            this.dtpTimeInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpTimeInEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpTimeInEdit.Location = new System.Drawing.Point(808, 142);
-            this.dtpTimeInEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpTimeInEdit.Name = "dtpTimeInEdit";
-            this.dtpTimeInEdit.Size = new System.Drawing.Size(297, 30);
-            this.dtpTimeInEdit.TabIndex = 140;
-            this.dtpTimeInEdit.Value = new System.DateTime(2022, 11, 3, 8, 0, 0, 0);
-            this.dtpTimeInEdit.ValueChanged += new System.EventHandler(this.dtpEditTimeIn_ValueChanged);
-            // 
-            // lbl_EditEmployeeName
-            // 
-            this.lbl_EditEmployeeName.AutoSize = true;
-            this.lbl_EditEmployeeName.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditEmployeeName.Location = new System.Drawing.Point(804, 99);
-            this.lbl_EditEmployeeName.Name = "lbl_EditEmployeeName";
-            this.lbl_EditEmployeeName.Size = new System.Drawing.Size(208, 23);
-            this.lbl_EditEmployeeName.TabIndex = 139;
-            this.lbl_EditEmployeeName.Text = "Select an Employee";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(645, 464);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(165, 23);
-            this.label44.TabIndex = 138;
-            this.label44.Text = "Overtime Hours:";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(646, 689);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(108, 23);
-            this.label45.TabIndex = 137;
-            this.label45.Text = "S.H. Hours:";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(646, 600);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(110, 23);
-            this.label46.TabIndex = 136;
-            this.label46.Text = "R.H. Hours:";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(645, 655);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(150, 23);
-            this.label48.TabIndex = 135;
-            this.label48.Text = "Spec. Holiday:";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(646, 561);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(138, 23);
-            this.label50.TabIndex = 134;
-            this.label50.Text = "Reg. Holiday:";
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(906, 414);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(136, 23);
-            this.label51.TabIndex = 133;
-            this.label51.Text = "Minutes Late:";
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(646, 414);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(87, 23);
-            this.label53.TabIndex = 132;
-            this.label53.Text = "Minutes:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(645, 378);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(68, 23);
-            this.label54.TabIndex = 131;
-            this.label54.Text = "Hours:";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label55.Location = new System.Drawing.Point(646, 232);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(64, 23);
-            this.label55.TabIndex = 130;
-            this.label55.Text = "Date:";
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(645, 186);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(100, 23);
-            this.label56.TabIndex = 129;
-            this.label56.Text = "Time Out:";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label57.Location = new System.Drawing.Point(645, 99);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(114, 23);
-            this.label57.TabIndex = 128;
-            this.label57.Text = "Employee:";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(646, 142);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(81, 23);
-            this.label58.TabIndex = 126;
-            this.label58.Text = "Time In:";
-            // 
             // AddAttendance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1181, 919);
+            this.ClientSize = new System.Drawing.Size(886, 747);
             this.ControlBox = false;
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.pnlEdit);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label19);
@@ -1385,7 +1433,6 @@ namespace Admin_Login
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddAttendance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddAttendance";
@@ -1477,7 +1524,6 @@ namespace Admin_Login
         private System.Windows.Forms.Label lblMinsLate;
         private System.Windows.Forms.Label lblMins;
         private System.Windows.Forms.Label lblHours;
-        private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Label lbl_EditSpecHMins;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lbl_EditSpecHHours;
