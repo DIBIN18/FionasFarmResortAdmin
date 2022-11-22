@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace Admin_Login
 {
     public partial class EditDepartmentAndPosition : Form
     {
         Login login = new Login();
+
+        string selectedDept = "", selectedPos = "";
 
         SqlDataAdapter DsqlDataAdapter = new SqlDataAdapter();
         BindingSource DbindingSource = new BindingSource();
@@ -155,6 +158,8 @@ namespace Admin_Login
                 adapter.Fill(dt);
 
                 txtEditDepartmentName.Text = dt.Rows[0][1].ToString();
+
+                selectedDept = dt.Rows[0][0].ToString();
             }
         }
 
@@ -172,6 +177,8 @@ namespace Admin_Login
 
                 txtEditPositionName.Text = dt.Rows[0][1].ToString();
                 txtEditBasicRate.Text = dt.Rows[0][3].ToString();
+
+                selectedPos = dt.Rows[0][0].ToString();
             }
         }
 
@@ -196,13 +203,70 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query2 =
-                    "SELECT * FROM Position";
+                    "SELECT * FROM Position WHERE Custom= 0";
                 SqlDataAdapter adapter2 = new SqlDataAdapter(query2, connection);
                 DataTable data2 = new DataTable();
                 adapter2.Fill(data2);
                 dgvPositions.DataSource = data2;
                 dgvPositions.Columns["PositionID"].Visible = false;
                 dgvPositions.Columns["DepartmentID"].Visible = false;
+            }
+        }
+
+        private void delete_dept_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "DELETE FROM Position WHERE DepartmentID=" + selectedDept +
+                    " DELETE FROM Department WHERE DepartmentID=" + selectedDept;
+
+
+                DialogResult dialogResult = MessageBox.Show(
+                        " Are you sure you want to Delete the Department?, " +
+                        "Positions under the department will also be deleted","Delete Department", MessageBoxButtons.YesNo
+                );
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    selectedPos = "";
+                    txtEditBasicRate.Text = "";
+                    txtEditPositionName.Text = "";
+
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Department Deleted");
+                    loadDgvDept();
+                    loadDgvPos();
+                    txtEditDepartmentName.Text = " ";
+                }
+            }
+        }
+
+        private void delete_pos_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM Position WHERE PositionID=" + selectedPos;
+
+                DialogResult dialogResult = MessageBox.Show(
+                        " Are you sure you want to Delete the Position?, ", "Delete Position", MessageBoxButtons.YesNo
+                );
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Position Deleted");
+                    loadDgvPos();
+                    txtEditPositionName.Text = " ";
+                    txtEditBasicRate.Text = " ";
+                }
             }
         }
     }

@@ -549,6 +549,42 @@ namespace Admin_Login
                 appliedLeaveList.BringToFront();
                 appliedLeaveList.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Schedule Overtime")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Schedule Overtime";
+                TitleLabel.Text = TitleExtension;
+                OvertimeDates overtimeDates = new OvertimeDates();
+                {
+                    overtimeDates.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(overtimeDates);
+                overtimeDates.BringToFront();
+                overtimeDates.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Schedules")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Schedules";
+                TitleLabel.Text = TitleExtension;
+                Schedules schedules = new Schedules();
+                {
+                    schedules.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(schedules);
+                schedules.BringToFront();
+                schedules.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Overtime Lists")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Overtime Lists";
+                TitleLabel.Text = TitleExtension;
+                OvertimeList overtimeList = new OvertimeList();
+                {
+                    overtimeList.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(overtimeList);
+                overtimeList.BringToFront();
+                overtimeList.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

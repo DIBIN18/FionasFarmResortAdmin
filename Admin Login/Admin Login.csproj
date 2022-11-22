@@ -185,6 +185,18 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="OvertimeDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OvertimeDates.Designer.cs">
+      <DependentUpon>OvertimeDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OvertimeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OvertimeList.Designer.cs">
+      <DependentUpon>OvertimeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Payroll.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OvertimeDates.resx">
+      <DependentUpon>OvertimeDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OvertimeList.resx">
+      <DependentUpon>OvertimeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Payroll.resx">
       <DependentUpon>Payroll.cs</DependentUpon>

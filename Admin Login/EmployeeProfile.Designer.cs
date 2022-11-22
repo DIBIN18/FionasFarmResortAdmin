@@ -75,7 +75,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.btnAddSingleSched = new System.Windows.Forms.Button();
             this.cbSunday = new System.Windows.Forms.CheckBox();
             this.cbSaturday = new System.Windows.Forms.CheckBox();
             this.cbFriday = new System.Windows.Forms.CheckBox();
@@ -643,21 +642,6 @@
             this.label13.TabIndex = 2;
             this.label13.Text = "Position:";
             // 
-            // btnAddSingleSched
-            // 
-            this.btnAddSingleSched.BackColor = System.Drawing.Color.Green;
-            this.btnAddSingleSched.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddSingleSched.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddSingleSched.ForeColor = System.Drawing.Color.White;
-            this.btnAddSingleSched.Location = new System.Drawing.Point(336, 316);
-            this.btnAddSingleSched.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddSingleSched.Name = "btnAddSingleSched";
-            this.btnAddSingleSched.Size = new System.Drawing.Size(253, 39);
-            this.btnAddSingleSched.TabIndex = 89;
-            this.btnAddSingleSched.Text = "Add Single Schedule";
-            this.btnAddSingleSched.UseVisualStyleBackColor = false;
-            this.btnAddSingleSched.Click += new System.EventHandler(this.btnAddSingleSched_Click);
-            // 
             // cbSunday
             // 
             this.cbSunday.AutoSize = true;
@@ -1078,7 +1062,6 @@
             this.panel3.Controls.Add(this.label26);
             this.panel3.Controls.Add(this.label17);
             this.panel3.Controls.Add(this.lblStatus);
-            this.panel3.Controls.Add(this.btnAddSingleSched);
             this.panel3.Controls.Add(this.label18);
             this.panel3.Controls.Add(this.cbSunday);
             this.panel3.Controls.Add(this.dtpScheduleInEdit);
@@ -1393,7 +1376,6 @@
         public System.Windows.Forms.Label lblSickLeaveCredits;
         public System.Windows.Forms.Label lblAllowedOT;
         public System.Windows.Forms.ComboBox cmbOtAllowed;
-        private System.Windows.Forms.Button btnAddSingleSched;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.CheckBox cbSunday;
         public System.Windows.Forms.CheckBox cbSaturday;

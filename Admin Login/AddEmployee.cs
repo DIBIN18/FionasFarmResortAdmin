@@ -193,7 +193,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query =
-                    "SELECT PositionName FROM Position WHERE DepartmentID='" + selectedDepartmentId + "'";
+                    "SELECT PositionName FROM Position WHERE DepartmentID='" + selectedDepartmentId + "' AND Custom=0";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataSet data = new DataSet();

@@ -50,6 +50,12 @@ namespace Admin_Login
             this.txtEditPositionName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,6 +66,10 @@ namespace Admin_Login
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -69,7 +79,7 @@ namespace Admin_Login
             this.label2.Location = new System.Drawing.Point(12, 18);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 27);
+            this.label2.Size = new System.Drawing.Size(80, 23);
             this.label2.TabIndex = 60;
             this.label2.Text = "Position";
             // 
@@ -80,7 +90,7 @@ namespace Admin_Login
             this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 27);
+            this.label1.Size = new System.Drawing.Size(120, 23);
             this.label1.TabIndex = 59;
             this.label1.Text = "Department";
             // 
@@ -94,11 +104,11 @@ namespace Admin_Login
             this.dgvDeparments.BackgroundColor = System.Drawing.Color.White;
             this.dgvDeparments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeparments.Location = new System.Drawing.Point(4, 48);
-            this.dgvDeparments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDeparments.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDeparments.Name = "dgvDeparments";
             this.dgvDeparments.RowHeadersVisible = false;
             this.dgvDeparments.RowHeadersWidth = 51;
-            this.dgvDeparments.Size = new System.Drawing.Size(605, 368);
+            this.dgvDeparments.Size = new System.Drawing.Size(605, 334);
             this.dgvDeparments.TabIndex = 61;
             this.dgvDeparments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeparments_CellClick);
             // 
@@ -109,12 +119,12 @@ namespace Admin_Login
             this.AddDepPos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddDepPos.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDepPos.ForeColor = System.Drawing.Color.White;
-            this.AddDepPos.Location = new System.Drawing.Point(710, 377);
+            this.AddDepPos.Location = new System.Drawing.Point(685, 136);
             this.AddDepPos.Name = "AddDepPos";
-            this.AddDepPos.Size = new System.Drawing.Size(313, 27);
+            this.AddDepPos.Size = new System.Drawing.Size(56, 23);
             this.AddDepPos.TabIndex = 67;
             this.AddDepPos.Tag = "btn_SaveDepartmentChanges";
-            this.AddDepPos.Text = "Save Department Changes";
+            this.AddDepPos.Text = "Save";
             this.AddDepPos.Click += new System.EventHandler(this.btn_SaveDepartmentChanges_Click);
             // 
             // pictureBox2
@@ -122,7 +132,7 @@ namespace Admin_Login
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(1030, 374);
+            this.pictureBox2.Location = new System.Drawing.Point(789, 133);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(33, 34);
@@ -136,10 +146,10 @@ namespace Admin_Login
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox1.Location = new System.Drawing.Point(701, 368);
+            this.pictureBox1.Location = new System.Drawing.Point(676, 127);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(386, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(171, 46);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 66;
             this.pictureBox1.TabStop = false;
@@ -151,7 +161,7 @@ namespace Admin_Login
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(1025, 377);
+            this.pictureBox3.Location = new System.Drawing.Point(789, 212);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(33, 34);
@@ -168,22 +178,22 @@ namespace Admin_Login
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(723, 377);
+            this.label3.Location = new System.Drawing.Point(688, 212);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(283, 29);
+            this.label3.Size = new System.Drawing.Size(56, 24);
             this.label3.TabIndex = 70;
             this.label3.Tag = "btn_SavePositionChanges";
-            this.label3.Text = "Save Position Changes";
+            this.label3.Text = "Save";
             this.label3.Click += new System.EventHandler(this.btn_SavePositionChanges_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox4.Location = new System.Drawing.Point(711, 369);
+            this.pictureBox4.Location = new System.Drawing.Point(676, 204);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(368, 46);
+            this.pictureBox4.Size = new System.Drawing.Size(171, 46);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 69;
             this.pictureBox4.TabStop = false;
@@ -195,7 +205,7 @@ namespace Admin_Login
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(110)))), ((int)(((byte)(114)))));
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Back_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(639, 870);
+            this.pictureBox5.Location = new System.Drawing.Point(639, 838);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(39, 38);
@@ -212,9 +222,9 @@ namespace Admin_Login
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(568, 874);
+            this.label4.Location = new System.Drawing.Point(568, 842);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 29);
+            this.label4.Size = new System.Drawing.Size(55, 24);
             this.label4.TabIndex = 73;
             this.label4.Tag = "btn_Back";
             this.label4.Text = "Back";
@@ -224,7 +234,7 @@ namespace Admin_Login
             // 
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
-            this.pictureBox6.Location = new System.Drawing.Point(551, 867);
+            this.pictureBox6.Location = new System.Drawing.Point(551, 835);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(144, 46);
@@ -238,6 +248,9 @@ namespace Admin_Login
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.pictureBox7);
+            this.panel1.Controls.Add(this.pictureBox8);
             this.panel1.Controls.Add(this.txtEditDepartmentName);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.dgvDeparments);
@@ -246,18 +259,18 @@ namespace Admin_Login
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(13, 13);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1155, 420);
+            this.panel1.Size = new System.Drawing.Size(1155, 390);
             this.panel1.TabIndex = 75;
             // 
             // txtEditDepartmentName
             // 
             this.txtEditDepartmentName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditDepartmentName.Location = new System.Drawing.Point(617, 79);
-            this.txtEditDepartmentName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEditDepartmentName.Margin = new System.Windows.Forms.Padding(4);
             this.txtEditDepartmentName.Name = "txtEditDepartmentName";
-            this.txtEditDepartmentName.Size = new System.Drawing.Size(534, 36);
+            this.txtEditDepartmentName.Size = new System.Drawing.Size(534, 30);
             this.txtEditDepartmentName.TabIndex = 73;
             // 
             // label5
@@ -266,7 +279,7 @@ namespace Admin_Login
             this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(616, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(224, 27);
+            this.label5.Size = new System.Drawing.Size(182, 22);
             this.label5.TabIndex = 72;
             this.label5.Text = "Deparment Name:";
             // 
@@ -274,7 +287,10 @@ namespace Admin_Login
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Controls.Add(this.dgvPositions);
+            this.panel2.Controls.Add(this.pictureBox10);
             this.panel2.Controls.Add(this.txtEditBasicRate);
             this.panel2.Controls.Add(this.txtEditPositionName);
             this.panel2.Controls.Add(this.label7);
@@ -283,10 +299,10 @@ namespace Admin_Login
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Location = new System.Drawing.Point(13, 441);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(13, 407);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1155, 420);
+            this.panel2.Size = new System.Drawing.Size(1155, 399);
             this.panel2.TabIndex = 76;
             // 
             // dgvPositions
@@ -299,13 +315,13 @@ namespace Admin_Login
             this.dgvPositions.BackgroundColor = System.Drawing.Color.White;
             this.dgvPositions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPositions.Location = new System.Drawing.Point(4, 49);
-            this.dgvPositions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPositions.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPositions.Name = "dgvPositions";
             this.dgvPositions.ReadOnly = true;
             this.dgvPositions.RowHeadersVisible = false;
             this.dgvPositions.RowHeadersWidth = 51;
             this.dgvPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPositions.Size = new System.Drawing.Size(605, 367);
+            this.dgvPositions.Size = new System.Drawing.Size(605, 342);
             this.dgvPositions.TabIndex = 75;
             this.dgvPositions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPositions_CellClick);
             // 
@@ -313,18 +329,18 @@ namespace Admin_Login
             // 
             this.txtEditBasicRate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditBasicRate.Location = new System.Drawing.Point(617, 158);
-            this.txtEditBasicRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEditBasicRate.Margin = new System.Windows.Forms.Padding(4);
             this.txtEditBasicRate.Name = "txtEditBasicRate";
-            this.txtEditBasicRate.Size = new System.Drawing.Size(534, 36);
+            this.txtEditBasicRate.Size = new System.Drawing.Size(534, 30);
             this.txtEditBasicRate.TabIndex = 74;
             // 
             // txtEditPositionName
             // 
             this.txtEditPositionName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEditPositionName.Location = new System.Drawing.Point(617, 80);
-            this.txtEditPositionName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEditPositionName.Margin = new System.Windows.Forms.Padding(4);
             this.txtEditPositionName.Name = "txtEditPositionName";
-            this.txtEditPositionName.Size = new System.Drawing.Size(534, 36);
+            this.txtEditPositionName.Size = new System.Drawing.Size(534, 30);
             this.txtEditPositionName.TabIndex = 74;
             // 
             // label7
@@ -333,7 +349,7 @@ namespace Admin_Login
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(616, 127);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 27);
+            this.label7.Size = new System.Drawing.Size(110, 22);
             this.label7.TabIndex = 74;
             this.label7.Text = "Basic Rate:";
             // 
@@ -343,9 +359,97 @@ namespace Admin_Login
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(616, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(181, 27);
+            this.label6.Size = new System.Drawing.Size(143, 22);
             this.label6.TabIndex = 73;
             this.label6.Text = "Position Name:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Maroon;
+            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(922, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 23);
+            this.label8.TabIndex = 75;
+            this.label8.Tag = "btnDeleteDept";
+            this.label8.Text = "Delete";
+            this.label8.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox7.Image = global::Admin_Login.Properties.Resources.AbsentToday_Icon1;
+            this.pictureBox7.Location = new System.Drawing.Point(1026, 133);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(33, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 76;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "btnDeleteDept";
+            this.pictureBox7.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pictureBox8.Location = new System.Drawing.Point(913, 127);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(171, 46);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 74;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Tag = "btnDeleteDept";
+            this.pictureBox8.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Maroon;
+            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(922, 213);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 23);
+            this.label9.TabIndex = 78;
+            this.label9.Tag = "btn_SaveDepartmentChanges";
+            this.label9.Text = "Delete";
+            this.label9.Click += new System.EventHandler(this.delete_pos_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox9.Image = global::Admin_Login.Properties.Resources.AbsentToday_Icon1;
+            this.pictureBox9.Location = new System.Drawing.Point(1026, 210);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(33, 34);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 79;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "btn_SaveDepartmentChanges";
+            this.pictureBox9.Click += new System.EventHandler(this.delete_pos_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pictureBox10.Location = new System.Drawing.Point(913, 204);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(171, 46);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 77;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "btn_SaveDepartmentChanges";
+            this.pictureBox10.Click += new System.EventHandler(this.delete_pos_Click);
             // 
             // EditDepartmentAndPosition
             // 
@@ -359,7 +463,7 @@ namespace Admin_Login
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "EditDepartmentAndPosition";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditDepartmentPosition";
@@ -376,6 +480,10 @@ namespace Admin_Login
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,5 +511,11 @@ namespace Admin_Login
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.DataGridView dgvPositions;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }

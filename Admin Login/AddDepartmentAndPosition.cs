@@ -98,9 +98,9 @@ namespace Admin_Login
                 connection.Open();
                 SqlCommand command = new SqlCommand(
                     "INSERT INTO Position" +
-                    "(PositionName, DepartmentID, BasicRate)" +
+                    "(PositionName, DepartmentID, BasicRate, Custom)" +
                     "VALUES" +
-                    "(@PositionName, @DepartmentID, @BasicRate)",
+                    "(@PositionName, @DepartmentID, @BasicRate, @Custom)",
                     connection);
 
                 // CONVERT STRING TO DECIMAL
@@ -117,6 +117,7 @@ namespace Admin_Login
                 command.Parameters.AddWithValue("@PositionName", txtPositionName.Text);
                 command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                 command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
+                command.Parameters.AddWithValue("@Custom", 0);
                 command.ExecuteNonQuery();
                 MessageBox.Show("New Position Has been Added");
                 txtPositionName.Text = "";

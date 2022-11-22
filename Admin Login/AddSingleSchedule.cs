@@ -94,7 +94,9 @@ namespace Admin_Login
                     connection.Open();
 
                     string query =
-                        "INSERT INTO SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date) VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
+                        "INSERT INTO " +
+                        "SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date) " +
+                        "VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@ScheduleIn", schedIn);

@@ -52,9 +52,9 @@ namespace Admin_Login
             this.panel2.Controls.Add(this.Logo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(370, 44);
+            this.panel2.Size = new System.Drawing.Size(493, 54);
             this.panel2.TabIndex = 65;
             // 
             // label6
@@ -62,8 +62,7 @@ namespace Admin_Login
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(2, 9);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(3, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(221, 24);
             this.label6.TabIndex = 4;
@@ -73,79 +72,78 @@ namespace Admin_Login
             // 
             this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
-            this.Logo.Location = new System.Drawing.Point(887, 2);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2);
+            this.Logo.Location = new System.Drawing.Point(1183, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(43, 54);
+            this.Logo.Size = new System.Drawing.Size(57, 66);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 3;
             this.Logo.TabStop = false;
             // 
             // dtpSchedOut
             // 
-            this.dtpSchedOut.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSchedOut.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSchedOut.CustomFormat = "hh-mm";
             this.dtpSchedOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSchedOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpSchedOut.Location = new System.Drawing.Point(151, 138);
-            this.dtpSchedOut.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpSchedOut.Location = new System.Drawing.Point(201, 170);
+            this.dtpSchedOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpSchedOut.Name = "dtpSchedOut";
-            this.dtpSchedOut.Size = new System.Drawing.Size(181, 23);
+            this.dtpSchedOut.Size = new System.Drawing.Size(240, 23);
             this.dtpSchedOut.TabIndex = 77;
+            this.dtpSchedOut.Value = new System.DateTime(2022, 11, 22, 17, 0, 0, 0);
             // 
             // dtpScheduleIn
             // 
-            this.dtpScheduleIn.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpScheduleIn.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleIn.CustomFormat = "hh-mm";
             this.dtpScheduleIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpScheduleIn.Location = new System.Drawing.Point(151, 100);
-            this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpScheduleIn.Location = new System.Drawing.Point(201, 133);
+            this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpScheduleIn.Name = "dtpScheduleIn";
-            this.dtpScheduleIn.Size = new System.Drawing.Size(181, 23);
+            this.dtpScheduleIn.Size = new System.Drawing.Size(240, 23);
             this.dtpScheduleIn.TabIndex = 76;
+            this.dtpScheduleIn.Value = new System.DateTime(2022, 11, 22, 8, 0, 0, 0);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(20, 138);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(27, 173);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(111, 17);
+            this.label18.Size = new System.Drawing.Size(123, 20);
             this.label18.TabIndex = 75;
             this.label18.Text = "Schedule Out:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(20, 106);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(27, 136);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(98, 17);
+            this.label17.Size = new System.Drawing.Size(110, 20);
             this.label17.TabIndex = 74;
             this.label17.Text = "Schedule In:";
             // 
             // dtpDate
             // 
             this.dtpDate.CustomFormat = "MMMM dd, yyyy";
-            this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(151, 72);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDate.Location = new System.Drawing.Point(201, 92);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(181, 20);
+            this.dtpDate.Size = new System.Drawing.Size(240, 26);
             this.dtpDate.TabIndex = 81;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(20, 75);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(27, 98);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 17);
+            this.label12.Size = new System.Drawing.Size(53, 19);
             this.label12.TabIndex = 80;
             this.label12.Text = "Date :";
             // 
@@ -155,10 +153,10 @@ namespace Admin_Login
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(191, 190);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(2);
+            this.btnBack.Location = new System.Drawing.Point(255, 234);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(106, 32);
+            this.btnBack.Size = new System.Drawing.Size(141, 39);
             this.btnBack.TabIndex = 82;
             this.btnBack.Text = "Cancel";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -170,10 +168,10 @@ namespace Admin_Login
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(61, 190);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdd.Location = new System.Drawing.Point(81, 234);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(106, 32);
+            this.btnAdd.Size = new System.Drawing.Size(141, 39);
             this.btnAdd.TabIndex = 83;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -183,8 +181,7 @@ namespace Admin_Login
             // 
             this.lblSingleSchedID.AutoSize = true;
             this.lblSingleSchedID.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSingleSchedID.Location = new System.Drawing.Point(20, 46);
-            this.lblSingleSchedID.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSingleSchedID.Location = new System.Drawing.Point(27, 57);
             this.lblSingleSchedID.Name = "lblSingleSchedID";
             this.lblSingleSchedID.Size = new System.Drawing.Size(0, 17);
             this.lblSingleSchedID.TabIndex = 84;
@@ -192,9 +189,9 @@ namespace Admin_Login
             // 
             // AddSingleSchedule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 267);
+            this.ClientSize = new System.Drawing.Size(493, 329);
             this.Controls.Add(this.lblSingleSchedID);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnBack);
@@ -206,6 +203,7 @@ namespace Admin_Login
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AddSingleSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddSingleSchedule";
