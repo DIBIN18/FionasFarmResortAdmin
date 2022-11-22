@@ -28,6 +28,7 @@ namespace Admin_Login
 
                 string query =
                     "SELECT " +
+                    "EmployeeInfo.EmployeeID," +
                     "EmployeeInfo.EmployeeFullName," +
                     "EmployeeSchedule.ScheduleIn," +
                     "EmployeeSchedule.ScheduleOut," +
@@ -55,7 +56,23 @@ namespace Admin_Login
                 this.dgv_Schedules.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
                 dgv_Schedules.DataSource = data;
+
+                dgv_Schedules.Columns["EmployeeID"].Visible = false;
             }
+        }
+
+        private void btn_singleSched_Click(object sender, EventArgs e)
+        {
+            AddSingleSchedule ss = new AddSingleSchedule();
+            ss.lblSingleSchedID.Text = dgv_Schedules.CurrentRow.Cells[0].Value.ToString();
+            ss.ShowDialog();
+        }
+
+        private void schedule_ot_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Schedule Overtime";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }
