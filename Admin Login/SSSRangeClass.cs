@@ -15,6 +15,7 @@ namespace Admin_Login
         public DataTable datatable = new DataTable();
         public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
         double getGrossPay = 0;
+
         public string ComputeGrossPay()
         {
             string query = "insert into PayrollReport " +
@@ -72,6 +73,36 @@ namespace Admin_Login
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
+        }
+        public void getEmployeeFromLeavePay()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "select EmployeeID from LeavePay where Date Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) group by EmployeeID";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    DataTable data = new DataTable();
+                    adapter.Fill(data);
+
+                    int count = data.Rows.Count;
+                    string empID;
+                    for (int i = 0; i < count; i++)
+                    {
+                        empID = data.Rows[i][0].ToString();
+                        string queryadd = "Insert into PayrollReport " +
+                                          "select A.EmployeeID, A.EmployeeFullname, B.PositionName,B.BasicRate ,'00:00', 0.00, 0.00, 0.00, 0.00 ,0, " +
+                                          "count(C.EmployeeID) , (count(C.EmployeeID)*8)*B.BasicRate, 0,0,0,0,0,0,0,(count(C.EmployeeID)*8)*B.BasicRate,' ' " +
+                                          "from EmployeeInfo as A inner join Position as B on A.PositionID = B.PositionID inner join LeavePay as C " +
+                                          "on A.EmployeeID=C.EmployeeID where C.Date Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) " +
+                                          "and A.EmployeeID = " + empID + " and NOT EXISTS (SELECT EmployeeID FROM PayrollReport where EmployeeID = "+ empID +") group by A.EmployeeID,A.EmployeeFullName,B.PositionName,B.BasicRate";
+                        SqlCommand cmd = new SqlCommand(queryadd, connection);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex) {}
         }
         public void getTAX()
         {
@@ -240,6 +271,7 @@ namespace Admin_Login
             getLeaveDays();
             AddLeavePay();
             removeNull();
+            getEmployeeFromLeavePay();
             PayrollReport payrollReport = new PayrollReport();
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
