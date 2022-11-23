@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Syncfusion.XlsIO;
 using System.IO;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using Font = System.Drawing.Font;
 
 namespace Admin_Login
 {
@@ -219,6 +222,74 @@ namespace Admin_Login
             dgvDatechangeLoad();
         }
 
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            if(dgv_DailyPayrollReport.Rows.Count > 0)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.Filter = "PDF (*.pdf) |*.pdf";
+                save.FileName = "Paycheck.pdf";
+                bool ErrorMessage = false;
+                if(save.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(save.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(save.FileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            ErrorMessage = true;
+                            MessageBox.Show("Unable to save data in disk " + ex.Message);
+                        }
+                    }
+                    if (!ErrorMessage)
+                    {
+                        try
+                        {
+                            PdfPTable pTable = new PdfPTable(dgv_DailyPayrollReport.Columns.Count);
+                            pTable.DefaultCell.Padding = 2;
+                            pTable.WidthPercentage = 50;
+                            pTable.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                            //HEADER
+                            foreach(DataGridViewColumn col in dgv_DailyPayrollReport.Columns)
+                            {
+                                PdfPCell pCell = new PdfPCell(new Phrase(col.HeaderText));
+                                pCell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                                pTable.AddCell(pCell);
+                            }
+                            foreach(DataGridViewRow viewRow in dgv_DailyPayrollReport.Rows)
+                            {
+                                foreach(DataGridViewCell dcell in viewRow.Cells)
+                                {
+                                    pTable.AddCell(dcell.Value.ToString());
+                                }
+                            }
+                            using (FileStream fileStream = new FileStream(save.FileName, FileMode.Create))
+                            {
+                                Document document = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                                PdfWriter.GetInstance(document, fileStream);
+                                document.Open();
+                                document.Add(pTable);
+                                document.Close();
+                                fileStream.Close();
+                            }
+                            MessageBox.Show("Data Export Successfully", "info");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error while exporting Data" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Record Found", "Info");
+            }
+        }
 
         public void tagadelete()
         {

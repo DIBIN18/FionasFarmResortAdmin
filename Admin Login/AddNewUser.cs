@@ -127,6 +127,7 @@ namespace Admin_Login
 
         private void AddNewUser_Load(object sender, EventArgs e)
         {
+            
             cmbUserName.Items.Add("HR");
             cmbUserName.Items.Add("timekeeper");
             
@@ -137,6 +138,12 @@ namespace Admin_Login
             Font font = new Font(lblCancel.Font, FontStyle.Underline);
             lblCancel.Font = font;
             this.Close();
+        }
+
+        private void txtPass_Enter(object sender, EventArgs e)
+        {
+            txtPass.Text = "";
+            txtPass.PasswordChar = '*';
         }
     }
 }

@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnGenerate = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.btnGenerate);
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.label3);
@@ -92,20 +92,21 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "btn_HolidaySettings";
             // 
-            // label1
+            // btnGenerate
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(588, 539);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 24);
-            this.label1.TabIndex = 43;
-            this.label1.Tag = "";
-            this.label1.Text = "Genereate Payslip";
+            this.btnGenerate.AutoSize = true;
+            this.btnGenerate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.btnGenerate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGenerate.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerate.ForeColor = System.Drawing.Color.White;
+            this.btnGenerate.Location = new System.Drawing.Point(588, 539);
+            this.btnGenerate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btnGenerate.Name = "btnGenerate";
+            this.btnGenerate.Size = new System.Drawing.Size(180, 24);
+            this.btnGenerate.TabIndex = 43;
+            this.btnGenerate.Tag = "";
+            this.btnGenerate.Text = "Genereate Payslip";
+            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
             // pictureBox2
             // 
@@ -167,6 +168,7 @@
             // 
             // dgv_DailyPayrollReport
             // 
+            this.dgv_DailyPayrollReport.AllowUserToAddRows = false;
             this.dgv_DailyPayrollReport.AllowUserToOrderColumns = true;
             this.dgv_DailyPayrollReport.AllowUserToResizeColumns = false;
             this.dgv_DailyPayrollReport.AllowUserToResizeRows = false;
@@ -403,7 +405,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label btnGenerate;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox2;
         public System.Windows.Forms.DateTimePicker dtp_To;
