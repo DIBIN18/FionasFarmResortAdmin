@@ -113,16 +113,23 @@ namespace Admin_Login
                 DataTable data = new DataTable();
                 adapter.Fill(data);
                 try
-                {                   
-                   
+                {
+                    txtRegularHours.Text = data.Rows[0][4].ToString();
+                    txtRegularPay.Text = data.Rows[0][5].ToString();
+                    double otmin =  (Convert.ToDouble(data.Rows[0][6].ToString())/1.30)/Convert.ToDouble(data.Rows[0][3].ToString());
+                    txtOvertimeHrs.Text = otmin.ToString();
+                    txtOvertimePay.Text = data.Rows[0][6].ToString();
+                    double rhHrs = (Convert.ToDouble(data.Rows[0][7].ToString())/(Convert.ToDouble(data.Rows[0][3].ToString())/60))/60;
+                    txtRegularHolidayHrs.Text= rhHrs.ToString();
+
                 }
                 catch (Exception ex)
                 {
                     txtRegularHours.Text = "";
-                    txtOvertimeMins.Text = "";
+                    txtOvertimeHrs.Text = "";
                     txtOvertimePay.Text = "";
                     txtRegularPay.Text = "";
-                    txtRegularHoliday.Text = "";
+                    txtRegularHolidayHrs.Text = "";
                     txtRHolidayPay.Text = "";
                     txtSpecialHoliday.Text = "";
                     txtSpHolidayPay.Text = "";

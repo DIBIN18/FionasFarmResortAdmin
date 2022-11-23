@@ -51,31 +51,31 @@
             this.txtRegularPay = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtSpecialHoliday = new System.Windows.Forms.TextBox();
-            this.txtRegularHoliday = new System.Windows.Forms.TextBox();
+            this.txtRegularHolidayHrs = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtOvertimeMins = new System.Windows.Forms.TextBox();
+            this.txtOvertimeHrs = new System.Windows.Forms.TextBox();
             this.txtRegularHours = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtTaxAmount = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.txtUnderTimeMin = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
             this.txtTotalDeduction = new System.Windows.Forms.TextBox();
             this.txtOtherDeductions = new System.Windows.Forms.TextBox();
             this.txtPagIbig = new System.Windows.Forms.TextBox();
             this.txtPhilHealth = new System.Windows.Forms.TextBox();
             this.txtSSS = new System.Windows.Forms.TextBox();
-            this.txtTardinessMins = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.txtUnderTimeMin = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtTardinessMins = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtEmployeeName = new System.Windows.Forms.TextBox();
             this.txtDepartment = new System.Windows.Forms.TextBox();
@@ -215,13 +215,13 @@
             this.groupBox2.Controls.Add(this.txtRegularPay);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.txtSpecialHoliday);
-            this.groupBox2.Controls.Add(this.txtRegularHoliday);
+            this.groupBox2.Controls.Add(this.txtRegularHolidayHrs);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtOvertimeMins);
+            this.groupBox2.Controls.Add(this.txtOvertimeHrs);
             this.groupBox2.Controls.Add(this.txtRegularHours);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -236,7 +236,7 @@
             // 
             this.txtLeavePay.Enabled = false;
             this.txtLeavePay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLeavePay.Location = new System.Drawing.Point(175, 313);
+            this.txtLeavePay.Location = new System.Drawing.Point(177, 346);
             this.txtLeavePay.Multiline = true;
             this.txtLeavePay.Name = "txtLeavePay";
             this.txtLeavePay.Size = new System.Drawing.Size(156, 19);
@@ -246,7 +246,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(36, 311);
+            this.label24.Location = new System.Drawing.Point(38, 344);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(90, 18);
             this.label24.TabIndex = 24;
@@ -256,7 +256,7 @@
             // 
             this.txtLeavedays.Enabled = false;
             this.txtLeavedays.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLeavedays.Location = new System.Drawing.Point(175, 280);
+            this.txtLeavedays.Location = new System.Drawing.Point(177, 313);
             this.txtLeavedays.Multiline = true;
             this.txtLeavedays.Name = "txtLeavedays";
             this.txtLeavedays.Size = new System.Drawing.Size(156, 19);
@@ -266,7 +266,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(36, 278);
+            this.label18.Location = new System.Drawing.Point(38, 311);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(96, 18);
             this.label18.TabIndex = 22;
@@ -296,7 +296,7 @@
             // 
             this.txtSpHolidayPay.Enabled = false;
             this.txtSpHolidayPay.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpHolidayPay.Location = new System.Drawing.Point(176, 345);
+            this.txtSpHolidayPay.Location = new System.Drawing.Point(176, 277);
             this.txtSpHolidayPay.Multiline = true;
             this.txtSpHolidayPay.Name = "txtSpHolidayPay";
             this.txtSpHolidayPay.Size = new System.Drawing.Size(156, 19);
@@ -316,11 +316,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(37, 343);
+            this.label12.Location = new System.Drawing.Point(37, 275);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(122, 18);
+            this.label12.Size = new System.Drawing.Size(112, 18);
             this.label12.TabIndex = 16;
-            this.label12.Text = "Sp.Holiday Pay:";
+            this.label12.Text = "S.Holiday Pay:";
             // 
             // txtOvertimePay
             // 
@@ -362,15 +362,15 @@
             this.txtSpecialHoliday.Size = new System.Drawing.Size(156, 19);
             this.txtSpecialHoliday.TabIndex = 15;
             // 
-            // txtRegularHoliday
+            // txtRegularHolidayHrs
             // 
-            this.txtRegularHoliday.Enabled = false;
-            this.txtRegularHoliday.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegularHoliday.Location = new System.Drawing.Point(176, 172);
-            this.txtRegularHoliday.Multiline = true;
-            this.txtRegularHoliday.Name = "txtRegularHoliday";
-            this.txtRegularHoliday.Size = new System.Drawing.Size(156, 19);
-            this.txtRegularHoliday.TabIndex = 14;
+            this.txtRegularHolidayHrs.Enabled = false;
+            this.txtRegularHolidayHrs.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegularHolidayHrs.Location = new System.Drawing.Point(176, 172);
+            this.txtRegularHolidayHrs.Multiline = true;
+            this.txtRegularHolidayHrs.Name = "txtRegularHolidayHrs";
+            this.txtRegularHolidayHrs.Size = new System.Drawing.Size(156, 19);
+            this.txtRegularHolidayHrs.TabIndex = 14;
             // 
             // label9
             // 
@@ -378,9 +378,9 @@
             this.label9.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(37, 66);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 18);
+            this.label9.Size = new System.Drawing.Size(82, 18);
             this.label9.TabIndex = 13;
-            this.label9.Text = "Regular Pay:";
+            this.label9.Text = "Basic Pay:";
             // 
             // label8
             // 
@@ -388,9 +388,9 @@
             this.label8.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(36, 242);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(129, 18);
+            this.label8.Size = new System.Drawing.Size(110, 18);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Special Holiday:";
+            this.label8.Text = "S.Holiday Hrs.:";
             // 
             // label10
             // 
@@ -408,9 +408,9 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(37, 171);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 18);
+            this.label7.Size = new System.Drawing.Size(115, 18);
             this.label7.TabIndex = 11;
-            this.label7.Text = "Regular Holiday:";
+            this.label7.Text = "R. Holiday Hrs.:";
             // 
             // label5
             // 
@@ -422,15 +422,15 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Regular Hours:";
             // 
-            // txtOvertimeMins
+            // txtOvertimeHrs
             // 
-            this.txtOvertimeMins.Enabled = false;
-            this.txtOvertimeMins.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOvertimeMins.Location = new System.Drawing.Point(175, 102);
-            this.txtOvertimeMins.Multiline = true;
-            this.txtOvertimeMins.Name = "txtOvertimeMins";
-            this.txtOvertimeMins.Size = new System.Drawing.Size(156, 19);
-            this.txtOvertimeMins.TabIndex = 13;
+            this.txtOvertimeHrs.Enabled = false;
+            this.txtOvertimeHrs.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOvertimeHrs.Location = new System.Drawing.Point(175, 102);
+            this.txtOvertimeHrs.Multiline = true;
+            this.txtOvertimeHrs.Name = "txtOvertimeHrs";
+            this.txtOvertimeHrs.Size = new System.Drawing.Size(156, 19);
+            this.txtOvertimeHrs.TabIndex = 13;
             // 
             // txtRegularHours
             // 
@@ -448,9 +448,9 @@
             this.label6.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(36, 101);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 18);
+            this.label6.Size = new System.Drawing.Size(109, 18);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Overtime Mins.:";
+            this.label6.Text = "Overtime Hrs.:";
             // 
             // groupBox3
             // 
@@ -494,26 +494,6 @@
             this.label26.Size = new System.Drawing.Size(36, 18);
             this.label26.TabIndex = 37;
             this.label26.Text = "Tax:";
-            // 
-            // txtUnderTimeMin
-            // 
-            this.txtUnderTimeMin.Enabled = false;
-            this.txtUnderTimeMin.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnderTimeMin.Location = new System.Drawing.Point(194, 95);
-            this.txtUnderTimeMin.Multiline = true;
-            this.txtUnderTimeMin.Name = "txtUnderTimeMin";
-            this.txtUnderTimeMin.Size = new System.Drawing.Size(161, 19);
-            this.txtUnderTimeMin.TabIndex = 34;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(46, 95);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(131, 18);
-            this.label25.TabIndex = 33;
-            this.label25.Text = "UnderTime Mins.:";
             // 
             // txtTotalDeduction
             // 
@@ -565,16 +545,6 @@
             this.txtSSS.Size = new System.Drawing.Size(157, 19);
             this.txtSSS.TabIndex = 28;
             // 
-            // txtTardinessMins
-            // 
-            this.txtTardinessMins.Enabled = false;
-            this.txtTardinessMins.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTardinessMins.Location = new System.Drawing.Point(194, 35);
-            this.txtTardinessMins.Multiline = true;
-            this.txtTardinessMins.Name = "txtTardinessMins";
-            this.txtTardinessMins.Size = new System.Drawing.Size(161, 19);
-            this.txtTardinessMins.TabIndex = 22;
-            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -624,6 +594,36 @@
             this.label15.Size = new System.Drawing.Size(36, 18);
             this.label15.TabIndex = 19;
             this.label15.Text = "SSS:";
+            // 
+            // txtUnderTimeMin
+            // 
+            this.txtUnderTimeMin.Enabled = false;
+            this.txtUnderTimeMin.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUnderTimeMin.Location = new System.Drawing.Point(194, 95);
+            this.txtUnderTimeMin.Multiline = true;
+            this.txtUnderTimeMin.Name = "txtUnderTimeMin";
+            this.txtUnderTimeMin.Size = new System.Drawing.Size(161, 19);
+            this.txtUnderTimeMin.TabIndex = 34;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(46, 95);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(131, 18);
+            this.label25.TabIndex = 33;
+            this.label25.Text = "UnderTime Mins.:";
+            // 
+            // txtTardinessMins
+            // 
+            this.txtTardinessMins.Enabled = false;
+            this.txtTardinessMins.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTardinessMins.Location = new System.Drawing.Point(194, 35);
+            this.txtTardinessMins.Multiline = true;
+            this.txtTardinessMins.Name = "txtTardinessMins";
+            this.txtTardinessMins.Size = new System.Drawing.Size(161, 19);
+            this.txtTardinessMins.TabIndex = 22;
             // 
             // label14
             // 
@@ -908,8 +908,8 @@
         public System.Windows.Forms.TextBox txtOvertimePay;
         public System.Windows.Forms.TextBox txtRegularPay;
         public System.Windows.Forms.TextBox txtSpecialHoliday;
-        public System.Windows.Forms.TextBox txtRegularHoliday;
-        public System.Windows.Forms.TextBox txtOvertimeMins;
+        public System.Windows.Forms.TextBox txtRegularHolidayHrs;
+        public System.Windows.Forms.TextBox txtOvertimeHrs;
         public System.Windows.Forms.TextBox txtTotalDeduction;
         public System.Windows.Forms.TextBox txtOtherDeductions;
         public System.Windows.Forms.TextBox txtPagIbig;
