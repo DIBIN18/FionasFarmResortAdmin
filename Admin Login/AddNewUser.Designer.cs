@@ -45,10 +45,10 @@
             this.HolidaySetting = new System.Windows.Forms.CheckBox();
             this.Settings = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCancel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblCancel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -70,31 +70,33 @@
             // 
             // txtUser
             // 
-            this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUser.Location = new System.Drawing.Point(80, 105);
+            this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.Location = new System.Drawing.Point(56, 104);
             this.txtUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtUser.Multiline = true;
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(187, 31);
+            this.txtUser.Size = new System.Drawing.Size(244, 31);
             this.txtUser.TabIndex = 1;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(80, 214);
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPass.Location = new System.Drawing.Point(56, 214);
             this.txtPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtPass.Multiline = true;
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(185, 34);
+            this.txtPass.Size = new System.Drawing.Size(244, 34);
             this.txtPass.TabIndex = 2;
+            this.txtPass.Enter += new System.EventHandler(this.txtPass_Enter);
             // 
             // cmbUserName
             // 
             this.cmbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserName.FormattingEnabled = true;
-            this.cmbUserName.Location = new System.Drawing.Point(80, 320);
+            this.cmbUserName.Location = new System.Drawing.Point(56, 320);
             this.cmbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbUserName.Name = "cmbUserName";
-            this.cmbUserName.Size = new System.Drawing.Size(187, 32);
+            this.cmbUserName.Size = new System.Drawing.Size(244, 32);
             this.cmbUserName.TabIndex = 3;
             // 
             // asd
@@ -245,6 +247,18 @@
             this.panel1.Size = new System.Drawing.Size(353, 524);
             this.panel1.TabIndex = 15;
             // 
+            // lblCancel
+            // 
+            this.lblCancel.AutoSize = true;
+            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblCancel.Location = new System.Drawing.Point(30, 467);
+            this.lblCancel.Name = "lblCancel";
+            this.lblCancel.Size = new System.Drawing.Size(85, 20);
+            this.lblCancel.TabIndex = 7;
+            this.lblCancel.Text = "or Cancel";
+            this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -282,18 +296,6 @@
             this.label2.Size = new System.Drawing.Size(426, 46);
             this.label2.TabIndex = 17;
             this.label2.Text = "CREATE NEW USER";
-            // 
-            // lblCancel
-            // 
-            this.lblCancel.AutoSize = true;
-            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCancel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblCancel.Location = new System.Drawing.Point(30, 467);
-            this.lblCancel.Name = "lblCancel";
-            this.lblCancel.Size = new System.Drawing.Size(85, 20);
-            this.lblCancel.TabIndex = 7;
-            this.lblCancel.Text = "or Cancel";
-            this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
             // 
             // AddNewUser
             // 
