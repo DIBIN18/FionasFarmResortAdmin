@@ -657,13 +657,6 @@ namespace Admin_Login
             //e.Handled = true;
         }
 
-        public void btnAddSingleSched_Click(object sender, EventArgs e)
-        {
-            AddSingleSchedule ss = new AddSingleSchedule();
-            ss.lblSingleSchedID.Text = lblEmployeeID.Text.ToString();
-            ss.ShowDialog();
-        }
-
         private void btnSetCustomRate_Click(object sender, EventArgs e)
         {
             txtCustomRate.Visible = true;

@@ -585,6 +585,30 @@ namespace Admin_Login
                 overtimeList.BringToFront();
                 overtimeList.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Single Schedule")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Single Schedule";
+                TitleLabel.Text = TitleExtension;
+                AddSingleSchedule addSingleSchedule = new AddSingleSchedule();
+                {
+                    addSingleSchedule.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(addSingleSchedule);
+                addSingleSchedule.BringToFront();
+                addSingleSchedule.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Single Schedule List")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Single Schedule List";
+                TitleLabel.Text = TitleExtension;
+                ViewSingleSchedList viewSingleSchedList = new ViewSingleSchedList();
+                {
+                    viewSingleSchedList.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(viewSingleSchedList);
+                viewSingleSchedList.BringToFront();
+                viewSingleSchedList.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

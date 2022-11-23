@@ -236,6 +236,12 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SSSRangeClass.cs" />
+    <Compile Include="ViewSingleSchedList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewSingleSchedList.Designer.cs">
+      <DependentUpon>ViewSingleSchedList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddAttendance.resx">
       <DependentUpon>AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewSingleSchedList.resx">
+      <DependentUpon>ViewSingleSchedList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="FFRUsersDataSet20.xsc">
       <DependentUpon>FFRUsersDataSet20.xsd</DependentUpon>

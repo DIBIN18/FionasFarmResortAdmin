@@ -63,9 +63,9 @@ namespace Admin_Login
 
         private void btn_singleSched_Click(object sender, EventArgs e)
         {
-            AddSingleSchedule ss = new AddSingleSchedule();
-            ss.lblSingleSchedID.Text = dgv_Schedules.CurrentRow.Cells[0].Value.ToString();
-            ss.ShowDialog();
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Single Schedule";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
 
         private void schedule_ot_Click(object sender, EventArgs e)
