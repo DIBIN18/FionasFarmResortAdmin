@@ -15,9 +15,8 @@ namespace Admin_Login
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
         SqlCommandBuilder cmbl;
-        bool addOtherDucution = false;
         String ValueHolder;
-
+        bool addOtherDucution = false;
         public Deductions()
         {
             InitializeComponent();
@@ -55,50 +54,50 @@ namespace Admin_Login
                 DataTable dts = new DataTable();
                 adapter.Fill(dts);
                 
-                try
-                {
-                    double regularhrs = Convert.ToDouble(dts.Rows[0][3].ToString()) * Convert.ToDouble(dts.Rows[0][4].ToString());
-                    tbWorkHours.Text = dts.Rows[0][4].ToString();
-                    tbPLeaveDays.Text = dts.Rows[0][9].ToString();
-                    tbBasicGross.Text = regularhrs.ToString("n2");
-                    tbTAX.Text = dts.Rows[0][15].ToString();
-                    tbOtherDeduction.Text = dts.Rows[0][16].ToString();
-                    tbOtherDeduction.Text = dts.Rows[0][17].ToString();
-                    if (string.IsNullOrEmpty(tbPLeaveDays.Text))
-                    {
-                        tbPLeaveDays.Text = "0";
-                    }
-                    if (string.IsNullOrEmpty(tbSSS.Text))
-                    {
-                        tbSSS.Text = "0.00";
-                    }
-                    else
-                    {
-                        tbSSS.Text = dts.Rows[0][13].ToString();
-                    }
-                    if (string.IsNullOrEmpty(tbPAGIBIG.Text))
-                    {
-                        tbPAGIBIG.Text = "0.00";
-                        tbPHILHEALTH.Text = "0.00";
-                    }
-                    else
-                    {
-                        tbPAGIBIG.Text = dts.Rows[0][14].ToString();
-                        tbPHILHEALTH.Text = dts.Rows[0][15].ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    tbWorkHours.Text = "00";
-                    tbPLeaveDays.Text = "00";
-                    tbBasicGross.Text = "0.00";
-                    tbSSS.Text = "0.00";
-                    tbPAGIBIG.Text = "0.00";
-                    tbPHILHEALTH.Text = "0.00";
-                    tbTAX.Text = "0.00";
-                    tbOtherDeduction.Text = "0.00";
-                    Console.WriteLine("Wala sya sa Date");
-                }
+                //try
+                //{
+                //    double regularhrs = Convert.ToDouble(dts.Rows[0][3].ToString()) * Convert.ToDouble(dts.Rows[0][4].ToString());
+                //    tbWorkHours.Text = dts.Rows[0][4].ToString();
+                //    tbPLeaveDays.Text = dts.Rows[0][9].ToString();
+                //    tbBasicGross.Text = regularhrs.ToString("n2");
+                //    tbTAX.Text = dts.Rows[0][15].ToString();
+                //    tbOtherDeduction.Text = dts.Rows[0][16].ToString();
+                //    tbOtherDeduction.Text = dts.Rows[0][17].ToString();
+                //    if (string.IsNullOrEmpty(tbPLeaveDays.Text))
+                //    {
+                //        tbPLeaveDays.Text = "0";
+                //    }
+                //    if (string.IsNullOrEmpty(tbSSS.Text))
+                //    {
+                //        tbSSS.Text = "0.00";
+                //    }
+                //    else
+                //    {
+                //        tbSSS.Text = dts.Rows[0][13].ToString();
+                //    }
+                //    if (string.IsNullOrEmpty(tbPAGIBIG.Text))
+                //    {
+                //        tbPAGIBIG.Text = "0.00";
+                //        tbPHILHEALTH.Text = "0.00";
+                //    }
+                //    else
+                //    {
+                //        tbPAGIBIG.Text = dts.Rows[0][14].ToString();
+                //        tbPHILHEALTH.Text = dts.Rows[0][15].ToString();
+                //    }
+                //}
+                //catch (Exception ex)
+                //{
+                //    tbWorkHours.Text = "00";
+                //    tbPLeaveDays.Text = "00";
+                //    tbBasicGross.Text = "0.00";
+                //    tbSSS.Text = "0.00";
+                //    tbPAGIBIG.Text = "0.00";
+                //    tbPHILHEALTH.Text = "0.00";
+                //    tbTAX.Text = "0.00";
+                //    tbOtherDeduction.Text = "0.00";
+                //    Console.WriteLine("Wala sya sa Date");
+                //}
             }
 
         }
@@ -243,27 +242,19 @@ namespace Admin_Login
         {
             if (addOtherDucution == false)
             {
-                lblAddDeduct.Text = "Save";
-                tbAddOtherDeduction.Visible = true;
-                tbScrollNum.Visible = true;
-                lblIteration.Visible = true;
-                lbStart.Visible = true;
-                dtStart.Visible = true;
-                tbDescription.Enabled = true;
+                gbaddDeduction.Enabled = true;
                 addOtherDucution = true;
             }
             else
             {
-                tbAddOtherDeduction.Visible = false;
-                tbScrollNum.Visible = false;
-                lblIteration.Visible = false;
-                lbStart.Visible = false;
-                dtStart.Visible = false;
-                tbDescription.Enabled = false;
+                gbaddDeduction.Enabled = false;
                 addOtherDucution = false;
-                lblAddDeduct.Text = "Add";
-                AddOtherDeduction();
-            }
+            }        
+        }
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            gbaddDeduction.Enabled = false;
+            AddOtherDeduction();
         }
         public void AddOtherDeduction()
         {
@@ -279,7 +270,7 @@ namespace Admin_Login
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
         }
         public void tagadelete()
         {
@@ -406,5 +397,7 @@ namespace Admin_Login
             tagaInsertPayrollReport();
             getDeductions();
         }
+
+
     }
 }

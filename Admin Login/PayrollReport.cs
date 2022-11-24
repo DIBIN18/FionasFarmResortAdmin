@@ -73,13 +73,16 @@ namespace Admin_Login
                 cbSSS.Checked = true;
                 cbPAGIBIG.Checked = false;
                 cbPHILHEALTH.Checked = false;
+
             }
             else if (day_To == "30")
             {
                 cbSSS.Checked = false;
                 cbPAGIBIG.Checked = true;
                 cbPHILHEALTH.Checked = true;
+                
             }
+            dtp_From.Value = dtp_To.Value.AddDays(-14);
             dgvDatechangeLoad();           
         }
         private void PayrollReport_Load(object sender, EventArgs e)
@@ -356,6 +359,7 @@ namespace Admin_Login
             if (dialogResult == DialogResult.Yes)
             {
                 InsertDeductionTable();
+                sssclass.dateTo = dtp_To.Text;
                 sssclass.UpdateOtherDeduction();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
