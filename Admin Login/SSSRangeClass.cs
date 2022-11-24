@@ -218,7 +218,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "update PayrollReport " +
-                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + ")" +
+                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + " and StartDate Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100))" +
                                "where EmployeeID = " + EmployeeID;
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -233,6 +233,20 @@ namespace Admin_Login
                 connection.Open();
                 string query = "update OtherDeductions " +
                                "set TotalOtherDeductions = TotalOtherDeductions - DeductionPerCompensation";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+                getEndDateForOtherDeduction();
+            }
+        }
+        public void getEndDateForOtherDeduction()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                Console.WriteLine(dateTo);
+                connection.Open();
+                string query = "update OtherDeductions set EndDate = " +
+                               "(select CASE WHEN TotalOtherDeductions <= 0 THEN 'wala na' ELSE 'Pending' "+
+                               "END as result FROM OtherDeductions where EmployeeID = "+ EmployeeID +") where EmployeeID = "+ EmployeeID ;
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
