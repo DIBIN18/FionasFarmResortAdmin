@@ -118,12 +118,6 @@ namespace Admin_Login
                     }
                     else
                     {
-                        string query =
-                           "UPDATE EmployeeInfo " +
-                           "SET SickLeaveCredits = " + remainingCredits +
-                           "WHERE EmployeeID = " + txtEmployeeID.Text;
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.ExecuteNonQuery();
                         //----------INSERTING DETAILS--------
                         string query2 =
                            "INSERT INTO Leave (" +
@@ -184,12 +178,12 @@ namespace Admin_Login
                     }
                     else
                     {
-                        string query =
-                           "UPDATE EmployeeInfo " +
-                           "SET VacationLeaveCredits = " + remainingCredits +
-                           "WHERE EmployeeID = " + txtEmployeeID.Text;
-                        SqlCommand command = new SqlCommand(query, connection);
-                        command.ExecuteNonQuery();
+                        //string query =
+                        //   "UPDATE EmployeeInfo " +
+                        //   "SET VacationLeaveCredits = " + remainingCredits +
+                        //   "WHERE EmployeeID = " + txtEmployeeID.Text;
+                        //SqlCommand command = new SqlCommand(query, connection);
+                        //command.ExecuteNonQuery();
                         //----------INSERTING DETAILS--------
                         string query2 =
                            "INSERT INTO Leave (" +
@@ -230,6 +224,7 @@ namespace Admin_Login
                         }
                     }
                 }
+
                 connection.Close();
             }
         }
@@ -249,6 +244,8 @@ namespace Admin_Login
         }
         private void Leave_Load(object sender, EventArgs e)
         {
+            dtp_StartDate.MaxDate = dtp_EndDate.Value;
+
             dtp_StartDate.Format = DateTimePickerFormat.Custom;
             dtp_StartDate.CustomFormat = "MMMM dd, yyyy";
 
@@ -270,7 +267,6 @@ namespace Admin_Login
                 rtxtReason.Enabled = false;
             }
         }
-
         public void btnCancel_Click(object sender, EventArgs e)
         {
             txtEmployeeID.Text = "";
@@ -316,6 +312,62 @@ namespace Admin_Login
         }
 
 
+        public string checkAttendanceDate(string employee_id, string date)
+        {
+            string query =
+                    "SELECT Date " +
+                    "FROM AttendanceRecord " +
+                    "WHERE EmployeeID=" + employee_id + " AND " +
+                    "Date='" + date + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "None ";
+                    }
+
+                }
+            }
+        }
+
+        public string checkLeaveDate(string employee_id, string date)
+        {
+            string query =
+                    "SELECT Date " +
+                    "FROM LeavePay " +
+                    "WHERE EmployeeID=" + employee_id + " AND " +
+                    "Date='" + date + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "None";
+                    }
+
+                }
+            }
+        }
+
         //
         // Leave Payment Codes
         //
@@ -354,34 +406,84 @@ namespace Admin_Login
 
         public void addLeavePayDetails(int num_of_days, string emp_id)
         {
-            // Add duplicate date constraint
             DateTime StartDate = DateTime.Parse(dtp_StartDate.Text.ToString());
             DateTime EndDate = DateTime.Parse(dtp_EndDate.Text.ToString());
 
+            int totaldays = 0;
+
             foreach (DateTime day in EachDay(StartDate, EndDate))
             {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
-                    string query =
-                        "INSERT INTO LeavePay (" +
-                        "LeaveID," +
-                        "EmployeeID," +
-                        "Date) " +
-                        "VALUES(" +
-                        "@LeaveID," +
-                        "@EmployeeID," +
-                        "@Date)";
+                string attendance_date = checkAttendanceDate(emp_id, day.ToString("MMMM dd, yyyy"));
+                string leave_date = checkLeaveDate(emp_id, day.ToString("MMMM dd, yyyy"));
 
-                    SqlCommand command2 = new SqlCommand(query, connection);
-                    command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
-                    command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
-                    command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                    command2.ExecuteNonQuery();
+                if (attendance_date == day.ToString("MMMM dd, yyyy"))
+                {
+                    MessageBox.Show("Employee had an attendance record on " + day.ToString("MMMM dd, yyyy") + 
+                        "\nLeave will not be applied on this date");
                 }
+                else if (leave_date == day.ToString("MMMM dd, yyyy"))
+                {
+                    MessageBox.Show("Employee already applied for a leave on " + day.ToString("MMMM dd, yyyy") +
+                        "\nLeave will not be applied on this date");
+                }
+                else
+                {
+                    using (SqlConnection connection = new SqlConnection(login.connectionString))
+                    {
+                        connection.Open();
+                        string query =
+                            "INSERT INTO LeavePay (" +
+                            "LeaveID," +
+                            "EmployeeID," +
+                            "Date) " +
+                            "VALUES(" +
+                            "@LeaveID," +
+                            "@EmployeeID," +
+                            "@Date)";
+
+                        SqlCommand command2 = new SqlCommand(query, connection);
+                        command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
+                        command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
+                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                        command2.ExecuteNonQuery();
+
+                        totaldays = totaldays + 1;
+                    }
+                }
+            }
+
+            using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+            {
+                connection2.Open();
+
+                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, connection2);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sqlDataAdapter.Fill(dt);
+
+                string employeeLeaveCredits;
+                int remainingCredits;
+
+                employeeLeaveCredits = dt.Rows[0][18].ToString();
+                remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
+
+                string query =
+                           "UPDATE EmployeeInfo " +
+                           "SET SickLeaveCredits = " + remainingCredits +
+                           "WHERE EmployeeID = " + txtEmployeeID.Text;
+                SqlCommand command = new SqlCommand(query, connection2);
+                command.ExecuteNonQuery();
             }
         }
 
-        
+        private void dtp_StartDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_StartDate.MaxDate = dtp_EndDate.Value;
+        }
+
+        private void dtp_EndDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtp_StartDate.MaxDate = dtp_EndDate.Value;
+        }
     }
 }
