@@ -6,12 +6,14 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Admin_Login
 {
     public partial class AddDepartmentAndPosition : Form
     {
+
         AddEmployee ae = new AddEmployee();
         Login login = new Login();
         string selectedDepartmentName = "";
@@ -82,47 +84,63 @@ namespace Admin_Login
         }
         private void btn_AddDepartment_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(login.connectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
-            cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            MessageBox.Show("New Department Has been Added");
-            txtDepartmentName.Text = "";
+            if (!(Regex.IsMatch(txtDepartmentName.Text, ae.FullNameFormat)))
+            {
+                MessageBox.Show("Invalid DepartmentName", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDepartmentName.Text = "";
+            }
+            else
+            {
+                SqlConnection conn = new SqlConnection(login.connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
+                cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("New Department Has been Added");
+                txtDepartmentName.Text = "";
+            }
         }
         private void btn_AddPosition_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if (!(Regex.IsMatch(txtPositionName.Text, ae.FullNameFormat)))
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(
-                    "INSERT INTO Position" +
-                    "(PositionName, DepartmentID, BasicRate, Custom)" +
-                    "VALUES" +
-                    "(@PositionName, @DepartmentID, @BasicRate, @Custom)",
-                    connection);
-
-                // CONVERT STRING TO DECIMAL
-                decimal string_to_decimal;
-                if (Decimal.TryParse(txtBasicRate.Text, out string_to_decimal))
+                MessageBox.Show("Invalid PositionName", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDepartmentName.Text = "";
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
-                    Console.WriteLine(string_to_decimal.ToString("0.##"));
-                }
-                else
-                {
-                    Console.WriteLine("not a Decimal");
-                }
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(
+                        "INSERT INTO Position" +
+                        "(PositionName, DepartmentID, BasicRate, Custom)" +
+                        "VALUES" +
+                        "(@PositionName, @DepartmentID, @BasicRate, @Custom)",
+                        connection);
 
-                command.Parameters.AddWithValue("@PositionName", txtPositionName.Text);
-                command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
-                command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
-                command.Parameters.AddWithValue("@Custom", 0);
-                command.ExecuteNonQuery();
-                MessageBox.Show("New Position Has been Added");
-                txtPositionName.Text = "";
-                cmbDepartment.SelectedIndex = -1;
-                txtBasicRate.Text = "";
+                    // CONVERT STRING TO DECIMAL
+                    decimal string_to_decimal;
+                    if (Decimal.TryParse(txtBasicRate.Text, out string_to_decimal))
+                    {
+                        Console.WriteLine(string_to_decimal.ToString("0.##"));
+                    }
+                    else
+                    {
+                        Console.WriteLine("not a Decimal");
+                    }
+
+                    command.Parameters.AddWithValue("@PositionName", txtPositionName.Text);
+                    command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
+                    command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
+                    command.Parameters.AddWithValue("@Custom", 0);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("New Position Has been Added");
+                    txtPositionName.Text = "";
+                    cmbDepartment.SelectedIndex = -1;
+                    txtBasicRate.Text = "";
+                }
             }
         }
         private void btn_Back_Click(object sender, EventArgs e)

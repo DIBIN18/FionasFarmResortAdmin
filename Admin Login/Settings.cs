@@ -253,6 +253,7 @@ namespace Admin_Login
             dgvUsers.ReadOnly = false;
             btnEdit.Visible = false;
             btnSave.Visible = true;
+            dgvUsers.Enabled = true;
             Login login = new Login();
         }
 
@@ -261,7 +262,8 @@ namespace Admin_Login
             Login login = new Login();
             btnSave.Visible = false;
             btnEdit.Visible = true;
-            dgvUsers.ReadOnly = true;
+            dgvUsers.Enabled = false;
+       
             using (SqlConnection con = new SqlConnection(login.connectionString))
             {
                 for(int i = 0; i < dgvUsers.Rows.Count; i++)

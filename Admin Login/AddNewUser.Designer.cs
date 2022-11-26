@@ -250,11 +250,11 @@
             // lblCancel
             // 
             this.lblCancel.AutoSize = true;
-            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCancel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lblCancel.Location = new System.Drawing.Point(30, 467);
+            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancel.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblCancel.Location = new System.Drawing.Point(26, 459);
             this.lblCancel.Name = "lblCancel";
-            this.lblCancel.Size = new System.Drawing.Size(85, 20);
+            this.lblCancel.Size = new System.Drawing.Size(100, 24);
             this.lblCancel.TabIndex = 7;
             this.lblCancel.Text = "or Cancel";
             this.lblCancel.Click += new System.EventHandler(this.lblCancel_Click);
@@ -290,10 +290,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(175, 45);
+            this.label2.Font = new System.Drawing.Font("Mongolian Baiti", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(199, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(426, 46);
+            this.label2.Size = new System.Drawing.Size(402, 43);
             this.label2.TabIndex = 17;
             this.label2.Text = "CREATE NEW USER";
             // 
