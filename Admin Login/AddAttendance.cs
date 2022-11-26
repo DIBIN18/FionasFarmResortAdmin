@@ -1012,6 +1012,10 @@ namespace Admin_Login
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
+                dtpDgvDate.Format = DateTimePickerFormat.Custom;
+                dtpDgvDate.CustomFormat = "MMMM dd, yyyy";
+                string date = dtpDgvDate.Value.ToString("MMMM dd, yyyy");
+
                 connection.Open();
                 string query =
                     "SELECT " +
@@ -1021,9 +1025,11 @@ namespace Admin_Login
                     "AttendanceRecord.Date, " +
                     "AttendanceRecord.TimeIn, " +
                     "AttendanceRecord.TimeOut " +
-                    "FROM Attendancerecord " +
+                    "FROM AttendanceRecord " +
                     "INNER JOIN EmployeeInfo " +
-                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID ORDER BY Date";
+                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Date='" + date + "' " +
+                    "ORDER BY Date";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -1550,6 +1556,7 @@ namespace Admin_Login
 
             return Convert.ToInt32(time.Minute);
         }
+        
 
         public void UpdateEditMode()
         {
@@ -1656,6 +1663,8 @@ namespace Admin_Login
             }
         }
 
+        
+
         //
         //  DTP FUNCTIONS
         //
@@ -1663,6 +1672,11 @@ namespace Admin_Login
         private void dtpEditTimeIn_ValueChanged(object sender, EventArgs e)
         {
             UpdateEditMode();
+        }
+
+        private void dtpDgvDate_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshEditDgvTable();
         }
 
         private void dtpEditTimeOut_ValueChanged(object sender, EventArgs e)
@@ -1788,5 +1802,65 @@ namespace Admin_Login
                 MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
             }
         }
+
+
+        //
+        //  SEARCH FUNCTIONS
+        //
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = null;
+        }
+
+        private void tb_Search_TextChanged_1(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string query =
+                    "SELECT " +
+                    "EmployeeSchedule.ScheduleID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "EmployeeSchedule.ScheduleIn, " +
+                    "EmployeeSchedule.ScheduleOut " +
+                    "FROM EmployeeSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvEmployees.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string query2 =
+                    "SELECT " +
+                    "EmployeeSchedule.ScheduleID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "EmployeeSchedule.ScheduleIn, " +
+                    "EmployeeSchedule.ScheduleOut " +
+                    "FROM EmployeeSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active' AND " +
+                    "EmployeeInfo.EmployeeFullName like '" + tb_Search.Text + "%'" +
+                    "OR EmployeeInfo.EmployeeID Like '" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd = new SqlCommand(query2, connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgvEmployees.DataSource = dt;
+                }
+            }
+        }
+
     }
 }
