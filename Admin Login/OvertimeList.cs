@@ -100,7 +100,7 @@ namespace Admin_Login
 
 
                 DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to remove the overtime schedule?, ", "Delete Department", MessageBoxButtons.YesNo
+                        " Are you sure you want to remove the overtime schedule? ", "Delete Overtime Schedule", MessageBoxButtons.YesNo
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);

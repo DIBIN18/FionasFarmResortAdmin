@@ -50,10 +50,10 @@
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dgvAttendanceRecord);
-            this.panel3.Location = new System.Drawing.Point(12, 63);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(9, 51);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1155, 843);
+            this.panel3.Size = new System.Drawing.Size(867, 685);
             this.panel3.TabIndex = 25;
             // 
             // dgvAttendanceRecord
@@ -66,13 +66,12 @@
             this.dgvAttendanceRecord.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvAttendanceRecord.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendanceRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAttendanceRecord.Location = new System.Drawing.Point(4, 1);
-            this.dgvAttendanceRecord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAttendanceRecord.Location = new System.Drawing.Point(3, 1);
             this.dgvAttendanceRecord.Name = "dgvAttendanceRecord";
             this.dgvAttendanceRecord.ReadOnly = true;
             this.dgvAttendanceRecord.RowHeadersVisible = false;
             this.dgvAttendanceRecord.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAttendanceRecord.Size = new System.Drawing.Size(1147, 834);
+            this.dgvAttendanceRecord.Size = new System.Drawing.Size(860, 678);
             this.dgvAttendanceRecord.TabIndex = 5;
             // 
             // panel1
@@ -80,20 +79,20 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(709, 9);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(532, 7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(458, 45);
+            this.panel1.Size = new System.Drawing.Size(344, 37);
             this.panel1.TabIndex = 20;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(9, 5);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(7, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 34);
+            this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -104,12 +103,13 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(48, 7);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Search.Location = new System.Drawing.Point(36, 6);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(345, 23);
+            this.tb_Search.Size = new System.Drawing.Size(289, 23);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
+            this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
             this.tb_Search.Leave += new System.EventHandler(this.Tb_Search_Leave);
             // 
@@ -118,10 +118,10 @@
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(407, 14);
-            this.dtp_Date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtp_Date.Location = new System.Drawing.Point(305, 11);
+            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtp_Date.Name = "dtp_Date";
-            this.dtp_Date.Size = new System.Drawing.Size(297, 30);
+            this.dtp_Date.Size = new System.Drawing.Size(224, 30);
             this.dtp_Date.TabIndex = 26;
             this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 
@@ -129,7 +129,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(313, 16);
+            this.label1.Location = new System.Drawing.Point(235, 13);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 26);
             this.label1.TabIndex = 5;
@@ -141,10 +142,10 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.LateToday_Icon1;
-            this.pictureBox2.Location = new System.Drawing.Point(212, 12);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(159, 10);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 39);
+            this.pictureBox2.Size = new System.Drawing.Size(25, 32);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 34;
             this.pictureBox2.TabStop = false;
@@ -158,7 +159,8 @@
             this.AddAttendance.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddAttendance.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddAttendance.ForeColor = System.Drawing.Color.White;
-            this.AddAttendance.Location = new System.Drawing.Point(35, 17);
+            this.AddAttendance.Location = new System.Drawing.Point(26, 14);
+            this.AddAttendance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AddAttendance.Name = "AddAttendance";
             this.AddAttendance.Size = new System.Drawing.Size(96, 24);
             this.AddAttendance.TabIndex = 33;
@@ -170,10 +172,10 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(259, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(194, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 32;
             this.pictureBox1.TabStop = false;
@@ -182,10 +184,10 @@
             // 
             // AttendanceRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1179, 917);
+            this.ClientSize = new System.Drawing.Size(884, 745);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.AddAttendance);
@@ -195,7 +197,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AttendanceRecord";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AttendanceRecord_Load);

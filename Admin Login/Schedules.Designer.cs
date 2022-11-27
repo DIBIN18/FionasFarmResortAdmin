@@ -54,7 +54,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.dgv_Schedules);
             this.panel3.Location = new System.Drawing.Point(10, 53);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(867, 685);
             this.panel3.TabIndex = 21;
@@ -83,7 +83,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AdvancedDay_Offs_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(219, 17);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -113,7 +113,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pictureBox1.Location = new System.Drawing.Point(9, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(250, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -128,7 +128,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.ApplyLeave_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(487, 17);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -158,7 +158,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Light_Blue;
             this.pictureBox4.Location = new System.Drawing.Point(268, 11);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(262, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -173,14 +173,14 @@
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.EmployeeList;
             this.pictureBox5.Location = new System.Drawing.Point(697, 17);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(20, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 30;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Tag = "btn_Overtime";
-            this.pictureBox5.Visible = false;
+            this.pictureBox5.Tag = "btn_AccDayOff";
+            this.pictureBox5.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // label3
             // 
@@ -192,25 +192,25 @@
             this.label3.Location = new System.Drawing.Point(549, 17);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(135, 23);
+            this.label3.Size = new System.Drawing.Size(126, 23);
             this.label3.TabIndex = 29;
-            this.label3.Tag = "btn_Overtime";
-            this.label3.Text = "Edit Schedule";
-            this.label3.Visible = false;
+            this.label3.Tag = "btn_AccDayOff";
+            this.label3.Text = "Acc. Day Off";
+            this.label3.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // pictureBox6
             // 
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
             this.pictureBox6.Location = new System.Drawing.Point(539, 11);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(199, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 28;
             this.pictureBox6.TabStop = false;
-            this.pictureBox6.Tag = "btn_Overtime";
-            this.pictureBox6.Visible = false;
+            this.pictureBox6.Tag = "btn_AccDayOff";
+            this.pictureBox6.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // Schedules
             // 
@@ -230,7 +230,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Schedules";
             this.Load += new System.EventHandler(this.Schedules_Load);
             this.panel3.ResumeLayout(false);

@@ -110,5 +110,67 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Add Attendance";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            dtp_Date.Format = DateTimePickerFormat.Custom;
+            dtp_Date.CustomFormat = "MMMM dd, yyyy";
+            string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string query =
+                    "SELECT " +
+                    "ROW_NUMBER() OVER (ORDER BY TimeIn ASC) AS Count, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "AttendanceRecord.Date, " +
+                    "AttendanceRecord.TimeIn, " +
+                    "AttendanceRecord.TimeOut, " +
+                    "AttendanceRecord.Hours, " +
+                    "AttendanceRecord.Minutes, " +
+                    "AttendanceRecord.OT_Hours " +
+                    "FROM AttendanceRecord " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Date='" + date + "'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvAttendanceRecord.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string query2 =
+                       "SELECT " +
+                       "ROW_NUMBER() OVER (ORDER BY TimeIn ASC) AS Count, " +
+                       "EmployeeInfo.EmployeeID, " +
+                       "EmployeeInfo.EmployeeFullName, " +
+                       "AttendanceRecord.Date, " +
+                       "AttendanceRecord.TimeIn, " +
+                       "AttendanceRecord.TimeOut, " +
+                       "AttendanceRecord.Hours, " +
+                       "AttendanceRecord.Minutes, " +
+                       "AttendanceRecord.OT_Hours " +
+                       "FROM AttendanceRecord " +
+                       "INNER JOIN EmployeeInfo " +
+                       "ON AttendanceRecord.EmployeeID = EmployeeInfo.EmployeeID " +
+                       "WHERE Date='" + date + "' AND " +
+                       "EmployeeInfo.EmployeeFullName like '%" + tb_Search.Text + "%' " +
+                       "OR EmployeeInfo.EmployeeID Like '" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd = new SqlCommand(query2, connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgvAttendanceRecord.DataSource = dt;
+                }
+            }
+        }
     }
 }
