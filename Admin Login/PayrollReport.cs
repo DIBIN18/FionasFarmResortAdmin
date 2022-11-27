@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Syncfusion.XlsIO;
@@ -224,14 +219,14 @@ namespace Admin_Login
             }
             dgvDatechangeLoad();
         }
-
         private void btnGenerate_Click(object sender, EventArgs e)
         {
+            string now = DateTime.Now.ToString("yyyy_MM_dd");
             if(dgv_DailyPayrollReport.Rows.Count > 0)
             {
                 SaveFileDialog save = new SaveFileDialog();
                 save.Filter = "PDF (*.pdf) |*.pdf";
-                save.FileName = "Paycheck.pdf";
+                save.FileName = "Paycheck - " + now + ".pdf";
                 bool ErrorMessage = false;
                 if(save.ShowDialog() == DialogResult.OK)
                 {
@@ -252,15 +247,15 @@ namespace Admin_Login
                         try
                         {
                             PdfPTable pTable = new PdfPTable(dgv_DailyPayrollReport.Columns.Count);
-                            pTable.DefaultCell.Padding = 2;
-                            pTable.WidthPercentage = 50;
+                            pTable.DefaultCell.Padding = 3;
+                            pTable.WidthPercentage = 400;
                             pTable.HorizontalAlignment = Element.ALIGN_LEFT;
 
                             //HEADER
                             foreach(DataGridViewColumn col in dgv_DailyPayrollReport.Columns)
                             {
                                 PdfPCell pCell = new PdfPCell(new Phrase(col.HeaderText));
-                                pCell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                                pCell.BackgroundColor = new BaseColor(240, 240, 240);
                                 pTable.AddCell(pCell);
                             }
                             foreach(DataGridViewRow viewRow in dgv_DailyPayrollReport.Rows)
@@ -272,7 +267,7 @@ namespace Admin_Login
                             }
                             using (FileStream fileStream = new FileStream(save.FileName, FileMode.Create))
                             {
-                                Document document = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                                Document document = new Document(PageSize.A4);
                                 PdfWriter.GetInstance(document, fileStream);
                                 document.Open();
                                 document.Add(pTable);
