@@ -6,12 +6,16 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
+        public string FullNameFormat = @"^[a-zA-Z]+$";
+        public string EmailFormat = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+        public string NumberDecimal = @"^-?\\d*(\\.\\d+)?$";
         Login login = new Login();
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
@@ -35,6 +39,7 @@ namespace Admin_Login
         }
         private void AddEmployee_Load(object sender, EventArgs e)
         {
+            txtContactNum.Text = "(+63)";
             dtpScheduleIn.Format = DateTimePickerFormat.Time;
             dtpScheduleIn.ShowUpDown = true;
 
@@ -167,6 +172,104 @@ namespace Admin_Login
                 cmbPosition.SelectedIndex = -1;
             }
         }
+
+        private void txtSSSID_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSSSID.TextLength == 3)
+            {
+                txtSSSID.Text =txtSSSID.Text+ "-";
+                txtSSSID.SelectionStart = txtSSSID.TextLength;
+             
+            }
+            if (txtSSSID.TextLength == 6)
+            {
+                 txtSSSID.Text = txtSSSID.Text+ "-";
+                txtSSSID.SelectionStart = txtSSSID.TextLength;
+            }
+        }
+
+        private void txtPagibigNo_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPagibigNo.TextLength == 4)
+            {
+                txtPagibigNo.Text = txtPagibigNo.Text + "-";
+                txtPagibigNo.SelectionStart = txtPagibigNo.TextLength;
+
+            }
+            if (txtPagibigNo.TextLength == 9)
+            {
+                txtPagibigNo.Text = txtPagibigNo.Text + "-";
+                txtPagibigNo.SelectionStart = txtPagibigNo.TextLength;
+            }
+
+        }
+
+        private void txtPhilhealthNo_TextChanged(object sender, EventArgs e)
+        {
+        
+            if (txtPhilhealthNo.TextLength == 2)
+            {
+                txtPhilhealthNo.Text = txtPhilhealthNo.Text + "-";
+                txtPhilhealthNo.SelectionStart = txtPhilhealthNo.TextLength;
+
+            }
+            if (txtPhilhealthNo.TextLength == 12)
+            {
+                txtPhilhealthNo.Text = txtPhilhealthNo.Text + "-";
+                txtPhilhealthNo.SelectionStart = txtPhilhealthNo.TextLength;
+            }
+        }
+
+        private void txtContactNum_TextChanged(object sender, EventArgs e)
+        {
+
+            if(txtContactNum.TextLength == 0)
+            {
+                txtContactNum.Text = "(+63)" + txtContactNum.Text;
+                txtContactNum.SelectionStart = txtContactNum.Text.Length;
+            }
+
+        }
+
+        private void txtTIN_TextChanged(object sender, EventArgs e)
+        {
+            if (txtTIN.TextLength == 3)
+            {
+                txtTIN.Text = txtTIN.Text + "-";
+                txtTIN.SelectionStart = txtTIN.TextLength;
+            }
+            if (txtTIN.TextLength == 7)
+            {
+                txtTIN.Text = txtTIN.Text + "-";
+                txtTIN.SelectionStart = txtTIN.TextLength;
+            }
+            if (txtTIN.TextLength == 11)
+            {
+                txtTIN.Text = txtTIN.Text + "-";
+                txtTIN.SelectionStart = txtTIN.TextLength;
+            }
+        }
+
+        private void txtSSSID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtPagibigNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtPhilhealthNo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtTIN_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
@@ -204,84 +307,99 @@ namespace Admin_Login
         }
         private void btn_Register_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if (!(Regex.IsMatch(txtFullName.Text, FullNameFormat)))
             {
-                connection.Open();
-                string query = "INSERT INTO EmployeeInfo(" +
-                    "EmployeeFullName, " +
-                    "Address, " +
-                    "SSS_ID, " +
-                    "PAGIBIG_NO, " +
-                    "PHIL_HEALTH_NO, " +
-                    "Email, " +
-                    "EmployeeMaritalStatus, " +
-                    "ContactNumber, " +
-                    "DateHired, " +
-                    "Gender, " +
-                    "BirthDate, " +
-                    "EmploymentType, " +
-                    "Age," +
-                    "DepartmentID," +
-                    "PositionID," +
-                    "AccumulatedDayOffs," +
-                    "SickLeaveCredits," +
-                    "VacationLeaveCredits," +
-                    "Status)" +
-                    "VALUES(" +
-                    "@EmployeeFullName, " +
-                    "@Address, " +
-                    "@SSS_ID, " +
-                    "@PAGIBIG_NO, " +
-                    "@PHIL_HEALTH_NO, " +
-                    "@Email, " +
-                    "@EmployeeMaritalStatus, " +
-                    "@ContactNumber, " +
-                    "@DateHired, " +
-                    "@Gender, " +
-                    "@BirthDate, " +
-                    "@EmploymentType, " +
-                    "@Age," +
-                    "@DepartmentID," +
-                    "@PositionID," +
-                    "@AccumulatedDayOffs," +
-                    "@SickLeaveCredits," +
-                    "@VacationLeaveCredits," +
-                    "@Status)";
-                string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
-                string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
-                SqlCommand cmd = new SqlCommand(query, connection);
+                MessageBox.Show("Invalid Name", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtFullName.Text = "";
+            }
+            else if(!(Regex.IsMatch(txtEmailAdd.Text, EmailFormat)))
+            {
+                MessageBox.Show("Invalid Email", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmailAdd.Text = "";
+            }
+            else
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "INSERT INTO EmployeeInfo(" +
+                        "EmployeeFullName, " +
+                        "Address, " +
+                        "SSS_ID, " +
+                        "PAGIBIG_NO, " +
+                        "PHIL_HEALTH_NO, " +
+                        "Email, " +
+                        "EmployeeMaritalStatus, " +
+                        "ContactNumber, " +
+                        "DateHired, " +
+                        "Gender, " +
+                        "BirthDate, " +
+                        "EmploymentType, " +
+                        "Age," +
+                        "DepartmentID," +
+                        "PositionID," +
+                        "AccumulatedDayOffs," +
+                        "SickLeaveCredits," +
+                        "VacationLeaveCredits," +
+                        "TIN," +
+                        "Status)" +
+                        "VALUES(" +
+                        "@EmployeeFullName, " +
+                        "@Address, " +
+                        "@SSS_ID, " +
+                        "@PAGIBIG_NO, " +
+                        "@PHIL_HEALTH_NO, " +
+                        "@Email, " +
+                        "@EmployeeMaritalStatus, " +
+                        "@ContactNumber, " +
+                        "@DateHired, " +
+                        "@Gender, " +
+                        "@BirthDate, " +
+                        "@EmploymentType, " +
+                        "@Age," +
+                        "@DepartmentID," +
+                        "@PositionID," +
+                        "@AccumulatedDayOffs," +
+                        "@SickLeaveCredits," +
+                        "@VacationLeaveCredits," +
+                        "@TIN," +
+                        "@Status)";
+                    string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
+                    string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+                    SqlCommand cmd = new SqlCommand(query, connection);
 
-                cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
-                cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
-                cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
-                cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
-                cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
-                cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
-                cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
-                cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
-                cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
-                cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
-                cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
-                cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
-                cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
-                cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
-                cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
-                cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
-                cmd.Parameters.AddWithValue("@Status", "Active");
+                    cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
+                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+                    cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
+                    cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
+                    cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
+                    cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
+                    cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
+                    cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
+                    cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
+                    cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
+                    cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
+                    cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
+                    cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
+                    cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
+                    cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
+                    cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
+                    cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
+                    cmd.Parameters.AddWithValue("@TIN", txtTIN.Text);
+                    cmd.Parameters.AddWithValue("@Status", "Active");
 
-                //Compute Age Using DateTimePicker
-                int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
-                cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
-                cmd.ExecuteNonQuery();
+                    //Compute Age Using DateTimePicker
+                    int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+                    cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
+                    cmd.ExecuteNonQuery();
 
-                insertNewEmployeeSchedule();
-                MessageBox.Show("Successfully Added Employee!");
+                    insertNewEmployeeSchedule();
+                    MessageBox.Show("Successfully Added Employee!");
 
-                clearAll();
+                    clearAll();
+                }
             }
         }
-
         private void cmbPosition_SelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedPositionName = cmbPosition.GetItemText(cmbPosition.SelectedItem);
@@ -317,6 +435,7 @@ namespace Admin_Login
             txtEmploymentType.Text = "";
             cmbDepartment.Text = "";
             cmbPosition.Text = "";
+            txtTIN.Text = "";
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {
