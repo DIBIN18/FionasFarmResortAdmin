@@ -74,5 +74,12 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Schedule Overtime";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
+        private void btn_accDayOffClick(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Add Accumulated Day Off";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
     }
 }

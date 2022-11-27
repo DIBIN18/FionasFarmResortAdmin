@@ -609,6 +609,30 @@ namespace Admin_Login
                 viewSingleSchedList.BringToFront();
                 viewSingleSchedList.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Add Accumulated Day Off")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Add Accumulated Day Off";
+                TitleLabel.Text = TitleExtension;
+                AdvanceDayOff advanceDayOff = new AdvanceDayOff();
+                {
+                    advanceDayOff.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(advanceDayOff);
+                advanceDayOff.BringToFront();
+                advanceDayOff.Show();
+            }
+            else if (Text == "Fiona's Farm and Resort - Accumulated Day Offs Lists")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Accumulated Day Offs Lists";
+                TitleLabel.Text = TitleExtension;
+                AccumulatedDayOffsList accumulatedDayOffsList = new AccumulatedDayOffsList();
+                {
+                    accumulatedDayOffsList.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(accumulatedDayOffsList);
+                accumulatedDayOffsList.BringToFront();
+                accumulatedDayOffsList.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

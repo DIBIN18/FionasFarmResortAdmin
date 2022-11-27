@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccumulatedDayOffsList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccumulatedDayOffsList.Designer.cs">
+      <DependentUpon>AccumulatedDayOffsList.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,12 @@
     </Compile>
     <Compile Include="AddSingleSchedule.Designer.cs">
       <DependentUpon>AddSingleSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdvanceDayOff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdvanceDayOff.Designer.cs">
+      <DependentUpon>AdvanceDayOff.cs</DependentUpon>
     </Compile>
     <Compile Include="AppliedLeaveList.cs">
       <SubType>Form</SubType>
@@ -242,6 +254,9 @@
     <Compile Include="ViewSingleSchedList.Designer.cs">
       <DependentUpon>ViewSingleSchedList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccumulatedDayOffsList.resx">
+      <DependentUpon>AccumulatedDayOffsList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddAttendance.resx">
       <DependentUpon>AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddSingleSchedule.resx">
       <DependentUpon>AddSingleSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdvanceDayOff.resx">
+      <DependentUpon>AdvanceDayOff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppliedLeaveList.resx">
       <DependentUpon>AppliedLeaveList.cs</DependentUpon>

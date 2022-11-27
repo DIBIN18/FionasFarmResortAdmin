@@ -1850,7 +1850,7 @@ namespace Admin_Login
                     "INNER JOIN EmployeeInfo " +
                     "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
                     "WHERE Status='Active' AND " +
-                    "EmployeeInfo.EmployeeFullName like '" + tb_Search.Text + "%'" +
+                    "EmployeeInfo.EmployeeFullName like '%" + tb_Search.Text + "%'" +
                     "OR EmployeeInfo.EmployeeID Like '" + tb_Search.Text + "%'";
 
                     SqlCommand cmd = new SqlCommand(query2, connection);
