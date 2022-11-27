@@ -348,9 +348,9 @@
             this.label11.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(36, 207);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 18);
+            this.label11.Size = new System.Drawing.Size(111, 18);
             this.label11.TabIndex = 15;
-            this.label11.Text = "R.Holiday Pay:";
+            this.label11.Text = "L.Holiday Pay:";
             // 
             // txtSpecialHoliday
             // 
@@ -408,9 +408,9 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(37, 171);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 18);
+            this.label7.Size = new System.Drawing.Size(113, 18);
             this.label7.TabIndex = 11;
-            this.label7.Text = "R. Holiday Hrs.:";
+            this.label7.Text = "L. Holiday Hrs.:";
             // 
             // label5
             // 
