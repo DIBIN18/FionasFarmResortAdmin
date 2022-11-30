@@ -13,9 +13,10 @@ namespace Admin_Login
     public partial class Deductions : Form
     {
         Login login = new Login();
+        Loan loan = new Loan();
         SSSRangeClass sssclass = new SSSRangeClass();
         SqlCommandBuilder cmbl;
-        String ValueHolder;
+        String ValueHolder,EmpID;
         bool addOtherDucution = false;
         public Deductions()
         {
@@ -53,60 +54,62 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable dts = new DataTable();
                 adapter.Fill(dts);
-                
-                //try
-                //{
-                //    double regularhrs = Convert.ToDouble(dts.Rows[0][3].ToString()) * Convert.ToDouble(dts.Rows[0][4].ToString());
-                //    tbWorkHours.Text = dts.Rows[0][4].ToString();
-                //    tbPLeaveDays.Text = dts.Rows[0][9].ToString();
-                //    tbBasicGross.Text = regularhrs.ToString("n2");
-                //    tbTAX.Text = dts.Rows[0][15].ToString();
-                //    tbOtherDeduction.Text = dts.Rows[0][16].ToString();
-                //    tbOtherDeduction.Text = dts.Rows[0][17].ToString();
-                //    if (string.IsNullOrEmpty(tbPLeaveDays.Text))
-                //    {
-                //        tbPLeaveDays.Text = "0";
-                //    }
-                //    if (string.IsNullOrEmpty(tbSSS.Text))
-                //    {
-                //        tbSSS.Text = "0.00";
-                //    }
-                //    else
-                //    {
-                //        tbSSS.Text = dts.Rows[0][13].ToString();
-                //    }
-                //    if (string.IsNullOrEmpty(tbPAGIBIG.Text))
-                //    {
-                //        tbPAGIBIG.Text = "0.00";
-                //        tbPHILHEALTH.Text = "0.00";
-                //    }
-                //    else
-                //    {
-                //        tbPAGIBIG.Text = dts.Rows[0][14].ToString();
-                //        tbPHILHEALTH.Text = dts.Rows[0][15].ToString();
-                //    }
-                //}
-                //catch (Exception ex)
-                //{
-                //    tbWorkHours.Text = "00";
-                //    tbPLeaveDays.Text = "00";
-                //    tbBasicGross.Text = "0.00";
-                //    tbSSS.Text = "0.00";
-                //    tbPAGIBIG.Text = "0.00";
-                //    tbPHILHEALTH.Text = "0.00";
-                //    tbTAX.Text = "0.00";
-                //    tbOtherDeduction.Text = "0.00";
-                //    Console.WriteLine("Wala sya sa Date");
-                //}
+                try
+                {
+                    tbWorkHours.Text = dts.Rows[0][9].ToString();                 
+                    tbPLeaveDays.Text = dts.Rows[0][10].ToString();
+                    tbBasicGross.Text = dts.Rows[0][5].ToString();
+                    tbSSS.Text = dts.Rows[0][14].ToString();
+                    tbPAGIBIG.Text = dts.Rows[0][15].ToString();
+                    tbPHILHEALTH.Text = dts.Rows[0][16].ToString();
+                    tbTAX.Text = dts.Rows[0][17].ToString();
+                    tbOtherDeduction.Text = dts.Rows[0][18].ToString();
+                    double total = Convert.ToDouble(tbSSS.Text) + Convert.ToDouble(tbPAGIBIG.Text) + Convert.ToDouble(tbPHILHEALTH.Text) + Convert.ToDouble(tbTAX.Text) + Convert.ToDouble(tbOtherDeduction.Text);
+                    tbTotal.Text = total.ToString("n2");              
+                }
+                catch (Exception ex)
+                {
+                    tbWorkHours.Text = "00";
+                    tbPLeaveDays.Text = "00";
+                    tbBasicGross.Text = "0.00";
+                    tbSSS.Text = "0.00";
+                    tbPAGIBIG.Text = "0.00";
+                    tbPHILHEALTH.Text = "0.00";
+                    tbTAX.Text = "0.00";
+                    tbOtherDeduction.Text = "0.00";
+                    tbTotal.Text = "0.00";
+                }
             }
-
+            
+        }
+        public void getDescription()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                checkContrib();
+                string query = "select Description from OtherDeductions where EmployeeID = " + EmpID+" and StartDate " +
+                               "between convert(datetime, '"+dtp_From.Text+"', 100) and convert(datetime, '"+dtp_To.Text+"', 100)";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dts = new DataTable();
+                adapter.Fill(dts);
+                for (int i = 0; i< dts.Rows.Count; i++)
+                {                  
+                    tbDescription.AppendText(dts.Rows[i][0].ToString() + Environment.NewLine);
+                }
+            }
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            tbDescription.Text = "";
             txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
             tagadelete();
             tagaInsertPayrollReport();
             getDeductions();
+            loan.EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            loan.Name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            EmpID = loan.EmpID;
+            getDescription();
             //tagadelete();
         }
         public string getLastPayrollDate()
@@ -118,32 +121,27 @@ namespace Admin_Login
                 try
                 {
                     connection.Open();
-                    string query = "select  max(PayrollCoveredDate) from Deductions";
+                    string query = "select  max(DateTo) from PayrollReportHistory";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable data = new DataTable();
                     adapter.Fill(data);
-                    Date = data.Rows[0][0].ToString().Substring(21);
+                    Date = data.Rows[0][0].ToString();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                catch (Exception ex) { }
                 return Date;
             }
         }
         private void Deductions_Load(object sender, EventArgs e)
         {
+            getLastPayrollDate();
             try
             {
                 try
-                {                   
-                    dtp_From.Text = getLastPayrollDate().ToString();
-                    dtp_To.MaxDate = DateTime.Now.AddDays(1);
-                    if (dtp_From.Text != dtp_To.Text)
-                    {
-                        dtp_From.Value = dtp_From.Value.AddDays(1);
-                    }
-                    string date = dtp_From.Text;
+                {   
+                    DateTimePicker dtp = new DateTimePicker();
+                    dtp.Text = getLastPayrollDate().ToString();
+                    dtp_From.Value = dtp.Value.AddDays(1);
+                    string date = dtp_From.Value.AddDays(15).ToString("MMMM dd, yyyy");
                     string cdate = "0";
                     for (int i = 0; i < date.Length; i++)
                     {
@@ -152,8 +150,7 @@ namespace Admin_Login
                             cdate = date.Substring(i + 1, 2);
                             i = i + 10;
                         }
-                    }                  
-                    dtp_From.MaxDate = DateTime.Now;
+                    }
                     if (cdate == "31")
                     {
                         dtp_To.Value = dtp_From.Value.AddDays(15);
@@ -163,7 +160,7 @@ namespace Admin_Login
                         dtp_To.Value = dtp_From.Value.AddDays(14);
                     }
                 }
-                catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ dtp_To.Text = DateTime.Now.ToString(); dtp_From.Text = DateTime.Now.ToString(); }
+                catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
                 sssclass.dateFrom = dtp_From.Text;
                 sssclass.dateTo = dtp_To.Text;
                 SqlConnection conn = new SqlConnection(login.connectionString);
@@ -174,7 +171,8 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
-
+                tagadelete();
+                tagaInsertPayrollReport();
                 // Column font
                 this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
                 // Row font
@@ -182,11 +180,11 @@ namespace Admin_Login
 
                 dataGridView1.DataSource = dts;
                 txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                getDeductions();
+                getDescription();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
-            tagadelete();
-            tagaInsertPayrollReport();
-            //getDeductions();
         }
         public void checkContrib()
         {
@@ -240,38 +238,9 @@ namespace Admin_Login
         }
         private void btnAddOtherDeduction(object sender, EventArgs e)
         {
-            if (addOtherDucution == false)
-            {
-                gbaddDeduction.Enabled = true;
-                addOtherDucution = true;
-            }
-            else
-            {
-                gbaddDeduction.Enabled = false;
-                addOtherDucution = false;
-            }        
+            loan.ShowDialog();
         }
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            gbaddDeduction.Enabled = false;
-            AddOtherDeduction();
-        }
-        public void AddOtherDeduction()
-        {
-            try
-            {
-                SqlConnection connection = new SqlConnection(login.connectionString);
-                {
-                    connection.Open();
-                    double quotient = Convert.ToDouble(tbAddOtherDeduction.Text) / Convert.ToDouble(tbScrollNum.Value);
-                    string query = "Insert into OtherDeductions (EmployeeID,TotalOtherDeductions,DeductionPerCompensation,Iterations,Description,StartDate)" +
-                                   "Values(" + dataGridView1.CurrentRow.Cells[0].Value.ToString() + "," + Convert.ToDouble(tbAddOtherDeduction.Text) + ","+quotient+"," + tbScrollNum.Value + ",'" + tbDescription.Text + "','" + dtStart.Text+"')";
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
-        }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -281,6 +250,8 @@ namespace Admin_Login
         }
         public void tagaInsertPayrollReport()
         {
+            sssclass.dateFrom = dtp_From.Text;
+            sssclass.dateTo = dtp_To.Text;
             SqlConnection connection = new SqlConnection(login.connectionString);
             connection.Open();
             SqlCommand command = new SqlCommand(sssclass.ComputeGrossPay(), connection);
@@ -302,10 +273,6 @@ namespace Admin_Login
                 cbPHILHEALTH.Checked = true;
                 cbPAGIBIG.Checked = true;
             }
-            tagadelete();
-            tagaInsertPayrollReport();
-            getDeductions();
-            //tagadelete();
         }
 
         private void cbPAGIBIG_CheckedChanged(object sender, EventArgs e)
@@ -322,10 +289,6 @@ namespace Admin_Login
                 cbPHILHEALTH.Checked = false;
                 cbSSS.Checked = true;
             }
-            tagadelete();
-            tagaInsertPayrollReport();
-            getDeductions();
-            //tagadelete();
         }
 
         private void cbPHILHEALTH_CheckedChanged(object sender, EventArgs e)
@@ -342,10 +305,6 @@ namespace Admin_Login
                 cbPAGIBIG.Checked = false;
                 cbSSS.Checked = true;
             }
-            tagadelete();
-            tagaInsertPayrollReport();
-            getDeductions();
-            //tagadelete();
         }
 
         private void dataGridView1_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
