@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.gbaddDeduction = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.dtStart = new System.Windows.Forms.DateTimePicker();
-            this.lbStart = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tbAddOtherDeduction = new System.Windows.Forms.TextBox();
-            this.tbScrollNum = new System.Windows.Forms.NumericUpDown();
-            this.lblIteration = new System.Windows.Forms.Label();
-            this.tbDescription = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -46,8 +36,10 @@
             this.lblRate = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.tbTotal = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbOtherDeduction = new System.Windows.Forms.TextBox();
             this.tbTAX = new System.Windows.Forms.TextBox();
             this.tbPHILHEALTH = new System.Windows.Forms.TextBox();
@@ -76,8 +68,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
-            this.gbaddDeduction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -86,9 +76,8 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.gbaddDeduction);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.panel1);
             this.panel3.Controls.Add(this.lblRate);
@@ -98,120 +87,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(438, 728);
             this.panel3.TabIndex = 28;
-            // 
-            // gbaddDeduction
-            // 
-            this.gbaddDeduction.Controls.Add(this.btnAdd);
-            this.gbaddDeduction.Controls.Add(this.label14);
-            this.gbaddDeduction.Controls.Add(this.dtStart);
-            this.gbaddDeduction.Controls.Add(this.lbStart);
-            this.gbaddDeduction.Controls.Add(this.label7);
-            this.gbaddDeduction.Controls.Add(this.tbAddOtherDeduction);
-            this.gbaddDeduction.Controls.Add(this.tbScrollNum);
-            this.gbaddDeduction.Controls.Add(this.lblIteration);
-            this.gbaddDeduction.Controls.Add(this.tbDescription);
-            this.gbaddDeduction.Enabled = false;
-            this.gbaddDeduction.Location = new System.Drawing.Point(5, 402);
-            this.gbaddDeduction.Name = "gbaddDeduction";
-            this.gbaddDeduction.Size = new System.Drawing.Size(424, 321);
-            this.gbaddDeduction.TabIndex = 36;
-            this.gbaddDeduction.TabStop = false;
-            this.gbaddDeduction.Text = "Add Deduction";
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AutoSize = true;
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(362, 166);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(51, 22);
-            this.btnAdd.TabIndex = 90;
-            this.btnAdd.Tag = "";
-            this.btnAdd.Text = "Add";
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 166);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 22);
-            this.label14.TabIndex = 89;
-            this.label14.Text = "Description";
-            // 
-            // dtStart
-            // 
-            this.dtStart.CustomFormat = "MMMM dd, yyyy";
-            this.dtStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtStart.Location = new System.Drawing.Point(194, 112);
-            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtStart.Name = "dtStart";
-            this.dtStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtStart.Size = new System.Drawing.Size(219, 30);
-            this.dtStart.TabIndex = 86;
-            // 
-            // lbStart
-            // 
-            this.lbStart.AutoSize = true;
-            this.lbStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStart.Location = new System.Drawing.Point(8, 118);
-            this.lbStart.Name = "lbStart";
-            this.lbStart.Size = new System.Drawing.Size(82, 22);
-            this.lbStart.TabIndex = 88;
-            this.lbStart.Text = "Start at:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 24);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 22);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Other Deduction:";
-            // 
-            // tbAddOtherDeduction
-            // 
-            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAddOtherDeduction.Location = new System.Drawing.Point(278, 16);
-            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
-            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
-            this.tbAddOtherDeduction.TabIndex = 83;
-            // 
-            // tbScrollNum
-            // 
-            this.tbScrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbScrollNum.Location = new System.Drawing.Point(278, 67);
-            this.tbScrollNum.Name = "tbScrollNum";
-            this.tbScrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbScrollNum.Size = new System.Drawing.Size(135, 31);
-            this.tbScrollNum.TabIndex = 85;
-            // 
-            // lblIteration
-            // 
-            this.lblIteration.AutoSize = true;
-            this.lblIteration.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIteration.Location = new System.Drawing.Point(8, 70);
-            this.lblIteration.Name = "lblIteration";
-            this.lblIteration.Size = new System.Drawing.Size(266, 22);
-            this.lblIteration.TabIndex = 84;
-            this.lblIteration.Text = "Payment Iteration (Months):";
-            // 
-            // tbDescription
-            // 
-            this.tbDescription.BackColor = System.Drawing.Color.White;
-            this.tbDescription.Location = new System.Drawing.Point(12, 206);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(401, 115);
-            this.tbDescription.TabIndex = 42;
             // 
             // label2
             // 
@@ -225,7 +100,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
@@ -237,7 +112,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(7, 4);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
@@ -256,7 +131,7 @@
             this.tb_Search.Location = new System.Drawing.Point(36, 6);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(392, 21);
+            this.tb_Search.Size = new System.Drawing.Size(386, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search Employee";
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
@@ -292,17 +167,19 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(431, 334);
+            this.dataGridView1.Size = new System.Drawing.Size(431, 660);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick_1);
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BackColor = System.Drawing.Color.PeachPuff;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.tbTotal);
+            this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.label15);
-            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.tbDescription);
             this.panel5.Controls.Add(this.tbOtherDeduction);
             this.panel5.Controls.Add(this.tbTAX);
             this.panel5.Controls.Add(this.tbPHILHEALTH);
@@ -335,6 +212,26 @@
             this.panel5.Size = new System.Drawing.Size(424, 728);
             this.panel5.TabIndex = 36;
             // 
+            // tbTotal
+            // 
+            this.tbTotal.Enabled = false;
+            this.tbTotal.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTotal.Location = new System.Drawing.Point(284, 492);
+            this.tbTotal.Name = "tbTotal";
+            this.tbTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbTotal.Size = new System.Drawing.Size(133, 30);
+            this.tbTotal.TabIndex = 93;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 500);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(58, 22);
+            this.label7.TabIndex = 92;
+            this.label7.Text = "Total:";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -345,15 +242,16 @@
             this.label15.TabIndex = 91;
             this.label15.Text = "Deductions";
             // 
-            // textBox1
+            // tbDescription
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(7, 572);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(409, 151);
-            this.textBox1.TabIndex = 90;
+            this.tbDescription.BackColor = System.Drawing.Color.White;
+            this.tbDescription.Enabled = false;
+            this.tbDescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(3, 587);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(415, 136);
+            this.tbDescription.TabIndex = 90;
             // 
             // tbOtherDeduction
             // 
@@ -421,7 +319,7 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label6.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.label6.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label6.Location = new System.Drawing.Point(59, 493);
+            this.label6.Location = new System.Drawing.Point(59, 531);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 22);
             this.label6.TabIndex = 80;
@@ -455,7 +353,7 @@
             this.lblAddDeduct.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblAddDeduct.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddDeduct.ForeColor = System.Drawing.Color.White;
-            this.lblAddDeduct.Location = new System.Drawing.Point(8, 493);
+            this.lblAddDeduct.Location = new System.Drawing.Point(8, 531);
             this.lblAddDeduct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAddDeduct.Name = "lblAddDeduct";
             this.lblAddDeduct.Size = new System.Drawing.Size(51, 22);
@@ -508,6 +406,7 @@
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_To.Location = new System.Drawing.Point(74, 77);
@@ -535,6 +434,7 @@
             // dtp_From
             // 
             this.dtp_From.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_From.Enabled = false;
             this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_From.Location = new System.Drawing.Point(74, 45);
@@ -586,9 +486,9 @@
             this.label13.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(3, 226);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(155, 22);
+            this.label13.Size = new System.Drawing.Size(101, 22);
             this.label13.TabIndex = 47;
-            this.label13.Text = "Gross Basic Pay:";
+            this.label13.Text = "Basic Pay:";
             // 
             // label12
             // 
@@ -614,7 +514,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(2, 546);
+            this.label10.Location = new System.Drawing.Point(2, 559);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(269, 23);
             this.label10.TabIndex = 44;
@@ -666,9 +566,6 @@
             this.Load += new System.EventHandler(this.Deductions_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.gbaddDeduction.ResumeLayout(false);
-            this.gbaddDeduction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -684,7 +581,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox tb_Search;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblRate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel5;
@@ -694,7 +590,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox cbPHILHEALTH;
@@ -716,16 +611,10 @@
         private System.Windows.Forms.TextBox tbWorkHours;
         private System.Windows.Forms.Label lblAddDeduct;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox tbAddOtherDeduction;
-        private System.Windows.Forms.Label lblIteration;
-        private System.Windows.Forms.NumericUpDown tbScrollNum;
-        private System.Windows.Forms.Label lbStart;
-        public System.Windows.Forms.DateTimePicker dtStart;
-        private System.Windows.Forms.GroupBox gbaddDeduction;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label btnAdd;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbDescription;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbTotal;
+        private System.Windows.Forms.Label label7;
     }
 }

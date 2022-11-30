@@ -30,7 +30,7 @@ namespace Admin_Login
                            "group by A.EmployeeID,B.EmployeeFullName,C.PositionName,C.BasicRate ";
             return query;
         }
-        public void AddLeavePay()
+        public void AddLeavePayToGrossPay()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -39,6 +39,21 @@ namespace Admin_Login
                                "select @x = count(EmployeeID) from PayrollReport while (@i <= @x) begin " +
                                "select top (@i) @id = EmployeeID from PayrollReport update PayrollReport " +
                                "set GrossSalary =  (select GrossSalary + coalesce(((sum(PaidLeaveDays)*8)*BasicRate),0) from PayrollReport where EmployeeID = @id group by GrossSalary,BasicRate) " +
+                               "where EmployeeID = @id set @i = @i + 1 end";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        public void AddLeavePayToBasicPay()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "declare @i int = 1, @x int, @id int " +
+                               "select @x = count(EmployeeID) from PayrollReport while (@i <= @x) begin " +
+                               "select top (@i) @id = EmployeeID from PayrollReport update PayrollReport " +
+                               "set BasicPay =  (select BasicPay + coalesce(((sum(PaidLeaveDays)*8)*BasicRate),0) from PayrollReport where EmployeeID = @id group by BasicPay,BasicRate) " +
                                "where EmployeeID = @id set @i = @i + 1 end";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
@@ -92,7 +107,7 @@ namespace Admin_Login
                     {
                         empID = data.Rows[i][0].ToString();
                         string queryadd = "Insert into PayrollReport " +
-                                          "select A.EmployeeID, A.EmployeeFullname, B.PositionName,B.BasicRate ,'00:00', 0.00, 0.00, 0.00, 0.00 ,0, " +
+                                          "select A.EmployeeID, A.EmployeeFullname, B.PositionName,B.BasicRate ,'00:00', (count(C.EmployeeID)*8)*B.BasicRate, 0.00, 0.00, 0.00 ,0, " +
                                           "count(C.EmployeeID) , (count(C.EmployeeID)*8)*B.BasicRate, 0,0,0,0,0,0,0,(count(C.EmployeeID)*8)*B.BasicRate,' ' " +
                                           "from EmployeeInfo as A inner join Position as B on A.PositionID = B.PositionID inner join LeavePay as C " +
                                           "on A.EmployeeID=C.EmployeeID where C.Date Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100) " +
@@ -238,7 +253,7 @@ namespace Admin_Login
                 getEndDateForOtherDeduction();
             }
         }
-        public void getEndDateForOtherDeduction()
+        public void getEndDateForOtherDeduction()//notyetfinish
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -283,7 +298,8 @@ namespace Admin_Login
         public void getSSSRange()
         {
             getLeaveDays();
-            AddLeavePay();
+            AddLeavePayToBasicPay();
+            AddLeavePayToGrossPay();
             removeNull();
             getEmployeeFromLeavePay();
             PayrollReport payrollReport = new PayrollReport();

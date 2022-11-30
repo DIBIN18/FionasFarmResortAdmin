@@ -28,145 +28,183 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label14 = new System.Windows.Forms.Label();
-            this.tbAddOtherDeduction = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.scrollNum = new System.Windows.Forms.NumericUpDown();
-            this.cbLoanType = new System.Windows.Forms.ComboBox();
-            this.lblLoanType = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.gbaddDeduction = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.scrollNum)).BeginInit();
+            this.btnAdd = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dtStart = new System.Windows.Forms.DateTimePicker();
+            this.lbStart = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tbAddOtherDeduction = new System.Windows.Forms.TextBox();
+            this.tbScrollNum = new System.Windows.Forms.NumericUpDown();
+            this.lblIteration = new System.Windows.Forms.Label();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.gbaddDeduction.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gbaddDeduction
+            // 
+            this.gbaddDeduction.Controls.Add(this.label2);
+            this.gbaddDeduction.Controls.Add(this.btnAdd);
+            this.gbaddDeduction.Controls.Add(this.label14);
+            this.gbaddDeduction.Controls.Add(this.dtStart);
+            this.gbaddDeduction.Controls.Add(this.lbStart);
+            this.gbaddDeduction.Controls.Add(this.label7);
+            this.gbaddDeduction.Controls.Add(this.tbAddOtherDeduction);
+            this.gbaddDeduction.Controls.Add(this.tbScrollNum);
+            this.gbaddDeduction.Controls.Add(this.lblIteration);
+            this.gbaddDeduction.Controls.Add(this.tbDescription);
+            this.gbaddDeduction.Location = new System.Drawing.Point(12, 12);
+            this.gbaddDeduction.Name = "gbaddDeduction";
+            this.gbaddDeduction.Size = new System.Drawing.Size(430, 361);
+            this.gbaddDeduction.TabIndex = 86;
+            this.gbaddDeduction.TabStop = false;
+            this.gbaddDeduction.Text = "Add Deduction";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(362, 330);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(56, 22);
+            this.label2.TabIndex = 91;
+            this.label2.Tag = "";
+            this.label2.Text = "Back";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AutoSize = true;
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(14, 330);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(51, 22);
+            this.btnAdd.TabIndex = 90;
+            this.btnAdd.Tag = "";
+            this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(66, 190);
+            this.label14.Location = new System.Drawing.Point(8, 166);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(112, 22);
-            this.label14.TabIndex = 84;
-            this.label14.Text = "Deduction:";
+            this.label14.Size = new System.Drawing.Size(111, 22);
+            this.label14.TabIndex = 89;
+            this.label14.Text = "Description";
             // 
-            // tbAddOtherDeduction
+            // dtStart
             // 
-            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAddOtherDeduction.Location = new System.Drawing.Point(345, 150);
-            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
-            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
-            this.tbAddOtherDeduction.TabIndex = 58;
+            this.dtStart.CustomFormat = "MMMM dd, yyyy";
+            this.dtStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStart.Location = new System.Drawing.Point(194, 112);
+            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtStart.Name = "dtStart";
+            this.dtStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtStart.Size = new System.Drawing.Size(219, 30);
+            this.dtStart.TabIndex = 86;
             // 
-            // textBox1
+            // lbStart
             // 
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(345, 186);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(135, 30);
-            this.textBox1.TabIndex = 83;
+            this.lbStart.AutoSize = true;
+            this.lbStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStart.Location = new System.Drawing.Point(8, 118);
+            this.lbStart.Name = "lbStart";
+            this.lbStart.Size = new System.Drawing.Size(82, 22);
+            this.lbStart.TabIndex = 88;
+            this.lbStart.Text = "Start at:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(67, 259);
+            this.label7.Location = new System.Drawing.Point(8, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(266, 22);
-            this.label7.TabIndex = 40;
-            this.label7.Text = "Payment Iteration (Months):";
+            this.label7.Size = new System.Drawing.Size(133, 22);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Total Amount";
             // 
-            // scrollNum
+            // tbAddOtherDeduction
             // 
-            this.scrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scrollNum.Location = new System.Drawing.Point(345, 256);
-            this.scrollNum.Name = "scrollNum";
-            this.scrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.scrollNum.Size = new System.Drawing.Size(133, 31);
-            this.scrollNum.TabIndex = 82;
+            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAddOtherDeduction.Location = new System.Drawing.Point(278, 16);
+            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
+            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
+            this.tbAddOtherDeduction.TabIndex = 83;
             // 
-            // cbLoanType
+            // tbScrollNum
             // 
-            this.cbLoanType.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLoanType.FormattingEnabled = true;
-            this.cbLoanType.Items.AddRange(new object[] {
-            "COPANY loan",
-            "SSS loan",
-            "PAGIBIG loan",
-            "OTHER"});
-            this.cbLoanType.Location = new System.Drawing.Point(345, 222);
-            this.cbLoanType.Name = "cbLoanType";
-            this.cbLoanType.Size = new System.Drawing.Size(135, 29);
-            this.cbLoanType.TabIndex = 66;
+            this.tbScrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbScrollNum.Location = new System.Drawing.Point(278, 67);
+            this.tbScrollNum.Name = "tbScrollNum";
+            this.tbScrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbScrollNum.Size = new System.Drawing.Size(135, 31);
+            this.tbScrollNum.TabIndex = 85;
             // 
-            // lblLoanType
+            // lblIteration
             // 
-            this.lblLoanType.AutoSize = true;
-            this.lblLoanType.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLoanType.Location = new System.Drawing.Point(66, 225);
-            this.lblLoanType.Name = "lblLoanType";
-            this.lblLoanType.Size = new System.Drawing.Size(160, 22);
-            this.lblLoanType.TabIndex = 67;
-            this.lblLoanType.Text = "Deduction type:";
+            this.lblIteration.AutoSize = true;
+            this.lblIteration.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIteration.Location = new System.Drawing.Point(8, 70);
+            this.lblIteration.Name = "lblIteration";
+            this.lblIteration.Size = new System.Drawing.Size(266, 22);
+            this.lblIteration.TabIndex = 84;
+            this.lblIteration.Text = "Payment Iteration (Months):";
             // 
-            // label1
+            // tbDescription
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(496, 353);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 23);
-            this.label1.TabIndex = 85;
-            this.label1.Text = "Back";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(67, 153);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 22);
-            this.label2.TabIndex = 86;
-            this.label2.Text = "Remaing:";
+            this.tbDescription.BackColor = System.Drawing.Color.White;
+            this.tbDescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(12, 206);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(401, 115);
+            this.tbDescription.TabIndex = 42;
             // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(565, 385);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.tbAddOtherDeduction);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lblLoanType);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbLoanType);
-            this.Controls.Add(this.scrollNum);
+            this.BackColor = System.Drawing.Color.SeaShell;
+            this.ClientSize = new System.Drawing.Size(456, 385);
+            this.Controls.Add(this.gbaddDeduction);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Loan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Loan";
             this.Load += new System.EventHandler(this.Loan_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.scrollNum)).EndInit();
+            this.gbaddDeduction.ResumeLayout(false);
+            this.gbaddDeduction.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox tbAddOtherDeduction;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown scrollNum;
-        private System.Windows.Forms.ComboBox cbLoanType;
-        private System.Windows.Forms.Label lblLoanType;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbaddDeduction;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label btnAdd;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.DateTimePicker dtStart;
+        private System.Windows.Forms.Label lbStart;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbAddOtherDeduction;
+        private System.Windows.Forms.NumericUpDown tbScrollNum;
+        private System.Windows.Forms.Label lblIteration;
+        private System.Windows.Forms.TextBox tbDescription;
     }
 }

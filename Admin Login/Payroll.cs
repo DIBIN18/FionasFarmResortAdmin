@@ -49,8 +49,8 @@ namespace Admin_Login
                 }
                 catch (Exception ex) { }
             }
-            sssclass.dateFrom = dtpI_From.Text;
-            sssclass.dateTo = dtpI_To.Text;
+            dtpI_From.Text = sssclass.dateFrom;
+            dtpI_To.Text = sssclass.dateTo;
             tagadelete();
             tagaInsertPayrollReport();
             getInfo();

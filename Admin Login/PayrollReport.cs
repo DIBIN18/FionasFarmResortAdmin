@@ -289,6 +289,24 @@ namespace Admin_Login
             }
         }
 
+        private void btnRecords(object sender, EventArgs e)
+        {
+            PayRollHistory payrollrecords = new PayRollHistory();
+            payrollrecords.ShowDialog();
+        }
+        public void moveToHistory()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "Insert into PayrollReportHistory " +
+                            "select EmployeeID,EmployeeName,Position,BasicPay,TotalHours,BasicPay,OverTimePay,LegalHollidayPay,SpecialHollidayPay,TotalWorkDays, " +
+                            "PaidLeaveDays,GrossSalary,TotalLateMinutes,TotalUnderTimeMinutes,SSSContribution,PAGIBIGContribution,PHILHEALTHContribution, " +
+                            "TAX,OtherDeduction,NetSalary,'" + dtp_From.Text + "','" + dtp_To.Text + "' from PayrollReport ";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+        }
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -356,6 +374,7 @@ namespace Admin_Login
                 InsertDeductionTable();
                 sssclass.dateTo = dtp_To.Text;
                 sssclass.UpdateOtherDeduction();
+                moveToHistory();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
                     IApplication application = engine.Excel;
@@ -406,6 +425,8 @@ namespace Admin_Login
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             sssclass.getSSSRange();
+            sssclass.dateFrom = dtp_From.Text;
+            sssclass.dateTo = dtp_To.Text;
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             SqlConnection connection = new SqlConnection(login.connectionString);

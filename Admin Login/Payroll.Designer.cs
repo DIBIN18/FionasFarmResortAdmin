@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.dtpI_To = new System.Windows.Forms.DateTimePicker();
             this.dtpI_From = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -93,6 +92,8 @@
             this.txtLateAmount = new System.Windows.Forms.TextBox();
             this.txtUndertimeAmount = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -103,7 +104,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.dtpI_To);
             this.groupBox1.Controls.Add(this.dtpI_From);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -114,23 +116,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payroll Covered Date";
             // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(392, 33);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(16, 22);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "-";
-            // 
             // dtpI_To
             // 
             this.dtpI_To.CalendarFont = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpI_To.CustomFormat = "MMMM dd, yyyy";
+            this.dtpI_To.Enabled = false;
             this.dtpI_To.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpI_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpI_To.Location = new System.Drawing.Point(430, 30);
+            this.dtpI_To.Location = new System.Drawing.Point(429, 34);
             this.dtpI_To.MaxDate = new System.DateTime(2022, 10, 31, 0, 0, 0, 0);
             this.dtpI_To.Name = "dtpI_To";
             this.dtpI_To.Size = new System.Drawing.Size(299, 30);
@@ -142,9 +135,10 @@
             // 
             this.dtpI_From.CalendarFont = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpI_From.CustomFormat = "MMMM dd, yyyy";
+            this.dtpI_From.Enabled = false;
             this.dtpI_From.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpI_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpI_From.Location = new System.Drawing.Point(68, 30);
+            this.dtpI_From.Location = new System.Drawing.Point(67, 34);
             this.dtpI_From.Name = "dtpI_From";
             this.dtpI_From.Size = new System.Drawing.Size(303, 30);
             this.dtpI_From.TabIndex = 0;
@@ -822,6 +816,28 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Late/Undertime";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(10, 40);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(52, 19);
+            this.label29.TabIndex = 63;
+            this.label29.Text = "From:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(384, 40);
+            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(30, 19);
+            this.label30.TabIndex = 62;
+            this.label30.Text = "To:";
+            // 
             // Payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,7 +907,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -934,5 +949,7 @@
         public System.Windows.Forms.TextBox txtLateAmount;
         public System.Windows.Forms.TextBox txtUndertimeAmount;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
     }
 }

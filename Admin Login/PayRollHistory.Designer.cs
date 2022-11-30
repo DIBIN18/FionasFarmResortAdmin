@@ -1,0 +1,193 @@
+﻿namespace Admin_Login
+{
+    partial class PayRollHistory
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.dgvPayrollRecords = new System.Windows.Forms.DataGridView();
+            this.tb_Search = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.dtp_To = new System.Windows.Forms.DateTimePicker();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dtp_From = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayrollRecords)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvPayrollRecords
+            // 
+            this.dgvPayrollRecords.AllowUserToAddRows = false;
+            this.dgvPayrollRecords.AllowUserToOrderColumns = true;
+            this.dgvPayrollRecords.AllowUserToResizeColumns = false;
+            this.dgvPayrollRecords.AllowUserToResizeRows = false;
+            this.dgvPayrollRecords.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvPayrollRecords.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dgvPayrollRecords.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPayrollRecords.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPayrollRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvPayrollRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayrollRecords.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvPayrollRecords.Location = new System.Drawing.Point(12, 49);
+            this.dgvPayrollRecords.MultiSelect = false;
+            this.dgvPayrollRecords.Name = "dgvPayrollRecords";
+            this.dgvPayrollRecords.RowHeadersVisible = false;
+            this.dgvPayrollRecords.RowHeadersWidth = 51;
+            this.dgvPayrollRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPayrollRecords.Size = new System.Drawing.Size(846, 649);
+            this.dgvPayrollRecords.TabIndex = 6;
+            // 
+            // tb_Search
+            // 
+            this.tb_Search.BackColor = System.Drawing.Color.White;
+            this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tb_Search.Location = new System.Drawing.Point(35, 3);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_Search.Name = "tb_Search";
+            this.tb_Search.Size = new System.Drawing.Size(374, 23);
+            this.tb_Search.TabIndex = 6;
+            this.tb_Search.Text = " Search";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.tb_Search);
+            this.panel1.Location = new System.Drawing.Point(12, 11);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(413, 30);
+            this.panel1.TabIndex = 29;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox5.Location = new System.Drawing.Point(6, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(19, 24);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
+            // 
+            // dtp_To
+            // 
+            this.dtp_To.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_To.Location = new System.Drawing.Point(692, 14);
+            this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_To.MaxDate = new System.DateTime(2269, 12, 31, 0, 0, 0, 0);
+            this.dtp_To.Name = "dtp_To";
+            this.dtp_To.Size = new System.Drawing.Size(162, 23);
+            this.dtp_To.TabIndex = 44;
+            this.dtp_To.Value = new System.DateTime(2022, 10, 31, 0, 0, 0, 0);
+            this.dtp_To.ValueChanged += new System.EventHandler(this.dtp_To_ValueChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(432, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(52, 19);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "From:";
+            // 
+            // dtp_From
+            // 
+            this.dtp_From.CustomFormat = "MMMM dd, yyyy";
+            this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_From.Location = new System.Drawing.Point(488, 14);
+            this.dtp_From.Margin = new System.Windows.Forms.Padding(2);
+            this.dtp_From.Name = "dtp_From";
+            this.dtp_From.Size = new System.Drawing.Size(162, 23);
+            this.dtp_From.TabIndex = 42;
+            this.dtp_From.ValueChanged += new System.EventHandler(this.dtp_From_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(658, 16);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(30, 19);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "To:";
+            // 
+            // PayRollHistory
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(870, 708);
+            this.Controls.Add(this.dtp_To);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.dtp_From);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgvPayrollRecords);
+            this.Name = "PayRollHistory";
+            this.Text = "PayRollHistory";
+            this.Load += new System.EventHandler(this.PayRollHistory_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayrollRecords)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        public System.Windows.Forms.DataGridView dgvPayrollRecords;
+        private System.Windows.Forms.TextBox tb_Search;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        public System.Windows.Forms.DateTimePicker dtp_To;
+        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.DateTimePicker dtp_From;
+        private System.Windows.Forms.Label label4;
+    }
+}
