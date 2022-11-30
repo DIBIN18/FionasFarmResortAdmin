@@ -633,6 +633,18 @@ namespace Admin_Login
                 accumulatedDayOffsList.BringToFront();
                 accumulatedDayOffsList.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Payroll History")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Payroll History";
+                TitleLabel.Text = TitleExtension;
+                PayRollHistory payrollhistory = new PayRollHistory();
+                {
+                    payrollhistory.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(payrollhistory);
+                payrollhistory.BringToFront();
+                payrollhistory.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

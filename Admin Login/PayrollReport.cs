@@ -288,12 +288,6 @@ namespace Admin_Login
                 MessageBox.Show("No Record Found", "Info");
             }
         }
-
-        private void btnRecords(object sender, EventArgs e)
-        {
-            PayRollHistory payrollrecords = new PayRollHistory();
-            payrollrecords.ShowDialog();
-        }
         public void moveToHistory()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -306,6 +300,12 @@ namespace Admin_Login
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
+        }
+        private void btn_Records(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Payroll History";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
         public void tagadelete()
         {

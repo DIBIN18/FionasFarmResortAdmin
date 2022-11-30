@@ -433,6 +433,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Records_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Records_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Register_Icon {
             get {
                 object obj = ResourceManager.GetObject("Register_Icon", resourceCulture);
