@@ -116,7 +116,7 @@ namespace Admin_Login
                     cbPAGIBIG.Checked = false;
                     cbPHILHEALTH.Checked = false;
                 }
-                else if (day_To == "30")
+                else if (day_To == "30" || day_To == "31")
                 {
                     cbSSS.Checked = false;
                     cbPAGIBIG.Checked = true;
