@@ -103,6 +103,8 @@ namespace Admin_Login
 
         private void AddAttendance_Load(object sender, EventArgs e)
         {
+            dtp_Date.MaxDate = DateTime.Now.Date;
+
             //Load Add Attendance DGV
             dtpTimeInAdd.Format = DateTimePickerFormat.Time;
             dtpTimeInAdd.ShowUpDown = true;
@@ -269,6 +271,7 @@ namespace Admin_Login
 
             if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
             {
+                Console.WriteLine("Trigger 1");
                 // Early time in but not early time out
                 string time_interval = (time_out_24 - sched_in_24).ToString();
 
@@ -281,10 +284,10 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
-                if (grace_on == true)
-                {
-                    return 8;
-                }
+                //if (grace_on == true)
+                //{
+                //    return 8;
+                //}
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -302,6 +305,7 @@ namespace Admin_Login
             }
             else if (sched_in_24 < time_in_24 && sched_out_24 <= time_out_24)
             {
+                Console.WriteLine("Trigger 2");
                 // Late time in but not early time out
                 string time_interval = (sched_out_24 - time_in_24).ToString();
 
@@ -335,6 +339,7 @@ namespace Admin_Login
             }
             else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
             {
+                Console.WriteLine("Trigger 3");
                 // Early time out but not late
                 string time_interval = (time_out_24 - sched_in_24).ToString();
 
@@ -347,10 +352,10 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
-                if (grace_on == true)
-                {
-                    return 8;
-                }
+                //if (grace_on == true)
+                //{
+                //    return 8;
+                //}
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -366,8 +371,9 @@ namespace Admin_Login
 
                 return hour;
             }
-            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
+                Console.WriteLine("Trigger 4");
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();
 
@@ -382,7 +388,12 @@ namespace Admin_Login
 
                 if (grace_on == true)
                 {
-                    return 8;
+                    if (hour > 8)
+                    {
+                        hour = 8;
+                    }
+
+                    return hour;
                 }
 
                 // Break time trigger
@@ -401,6 +412,7 @@ namespace Admin_Login
             }
             else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
             {
+                Console.WriteLine("Trigger 5");
                 // Early time in and late time out
                 string time_interval = (time_out_24 - sched_in_24).ToString();
 
@@ -434,6 +446,7 @@ namespace Admin_Login
             }
             else
             {
+                Console.WriteLine("Trigger 6");
                 // Time in and time out are okay, limiter can be triggered
                 string time_interval = (time_out_24 - sched_in_24).ToString();
 
@@ -530,16 +543,17 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                if (grace_minutes <= 10)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return Convert.ToInt32(time.Minute);
-                }
+                //if (grace_minutes <= 10)
+                //{
+                //    return 0;
+                //}
+                //else
+                //{
+                    
+                //}
+                return Convert.ToInt32(time.Minute);
             }
-            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();
@@ -683,18 +697,26 @@ namespace Admin_Login
             using (SqlCommand command = new SqlCommand(query2, connection))
             {
                 connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        reader.Read();
-                        return reader.GetString(0);
-                    }
-                    else
-                    {
-                        return "";
-                    }
 
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "12:00:00 AM";
                 }
             }
         }
@@ -1201,10 +1223,10 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
-                if (grace_on == true)
-                {
-                    return 8;
-                }
+                //if (grace_on == true)
+                //{
+                //    return 8;
+                //}
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -1267,10 +1289,10 @@ namespace Admin_Login
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
 
-                if (grace_on == true)
-                {
-                    return 8;
-                }
+                //if (grace_on == true)
+                //{
+                //    return 8;
+                //}
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -1286,7 +1308,7 @@ namespace Admin_Login
 
                 return hour;
             }
-            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();
@@ -1302,7 +1324,12 @@ namespace Admin_Login
 
                 if (grace_on == true)
                 {
-                    return 8;
+                    if (hour > 8)
+                    {
+                        hour = 8;
+                    }
+
+                    return hour;
                 }
 
                 // Break time trigger
@@ -1450,16 +1477,17 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
 
-                if (grace_minutes <= 10)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return Convert.ToInt32(time.Minute);
-                }
+                //if (grace_minutes <= 10)
+                //{
+                //    return 0;
+                //}
+                //else
+                //{
+                //    return Convert.ToInt32(time.Minute);
+                //}
+                return Convert.ToInt32(time.Minute);
             }
-            else if (sched_in_24 > time_in_24 && sched_out_24 > time_out_24)
+            else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();

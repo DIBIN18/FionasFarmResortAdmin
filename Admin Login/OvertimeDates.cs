@@ -98,26 +98,39 @@ namespace Admin_Login
             {
                 foreach (DateTime day in EachDay(StartDate, EndDate))
                 {
-                    using (SqlConnection connection = new SqlConnection(login.connectionString))
-                    {
-                        connection.Open();
-                        string query =
-                            "INSERT INTO OvertimeDates (" +
-                            "EmployeeID," +
-                            "Date) " +
-                            "VALUES(" +
-                            "@EmployeeID," +
-                            "@Date)";
+                    string ot_date = check_OT_Date(day.ToString("MMMM dd, yyyy"), selectedEmployee);
 
-                        SqlCommand command2 = new SqlCommand(query, connection);
-                        command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
-                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                        command2.ExecuteNonQuery();
+                    if (ot_date == day.ToString("MMMM dd, yyyy"))
+                    {
+                        MessageBox.Show("Employee; " + getEmployeeName(selectedEmployee) + " Already has a scheduled overtime on " +
+                            day.ToString("MMMM dd, yyyy") + ", Duplicate date will not be added.");
+                    }
+                    else
+                    {
+                        using (SqlConnection connection = new SqlConnection(login.connectionString))
+                        {
+                            connection.Open();
+                            string query =
+                                "INSERT INTO OvertimeDates (" +
+                                "EmployeeID," +
+                                "Date) " +
+                                "VALUES(" +
+                                "@EmployeeID," +
+                                "@Date)";
+
+                            SqlCommand command2 = new SqlCommand(query, connection);
+                            command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
+                            command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                            command2.ExecuteNonQuery();
+                        }
                     }
                 }
+                MessageBox.Show("Overtime Dates added");
             }
             else if (onTableDept == true)
             {
+                bool duplicateDetect = false;
+
                 string query2 = "SELECT EmployeeID FROM EmployeeInfo WHERE DepartmentID=" + selectedDept;
 
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -129,35 +142,50 @@ namespace Admin_Login
                         while (reader.Read())
                         {
                             int count = 0;
-                            Console.WriteLine(reader.GetInt64(count));
+                            //Console.WriteLine(reader.GetInt64(count));
 
                             foreach (DateTime day in EachDay(StartDate, EndDate))
                             {
-                                using (SqlConnection connection2 = new SqlConnection(login.connectionString))
-                                {
-                                    connection2.Open();
-                                    string query =
-                                        "INSERT INTO OvertimeDates (" +
-                                        "EmployeeID," +
-                                        "Date) " +
-                                        "VALUES(" +
-                                        "@EmployeeID," +
-                                        "@Date)";
+                                string ot_date = check_OT_Date(day.ToString("MMMM dd, yyyy"), reader.GetInt64(count).ToString());
 
-                                    SqlCommand command2 = new SqlCommand(query, connection2);
-                                    command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
-                                    command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                                    command2.ExecuteNonQuery();
+                                if (ot_date == day.ToString("MMMM dd, yyyy"))
+                                {
+                                    duplicateDetect= true;
+                                }
+                                else
+                                {
+                                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                    {
+                                        connection2.Open();
+                                        string query =
+                                            "INSERT INTO OvertimeDates (" +
+                                            "EmployeeID," +
+                                            "Date) " +
+                                            "VALUES(" +
+                                            "@EmployeeID," +
+                                            "@Date)";
+
+                                        SqlCommand command2 = new SqlCommand(query, connection2);
+                                        command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
+                                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                        command2.ExecuteNonQuery();
+                                    }
                                 }
                             }
                             count++;
                         }
-
                     }
                 }
+                if (duplicateDetect == true)
+                {
+                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.");
+                }
+                MessageBox.Show("Overtime Dates added.");
             }
             else if (onTablePos == true)
             {
+                bool duplicateDetect = false;
+
                 string query2 = "SELECT EmployeeID FROM EmployeeInfo WHERE PositionID=" + selectedPos;
 
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -173,31 +201,42 @@ namespace Admin_Login
 
                             foreach (DateTime day in EachDay(StartDate, EndDate))
                             {
-                                using (SqlConnection connection2 = new SqlConnection(login.connectionString))
-                                {
-                                    connection2.Open();
-                                    string query =
-                                        "INSERT INTO OvertimeDates (" +
-                                        "EmployeeID," +
-                                        "Date) " +
-                                        "VALUES(" +
-                                        "@EmployeeID," +
-                                        "@Date)";
+                                string ot_date = check_OT_Date(day.ToString("MMMM dd, yyyy"), reader.GetInt64(count).ToString());
 
-                                    SqlCommand command2 = new SqlCommand(query, connection2);
-                                    command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
-                                    command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                                    command2.ExecuteNonQuery();
+                                if (ot_date == day.ToString("MMMM dd, yyyy"))
+                                {
+                                    duplicateDetect= true;
+                                }
+                                else
+                                {
+                                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                    {
+                                        connection2.Open();
+                                        string query =
+                                            "INSERT INTO OvertimeDates (" +
+                                            "EmployeeID," +
+                                            "Date) " +
+                                            "VALUES(" +
+                                            "@EmployeeID," +
+                                            "@Date)";
+
+                                        SqlCommand command2 = new SqlCommand(query, connection2);
+                                        command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
+                                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                        command2.ExecuteNonQuery();
+                                    }
                                 }
                             }
                             count++;
                         }
-
                     }
                 }
+                if (duplicateDetect == true)
+                {
+                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.");
+                }
+                MessageBox.Show("Overtime Dates added.");
             }
-
-            MessageBox.Show("Overtime Dates added");
         }
 
         private void btnBackEdit_Click(object sender, EventArgs e)
@@ -307,5 +346,54 @@ namespace Admin_Login
         {
             dtpDateFrom.MaxDate = dtpDateTo.Value;
         }
+
+        public string check_OT_Date(string date, string employee_id)
+        {
+            string query2 =
+                "SELECT Date FROM OvertimeDates WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
+        public string getEmployeeName(string employee_id)
+        {
+            string query2 =
+                "SELECT EmployeeFullName FROM EmployeeInfo WHERE EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
+            }
+        }
+
     }
 }

@@ -47,6 +47,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTINEdit = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.txtVacationLeaveCreditsEdit = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.txtSickLeaveCreditsEdit = new System.Windows.Forms.TextBox();
@@ -61,20 +63,21 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
             this.cmbDepartmentEdit = new System.Windows.Forms.ComboBox();
             this.cmbPositionEdit = new System.Windows.Forms.ComboBox();
             this.cmbEmploymentTypeEdit = new System.Windows.Forms.ComboBox();
             this.lblSSS = new System.Windows.Forms.Label();
             this.lblDepartment = new System.Windows.Forms.Label();
-            this.lblAccumulated = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
             this.lblEmploymentType = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.lblTIN = new System.Windows.Forms.Label();
+            this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
+            this.lblAccumulated = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.cbSunday = new System.Windows.Forms.CheckBox();
             this.cbSaturday = new System.Windows.Forms.CheckBox();
             this.cbFriday = new System.Windows.Forms.CheckBox();
@@ -105,9 +108,6 @@
             this.dtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblBirthDate = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.cmbOtAllowed = new System.Windows.Forms.ComboBox();
-            this.lblAllowedOT = new System.Windows.Forms.Label();
             this.pbProfilePic = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dtpBreakPeriod = new System.Windows.Forms.DateTimePicker();
@@ -315,6 +315,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.txtTINEdit);
+            this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.txtVacationLeaveCreditsEdit);
             this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.txtSickLeaveCreditsEdit);
@@ -329,29 +331,46 @@
             this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.label20);
-            this.panel1.Controls.Add(this.txtAccumulatedDayOffEdit);
             this.panel1.Controls.Add(this.cmbDepartmentEdit);
             this.panel1.Controls.Add(this.cmbPositionEdit);
             this.panel1.Controls.Add(this.cmbEmploymentTypeEdit);
             this.panel1.Controls.Add(this.lblSSS);
             this.panel1.Controls.Add(this.lblDepartment);
-            this.panel1.Controls.Add(this.lblAccumulated);
             this.panel1.Controls.Add(this.lblPosition);
             this.panel1.Controls.Add(this.lblEmploymentType);
-            this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.lblTIN);
             this.panel1.Location = new System.Drawing.Point(19, 319);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(609, 369);
             this.panel1.TabIndex = 58;
             // 
+            // txtTINEdit
+            // 
+            this.txtTINEdit.Location = new System.Drawing.Point(283, 328);
+            this.txtTINEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTINEdit.Name = "txtTINEdit";
+            this.txtTINEdit.Size = new System.Drawing.Size(291, 22);
+            this.txtTINEdit.TabIndex = 98;
+            this.txtTINEdit.Visible = false;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(23, 330);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(33, 18);
+            this.label23.TabIndex = 97;
+            this.label23.Text = "TIN:";
+            // 
             // txtVacationLeaveCreditsEdit
             // 
-            this.txtVacationLeaveCreditsEdit.Location = new System.Drawing.Point(284, 220);
+            this.txtVacationLeaveCreditsEdit.Location = new System.Drawing.Point(284, 190);
             this.txtVacationLeaveCreditsEdit.Margin = new System.Windows.Forms.Padding(4);
             this.txtVacationLeaveCreditsEdit.Name = "txtVacationLeaveCreditsEdit";
             this.txtVacationLeaveCreditsEdit.Size = new System.Drawing.Size(291, 22);
@@ -362,7 +381,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(23, 219);
+            this.label24.Location = new System.Drawing.Point(23, 189);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(184, 18);
             this.label24.TabIndex = 94;
@@ -370,7 +389,7 @@
             // 
             // txtSickLeaveCreditsEdit
             // 
-            this.txtSickLeaveCreditsEdit.Location = new System.Drawing.Point(284, 190);
+            this.txtSickLeaveCreditsEdit.Location = new System.Drawing.Point(284, 160);
             this.txtSickLeaveCreditsEdit.Margin = new System.Windows.Forms.Padding(4);
             this.txtSickLeaveCreditsEdit.Name = "txtSickLeaveCreditsEdit";
             this.txtSickLeaveCreditsEdit.Size = new System.Drawing.Size(291, 22);
@@ -381,7 +400,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(23, 187);
+            this.label25.Location = new System.Drawing.Point(23, 157);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(147, 18);
             this.label25.TabIndex = 84;
@@ -392,7 +411,7 @@
             this.lblSickLeaveCredits.AutoSize = true;
             this.lblSickLeaveCredits.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSickLeaveCredits.ForeColor = System.Drawing.Color.Gray;
-            this.lblSickLeaveCredits.Location = new System.Drawing.Point(280, 186);
+            this.lblSickLeaveCredits.Location = new System.Drawing.Point(280, 156);
             this.lblSickLeaveCredits.Name = "lblSickLeaveCredits";
             this.lblSickLeaveCredits.Size = new System.Drawing.Size(139, 19);
             this.lblSickLeaveCredits.TabIndex = 83;
@@ -403,7 +422,7 @@
             this.lblVacationLeaveCredits.AutoSize = true;
             this.lblVacationLeaveCredits.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVacationLeaveCredits.ForeColor = System.Drawing.Color.Gray;
-            this.lblVacationLeaveCredits.Location = new System.Drawing.Point(280, 219);
+            this.lblVacationLeaveCredits.Location = new System.Drawing.Point(280, 189);
             this.lblVacationLeaveCredits.Name = "lblVacationLeaveCredits";
             this.lblVacationLeaveCredits.Size = new System.Drawing.Size(178, 19);
             this.lblVacationLeaveCredits.TabIndex = 96;
@@ -411,7 +430,7 @@
             // 
             // txtPagIbigEdit
             // 
-            this.txtPagIbigEdit.Location = new System.Drawing.Point(284, 324);
+            this.txtPagIbigEdit.Location = new System.Drawing.Point(283, 295);
             this.txtPagIbigEdit.Margin = new System.Windows.Forms.Padding(4);
             this.txtPagIbigEdit.Name = "txtPagIbigEdit";
             this.txtPagIbigEdit.Size = new System.Drawing.Size(291, 22);
@@ -420,7 +439,7 @@
             // 
             // txtPhilHealthEdit
             // 
-            this.txtPhilHealthEdit.Location = new System.Drawing.Point(284, 288);
+            this.txtPhilHealthEdit.Location = new System.Drawing.Point(284, 258);
             this.txtPhilHealthEdit.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhilHealthEdit.Name = "txtPhilHealthEdit";
             this.txtPhilHealthEdit.Size = new System.Drawing.Size(291, 22);
@@ -429,7 +448,7 @@
             // 
             // txtSSSEdit
             // 
-            this.txtSSSEdit.Location = new System.Drawing.Point(284, 252);
+            this.txtSSSEdit.Location = new System.Drawing.Point(284, 222);
             this.txtSSSEdit.Margin = new System.Windows.Forms.Padding(4);
             this.txtSSSEdit.Name = "txtSSSEdit";
             this.txtSSSEdit.Size = new System.Drawing.Size(291, 22);
@@ -441,7 +460,7 @@
             this.lblPagIbig.AutoSize = true;
             this.lblPagIbig.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPagIbig.ForeColor = System.Drawing.Color.Gray;
-            this.lblPagIbig.Location = new System.Drawing.Point(281, 325);
+            this.lblPagIbig.Location = new System.Drawing.Point(281, 295);
             this.lblPagIbig.Name = "lblPagIbig";
             this.lblPagIbig.Size = new System.Drawing.Size(69, 19);
             this.lblPagIbig.TabIndex = 79;
@@ -452,7 +471,7 @@
             this.lblPhilHealth.AutoSize = true;
             this.lblPhilHealth.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhilHealth.ForeColor = System.Drawing.Color.Gray;
-            this.lblPhilHealth.Location = new System.Drawing.Point(280, 288);
+            this.lblPhilHealth.Location = new System.Drawing.Point(280, 258);
             this.lblPhilHealth.Name = "lblPhilHealth";
             this.lblPhilHealth.Size = new System.Drawing.Size(84, 19);
             this.lblPhilHealth.TabIndex = 78;
@@ -462,7 +481,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(23, 326);
+            this.label22.Location = new System.Drawing.Point(23, 296);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(99, 18);
             this.label22.TabIndex = 76;
@@ -472,7 +491,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(23, 288);
+            this.label21.Location = new System.Drawing.Point(23, 258);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(109, 18);
             this.label21.TabIndex = 75;
@@ -482,20 +501,11 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(23, 251);
+            this.label20.Location = new System.Drawing.Point(23, 221);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(55, 18);
             this.label20.TabIndex = 74;
             this.label20.Text = "SSS ID:";
-            // 
-            // txtAccumulatedDayOffEdit
-            // 
-            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(284, 156);
-            this.txtAccumulatedDayOffEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
-            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(291, 22);
-            this.txtAccumulatedDayOffEdit.TabIndex = 69;
-            this.txtAccumulatedDayOffEdit.Visible = false;
             // 
             // cmbDepartmentEdit
             // 
@@ -542,7 +552,7 @@
             this.lblSSS.AutoSize = true;
             this.lblSSS.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSSS.ForeColor = System.Drawing.Color.Gray;
-            this.lblSSS.Location = new System.Drawing.Point(281, 251);
+            this.lblSSS.Location = new System.Drawing.Point(281, 221);
             this.lblSSS.Name = "lblSSS";
             this.lblSSS.Size = new System.Drawing.Size(30, 19);
             this.lblSSS.TabIndex = 77;
@@ -558,17 +568,6 @@
             this.lblDepartment.Size = new System.Drawing.Size(94, 19);
             this.lblDepartment.TabIndex = 9;
             this.lblDepartment.Text = "DEPARTMENT";
-            // 
-            // lblAccumulated
-            // 
-            this.lblAccumulated.AutoSize = true;
-            this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
-            this.lblAccumulated.Location = new System.Drawing.Point(279, 154);
-            this.lblAccumulated.Name = "lblAccumulated";
-            this.lblAccumulated.Size = new System.Drawing.Size(165, 19);
-            this.lblAccumulated.TabIndex = 9;
-            this.lblAccumulated.Text = "ACCUMULATED DAYOFF";
             // 
             // lblPosition
             // 
@@ -591,16 +590,6 @@
             this.lblEmploymentType.Size = new System.Drawing.Size(131, 19);
             this.lblEmploymentType.TabIndex = 7;
             this.lblEmploymentType.Text = "EMPLOYMENT TYPE";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(23, 154);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(177, 18);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Accumulated Day-offs:";
             // 
             // label14
             // 
@@ -641,6 +630,47 @@
             this.label13.Size = new System.Drawing.Size(67, 18);
             this.label13.TabIndex = 2;
             this.label13.Text = "Position:";
+            // 
+            // lblTIN
+            // 
+            this.lblTIN.AutoSize = true;
+            this.lblTIN.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTIN.ForeColor = System.Drawing.Color.Gray;
+            this.lblTIN.Location = new System.Drawing.Point(281, 329);
+            this.lblTIN.Name = "lblTIN";
+            this.lblTIN.Size = new System.Drawing.Size(69, 19);
+            this.lblTIN.TabIndex = 99;
+            this.lblTIN.Text = "PAG-IBIG";
+            // 
+            // txtAccumulatedDayOffEdit
+            // 
+            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(952, 205);
+            this.txtAccumulatedDayOffEdit.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
+            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(234, 22);
+            this.txtAccumulatedDayOffEdit.TabIndex = 69;
+            this.txtAccumulatedDayOffEdit.Visible = false;
+            // 
+            // lblAccumulated
+            // 
+            this.lblAccumulated.AutoSize = true;
+            this.lblAccumulated.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
+            this.lblAccumulated.Location = new System.Drawing.Point(950, 208);
+            this.lblAccumulated.Name = "lblAccumulated";
+            this.lblAccumulated.Size = new System.Drawing.Size(165, 19);
+            this.lblAccumulated.TabIndex = 9;
+            this.lblAccumulated.Text = "ACCUMULATED DAYOFF";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(751, 206);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 18);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Acc. Day-offs:";
             // 
             // cbSunday
             // 
@@ -1006,41 +1036,6 @@
             this.lblBirthDate.TabIndex = 83;
             this.lblBirthDate.Text = "BIRTHDATE";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(751, 210);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(135, 17);
-            this.label23.TabIndex = 84;
-            this.label23.Text = "Overtime Allowed:";
-            // 
-            // cmbOtAllowed
-            // 
-            this.cmbOtAllowed.FormattingEnabled = true;
-            this.cmbOtAllowed.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cmbOtAllowed.Location = new System.Drawing.Point(953, 212);
-            this.cmbOtAllowed.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbOtAllowed.Name = "cmbOtAllowed";
-            this.cmbOtAllowed.Size = new System.Drawing.Size(233, 24);
-            this.cmbOtAllowed.TabIndex = 85;
-            this.cmbOtAllowed.Visible = false;
-            this.cmbOtAllowed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbOtAllowed_KeyPress);
-            // 
-            // lblAllowedOT
-            // 
-            this.lblAllowedOT.AutoSize = true;
-            this.lblAllowedOT.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAllowedOT.ForeColor = System.Drawing.Color.Gray;
-            this.lblAllowedOT.Location = new System.Drawing.Point(948, 210);
-            this.lblAllowedOT.Name = "lblAllowedOT";
-            this.lblAllowedOT.Size = new System.Drawing.Size(96, 19);
-            this.lblAllowedOT.TabIndex = 86;
-            this.lblAllowedOT.Text = "OT ALLOWED";
-            // 
             // pbProfilePic
             // 
             this.pbProfilePic.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -1165,7 +1160,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(752, 247);
+            this.label27.Location = new System.Drawing.Point(751, 237);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(138, 17);
             this.label27.TabIndex = 95;
@@ -1176,7 +1171,7 @@
             this.lblCustomRate.AutoSize = true;
             this.lblCustomRate.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomRate.ForeColor = System.Drawing.Color.Gray;
-            this.lblCustomRate.Location = new System.Drawing.Point(948, 246);
+            this.lblCustomRate.Location = new System.Drawing.Point(949, 239);
             this.lblCustomRate.Name = "lblCustomRate";
             this.lblCustomRate.Size = new System.Drawing.Size(46, 19);
             this.lblCustomRate.TabIndex = 96;
@@ -1184,16 +1179,16 @@
             // 
             // txtCustomRate
             // 
-            this.txtCustomRate.Location = new System.Drawing.Point(953, 247);
+            this.txtCustomRate.Location = new System.Drawing.Point(953, 236);
             this.txtCustomRate.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomRate.Name = "txtCustomRate";
-            this.txtCustomRate.Size = new System.Drawing.Size(233, 22);
+            this.txtCustomRate.Size = new System.Drawing.Size(141, 22);
             this.txtCustomRate.TabIndex = 97;
             this.txtCustomRate.Visible = false;
             // 
             // btnSetCustomRate
             // 
-            this.btnSetCustomRate.Location = new System.Drawing.Point(1012, 278);
+            this.btnSetCustomRate.Location = new System.Drawing.Point(1099, 235);
             this.btnSetCustomRate.Margin = new System.Windows.Forms.Padding(4);
             this.btnSetCustomRate.Name = "btnSetCustomRate";
             this.btnSetCustomRate.Size = new System.Drawing.Size(108, 28);
@@ -1204,7 +1199,7 @@
             // 
             // btnRemoveCustomRate
             // 
-            this.btnRemoveCustomRate.Location = new System.Drawing.Point(1080, 278);
+            this.btnRemoveCustomRate.Location = new System.Drawing.Point(1099, 268);
             this.btnRemoveCustomRate.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveCustomRate.Name = "btnRemoveCustomRate";
             this.btnRemoveCustomRate.Size = new System.Drawing.Size(108, 28);
@@ -1216,7 +1211,7 @@
             // 
             // btnSaveCustomRate
             // 
-            this.btnSaveCustomRate.Location = new System.Drawing.Point(953, 278);
+            this.btnSaveCustomRate.Location = new System.Drawing.Point(953, 267);
             this.btnSaveCustomRate.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveCustomRate.Name = "btnSaveCustomRate";
             this.btnSaveCustomRate.Size = new System.Drawing.Size(108, 28);
@@ -1250,22 +1245,22 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnAddFace);
-            this.Controls.Add(this.cmbOtAllowed);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.lblAllowedOT);
             this.Controls.Add(this.dtpDateOfBirth);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.txtAddressEdit);
+            this.Controls.Add(this.txtAccumulatedDayOffEdit);
             this.Controls.Add(this.dtpDateHiredEdit);
             this.Controls.Add(this.cmbMaritalStatusEdit);
             this.Controls.Add(this.cmbGenderEdit);
             this.Controls.Add(this.txtContactNoEdit);
             this.Controls.Add(this.txtEmailEdit);
             this.Controls.Add(this.txtNameEdit);
+            this.Controls.Add(this.lblAccumulated);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblAddress);
@@ -1370,12 +1365,9 @@
         public System.Windows.Forms.TextBox txtPhilHealthEdit;
         public System.Windows.Forms.TextBox txtSSSEdit;
         public System.Windows.Forms.DateTimePicker dtpDateOfBirth;
-        private System.Windows.Forms.Label label23;
         public System.Windows.Forms.TextBox txtSickLeaveCreditsEdit;
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.Label lblSickLeaveCredits;
-        public System.Windows.Forms.Label lblAllowedOT;
-        public System.Windows.Forms.ComboBox cmbOtAllowed;
         private System.Windows.Forms.Label label16;
         public System.Windows.Forms.CheckBox cbSunday;
         public System.Windows.Forms.CheckBox cbSaturday;
@@ -1402,5 +1394,8 @@
         public System.Windows.Forms.DateTimePicker dtpBreakPeriod;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.TextBox txtTINEdit;
+        private System.Windows.Forms.Label label23;
+        public System.Windows.Forms.Label lblTIN;
     }
 }

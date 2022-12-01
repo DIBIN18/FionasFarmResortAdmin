@@ -271,8 +271,8 @@ namespace Admin_Login
                 {
                     SqlCommand cmd = new SqlCommand(
                         "Select * from EmployeeInfo WHERE Status='Active' AND " +
-                        "EmployeeFullName like '" + tb_Search.Text + "%'" +
-                        "OR EmployeeID Like '" + tb_Search.Text + "%'", connection);
+                        "EmployeeFullName like '%" + tb_Search.Text + "%'" +
+                        "OR EmployeeID Like '%" + tb_Search.Text + "%'", connection);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     sqlDataAdapter.Fill(dt);
@@ -391,10 +391,11 @@ namespace Admin_Login
                     ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
-                    ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    //ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
                     ep.lblAccumulated.Text = dt.Rows[0][17].ToString();
                     ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
                     ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+                    ep.lblTIN.Text= dt.Rows[0][21].ToString();
 
 
                     ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
@@ -411,10 +412,11 @@ namespace Admin_Login
                     ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
-                    ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                    //ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
                     ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
                     ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
                     ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                    ep.txtTINEdit.Text = dt.Rows[0][21].ToString();
 
                     using (SqlConnection connection2 = new SqlConnection(login.connectionString))
                     {
