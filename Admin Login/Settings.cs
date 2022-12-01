@@ -79,7 +79,8 @@ namespace Admin_Login
 
                 string query =
                     "BACKUP DATABASE FFRUsers " +
-                    "TO DISK = '" + path + "\\Database Backups\\Backup.bak'";
+                    "TO DISK = '" + path + "\\Database Backups\\Backup - "+ 
+                    today.ToString("MMMM dd yyyy") + " " + DateTime.Now.ToString("h-mm-ss tt").ToUpper() + ".bak'";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
@@ -90,22 +91,39 @@ namespace Admin_Login
         private void btnRestoreDatabase_Click(object sender, EventArgs e)
         {
             //UNTESTED
-            //using (SqlConnection connection = new SqlConnection(login.connectionString))
-            //{
-            //    connection.Open();
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string sFileName = " ";
 
-            //    var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
 
-            //    DateTime today = DateTime.Today;
+                OpenFileDialog ofd = new OpenFileDialog();
 
-            //    string query =
-            //        "RESTORE DATABASE FFRUsers " +
-            //        "FROM DISK = '" + path + "\\Database Backups\\FFRUsers.bak";
+                ofd.Filter = "All Files (*.*)|*.*";
+                ofd.FilterIndex = 1;
+                ofd.Multiselect = false;
+                ofd.InitialDirectory = path + "\\Database Backups";
+                
 
-            //    SqlCommand command = new SqlCommand(query, connection);
-            //    command.ExecuteNonQuery();
-            //    MessageBox.Show("Database Resotored Successfully");
-            //}
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                   sFileName = ofd.FileName;         
+                }
+
+                string query =
+                    "USE master " +
+                    "\n" +
+                    "ALTER DATABASE FFRUsers \n" +
+                    "SET SINGLE_USER WITH ROLLBACK IMMEDIATE " +
+                    "\n" +
+                    "RESTORE DATABASE FFRUsers FROM DISK = '" + sFileName + "' " +
+                    "\n";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Database Resotored Successfully");
+            }
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)

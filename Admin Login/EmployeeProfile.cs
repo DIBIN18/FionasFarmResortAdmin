@@ -258,7 +258,7 @@ namespace Admin_Login
                 "ContactNumber = '" + txtContactNoEdit.Text.ToString() + "', " +
                 "DateHired = '" + dtpDateHiredEdit.Value.ToString("MM/dd/yyyy") + "', " +
                 "Gender = '" + cmbGenderEdit.Text.ToString() + "', " +
-                "BirthDate = '" + dtpDateOfBirth.Value.ToString("MM/dd/yyyy") + "', " +
+                "BirthDate = '" + dtpDateOfBirth.Value.ToString("MMMM dd, yyyy") + "', " +
                 "Age = " + currentAge.ToString() + ", " +
                 "DepartmentID = " + deptId.ToString() + ", " + 
                 "PositionID = " + posId.ToString() + ", " + 
@@ -267,7 +267,7 @@ namespace Admin_Login
                 "AccumulatedDayOffs = " + txtAccumulatedDayOffEdit.Text.ToString() + ", " +
                 "SickLeaveCredits = " + txtSickLeaveCreditsEdit.Text.ToString() + ", " +
                 "VacationLeaveCredits = " + txtVacationLeaveCreditsEdit.Text.ToString() + ", " +
-                "TIN=" + txtTINEdit.Text.ToString() + " " +    
+                "TIN='" + txtTINEdit.Text.ToString() + "' " +    
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
             if (cbMonday.Checked)
@@ -348,31 +348,29 @@ namespace Admin_Login
                 "BreakPeriod ='" + breakPer.ToUpper() + "' " +
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            if (currentAge >= 18)
             {
-                Console.WriteLine(query);
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    Console.WriteLine(query);
 
-                connection.Open();
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlCommand cmd2 = new SqlCommand(scheduleQuery, connection);
-                cmd.ExecuteNonQuery();
-                cmd2.ExecuteNonQuery();
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    SqlCommand cmd2 = new SqlCommand(scheduleQuery, connection);
+                    cmd.ExecuteNonQuery();
+                    cmd2.ExecuteNonQuery();
+                }
+
+                btnSave.Visible = false;
+                btnEdit.Visible = true;
+
+                Edit_Mode_Off();
+                Reload_Profile(lblEmployeeID.Text.ToString());
             }
-
-            btnSave.Visible = false;
-            btnEdit.Visible = true;
-
-            Edit_Mode_Off();
-            Reload_Profile(lblEmployeeID.Text.ToString());
-
-            //this.Close();
-
-            //EmployeeProfile ep = new EmployeeProfile();
-            //ep.ShowDialog();
-
-            //EmployeeList el = new EmployeeList();
-            //el.dgvCellClick(el.sender, e);
-
+            else
+            {
+                MessageBox.Show("Employees can not be below 18 years old.");
+            }
         }
 
         private void btnAddFace_Click(object sender, EventArgs e)
@@ -505,7 +503,7 @@ namespace Admin_Login
                     lblContact.Text = reader.GetString(8);
                     lblDateHired.Text = reader.GetString(9);
                     lblGender.Text = reader.GetString(10);
-                    lblBirthDate.Text = reader.GetDateTime(11).ToString();
+                    lblBirthDate.Text = reader.GetDateTime(11).ToString("MMMM dd, yyyy");
                     lblAge.Text = reader.GetInt32(12).ToString();
                     lblDepartment.Text = Get_DepartmentName(reader.GetInt64(13).ToString());
                     lblPosition.Text = Get_PositionName(reader.GetInt64(14).ToString());

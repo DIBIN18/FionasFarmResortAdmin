@@ -388,7 +388,7 @@ namespace Admin_Login
                         cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
                         cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
                         cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
-                        cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
+                        cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MMMM dd, yyyy"));
                         cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                         cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
                         cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
