@@ -119,6 +119,7 @@ namespace Admin_Login
 
             int totalDays = 0;
             int accDayOffsCount = GetEmployeeAccDayOffs(selectedEmployee);
+            bool applySuccess = false;
 
             // Get total days of accumulated day offs to be given
             foreach (DateTime day in EachDay(StartDate, EndDate))
@@ -132,39 +133,55 @@ namespace Admin_Login
             }
             else
             {
+                applySuccess= true;
                 foreach (DateTime day in EachDay(StartDate, EndDate))
+                {
+                    string leave_date = checkLeaveDate(selectedEmployee, day.ToString("MMMM dd, yyyy"));
+
+                    if (leave_date == day.ToString("MMMM dd, yyyy"))
+                    {
+                        totalDays = totalDays - 1;
+
+                        MessageBox.Show("Employee already applied for a leave on " + day.ToString("MMMM dd, yyyy") +
+                        "\nAccumulated Day-off will not be applied on this date");
+                    }
+                    else
+                    {
+                        using (SqlConnection connection = new SqlConnection(login.connectionString))
+                        {
+                            connection.Open();
+                            string query =
+                                "INSERT INTO AccDayOffsDate (" +
+                                "EmployeeID," +
+                                "Date) " +
+                                "VALUES(" +
+                                "@EmployeeID," +
+                                "@Date)";
+
+                            SqlCommand command2 = new SqlCommand(query, connection);
+                            command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
+                            command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                            command2.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                if (applySuccess == true)
                 {
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
                         connection.Open();
+
+                        int accDayOffsLeft = accDayOffsCount - totalDays;
+
                         string query =
-                            "INSERT INTO AccDayOffsDate (" +
-                            "EmployeeID," +
-                            "Date) " +
-                            "VALUES(" +
-                            "@EmployeeID," +
-                            "@Date)";
+                            "UPDATE EmployeeInfo " +
+                            "SET AccumulatedDayOffs =" + accDayOffsLeft.ToString() + " " +
+                            "WHERE EmployeeID=" + selectedEmployee;
 
                         SqlCommand command2 = new SqlCommand(query, connection);
-                        command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
-                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
                         command2.ExecuteNonQuery();
                     }
-                }
-
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
-
-                    int accDayOffsLeft = accDayOffsCount - totalDays;
-
-                    string query = 
-                        "UPDATE EmployeeInfo " +
-                        "SET AccumulatedDayOffs =" + accDayOffsLeft.ToString() + " " +
-                        "WHERE EmployeeID=" + selectedEmployee;
-
-                    SqlCommand command2 = new SqlCommand(query, connection);
-                    command2.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("Accumulated Day Offs Applied");
@@ -173,7 +190,35 @@ namespace Admin_Login
             }            
         }
 
-        private void btnViewAccDayOffList(object sender, EventArgs e)
+        public string checkLeaveDate(string employee_id, string date)
+        {
+            string query =
+                    "SELECT Date " +
+                    "FROM LeavePay " +
+                    "WHERE EmployeeID=" + employee_id + " AND " +
+                    "Date='" + date + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "None";
+                    }
+
+                }
+            }
+        }
+
+            private void btnViewAccDayOffList(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Accumulated Day Offs Lists";

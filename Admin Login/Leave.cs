@@ -110,6 +110,7 @@ namespace Admin_Login
 
                     employeeLeaveCredits = dt.Rows[0][18].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
+
                     int ZeroRemaining = 0;
 
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
@@ -142,18 +143,23 @@ namespace Admin_Login
 
                         command2.ExecuteNonQuery();
 
-                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total SickLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (d == DialogResult.OK)
-                        {
-                            addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
-                            rtxtReason.Text = " ";
-                            cmb_LeaveType.Text = " ";
-                            dtp_StartDate.Value = DateTime.Now;
-                            dtp_EndDate.Value = DateTime.Now;
-                            Menu menu = (Menu)Application.OpenForms["Menu"];
-                            menu.Text = "Fiona's Farm and Resort - Leave";
-                            menu.Menu_Load(menu, EventArgs.Empty);
-                        }
+                        addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
+
+                        rtxtReason.Text = " ";
+                        cmb_LeaveType.Text = " ";
+                        //dtp_StartDate.Value = DateTime.Now;
+                        //dtp_EndDate.Value = DateTime.Now;
+
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave";
+                        menu.Menu_Load(menu, EventArgs.Empty);
+
+                        MessageBox.Show("Successfully applied leave");
+                        //DialogResult d = MessageBox.Show("SuccessFul", "Your Total SickLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //if (d == DialogResult.OK)
+                        //{
+                            
+                        //}
                     }
                 }
 
@@ -210,18 +216,24 @@ namespace Admin_Login
                         command2.ExecuteNonQuery();
 
 
-                        DialogResult d = MessageBox.Show("SuccessFul", "Your Total VacationLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (d == DialogResult.OK)
-                        {
-                            addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
-                            rtxtReason.Text = " ";
-                            cmb_LeaveType.Text = " ";
-                            dtp_StartDate.Value = DateTime.Now;
-                            dtp_EndDate.Value = DateTime.Now;
-                            Menu menu = (Menu)Application.OpenForms["Menu"];
-                            menu.Text = "Fiona's Farm and Resort - Leave";
-                            menu.Menu_Load(menu, EventArgs.Empty);
-                        }
+                        addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
+                        rtxtReason.Text = " ";
+                        cmb_LeaveType.Text = " ";
+
+                        //dtp_StartDate.Value = DateTime.Now;
+                        //dtp_EndDate.Value = DateTime.Now;
+
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave";
+                        menu.Menu_Load(menu, EventArgs.Empty);
+
+                        MessageBox.Show("Successfully applied leave");
+
+                        //DialogResult d = MessageBox.Show("SuccessFul", "Your Total VacationLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //if (d == DialogResult.OK)
+                        //{
+
+                        //}
                     }
                 }
 
@@ -310,7 +322,6 @@ namespace Admin_Login
                 pbApplyLeaveShape.Enabled = true;
             }
         }
-
 
         public string checkAttendanceDate(string employee_id, string date)
         {

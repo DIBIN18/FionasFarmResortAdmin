@@ -284,17 +284,6 @@ namespace Admin_Login
         {          
             //ep.ShowDialog();
         }
-        public string Get_Allowed_OT(string ot_status)
-        {
-            if (ot_status == "True")
-            {
-                return "Yes";
-            }
-            else
-            {
-                return "No";
-            }
-        }
 
         private void dgv_EmployeeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -387,7 +376,11 @@ namespace Admin_Login
                     ep.lblDateHired.Text = dt.Rows[0][9].ToString();
                     ep.lblGender.Text = dt.Rows[0][10].ToString();
                     ep.lblAge.Text = dt.Rows[0][12].ToString();
-                    ep.lblBirthDate.Text = dt.Rows[0][11].ToString();
+
+                    DateTime bDate = Convert.ToDateTime(dt.Rows[0][11].ToString());
+
+                    ep.lblBirthDate.Text = bDate.ToString("MMMM dd, yyyy");
+
                     ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
                     ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
                     ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();

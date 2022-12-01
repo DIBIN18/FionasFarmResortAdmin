@@ -184,7 +184,7 @@ namespace Admin_Login
                 getDeductions();
                 getDescription();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
         }
         public void checkContrib()
         {
