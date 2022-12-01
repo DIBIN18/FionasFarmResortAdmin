@@ -114,7 +114,7 @@ namespace Admin_Login
 
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
-                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -173,7 +173,7 @@ namespace Admin_Login
                     int ZeroRemaining = 0;
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
-                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Hello :-) Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     }
                     else

@@ -108,13 +108,37 @@ namespace Admin_Login
             }
         }
 
+        public bool CheckAccDayOff(string date, string employee_id)
+        {
+            string query2 =
+                "SELECT Date FROM AccDayOffsDate WHERE Date='" + date + "' AND EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpSchedOut.Value.ToString("hh:mm:ss tt");
             string date = dtpDate.Value.ToString("MMMM dd, yyyy");
 
-            if (CheckLeave(date, selectedEmployee) == false)
+            if (CheckLeave(date, selectedEmployee) == false && CheckAccDayOff(date, selectedEmployee) == false)
             {
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
@@ -126,8 +150,8 @@ namespace Admin_Login
                         "VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
 
                     SqlCommand cmd = new SqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@ScheduleIn", schedIn);
-                    cmd.Parameters.AddWithValue("@ScheduleOut", schedOut);
+                    cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
+                    cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                     cmd.Parameters.AddWithValue("@Date", date);
                     cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
                     cmd.ExecuteNonQuery();
@@ -136,7 +160,7 @@ namespace Admin_Login
             }
             else
             {
-                MessageBox.Show("Employee is scheduled for a leave on the selected date, single schedule can not be added");
+                MessageBox.Show("Employee is scheduled for a leave or advanced day off on the selected date, single schedule can not be added");
             }
         }
 

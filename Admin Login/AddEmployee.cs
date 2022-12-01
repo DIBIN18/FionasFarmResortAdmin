@@ -16,12 +16,17 @@ namespace Admin_Login
         public string FullNameFormat = @"^[a-zA-Z]+$";
         public string EmailFormat = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
         public string NumberDecimal = @"^-?\\d*(\\.\\d+)?$";
+
         Login login = new Login();
+
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
         string selectedPositionName = "";
         long selectedPositionId = 0;
         string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
+
+        int checkCounter = 0;
+
         public AddEmployee()
         {
             InitializeComponent();
@@ -319,84 +324,100 @@ namespace Admin_Login
             }
             else
             {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                //Compute Age Using DateTimePicker
+                int checkAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+
+                if (checkAge >= 18)
                 {
-                    connection.Open();
-                    string query = "INSERT INTO EmployeeInfo(" +
-                        "EmployeeFullName, " +
-                        "Address, " +
-                        "SSS_ID, " +
-                        "PAGIBIG_NO, " +
-                        "PHIL_HEALTH_NO, " +
-                        "Email, " +
-                        "EmployeeMaritalStatus, " +
-                        "ContactNumber, " +
-                        "DateHired, " +
-                        "Gender, " +
-                        "BirthDate, " +
-                        "EmploymentType, " +
-                        "Age," +
-                        "DepartmentID," +
-                        "PositionID," +
-                        "AccumulatedDayOffs," +
-                        "SickLeaveCredits," +
-                        "VacationLeaveCredits," +
-                        "TIN," +
-                        "Status)" +
-                        "VALUES(" +
-                        "@EmployeeFullName, " +
-                        "@Address, " +
-                        "@SSS_ID, " +
-                        "@PAGIBIG_NO, " +
-                        "@PHIL_HEALTH_NO, " +
-                        "@Email, " +
-                        "@EmployeeMaritalStatus, " +
-                        "@ContactNumber, " +
-                        "@DateHired, " +
-                        "@Gender, " +
-                        "@BirthDate, " +
-                        "@EmploymentType, " +
-                        "@Age," +
-                        "@DepartmentID," +
-                        "@PositionID," +
-                        "@AccumulatedDayOffs," +
-                        "@SickLeaveCredits," +
-                        "@VacationLeaveCredits," +
-                        "@TIN," +
-                        "@Status)";
-                    string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
-                    string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
-                    SqlCommand cmd = new SqlCommand(query, connection);
+                    using (SqlConnection connection = new SqlConnection(login.connectionString))
+                    {
+                        connection.Open();
+                        string query = "INSERT INTO EmployeeInfo(" +
+                            "EmployeeFullName, " +
+                            "Address, " +
+                            "SSS_ID, " +
+                            "PAGIBIG_NO, " +
+                            "PHIL_HEALTH_NO, " +
+                            "Email, " +
+                            "EmployeeMaritalStatus, " +
+                            "ContactNumber, " +
+                            "DateHired, " +
+                            "Gender, " +
+                            "BirthDate, " +
+                            "EmploymentType, " +
+                            "Age," +
+                            "DepartmentID," +
+                            "PositionID," +
+                            "AccumulatedDayOffs," +
+                            "SickLeaveCredits," +
+                            "VacationLeaveCredits," +
+                            "TIN," +
+                            "Status)" +
+                            "VALUES(" +
+                            "@EmployeeFullName, " +
+                            "@Address, " +
+                            "@SSS_ID, " +
+                            "@PAGIBIG_NO, " +
+                            "@PHIL_HEALTH_NO, " +
+                            "@Email, " +
+                            "@EmployeeMaritalStatus, " +
+                            "@ContactNumber, " +
+                            "@DateHired, " +
+                            "@Gender, " +
+                            "@BirthDate, " +
+                            "@EmploymentType, " +
+                            "@Age," +
+                            "@DepartmentID," +
+                            "@PositionID," +
+                            "@AccumulatedDayOffs," +
+                            "@SickLeaveCredits," +
+                            "@VacationLeaveCredits," +
+                            "@TIN," +
+                            "@Status)";
+                        string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
+                        string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+                        SqlCommand cmd = new SqlCommand(query, connection);
 
-                    cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
-                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                    cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
-                    cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
-                    cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
-                    cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
-                    cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
-                    cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
-                    cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
-                    cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
-                    cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
-                    cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
-                    cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
-                    cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
-                    cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
-                    cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
-                    cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
-                    cmd.Parameters.AddWithValue("@TIN", txtTIN.Text);
-                    cmd.Parameters.AddWithValue("@Status", "Active");
+                        cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
+                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+                        cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
+                        cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
+                        cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
+                        cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
+                        cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
+                        cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
+                        cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
+                        cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
+                        cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MM/dd/yyyy"));
+                        cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
+                        cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
+                        cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
+                        cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
+                        cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
+                        cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
+                        cmd.Parameters.AddWithValue("@TIN", txtTIN.Text);
+                        cmd.Parameters.AddWithValue("@Status", "Active");
 
-                    //Compute Age Using DateTimePicker
-                    int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
-                    cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
-                    cmd.ExecuteNonQuery();
+                        //Compute Age Using DateTimePicker
+                        int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
 
-                    insertNewEmployeeSchedule();
-                    MessageBox.Show("Successfully Added Employee!");
+                        cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
+                        cmd.ExecuteNonQuery();
 
-                    clearAll();
+                        insertNewEmployeeSchedule();
+                        MessageBox.Show("Successfully Added Employee!");
+
+                        clearAll();
+                    }
+
+                    Menu menu = (Menu)Application.OpenForms["Menu"];
+                    menu.Text = "Fiona's Farm and Resort - Employee List";
+                    menu.Menu_Load(menu, EventArgs.Empty);
+                    Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Can not register employees who are below 18");
                 }
             }
         }
@@ -443,6 +464,129 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
             Dispose();
+        }
+
+        //
+        //  CHECK LIMIER
+        //
+
+        private void cbMonday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbTuesday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbWednesday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbThursday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbFriday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbSaturday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
+        }
+
+        private void cbSunday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                box.Checked = false;
+            }
         }
     }
  }

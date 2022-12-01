@@ -88,11 +88,13 @@ namespace Admin_Login
                 {
                     pbProfilePic.Image = Image.FromFile(path + "\\images\\" + lblEmployeeID.Text.ToString() + "\\5.jpg");
                 }
+                
             }
             catch (System.IO.FileNotFoundException)
             {
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
+                btnTrain.Enabled= false;
             }
 
             cbMonday.Enabled = false;
@@ -127,6 +129,7 @@ namespace Admin_Login
             lblPhilHealth.Visible = false;
             lblPagIbig.Visible = false;
             lblBreakPeriod.Visible = false;
+            lblTIN.Visible= false;
             
 
             txtNameEdit.Visible = true;
@@ -148,8 +151,9 @@ namespace Admin_Login
             txtSickLeaveCreditsEdit.Visible = true;
             txtVacationLeaveCreditsEdit.Visible = true;
             dtpDateOfBirth.Visible = true;
-            cmbOtAllowed.Visible = true;
+            //cmbOtAllowed.Visible = true;
             dtpBreakPeriod.Visible = true;
+            txtTINEdit.Visible = true;
             
 
             cbMonday.Enabled = true;
@@ -184,6 +188,7 @@ namespace Admin_Login
             lblPhilHealth.Visible = true;
             lblPagIbig.Visible = true;
             lblBreakPeriod.Visible = true;
+            lblTIN.Visible = true;
           
 
             txtNameEdit.Visible = false;
@@ -205,8 +210,9 @@ namespace Admin_Login
             txtSickLeaveCreditsEdit.Visible = false;
             txtVacationLeaveCreditsEdit.Visible = false;
             dtpDateOfBirth.Visible = false;
-            cmbOtAllowed.Visible = false;
+            //cmbOtAllowed.Visible = false;
             dtpBreakPeriod.Visible = false;
+            txtTINEdit.Visible = false;
 
             //cmbDepartmentEdit.SelectedIndex = -1;
             //cmbEmploymentTypeEdit.SelectedIndex = -1;
@@ -257,10 +263,11 @@ namespace Admin_Login
                 "DepartmentID = " + deptId.ToString() + ", " + 
                 "PositionID = " + posId.ToString() + ", " + 
                 "EmploymentType = '" + cmbEmploymentTypeEdit.Text.ToString() + "', " +
-                "AllowedOvertime = " + Set_Allowed_OT(cmbOtAllowed.Text.ToString()) + ", " +
+                //"AllowedOvertime = " + Set_Allowed_OT(cmbOtAllowed.Text.ToString()) + ", " +
                 "AccumulatedDayOffs = " + txtAccumulatedDayOffEdit.Text.ToString() + ", " +
                 "SickLeaveCredits = " + txtSickLeaveCreditsEdit.Text.ToString() + ", " +
-                "VacationLeaveCredits = " + txtVacationLeaveCreditsEdit.Text.ToString() +
+                "VacationLeaveCredits = " + txtVacationLeaveCreditsEdit.Text.ToString() + ", " +
+                "TIN=" + txtTINEdit.Text.ToString() + " " +    
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
             if (cbMonday.Checked)
@@ -343,6 +350,8 @@ namespace Admin_Login
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
+                Console.WriteLine(query);
+
                 connection.Open();
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlCommand cmd2 = new SqlCommand(scheduleQuery, connection);
@@ -501,10 +510,11 @@ namespace Admin_Login
                     lblDepartment.Text = Get_DepartmentName(reader.GetInt64(13).ToString());
                     lblPosition.Text = Get_PositionName(reader.GetInt64(14).ToString());
                     lblEmploymentType.Text = reader.GetString(15);
-                    lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(16));
+                    //lblAllowedOT.Text = Display_OT(currentProfile, reader.GetBoolean(16));
                     lblAccumulated.Text = reader.GetInt32(17).ToString();
                     lblSickLeaveCredits.Text = reader.GetInt32(18).ToString();
                     lblVacationLeaveCredits.Text = reader.GetInt32(20).ToString();
+                    lblTIN.Text= reader.GetString(21).ToString();
                 }
             }
 
@@ -736,6 +746,8 @@ namespace Admin_Login
             lblCustomRate.Visible = true;
             txtCustomRate.Visible = false;
             btnRemoveCustomRate.Visible = false;
+            btnSaveCustomRate.Visible = false;
+            btnSetCustomRate.Visible = true;
         }
 
         private void cmbDepartmentEdit_KeyPress(object sender, KeyPressEventArgs e)
