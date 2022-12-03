@@ -173,6 +173,12 @@
     <Compile Include="EditDepartmentAndPosition.Designer.cs">
       <DependentUpon>EditDepartmentAndPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="FFRUsersDataSet20.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditDepartmentAndPosition.resx">
       <DependentUpon>EditDepartmentAndPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeaveEmployeeList.resx">
       <DependentUpon>LeaveEmployeeList.cs</DependentUpon>
