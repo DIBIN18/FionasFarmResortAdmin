@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Admin_Login
 {
     public partial class Settings : Form
     {
         Login login = new Login();
+        EditUser eu = new EditUser();
 
         public Settings()
         {
@@ -44,8 +46,7 @@ namespace Admin_Login
 
         private void Settings_Load(object sender, EventArgs e)
         {
-            dgvUsers.ReadOnly = false;
-            btnSave.Visible = false;
+            dgvUsers.ReadOnly = true;
 
             updateTable();
 
@@ -54,12 +55,18 @@ namespace Admin_Login
             cmbUserName.Items.Add("Accountant");
             cmbUserName.Items.Add("Supervisor");
             cmbUserName.Items.Add("General Manager");
+
             SqlConnection connection = new SqlConnection(login.connectionString);
             SqlCommand cmd = new SqlCommand("Select * from AuditTrail",connection);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);
             dgvAuditTrail.DataSource = dt;
+
+            // Column font
+            this.dgvAuditTrail.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+            // Row font
+            this.dgvAuditTrail.DefaultCellStyle.Font = new Font("Century Gothic", 10);
         }
 
         public void updateTable()
@@ -69,6 +76,7 @@ namespace Admin_Login
                 connection.Open();
                 string query = 
                     "SELECT " +
+                    "UserID, " +
                     "User_, " +
                     "Username_," +
                     "DashBoard," +
@@ -288,20 +296,19 @@ namespace Admin_Login
 
                         SqlConnection auditcon = new SqlConnection(login.connectionString);
                         auditcon.Open();
-                        //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                        //SqlDataAdapter sda = new SqlDataAdapter(name);
-                        //DataTable dtaudit = new DataTable();
-                        //sda.Fill(dtaudit);
-                        //string auditName = dt.Rows[0][0].ToString();
+
                         string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                         string Module = "Settings";
                         string Description = "Add New User";
+
                         SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                        
                         auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
                         auditcommand.Parameters.AddWithValue("@Date", auditDate);
                         auditcommand.Parameters.AddWithValue("@Module", Module);
                         auditcommand.Parameters.AddWithValue("@Description", Description);
                         auditcommand.ExecuteNonQuery();
+                        
                         auditcon.Close();
                     }
                     con.Close();
@@ -316,57 +323,87 @@ namespace Admin_Login
         private void btnEdit_Click(object sender, EventArgs e)
         {
             dgvUsers.ReadOnly = false;
-            btnEdit.Visible = false;
 
-            btnSave.Visible = true;
             dgvUsers.Enabled = true;
 
             Login login = new Login();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Login login = new Login();
-            btnSave.Visible = false;
-            btnEdit.Visible = true;
-            //dgvUsers.Enabled = false;
-       
-            using (SqlConnection con = new SqlConnection(login.connectionString))
-            {
-                for(int i = 0; i < dgvUsers.Rows.Count; i++)
-                {
-                    con.Open();
-                    SqlCommand command = new SqlCommand
-                        ("Update Users " +
-                        "SET " +
-                        "DashBoard=@DashBoard," +
-                        "EmployeeList=@EmployeeList," +
-                        "Leave=@Leave," +
-                        "DepartmentPosition=@DepartmentPosition," +
-                        "Deductions=@Deductions," +
-                        "AttendanceRecord=@AttendanceRecord," +
-                        "PayrollReport=@PayrollReport," +
-                        "HolidaySetting=@HolidaySetting," +
-                        "Settings=@Settings," +
-                        "Schedules=@Schedules", con);
-                    
-                    command.Parameters.AddWithValue("@DashBoard", dgvUsers.Rows[i].Cells[2].Value);
-                    command.Parameters.AddWithValue("@EmployeeList", dgvUsers.Rows[i].Cells[3].Value);
-                    command.Parameters.AddWithValue("@Leave", dgvUsers.Rows[i].Cells[4].Value);
-                    command.Parameters.AddWithValue("@DepartmentPosition", dgvUsers.Rows[i].Cells[5].Value);
-                    command.Parameters.AddWithValue("@Deductions", dgvUsers.Rows[i].Cells[6].Value);
-                    command.Parameters.AddWithValue("@AttendanceRecord", dgvUsers.Rows[i].Cells[7].Value);
-                    command.Parameters.AddWithValue("@PayrollReport", dgvUsers.Rows[i].Cells[8].Value);
-                    command.Parameters.AddWithValue("@HolidaySetting", dgvUsers.Rows[i].Cells[9].Value);
-                    command.Parameters.AddWithValue("@Settings", dgvUsers.Rows[i].Cells[10].Value);
-                    command.Parameters.AddWithValue("@Schedules", dgvUsers.Rows[i].Cells[11].Value);
-                    command.ExecuteNonQuery();
-                    updateTable();
-                    con.Close();
+            
+        }
 
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvUsers.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dgvUsers.CurrentRow.Selected = true;
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand("Select * FROM Users WHERE UserID =" + dgvUsers.Rows[e.RowIndex].Cells[0].Value, connection);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                    adapter.Fill(dt);
+                    eu.lblUserID.Text = dt.Rows[0][0].ToString();
+                    eu.cmbUserName.Text = dt.Rows[0][1].ToString();
+                    eu.txtUser.Text = dt.Rows[0][2].ToString();
+                    eu.txtPass.Text = dt.Rows[0][3].ToString();
+
+                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                    {
+                        connection2.Open();
+                        SqlCommand cmd2 = new SqlCommand("Select * FROM Users WHERE UserID =" + dgvUsers.Rows[e.RowIndex].Cells[0].Value, connection);
+                        DataTable dt2 = new DataTable();
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                        adapter2.Fill(dt2);
+
+                        if (dt2.Rows[0][4].ToString() == "True")
+                        {
+                            eu.DashBoard.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][5].ToString() == "True")
+                        {
+                            eu.EmployeeList.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][6].ToString() == "True")
+                        {
+                            eu.Leave.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][7].ToString() == "True")
+                        {
+                            eu.DepartmentPosition.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][8].ToString() == "True")
+                        {
+                            eu.Deductions.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][9].ToString() == "True")
+                        {
+                            eu.AttendanceRecord.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][10].ToString() == "True")
+                        {
+                            eu.PayrollReport.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][11].ToString() == "True")
+                        {
+                            eu.HolidaySetting.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][12].ToString() == "True")
+                        {
+                            eu.Setting.CheckState = CheckState.Checked;
+                        }
+                        if (dt2.Rows[0][13].ToString() == "True")
+                        {
+                            eu.Schedules.CheckState = CheckState.Checked;
+                        }
+                    }
                 }
-                MessageBox.Show("Update Succesful!");
             }
+            eu.ShowDialog();
         }
     }
 }
