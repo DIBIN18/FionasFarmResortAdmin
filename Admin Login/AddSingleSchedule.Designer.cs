@@ -29,6 +29,7 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSingleSchedule));
             this.dtpSchedOut = new System.Windows.Forms.DateTimePicker();
             this.dtpScheduleIn = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
@@ -354,7 +355,7 @@ namespace Admin_Login
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployees.Location = new System.Drawing.Point(17, 103);
-            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
@@ -383,7 +384,7 @@ namespace Admin_Login
             // 
             this.btnAddMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.btnAddMode.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddMode.Image = global::Admin_Login.Properties.Resources.AdvancedDay_Offs_Icon;
+            this.btnAddMode.Image = ((System.Drawing.Image)(resources.GetObject("btnAddMode.Image")));
             this.btnAddMode.Location = new System.Drawing.Point(363, 17);
             this.btnAddMode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAddMode.Name = "btnAddMode";
@@ -418,7 +419,7 @@ namespace Admin_Login
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddSingleSchedule";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddSingleSchedule";

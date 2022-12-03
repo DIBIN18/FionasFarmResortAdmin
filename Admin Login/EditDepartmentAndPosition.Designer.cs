@@ -29,6 +29,7 @@ namespace Admin_Login
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDepartmentAndPosition));
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDeparments = new System.Windows.Forms.DataGridView();
@@ -42,20 +43,20 @@ namespace Admin_Login
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.txtEditDepartmentName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.dgvPositions = new System.Windows.Forms.DataGridView();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.txtEditBasicRate = new System.Windows.Forms.TextBox();
             this.txtEditPositionName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,11 +65,11 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
@@ -264,6 +265,50 @@ namespace Admin_Login
             this.panel1.Size = new System.Drawing.Size(1155, 390);
             this.panel1.TabIndex = 75;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Maroon;
+            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(922, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(70, 23);
+            this.label8.TabIndex = 75;
+            this.label8.Tag = "btnDeleteDept";
+            this.label8.Text = "Delete";
+            this.label8.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(1026, 133);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(33, 34);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 76;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Tag = "btnDeleteDept";
+            this.pictureBox7.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pictureBox8.Location = new System.Drawing.Point(913, 127);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(171, 46);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 74;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Tag = "btnDeleteDept";
+            this.pictureBox8.Click += new System.EventHandler(this.delete_dept_Click);
+            // 
             // txtEditDepartmentName
             // 
             this.txtEditDepartmentName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,6 +350,36 @@ namespace Admin_Login
             this.panel2.Size = new System.Drawing.Size(1155, 399);
             this.panel2.TabIndex = 76;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Maroon;
+            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(922, 213);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 23);
+            this.label9.TabIndex = 78;
+            this.label9.Tag = "btn_SaveDepartmentChanges";
+            this.label9.Text = "Delete";
+            this.label9.Click += new System.EventHandler(this.delete_pos_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(1026, 210);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(33, 34);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 79;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "btn_SaveDepartmentChanges";
+            this.pictureBox9.Click += new System.EventHandler(this.delete_pos_Click);
+            // 
             // dgvPositions
             // 
             this.dgvPositions.AllowUserToAddRows = false;
@@ -324,6 +399,20 @@ namespace Admin_Login
             this.dgvPositions.Size = new System.Drawing.Size(605, 342);
             this.dgvPositions.TabIndex = 75;
             this.dgvPositions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPositions_CellClick);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pictureBox10.Location = new System.Drawing.Point(913, 204);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(171, 46);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 77;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "btn_SaveDepartmentChanges";
+            this.pictureBox10.Click += new System.EventHandler(this.delete_pos_Click);
             // 
             // txtEditBasicRate
             // 
@@ -363,94 +452,6 @@ namespace Admin_Login
             this.label6.TabIndex = 73;
             this.label6.Text = "Position Name:";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Maroon;
-            this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(922, 136);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(70, 23);
-            this.label8.TabIndex = 75;
-            this.label8.Tag = "btnDeleteDept";
-            this.label8.Text = "Delete";
-            this.label8.Click += new System.EventHandler(this.delete_dept_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox7.Image = global::Admin_Login.Properties.Resources.AbsentToday_Icon1;
-            this.pictureBox7.Location = new System.Drawing.Point(1026, 133);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(33, 34);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 76;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Tag = "btnDeleteDept";
-            this.pictureBox7.Click += new System.EventHandler(this.delete_dept_Click);
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox8.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox8.Location = new System.Drawing.Point(913, 127);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(171, 46);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 74;
-            this.pictureBox8.TabStop = false;
-            this.pictureBox8.Tag = "btnDeleteDept";
-            this.pictureBox8.Click += new System.EventHandler(this.delete_dept_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Maroon;
-            this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(922, 213);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(70, 23);
-            this.label9.TabIndex = 78;
-            this.label9.Tag = "btn_SaveDepartmentChanges";
-            this.label9.Text = "Delete";
-            this.label9.Click += new System.EventHandler(this.delete_pos_Click);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox9.Image = global::Admin_Login.Properties.Resources.AbsentToday_Icon1;
-            this.pictureBox9.Location = new System.Drawing.Point(1026, 210);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(33, 34);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 79;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Tag = "btn_SaveDepartmentChanges";
-            this.pictureBox9.Click += new System.EventHandler(this.delete_pos_Click);
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox10.Location = new System.Drawing.Point(913, 204);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(171, 46);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 77;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Tag = "btn_SaveDepartmentChanges";
-            this.pictureBox10.Click += new System.EventHandler(this.delete_pos_Click);
-            // 
             // EditDepartmentAndPosition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -477,12 +478,12 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPositions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -654,6 +654,18 @@ namespace Admin_Login
                 settings.BringToFront();
                 settings.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Payroll History")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Payroll History";
+                TitleLabel.Text = TitleExtension;
+                PayRollHistory payRollHistory = new PayRollHistory();
+                {
+                    payRollHistory.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(payRollHistory);
+                payRollHistory.BringToFront();
+                payRollHistory.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);
