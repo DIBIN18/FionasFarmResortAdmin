@@ -94,7 +94,11 @@ namespace Admin_Login
             {
                 var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
                 pbProfilePic.Image = Image.FromFile(path + "\\Profile\\NoPic.png");
-                btnTrain.Enabled= false;
+
+                lblTrain.Enabled= false;
+                pbTrain.Enabled= false;
+                pbTrainEdit.Enabled= false;
+                
             }
 
             cbMonday.Enabled = false;
@@ -108,8 +112,13 @@ namespace Admin_Login
 
         public void Edit_Mode()
         {
-            btnEdit.Visible = false;
-            btnSave.Visible = true;
+            lblEdit.Visible = false;
+            pbEdit.Visible = false;
+            pbEditOval.Visible = false;
+
+            lblSave.Visible = true;
+            pbSave.Visible = true;
+            pbSaveOval.Visible = true;
 
             lblName.Visible = false;
             lblMaritalStatus.Visible = false;
@@ -167,8 +176,13 @@ namespace Admin_Login
         
         public void Edit_Mode_Off()
         {
-            btnEdit.Visible = true;
-            btnSave.Visible = false;
+            lblEdit.Visible = true;
+            pbEdit.Visible= true;
+            pbEditOval.Visible = true;
+
+            lblSave.Visible = false;
+            pbSave.Visible = false;
+            pbSaveOval.Visible = false;
 
             lblName.Visible = true;
             lblMaritalStatus.Visible = true;
@@ -380,8 +394,13 @@ namespace Admin_Login
                     cmd2.ExecuteNonQuery();
                 }
 
-                btnSave.Visible = false;
-                btnEdit.Visible = true;
+                lblSave.Visible = false;
+                pbSave.Visible = false;
+                pbSaveOval.Visible = false;
+
+                lblEdit.Visible = true;
+                pbEdit.Visible = true;
+                pbEditOval.Visible = true;
 
                 Edit_Mode_Off();
                 Reload_Profile(lblEmployeeID.Text.ToString());

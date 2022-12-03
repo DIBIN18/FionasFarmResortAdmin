@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeductionRecords));
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -61,20 +62,21 @@
             this.panel4.Controls.Add(this.panel2);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.dgvDeductions);
-            this.panel4.Location = new System.Drawing.Point(10, 11);
+            this.panel4.Location = new System.Drawing.Point(13, 14);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(866, 726);
+            this.panel4.Size = new System.Drawing.Size(1155, 894);
             this.panel4.TabIndex = 36;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Maroon;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::Admin_Login.Properties.Resources.LateToday_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(811, 360);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1081, 445);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox2.Size = new System.Drawing.Size(37, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 165;
             this.pictureBox2.TabStop = false;
@@ -88,8 +90,7 @@
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(722, 364);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(963, 448);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 24);
             this.label4.TabIndex = 164;
@@ -101,10 +102,10 @@
             // 
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox3.Location = new System.Drawing.Point(701, 357);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(935, 439);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(154, 37);
+            this.pictureBox3.Size = new System.Drawing.Size(205, 46);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 163;
             this.pictureBox3.TabStop = false;
@@ -115,7 +116,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 365);
+            this.label2.Location = new System.Drawing.Point(12, 449);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(163, 24);
             this.label2.TabIndex = 37;
@@ -129,22 +131,22 @@
             this.dgvfordelete.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvfordelete.BackgroundColor = System.Drawing.Color.White;
             this.dgvfordelete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvfordelete.Location = new System.Drawing.Point(10, 403);
+            this.dgvfordelete.Location = new System.Drawing.Point(13, 496);
+            this.dgvfordelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvfordelete.Name = "dgvfordelete";
             this.dgvfordelete.ReadOnly = true;
             this.dgvfordelete.RowHeadersVisible = false;
             this.dgvfordelete.RowHeadersWidth = 51;
             this.dgvfordelete.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvfordelete.Size = new System.Drawing.Size(846, 315);
+            this.dgvfordelete.Size = new System.Drawing.Size(1128, 388);
             this.dgvfordelete.TabIndex = 36;
             // 
             // lblValueHolder
             // 
             this.lblValueHolder.AutoSize = true;
-            this.lblValueHolder.Location = new System.Drawing.Point(15, 9);
-            this.lblValueHolder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblValueHolder.Location = new System.Drawing.Point(20, 11);
             this.lblValueHolder.Name = "lblValueHolder";
-            this.lblValueHolder.Size = new System.Drawing.Size(0, 13);
+            this.lblValueHolder.Size = new System.Drawing.Size(0, 16);
             this.lblValueHolder.TabIndex = 35;
             this.lblValueHolder.Visible = false;
             // 
@@ -154,20 +156,20 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Location = new System.Drawing.Point(424, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(565, 9);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(432, 37);
+            this.panel2.Size = new System.Drawing.Size(575, 45);
             this.panel2.TabIndex = 27;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(7, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(19, 28);
+            this.pictureBox1.Size = new System.Drawing.Size(25, 34);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
@@ -178,10 +180,10 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Location = new System.Drawing.Point(31, 4);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox1.Location = new System.Drawing.Point(41, 5);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(383, 21);
+            this.textBox1.Size = new System.Drawing.Size(511, 21);
             this.textBox1.TabIndex = 6;
             this.textBox1.Text = " Search deduction ID";
             // 
@@ -189,7 +191,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Location = new System.Drawing.Point(12, 18);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 24);
             this.label1.TabIndex = 34;
@@ -203,25 +206,26 @@
             this.dgvDeductions.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvDeductions.BackgroundColor = System.Drawing.Color.White;
             this.dgvDeductions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeductions.Location = new System.Drawing.Point(10, 49);
+            this.dgvDeductions.Location = new System.Drawing.Point(13, 60);
+            this.dgvDeductions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDeductions.Name = "dgvDeductions";
             this.dgvDeductions.ReadOnly = true;
             this.dgvDeductions.RowHeadersVisible = false;
             this.dgvDeductions.RowHeadersWidth = 51;
             this.dgvDeductions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeductions.Size = new System.Drawing.Size(846, 301);
+            this.dgvDeductions.Size = new System.Drawing.Size(1128, 370);
             this.dgvDeductions.TabIndex = 33;
             // 
             // DeductionRecords
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(886, 747);
+            this.ClientSize = new System.Drawing.Size(1181, 919);
             this.ControlBox = false;
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "DeductionRecords";
             this.Load += new System.EventHandler(this.DeductionRecords_Load);
             this.panel4.ResumeLayout(false);
