@@ -106,6 +106,24 @@ namespace Admin_Login
                     MessageBox.Show("Department Name Successfully Changed");
                     txtEditDepartmentName.Clear();
                     loadDgvDept();
+
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Department and Position";
+                    string Description = "Edit DepartmentName";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
         }
@@ -134,6 +152,24 @@ namespace Admin_Login
                     txtEditPositionName.Clear();
                     txtEditBasicRate.Clear();
                     loadDgvPos();
+
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Department and Position";
+                    string Description = "Edit PositionName And BasicRate";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
         }
@@ -241,6 +277,24 @@ namespace Admin_Login
                     loadDgvDept();
                     loadDgvPos();
                     txtEditDepartmentName.Text = " ";
+
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Department and Position";
+                    string Description = "Delete DepartmentName";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
         }
@@ -266,6 +320,23 @@ namespace Admin_Login
                     loadDgvPos();
                     txtEditPositionName.Text = " ";
                     txtEditBasicRate.Text = " ";
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Department and Position";
+                    string Description = "Delete Position";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
         }

@@ -270,6 +270,24 @@ namespace Admin_Login
                 "TIN='" + txtTINEdit.Text.ToString() + "' " +    
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
+            SqlConnection auditcon = new SqlConnection(login.connectionString);
+            auditcon.Open();
+            //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+            //SqlDataAdapter sda = new SqlDataAdapter(name);
+            //DataTable dtaudit = new DataTable();
+            //sda.Fill(dtaudit);
+            //string auditName = dt.Rows[0][0].ToString();
+            string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+            string Module = "EmployeeProfile";
+            string Description = "Update EmployeeProfile";
+            SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+            auditcommand.Parameters.AddWithValue("@Date", auditDate);
+            auditcommand.Parameters.AddWithValue("@Module", Module);
+            auditcommand.Parameters.AddWithValue("@Description", Description);
+            auditcommand.ExecuteNonQuery();
+            auditcon.Close();
+
             if (cbMonday.Checked)
             {
                 Monday = "1";

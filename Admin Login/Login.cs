@@ -31,11 +31,11 @@ namespace Admin_Login
         //PAUL CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-B80EBU7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL PC
-        //public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = @"Data Source=DESKTOP-0Q352R7\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL HIRAMLAPTOP
         //public string connectionString = @"Data Source=LAPTOP-73509PLO\SQLEXPRESS;Initial Catalog = FFRUsers; Integrated Security = True;MultipleActiveResultSets=True";
-        
-        new string Name;
+
+        public new string Name;
         string userType;
         public Login()
         {
@@ -125,35 +125,31 @@ namespace Admin_Login
             }
             else
             {
+
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand UsernameCommand = new SqlCommand("select Username_, User_ from Users where " +
-                        "Username_ = @Username_", connection);
-                    UsernameCommand.Parameters.AddWithValue("@Username_", Username.Text);
-                    SqlCommand PasswordCommand = new SqlCommand("select Password_ from Users " +
-                        "where Password_ = @Password_", connection);
-                    PasswordCommand.Parameters.AddWithValue("@Password_", Password.Text);
+
+                    SqlCommand loginCommand = new SqlCommand("SELECT * FROM Users WHERE Username_ = '"+Username.Text+"'AND Password_ = '"+Password.Text+"'",connection);
+     
                     SqlDataReader Reader;
-                    Reader = UsernameCommand.ExecuteReader();
-                    if (Reader.Read())//if Match
+                    Reader = loginCommand.ExecuteReader();
+          
+                    if (Reader.Read() == true)//if Match
                     {
                         Name = Reader.GetValue(1).ToString();
-                        Reader = PasswordCommand.ExecuteReader();
-                        if (Reader.Read())
-                        {                          
-                            Menu menu = new Menu(Name);
-                            this.Hide();
-                            menu.ShowDialog();
-                          
-                        }
-                        else
+                        AddEmployee ad = new AddEmployee();
+                        Menu menu = new Menu(Name);
+                        this.Hide();
+                        menu.ShowDialog();
+                        if (!Reader.Read())
                         {
                             PasswordError.Text = "Wrong password.";
                             Password.PasswordChar = '\0';
                             Password.Text = " Password";
                             Password.ForeColor = Color.Silver;
                         }
+                      
                     }
                     else
                     {
