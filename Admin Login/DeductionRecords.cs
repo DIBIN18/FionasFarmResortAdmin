@@ -46,12 +46,33 @@ namespace Admin_Login
                 sqlDataAdapter2.Fill(dts2);
 
                 // Add font styles to dgv
-                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
-                dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+                dgvfordelete.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                dgvfordelete.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
-                dataGridView1.DataSource = dts2;
+                dgvfordelete.DataSource = dts2;
 
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            string delete = "DELETE FROM OtherDeductions Where OtherDeductionsID="+ dgvfordelete.CurrentRow.Cells[0].Value;
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            connection.Open();
+            SqlCommand sqlCommand = new SqlCommand(delete, connection);
+ 
+            DialogResult result = MessageBox.Show("Success","Message",MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
+            {
+                sqlCommand.ExecuteNonQuery();
+                DeductionRecords_Load(this, null);
+            }
+            else if(result == DialogResult.Cancel)
+            {
+                DeductionRecords_Load(this, null);
+            }
+            connection.Close();
+           
         }
     }
 }
