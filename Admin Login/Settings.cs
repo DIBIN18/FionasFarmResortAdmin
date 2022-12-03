@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Admin_Login
 {
@@ -52,6 +53,12 @@ namespace Admin_Login
             cmbUserName.Items.Add("Accountant");
             cmbUserName.Items.Add("Supervisor");
             cmbUserName.Items.Add("General Manager");
+            SqlConnection connection = new SqlConnection(login.connectionString);
+            SqlCommand cmd = new SqlCommand("Select * from AuditTrail",connection);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sqlDataAdapter.Fill(dt);
+            dgvAuditTrail.DataSource = dt;
         }
 
         public void updateTable()
@@ -130,7 +137,7 @@ namespace Admin_Login
         {
             using (SqlConnection con = new SqlConnection(login.connectionString))
             {
-
+                AddEmployee ad = new AddEmployee();
                 try
                 {
                     con.Open();
@@ -256,6 +263,24 @@ namespace Admin_Login
                         txtPass.Text = "";
                         txtUser.Text = "";
                         updateTable();
+
+                        SqlConnection auditcon = new SqlConnection(login.connectionString);
+                        auditcon.Open();
+                        //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                        //SqlDataAdapter sda = new SqlDataAdapter(name);
+                        //DataTable dtaudit = new DataTable();
+                        //sda.Fill(dtaudit);
+                        //string auditName = dt.Rows[0][0].ToString();
+                        string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                        string Module = "Settings";
+                        string Description = "Add New User";
+                        SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                        auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                        auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                        auditcommand.Parameters.AddWithValue("@Module", Module);
+                        auditcommand.Parameters.AddWithValue("@Description", Description);
+                        auditcommand.ExecuteNonQuery();
+                        auditcon.Close();
                     }
                     con.Close();
                 }

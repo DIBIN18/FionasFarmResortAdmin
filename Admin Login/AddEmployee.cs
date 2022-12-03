@@ -13,12 +13,12 @@ namespace Admin_Login
 {
     public partial class AddEmployee : Form
     {
-        public string FullNameFormat = @"^[a-zA-Z]+$";
+        public string FullNameFormat = @"^[a-zA-Z ]+$";
         public string EmailFormat = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
         public string NumberDecimal = @"^-?\\d*(\\.\\d+)?$";
 
         Login login = new Login();
-
+    
         string selectedDepartmentName = "";
         long selectedDepartmentId = 0;
         string selectedPositionName = "";
@@ -275,6 +275,7 @@ namespace Admin_Login
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
+
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
@@ -312,23 +313,27 @@ namespace Admin_Login
         }
         private void btn_Register_Click(object sender, EventArgs e)
         {
+            //Compute Age Using DateTimePicker
+            var checkAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+
             if (!(Regex.IsMatch(txtFullName.Text, FullNameFormat)))
             {
-                MessageBox.Show("Invalid Name", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("FullName Should not Contain Digits!", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtFullName.Text = "";
             }
             else if(!(Regex.IsMatch(txtEmailAdd.Text, EmailFormat)))
             {
-                MessageBox.Show("Invalid Email", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("This Domain name you entered is not valid" +"/n"+"Valid entries include: someone@example.com", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmailAdd.Text = "";
+            }
+            else if (checkAge < 18)
+            {
+                MessageBox.Show("You are UnderAge","Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtDateofBirth.Value = DateTime.Now;
             }
             else
             {
-                //Compute Age Using DateTimePicker
-                int checkAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
-
-                if (checkAge >= 18)
-                {
+            
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
                         connection.Open();
@@ -405,20 +410,38 @@ namespace Admin_Login
                         cmd.ExecuteNonQuery();
 
                         insertNewEmployeeSchedule();
-                        MessageBox.Show("Successfully Added Employee!");
-
-                        clearAll();
+                        DialogResult StoreAudit = MessageBox.Show("Successfully Added Employee!","Message",MessageBoxButtons.OK);
+                        if(StoreAudit == DialogResult.OK)
+                        {
+                            Login forAudit = new Login();
+                            
+                            SqlConnection auditcon = new SqlConnection(login.connectionString);
+                            auditcon.Open();
+                            //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '"+forAudit.Username+"'", auditcon);
+                            //SqlDataAdapter sda = new SqlDataAdapter(name);
+                            //DataTable dtaudit = new DataTable();
+                            //sda.Fill(dtaudit);
+                            //string auditName = dt.Rows[0][0].ToString();
+                            string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                            string Module = "AddEmployee";
+                            string Description = "Insert New Employee";
+                            SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)",auditcon);
+                            //auditcommand.Parameters.AddWithValue("@UserName_", dtaudit.Rows[0][1].ToString());
+                            auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                            auditcommand.Parameters.AddWithValue("@Module", Module);
+                            auditcommand.Parameters.AddWithValue("@Description", Description);
+                            auditcommand.ExecuteNonQuery();
+                            auditcon.Close();
+                        }
+                    clearAll();
                     }
 
                     Menu menu = (Menu)Application.OpenForms["Menu"];
                     menu.Text = "Fiona's Farm and Resort - Employee List";
                     menu.Menu_Load(menu, EventArgs.Empty);
                     Dispose();
-                }
-                else
-                {
-                    MessageBox.Show("Can not register employees who are below 18");
-                }
+                
+             
             }
         }
         private void cmbPosition_SelectionChangeCommitted(object sender, EventArgs e)
@@ -457,6 +480,18 @@ namespace Admin_Login
             cmbDepartment.Text = "";
             cmbPosition.Text = "";
             txtTIN.Text = "";
+            txtCivilStatus.Text = "";
+            txtGender.Text = "";
+            txtEmploymentType.Text = "";
+            cmbDepartment.Text = "";
+            cmbPosition.Text = "";
+            cbMonday.Checked = false;
+            cbTuesday.Checked = false;
+            cbWednesday.Checked = false;
+            cbThursday.Checked = false;
+            cbFriday.Checked = false;
+            cbSaturday.Checked = false;
+            cbSunday.Checked = false;
         }
         private void btn_Back_Click(object sender, EventArgs e)
         {

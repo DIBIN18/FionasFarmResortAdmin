@@ -23,6 +23,7 @@ namespace Admin_Login
             int height
             );
         string TitleExtension;
+        public string name;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
         private void btn_Schedules_Click(object sender, EventArgs e)
@@ -69,11 +70,11 @@ namespace Admin_Login
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 7, 7));
             AdminName.Text = name;
             bool istrue = true;
-           
             SqlConnection con = new SqlConnection(login.connectionString);
             SqlCommand cmd = new SqlCommand("Select * from Users Where User_ = '" + name + "'", con);
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dataTable = new DataTable();
+            AddEmployee ad = new AddEmployee();      
             sqlDataAdapter.Fill(dataTable);
             string dashboard = dataTable.Rows[0][4].ToString();
             string EmployeeList = dataTable.Rows[0][5].ToString();
@@ -84,6 +85,7 @@ namespace Admin_Login
             string PayrollReport = dataTable.Rows[0][10].ToString();
             string HolidaySetting = dataTable.Rows[0][11].ToString();
             string Settings = dataTable.Rows[0][12].ToString();
+            
             if (name == dataTable.Rows[0][1].ToString())
             {
                 lbl_EmployeeList.Enabled = false;
@@ -102,6 +104,7 @@ namespace Admin_Login
                 lbl_PayrollReport.Enabled = false;
                 lbl_HolidaySettings.Enabled = false;
                 lbl_Settings.Enabled = false; //settings
+          
                 //DASHBOARD
                 if (dashboard.ToString() == istrue.ToString())
                 {
