@@ -44,7 +44,13 @@ namespace Admin_Login
                 SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
                 DataTable dts2 = new DataTable();
                 sqlDataAdapter2.Fill(dts2);
+
+                // Add font styles to dgv
+                dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                dataGridView1.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dataGridView1.DataSource = dts2;
+
             }
         }
     }
