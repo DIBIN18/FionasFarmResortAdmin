@@ -56,6 +56,12 @@
     <Reference Include="Select.HtmlToPdf, Version=22.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
       <HintPath>..\packages\Select.HtmlToPdf.NetCore.22.1.0\lib\net472\Select.HtmlToPdf.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.Doc, Version=10.11.9.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Doc.10.11.9\lib\net40\Spire.Doc.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=8.11.10.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Doc.10.11.9\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Compression.Portable, Version=20.3200.0.58, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Compression.Net.Core.20.3.0.58\lib\netstandard2.0\Syncfusion.Compression.Portable.dll</HintPath>
     </Reference>
@@ -273,6 +279,12 @@
     <Compile Include="DepartmentAndPosition.Designer.cs">
       <DependentUpon>DepartmentAndPosition.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaySlipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaySlipForm.Designer.cs">
+      <DependentUpon>PaySlipForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedules.cs">
@@ -377,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DepartmentAndPosition.resx">
       <DependentUpon>DepartmentAndPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaySlipForm.resx">
+      <DependentUpon>PaySlipForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
