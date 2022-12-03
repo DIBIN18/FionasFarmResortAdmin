@@ -219,8 +219,12 @@ namespace Admin_Login
             connection.Open();
             if (string.IsNullOrEmpty(tb_Search.Text))
             {
-                SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E " +
-                "JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID", connection);
+                SqlCommand cmd = new SqlCommand(
+                "Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName " +
+                "FROM EmployeeInfo AS E " +
+                "JOIN Department AS D ON E.DepartmentID = D.DepartmentID " +
+                "JOIN Position AS P ON E.PositionID = P.PositionID " +
+                "WHERE E.Status='Active'", connection);
 
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
@@ -229,7 +233,12 @@ namespace Admin_Login
             }
             else if (tb_Search.Focused)
             {
-                SqlCommand cmd = new SqlCommand("Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName FROM EmployeeInfo AS E JOIN Department AS D ON E.DepartmentID = D.DepartmentID JOIN Position AS P ON E.PositionID = P.PositionID where E.EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName like'" + tb_Search.Text + "%'", connection);
+                SqlCommand cmd = new SqlCommand(
+                "Select E.EmployeeID, E.EmployeeFullName, D.DepartmentName , P.PositionName " +
+                "FROM EmployeeInfo AS E JOIN Department AS D ON E.DepartmentID = D.DepartmentID " +
+                "JOIN Position AS P ON E.PositionID = P.PositionID " +
+                "WHERE E.Status='Active' " +
+                "AND E.EmployeeFullName LIKE '%" + tb_Search.Text + "%'", connection);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                 DataTable dts = new DataTable();
                 sqlDataAdapter.Fill(dts);
@@ -355,6 +364,12 @@ namespace Admin_Login
             tagadelete();
             tagaInsertPayrollReport();
             getDeductions();
+        }
+
+        // Clear search text when clicked
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = string.Empty;
         }
 
 

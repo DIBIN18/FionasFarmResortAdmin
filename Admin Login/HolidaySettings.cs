@@ -106,5 +106,49 @@ namespace Admin_Login
             }
             UpdateTable();
         }
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = null;
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string query =
+                    "SELECT " +
+                    "Holiday_ AS Holiday_Name, " +
+                    "From_ AS Date, " +
+                    "Type_ AS Type" +
+                    " FROM Holidays";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgv_HolidaysTable.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string query2 =
+                    "SELECT " +
+                    "Holiday_ AS Holiday_Name, " +
+                    "From_ AS Date, " +
+                    "Type_ AS Type " +
+                    "FROM Holidays WHERE " +
+                    "Holiday_ LIKE '%" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd = new SqlCommand(query2, connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgv_HolidaysTable.DataSource = dt;
+                }
+            }
+        }
     }
 }
