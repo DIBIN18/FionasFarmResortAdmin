@@ -40,11 +40,17 @@ namespace Admin_Login
             dtpSchedOut.Format = DateTimePickerFormat.Time;
             dtpSchedOut.ShowUpDown = true;
 
+            dtpBreakPeriod.Format = DateTimePickerFormat.Time;
+            dtpBreakPeriod.ShowUpDown = true;
+
             dtpScheduleIn.Format = DateTimePickerFormat.Custom;
             dtpScheduleIn.CustomFormat = "hh:mm:ss tt";
 
             dtpSchedOut.Format = DateTimePickerFormat.Custom;
             dtpSchedOut.CustomFormat = "hh:mm:ss tt";
+
+            dtpBreakPeriod.Format = DateTimePickerFormat.Custom;
+            dtpBreakPeriod.CustomFormat = "hh:mm:ss tt";
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -82,6 +88,7 @@ namespace Admin_Login
             dtpDate.Enabled = true;
             dtpSchedOut.Enabled = true;
             dtpScheduleIn.Enabled = true; 
+            dtpBreakPeriod.Enabled = true;
         }
 
         public bool CheckLeave(string date, string employee_id)
@@ -136,6 +143,7 @@ namespace Admin_Login
         {
             string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpSchedOut.Value.ToString("hh:mm:ss tt");
+            string breakPeriod = dtpBreakPeriod.Value.ToString("hh:mm:ss tt");
             string date = dtpDate.Value.ToString("MMMM dd, yyyy");
 
             if (CheckLeave(date, selectedEmployee) == false && CheckAccDayOff(date, selectedEmployee) == false)
@@ -146,14 +154,15 @@ namespace Admin_Login
 
                     string query =
                         "INSERT INTO " +
-                        "SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date) " +
-                        "VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date)";
+                        "SingleSchedule(EmployeeID,ScheduleIn, ScheduleOut, Date, BreakPeriod) " +
+                        "VALUES (@EmployeeID, @ScheduleIn, @ScheduleOut, @Date, @BreakPeriod)";
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.Parameters.AddWithValue("@ScheduleIn", schedIn.ToUpper());
                     cmd.Parameters.AddWithValue("@ScheduleOut", schedOut.ToUpper());
                     cmd.Parameters.AddWithValue("@Date", date);
                     cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
+                    cmd.Parameters.AddWithValue("@BreakPeriod", breakPeriod.ToUpper());
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Successfully Added Single Schedule");
 
@@ -187,6 +196,61 @@ namespace Admin_Login
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Single Schedule List";
             menu.Menu_Load(menu, EventArgs.Empty);
+        }
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = null;
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string query =
+                    "SELECT " +
+                    "EmployeeSchedule.ScheduleID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "EmployeeSchedule.ScheduleIn, " +
+                    "EmployeeSchedule.ScheduleOut " +
+                    "FROM EmployeeSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvEmployees.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string query2 =
+                    "SELECT " +
+                    "EmployeeSchedule.ScheduleID, " +
+                    "EmployeeInfo.EmployeeID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "EmployeeSchedule.ScheduleIn, " +
+                    "EmployeeSchedule.ScheduleOut " +
+                    "FROM EmployeeSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Status='Active' AND " +
+                    "EmployeeInfo.EmployeeFullName like '%" + tb_Search.Text + "%'" +
+                    "OR EmployeeInfo.EmployeeID Like '" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd = new SqlCommand(query2, connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgvEmployees.DataSource = dt;
+                }
+            }
         }
     }
 }

@@ -80,7 +80,8 @@ namespace Admin_Login
                     "SingleSchedule.SingleScheduleID, " +
                     "EmployeeInfo.EmployeeFullName, " +
                     "SingleSchedule.ScheduleIn, " +
-                    "SingleSchedule.ScheduleOut, " +
+                    "SingleSchedule.ScheduleOut," +
+                    "SingleSchedule.BreakPeriod, " +
                     "SingleSchedule.Date FROM SingleSchedule " +
                     "INNER JOIN EmployeeInfo " +
                     "ON SingleSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
@@ -95,6 +96,64 @@ namespace Admin_Login
 
                 dgvEmployees.DataSource = data;
                 dgvEmployees.Columns["SingleScheduleID"].Visible = false;
+            }
+        }
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = "";
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+                    string query =
+                    "SELECT " +
+                    "SingleSchedule.SingleScheduleID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "SingleSchedule.ScheduleIn, " +
+                    "SingleSchedule.ScheduleOut, " +
+                    "SingleSchedule.BreakPeriod, " +
+                    "SingleSchedule.Date FROM SingleSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON SingleSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Date='" + date + "'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvEmployees.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+                    string query =
+                    "SELECT " +
+                    "SingleSchedule.SingleScheduleID, " +
+                    "EmployeeInfo.EmployeeFullName, " +
+                    "SingleSchedule.ScheduleIn, " +
+                    "SingleSchedule.ScheduleOut, " +
+                    "SingleSchedule.BreakPeriod, " +
+                    "SingleSchedule.Date FROM SingleSchedule " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON SingleSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                    "WHERE Date='" + date + "' AND " +
+                    "EmployeeFullName like '%" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgvEmployees.DataSource = dt;
+                }
             }
         }
     }

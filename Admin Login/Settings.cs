@@ -15,6 +15,7 @@ namespace Admin_Login
     public partial class Settings : Form
     {
         Login login = new Login();
+
         public Settings()
         {
             InitializeComponent();
@@ -66,10 +67,31 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "SELECT User_, Username_,DashBoard,EmployeeList,Leave,DepartmentPosition,Deductions,AttendanceRecord,PayrollReport,HolidaySetting,Settings,Schedules FROM Users";
+                string query = 
+                    "SELECT " +
+                    "User_, " +
+                    "Username_," +
+                    "DashBoard," +
+                    "EmployeeList," +
+                    "Leave," +
+                    "DepartmentPosition," +
+                    "Deductions," +
+                    "AttendanceRecord," +
+                    "PayrollReport," +
+                    "HolidaySetting," +
+                    "Settings," +
+                    "Schedules " +
+                    "FROM Users";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgvUsers.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvUsers.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvUsers.DataSource = data;
             }
         }
@@ -295,8 +317,10 @@ namespace Admin_Login
         {
             dgvUsers.ReadOnly = false;
             btnEdit.Visible = false;
+
             btnSave.Visible = true;
             dgvUsers.Enabled = true;
+
             Login login = new Login();
         }
 
@@ -305,14 +329,27 @@ namespace Admin_Login
             Login login = new Login();
             btnSave.Visible = false;
             btnEdit.Visible = true;
-            dgvUsers.Enabled = false;
+            //dgvUsers.Enabled = false;
        
             using (SqlConnection con = new SqlConnection(login.connectionString))
             {
                 for(int i = 0; i < dgvUsers.Rows.Count; i++)
                 {
                     con.Open();
-                    SqlCommand command = new SqlCommand("Update Users SET DashBoard=@DashBoard,EmployeeList=@EmployeeList,Leave=@Leave,DepartmentPosition=@DepartmentPosition,Deductions=@Deductions,AttendanceRecord=@AttendanceRecord,PayrollReport=@PayrollReport,HolidaySetting=@HolidaySetting,Settings=@Settings,Schedules=@Schedules", con);
+                    SqlCommand command = new SqlCommand
+                        ("Update Users " +
+                        "SET " +
+                        "DashBoard=@DashBoard," +
+                        "EmployeeList=@EmployeeList," +
+                        "Leave=@Leave," +
+                        "DepartmentPosition=@DepartmentPosition," +
+                        "Deductions=@Deductions," +
+                        "AttendanceRecord=@AttendanceRecord," +
+                        "PayrollReport=@PayrollReport," +
+                        "HolidaySetting=@HolidaySetting," +
+                        "Settings=@Settings," +
+                        "Schedules=@Schedules", con);
+                    
                     command.Parameters.AddWithValue("@DashBoard", dgvUsers.Rows[i].Cells[2].Value);
                     command.Parameters.AddWithValue("@EmployeeList", dgvUsers.Rows[i].Cells[3].Value);
                     command.Parameters.AddWithValue("@Leave", dgvUsers.Rows[i].Cells[4].Value);
@@ -331,7 +368,5 @@ namespace Admin_Login
                 MessageBox.Show("Update Succesful!");
             }
         }
-
-        
     }
 }

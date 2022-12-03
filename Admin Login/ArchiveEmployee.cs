@@ -92,8 +92,8 @@ namespace Admin_Login
                 else if (tb_Search.Focused)
                 {
                     SqlCommand cmd = new SqlCommand(
-                        "Select EmployeeID, EmployeeFullName, Email, ContactNumber from EmployeeInfo WHERE " +
-                        "EmployeeFullName like '" + tb_Search.Text + "%'" +
+                        "Select EmployeeID, EmployeeFullName, Email, ContactNumber from EmployeeInfo WHERE Status='Inactive' AND " +
+                        "EmployeeFullName like '%" + tb_Search.Text + "%'" +
                         "OR EmployeeID Like '" + tb_Search.Text + "%'", connection);
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
