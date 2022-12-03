@@ -16,6 +16,7 @@ namespace Admin_Login
         public string FullNameFormat = @"^[a-zA-Z ]+$";
         public string EmailFormat = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
         public string NumberDecimal = @"^-?\\d*(\\.\\d+)?$";
+        public string adminname;
 
         Login login = new Login();
     
@@ -313,6 +314,7 @@ namespace Admin_Login
         }
         private void btn_Register_Click(object sender, EventArgs e)
         {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
             //Compute Age Using DateTimePicker
             var checkAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
 
@@ -426,7 +428,8 @@ namespace Admin_Login
                             string Module = "AddEmployee";
                             string Description = "Insert New Employee";
                             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)",auditcon);
-                            //auditcommand.Parameters.AddWithValue("@UserName_", dtaudit.Rows[0][1].ToString());
+                            adminname = menu.getAdminName();
+                            auditcommand.Parameters.AddWithValue("@UserName_", adminname);
                             auditcommand.Parameters.AddWithValue("@Date", auditDate);
                             auditcommand.Parameters.AddWithValue("@Module", Module);
                             auditcommand.Parameters.AddWithValue("@Description", Description);
@@ -435,8 +438,6 @@ namespace Admin_Login
                         }
                     clearAll();
                     }
-
-                    Menu menu = (Menu)Application.OpenForms["Menu"];
                     menu.Text = "Fiona's Farm and Resort - Employee List";
                     menu.Menu_Load(menu, EventArgs.Empty);
                     Dispose();

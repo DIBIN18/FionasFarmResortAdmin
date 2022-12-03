@@ -215,6 +215,10 @@ namespace Admin_Login
             }
 
         }
+        public string getAdminName()
+        {
+            return AdminName.Text;
+        }
         private void Btn_SignOut_Click(object sender, EventArgs e)
         {
             Login login = new Login();

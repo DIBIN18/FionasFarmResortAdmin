@@ -24,8 +24,9 @@ namespace Admin_Login
         string selectedPositionName = "";
         long selectedPositionId = 0;
 
-        string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday;
-        
+        string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, adminname;
+        Menu menu = (Menu)Application.OpenForms["Menu"];
+
 
         public EmployeeProfile()
         {
@@ -47,7 +48,6 @@ namespace Admin_Login
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
             Dispose();
@@ -281,7 +281,8 @@ namespace Admin_Login
             string Module = "EmployeeProfile";
             string Description = "Update EmployeeProfile";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-            auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+            adminname = menu.getAdminName();
+            auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
             auditcommand.Parameters.AddWithValue("@Description", Description);
