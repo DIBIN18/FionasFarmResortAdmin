@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Spire.Doc;
 using Spire.Doc.Documents;
+using WordToPDF;
+
+
 
 
 namespace Admin_Login
@@ -19,7 +22,6 @@ namespace Admin_Login
     public partial class PaySlipForm : Form
     {
         Login login = new Login();
-        SSSRangeClass sssclass = new SSSRangeClass();
         PayrollReport pr = new PayrollReport();
         FolderBrowserDialog selectedfile = new FolderBrowserDialog();
         string EmpID = "", filepath ;       
@@ -30,15 +32,40 @@ namespace Admin_Login
         }
         public void createDocs()
         {
-            Document document = new Document();
-            Section section = document.AddSection();
-            Paragraph add = section.AddParagraph();
-            foreach(string item in getImage)
+            try
             {
-                add.AppendPicture(item.ToString());
-                Console.WriteLine(item.ToString() + "qwe");
+                Document document = new Document();
+                PageOrientation po = new PageOrientation();
+                Section section = document.AddSection();
+                section.PageSetup.Orientation = PageOrientation.Landscape;
+                Paragraph add = section.AddParagraph();
+                foreach (string item in getImage)
+                {
+                    add.AppendPicture(item.ToString());
+                    File.Delete(item.ToString());
+                }
+                document.SaveToFile(@filepath + "\\Payslips.docx", FileFormat.Docx);
+                convertToPDF();
+                File.Delete(@filepath + "\\Payslips.docx");
+                System.Diagnostics.Process.Start(@filepath + "\\Payslips.pdf");
             }
-            document.SaveToFile(@filepath +"\\mydocs.docx", FileFormat.Docx);
+            catch (Exception ex) { }
+        }
+        public void convertToPDF()
+        {
+            Word2Pdf objWorPdf = new Word2Pdf();
+            string backfolder1 = filepath;
+            string strFileName = "Payslips.docx";
+            object FromLocation = backfolder1 + "\\" + strFileName;
+            string FileExtension = Path.GetExtension(strFileName);
+            string ChangeExtension = strFileName.Replace(FileExtension, ".pdf");
+            if (FileExtension == ".doc" || FileExtension == ".docx")
+            {
+                object ToLocation = backfolder1 + "\\" + ChangeExtension;
+                objWorPdf.InputLocation = FromLocation;
+                objWorPdf.OutputLocation = ToLocation;
+                objWorPdf.Word2PdfCOnversion();
+            }
         }
         private void PaySlipForm_Load(object sender, EventArgs e)
         {
@@ -54,7 +81,6 @@ namespace Admin_Login
                 if (selectedfile.ShowDialog() == DialogResult.OK)
                 {
                     filepath = selectedfile.SelectedPath;
-                    Console.WriteLine(filepath);
                 }
                     foreach (DataRow row in data.Rows)
                 {          
@@ -76,12 +102,16 @@ namespace Admin_Login
         }
         public void ExportPaySlip()
         {
-            using (var bmp = new Bitmap(panel1.Width, panel1.Height))
+            try
             {
-                panel1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));             
-                bmp.Save(@filepath + "\\" +txtEmployeeName.Text + ".jpeg");
-                getImage.Add(@filepath + "\\" + txtEmployeeName.Text + ".jpeg");
+                using (var bmp = new Bitmap(panel1.Width, panel1.Height))
+                {
+                    panel1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    bmp.Save(@filepath + "\\" + txtEmployeeName.Text + ".jpeg");
+                    getImage.Add(@filepath + "\\" + txtEmployeeName.Text + ".jpeg");
+                }
             }
+            catch(Exception ex) { }
         }
         public void getInfo()
         {
