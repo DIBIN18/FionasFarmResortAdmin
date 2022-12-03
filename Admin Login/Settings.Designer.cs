@@ -98,7 +98,7 @@ namespace Admin_Login
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AllowUserToResizeColumns = false;
             this.dgvUsers.AllowUserToResizeRows = false;
-            this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsers.Location = new System.Drawing.Point(23, 39);
@@ -113,10 +113,10 @@ namespace Admin_Login
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 24);
+            this.label1.Size = new System.Drawing.Size(57, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Users";
             // 
@@ -137,10 +137,10 @@ namespace Admin_Login
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(198, 24);
+            this.label2.Size = new System.Drawing.Size(195, 23);
             this.label2.TabIndex = 4;
             this.label2.Text = "Backup and Restore";
             // 
@@ -162,10 +162,10 @@ namespace Admin_Login
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(23, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 20);
+            this.label3.Size = new System.Drawing.Size(202, 21);
             this.label3.TabIndex = 5;
             this.label3.Text = "Backup Database Every:";
             // 
@@ -200,12 +200,12 @@ namespace Admin_Login
             this.btnAddNewUser.AutoSize = true;
             this.btnAddNewUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewUser.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
             this.btnAddNewUser.Location = new System.Drawing.Point(299, 303);
             this.btnAddNewUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(120, 24);
+            this.btnAddNewUser.Size = new System.Drawing.Size(118, 23);
             this.btnAddNewUser.TabIndex = 5;
             this.btnAddNewUser.Tag = "btnAddUser";
             this.btnAddNewUser.Text = "Create User";
@@ -249,7 +249,7 @@ namespace Admin_Login
             this.panel3.Controls.Add(this.cmbUserName);
             this.panel3.Controls.Add(this.txtUser);
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel3.Location = new System.Drawing.Point(24, 281);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(816, 375);
@@ -258,10 +258,10 @@ namespace Admin_Login
             // Schedules
             // 
             this.Schedules.AutoSize = true;
-            this.Schedules.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Schedules.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Schedules.Location = new System.Drawing.Point(601, 203);
             this.Schedules.Name = "Schedules";
-            this.Schedules.Size = new System.Drawing.Size(103, 24);
+            this.Schedules.Size = new System.Drawing.Size(107, 25);
             this.Schedules.TabIndex = 26;
             this.Schedules.Text = "Schedules";
             this.Schedules.UseVisualStyleBackColor = true;
@@ -269,10 +269,10 @@ namespace Admin_Login
             // Setting
             // 
             this.Setting.AutoSize = true;
-            this.Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Setting.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Setting.Location = new System.Drawing.Point(601, 234);
             this.Setting.Name = "Setting";
-            this.Setting.Size = new System.Drawing.Size(87, 24);
+            this.Setting.Size = new System.Drawing.Size(91, 25);
             this.Setting.TabIndex = 25;
             this.Setting.Text = "Settings";
             this.Setting.UseVisualStyleBackColor = true;
@@ -280,10 +280,10 @@ namespace Admin_Login
             // EmployeeList
             // 
             this.EmployeeList.AutoSize = true;
-            this.EmployeeList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeList.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmployeeList.Location = new System.Drawing.Point(601, 110);
             this.EmployeeList.Name = "EmployeeList";
-            this.EmployeeList.Size = new System.Drawing.Size(127, 24);
+            this.EmployeeList.Size = new System.Drawing.Size(132, 25);
             this.EmployeeList.TabIndex = 18;
             this.EmployeeList.Text = "Employee List";
             this.EmployeeList.UseVisualStyleBackColor = true;
@@ -291,10 +291,10 @@ namespace Admin_Login
             // HolidaySetting
             // 
             this.HolidaySetting.AutoSize = true;
-            this.HolidaySetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HolidaySetting.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HolidaySetting.Location = new System.Drawing.Point(348, 172);
             this.HolidaySetting.Name = "HolidaySetting";
-            this.HolidaySetting.Size = new System.Drawing.Size(143, 24);
+            this.HolidaySetting.Size = new System.Drawing.Size(152, 25);
             this.HolidaySetting.TabIndex = 24;
             this.HolidaySetting.Text = "Holiday Settings";
             this.HolidaySetting.UseVisualStyleBackColor = true;
@@ -302,10 +302,10 @@ namespace Admin_Login
             // Leave
             // 
             this.Leave.AutoSize = true;
-            this.Leave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leave.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Leave.Location = new System.Drawing.Point(601, 172);
             this.Leave.Name = "Leave";
-            this.Leave.Size = new System.Drawing.Size(71, 24);
+            this.Leave.Size = new System.Drawing.Size(77, 25);
             this.Leave.TabIndex = 19;
             this.Leave.Text = "Leave";
             this.Leave.UseVisualStyleBackColor = true;
@@ -313,10 +313,10 @@ namespace Admin_Login
             // AttendanceRecord
             // 
             this.AttendanceRecord.AutoSize = true;
-            this.AttendanceRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AttendanceRecord.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AttendanceRecord.Location = new System.Drawing.Point(348, 203);
             this.AttendanceRecord.Name = "AttendanceRecord";
-            this.AttendanceRecord.Size = new System.Drawing.Size(167, 24);
+            this.AttendanceRecord.Size = new System.Drawing.Size(188, 25);
             this.AttendanceRecord.TabIndex = 22;
             this.AttendanceRecord.Text = "Attendance Record";
             this.AttendanceRecord.UseVisualStyleBackColor = true;
@@ -324,10 +324,10 @@ namespace Admin_Login
             // PayrollReport
             // 
             this.PayrollReport.AutoSize = true;
-            this.PayrollReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayrollReport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PayrollReport.Location = new System.Drawing.Point(601, 141);
             this.PayrollReport.Name = "PayrollReport";
-            this.PayrollReport.Size = new System.Drawing.Size(127, 24);
+            this.PayrollReport.Size = new System.Drawing.Size(135, 25);
             this.PayrollReport.TabIndex = 23;
             this.PayrollReport.Text = "Payroll Report";
             this.PayrollReport.UseVisualStyleBackColor = true;
@@ -335,10 +335,10 @@ namespace Admin_Login
             // Deductions
             // 
             this.Deductions.AutoSize = true;
-            this.Deductions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Deductions.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Deductions.Location = new System.Drawing.Point(348, 141);
             this.Deductions.Name = "Deductions";
-            this.Deductions.Size = new System.Drawing.Size(109, 24);
+            this.Deductions.Size = new System.Drawing.Size(118, 25);
             this.Deductions.TabIndex = 20;
             this.Deductions.Text = "Deductions";
             this.Deductions.UseVisualStyleBackColor = true;
@@ -346,20 +346,20 @@ namespace Admin_Login
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(344, 72);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(143, 20);
+            this.label12.Size = new System.Drawing.Size(143, 19);
             this.label12.TabIndex = 17;
             this.label12.Text = "Module Access:";
             // 
             // DashBoard
             // 
             this.DashBoard.AutoSize = true;
-            this.DashBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DashBoard.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DashBoard.Location = new System.Drawing.Point(348, 110);
             this.DashBoard.Name = "DashBoard";
-            this.DashBoard.Size = new System.Drawing.Size(107, 24);
+            this.DashBoard.Size = new System.Drawing.Size(116, 25);
             this.DashBoard.TabIndex = 17;
             this.DashBoard.Text = "Dashboard";
             this.DashBoard.UseVisualStyleBackColor = true;
@@ -367,10 +367,10 @@ namespace Admin_Login
             // DepartmentPosition
             // 
             this.DepartmentPosition.AutoSize = true;
-            this.DepartmentPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DepartmentPosition.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentPosition.Location = new System.Drawing.Point(348, 234);
             this.DepartmentPosition.Name = "DepartmentPosition";
-            this.DepartmentPosition.Size = new System.Drawing.Size(206, 24);
+            this.DepartmentPosition.Size = new System.Drawing.Size(227, 25);
             this.DepartmentPosition.TabIndex = 21;
             this.DepartmentPosition.Text = "Department And Position";
             this.DepartmentPosition.UseVisualStyleBackColor = true;
@@ -378,50 +378,50 @@ namespace Admin_Login
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(19, 72);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(111, 20);
+            this.label11.Size = new System.Drawing.Size(106, 19);
             this.label11.TabIndex = 16;
             this.label11.Text = "Credentials:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(19, 18);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(135, 24);
+            this.label7.Size = new System.Drawing.Size(134, 23);
             this.label7.TabIndex = 12;
             this.label7.Text = "Create a user";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(19, 199);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 20);
+            this.label10.Size = new System.Drawing.Size(87, 21);
             this.label10.TabIndex = 15;
             this.label10.Text = "User Type:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(19, 159);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 20);
+            this.label9.Size = new System.Drawing.Size(86, 21);
             this.label9.TabIndex = 14;
             this.label9.Text = "Password:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(19, 114);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 20);
+            this.label8.Size = new System.Drawing.Size(92, 21);
             this.label8.TabIndex = 13;
             this.label8.Text = "Username:";
             // 
@@ -532,12 +532,12 @@ namespace Admin_Login
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.label4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(318, 16);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 24);
+            this.label4.Size = new System.Drawing.Size(101, 23);
             this.label4.TabIndex = 38;
             this.label4.Tag = "btn_audit_trail";
             this.label4.Text = "Audit Trail";
@@ -577,12 +577,12 @@ namespace Admin_Login
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
             this.label5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(160, 16);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 24);
+            this.label5.Size = new System.Drawing.Size(75, 23);
             this.label5.TabIndex = 35;
             this.label5.Tag = "btn_utilities";
             this.label5.Text = "Utilities";
@@ -622,12 +622,12 @@ namespace Admin_Login
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(19, 16);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 24);
+            this.label6.Size = new System.Drawing.Size(57, 23);
             this.label6.TabIndex = 32;
             this.label6.Tag = "btn_";
             this.label6.Text = "Users";
@@ -652,7 +652,7 @@ namespace Admin_Login
             this.pnlAuditTrail.Controls.Add(this.label13);
             this.pnlAuditTrail.Controls.Add(this.dtp_Date);
             this.pnlAuditTrail.Controls.Add(this.dgvAuditTrail);
-            this.pnlAuditTrail.Location = new System.Drawing.Point(12, 52);
+            this.pnlAuditTrail.Location = new System.Drawing.Point(0, 52);
             this.pnlAuditTrail.Name = "pnlAuditTrail";
             this.pnlAuditTrail.Size = new System.Drawing.Size(884, 695);
             this.pnlAuditTrail.TabIndex = 40;
@@ -661,7 +661,7 @@ namespace Admin_Login
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(5, 12);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
@@ -673,12 +673,12 @@ namespace Admin_Login
             // dtp_Date
             // 
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_Date.Location = new System.Drawing.Point(75, 10);
             this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
-            this.dtp_Date.Size = new System.Drawing.Size(224, 28);
+            this.dtp_Date.Size = new System.Drawing.Size(224, 30);
             this.dtp_Date.TabIndex = 28;
             // 
             // dgvAuditTrail

@@ -21,31 +21,55 @@ namespace Admin_Login
         Login login = new Login();
         public DataTable dt = new DataTable();
         string employeeid, employeename, department, position, schedule, sick_leave_credits, vacation_leave_credits;
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text= string.Empty;  
+        }
+
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
-            //SqlConnection conn = new SqlConnection(login.connectionString);
-            //conn.Open();
-            //if (tb_Search.Text == null)
-            //{
-            //    conn.Open();
-            //    SqlCommand cmd = new SqlCommand("Select EmployeeID,EmployeeFullName, DepartmentName, PositionName  FROM EmployeeInfo", conn);
-            //    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            //    DataTable dataTable = new DataTable();
-            //    adapter.Fill(dataTable);
-            //    dgvLeave.DataSource = dataTable;
-            //    conn.Close();
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    SqlCommand cmd2 = new SqlCommand(
+                       "select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName, e.SickLeaveCredits, e.VacationLeaveCredits " +
+                       "from EmployeeInfo AS e " +
+                       "join Department AS d " +
+                       "on e.DepartmentID = d.DepartmentID " +
+                       "join Position As p " +
+                       "on e.PositionID = p.PositionID " +
+                       "where " +
+                       "Status='Active' and EmploymentType='Regular'"
+                       , connection);
 
-            //}
-            //else if (tb_Search.Focused)
-            //{
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvLeave.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    SqlCommand cmd2 = new SqlCommand(
+                       "select e.EmployeeID, e.EmployeeFullName, d.DepartmentName, p.PositionName, e.SickLeaveCredits, e.VacationLeaveCredits " +
+                       "from EmployeeInfo AS e " +
+                       "join Department AS d " +
+                       "on e.DepartmentID = d.DepartmentID " +
+                       "join Position As p " +
+                       "on e.PositionID = p.PositionID " +
+                       "where " +
+                       "Status='Active' and EmploymentType='Regular' and " +
+                       "EmployeeFullName like '%" + tb_Search.Text + "%'"
+                       , connection);
 
-            //    SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo Where EmployeeID like '" + tb_Search.Text + "%'" + "OR EmployeeFullName Like'" + tb_Search.Text + "%'", conn);
-            //    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-            //    DataTable tb = new DataTable();
-            //    sqlDataAdapter.Fill(tb);
-            //    dgvLeave.DataSource = tb;
-            //    conn.Close();
-            //}
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd2);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+                    dgvLeave.DataSource = dt;
+                }
+            }
         }
 
         private void LeaveEmployeeList_Load(object sender, EventArgs e)

@@ -71,17 +71,17 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(319, 9);
+            this.panel1.Location = new System.Drawing.Point(299, 9);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(275, 37);
+            this.panel1.Size = new System.Drawing.Size(306, 37);
             this.panel1.TabIndex = 155;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
-            this.pictureBox5.Location = new System.Drawing.Point(16, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(15, 2);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(19, 28);
@@ -94,13 +94,15 @@
             this.tb_Search.BackColor = System.Drawing.Color.White;
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(53, 8);
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tb_Search.Location = new System.Drawing.Point(42, 7);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(204, 21);
+            this.tb_Search.Size = new System.Drawing.Size(260, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
+            this.tb_Search.Click += new System.EventHandler(this.tb_Search_Click);
+            this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             // 
             // dgvEmployees
             // 
@@ -170,7 +172,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 26);
@@ -183,10 +185,10 @@
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(83, 16);
+            this.dtp_Date.Location = new System.Drawing.Point(83, 13);
             this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
-            this.dtp_Date.Size = new System.Drawing.Size(224, 30);
+            this.dtp_Date.Size = new System.Drawing.Size(212, 30);
             this.dtp_Date.TabIndex = 160;
             this.dtp_Date.ValueChanged += new System.EventHandler(this.dtp_Date_ValueChanged);
             // 

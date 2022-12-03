@@ -74,6 +74,7 @@ namespace Admin_Login
                 dgv_EmployeeList.DataSource = data;
             }
         }
+
         private void btnArchive(object sender, EventArgs e)
         {
             if (dgv_EmployeeList.CurrentRow.Selected == true)
@@ -102,6 +103,7 @@ namespace Admin_Login
                 }
             }
         }
+
         public string getDepartmentName(string selectedID)
         {
             string query = "SELECT DepartmentName FROM Department WHERE DepartmentID='" + selectedID + "'";
@@ -124,6 +126,7 @@ namespace Admin_Login
                 }
             }
         }
+
         public string getPositionName(string selectedID)
         {
             string query = "SELECT PositionName FROM Position WHERE PositionID='" + selectedID + "'";
@@ -146,6 +149,7 @@ namespace Admin_Login
                 }
             }
         }
+
         public void dgvCellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -254,6 +258,7 @@ namespace Admin_Login
             //    }
             //}
         }
+
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -506,7 +511,6 @@ namespace Admin_Login
                     {
                         reader.Read();
                         return reader.GetInt64(0);
-                        reader.Close();
                     }
                     else
                     {

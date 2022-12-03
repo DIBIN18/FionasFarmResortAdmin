@@ -26,6 +26,7 @@ namespace Admin_Login
         public string name;
         static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
+        
         private void btn_Schedules_Click(object sender, EventArgs e)
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Schedules";
@@ -47,6 +48,7 @@ namespace Admin_Login
             lbl_PayrollReport.Font = new Font("Century Gothic", 14);
             lbl_Settings.Font = new Font("Century Gothic", 14);
             lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
+        
         }
         private void btn_Minimize_Click(object sender, EventArgs e)
         {

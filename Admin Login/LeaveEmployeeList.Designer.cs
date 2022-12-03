@@ -48,7 +48,7 @@
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Location = new System.Drawing.Point(11, 11);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(754, 37);
             this.panel1.TabIndex = 21;
@@ -58,7 +58,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -72,11 +72,12 @@
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.tb_Search.Location = new System.Drawing.Point(36, 6);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(704, 21);
             this.tb_Search.TabIndex = 6;
             this.tb_Search.Text = " Search";
+            this.tb_Search.Click += new System.EventHandler(this.tb_Search_Click);
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             // 
             // dgvLeave
@@ -91,7 +92,7 @@
             this.dgvLeave.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLeave.GridColor = System.Drawing.Color.LightGray;
             this.dgvLeave.Location = new System.Drawing.Point(9, 52);
-            this.dgvLeave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLeave.Margin = new System.Windows.Forms.Padding(2);
             this.dgvLeave.Name = "dgvLeave";
             this.dgvLeave.ReadOnly = true;
             this.dgvLeave.RowHeadersVisible = false;
@@ -108,7 +109,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Back_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(837, 14);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -138,7 +139,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox4.Location = new System.Drawing.Point(770, 11);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(108, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -159,7 +160,7 @@
             this.Controls.Add(this.dgvLeave);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LeaveEmployeeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
