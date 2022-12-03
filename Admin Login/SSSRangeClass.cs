@@ -16,6 +16,11 @@ namespace Admin_Login
         public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
         double getGrossPay = 0;
 
+
+        public void get13MonthsPay()
+        {
+
+        }
         public string ComputeGrossPay()
         {
             string query = "insert into PayrollReport " +
@@ -250,7 +255,7 @@ namespace Admin_Login
                                "set TotalOtherDeductions = TotalOtherDeductions - DeductionPerCompensation";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                getEndDateForOtherDeduction();
+                //getEndDateForOtherDeduction();
             }
         }
         public void getEndDateForOtherDeduction()//notyetfinish
