@@ -523,6 +523,11 @@ namespace Admin_Login
             }
         }
 
+        private void txtCivilStatus_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         private void cbTuesday_CheckedChanged(object sender, EventArgs e)
         {
             // Increase or decrease the check counter
