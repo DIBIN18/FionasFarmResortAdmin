@@ -704,10 +704,10 @@
             // Logo
             // 
             this.Logo.Image = global::Admin_Login.Properties.Resources.FullLogo_02;
-            this.Logo.Location = new System.Drawing.Point(332, 10);
+            this.Logo.Location = new System.Drawing.Point(368, 10);
             this.Logo.Margin = new System.Windows.Forms.Padding(2);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(130, 89);
+            this.Logo.Size = new System.Drawing.Size(97, 89);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Logo.TabIndex = 85;
             this.Logo.TabStop = false;

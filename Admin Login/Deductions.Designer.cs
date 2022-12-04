@@ -36,8 +36,11 @@
             this.lblRate = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.ArchivePictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.tbTotal = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.ArchiveLabel = new System.Windows.Forms.Label();
+            this.ArchivePictureBox = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbOtherDeduction = new System.Windows.Forms.TextBox();
@@ -65,9 +68,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.ArchivePictureBoxLogo = new System.Windows.Forms.PictureBox();
-            this.ArchiveLabel = new System.Windows.Forms.Label();
-            this.ArchivePictureBox = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -217,6 +217,21 @@
             this.panel5.Size = new System.Drawing.Size(878, 423);
             this.panel5.TabIndex = 36;
             // 
+            // ArchivePictureBoxLogo
+            // 
+            this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
+            this.ArchivePictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArchivePictureBoxLogo.Image = global::Admin_Login.Properties.Resources.Deductions_Icon;
+            this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(729, 371);
+            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.ArchivePictureBoxLogo.Name = "ArchivePictureBoxLogo";
+            this.ArchivePictureBoxLogo.Size = new System.Drawing.Size(20, 26);
+            this.ArchivePictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ArchivePictureBoxLogo.TabIndex = 96;
+            this.ArchivePictureBoxLogo.TabStop = false;
+            this.ArchivePictureBoxLogo.Tag = "btn_Archive";
+            this.ArchivePictureBoxLogo.Click += new System.EventHandler(this.btnAddOtherDeduction);
+            // 
             // tbTotal
             // 
             this.tbTotal.Enabled = false;
@@ -236,6 +251,36 @@
             this.label7.Size = new System.Drawing.Size(58, 22);
             this.label7.TabIndex = 92;
             this.label7.Text = "Total:";
+            // 
+            // ArchiveLabel
+            // 
+            this.ArchiveLabel.AutoSize = true;
+            this.ArchiveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
+            this.ArchiveLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArchiveLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArchiveLabel.ForeColor = System.Drawing.Color.White;
+            this.ArchiveLabel.Location = new System.Drawing.Point(554, 371);
+            this.ArchiveLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.ArchiveLabel.Name = "ArchiveLabel";
+            this.ArchiveLabel.Size = new System.Drawing.Size(150, 23);
+            this.ArchiveLabel.TabIndex = 95;
+            this.ArchiveLabel.Tag = "Add Deduction";
+            this.ArchiveLabel.Text = "Add Deduction";
+            this.ArchiveLabel.Click += new System.EventHandler(this.btnAddOtherDeduction);
+            // 
+            // ArchivePictureBox
+            // 
+            this.ArchivePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
+            this.ArchivePictureBox.Location = new System.Drawing.Point(530, 365);
+            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ArchivePictureBox.Name = "ArchivePictureBox";
+            this.ArchivePictureBox.Size = new System.Drawing.Size(244, 37);
+            this.ArchivePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ArchivePictureBox.TabIndex = 94;
+            this.ArchivePictureBox.TabStop = false;
+            this.ArchivePictureBox.Tag = "btn_Archive";
+            this.ArchivePictureBox.Click += new System.EventHandler(this.btnAddOtherDeduction);
             // 
             // label15
             // 
@@ -525,51 +570,6 @@
             this.label3.Size = new System.Drawing.Size(229, 23);
             this.label3.TabIndex = 36;
             this.label3.Text = "Next Payroll Deductions";
-            // 
-            // ArchivePictureBoxLogo
-            // 
-            this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
-            this.ArchivePictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArchivePictureBoxLogo.Image = global::Admin_Login.Properties.Resources.Deductions_Icon;
-            this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(729, 371);
-            this.ArchivePictureBoxLogo.Margin = new System.Windows.Forms.Padding(2);
-            this.ArchivePictureBoxLogo.Name = "ArchivePictureBoxLogo";
-            this.ArchivePictureBoxLogo.Size = new System.Drawing.Size(20, 26);
-            this.ArchivePictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ArchivePictureBoxLogo.TabIndex = 96;
-            this.ArchivePictureBoxLogo.TabStop = false;
-            this.ArchivePictureBoxLogo.Tag = "btn_Archive";
-            this.ArchivePictureBoxLogo.Click += new System.EventHandler(this.btnAddOtherDeduction);
-            // 
-            // ArchiveLabel
-            // 
-            this.ArchiveLabel.AutoSize = true;
-            this.ArchiveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
-            this.ArchiveLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArchiveLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArchiveLabel.ForeColor = System.Drawing.Color.White;
-            this.ArchiveLabel.Location = new System.Drawing.Point(554, 371);
-            this.ArchiveLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.ArchiveLabel.Name = "ArchiveLabel";
-            this.ArchiveLabel.Size = new System.Drawing.Size(150, 23);
-            this.ArchiveLabel.TabIndex = 95;
-            this.ArchiveLabel.Tag = "Add Deduction";
-            this.ArchiveLabel.Text = "Add Deduction";
-            this.ArchiveLabel.Click += new System.EventHandler(this.btnAddOtherDeduction);
-            // 
-            // ArchivePictureBox
-            // 
-            this.ArchivePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
-            this.ArchivePictureBox.Location = new System.Drawing.Point(530, 365);
-            this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ArchivePictureBox.Name = "ArchivePictureBox";
-            this.ArchivePictureBox.Size = new System.Drawing.Size(244, 37);
-            this.ArchivePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ArchivePictureBox.TabIndex = 94;
-            this.ArchivePictureBox.TabStop = false;
-            this.ArchivePictureBox.Tag = "btn_Archive";
-            this.ArchivePictureBox.Click += new System.EventHandler(this.btnAddOtherDeduction);
             // 
             // Deductions
             // 

@@ -68,6 +68,7 @@ namespace Admin_Login
                 resetForm();
                 this.Close();
             }
+            loadDeduction();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -80,6 +81,12 @@ namespace Admin_Login
             tbAddOtherDeduction.Text = "";
             tbScrollNum.Value = 0;
             tbDescription.Text = "";
+        }
+        public void loadDeduction()
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Deductions";
+            menu.Menu_Load(menu, EventArgs.Empty);
         }
     }
 }
