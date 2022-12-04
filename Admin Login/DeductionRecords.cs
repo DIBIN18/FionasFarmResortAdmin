@@ -74,5 +74,12 @@ namespace Admin_Login
             connection.Close();
            
         }
+
+        private void BtnBack(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Deductions";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
     }
 }

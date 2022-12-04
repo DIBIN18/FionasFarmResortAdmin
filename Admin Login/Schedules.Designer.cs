@@ -180,6 +180,7 @@
             this.pictureBox5.TabIndex = 30;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Tag = "btn_AccDayOff";
+            this.pictureBox5.Visible = false;
             this.pictureBox5.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // label3
@@ -195,6 +196,7 @@
             this.label3.TabIndex = 29;
             this.label3.Tag = "btn_AccDayOff";
             this.label3.Text = "Acc. Day Off";
+            this.label3.Visible = false;
             this.label3.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // pictureBox6
@@ -209,6 +211,7 @@
             this.pictureBox6.TabIndex = 28;
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Tag = "btn_AccDayOff";
+            this.pictureBox6.Visible = false;
             this.pictureBox6.Click += new System.EventHandler(this.btn_accDayOffClick);
             // 
             // Schedules

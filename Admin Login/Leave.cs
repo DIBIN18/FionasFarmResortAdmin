@@ -147,15 +147,10 @@ namespace Admin_Login
 
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
-                        //dtp_StartDate.Value = DateTime.Now;
-                        //dtp_EndDate.Value = DateTime.Now;
-
-                        Menu menu = (Menu)Application.OpenForms["Menu"];
-                        menu.Text = "Fiona's Farm and Resort - Leave";
-                        menu.Menu_Load(menu, EventArgs.Empty);
 
                         DialogResult d = MessageBox.Show("Successfully applied leave","Message",MessageBoxButtons.OK);
-                       if(d == DialogResult.OK)
+
+                        if(d == DialogResult.OK)
                         {
                             SqlConnection auditcon = new SqlConnection(login.connectionString);
                             auditcon.Open();
@@ -174,10 +169,13 @@ namespace Admin_Login
                             auditcommand.Parameters.AddWithValue("@Description", Description);
                             auditcommand.ExecuteNonQuery();
                             auditcon.Close();
-                        }    
+                        }
+
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave";
+                        menu.Menu_Load(menu, EventArgs.Empty);
                     }
                 }
-
                 else if (cmb_LeaveType.Text.ToString() == "Vacation Leave")
                 {
                     if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
@@ -192,20 +190,13 @@ namespace Admin_Login
                     employeeLeaveCredits = dt.Rows[0][20].ToString();
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
                     int ZeroRemaining = 0;
+
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
                         DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                     }
                     else
                     {
-                        //string query =
-                        //   "UPDATE EmployeeInfo " +
-                        //   "SET VacationLeaveCredits = " + remainingCredits +
-                        //   "WHERE EmployeeID = " + txtEmployeeID.Text;
-                        //SqlCommand command = new SqlCommand(query, connection);
-                        //command.ExecuteNonQuery();
-                        //----------INSERTING DETAILS--------
                         string query2 =
                            "INSERT INTO Leave (" +
                            "EmployeeID," +
@@ -230,25 +221,15 @@ namespace Admin_Login
 
                         command2.ExecuteNonQuery();
 
-
                         addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
 
-                        //dtp_StartDate.Value = DateTime.Now;
-                        //dtp_EndDate.Value = DateTime.Now;
+                        MessageBox.Show("Successfully applied leave");
 
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
                         menu.Menu_Load(menu, EventArgs.Empty);
-
-                        MessageBox.Show("Successfully applied leave");
-
-                        //DialogResult d = MessageBox.Show("SuccessFul", "Your Total VacationLeaveCredits: " + remainingCredits.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //if (d == DialogResult.OK)
-                        //{
-
-                        //}
                     }
                 }
 
@@ -269,6 +250,7 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Leave Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
         private void Leave_Load(object sender, EventArgs e)
         {
             dtp_StartDate.MaxDate = dtp_EndDate.Value;
@@ -294,6 +276,7 @@ namespace Admin_Login
                 rtxtReason.Enabled = false;
             }
         }
+
         public void btnCancel_Click(object sender, EventArgs e)
         {
             txtEmployeeID.Text = "";
@@ -314,6 +297,7 @@ namespace Admin_Login
             txtDepartment.Enabled = false;
             //txtSchedule.Enabled = false;
         }
+
         private void rtxtReason_TextChanged(object sender, EventArgs e)
         {
             if (rtxtReason.Text == "")
@@ -394,6 +378,32 @@ namespace Admin_Login
             }
         }
 
+        public bool checkWeekDay(string weekday,string employee_id)
+        {
+            string query =
+                    "SELECT " + weekday + " " +
+                    "FROM EmployeeSchedule " +
+                    "WHERE EmployeeID=" + employee_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+            }
+        }
         //
         // Leave Payment Codes
         //
@@ -452,6 +462,11 @@ namespace Admin_Login
                     MessageBox.Show("Employee already applied for a leave on " + day.ToString("MMMM dd, yyyy") +
                         "\nLeave will not be applied on this date");
                 }
+                else if (checkWeekDay(day.ToString("dddd"), emp_id) == false)
+                {
+                    MessageBox.Show("Employee has a day off on " + day.ToString("MMMM dd, yyyy") + ", " + day.ToString("dddd") +
+                        "\nLeave will not be applied on this date");
+                }
                 else
                 {
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -473,32 +488,63 @@ namespace Admin_Login
                         command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
                         command2.ExecuteNonQuery();
 
-                        totaldays = totaldays + 1;
+                        totaldays++;
                     }
                 }
             }
 
-            using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+            if (cmb_LeaveType.Text.ToString() == "Sick Leave")
             {
-                connection2.Open();
+                using (SqlConnection slcon = new SqlConnection(login.connectionString))
+                {
+                    slcon.Open();
 
-                SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, connection2);
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sqlDataAdapter.Fill(dt);
+                    SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, slcon);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
 
-                string employeeLeaveCredits;
-                int remainingCredits;
+                    string employeeLeaveCredits;
+                    int remainingCredits;
 
-                employeeLeaveCredits = dt.Rows[0][18].ToString();
-                remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
+                    employeeLeaveCredits = dt.Rows[0][18].ToString();
+                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
 
-                string query =
-                           "UPDATE EmployeeInfo " +
-                           "SET SickLeaveCredits = " + remainingCredits +
-                           "WHERE EmployeeID = " + txtEmployeeID.Text;
-                SqlCommand command = new SqlCommand(query, connection2);
-                command.ExecuteNonQuery();
+                    string query =
+                               "UPDATE EmployeeInfo " +
+                               "SET SickLeaveCredits = " + remainingCredits +
+                               "WHERE EmployeeID = " + txtEmployeeID.Text;
+                    SqlCommand command = new SqlCommand(query, slcon);
+                    command.ExecuteNonQuery();
+                    totaldays = 0;
+                }
+            }
+            else if (cmb_LeaveType.Text.ToString() == "Vacation Leave")
+            {
+                using (SqlConnection vlcon = new SqlConnection(login.connectionString))
+                {
+                    vlcon.Open();
+
+                    SqlCommand cmd = new SqlCommand("Select * from EmployeeInfo where EmployeeID =" + txtEmployeeID.Text, vlcon);
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sqlDataAdapter.Fill(dt);
+
+                    string employeeLeaveCredits;
+                    int remainingCredits;
+
+                    employeeLeaveCredits = dt.Rows[0][20].ToString();
+
+                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
+
+                    string query =
+                               "UPDATE EmployeeInfo " +
+                               "SET VacationLeaveCredits = " + remainingCredits +
+                               "WHERE EmployeeID = " + txtEmployeeID.Text;
+                    SqlCommand command = new SqlCommand(query, vlcon);
+                    command.ExecuteNonQuery();
+                    totaldays = 0;
+                }
             }
         }
 

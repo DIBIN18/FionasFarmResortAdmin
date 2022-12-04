@@ -700,7 +700,7 @@ namespace Admin_Login
 
         private void cmbEmploymentTypeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
-            //e.Handled = true;
+            e.Handled = true;
         }
 
         private void btnSetCustomRate_Click(object sender, EventArgs e)
