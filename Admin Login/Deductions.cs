@@ -103,6 +103,7 @@ namespace Admin_Login
         {
             tbDescription.Text = "";
             txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            //txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             tagadelete();
             tagaInsertPayrollReport();
             getDeductions();
@@ -180,7 +181,9 @@ namespace Admin_Login
 
                 dataGridView1.DataSource = dts;
                 txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                loan.Name = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                loan.EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 getDeductions();
                 getDescription();
             }
