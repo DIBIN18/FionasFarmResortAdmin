@@ -57,8 +57,8 @@ namespace Admin_Login
                         auditcommand.Parameters.AddWithValue("@Description", Description);
                         auditcommand.ExecuteNonQuery();
                         auditcon.Close();
-                        this.Close();
                         resetForm();
+                        this.Close();
                     }
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }

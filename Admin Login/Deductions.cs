@@ -122,7 +122,7 @@ namespace Admin_Login
                 try
                 {
                     connection.Open();
-                    string query = "select  max(DateTo) from PayrollReportHistory";
+                    string query = "select  format(max(convert(datetime,DateTo,100)), 'MMMM dd, yyyy') from PayrollReportHistory";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable data = new DataTable();
                     adapter.Fill(data);
