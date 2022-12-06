@@ -238,7 +238,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "update PayrollReport " +
-                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where EmployeeID = " + EmployeeID + " and StartDate Between CONVERT(datetime, '" + dateFrom + "', 100) and CONVERT(datetime, '" + dateTo + "', 100))" +
+                               "set OtherDeduction = (select sum(DeductionPerCompensation) from OtherDeductions where TotalOtherDeductions > 0 and EmployeeID = " + EmployeeID + " and StartDate Between CONVERT(datetime, StartDate, 100) and CONVERT(datetime, '" + dateTo + "', 100))" +
                                "where EmployeeID = " + EmployeeID;
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -251,22 +251,29 @@ namespace Admin_Login
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "update OtherDeductions " +
-                               "set TotalOtherDeductions = TotalOtherDeductions - DeductionPerCompensation";
+                string query = "declare @i int = 1, @x int, @id int " +
+                               "select @x = count(EmployeeID) from PayrollReport "+
+                               "while (@i <= @x) begin "+
+                               "select top (@i) @id = EmployeeID from PayrollReport "+
+                               "update OtherDeductions set TotalOtherDeductions = TotalOtherDeductions - DeductionPerCompensation  where EmployeeID = @id and TotalOtherDeductions > 0 " +
+                               "set @i = @i + 1 end";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
-                //getEndDateForOtherDeduction();
+                getEndDateForOtherDeduction();
             }
         }
-        public void getEndDateForOtherDeduction()//notyetfinish
+        public void getEndDateForOtherDeduction()
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 Console.WriteLine(dateTo);
                 connection.Open();
-                string query = "update OtherDeductions set EndDate = " +
-                               "(select CASE WHEN TotalOtherDeductions <= 0 THEN 'wala na' ELSE 'Pending' "+
-                               "END as result FROM OtherDeductions where EmployeeID = "+ EmployeeID +") where EmployeeID = "+ EmployeeID ;
+                string query = "declare @i int = 1, @x int, @id int " +
+                               "select @x = count(EmployeeID) from PayrollReport " +
+                               "while (@i <= @x) begin " +
+                               "select top (@i) @id = EmployeeID from PayrollReport " +
+                               "update OtherDeductions set EndDate = FORMAT (getdate(), 'MMMM dd, yyyy')  where EmployeeID = @id and TotalOtherDeductions = 0 and coalesce(EndDate,'0') = '0' " +
+                               "set @i = @i + 1 end";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
             }
