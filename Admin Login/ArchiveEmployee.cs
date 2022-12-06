@@ -39,9 +39,11 @@ namespace Admin_Login
         {
             if (dgv_Archive.CurrentRow.Selected == true)
             {
-                DialogResult dialogResult = MessageBox.Show(" Are you sure you want to Restore Employee? " 
-                    + dgv_Archive.CurrentRow.Cells[1].Value.ToString() + " " + dgv_Archive.CurrentRow.Cells[2].Value.ToString(), 
-                    "Archive", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = 
+                    MessageBox.Show(" Are you sure you want to Restore Employee? " +
+                    dgv_Archive.CurrentRow.Cells[1].Value.ToString(), 
+                    "Restore Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
                 if (dialogResult == DialogResult.Yes)
                 {
                     using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -52,7 +54,9 @@ namespace Admin_Login
                         SqlCommand cmd = new SqlCommand(query,connection);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Successfully Restored Employee");
+                    MessageBox.Show("Successfully Restored Employee", "Employee Restored",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     insertNewEmployeeToDeductionTable();
                     RefreshTable();
                 }

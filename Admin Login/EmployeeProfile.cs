@@ -130,7 +130,7 @@ namespace Admin_Login
             lblEmploymentType.Visible = false;
             lblPosition.Visible = false;
             lblDepartment.Visible = false;
-            lblAccumulated.Visible = false;
+            //lblAccumulated.Visible = false;
             lblStatus.Visible = false;
             lblScheduleIn.Visible = false;
             lblScheduleOut.Visible = false;
@@ -151,7 +151,7 @@ namespace Admin_Login
             cmbEmploymentTypeEdit.Visible = true;
             cmbPositionEdit.Visible = true;
             cmbDepartmentEdit.Visible = true;
-            txtAccumulatedDayOffEdit.Visible = true;
+            //txtAccumulatedDayOffEdit.Visible = true;
             dtpScheduleInEdit.Visible = true;
             dtpSchedOutEdit.Visible = true;
             txtSSSEdit.Visible = true;
@@ -194,7 +194,7 @@ namespace Admin_Login
             lblEmploymentType.Visible = true;
             lblPosition.Visible = true;
             lblDepartment.Visible = true;
-            lblAccumulated.Visible = true;
+            //lblAccumulated.Visible = true;
             lblStatus.Visible = true;
             lblScheduleIn.Visible = true;
             lblScheduleOut.Visible = true;
@@ -215,7 +215,7 @@ namespace Admin_Login
             cmbEmploymentTypeEdit.Visible = false;
             cmbPositionEdit.Visible = false;
             cmbDepartmentEdit.Visible = false;
-            txtAccumulatedDayOffEdit.Visible = false;
+            //txtAccumulatedDayOffEdit.Visible = false;
             dtpScheduleInEdit.Visible = false;
             dtpSchedOutEdit.Visible = false;
             txtSSSEdit.Visible = false;

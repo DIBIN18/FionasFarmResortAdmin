@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Admin_Login
 {
@@ -109,11 +110,36 @@ namespace Admin_Login
             lbl_TimedInToday.Text = getNumberOfTimedIn().ToString();
             lbl_LateToday.Text = getNumberOfLate().ToString();
             lbl_AbsentToday.Text = getNumberOfAbsent().ToString();
+
+            CreateBackup();
         }
         private void Tmr_DateAndTime_Tick(object sender, EventArgs e)
         {
             lbl_Date.Text = DateTime.Now.ToLongDateString();
             lbl_Time.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void CreateBackup()
+        {
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            DateTime today = DateTime.Today;
+
+            if (!File.Exists(path + "\\Database Backups\\Backup - " +
+                        today.ToString("MMMM dd yyyy") + ".bak'"))
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+
+                    string query =
+                        "BACKUP DATABASE FFRUsers " +
+                        "TO DISK = '" + path + "\\Database Backups\\Backup - " +
+                        today.ToString("MMMM dd yyyy") + ".bak'";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
