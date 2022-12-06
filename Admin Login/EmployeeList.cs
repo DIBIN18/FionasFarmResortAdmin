@@ -89,8 +89,8 @@ namespace Admin_Login
                     SqlCommand cmd = new SqlCommand(query, connection);
                     DialogResult dialogResult = MessageBox.Show(
                         " Are you sure you want to Archive Employee? " +
-                        dgv_EmployeeList.CurrentRow.Cells[1].Value.ToString() + " " +
-                        dgv_EmployeeList.CurrentRow.Cells[2].Value.ToString(), "Archive", MessageBoxButtons.YesNo
+                        dgv_EmployeeList.CurrentRow.Cells[1].Value.ToString(),
+                        "Archive", MessageBoxButtons.YesNo, MessageBoxIcon.Question
                     );
                     if (dialogResult == DialogResult.Yes)
                     {

@@ -115,7 +115,8 @@ namespace Admin_Login
 
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
-                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Employee does not have enough Leave Credits",
+                            "Not Enough Leave Credits", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -148,28 +149,8 @@ namespace Admin_Login
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
 
-                        DialogResult d = MessageBox.Show("Successfully applied leave","Message",MessageBoxButtons.OK);
-
-                        if(d == DialogResult.OK)
-                        {
-                            SqlConnection auditcon = new SqlConnection(login.connectionString);
-                            auditcon.Open();
-                            //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                            //SqlDataAdapter sda = new SqlDataAdapter(name);
-                            //DataTable dtaudit = new DataTable();
-                            //sda.Fill(dtaudit);
-                            //string auditName = dt.Rows[0][0].ToString();
-                            string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                            string Module = "Leave";
-                            string Description = "Applied Leave";
-                            SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                            auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                            auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                            auditcommand.Parameters.AddWithValue("@Module", Module);
-                            auditcommand.Parameters.AddWithValue("@Description", Description);
-                            auditcommand.ExecuteNonQuery();
-                            auditcon.Close();
-                        }
+                        MessageBox.Show("Transaction Complete",
+                            "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
@@ -193,7 +174,8 @@ namespace Admin_Login
 
                     if (totalLeaveDays > Convert.ToInt32(employeeLeaveCredits) || remainingCredits < ZeroRemaining)
                     {
-                        DialogResult d = MessageBox.Show("Not Enough Leave Credits", "Your Total Credits = " + employeeLeaveCredits, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Employee does not have enough Leave Credits",
+                            "Not Enough Leave Credits", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -225,7 +207,8 @@ namespace Admin_Login
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
 
-                        MessageBox.Show("Successfully applied leave");
+                        MessageBox.Show("Transaction Complete",
+                            "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
@@ -454,18 +437,23 @@ namespace Admin_Login
 
                 if (attendance_date == day.ToString("MMMM dd, yyyy"))
                 {
-                    MessageBox.Show("Employee had an attendance record on " + day.ToString("MMMM dd, yyyy") + 
-                        "\nLeave will not be applied on this date");
+                    MessageBox.Show(
+                        "Employee had an attendance record on " + day.ToString("MMMM dd, yyyy") + 
+                        "\nLeave will not be applied on this date", "Leave Application Notice",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (leave_date == day.ToString("MMMM dd, yyyy"))
                 {
-                    MessageBox.Show("Employee already applied for a leave on " + day.ToString("MMMM dd, yyyy") +
-                        "\nLeave will not be applied on this date");
+                    MessageBox.Show(
+                        "Employee already applied for a leave on " + day.ToString("MMMM dd, yyyy") +
+                        "\nLeave will not be applied on this date", "Leave Application Notice",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else if (checkWeekDay(day.ToString("dddd"), emp_id) == false)
                 {
                     MessageBox.Show("Employee has a day off on " + day.ToString("MMMM dd, yyyy") + ", " + day.ToString("dddd") +
-                        "\nLeave will not be applied on this date");
+                        "\nLeave will not be applied on this date", "Leave Application Notice",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

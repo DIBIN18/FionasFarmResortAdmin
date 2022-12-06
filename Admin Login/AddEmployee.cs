@@ -34,6 +34,7 @@ namespace Admin_Login
         }
         //Dropshadow
         private const int CS_DropShadow = 0x00020000;
+
         protected override CreateParams CreateParams
         {
             get
@@ -43,6 +44,7 @@ namespace Admin_Login
                 return cp;
             }
         }
+
         private void AddEmployee_Load(object sender, EventArgs e)
         {
             txtContactNum.Text = "(+63)";
@@ -297,6 +299,7 @@ namespace Admin_Login
             }
             cmbPosition.SelectedIndex = -1;
         }
+
         private void txtPosition_MouseClick(object sender, MouseEventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -312,6 +315,7 @@ namespace Admin_Login
                 cmbPosition.DataSource = data.Tables["PositionName"];
             }
         }
+
         private void btn_Register_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -320,129 +324,105 @@ namespace Admin_Login
 
             if (!(Regex.IsMatch(txtFullName.Text, FullNameFormat)))
             {
-                MessageBox.Show("FullName Should not Contain Digits!", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtFullName.Text = "";
+                MessageBox.Show("FullName Should not be Empty or contain digits", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if(!(Regex.IsMatch(txtEmailAdd.Text, EmailFormat)))
             {
-                MessageBox.Show("This Domain name you entered is not valid" +"/n"+"Valid entries include: someone@example.com", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtEmailAdd.Text = "";
+                MessageBox.Show("Invalid Email\nValid entries include: someone@example.com", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (checkAge < 18)
             {
-                MessageBox.Show("You are UnderAge","Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDateofBirth.Value = DateTime.Now;
+                MessageBox.Show("Can not register underage employees","Invalid Age", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-            
-                    using (SqlConnection connection = new SqlConnection(login.connectionString))
-                    {
-                        connection.Open();
-                        string query = "INSERT INTO EmployeeInfo(" +
-                            "EmployeeFullName, " +
-                            "Address, " +
-                            "SSS_ID, " +
-                            "PAGIBIG_NO, " +
-                            "PHIL_HEALTH_NO, " +
-                            "Email, " +
-                            "EmployeeMaritalStatus, " +
-                            "ContactNumber, " +
-                            "DateHired, " +
-                            "Gender, " +
-                            "BirthDate, " +
-                            "EmploymentType, " +
-                            "Age," +
-                            "DepartmentID," +
-                            "PositionID," +
-                            "AccumulatedDayOffs," +
-                            "SickLeaveCredits," +
-                            "VacationLeaveCredits," +
-                            "TIN," +
-                            "Status)" +
-                            "VALUES(" +
-                            "@EmployeeFullName, " +
-                            "@Address, " +
-                            "@SSS_ID, " +
-                            "@PAGIBIG_NO, " +
-                            "@PHIL_HEALTH_NO, " +
-                            "@Email, " +
-                            "@EmployeeMaritalStatus, " +
-                            "@ContactNumber, " +
-                            "@DateHired, " +
-                            "@Gender, " +
-                            "@BirthDate, " +
-                            "@EmploymentType, " +
-                            "@Age," +
-                            "@DepartmentID," +
-                            "@PositionID," +
-                            "@AccumulatedDayOffs," +
-                            "@SickLeaveCredits," +
-                            "@VacationLeaveCredits," +
-                            "@TIN," +
-                            "@Status)";
-                        string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
-                        string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
-                        SqlCommand cmd = new SqlCommand(query, connection);
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = 
+                        "INSERT INTO EmployeeInfo(" +
+                        "EmployeeFullName, " +
+                        "Address, " +
+                        "SSS_ID, " +
+                        "PAGIBIG_NO, " +
+                        "PHIL_HEALTH_NO, " +
+                        "Email, " +
+                        "EmployeeMaritalStatus, " +
+                        "ContactNumber, " +
+                        "DateHired, " +
+                        "Gender, " +
+                        "BirthDate, " +
+                        "EmploymentType, " +
+                        "Age," +
+                        "DepartmentID," +
+                        "PositionID," +
+                        "AccumulatedDayOffs," +
+                        "SickLeaveCredits," +
+                        "VacationLeaveCredits," +
+                        "TIN," +
+                        "Status)" +
+                        "VALUES(" +
+                        "@EmployeeFullName, " +
+                        "@Address, " +
+                        "@SSS_ID, " +
+                        "@PAGIBIG_NO, " +
+                        "@PHIL_HEALTH_NO, " +
+                        "@Email, " +
+                        "@EmployeeMaritalStatus, " +
+                        "@ContactNumber, " +
+                        "@DateHired, " +
+                        "@Gender, " +
+                        "@BirthDate, " +
+                        "@EmploymentType, " +
+                        "@Age," +
+                        "@DepartmentID," +
+                        "@PositionID," +
+                        "@AccumulatedDayOffs," +
+                        "@SickLeaveCredits," +
+                        "@VacationLeaveCredits," +
+                        "@TIN," +
+                        "@Status)";
 
-                        cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
-                        cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
-                        cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
-                        cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
-                        cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
-                        cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
-                        cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
-                        cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); //ginawa kong string nalang kase contact number lang naman 'yan SHEESH - Devs, 11:07pm 2022 - 10 - 17
-                        cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
-                        cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
-                        cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MMMM dd, yyyy"));
-                        cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
-                        cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
-                        cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
-                        cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
-                        cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
-                        cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
-                        cmd.Parameters.AddWithValue("@TIN", txtTIN.Text);
-                        cmd.Parameters.AddWithValue("@Status", "Active");
+                    string schedIn = dtpScheduleIn.Value.ToString("hh:mm:ss tt");
+                    string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
+                    SqlCommand cmd = new SqlCommand(query, connection);
 
-                        //Compute Age Using DateTimePicker
-                        int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+                    cmd.Parameters.AddWithValue("@EmployeeFullName", txtFullName.Text);
+                    cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+                    cmd.Parameters.AddWithValue("@SSS_ID", txtSSSID.Text);
+                    cmd.Parameters.AddWithValue("@PAGIBIG_NO", txtPagibigNo.Text);
+                    cmd.Parameters.AddWithValue("@PHIL_HEALTH_NO", txtPhilhealthNo.Text);
+                    cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
+                    cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
+                    cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); 
+                    cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
+                    cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
+                    cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MMMM dd, yyyy"));
+                    cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
+                    cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
+                    cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
+                    cmd.Parameters.AddWithValue("@AccumulatedDayOffs", 0);
+                    cmd.Parameters.AddWithValue("@SickLeaveCredits", 0);
+                    cmd.Parameters.AddWithValue("@VacationLeaveCredits", 0);
+                    cmd.Parameters.AddWithValue("@TIN", txtTIN.Text);
+                    cmd.Parameters.AddWithValue("@Status", "Active");
 
-                        cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
-                        cmd.ExecuteNonQuery();
+                    //Compute Age Using DateTimePicker
+                    int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
 
-                        insertNewEmployeeSchedule();
-                        DialogResult StoreAudit = MessageBox.Show("Successfully Added Employee!","Message",MessageBoxButtons.OK);
-                        if(StoreAudit == DialogResult.OK)
-                        {
-                            Login forAudit = new Login();
-                            
-                            SqlConnection auditcon = new SqlConnection(login.connectionString);
-                            auditcon.Open();
-                            //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '"+forAudit.Username+"'", auditcon);
-                            //SqlDataAdapter sda = new SqlDataAdapter(name);
-                            //DataTable dtaudit = new DataTable();
-                            //sda.Fill(dtaudit);
-                            //string auditName = dt.Rows[0][0].ToString();
-                            string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                            string Module = "AddEmployee";
-                            string Description = "Insert New Employee";
-                            SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)",auditcon);
-                            adminname = menu.getAdminName();
-                            auditcommand.Parameters.AddWithValue("@UserName_", adminname);
-                            auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                            auditcommand.Parameters.AddWithValue("@Module", Module);
-                            auditcommand.Parameters.AddWithValue("@Description", Description);
-                            auditcommand.ExecuteNonQuery();
-                            auditcon.Close();
-                        }
+                    cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
+                    cmd.ExecuteNonQuery();
+
+                    insertNewEmployeeSchedule();
+
                     clearAll();
-                    }
-                    menu.Text = "Fiona's Farm and Resort - Employee List";
-                    menu.Menu_Load(menu, EventArgs.Empty);
-                    Dispose();
-                
-             
+                }
+
+                MessageBox.Show("Employee Successfully Registered", "Employee Registered", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                menu.Text = "Fiona's Farm and Resort - Employee List";
+                menu.Menu_Load(menu, EventArgs.Empty);
+                Dispose();
             }
         }
         private void cmbPosition_SelectionChangeCommitted(object sender, EventArgs e)
@@ -465,6 +445,7 @@ namespace Admin_Login
                 }
             }
         }
+
         public void clearAll()
         {
             txtFullName.Text = "";
@@ -494,6 +475,12 @@ namespace Admin_Login
             cbSaturday.Checked = false;
             cbSunday.Checked = false;
         }
+
+        private void txtCivilStatus_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         private void btn_Back_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -521,11 +508,6 @@ namespace Admin_Login
                 MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
                 box.Checked = false;
             }
-        }
-
-        private void txtCivilStatus_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
         }
 
         private void cbTuesday_CheckedChanged(object sender, EventArgs e)

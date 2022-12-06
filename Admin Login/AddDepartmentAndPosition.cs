@@ -86,8 +86,7 @@ namespace Admin_Login
         {
             if (!(Regex.IsMatch(txtDepartmentName.Text, ae.FullNameFormat)))
             {
-                MessageBox.Show("Invalid DepartmentName", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDepartmentName.Text = "";
+                MessageBox.Show("Invalid Department name", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -97,34 +96,16 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                MessageBox.Show("New Department Has been Added");
+                MessageBox.Show("New Department Has been Successfully Added", "Department Added",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDepartmentName.Text = "";
-
-                SqlConnection auditcon = new SqlConnection(login.connectionString);
-                auditcon.Open();
-                //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                //SqlDataAdapter sda = new SqlDataAdapter(name);
-                //DataTable dtaudit = new DataTable();
-                //sda.Fill(dtaudit);
-                //string auditName = dt.Rows[0][0].ToString();
-                string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                string Module = "Department and Position";
-                string Description = "Add New Department";
-                SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                auditcommand.Parameters.AddWithValue("@Module", Module);
-                auditcommand.Parameters.AddWithValue("@Description", Description);
-                auditcommand.ExecuteNonQuery();
-                auditcon.Close();
             }
         }
         private void btn_AddPosition_Click(object sender, EventArgs e)
         {
             if (!(Regex.IsMatch(txtPositionName.Text, ae.FullNameFormat)))
             {
-                MessageBox.Show("Invalid PositionName", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDepartmentName.Text = "";
+                MessageBox.Show("Invalid Position name", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -140,6 +121,7 @@ namespace Admin_Login
 
                     // CONVERT STRING TO DECIMAL
                     decimal string_to_decimal;
+
                     if (Decimal.TryParse(txtBasicRate.Text, out string_to_decimal))
                     {
                         Console.WriteLine(string_to_decimal.ToString("0.##"));
@@ -154,28 +136,13 @@ namespace Admin_Login
                     command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
                     command.Parameters.AddWithValue("@Custom", 0);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("New Position Has been Added");
+
+                    MessageBox.Show("New Position Has been Successfully Added", "Position Added",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     txtPositionName.Text = "";
                     cmbDepartment.SelectedIndex = -1;
                     txtBasicRate.Text = "";
-
-                    SqlConnection auditcon = new SqlConnection(login.connectionString);
-                    auditcon.Open();
-                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                    //SqlDataAdapter sda = new SqlDataAdapter(name);
-                    //DataTable dtaudit = new DataTable();
-                    //sda.Fill(dtaudit);
-                    //string auditName = dt.Rows[0][0].ToString();
-                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                    string Module = "Department and Position";
-                    string Description = "Add New Position";
-                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                    auditcommand.Parameters.AddWithValue("@Module", Module);
-                    auditcommand.Parameters.AddWithValue("@Description", Description);
-                    auditcommand.ExecuteNonQuery();
-                    auditcon.Close();
                 }
             }
         }
