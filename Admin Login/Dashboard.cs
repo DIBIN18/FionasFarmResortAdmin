@@ -24,7 +24,7 @@ namespace Admin_Login
         private int getNumberOfTimedIn()
         {
             string query =
-                "SELECT COUNT(*) FROM AttendanceSheet WHERE Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
+                "SELECT COUNT(*) FROM AttendanceRecord WHERE Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
 
             int count = 0;
 
@@ -42,8 +42,8 @@ namespace Admin_Login
         private int getNumberOfLate()
         {
             string query =
-                "SELECT COUNT(*) FROM AttendanceSheet " +
-                "WHERE Late=1" +
+                "SELECT COUNT(*) FROM AttendanceRecord " +
+                "WHERE Late_Minutes > 1 " +
                 "AND Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";
 
             int count = 0;
@@ -89,8 +89,8 @@ namespace Admin_Login
                     "SELECT E.EmployeeFullName, " +
                     "E.EmployeeID, " +
                     "A.TimeIn," +
-                    "A.Late " +
-                    "FROM AttendanceSheet AS A " +
+                    "A.Late_Minutes " +
+                    "FROM AttendanceRecord AS A " +
                     "LEFT JOIN EmployeeInfo AS E " +
                     "ON A.EmployeeID = E.EmployeeID " +
                     "WHERE Date='" + DateTime.Now.ToString("MMMM dd, yyyy") + "'";

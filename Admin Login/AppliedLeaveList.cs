@@ -85,7 +85,7 @@ namespace Admin_Login
 
             DialogResult dialogResult = 
                 MessageBox.Show("Are you sure you want to remove the applied leave?", 
-                                "Remove Applied Leave",MessageBoxButtons.YesNo);
+                                "Remove Applied Leave",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
 
             if (dialogResult == DialogResult.Yes)

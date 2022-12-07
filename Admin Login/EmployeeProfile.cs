@@ -157,8 +157,13 @@ namespace Admin_Login
             txtSSSEdit.Visible = true;
             txtPhilHealthEdit.Visible = true;
             txtPagIbigEdit.Visible = true;
-            txtSickLeaveCreditsEdit.Visible = true;
-            txtVacationLeaveCreditsEdit.Visible = true;
+
+            if (lblEmploymentType.Text.ToString() == "Regular")
+            {
+                txtSickLeaveCreditsEdit.Visible = true;
+                txtVacationLeaveCreditsEdit.Visible = true;
+            }
+
             dtpDateOfBirth.Visible = true;
             //cmbOtAllowed.Visible = true;
             dtpBreakPeriod.Visible = true;
