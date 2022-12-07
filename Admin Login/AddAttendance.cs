@@ -984,10 +984,20 @@ namespace Admin_Login
                         cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecH.Text.ToString()));
                         cmd.Parameters.AddWithValue("@SH_Hours", Convert.ToInt32(lblSpecHHours.Text.ToString()));
                         cmd.Parameters.AddWithValue("@SH_Minutes", Convert.ToInt32(lblSpecHMins.Text.ToString()));
-                        cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Attendance Added");
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
 
+                            MessageBox.Show("Attendance Successfuly Added", "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (System.Data.SqlClient.SqlException) {
+                            MessageBox.Show("Employee already had an attendance on " + dtp_Date.Text.ToString() + 
+                                " , Attendance will not be recorded", "Add Attendance Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        
                         SqlConnection auditcon = new SqlConnection(login.connectionString);
                         auditcon.Open();
                         //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
@@ -1009,13 +1019,15 @@ namespace Admin_Login
                 }
                 else
                 {
-                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
+                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
+                        "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
                 DateTime weekday = Convert.ToDateTime(dtp_Date.Value.ToString());
-                MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded");
+                MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded",
+                    "Add Attendnace Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }
@@ -1848,10 +1860,21 @@ namespace Admin_Login
                             "WHERE AttendanceID=" + Attendance_ID;
 
                         SqlCommand cmd = new SqlCommand(query, connection);
-                        cmd.ExecuteNonQuery();
 
-                        MessageBox.Show("Attendance Record Successfully Updated");
-                        RefreshEditDgvTable();
+                        try
+                        {
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Attendance Record Successfully Updated", "Attendance Record Edit",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            RefreshEditDgvTable();
+                        }
+                        catch (System.Data.SqlClient.SqlException)
+                        {
+                            MessageBox.Show("Employee already had an attendance on " + dtp_EditDate.Text.ToString() +
+                                " , Attendance will not be recorded", "Add Attendance Error",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
 
                         SqlConnection auditcon = new SqlConnection(login.connectionString);
                         auditcon.Open();
@@ -1874,7 +1897,8 @@ namespace Admin_Login
                 }
                 else
                 {
-                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded");
+                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
+                        "Employee on a Leave", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else

@@ -383,7 +383,7 @@
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.lblTIN);
             this.panel1.Location = new System.Drawing.Point(14, 259);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(457, 300);
             this.panel1.TabIndex = 58;
@@ -819,7 +819,7 @@
             this.dtpSchedOutEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSchedOutEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpSchedOutEdit.Location = new System.Drawing.Point(151, 70);
-            this.dtpSchedOutEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpSchedOutEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpSchedOutEdit.Name = "dtpSchedOutEdit";
             this.dtpSchedOutEdit.Size = new System.Drawing.Size(182, 23);
             this.dtpSchedOutEdit.TabIndex = 73;
@@ -832,7 +832,7 @@
             this.dtpScheduleInEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleInEdit.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpScheduleInEdit.Location = new System.Drawing.Point(152, 41);
-            this.dtpScheduleInEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpScheduleInEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpScheduleInEdit.Name = "dtpScheduleInEdit";
             this.dtpScheduleInEdit.Size = new System.Drawing.Size(181, 23);
             this.dtpScheduleInEdit.TabIndex = 72;
@@ -954,7 +954,7 @@
             this.dtpDateHiredEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateHiredEdit.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateHiredEdit.Location = new System.Drawing.Point(730, 150);
-            this.dtpDateHiredEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDateHiredEdit.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateHiredEdit.Name = "dtpDateHiredEdit";
             this.dtpDateHiredEdit.Size = new System.Drawing.Size(176, 20);
             this.dtpDateHiredEdit.TabIndex = 70;
@@ -987,7 +987,7 @@
             this.dtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateOfBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateOfBirth.Location = new System.Drawing.Point(730, 124);
-            this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDateOfBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateOfBirth.Name = "dtpDateOfBirth";
             this.dtpDateOfBirth.Size = new System.Drawing.Size(176, 20);
             this.dtpDateOfBirth.TabIndex = 73;
@@ -1010,7 +1010,7 @@
             this.pbProfilePic.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.pbProfilePic.InitialImage = null;
             this.pbProfilePic.Location = new System.Drawing.Point(4, 6);
-            this.pbProfilePic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbProfilePic.Margin = new System.Windows.Forms.Padding(2);
             this.pbProfilePic.Name = "pbProfilePic";
             this.pbProfilePic.Size = new System.Drawing.Size(170, 161);
             this.pbProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1051,7 +1051,7 @@
             this.dtpBreakPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBreakPeriod.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpBreakPeriod.Location = new System.Drawing.Point(151, 98);
-            this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(2);
             this.dtpBreakPeriod.Name = "dtpBreakPeriod";
             this.dtpBreakPeriod.Size = new System.Drawing.Size(182, 23);
             this.dtpBreakPeriod.TabIndex = 99;
@@ -1097,7 +1097,7 @@
             this.Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.Logo.Image = global::Admin_Login.Properties.Resources.FionasFarmAndResort_Log;
             this.Logo.Location = new System.Drawing.Point(887, 2);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(43, 54);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1111,7 +1111,7 @@
             this.panel2.Controls.Add(this.Logo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(949, 54);
             this.panel2.TabIndex = 39;
@@ -1196,7 +1196,7 @@
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.panel4.Controls.Add(this.pbProfilePic);
             this.panel4.Location = new System.Drawing.Point(43, 64);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(179, 172);
             this.panel4.TabIndex = 101;
@@ -1207,7 +1207,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(755, 578);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1237,7 +1237,7 @@
             this.btnViewLeaveList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnViewLeaveList.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.btnViewLeaveList.Location = new System.Drawing.Point(489, 573);
-            this.btnViewLeaveList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnViewLeaveList.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewLeaveList.Name = "btnViewLeaveList";
             this.btnViewLeaveList.Size = new System.Drawing.Size(314, 37);
             this.btnViewLeaveList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1252,7 +1252,7 @@
             this.btnBackEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackEdit.Image = global::Admin_Login.Properties.Resources.Back_Icon;
             this.btnBackEdit.Location = new System.Drawing.Point(218, 576);
-            this.btnBackEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBackEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnBackEdit.Name = "btnBackEdit";
             this.btnBackEdit.Size = new System.Drawing.Size(29, 31);
             this.btnBackEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1282,7 +1282,7 @@
             this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox12.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox12.Location = new System.Drawing.Point(152, 572);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(108, 37);
             this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1297,7 +1297,7 @@
             this.pbTrain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbTrain.Image = ((System.Drawing.Image)(resources.GetObject("pbTrain.Image")));
             this.pbTrain.Location = new System.Drawing.Point(902, 577);
-            this.pbTrain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbTrain.Margin = new System.Windows.Forms.Padding(2);
             this.pbTrain.Name = "pbTrain";
             this.pbTrain.Size = new System.Drawing.Size(20, 31);
             this.pbTrain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1327,7 +1327,7 @@
             this.pbTrainEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbTrainEdit.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pbTrainEdit.Location = new System.Drawing.Point(814, 573);
-            this.pbTrainEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbTrainEdit.Margin = new System.Windows.Forms.Padding(2);
             this.pbTrainEdit.Name = "pbTrainEdit";
             this.pbTrainEdit.Size = new System.Drawing.Size(123, 37);
             this.pbTrainEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1342,7 +1342,7 @@
             this.pbEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbEdit.Image = ((System.Drawing.Image)(resources.GetObject("pbEdit.Image")));
             this.pbEdit.Location = new System.Drawing.Point(102, 576);
-            this.pbEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbEdit.Margin = new System.Windows.Forms.Padding(2);
             this.pbEdit.Name = "pbEdit";
             this.pbEdit.Size = new System.Drawing.Size(20, 31);
             this.pbEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1372,7 +1372,7 @@
             this.pbEditOval.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbEditOval.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pbEditOval.Location = new System.Drawing.Point(14, 572);
-            this.pbEditOval.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbEditOval.Margin = new System.Windows.Forms.Padding(2);
             this.pbEditOval.Name = "pbEditOval";
             this.pbEditOval.Size = new System.Drawing.Size(123, 37);
             this.pbEditOval.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1387,7 +1387,7 @@
             this.pbSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbSave.Image = ((System.Drawing.Image)(resources.GetObject("pbSave.Image")));
             this.pbSave.Location = new System.Drawing.Point(102, 576);
-            this.pbSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbSave.Margin = new System.Windows.Forms.Padding(2);
             this.pbSave.Name = "pbSave";
             this.pbSave.Size = new System.Drawing.Size(20, 31);
             this.pbSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1419,7 +1419,7 @@
             this.pbSaveOval.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbSaveOval.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
             this.pbSaveOval.Location = new System.Drawing.Point(14, 572);
-            this.pbSaveOval.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbSaveOval.Margin = new System.Windows.Forms.Padding(2);
             this.pbSaveOval.Name = "pbSaveOval";
             this.pbSaveOval.Size = new System.Drawing.Size(123, 37);
             this.pbSaveOval.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1491,7 +1491,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EmployeeProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.EmployeeProfile_Load);
