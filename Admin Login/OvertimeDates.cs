@@ -122,6 +122,8 @@ namespace Admin_Login
                             command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
                             command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
                             command2.ExecuteNonQuery();
+                            AuditTrail audit = new AuditTrail();
+                            audit.AuditAddOverTime();
                         }
                     }
                 }

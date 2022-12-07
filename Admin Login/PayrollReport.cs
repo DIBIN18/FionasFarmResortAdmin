@@ -245,6 +245,15 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Payroll History";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
+        private void ThMonth(object sender, EventArgs e)
+        {
+            THMonthPay tHMonthPay = new THMonthPay();
+            tHMonthPay.get13month();
+            THMonthView tHMonthView = new THMonthView();
+            tHMonthView.Show();
+        }
+
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);

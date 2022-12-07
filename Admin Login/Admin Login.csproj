@@ -161,6 +161,7 @@
     <Compile Include="AppliedLeaveList.Designer.cs">
       <DependentUpon>AppliedLeaveList.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuditTrail.cs" />
     <Compile Include="DeductionRecords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +314,13 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SSSRangeClass.cs" />
+    <Compile Include="THMonthPay.cs" />
+    <Compile Include="THMonthView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THMonthView.Designer.cs">
+      <DependentUpon>THMonthView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewSingleSchedList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -424,6 +432,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THMonthView.resx">
+      <DependentUpon>THMonthView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSingleSchedList.resx">
       <DependentUpon>ViewSingleSchedList.cs</DependentUpon>

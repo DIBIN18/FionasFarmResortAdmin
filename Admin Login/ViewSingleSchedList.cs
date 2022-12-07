@@ -63,6 +63,8 @@ namespace Admin_Login
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Single Schedule Removed");
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditRemoveSingleSchedule();
                     updateTable();
                 }
             }

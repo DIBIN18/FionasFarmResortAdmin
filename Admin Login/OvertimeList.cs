@@ -109,6 +109,8 @@ namespace Admin_Login
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Overtime Schedule Removed");
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditRemoveOverTime();
                 }
             }
         }

@@ -95,6 +95,8 @@ namespace Admin_Login
                 SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
                 cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
                 cmd.ExecuteNonQuery();
+                AuditTrail audit = new AuditTrail();
+                audit.AuditAddDepartment();
                 conn.Close();
                 MessageBox.Show("New Department Has been Successfully Added", "Department Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -136,7 +138,8 @@ namespace Admin_Login
                     command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
                     command.Parameters.AddWithValue("@Custom", 0);
                     command.ExecuteNonQuery();
-
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditAddPosition();
                     MessageBox.Show("New Position Has been Successfully Added", "Position Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
