@@ -144,6 +144,9 @@ namespace Admin_Login
 
                         command2.ExecuteNonQuery();
 
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditApplyLeave();
+
                         addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
 
                         rtxtReason.Text = " ";

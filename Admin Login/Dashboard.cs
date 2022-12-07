@@ -121,25 +121,25 @@ namespace Admin_Login
 
         private void CreateBackup()
         {
-            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            DateTime today = DateTime.Today;
+            //var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            //DateTime today = DateTime.Today;
 
-            if (!File.Exists(path + "\\Database Backups\\Backup - " +
-                        today.ToString("MMMM dd yyyy") + ".bak'"))
-            {
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
-                {
-                    connection.Open();
+            //if (!File.Exists(path + "\\Database Backups\\Backup - " +
+            //            today.ToString("MMMM dd yyyy") + ".bak'"))
+            //{
+            //    using (SqlConnection connection = new SqlConnection(login.connectionString))
+            //    {
+            //        connection.Open();
 
-                    string query =
-                        "BACKUP DATABASE FFRUsers " +
-                        "TO DISK = '" + path + "\\Database Backups\\Backup - " +
-                        today.ToString("MMMM dd yyyy") + ".bak'";
+            //        string query =
+            //            "BACKUP DATABASE FFRUsers " +
+            //            "TO DISK = '" + path + "\\Database Backups\\Backup - " +
+            //            today.ToString("MMMM dd yyyy") + ".bak'";
 
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.ExecuteNonQuery();
-                }
-            }
+            //        SqlCommand command = new SqlCommand(query, connection);
+            //        command.ExecuteNonQuery();
+            //    }
+            //}
         }
     }
 }

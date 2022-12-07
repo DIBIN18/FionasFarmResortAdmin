@@ -102,7 +102,8 @@ namespace Admin_Login
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
-
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditEditDepartment();
                     MessageBox.Show("Department Successfully Updated", "Department Edited",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtEditDepartmentName.Clear();
@@ -130,7 +131,8 @@ namespace Admin_Login
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
-
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditAddPosition();
                     MessageBox.Show("Position Successfully Updated", "Position Edited",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -245,23 +247,8 @@ namespace Admin_Login
                     loadDgvPos();
                     txtEditDepartmentName.Text = " ";
 
-                    SqlConnection auditcon = new SqlConnection(login.connectionString);
-                    auditcon.Open();
-                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                    //SqlDataAdapter sda = new SqlDataAdapter(name);
-                    //DataTable dtaudit = new DataTable();
-                    //sda.Fill(dtaudit);
-                    //string auditName = dt.Rows[0][0].ToString();
-                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                    string Module = "Department and Position";
-                    string Description = "Delete DepartmentName";
-                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                    auditcommand.Parameters.AddWithValue("@Module", Module);
-                    auditcommand.Parameters.AddWithValue("@Description", Description);
-                    auditcommand.ExecuteNonQuery();
-                    auditcon.Close();
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditDeleteDepartment();
                 }
             }
         }
@@ -287,23 +274,8 @@ namespace Admin_Login
                     loadDgvPos();
                     txtEditPositionName.Text = " ";
                     txtEditBasicRate.Text = " ";
-                    SqlConnection auditcon = new SqlConnection(login.connectionString);
-                    auditcon.Open();
-                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                    //SqlDataAdapter sda = new SqlDataAdapter(name);
-                    //DataTable dtaudit = new DataTable();
-                    //sda.Fill(dtaudit);
-                    //string auditName = dt.Rows[0][0].ToString();
-                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                    string Module = "Department and Position";
-                    string Description = "Delete Position";
-                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                    auditcommand.Parameters.AddWithValue("@Module", Module);
-                    auditcommand.Parameters.AddWithValue("@Description", Description);
-                    auditcommand.ExecuteNonQuery();
-                    auditcon.Close();
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditDeletePosition();
                 }
             }
         }

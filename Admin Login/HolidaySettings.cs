@@ -79,7 +79,8 @@ namespace Admin_Login
                 {
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Holiday Removed");
-                    
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditRemoveHoliday();
                     UpdateTable();
                 }
             }
@@ -103,6 +104,8 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@Type_", cb_Type.Text.ToString());
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Successfully Added Holiday");
+                AuditTrail audit = new AuditTrail();
+                audit.AuditAddHoliday();
             }
             UpdateTable();
         }

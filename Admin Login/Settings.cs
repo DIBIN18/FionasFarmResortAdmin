@@ -294,22 +294,8 @@ namespace Admin_Login
                         txtUser.Text = "";
                         updateTable();
 
-                        SqlConnection auditcon = new SqlConnection(login.connectionString);
-                        auditcon.Open();
-
-                        string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                        string Module = "Settings";
-                        string Description = "Add New User";
-
-                        SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                        
-                        auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                        auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                        auditcommand.Parameters.AddWithValue("@Module", Module);
-                        auditcommand.Parameters.AddWithValue("@Description", Description);
-                        auditcommand.ExecuteNonQuery();
-                        
-                        auditcon.Close();
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditAddNewUser();
                     }
                     con.Close();
                 }

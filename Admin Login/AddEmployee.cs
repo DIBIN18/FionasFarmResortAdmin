@@ -415,6 +415,8 @@ namespace Admin_Login
 
                     insertNewEmployeeSchedule();
 
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditAddEmployee();
                     clearAll();
                 }
 

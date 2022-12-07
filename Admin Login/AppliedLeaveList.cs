@@ -99,6 +99,9 @@ namespace Admin_Login
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                     UpdateTable();
+
+                    AuditTrail audit = new AuditTrail();
+                    audit.AuditRemoveLeave();
                 }
             }
         }
