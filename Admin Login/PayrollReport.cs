@@ -19,6 +19,7 @@ namespace Admin_Login
         static string filepath = null, employeeid, employeename, department, position, datefrom;
         int i = 1;
         bool setdateFrom = true;
+        string PayrollID;
 
         public PayrollReport(/*string name*/)
         {
@@ -232,7 +233,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "Insert into PayrollReportHistory " +
-                            "select EmployeeID,EmployeeName,Position,BasicPay,TotalHours,BasicPay,OverTimePay,LegalHollidayPay,SpecialHollidayPay,TotalWorkDays, " +
+                            "select "+ Convert.ToInt32(PayrollID) +", EmployeeID,EmployeeName,Position,BasicPay,TotalHours,BasicPay,OverTimePay,LegalHollidayPay,SpecialHollidayPay,TotalWorkDays, " +
                             "PaidLeaveDays,GrossSalary,TotalLateMinutes,TotalUnderTimeMinutes,SSSContribution,PAGIBIGContribution,PHILHEALTHContribution, " +
                             "TAX,OtherDeduction,NetSalary,'" + dtp_From.Text + "','" + dtp_To.Text + "' from PayrollReport ";
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -300,6 +301,25 @@ namespace Admin_Login
             cmd.ExecuteNonQuery();
             connection.Close();
         }
+        public void addToPayrollHistory()
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query = "insert into PayrollHistoryID " +
+                               "select '" + dtp_From.Text + "','"+ dtp_To.Text +"'";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+                string query2 = "select max(PayRollID) from PayrollHistoryID";
+                SqlCommand cmd2 = new SqlCommand(query2,connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd2);
+                DataTable dts = new DataTable();
+                sqlDataAdapter.Fill(dts);
+                PayrollID = dts.Rows[0][0].ToString();
+            }
+        }
+
         private void btn_Export_Click(object sender, EventArgs e)
         {
             sssclass.dateFrom = dtp_From.Text;
@@ -321,6 +341,7 @@ namespace Admin_Login
                 InsertDeductionTable();
                 sssclass.dateTo = dtp_To.Text;
                 sssclass.UpdateOtherDeduction();
+                addToPayrollHistory();
                 moveToHistory();
                 using (ExcelEngine engine = new ExcelEngine())
                 {
@@ -329,14 +350,65 @@ namespace Admin_Login
                     // Create a new workbook
                     IWorkbook workbook = application.Workbooks.Create(1);
                     IWorksheet Worksheet = workbook.Worksheets[0];
+                    IStyle style = workbook.Styles.Add("NewStyle");
+                    style.Font.Bold = true;
+                    style.Color.ToArgb();
                     // Import data from the data table
-                    //Worksheet.Range["I1"].Text = "FIONA'S FARM AND RESORT";
-                    Worksheet.ImportDataTable(dt, true, 2, 1, true);
-                    // Create Excel table or listobject and apply table style
-                    IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
-                    table.BuiltInTableStyle = TableBuiltInStyles.TableStyleLight11;
-                    // Autofit the columns
-                    Worksheet.UsedRange.AutofitColumns();
+                    Worksheet.Range["I1"].Text = "FIONA'S FARM AND RESORT";
+                    Worksheet.Range["I2"].Text = "Payroll Covered Date : "+ dtp_From.Text + " - " + dtp_To.Text;
+                    Worksheet.Range["I3"].Text = "Payroll ID : " + PayrollID;
+                    Worksheet.ImportDataTable(dt, true, 4, 1, true);
+                    //IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
+                    //table.BuiltInTableStyle = TableBuiltInStyles.TableStyleLight11;
+
+                    
+                    Worksheet.Range[4, 1].AutofitColumns();
+                    Worksheet.Range[4, 2].AutofitColumns();
+                    Worksheet.Range[4, 3].AutofitColumns();
+                    Worksheet.Range[4, 4].AutofitColumns();
+                    Worksheet.Range[4, 5].AutofitColumns();
+                    Worksheet.Range[4, 6].AutofitColumns();
+                    Worksheet.Range[4, 7].AutofitColumns();
+                    Worksheet.Range[4, 8].AutofitColumns();
+                    Worksheet.Range[4, 9].AutofitColumns();
+                    Worksheet.Range[4, 10].AutofitColumns();
+                    Worksheet.Range[4, 11].AutofitColumns();
+                    Worksheet.Range[4, 12].AutofitColumns();
+                    Worksheet.Range[4, 13].AutofitColumns();
+                    Worksheet.Range[4, 14].AutofitColumns();
+                    Worksheet.Range[4, 15].AutofitColumns();
+                    Worksheet.Range[4, 16].AutofitColumns();
+                    Worksheet.Range[4, 17].AutofitColumns();
+                    Worksheet.Range[4, 18].AutofitColumns();
+                    Worksheet.Range[4, 19].AutofitColumns();
+                    Worksheet.Range[4, 20].AutofitColumns();
+                    Worksheet.Range[4, 21].AutofitColumns();
+                    Worksheet.Range[2, 8].AutofitColumns();
+
+
+                    Worksheet.Range["I1"].CellStyle = style;
+                    Worksheet.Range["A4"].CellStyle = style;
+                    Worksheet.Range["B4"].CellStyle = style;
+                    Worksheet.Range["C4"].CellStyle = style;
+                    Worksheet.Range["D4"].CellStyle = style;
+                    Worksheet.Range["E4"].CellStyle = style;
+                    Worksheet.Range["F4"].CellStyle = style;
+                    Worksheet.Range["G4"].CellStyle = style;
+                    Worksheet.Range["H4"].CellStyle = style;
+                    Worksheet.Range["I4"].CellStyle = style;
+                    Worksheet.Range["J4"].CellStyle = style;
+                    Worksheet.Range["K4"].CellStyle = style;
+                    Worksheet.Range["L4"].CellStyle = style;
+                    Worksheet.Range["M4"].CellStyle = style;
+                    Worksheet.Range["N4"].CellStyle = style;
+                    Worksheet.Range["O4"].CellStyle = style;
+                    Worksheet.Range["P4"].CellStyle = style;
+                    Worksheet.Range["Q4"].CellStyle = style;
+                    Worksheet.Range["R4"].CellStyle = style;
+                    Worksheet.Range["S4"].CellStyle = style;
+                    Worksheet.Range["T4"].CellStyle = style;
+                    Worksheet.Range["U4"].CellStyle = style;
+
                     // Save the file
                     if (fbd.ShowDialog() == DialogResult.OK)
                     {
