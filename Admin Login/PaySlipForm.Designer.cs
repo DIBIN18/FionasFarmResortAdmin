@@ -292,7 +292,7 @@
             this.txtNetPay.Name = "txtNetPay";
             this.txtNetPay.Size = new System.Drawing.Size(131, 24);
             this.txtNetPay.TabIndex = 69;
-            this.txtNetPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtNetPay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label23
             // 

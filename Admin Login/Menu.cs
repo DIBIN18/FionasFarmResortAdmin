@@ -24,9 +24,9 @@ namespace Admin_Login
             );
         string TitleExtension;
         public string name;
-        static string datefrom, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
+        static string datefrom,dateto, employeeid, employeename, department, position, address, sss, pagibig, philhealth, email, maritalstatus, contact, 
             datehired, gender, age, birthdate, employmenttype, allowedot, accumulated, sickleavecredits, vacationleavecredits, sched, deductionsvalueholder;
-        
+
         private void btn_Schedules_Click(object sender, EventArgs e)
         {
             Text = TitleExtension = "Fiona's Farm and Resort - Schedules";
@@ -358,13 +358,14 @@ namespace Admin_Login
             lbl_HolidaySettings.Font = new Font("Century Gothic", 14);
             lbl_Schedules.Font = new Font("Century Gothic", 14);
         }
-        public void PayrollReport_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom)
+        public void PayrollReport_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom, string _DateTo)
         {
             employeeid = _EmployeeID;
             employeename = _EmployeeName;
             department = _Department;
             position = _Position;
             datefrom = _DateFrom;
+            dateto = _DateTo;
             //typeofleave = _TypeofLeave;
         }
         public void Leave_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom, string _SickLeaveCredits, string _VacationLeaveCredits)
@@ -425,7 +426,8 @@ namespace Admin_Login
                 payroll.txtEmployeeName.Text = employeename;
                 payroll.txtDepartment.Text = department;
                 payroll.txtPosition.Text = position;
-                payroll.dtpI_From.Text = datefrom;
+                payroll.lblFrom.Text = datefrom;
+                payroll.lblTo.Text = dateto;
                 pnl_Content.Controls.Add(payroll);
                 payroll.BringToFront();
                 payroll.Show();
