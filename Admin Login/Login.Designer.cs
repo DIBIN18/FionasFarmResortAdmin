@@ -48,24 +48,24 @@ namespace Admin_Login
             // 
             this.LoginLabel.AutoSize = true;
             this.LoginLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.LoginLabel.Font = new System.Drawing.Font("Century Gothic", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginLabel.ForeColor = System.Drawing.Color.White;
             this.LoginLabel.Location = new System.Drawing.Point(9, 7);
             this.LoginLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(463, 37);
+            this.LoginLabel.Size = new System.Drawing.Size(441, 36);
             this.LoginLabel.TabIndex = 1;
             this.LoginLabel.Text = "Fiona\'s Farm and Resort - Login";
             // 
             // Username
             // 
             this.Username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Username.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Username.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.Username.Location = new System.Drawing.Point(349, 296);
-            this.Username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Username.Margin = new System.Windows.Forms.Padding(2);
             this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(263, 40);
+            this.Username.Size = new System.Drawing.Size(263, 37);
             this.Username.TabIndex = 3;
             this.Username.Text = " Username";
             this.Username.Enter += new System.EventHandler(this.NameText_Enter);
@@ -75,12 +75,12 @@ namespace Admin_Login
             // Password
             // 
             this.Password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Password.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Password.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.Password.Location = new System.Drawing.Point(349, 353);
-            this.Password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Password.Margin = new System.Windows.Forms.Padding(2);
             this.Password.Name = "Password";
-            this.Password.Size = new System.Drawing.Size(263, 40);
+            this.Password.Size = new System.Drawing.Size(263, 37);
             this.Password.TabIndex = 4;
             this.Password.Text = " Password";
             this.Password.Enter += new System.EventHandler(this.PassText_Enter);
@@ -93,10 +93,10 @@ namespace Admin_Login
             this.LoginButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.LoginButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginButton.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginButton.ForeColor = System.Drawing.Color.White;
             this.LoginButton.Location = new System.Drawing.Point(405, 433);
-            this.LoginButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(2);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(150, 65);
             this.LoginButton.TabIndex = 5;
@@ -136,7 +136,7 @@ namespace Admin_Login
             this.ExitIcon.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitIcon.Image = global::Admin_Login.Properties.Resources.Exit_Icon1;
             this.ExitIcon.Location = new System.Drawing.Point(926, 9);
-            this.ExitIcon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ExitIcon.Margin = new System.Windows.Forms.Padding(2);
             this.ExitIcon.Name = "ExitIcon";
             this.ExitIcon.Size = new System.Drawing.Size(26, 35);
             this.ExitIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -148,7 +148,7 @@ namespace Admin_Login
             // 
             this.Logo.Image = global::Admin_Login.Properties.Resources.FullLogo_02;
             this.Logo.Location = new System.Drawing.Point(405, 106);
-            this.Logo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logo.Margin = new System.Windows.Forms.Padding(2);
             this.Logo.Name = "Logo";
             this.Logo.Size = new System.Drawing.Size(150, 162);
             this.Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -159,7 +159,7 @@ namespace Admin_Login
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(966, 54);
             this.pictureBox1.TabIndex = 0;
@@ -195,7 +195,7 @@ namespace Admin_Login
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fiona\'s Farm and Resort - Login";
