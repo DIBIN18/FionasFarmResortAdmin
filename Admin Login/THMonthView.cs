@@ -18,18 +18,13 @@ namespace Admin_Login
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-         
-         
-        }
-
         private void THMonthView_Load(object sender, EventArgs e)
         {
             Login login = new Login();
             using (SqlConnection con = new SqlConnection(login.connectionString))
             {
-                SqlCommand cmd = new SqlCommand("Select * from THMonthsSalary", con);
+                SqlCommand cmd = new SqlCommand("select THMonthID,EmployeeID,THMonthSalary,Description " +
+                    "FROM THMonthsSalary WHERE CheckMonth > 1", con);
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -37,7 +32,7 @@ namespace Admin_Login
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
         }
