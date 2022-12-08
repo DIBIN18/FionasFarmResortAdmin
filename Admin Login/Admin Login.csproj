@@ -155,11 +155,17 @@
     <Compile Include="AdvanceDayOff.Designer.cs">
       <DependentUpon>AdvanceDayOff.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppliedLeaveList.cs">
+    <Compile Include="AppliedLeavesList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppliedLeaveList.Designer.cs">
-      <DependentUpon>AppliedLeaveList.cs</DependentUpon>
+    <Compile Include="AppliedLeavesList.Designer.cs">
+      <DependentUpon>AppliedLeavesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LeaveListDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeaveListDates.Designer.cs">
+      <DependentUpon>LeaveListDates.cs</DependentUpon>
     </Compile>
     <Compile Include="AuditTrail.cs" />
     <Compile Include="DeductionRecords.cs">
@@ -348,8 +354,11 @@
     <EmbeddedResource Include="AdvanceDayOff.resx">
       <DependentUpon>AdvanceDayOff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppliedLeaveList.resx">
-      <DependentUpon>AppliedLeaveList.cs</DependentUpon>
+    <EmbeddedResource Include="AppliedLeavesList.resx">
+      <DependentUpon>AppliedLeavesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeaveListDates.resx">
+      <DependentUpon>LeaveListDates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DeductionRecords.resx">
       <DependentUpon>DeductionRecords.cs</DependentUpon>

@@ -55,6 +55,8 @@ namespace Admin_Login
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddMode = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblEmployeeID = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_UpdateEdit)).BeginInit();
@@ -73,7 +75,7 @@ namespace Admin_Login
             this.dtpSchedOut.Enabled = false;
             this.dtpSchedOut.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSchedOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpSchedOut.Location = new System.Drawing.Point(833, 263);
+            this.dtpSchedOut.Location = new System.Drawing.Point(833, 300);
             this.dtpSchedOut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpSchedOut.Name = "dtpSchedOut";
             this.dtpSchedOut.Size = new System.Drawing.Size(283, 27);
@@ -87,7 +89,7 @@ namespace Admin_Login
             this.dtpScheduleIn.Enabled = false;
             this.dtpScheduleIn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpScheduleIn.Location = new System.Drawing.Point(832, 214);
+            this.dtpScheduleIn.Location = new System.Drawing.Point(832, 251);
             this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpScheduleIn.Name = "dtpScheduleIn";
             this.dtpScheduleIn.Size = new System.Drawing.Size(284, 27);
@@ -98,7 +100,7 @@ namespace Admin_Login
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(655, 270);
+            this.label18.Location = new System.Drawing.Point(655, 307);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(121, 21);
             this.label18.TabIndex = 75;
@@ -108,7 +110,7 @@ namespace Admin_Login
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(655, 220);
+            this.label17.Location = new System.Drawing.Point(655, 257);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(105, 21);
             this.label17.TabIndex = 74;
@@ -118,7 +120,7 @@ namespace Admin_Login
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(655, 156);
+            this.label12.Location = new System.Drawing.Point(655, 193);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(58, 21);
             this.label12.TabIndex = 80;
@@ -127,6 +129,8 @@ namespace Admin_Login
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.lblEmployeeID);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dtpBreakPeriod);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.panel2);
@@ -160,7 +164,7 @@ namespace Admin_Login
             this.dtpBreakPeriod.Enabled = false;
             this.dtpBreakPeriod.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBreakPeriod.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpBreakPeriod.Location = new System.Drawing.Point(832, 318);
+            this.dtpBreakPeriod.Location = new System.Drawing.Point(832, 355);
             this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpBreakPeriod.Name = "dtpBreakPeriod";
             this.dtpBreakPeriod.Size = new System.Drawing.Size(283, 27);
@@ -171,7 +175,7 @@ namespace Admin_Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(655, 324);
+            this.label1.Location = new System.Drawing.Point(655, 361);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 21);
             this.label1.TabIndex = 156;
@@ -209,7 +213,7 @@ namespace Admin_Login
             this.dtpDate.Enabled = false;
             this.dtpDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(832, 156);
+            this.dtpDate.Location = new System.Drawing.Point(832, 193);
             this.dtpDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(284, 30);
@@ -409,6 +413,26 @@ namespace Admin_Login
             this.pictureBox4.Tag = "btnViewOtList";
             this.pictureBox4.Click += new System.EventHandler(this.view_single_schedlist);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(655, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(111, 21);
+            this.label2.TabIndex = 158;
+            this.label2.Text = "Employee ID:";
+            // 
+            // lblEmployeeID
+            // 
+            this.lblEmployeeID.AutoSize = true;
+            this.lblEmployeeID.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmployeeID.Location = new System.Drawing.Point(829, 149);
+            this.lblEmployeeID.Name = "lblEmployeeID";
+            this.lblEmployeeID.Size = new System.Drawing.Size(25, 21);
+            this.lblEmployeeID.TabIndex = 159;
+            this.lblEmployeeID.Text = "---";
+            // 
             // AddSingleSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -466,5 +490,7 @@ namespace Admin_Login
         private System.Windows.Forms.TextBox tb_Search;
         public System.Windows.Forms.DateTimePicker dtpBreakPeriod;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEmployeeID;
+        private System.Windows.Forms.Label label2;
     }
 }

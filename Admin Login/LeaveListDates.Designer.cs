@@ -1,6 +1,6 @@
 ﻿namespace Admin_Login
 {
-    partial class AppliedLeaveList
+    partial class LeaveListDates
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppliedLeaveList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LeaveListDates));
             this.dgvLeaveList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -158,10 +158,10 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(845, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 24);
+            this.label3.Size = new System.Drawing.Size(75, 24);
             this.label3.TabIndex = 60;
             this.label3.Tag = "btn_Back";
-            this.label3.Text = "Remove";
+            this.label3.Text = "Cancel";
             this.label3.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // pictureBox1

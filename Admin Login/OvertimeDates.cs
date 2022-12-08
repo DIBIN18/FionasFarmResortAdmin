@@ -56,6 +56,8 @@ namespace Admin_Login
                 dgvEmployees.DataSource = data;
                 dgvEmployees.Columns["ScheduleID"].Visible = false;
                 dgvEmployees.Columns["EmployeeID"].Visible = false;
+
+                lblDetail.Text = "Employee ID:";
             }
         }
 
@@ -65,16 +67,19 @@ namespace Admin_Login
             {
                 selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
                 lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+                lblDetailContent.Text = selectedEmployee;
             }
             else if (onTableDept == true)
             {
                 selectedDept = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
                 lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lblDetailContent.Text = selectedDept;
             }
             else if (onTablePos == true)
             {
                 selectedPos = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
                 lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lblDetailContent.Text = selectedPos;
             }
 
 
@@ -263,6 +268,12 @@ namespace Admin_Login
             onTableDept= false;
             onTablePos= false;
 
+            this.ActiveControl = null;
+
+            tb_Search.Text = "Search for employee name";
+            lblDetail.Text = "Employee ID:";
+            lblDetailContent.Text = "---";
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -297,6 +308,12 @@ namespace Admin_Login
             onTableDept = true;
             onTablePos = false;
 
+            this.ActiveControl = null;
+
+            tb_Search.Text = "Search for department name";
+            lblDetail.Text = "Dept. ID: ";
+            lblDetailContent.Text = "---";
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -320,6 +337,12 @@ namespace Admin_Login
             onTableEmp = false;
             onTableDept = false;
             onTablePos = true;
+
+            this.ActiveControl = null;
+
+            tb_Search.Text = "Search for position name";
+            lblDetail.Text = "Position: ";
+            lblDetailContent.Text = "---";
 
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
@@ -397,5 +420,123 @@ namespace Admin_Login
             }
         }
 
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            if (onTableEmp == true)
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    if (string.IsNullOrEmpty(tb_Search.Text))
+                    {
+                        string query =
+                        "SELECT " +
+                        "EmployeeSchedule.ScheduleID, " +
+                        "EmployeeInfo.EmployeeID, " +
+                        "EmployeeInfo.EmployeeFullName, " +
+                        "EmployeeSchedule.ScheduleIn, " +
+                        "EmployeeSchedule.ScheduleOut " +
+                        "FROM EmployeeSchedule " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                        "WHERE Status='Active'";
+
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                    }
+                    else if (tb_Search.Focused)
+                    {
+                        string query2 =
+                        "SELECT " +
+                        "EmployeeSchedule.ScheduleID, " +
+                        "EmployeeInfo.EmployeeID, " +
+                        "EmployeeInfo.EmployeeFullName, " +
+                        "EmployeeSchedule.ScheduleIn, " +
+                        "EmployeeSchedule.ScheduleOut " +
+                        "FROM EmployeeSchedule " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
+                        "WHERE Status='Active' AND " +
+                        "EmployeeInfo.EmployeeFullName like '%" + tb_Search.Text + "%' ";
+                        
+                        SqlCommand cmd = new SqlCommand(query2, connection);
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        sqlDataAdapter.Fill(dt);
+                        dgvEmployees.DataSource = dt;
+                    }
+                }
+            }
+            else if (onTableDept == true)
+            {
+                using (SqlConnection conn = new SqlConnection(login.connectionString))
+                {
+                    if (string.IsNullOrEmpty(tb_Search.Text))
+                    {
+                        string query =
+                        "SELECT * FROM Department";
+
+                        SqlCommand cmd2 = new SqlCommand(query, conn);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                        dgvEmployees.Columns["DepartmentID"].Visible = false;
+                    }
+                    else if (tb_Search.Focused)
+                    {
+                        string query =
+                        "SELECT * FROM Department " +
+                        "WHERE DepartmentName LIKE '%" + tb_Search.Text + "%'";
+
+                        SqlCommand cmd2 = new SqlCommand(query, conn);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                        dgvEmployees.Columns["DepartmentID"].Visible = false;
+                    }
+                }
+            }
+            else if (onTablePos == true)
+            {
+                using (SqlConnection conn = new SqlConnection(login.connectionString))
+                {
+                    if (string.IsNullOrEmpty(tb_Search.Text))
+                    {
+                        string query =
+                        "SELECT PositionID, PositionName FROM Position WHERE Custom=0";
+
+                        SqlCommand cmd2 = new SqlCommand(query, conn);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                        dgvEmployees.Columns["PositionID"].Visible = false;
+                    }
+                    else if (tb_Search.Focused)
+                    {
+                        string query =
+                        "SELECT PositionID, PositionName FROM Position WHERE Custom=0 " +
+                        "AND PositionName LIKE '%" + tb_Search.Text + "%'";
+
+                        SqlCommand cmd2 = new SqlCommand(query, conn);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                        dgvEmployees.Columns["PositionID"].Visible = false;
+                    }
+                }
+            }
+        }
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = null;
+        }
     }
 }

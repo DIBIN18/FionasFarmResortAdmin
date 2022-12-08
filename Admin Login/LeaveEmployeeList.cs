@@ -29,6 +29,8 @@ namespace Admin_Login
 
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
+            tb_Search.ForeColor = System.Drawing.Color.Black;
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
