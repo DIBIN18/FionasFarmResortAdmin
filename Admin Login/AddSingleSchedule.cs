@@ -84,6 +84,7 @@ namespace Admin_Login
         {
             selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
             lbl_EmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+            lblEmployeeID.Text = selectedEmployee;
 
             dtpDate.Enabled = true;
             dtpSchedOut.Enabled = true;

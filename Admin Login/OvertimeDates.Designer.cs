@@ -56,6 +56,10 @@
             this.dgvEmployees = new System.Windows.Forms.DataGridView();
             this.btnAddMode = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tb_Search = new System.Windows.Forms.TextBox();
+            this.lblDetailContent = new System.Windows.Forms.Label();
+            this.lblDetail = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -70,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddMode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label18
@@ -90,6 +95,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.lblDetailContent);
+            this.panel1.Controls.Add(this.lblDetail);
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureBox7);
@@ -229,7 +237,7 @@
             this.dtpDateTo.Enabled = false;
             this.dtpDateTo.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateTo.Location = new System.Drawing.Point(819, 224);
+            this.dtpDateTo.Location = new System.Drawing.Point(817, 272);
             this.dtpDateTo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDateTo.Name = "dtpDateTo";
             this.dtpDateTo.Size = new System.Drawing.Size(297, 30);
@@ -269,7 +277,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(655, 231);
+            this.label2.Location = new System.Drawing.Point(655, 272);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 21);
             this.label2.TabIndex = 156;
@@ -282,7 +290,7 @@
             this.dtpDateFrom.Enabled = false;
             this.dtpDateFrom.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateFrom.Location = new System.Drawing.Point(819, 169);
+            this.dtpDateFrom.Location = new System.Drawing.Point(817, 217);
             this.dtpDateFrom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtpDateFrom.Name = "dtpDateFrom";
             this.dtpDateFrom.Size = new System.Drawing.Size(297, 30);
@@ -293,7 +301,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(655, 175);
+            this.label1.Location = new System.Drawing.Point(655, 217);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 21);
             this.label1.TabIndex = 154;
@@ -427,14 +435,14 @@
             this.dgvEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployees.Location = new System.Drawing.Point(17, 66);
-            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvEmployees.Location = new System.Drawing.Point(15, 121);
+            this.dgvEmployees.Margin = new System.Windows.Forms.Padding(4);
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
             this.dgvEmployees.RowHeadersWidth = 51;
             this.dgvEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEmployees.Size = new System.Drawing.Size(605, 753);
+            this.dgvEmployees.Size = new System.Drawing.Size(605, 716);
             this.dgvEmployees.TabIndex = 143;
             this.dgvEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmployees_CellClick);
             // 
@@ -467,6 +475,51 @@
             this.pictureBox4.Tag = "btnViewOtList";
             this.pictureBox4.Click += new System.EventHandler(this.btnAddMode_Click_1);
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.tb_Search);
+            this.panel2.Location = new System.Drawing.Point(15, 70);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(605, 45);
+            this.panel2.TabIndex = 164;
+            // 
+            // tb_Search
+            // 
+            this.tb_Search.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tb_Search.Location = new System.Drawing.Point(12, 10);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_Search.Name = "tb_Search";
+            this.tb_Search.Size = new System.Drawing.Size(579, 20);
+            this.tb_Search.TabIndex = 6;
+            this.tb_Search.Text = " Search for employee name";
+            this.tb_Search.Click += new System.EventHandler(this.tb_Search_Click);
+            this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
+            // 
+            // lblDetailContent
+            // 
+            this.lblDetailContent.AutoSize = true;
+            this.lblDetailContent.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetailContent.Location = new System.Drawing.Point(815, 164);
+            this.lblDetailContent.Name = "lblDetailContent";
+            this.lblDetailContent.Size = new System.Drawing.Size(25, 21);
+            this.lblDetailContent.TabIndex = 166;
+            this.lblDetailContent.Text = "---";
+            // 
+            // lblDetail
+            // 
+            this.lblDetail.AutoSize = true;
+            this.lblDetail.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetail.Location = new System.Drawing.Point(655, 164);
+            this.lblDetail.Name = "lblDetail";
+            this.lblDetail.Size = new System.Drawing.Size(111, 21);
+            this.lblDetail.TabIndex = 165;
+            this.lblDetail.Text = "Employee ID:";
+            // 
             // OvertimeDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -497,6 +550,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddMode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -530,5 +585,9 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox tb_Search;
+        private System.Windows.Forms.Label lblDetailContent;
+        private System.Windows.Forms.Label lblDetail;
     }
 }

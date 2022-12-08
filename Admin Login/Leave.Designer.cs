@@ -55,6 +55,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbSoloParent = new System.Windows.Forms.CheckBox();
             this.pbCancel = new System.Windows.Forms.PictureBox();
             this.lblCancel = new System.Windows.Forms.Label();
             this.pbCancelShape = new System.Windows.Forms.PictureBox();
@@ -67,7 +68,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnViewLeaveList = new System.Windows.Forms.PictureBox();
-            this.cbSoloParent = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArchivePictureBox)).BeginInit();
@@ -78,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbApplyLeaveShape)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnViewLeaveList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPosition
@@ -245,6 +250,7 @@
             this.cmb_LeaveType.TabIndex = 0;
             this.cmb_LeaveType.SelectionChangeCommitted += new System.EventHandler(this.cmb_LeaveType_SelectionChangeCommitted);
             this.cmb_LeaveType.Click += new System.EventHandler(this.cmbLeaveType_Click);
+            this.cmb_LeaveType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmb_LeaveType_KeyPress);
             // 
             // panel1
             // 
@@ -269,14 +275,14 @@
             this.panel1.Controls.Add(this.txtEmployeeID);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(13, 65);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1153, 347);
             this.panel1.TabIndex = 76;
             // 
             // ArchivePictureBoxLogo
             // 
-            this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.ArchivePictureBoxLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.ArchivePictureBoxLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchivePictureBoxLogo.Image = global::Admin_Login.Properties.Resources.EmployeeList_Icon;
             this.ArchivePictureBoxLogo.Location = new System.Drawing.Point(1088, 286);
@@ -303,7 +309,7 @@
             // ArchiveLabel
             // 
             this.ArchiveLabel.AutoSize = true;
-            this.ArchiveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.ArchiveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.ArchiveLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ArchiveLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArchiveLabel.ForeColor = System.Drawing.Color.White;
@@ -329,7 +335,7 @@
             // ArchivePictureBox
             // 
             this.ArchivePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Light_Blue;
+            this.ArchivePictureBox.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
             this.ArchivePictureBox.Location = new System.Drawing.Point(845, 278);
             this.ArchivePictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ArchivePictureBox.Name = "ArchivePictureBox";
@@ -403,10 +409,23 @@
             this.panel2.Controls.Add(this.cmb_LeaveType);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Location = new System.Drawing.Point(13, 423);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1153, 480);
             this.panel2.TabIndex = 77;
+            // 
+            // cbSoloParent
+            // 
+            this.cbSoloParent.AutoSize = true;
+            this.cbSoloParent.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSoloParent.Location = new System.Drawing.Point(267, 133);
+            this.cbSoloParent.Name = "cbSoloParent";
+            this.cbSoloParent.Size = new System.Drawing.Size(131, 26);
+            this.cbSoloParent.TabIndex = 89;
+            this.cbSoloParent.Text = "Solo Parent";
+            this.cbSoloParent.UseVisualStyleBackColor = true;
+            this.cbSoloParent.Visible = false;
+            this.cbSoloParent.CheckedChanged += new System.EventHandler(this.cbSoloParent_CheckedChanged);
             // 
             // pbCancel
             // 
@@ -548,10 +567,10 @@
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(24, 18);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(148, 23);
+            this.label14.Size = new System.Drawing.Size(205, 23);
             this.label14.TabIndex = 84;
             this.label14.Tag = "btn_view_list";
-            this.label14.Text = "View Leave List";
+            this.label14.Text = "View Leave Dates List";
             this.label14.BackColorChanged += new System.EventHandler(this.btnViewLeaveList_Click);
             this.label14.Click += new System.EventHandler(this.btnViewLeaveList_Click);
             // 
@@ -560,7 +579,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(228, 17);
+            this.pictureBox2.Location = new System.Drawing.Point(318, 18);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(27, 32);
@@ -578,7 +597,7 @@
             this.btnViewLeaveList.Location = new System.Drawing.Point(11, 10);
             this.btnViewLeaveList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnViewLeaveList.Name = "btnViewLeaveList";
-            this.btnViewLeaveList.Size = new System.Drawing.Size(277, 46);
+            this.btnViewLeaveList.Size = new System.Drawing.Size(369, 46);
             this.btnViewLeaveList.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnViewLeaveList.TabIndex = 83;
             this.btnViewLeaveList.TabStop = false;
@@ -586,18 +605,49 @@
             this.btnViewLeaveList.BackColorChanged += new System.EventHandler(this.btnViewLeaveList_Click);
             this.btnViewLeaveList.Click += new System.EventHandler(this.btnViewLeaveList_Click);
             // 
-            // cbSoloParent
+            // pictureBox1
             // 
-            this.cbSoloParent.AutoSize = true;
-            this.cbSoloParent.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSoloParent.Location = new System.Drawing.Point(267, 133);
-            this.cbSoloParent.Name = "cbSoloParent";
-            this.cbSoloParent.Size = new System.Drawing.Size(131, 26);
-            this.cbSoloParent.TabIndex = 89;
-            this.cbSoloParent.Text = "Solo Parent";
-            this.cbSoloParent.UseVisualStyleBackColor = true;
-            this.cbSoloParent.Visible = false;
-            this.cbSoloParent.CheckedChanged += new System.EventHandler(this.cbSoloParent_CheckedChanged);
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(693, 18);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 88;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Tag = "btn_view_list";
+            this.pictureBox1.Click += new System.EventHandler(this.AppliedLeaveDatesClick);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.label15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(399, 18);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(204, 23);
+            this.label15.TabIndex = 87;
+            this.label15.Tag = "btn_view_list";
+            this.label15.Text = "View Applied Leaves";
+            this.label15.Click += new System.EventHandler(this.AppliedLeaveDatesClick);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Light_Blue;
+            this.pictureBox3.Location = new System.Drawing.Point(386, 10);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(369, 46);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 86;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Tag = "btn_view_list";
+            this.pictureBox3.Click += new System.EventHandler(this.AppliedLeaveDatesClick);
             // 
             // Leave
             // 
@@ -606,6 +656,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1179, 917);
             this.ControlBox = false;
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label14);
@@ -629,6 +682,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbApplyLeaveShape)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnViewLeaveList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -674,5 +729,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox btnViewLeaveList;
         private System.Windows.Forms.CheckBox cbSoloParent;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

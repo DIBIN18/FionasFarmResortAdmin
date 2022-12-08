@@ -790,7 +790,7 @@ namespace Admin_Login
             using (SqlConnection delConn = new SqlConnection(login.connectionString))
             {
                 delConn.Open();
-                SqlCommand delCmd = new SqlCommand(updateAttendanceRecord, delConn);
+                SqlCommand delCmd = new SqlCommand(deleteCustom, delConn);
                 delCmd.ExecuteNonQuery();
             }
 

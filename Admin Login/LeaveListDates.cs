@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace Admin_Login
 {
-    public partial class AppliedLeaveList : Form
+    public partial class LeaveListDates : Form
     {
         string SelectedLeaveRecordID = "";
         string SelectedEmployeeID = "";
         string SelectedDate = "";
 
         Login login = new Login();
-        public AppliedLeaveList()
+        public LeaveListDates()
         {
             InitializeComponent();
         }
@@ -90,12 +90,9 @@ namespace Admin_Login
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            
-
             DialogResult dialogResult = 
-                MessageBox.Show("Are you sure you want to remove the applied leave?", 
-                                "Remove Applied Leave",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
+                MessageBox.Show("Are you sure you want to cancel the applied leave date?", 
+                                "Remove Applied Leave Date",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (dialogResult == DialogResult.Yes)
             {
@@ -114,10 +111,6 @@ namespace Admin_Login
                     AuditTrail audit = new AuditTrail();
                     audit.AuditRemoveLeave();
                 }
-
-                
-
-                
             }
         }
 
@@ -128,6 +121,8 @@ namespace Admin_Login
 
         private void tb_Search_TextChanged(object sender, EventArgs e)
         {
+            tb_Search.ForeColor = System.Drawing.Color.Black;
+
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();

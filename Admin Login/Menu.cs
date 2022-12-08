@@ -548,11 +548,11 @@ namespace Admin_Login
                 deductionrecords.BringToFront();
                 deductionrecords.Show();
             }
-            else if (Text == "Fiona's Farm and Resort - Applied Leave List")
+            else if (Text == "Fiona's Farm and Resort - Leave Dates List")
             {
-                TitleExtension = "Fiona's Farm and Resort - Applied Leave List";
+                TitleExtension = "Fiona's Farm and Resort - Leave Dates List";
                 TitleLabel.Text = TitleExtension;
-                AppliedLeaveList appliedLeaveList = new AppliedLeaveList();
+                LeaveListDates appliedLeaveList = new LeaveListDates();
                 {
                     appliedLeaveList.TopLevel = false;
                 };

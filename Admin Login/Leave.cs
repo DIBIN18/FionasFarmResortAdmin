@@ -336,6 +336,10 @@ namespace Admin_Login
                         menu.Menu_Load(menu, EventArgs.Empty);
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Select a type of Leave", "Leave Type", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
                 connection.Close();
             }
@@ -344,7 +348,7 @@ namespace Admin_Login
         private void btnViewLeaveList_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Applied Leave List";
+            menu.Text = "Fiona's Farm and Resort - Leave Dates List";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
 
@@ -752,6 +756,16 @@ namespace Admin_Login
             {
                 dtp_EndDate.Value = DateTime.Today.AddDays(104);
             }
+        }
+
+        private void cmb_LeaveType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void AppliedLeaveDatesClick(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -155,5 +155,10 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Department and Position";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
+        private void cmbDepartment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
