@@ -72,6 +72,8 @@ namespace Admin_Login
                 this.dgv_EmployeeList.DefaultCellStyle.Font = new Font("Century Gothic", 10);
 
                 dgv_EmployeeList.DataSource = data;
+
+               
             }
         }
 
@@ -234,7 +236,7 @@ namespace Admin_Login
                     ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
                     ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
                     ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
-                    ep.dtpDateHiredEdit.Value = DateTime.ParseExact(dt.Rows[0][9].ToString(), "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
                     ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
                     ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
                     ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());

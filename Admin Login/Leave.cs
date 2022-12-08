@@ -105,7 +105,8 @@ namespace Admin_Login
                     }
                     else
                     {
-                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                        //totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                        totalLeaveDays = LeaveDaysCounter(txtEmployeeID.Text.ToString());
                     }
 
                     employeeLeaveCredits = dt.Rows[0][18].ToString();
@@ -144,11 +145,7 @@ namespace Admin_Login
 
                         command2.ExecuteNonQuery();
 
-                        AuditTrail audit = new AuditTrail();
-                        audit.AuditApplyLeave();
-
-                        addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
-
+                        addLeavePayDetails(remainingCredits, txtEmployeeID.Text.ToString());
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
 
@@ -168,10 +165,12 @@ namespace Admin_Login
                     }
                     else
                     {
-                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                        //totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                        totalLeaveDays = LeaveDaysCounter(txtEmployeeID.Text.ToString());
                     }
 
                     employeeLeaveCredits = dt.Rows[0][20].ToString();
+
                     remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totalLeaveDays;
                     int ZeroRemaining = 0;
 
@@ -206,7 +205,126 @@ namespace Admin_Login
 
                         command2.ExecuteNonQuery();
 
-                        addLeavePayDetails(totalLeaveDays, txtEmployeeID.Text.ToString());
+                        addLeavePayDetails(remainingCredits, txtEmployeeID.Text.ToString());
+                        rtxtReason.Text = " ";
+                        cmb_LeaveType.Text = " ";
+
+                        MessageBox.Show("Transaction Complete",
+                            "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave";
+                        menu.Menu_Load(menu, EventArgs.Empty);
+                    }
+                }
+                else if (cmb_LeaveType.Text.ToString() == "Maternity Leave"){
+
+                    if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
+                    {
+                        totalLeaveDays = 1;
+                    }
+                    else
+                    {
+                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                    }
+
+                    int MaternityLeaveCredits = 105;
+                    remainingCredits = Convert.ToInt32(MaternityLeaveCredits) - totalLeaveDays;
+                    int ZeroRemaining = 0;
+
+                    if (totalLeaveDays > Convert.ToInt32(MaternityLeaveCredits) || remainingCredits < ZeroRemaining)
+                    {
+                        MessageBox.Show("Maternity Leave must not exceed 105 days",
+                            "Maternity Leave", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        string query2 =
+                           "INSERT INTO Leave (" +
+                           "EmployeeID," +
+                           "StartDate," +
+                           "EndDate," +
+                           "Reason," +
+                           "Type)" +
+                           "VALUES(" +
+                           "@EmployeeID," +
+                           "@StartDate," +
+                           "@EndDate," +
+                           "@Reason," +
+                           "@Type)";
+
+
+                        SqlCommand command2 = new SqlCommand(query2, connection);
+                        command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
+                        command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
+                        command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
+
+                        command2.ExecuteNonQuery();
+
+                        addTernityLeavePayDetails(txtEmployeeID.Text.ToString());
+
+                        rtxtReason.Text = " ";
+                        cmb_LeaveType.Text = " ";
+
+                        MessageBox.Show("Transaction Complete",
+                            "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        Menu menu = (Menu)Application.OpenForms["Menu"];
+                        menu.Text = "Fiona's Farm and Resort - Leave";
+                        menu.Menu_Load(menu, EventArgs.Empty);
+                    }
+
+                }
+                else if (cmb_LeaveType.Text.ToString() == "Paternity Leave")
+                {
+                    if (dtp_StartDate.Text.ToString() == dtp_EndDate.Text.ToString())
+                    {
+                        totalLeaveDays = 1;
+                    }
+                    else
+                    {
+                        totalLeaveDays = (int)((dtp_EndDate.Value - dtp_StartDate.Value).TotalDays) + 1;
+                    }
+
+                    int MaternityLeaveCredits = 7;
+                    remainingCredits = Convert.ToInt32(MaternityLeaveCredits) - totalLeaveDays;
+                    int ZeroRemaining = 0;
+
+                    if (totalLeaveDays > Convert.ToInt32(MaternityLeaveCredits) || remainingCredits < ZeroRemaining)
+                    {
+                        MessageBox.Show("Paternity Leave must not exceed 7 days",
+                            "Paternity Leave", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        string query2 =
+                           "INSERT INTO Leave (" +
+                           "EmployeeID," +
+                           "StartDate," +
+                           "EndDate," +
+                           "Reason," +
+                           "Type)" +
+                           "VALUES(" +
+                           "@EmployeeID," +
+                           "@StartDate," +
+                           "@EndDate," +
+                           "@Reason," +
+                           "@Type)";
+
+
+                        SqlCommand command2 = new SqlCommand(query2, connection);
+                        command2.Parameters.AddWithValue("@EmployeeID", txtEmployeeID.Text);
+                        command2.Parameters.AddWithValue("@StartDate", dtp_StartDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@EndDate", dtp_EndDate.Text.ToString());
+                        command2.Parameters.AddWithValue("@Reason", rtxtReason.Text);
+                        command2.Parameters.AddWithValue("@Type", cmb_LeaveType.Text);
+
+                        command2.ExecuteNonQuery();
+
+                        addTernityLeavePayDetails(txtEmployeeID.Text.ToString());
+
                         rtxtReason.Text = " ";
                         cmb_LeaveType.Text = " ";
 
@@ -496,18 +614,17 @@ namespace Admin_Login
                     sqlDataAdapter.Fill(dt);
 
                     string employeeLeaveCredits;
-                    int remainingCredits;
+                    //int remainingCredits;
 
                     employeeLeaveCredits = dt.Rows[0][18].ToString();
-                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
+                    //remainingCredits = Convert.ToInt32(employeeLeaveCredits) - LeaveDaysCounter(emp_id);
 
                     string query =
                                "UPDATE EmployeeInfo " +
-                               "SET SickLeaveCredits = " + remainingCredits +
+                               "SET SickLeaveCredits = " + num_of_days +
                                "WHERE EmployeeID = " + txtEmployeeID.Text;
                     SqlCommand command = new SqlCommand(query, slcon);
                     command.ExecuteNonQuery();
-                    totaldays = 0;
                 }
             }
             else if (cmb_LeaveType.Text.ToString() == "Vacation Leave")
@@ -525,18 +642,81 @@ namespace Admin_Login
                     int remainingCredits;
 
                     employeeLeaveCredits = dt.Rows[0][20].ToString();
+                    //int totalLeavedays = LeaveDaysCounter(txtEmployeeID.Text.ToString());
 
-                    remainingCredits = Convert.ToInt32(employeeLeaveCredits) - totaldays;
+                    //remainingCredits = Convert.ToInt32(employeeLeaveCredits) - num_of_days;
 
                     string query =
                                "UPDATE EmployeeInfo " +
-                               "SET VacationLeaveCredits = " + remainingCredits +
-                               "WHERE EmployeeID = " + txtEmployeeID.Text;
+                               "SET VacationLeaveCredits = " + num_of_days +
+                               "WHERE EmployeeID = " + txtEmployeeID.Text.ToString();
                     SqlCommand command = new SqlCommand(query, vlcon);
                     command.ExecuteNonQuery();
-                    totaldays = 0;
                 }
             }
+        }
+
+        private void addTernityLeavePayDetails(string emp_id)
+        {
+            DateTime StartDate = DateTime.Parse(dtp_StartDate.Text.ToString());
+            DateTime EndDate = DateTime.Parse(dtp_EndDate.Text.ToString());
+
+            foreach (DateTime day in EachDay(StartDate, EndDate))
+            {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query =
+                        "INSERT INTO LeavePay (" +
+                        "LeaveID," +
+                        "EmployeeID," +
+                        "Date) " +
+                        "VALUES(" +
+                        "@LeaveID," +
+                        "@EmployeeID," +
+                        "@Date)";
+
+                    SqlCommand command2 = new SqlCommand(query, connection);
+                    command2.Parameters.AddWithValue("@LeaveID", getLatestLeaveID());
+                    command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(emp_id));
+                    command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                    command2.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private int LeaveDaysCounter(string employee_id)
+        {
+            int leave_days = 0;
+
+            DateTime StartDate = DateTime.Parse(dtp_StartDate.Text.ToString());
+            DateTime EndDate = DateTime.Parse(dtp_EndDate.Text.ToString());
+
+            int totaldays = 0;
+
+            foreach (DateTime day in EachDay(StartDate, EndDate))
+            {
+                string attendance_date = checkAttendanceDate(employee_id, day.ToString("MMMM dd, yyyy"));
+                string leave_date = checkLeaveDate(employee_id, day.ToString("MMMM dd, yyyy"));
+
+                if (attendance_date == day.ToString("MMMM dd, yyyy"))
+                {
+
+                }
+                else if (leave_date == day.ToString("MMMM dd, yyyy"))
+                {
+
+                }
+                else if (checkWeekDay(day.ToString("dddd"), employee_id) == false)
+                {
+
+                }
+                else
+                {
+                    leave_days++;
+                }
+            }
+            return leave_days;
         }
 
         private void dtp_StartDate_ValueChanged(object sender, EventArgs e)
@@ -547,6 +727,31 @@ namespace Admin_Login
         private void dtp_EndDate_ValueChanged(object sender, EventArgs e)
         {
             dtp_StartDate.MaxDate = dtp_EndDate.Value;
+        }
+
+        private void cmb_LeaveType_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cmb_LeaveType.Text.ToString() == "Maternity Leave")
+            {
+                dtp_EndDate.Value = DateTime.Today.AddDays(104);
+                cbSoloParent.Visible = true;
+            }
+            else if (cmb_LeaveType.Text.ToString() == "Paternity Leave")
+            {
+                dtp_EndDate.Value = DateTime.Today.AddDays(6);
+            }
+        }
+
+        private void cbSoloParent_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbSoloParent.Checked == true)
+            {
+                dtp_EndDate.Value = DateTime.Today.AddDays(119);
+            }
+            else
+            {
+                dtp_EndDate.Value = DateTime.Today.AddDays(104);
+            }
         }
     }
 }
