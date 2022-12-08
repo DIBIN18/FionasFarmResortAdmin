@@ -16,7 +16,7 @@ namespace Admin_Login
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
-        static string filepath = null, employeeid, employeename, department, position, datefrom;
+        static string filepath = null, employeeid, employeename, department, position, datefrom,dateto;
         int i = 1;
         bool setdateFrom = true;
         string PayrollID;
@@ -46,7 +46,7 @@ namespace Admin_Login
         {
             dgvDatechangeLoad();
             dtp_From.MaxDate = dtp_To.Value;
-            dtp_To.MaxDate = DateTime.Now;           
+            dtp_To.MaxDate = DateTime.Now;
         }
         private void dtp_To_ValueChanged(object sender, EventArgs e)
         {
@@ -69,16 +69,23 @@ namespace Admin_Login
                 cbSSS.Checked = true;
                 cbPAGIBIG.Checked = false;
                 cbPHILHEALTH.Checked = false;
-
+                dtp_From.Value = dtp_To.Value.AddDays(-14);
+                sssclass.dateTo = dtp_To.Text;
             }
             else if (day_To == "30")
             {
                 cbSSS.Checked = false;
                 cbPAGIBIG.Checked = true;
                 cbPHILHEALTH.Checked = true;
-                
+                dtp_From.Value = dtp_To.Value.AddDays(-14);
             }
-            dtp_From.Value = dtp_To.Value.AddDays(-14);
+            else if (day_To == "31")
+            {
+                cbSSS.Checked = false;
+                cbPAGIBIG.Checked = true;
+                cbPHILHEALTH.Checked = true;
+                dtp_From.Value = dtp_To.Value.AddDays(-15);
+            }
             dgvDatechangeLoad();           
         }
         private void PayrollReport_Load(object sender, EventArgs e)
@@ -222,9 +229,9 @@ namespace Admin_Login
         }
         private void btnGenerate_Click(object sender, EventArgs e)
         {
-            sssclass.dateFrom = dtp_From.Text;
-            sssclass.dateTo = dtp_To.Text;
-            PaySlipForm paySlipForm = new PaySlipForm();
+            datefrom = dtp_From.Text;
+            dateto = dtp_To.Text;
+            PaySlipForm paySlipForm = new PaySlipForm(datefrom , dateto);
             paySlipForm.ShowDialog();
         }
         public void moveToHistory()
@@ -442,10 +449,10 @@ namespace Admin_Login
             }
         }
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {   
             sssclass.getSSSRange();
-            sssclass.dateFrom = dtp_From.Text;
-            sssclass.dateTo = dtp_To.Text;
+            SSSRangeClass.from = dtp_From.Text;
+            SSSRangeClass.to = dtp_To.Text;
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Payroll";
             SqlConnection connection = new SqlConnection(login.connectionString);
@@ -465,7 +472,8 @@ namespace Admin_Login
                 department = data.Rows[0][2].ToString();
                 position = data.Rows[0][3].ToString();
                 datefrom = dtp_From.Text;
-                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom);
+                dateto = dtp_To.Text;
+                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom,dateto);
                 menu.Menu_Load(menu, EventArgs.Empty);
             }
         }

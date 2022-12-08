@@ -26,9 +26,12 @@ namespace Admin_Login
         FolderBrowserDialog selectedfile = new FolderBrowserDialog();
         string EmpID = "", filepath ;       
         ArrayList getImage = new ArrayList();
-        public PaySlipForm()
+        string _datefrom, _dateto;
+        public PaySlipForm(string datefrom, string dateto)
         {
             InitializeComponent();
+            _datefrom = datefrom;
+            _dateto = dateto;
         }
         public void createDocs()
         {
@@ -124,8 +127,10 @@ namespace Admin_Login
                 adapter.Fill(data);
                 try
                 {
-                    lblDatefrom.Text = pr.dtp_From.Value.ToString("MMMM dd, yyyy");
-                    lblDateto.Text = pr.dtp_To.Value.ToString("MMMM dd, yyyy");
+                    
+                    lblDatefrom.Text = _datefrom;
+                    lblDateto.Text = _dateto;
+
                     txtEmployeeID.Text = data.Rows[0][0].ToString();
                     txtEmployeeName.Text = data.Rows[0][1].ToString();
                     string position = data.Rows[0][2].ToString() + " ₱" + data.Rows[0][3].ToString() + "/Hour";
@@ -148,6 +153,7 @@ namespace Admin_Login
                     txtLeavePay.Text = leavepay.ToString("n2");
                     txtGrossPay.Text = "₱" + data.Rows[0][11].ToString();
                     txtTardinessMins.Text = data.Rows[0][12].ToString();
+                    
                     double tardiness = Convert.ToDouble(data.Rows[0][12].ToString()) * (Convert.ToDouble(data.Rows[0][3].ToString()) / 60);
                     txtLateAmount.Text = tardiness.ToString("n2");
                     txtUnderTimeMin.Text = data.Rows[0][13].ToString();

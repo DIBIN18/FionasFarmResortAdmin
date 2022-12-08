@@ -14,6 +14,7 @@ namespace Admin_Login
         double sssContributionEmployee = 0, sssContributionEmployer, pagibicontribEmployee = 0, pagibicontribEmployer = 0, PhilhealthContrib = 0, tax;
         public DataTable datatable = new DataTable();
         public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
+        public static string from, to;
         double getGrossPay = 0;
 
 
