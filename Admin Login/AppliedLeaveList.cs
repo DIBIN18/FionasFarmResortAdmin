@@ -14,6 +14,8 @@ namespace Admin_Login
     public partial class AppliedLeaveList : Form
     {
         string SelectedLeaveRecordID = "";
+        string SelectedEmployeeID = "";
+        string SelectedDate = "";
 
         Login login = new Login();
         public AppliedLeaveList()
@@ -37,6 +39,7 @@ namespace Admin_Login
             string query =
                 "SELECT " +
                 "LeavePay.LeaveRecordID, " + 
+                "LeavePay.EmployeeID," +
                 "EmployeeInfo.EmployeeFullName, " +
                 "Leave.Type, Leave.Reason, " +
                 "LeavePay.Date " +
@@ -61,6 +64,7 @@ namespace Admin_Login
             dgvLeaveList.DataSource = dt;
 
             dgvLeaveList.Columns["LeaveRecordID"].Visible = false;
+            dgvLeaveList.Columns["EmployeeID"].Visible = false;
             conn.Close();
         }
 
@@ -77,11 +81,16 @@ namespace Admin_Login
         private void dgvLeaveList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             SelectedLeaveRecordID = dgvLeaveList.Rows[e.RowIndex].Cells[0].Value.ToString();
+            SelectedEmployeeID = dgvLeaveList.Rows[e.RowIndex].Cells[1].Value.ToString();
+            SelectedDate  = dgvLeaveList.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+            Console.WriteLine(SelectedLeaveRecordID);
+            Console.WriteLine(SelectedEmployeeID);
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            // Returning leave credits are not applied yet
+            
 
             DialogResult dialogResult = 
                 MessageBox.Show("Are you sure you want to remove the applied leave?", 
@@ -90,9 +99,11 @@ namespace Admin_Login
 
             if (dialogResult == DialogResult.Yes)
             {
+                ReturnLeaveCredits();
+
                 string query =
                 "DELETE FROM LeavePay WHERE LeaveRecordID=" + SelectedLeaveRecordID;
-
+                
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
                     connection.Open();
@@ -103,6 +114,10 @@ namespace Admin_Login
                     AuditTrail audit = new AuditTrail();
                     audit.AuditRemoveLeave();
                 }
+
+                
+
+                
             }
         }
 
@@ -171,5 +186,71 @@ namespace Admin_Login
                 }
             }
         }
+
+        private string GetLeaveType(string emp_id, string date)
+        {
+            string query2 =
+                "select Leave.Type " +
+                "from LeavePay " +
+                "inner join Leave " +
+                "on LeavePay.LeaveID = Leave.LeaveID " +
+                "where LeavePay.EmployeeID = " + emp_id +
+                "and Date='" + date + "'";
+
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+            }
+        }
+
+        private void ReturnLeaveCredits()
+        {
+            Console.WriteLine(GetLeaveType(SelectedEmployeeID, SelectedDate));
+            if (GetLeaveType(SelectedEmployeeID, SelectedDate) == "Sick Leave")
+            {
+                using (SqlConnection conn = new SqlConnection(login.connectionString))
+                {
+                    conn.Open();
+
+                    string query = 
+                        "UPDATE EmployeeInfo " +
+                        "SET SickLeaveCredits = SickLeaveCredits + 1 " +
+                        "WHERE EmployeeID=" + SelectedEmployeeID;
+                    Console.WriteLine(query);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            else if (GetLeaveType(SelectedEmployeeID, SelectedDate) == "Vacation Leave")
+            {
+                using (SqlConnection conn = new SqlConnection(login.connectionString))
+                {
+                    conn.Open();
+
+                    string query =
+                        "UPDATE EmployeeInfo " +
+                        "SET VacationLeaveCredits = VacationLeaveCredits + 1 " +
+                        "WHERE EmployeeID=" + SelectedEmployeeID;
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

@@ -42,8 +42,8 @@
             this.txtEmailAdd = new System.Windows.Forms.TextBox();
             this.txtContactNum = new System.Windows.Forms.TextBox();
             this.txtGender = new System.Windows.Forms.ComboBox();
-            this.txtDateHired = new System.Windows.Forms.DateTimePicker();
-            this.txtDateofBirth = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateHired = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateofBirth = new System.Windows.Forms.DateTimePicker();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.txtCivilStatus = new System.Windows.Forms.ComboBox();
@@ -250,29 +250,29 @@
             this.txtGender.TabIndex = 28;
             this.txtGender.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCivilStatus_KeyPress);
             // 
-            // txtDateHired
+            // dtpDateHired
             // 
-            this.txtDateHired.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateHired.CustomFormat = "mm-dd-yyyy";
-            this.txtDateHired.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateHired.Location = new System.Drawing.Point(781, 85);
-            this.txtDateHired.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDateHired.Name = "txtDateHired";
-            this.txtDateHired.Size = new System.Drawing.Size(369, 28);
-            this.txtDateHired.TabIndex = 30;
+            this.dtpDateHired.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateHired.CustomFormat = "mm-dd-yyyy";
+            this.dtpDateHired.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateHired.Location = new System.Drawing.Point(781, 85);
+            this.dtpDateHired.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDateHired.Name = "dtpDateHired";
+            this.dtpDateHired.Size = new System.Drawing.Size(369, 28);
+            this.dtpDateHired.TabIndex = 30;
             // 
-            // txtDateofBirth
+            // dtpDateofBirth
             // 
-            this.txtDateofBirth.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateofBirth.CustomFormat = "mm-dd-yyyy";
-            this.txtDateofBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDateofBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDateofBirth.Location = new System.Drawing.Point(781, 46);
-            this.txtDateofBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDateofBirth.Name = "txtDateofBirth";
-            this.txtDateofBirth.Size = new System.Drawing.Size(369, 28);
-            this.txtDateofBirth.TabIndex = 31;
+            this.dtpDateofBirth.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateofBirth.CustomFormat = "mm-dd-yyyy";
+            this.dtpDateofBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDateofBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDateofBirth.Location = new System.Drawing.Point(781, 46);
+            this.dtpDateofBirth.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpDateofBirth.Name = "dtpDateofBirth";
+            this.dtpDateofBirth.Size = new System.Drawing.Size(369, 28);
+            this.dtpDateofBirth.TabIndex = 31;
             // 
             // cmbDepartment
             // 
@@ -366,6 +366,7 @@
             this.txtEmploymentType.FormattingEnabled = true;
             this.txtEmploymentType.Items.AddRange(new object[] {
             "Contractual",
+            "Probationary",
             "Regular"});
             this.txtEmploymentType.Location = new System.Drawing.Point(252, 42);
             this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -626,9 +627,9 @@
             this.panel2.Controls.Add(this.txtContactNum);
             this.panel2.Controls.Add(this.txtEmailAdd);
             this.panel2.Controls.Add(this.txtGender);
-            this.panel2.Controls.Add(this.txtDateofBirth);
+            this.panel2.Controls.Add(this.dtpDateofBirth);
             this.panel2.Controls.Add(this.txtAddress);
-            this.panel2.Controls.Add(this.txtDateHired);
+            this.panel2.Controls.Add(this.dtpDateHired);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Location = new System.Drawing.Point(12, 11);
@@ -849,8 +850,8 @@
         private System.Windows.Forms.TextBox txtEmailAdd;
         private System.Windows.Forms.TextBox txtContactNum;
         private System.Windows.Forms.ComboBox txtGender;
-        private System.Windows.Forms.DateTimePicker txtDateHired;
-        private System.Windows.Forms.DateTimePicker txtDateofBirth;
+        private System.Windows.Forms.DateTimePicker dtpDateHired;
+        private System.Windows.Forms.DateTimePicker dtpDateofBirth;
         private System.Windows.Forms.ComboBox txtCivilStatus;
         private System.Windows.Forms.DateTimePicker dtpScheduleIn;
         private System.Windows.Forms.Label label16;

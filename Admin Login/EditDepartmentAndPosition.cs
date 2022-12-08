@@ -230,7 +230,8 @@ namespace Admin_Login
 
                 DialogResult dialogResult = MessageBox.Show(
                         " Are you sure you want to Delete the Department?, " +
-                        "Positions under the department will also be deleted","Delete Department", MessageBoxButtons.YesNo
+                        "Positions under the department will also be deleted","Delete Department", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -242,7 +243,7 @@ namespace Admin_Login
                     txtEditPositionName.Text = "";
 
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Department Deleted");
+                    MessageBox.Show("Department Deleted", "Delete Department", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadDgvDept();
                     loadDgvPos();
                     txtEditDepartmentName.Text = " ";
@@ -262,7 +263,8 @@ namespace Admin_Login
                 string query = "DELETE FROM Position WHERE PositionID=" + selectedPos;
 
                 DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to Delete the Position?, ", "Delete Position", MessageBoxButtons.YesNo
+                        " Are you sure you want to Delete the Position?, ", "Delete Position", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -270,7 +272,7 @@ namespace Admin_Login
                 if (dialogResult == DialogResult.Yes)
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Position Deleted");
+                    MessageBox.Show("Position Deleted", "Delete Position", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     loadDgvPos();
                     txtEditPositionName.Text = " ";
                     txtEditBasicRate.Text = " ";

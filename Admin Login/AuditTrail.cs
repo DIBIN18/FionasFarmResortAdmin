@@ -42,6 +42,7 @@ namespace Admin_Login
             string Module = "Leave";
             string Description = "Applied Leave";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -57,6 +58,7 @@ namespace Admin_Login
             string Module = "Leave";
             string Description = "Remove Leave";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -74,6 +76,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Add New DepartmentName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -89,6 +92,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Add New PositionName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -104,6 +108,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Edit DepartmentName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -119,6 +124,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Edit PositionName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -135,6 +141,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Delete DepartmentName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -150,6 +157,7 @@ namespace Admin_Login
             string Module = "Department And Position";
             string Description = "Delete PositionName";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -167,6 +175,7 @@ namespace Admin_Login
             string Module = "Attendance Record";
             string Description = "Add Manual Attendance";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -182,6 +191,7 @@ namespace Admin_Login
             string Module = "Attendance Record";
             string Description = "Update Attendance";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -198,6 +208,7 @@ namespace Admin_Login
             string Module = "Schedules";
             string Description = "Add OverTime";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -213,6 +224,7 @@ namespace Admin_Login
             string Module = "Schedules";
             string Description = "Remove OverTime";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -228,6 +240,7 @@ namespace Admin_Login
             string Module = "Schedules";
             string Description = "Add Single Schedule";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -243,6 +256,7 @@ namespace Admin_Login
             string Module = "Schedules";
             string Description = "Remove Single Schedule";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -261,6 +275,7 @@ namespace Admin_Login
             string Module = "Deductions";
             string Description = "Add Deductions";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -278,6 +293,7 @@ namespace Admin_Login
             string Module = "Holiday Settings";
             string Description = "add New Holiday";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -293,6 +309,7 @@ namespace Admin_Login
             string Module = "Holiday Settings";
             string Description = "Remove Holiday";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);
@@ -309,6 +326,7 @@ namespace Admin_Login
             string Module = "Settings";
             string Description = "add New User";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+            adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);
             auditcommand.Parameters.AddWithValue("@Date", auditDate);
             auditcommand.Parameters.AddWithValue("@Module", Module);

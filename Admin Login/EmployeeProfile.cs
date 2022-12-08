@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using Spire.Doc.Documents;
 
 namespace Admin_Login
 {
@@ -75,6 +76,12 @@ namespace Admin_Login
 
             dtpBreakPeriod.Format = DateTimePickerFormat.Custom;
             dtpBreakPeriod.CustomFormat = "hh:mm:ss tt";
+
+            dtpDateOfBirth.Format = DateTimePickerFormat.Custom;
+            dtpDateOfBirth.CustomFormat = "MMMM dd, yyyy";
+
+            dtpDateHiredEdit.Format = DateTimePickerFormat.Custom;
+            dtpDateHiredEdit.CustomFormat = "MMMM dd, yyyy";
 
             try
             {
@@ -275,38 +282,20 @@ namespace Admin_Login
                 "Email = '" + txtEmailEdit.Text.ToString() + "', " +
                 "EmployeeMaritalStatus = '" + cmbMaritalStatusEdit.Text.ToString() + "', " +
                 "ContactNumber = '" + txtContactNoEdit.Text.ToString() + "', " +
-                "DateHired = '" + dtpDateHiredEdit.Value.ToString("MM/dd/yyyy") + "', " +
+                "DateHired = '" + dtpDateHiredEdit.Value.ToString("MMMM dd, yyyy") + "', " +
                 "Gender = '" + cmbGenderEdit.Text.ToString() + "', " +
                 "BirthDate = '" + dtpDateOfBirth.Value.ToString("MMMM dd, yyyy") + "', " +
                 "Age = " + currentAge.ToString() + ", " +
                 "DepartmentID = " + deptId.ToString() + ", " + 
                 "PositionID = " + posId.ToString() + ", " + 
                 "EmploymentType = '" + cmbEmploymentTypeEdit.Text.ToString() + "', " +
-                //"AllowedOvertime = " + Set_Allowed_OT(cmbOtAllowed.Text.ToString()) + ", " +
                 "AccumulatedDayOffs = " + txtAccumulatedDayOffEdit.Text.ToString() + ", " +
                 "SickLeaveCredits = " + txtSickLeaveCreditsEdit.Text.ToString() + ", " +
                 "VacationLeaveCredits = " + txtVacationLeaveCreditsEdit.Text.ToString() + ", " +
                 "TIN='" + txtTINEdit.Text.ToString() + "' " +    
                 "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
 
-            SqlConnection auditcon = new SqlConnection(login.connectionString);
-            auditcon.Open();
-            //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-            //SqlDataAdapter sda = new SqlDataAdapter(name);
-            //DataTable dtaudit = new DataTable();
-            //sda.Fill(dtaudit);
-            //string auditName = dt.Rows[0][0].ToString();
-            string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-            string Module = "EmployeeProfile";
-            string Description = "Update EmployeeProfile";
-            SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-            adminname = menu.getAdminName();
-            auditcommand.Parameters.AddWithValue("@UserName_", adminname);
-            auditcommand.Parameters.AddWithValue("@Date", auditDate);
-            auditcommand.Parameters.AddWithValue("@Module", Module);
-            auditcommand.Parameters.AddWithValue("@Description", Description);
-            auditcommand.ExecuteNonQuery();
-            auditcon.Close();
+            
 
             if (cbMonday.Checked)
             {
@@ -509,18 +498,6 @@ namespace Admin_Login
             }
         }
 
-        public int Set_Allowed_OT(string ot_stat)
-        {
-            if (ot_stat == "Yes")
-            {
-                return 1;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
         public void Reload_Profile(string profile_Id)
         {
             string currentProfile = lblEmployeeID.Text;
@@ -628,30 +605,6 @@ namespace Admin_Login
             }
         }
 
-        public string Display_OT(string id, Boolean emp_ota)
-        {
-            string query2 = "SELECT AllowedOvertime FROM EmployeeInfo WHERE EmployeeID='" + id + "'";
-
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
-            using (SqlCommand command = new SqlCommand(query2, connection))
-            {
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    reader.Read();
-                    if (reader.GetBoolean(0) == true)
-                    {
-                        return "Yes";
-                    }
-                    else
-                    {
-                        return "No";
-                    }
-                }
-            }
-        }
-
         public string Get_PositionName(string id)
         {
             string query2 = "SELECT PositionName FROM Position WHERE PositionID='" + id + "'";
@@ -716,7 +669,17 @@ namespace Admin_Login
 
             btnSetCustomRate.Visible = false;
             btnSaveCustomRate.Visible = true;
-            btnRemoveCustomRate.Visible = true;
+            btnCancel.Visible = true;
+            
+
+            if (CheckCustom(lblEmployeeID.Text.ToString()) == false)
+            {
+                btnRemoveCustomRate.Visible = false;
+            }
+            else
+            {
+                btnRemoveCustomRate.Visible = true;
+            }
         }
 
         private void btnSaveCustomRate_Click(object sender, EventArgs e)
@@ -757,7 +720,23 @@ namespace Admin_Login
                 cmd1.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
             }
-            MessageBox.Show("Custom Basic Rate has been set");
+
+            MessageBox.Show("Custom Basic Rate has been set", "Custom Position", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //
+            //  Update previous AttendanceRecord's PositionID
+            //
+            string updateAttendanceRecord =
+                "UPDATE AttendanceRecord " +
+                "SET PositionID = (SELECT PositionID FROM EmployeeInfo WHERE EmployeeID=" + lblEmployeeID.Text.ToString() + ") " +
+                "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
+
+            using (SqlConnection updateConn = new SqlConnection(login.connectionString))
+            {
+                updateConn.Open();
+                SqlCommand updateCmd = new SqlCommand(updateAttendanceRecord, updateConn);
+                updateCmd.ExecuteNonQuery();
+            }
 
             lblCustomRate.Text = txtCustomRate.Text;
             lblCustomRate.Visible = true;
@@ -766,6 +745,7 @@ namespace Admin_Login
             btnSetCustomRate.Visible = true;
             btnSaveCustomRate.Visible = false;
             btnRemoveCustomRate.Visible = false;
+            btnCancel.Visible = false;
         }
 
         private void btnRemoveCustomRate_Click(object sender, EventArgs e)
@@ -782,18 +762,76 @@ namespace Admin_Login
                 SqlCommand cmd1 = new SqlCommand(query, connection);
                 cmd1.ExecuteNonQuery();
             }
-            MessageBox.Show("Employee Basic Rate Has Been Set to Default According To Position");
+            MessageBox.Show("Employee Basic Rate Has Been Set to Default According To Position", 
+                "Removed Custom Rate", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            //
+            //  Update previous AttendanceRecord's PositionID
+            //
+            string updateAttendanceRecord =
+                "UPDATE AttendanceRecord " +
+                "SET PositionID = (SELECT PositionID FROM EmployeeInfo WHERE EmployeeID=" + lblEmployeeID.Text.ToString() + ") " +
+                "WHERE EmployeeID = " + lblEmployeeID.Text.ToString();
+
+            using (SqlConnection updateConn = new SqlConnection(login.connectionString))
+            {
+                updateConn.Open();
+                SqlCommand updateCmd = new SqlCommand(updateAttendanceRecord, updateConn);
+                updateCmd.ExecuteNonQuery();
+            }
+
+            //
+            //  Remove Custom Rate Poistions
+            //
+            string deleteCustom =
+                "DELETE FROM Position WHERE Custom=1";
+
+            using (SqlConnection delConn = new SqlConnection(login.connectionString))
+            {
+                delConn.Open();
+                SqlCommand delCmd = new SqlCommand(updateAttendanceRecord, delConn);
+                delCmd.ExecuteNonQuery();
+            }
+
+
             lblCustomRate.Text = "None";
             lblCustomRate.Visible = true;
             txtCustomRate.Visible = false;
             btnRemoveCustomRate.Visible = false;
             btnSaveCustomRate.Visible = false;
             btnSetCustomRate.Visible = true;
+            btnCancel.Visible = false;  
+        }
+
+        private void txtCustomRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
         private void cmbDepartmentEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //lblCustomRate.Text = txtCustomRate.Text;
+            lblCustomRate.Visible = true;
+            txtCustomRate.Visible = false;
+            btnSetCustomRate.Visible = true;
+            btnSaveCustomRate.Visible = false;
+            btnRemoveCustomRate.Visible = false;
+            btnCancel.Visible = false;
+            txtCustomRate.Text = "";
         }
 
         private void cmbDepartmentEdit_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -883,6 +921,34 @@ namespace Admin_Login
                     {
                         MessageBox.Show("No Position");
                         return 0;
+                    }
+                }
+            }
+        }
+
+        public bool CheckCustom(string emp_id)
+        {
+            string query =
+                "SELECT Custom " +
+                "FROM Position " +
+                "WHERE PositionID = " +
+                "(SELECT PositionID FROM EmployeeInfo WHERE EmployeeID=" + emp_id +")";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
             }

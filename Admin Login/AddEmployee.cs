@@ -65,6 +65,12 @@ namespace Admin_Login
 
             dtpBreakPeriod.Format = DateTimePickerFormat.Custom;
             dtpBreakPeriod.CustomFormat = "hh:mm:ss tt";
+
+            dtpDateofBirth.Format = DateTimePickerFormat.Custom;
+            dtpDateofBirth.CustomFormat = "MMMM dd, yyyy";
+
+            dtpDateHired.Format = DateTimePickerFormat.Custom;
+            dtpDateHired.CustomFormat = "MMMM dd, yyyy";
         }      
 
         public void insertNewEmployeeSchedule()
@@ -320,7 +326,10 @@ namespace Admin_Login
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
             //Compute Age Using DateTimePicker
-            var checkAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+            var checkAge = DateTime.Today.Year - dtpDateofBirth.Value.Year;
+
+            string Bdate = dtpDateofBirth.Value.ToString("MMMM dd, yyyy");
+            string Hdate = dtpDateHired.Value.ToString("MMMM dd, yyyy");
 
             if (!(Regex.IsMatch(txtFullName.Text, FullNameFormat)))
             {
@@ -395,9 +404,9 @@ namespace Admin_Login
                     cmd.Parameters.AddWithValue("@Email", txtEmailAdd.Text);
                     cmd.Parameters.AddWithValue("@EmployeeMaritalStatus", txtCivilStatus.Text);
                     cmd.Parameters.AddWithValue("@ContactNumber", txtContactNum.Text); 
-                    cmd.Parameters.AddWithValue("@DateHired", txtDateHired.Value.ToString("MM/dd/yyyy"));
+                    cmd.Parameters.AddWithValue("@DateHired", Hdate);
                     cmd.Parameters.AddWithValue("@Gender", txtGender.Text);
-                    cmd.Parameters.AddWithValue("@BirthDate", txtDateofBirth.Value.ToString("MMMM dd, yyyy"));
+                    cmd.Parameters.AddWithValue("@BirthDate", Bdate);
                     cmd.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                     cmd.Parameters.AddWithValue("@PositionID", selectedPositionId);
                     cmd.Parameters.AddWithValue("@EmploymentType", txtEmploymentType.Text);
@@ -408,7 +417,7 @@ namespace Admin_Login
                     cmd.Parameters.AddWithValue("@Status", "Active");
 
                     //Compute Age Using DateTimePicker
-                    int currentAge = DateTime.Today.Year - txtDateofBirth.Value.Year;
+                    int currentAge = DateTime.Today.Year - dtpDateofBirth.Value.Year;
 
                     cmd.Parameters.AddWithValue("@Age", currentAge.ToString());
                     cmd.ExecuteNonQuery();
@@ -458,7 +467,7 @@ namespace Admin_Login
             txtEmailAdd.Text = "";
             txtCivilStatus.Text = "";
             txtContactNum.Text = "";
-            txtDateHired.Text = "";
+            dtpDateHired.Text = "";
             txtGender.Text = "";
             txtEmploymentType.Text = "";
             cmbDepartment.Text = "";
