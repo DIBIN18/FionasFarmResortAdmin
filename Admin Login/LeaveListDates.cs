@@ -95,7 +95,7 @@ namespace Admin_Login
             DialogResult dialogResult = 
                 MessageBox.Show("Are you sure you want to cancel the applied leave date?\n" +
                                 "For " + SelectedEmployeeName + " on " + SelectedDate, 
-                                "Remove Applied Leave Date",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                                "Remove Applied Leave Date",MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (dialogResult == DialogResult.Yes)
             {

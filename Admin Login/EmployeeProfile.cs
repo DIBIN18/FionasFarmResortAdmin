@@ -407,6 +407,9 @@ namespace Admin_Login
 
         private void btnAddFace_Click(object sender, EventArgs e)
         {
+            pbProfilePic.Image.Dispose();
+            pbProfilePic.Image.Dispose();
+
             Clipboard.SetText(lblEmployeeID.Text.ToString());
             var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
             Process.Start(path + "\\Collect Employee Dataset\\main.exe");
