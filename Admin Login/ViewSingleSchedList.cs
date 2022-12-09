@@ -54,7 +54,8 @@ namespace Admin_Login
 
 
                 DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to remove the single schedule?, ", "Delete Department", MessageBoxButtons.YesNo
+                        " Are you sure you want to remove the single schedule?, ", "Delete Department", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);

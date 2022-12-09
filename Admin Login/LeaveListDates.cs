@@ -16,6 +16,7 @@ namespace Admin_Login
         string SelectedLeaveRecordID = "";
         string SelectedEmployeeID = "";
         string SelectedDate = "";
+        string SelectedEmployeeName = "";
 
         Login login = new Login();
         public LeaveListDates()
@@ -83,6 +84,7 @@ namespace Admin_Login
             SelectedLeaveRecordID = dgvLeaveList.Rows[e.RowIndex].Cells[0].Value.ToString();
             SelectedEmployeeID = dgvLeaveList.Rows[e.RowIndex].Cells[1].Value.ToString();
             SelectedDate  = dgvLeaveList.Rows[e.RowIndex].Cells[5].Value.ToString();
+            SelectedEmployeeName = dgvLeaveList.Rows[e.RowIndex].Cells[2].Value.ToString();
 
             Console.WriteLine(SelectedLeaveRecordID);
             Console.WriteLine(SelectedEmployeeID);
@@ -91,7 +93,8 @@ namespace Admin_Login
         private void btnRemove_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = 
-                MessageBox.Show("Are you sure you want to cancel the applied leave date?", 
+                MessageBox.Show("Are you sure you want to cancel the applied leave date?\n" +
+                                "For " + SelectedEmployeeName + " on " + SelectedDate, 
                                 "Remove Applied Leave Date",MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
             if (dialogResult == DialogResult.Yes)
@@ -111,6 +114,9 @@ namespace Admin_Login
                     AuditTrail audit = new AuditTrail();
                     audit.AuditRemoveLeave();
                 }
+
+                MessageBox.Show("Applied Leave Successfully Cancelled", "Leave Cancellation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -189,7 +195,7 @@ namespace Admin_Login
                 "from LeavePay " +
                 "inner join Leave " +
                 "on LeavePay.LeaveID = Leave.LeaveID " +
-                "where LeavePay.EmployeeID = " + emp_id +
+                "where LeavePay.EmployeeID = " + emp_id + " " +
                 "and Date='" + date + "'";
 
 
@@ -214,7 +220,6 @@ namespace Admin_Login
 
         private void ReturnLeaveCredits()
         {
-            Console.WriteLine(GetLeaveType(SelectedEmployeeID, SelectedDate));
             if (GetLeaveType(SelectedEmployeeID, SelectedDate) == "Sick Leave")
             {
                 using (SqlConnection conn = new SqlConnection(login.connectionString))

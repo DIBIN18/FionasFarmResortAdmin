@@ -50,7 +50,6 @@ namespace Admin_Login
             this.PayrollReport = new System.Windows.Forms.CheckBox();
             this.Deductions = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.DashBoard = new System.Windows.Forms.CheckBox();
             this.DepartmentPosition = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -234,7 +233,6 @@ namespace Admin_Login
             this.panel3.Controls.Add(this.PayrollReport);
             this.panel3.Controls.Add(this.Deductions);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.DashBoard);
             this.panel3.Controls.Add(this.DepartmentPosition);
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.label7);
@@ -268,7 +266,7 @@ namespace Admin_Login
             // 
             this.Setting.AutoSize = true;
             this.Setting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Setting.Location = new System.Drawing.Point(601, 221);
+            this.Setting.Location = new System.Drawing.Point(348, 216);
             this.Setting.Name = "Setting";
             this.Setting.Size = new System.Drawing.Size(87, 24);
             this.Setting.TabIndex = 25;
@@ -290,7 +288,7 @@ namespace Admin_Login
             // 
             this.HolidaySetting.AutoSize = true;
             this.HolidaySetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HolidaySetting.Location = new System.Drawing.Point(348, 160);
+            this.HolidaySetting.Location = new System.Drawing.Point(348, 124);
             this.HolidaySetting.Name = "HolidaySetting";
             this.HolidaySetting.Size = new System.Drawing.Size(143, 24);
             this.HolidaySetting.TabIndex = 24;
@@ -312,7 +310,7 @@ namespace Admin_Login
             // 
             this.AttendanceRecord.AutoSize = true;
             this.AttendanceRecord.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AttendanceRecord.Location = new System.Drawing.Point(348, 191);
+            this.AttendanceRecord.Location = new System.Drawing.Point(348, 155);
             this.AttendanceRecord.Name = "AttendanceRecord";
             this.AttendanceRecord.Size = new System.Drawing.Size(167, 24);
             this.AttendanceRecord.TabIndex = 22;
@@ -334,7 +332,7 @@ namespace Admin_Login
             // 
             this.Deductions.AutoSize = true;
             this.Deductions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Deductions.Location = new System.Drawing.Point(348, 129);
+            this.Deductions.Location = new System.Drawing.Point(348, 93);
             this.Deductions.Name = "Deductions";
             this.Deductions.Size = new System.Drawing.Size(109, 24);
             this.Deductions.TabIndex = 20;
@@ -351,22 +349,11 @@ namespace Admin_Login
             this.label12.TabIndex = 17;
             this.label12.Text = "Module Access:";
             // 
-            // DashBoard
-            // 
-            this.DashBoard.AutoSize = true;
-            this.DashBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DashBoard.Location = new System.Drawing.Point(348, 98);
-            this.DashBoard.Name = "DashBoard";
-            this.DashBoard.Size = new System.Drawing.Size(107, 24);
-            this.DashBoard.TabIndex = 17;
-            this.DashBoard.Text = "Dashboard";
-            this.DashBoard.UseVisualStyleBackColor = true;
-            // 
             // DepartmentPosition
             // 
             this.DepartmentPosition.AutoSize = true;
             this.DepartmentPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepartmentPosition.Location = new System.Drawing.Point(348, 222);
+            this.DepartmentPosition.Location = new System.Drawing.Point(348, 186);
             this.DepartmentPosition.Name = "DepartmentPosition";
             this.DepartmentPosition.Size = new System.Drawing.Size(206, 24);
             this.DepartmentPosition.TabIndex = 21;
@@ -429,7 +416,7 @@ namespace Admin_Login
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(430, 290);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -442,7 +429,7 @@ namespace Admin_Login
             // 
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPass.Location = new System.Drawing.Point(132, 136);
-            this.txtPass.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPass.Margin = new System.Windows.Forms.Padding(2);
             this.txtPass.Multiline = true;
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(169, 28);
@@ -453,7 +440,7 @@ namespace Admin_Login
             this.cmbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUserName.FormattingEnabled = true;
             this.cmbUserName.Location = new System.Drawing.Point(132, 176);
-            this.cmbUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbUserName.Margin = new System.Windows.Forms.Padding(2);
             this.cmbUserName.Name = "cmbUserName";
             this.cmbUserName.Size = new System.Drawing.Size(169, 28);
             this.cmbUserName.TabIndex = 11;
@@ -462,7 +449,7 @@ namespace Admin_Login
             // 
             this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUser.Location = new System.Drawing.Point(132, 98);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(2);
             this.txtUser.Multiline = true;
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(169, 28);
@@ -473,7 +460,7 @@ namespace Admin_Login
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pictureBox1.Location = new System.Drawing.Point(289, 284);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(186, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -488,7 +475,7 @@ namespace Admin_Login
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
             this.pictureBox5.Location = new System.Drawing.Point(443, 16);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(20, 26);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -518,7 +505,7 @@ namespace Admin_Login
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
             this.pictureBox6.Location = new System.Drawing.Point(308, 10);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(180, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -533,7 +520,7 @@ namespace Admin_Login
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Settings_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(262, 16);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(20, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -563,7 +550,7 @@ namespace Admin_Login
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Light_Blue;
             this.pictureBox4.Location = new System.Drawing.Point(150, 10);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(147, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -578,7 +565,7 @@ namespace Admin_Login
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = global::Admin_Login.Properties.Resources.EmployeeList;
             this.pictureBox7.Location = new System.Drawing.Point(98, 16);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(20, 26);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -608,7 +595,7 @@ namespace Admin_Login
             this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pictureBox8.Location = new System.Drawing.Point(9, 10);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(133, 37);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -646,7 +633,7 @@ namespace Admin_Login
             this.dtp_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_Date.Location = new System.Drawing.Point(75, 10);
-            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 28);
             this.dtp_Date.TabIndex = 28;
@@ -663,7 +650,7 @@ namespace Admin_Login
             this.dgvAuditTrail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvAuditTrail.GridColor = System.Drawing.Color.LightGray;
             this.dgvAuditTrail.Location = new System.Drawing.Point(9, 48);
-            this.dgvAuditTrail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvAuditTrail.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAuditTrail.Name = "dgvAuditTrail";
             this.dgvAuditTrail.ReadOnly = true;
             this.dgvAuditTrail.RowHeadersVisible = false;
@@ -757,7 +744,6 @@ namespace Admin_Login
         public System.Windows.Forms.CheckBox Leave;
         public System.Windows.Forms.CheckBox PayrollReport;
         public System.Windows.Forms.CheckBox Deductions;
-        public System.Windows.Forms.CheckBox DashBoard;
         public System.Windows.Forms.CheckBox DepartmentPosition;
         public System.Windows.Forms.CheckBox Setting;
         public System.Windows.Forms.CheckBox Schedules;

@@ -130,13 +130,13 @@
             this.tb_Search.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
             this.tb_Search.Location = new System.Drawing.Point(36, 6);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(386, 21);
             this.tb_Search.TabIndex = 6;
-            this.tb_Search.Text = " Search Employee";
+            this.tb_Search.Text = "Search for employee name";
             this.tb_Search.Click += new System.EventHandler(this.tb_Search_Click);
             this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             this.tb_Search.Enter += new System.EventHandler(this.Tb_Search_Enter);
