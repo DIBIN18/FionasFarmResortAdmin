@@ -79,7 +79,6 @@ namespace Admin_Login
                     "UserID, " +
                     "User_, " +
                     "Username_," +
-                    "DashBoard," +
                     "EmployeeList," +
                     "Leave," +
                     "DepartmentPosition," +
@@ -205,14 +204,8 @@ namespace Admin_Login
                     cmd.Parameters.AddWithValue("@Username", txtUser.Text);
                     cmd.Parameters.AddWithValue("@Password", txtPass.Text);
 
-                    if (DashBoard.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@DashBoard", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@DashBoard", 0);
-                    }
+                    cmd.Parameters.AddWithValue("@DashBoard", 1);
+
                     if (EmployeeList.Checked == true)
                     {
                         cmd.Parameters.AddWithValue("@EmployeeList", 1);
@@ -286,7 +279,7 @@ namespace Admin_Login
                         cmd.Parameters.AddWithValue("@Schedules", 0);
                     }
                     cmd.ExecuteNonQuery();
-                    DialogResult dialogResult = MessageBox.Show("New User Has beed Added!", "Successful!", MessageBoxButtons.OK);
+                    DialogResult dialogResult = MessageBox.Show("Successfully Created New User", "Created User", MessageBoxButtons.OK);
                     if (dialogResult == DialogResult.OK)
                     {
                         cmbUserName.Text = "";

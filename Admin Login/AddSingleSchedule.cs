@@ -165,7 +165,8 @@ namespace Admin_Login
                     cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
                     cmd.Parameters.AddWithValue("@BreakPeriod", breakPeriod.ToUpper());
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Successfully Added Single Schedule");
+                    MessageBox.Show("Successfully Added Single Schedule", "Single Schedule",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     AuditTrail audit = new AuditTrail();
                     audit.AuditAddSingleSchedule();
@@ -173,7 +174,8 @@ namespace Admin_Login
             }
             else
             {
-                MessageBox.Show("Employee is scheduled for a leave or advanced day off on the selected date, single schedule can not be added");
+                MessageBox.Show("Employee is scheduled for a leave or advanced day off on the selected date, single schedule can not be added",
+                    "Employee Single Schedule Add", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

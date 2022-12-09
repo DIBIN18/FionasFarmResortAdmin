@@ -232,11 +232,11 @@ namespace Admin_Login
             // lblSpecHMins
             // 
             this.lblSpecHMins.AutoSize = true;
-            this.lblSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSpecHMins.Location = new System.Drawing.Point(825, 550);
             this.lblSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHMins.Name = "lblSpecHMins";
-            this.lblSpecHMins.Size = new System.Drawing.Size(18, 20);
+            this.lblSpecHMins.Size = new System.Drawing.Size(19, 20);
             this.lblSpecHMins.TabIndex = 125;
             this.lblSpecHMins.Text = "0";
             // 
@@ -254,44 +254,44 @@ namespace Admin_Login
             // lblSpecHHours
             // 
             this.lblSpecHHours.AutoSize = true;
-            this.lblSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSpecHHours.Location = new System.Drawing.Point(649, 550);
             this.lblSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHHours.Name = "lblSpecHHours";
-            this.lblSpecHHours.Size = new System.Drawing.Size(18, 20);
+            this.lblSpecHHours.Size = new System.Drawing.Size(19, 20);
             this.lblSpecHHours.TabIndex = 123;
             this.lblSpecHHours.Text = "0";
             // 
             // lblSpecH
             // 
             this.lblSpecH.AutoSize = true;
-            this.lblSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSpecH.Location = new System.Drawing.Point(649, 522);
             this.lblSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecH.Name = "lblSpecH";
-            this.lblSpecH.Size = new System.Drawing.Size(18, 20);
+            this.lblSpecH.Size = new System.Drawing.Size(19, 20);
             this.lblSpecH.TabIndex = 122;
             this.lblSpecH.Text = "0";
             // 
             // lblRegHMins
             // 
             this.lblRegHMins.AutoSize = true;
-            this.lblRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegHMins.Location = new System.Drawing.Point(825, 478);
             this.lblRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHMins.Name = "lblRegHMins";
-            this.lblRegHMins.Size = new System.Drawing.Size(18, 20);
+            this.lblRegHMins.Size = new System.Drawing.Size(19, 20);
             this.lblRegHMins.TabIndex = 121;
             this.lblRegHMins.Text = "0";
             // 
             // lblRegHHours
             // 
             this.lblRegHHours.AutoSize = true;
-            this.lblRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegHHours.Location = new System.Drawing.Point(649, 478);
             this.lblRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHHours.Name = "lblRegHHours";
-            this.lblRegHHours.Size = new System.Drawing.Size(18, 20);
+            this.lblRegHHours.Size = new System.Drawing.Size(19, 20);
             this.lblRegHHours.TabIndex = 120;
             this.lblRegHHours.Text = "0";
             // 
@@ -309,33 +309,33 @@ namespace Admin_Login
             // lblRegH
             // 
             this.lblRegH.AutoSize = true;
-            this.lblRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegH.Location = new System.Drawing.Point(649, 446);
             this.lblRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegH.Name = "lblRegH";
-            this.lblRegH.Size = new System.Drawing.Size(18, 20);
+            this.lblRegH.Size = new System.Drawing.Size(19, 20);
             this.lblRegH.TabIndex = 118;
             this.lblRegH.Text = "0";
             // 
             // lblUmins
             // 
             this.lblUmins.AutoSize = true;
-            this.lblUmins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUmins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUmins.Location = new System.Drawing.Point(825, 400);
             this.lblUmins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUmins.Name = "lblUmins";
-            this.lblUmins.Size = new System.Drawing.Size(18, 20);
+            this.lblUmins.Size = new System.Drawing.Size(19, 20);
             this.lblUmins.TabIndex = 117;
             this.lblUmins.Text = "0";
             // 
             // lblUhours
             // 
             this.lblUhours.AutoSize = true;
-            this.lblUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUhours.Location = new System.Drawing.Point(649, 400);
             this.lblUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUhours.Name = "lblUhours";
-            this.lblUhours.Size = new System.Drawing.Size(18, 20);
+            this.lblUhours.Size = new System.Drawing.Size(19, 20);
             this.lblUhours.TabIndex = 116;
             this.lblUhours.Text = "0";
             // 
@@ -364,44 +364,44 @@ namespace Admin_Login
             // lblOTHours
             // 
             this.lblOTHours.AutoSize = true;
-            this.lblOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOTHours.Location = new System.Drawing.Point(649, 367);
             this.lblOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOTHours.Name = "lblOTHours";
-            this.lblOTHours.Size = new System.Drawing.Size(18, 20);
+            this.lblOTHours.Size = new System.Drawing.Size(19, 20);
             this.lblOTHours.TabIndex = 113;
             this.lblOTHours.Text = "0";
             // 
             // lblMinsLate
             // 
             this.lblMinsLate.AutoSize = true;
-            this.lblMinsLate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMinsLate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMinsLate.Location = new System.Drawing.Point(825, 327);
             this.lblMinsLate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMinsLate.Name = "lblMinsLate";
-            this.lblMinsLate.Size = new System.Drawing.Size(18, 20);
+            this.lblMinsLate.Size = new System.Drawing.Size(19, 20);
             this.lblMinsLate.TabIndex = 112;
             this.lblMinsLate.Text = "0";
             // 
             // lblMins
             // 
             this.lblMins.AutoSize = true;
-            this.lblMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMins.Location = new System.Drawing.Point(649, 327);
             this.lblMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMins.Name = "lblMins";
-            this.lblMins.Size = new System.Drawing.Size(18, 20);
+            this.lblMins.Size = new System.Drawing.Size(19, 20);
             this.lblMins.TabIndex = 111;
             this.lblMins.Text = "0";
             // 
             // lblHours
             // 
             this.lblHours.AutoSize = true;
-            this.lblHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHours.Location = new System.Drawing.Point(649, 297);
             this.lblHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHours.Name = "lblHours";
-            this.lblHours.Size = new System.Drawing.Size(18, 20);
+            this.lblHours.Size = new System.Drawing.Size(19, 20);
             this.lblHours.TabIndex = 110;
             this.lblHours.Text = "0";
             // 
@@ -940,11 +940,11 @@ namespace Admin_Login
             // lbl_EditSpecHMins
             // 
             this.lbl_EditSpecHMins.AutoSize = true;
-            this.lbl_EditSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditSpecHMins.Location = new System.Drawing.Point(826, 560);
             this.lbl_EditSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecHMins.Name = "lbl_EditSpecHMins";
-            this.lbl_EditSpecHMins.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditSpecHMins.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditSpecHMins.TabIndex = 161;
             this.lbl_EditSpecHMins.Text = "0";
             // 
@@ -962,44 +962,44 @@ namespace Admin_Login
             // lbl_EditSpecHHours
             // 
             this.lbl_EditSpecHHours.AutoSize = true;
-            this.lbl_EditSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditSpecHHours.Location = new System.Drawing.Point(650, 560);
             this.lbl_EditSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecHHours.Name = "lbl_EditSpecHHours";
-            this.lbl_EditSpecHHours.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditSpecHHours.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditSpecHHours.TabIndex = 159;
             this.lbl_EditSpecHHours.Text = "0";
             // 
             // lbl_EditSpecH
             // 
             this.lbl_EditSpecH.AutoSize = true;
-            this.lbl_EditSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditSpecH.Location = new System.Drawing.Point(650, 532);
             this.lbl_EditSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecH.Name = "lbl_EditSpecH";
-            this.lbl_EditSpecH.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditSpecH.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditSpecH.TabIndex = 158;
             this.lbl_EditSpecH.Text = "0";
             // 
             // lbl_EditRegHMins
             // 
             this.lbl_EditRegHMins.AutoSize = true;
-            this.lbl_EditRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditRegHMins.Location = new System.Drawing.Point(826, 488);
             this.lbl_EditRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegHMins.Name = "lbl_EditRegHMins";
-            this.lbl_EditRegHMins.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditRegHMins.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditRegHMins.TabIndex = 157;
             this.lbl_EditRegHMins.Text = "0";
             // 
             // lbl_EditRegHHours
             // 
             this.lbl_EditRegHHours.AutoSize = true;
-            this.lbl_EditRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditRegHHours.Location = new System.Drawing.Point(650, 488);
             this.lbl_EditRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegHHours.Name = "lbl_EditRegHHours";
-            this.lbl_EditRegHHours.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditRegHHours.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditRegHHours.TabIndex = 156;
             this.lbl_EditRegHHours.Text = "0";
             // 
@@ -1017,33 +1017,33 @@ namespace Admin_Login
             // lbl_EditRegH
             // 
             this.lbl_EditRegH.AutoSize = true;
-            this.lbl_EditRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditRegH.Location = new System.Drawing.Point(650, 456);
             this.lbl_EditRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegH.Name = "lbl_EditRegH";
-            this.lbl_EditRegH.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditRegH.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditRegH.TabIndex = 154;
             this.lbl_EditRegH.Text = "0";
             // 
             // lbl_EditUMins
             // 
             this.lbl_EditUMins.AutoSize = true;
-            this.lbl_EditUMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditUMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditUMins.Location = new System.Drawing.Point(826, 410);
             this.lbl_EditUMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditUMins.Name = "lbl_EditUMins";
-            this.lbl_EditUMins.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditUMins.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditUMins.TabIndex = 153;
             this.lbl_EditUMins.Text = "0";
             // 
             // lbl_EditUhours
             // 
             this.lbl_EditUhours.AutoSize = true;
-            this.lbl_EditUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditUhours.Location = new System.Drawing.Point(650, 410);
             this.lbl_EditUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditUhours.Name = "lbl_EditUhours";
-            this.lbl_EditUhours.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditUhours.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditUhours.TabIndex = 152;
             this.lbl_EditUhours.Text = "0";
             // 
@@ -1072,44 +1072,44 @@ namespace Admin_Login
             // lbl_EditOTHours
             // 
             this.lbl_EditOTHours.AutoSize = true;
-            this.lbl_EditOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditOTHours.Location = new System.Drawing.Point(650, 377);
             this.lbl_EditOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditOTHours.Name = "lbl_EditOTHours";
-            this.lbl_EditOTHours.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditOTHours.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditOTHours.TabIndex = 149;
             this.lbl_EditOTHours.Text = "0";
             // 
             // lbl_EditLateMinutes
             // 
             this.lbl_EditLateMinutes.AutoSize = true;
-            this.lbl_EditLateMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditLateMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditLateMinutes.Location = new System.Drawing.Point(826, 336);
             this.lbl_EditLateMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditLateMinutes.Name = "lbl_EditLateMinutes";
-            this.lbl_EditLateMinutes.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditLateMinutes.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditLateMinutes.TabIndex = 148;
             this.lbl_EditLateMinutes.Text = "0";
             // 
             // lbl_EditMinutes
             // 
             this.lbl_EditMinutes.AutoSize = true;
-            this.lbl_EditMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditMinutes.Location = new System.Drawing.Point(650, 336);
             this.lbl_EditMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditMinutes.Name = "lbl_EditMinutes";
-            this.lbl_EditMinutes.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditMinutes.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditMinutes.TabIndex = 147;
             this.lbl_EditMinutes.Text = "0";
             // 
             // lbl_EditHours
             // 
             this.lbl_EditHours.AutoSize = true;
-            this.lbl_EditHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_EditHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_EditHours.Location = new System.Drawing.Point(650, 307);
             this.lbl_EditHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditHours.Name = "lbl_EditHours";
-            this.lbl_EditHours.Size = new System.Drawing.Size(18, 20);
+            this.lbl_EditHours.Size = new System.Drawing.Size(19, 20);
             this.lbl_EditHours.TabIndex = 146;
             this.lbl_EditHours.Text = "0";
             // 

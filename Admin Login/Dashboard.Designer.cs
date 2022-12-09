@@ -61,9 +61,10 @@
             // 
             this.lbl_Date.AutoSize = true;
             this.lbl_Date.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Date.Location = new System.Drawing.Point(13, 9);
+            this.lbl_Date.Location = new System.Drawing.Point(10, 16);
+            this.lbl_Date.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Date.Name = "lbl_Date";
-            this.lbl_Date.Size = new System.Drawing.Size(0, 39);
+            this.lbl_Date.Size = new System.Drawing.Size(0, 32);
             this.lbl_Date.TabIndex = 0;
             // 
             // tmr_DateAndTime
@@ -76,10 +77,11 @@
             this.lbl_Time.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Time.AutoSize = true;
             this.lbl_Time.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Time.Location = new System.Drawing.Point(939, 9);
+            this.lbl_Time.Location = new System.Drawing.Point(704, 18);
+            this.lbl_Time.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_Time.Name = "lbl_Time";
             this.lbl_Time.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbl_Time.Size = new System.Drawing.Size(0, 39);
+            this.lbl_Time.Size = new System.Drawing.Size(0, 32);
             this.lbl_Time.TabIndex = 1;
             this.lbl_Time.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -89,9 +91,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 58);
+            this.label1.Location = new System.Drawing.Point(27, 77);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 37);
+            this.label1.Size = new System.Drawing.Size(190, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "Timed-in Today";
             // 
@@ -101,9 +104,10 @@
             this.lbl_TimedInToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
             this.lbl_TimedInToday.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_TimedInToday.ForeColor = System.Drawing.Color.White;
-            this.lbl_TimedInToday.Location = new System.Drawing.Point(108, 117);
+            this.lbl_TimedInToday.Location = new System.Drawing.Point(91, 125);
+            this.lbl_TimedInToday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_TimedInToday.Name = "lbl_TimedInToday";
-            this.lbl_TimedInToday.Size = new System.Drawing.Size(42, 47);
+            this.lbl_TimedInToday.Size = new System.Drawing.Size(35, 38);
             this.lbl_TimedInToday.TabIndex = 5;
             this.lbl_TimedInToday.Text = "0";
             // 
@@ -111,9 +115,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 203);
+            this.label2.Location = new System.Drawing.Point(7, 202);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(447, 39);
+            this.label2.Size = new System.Drawing.Size(364, 32);
             this.label2.TabIndex = 14;
             this.label2.Text = "Employees Timed-In Today";
             // 
@@ -121,10 +126,10 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dgv_AttendanceToday);
-            this.panel1.Location = new System.Drawing.Point(12, 252);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(9, 252);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1155, 653);
+            this.panel1.Size = new System.Drawing.Size(867, 484);
             this.panel1.TabIndex = 15;
             // 
             // dgv_AttendanceToday
@@ -137,14 +142,13 @@
             this.dgv_AttendanceToday.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgv_AttendanceToday.BackgroundColor = System.Drawing.Color.White;
             this.dgv_AttendanceToday.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_AttendanceToday.Location = new System.Drawing.Point(3, 6);
-            this.dgv_AttendanceToday.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_AttendanceToday.Location = new System.Drawing.Point(3, 5);
             this.dgv_AttendanceToday.MultiSelect = false;
             this.dgv_AttendanceToday.Name = "dgv_AttendanceToday";
             this.dgv_AttendanceToday.RowHeadersVisible = false;
             this.dgv_AttendanceToday.RowHeadersWidth = 51;
             this.dgv_AttendanceToday.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_AttendanceToday.Size = new System.Drawing.Size(1145, 639);
+            this.dgv_AttendanceToday.Size = new System.Drawing.Size(859, 472);
             this.dgv_AttendanceToday.TabIndex = 4;
             // 
             // lbl_LateToday
@@ -153,9 +157,10 @@
             this.lbl_LateToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.lbl_LateToday.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LateToday.ForeColor = System.Drawing.Color.White;
-            this.lbl_LateToday.Location = new System.Drawing.Point(527, 117);
+            this.lbl_LateToday.Location = new System.Drawing.Point(396, 125);
+            this.lbl_LateToday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_LateToday.Name = "lbl_LateToday";
-            this.lbl_LateToday.Size = new System.Drawing.Size(42, 47);
+            this.lbl_LateToday.Size = new System.Drawing.Size(35, 38);
             this.lbl_LateToday.TabIndex = 19;
             this.lbl_LateToday.Text = "0";
             // 
@@ -165,9 +170,10 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(443, 58);
+            this.label5.Location = new System.Drawing.Point(333, 77);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(175, 37);
+            this.label5.Size = new System.Drawing.Size(139, 28);
             this.label5.TabIndex = 17;
             this.label5.Text = "Late Today";
             // 
@@ -177,9 +183,10 @@
             this.lbl_AbsentToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.lbl_AbsentToday.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_AbsentToday.ForeColor = System.Drawing.Color.White;
-            this.lbl_AbsentToday.Location = new System.Drawing.Point(947, 117);
+            this.lbl_AbsentToday.Location = new System.Drawing.Point(706, 125);
+            this.lbl_AbsentToday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_AbsentToday.Name = "lbl_AbsentToday";
-            this.lbl_AbsentToday.Size = new System.Drawing.Size(42, 47);
+            this.lbl_AbsentToday.Size = new System.Drawing.Size(35, 38);
             this.lbl_AbsentToday.TabIndex = 23;
             this.lbl_AbsentToday.Text = "0";
             // 
@@ -189,9 +196,10 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.label10.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(860, 58);
+            this.label10.Location = new System.Drawing.Point(641, 77);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(251, 37);
+            this.label10.Size = new System.Drawing.Size(200, 28);
             this.label10.TabIndex = 21;
             this.label10.Text = "Total Employees";
             // 
@@ -199,10 +207,10 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.EmployeeList;
-            this.pictureBox5.Location = new System.Drawing.Point(1067, 106);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(803, 116);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(79, 68);
+            this.pictureBox5.Size = new System.Drawing.Size(59, 55);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 22;
             this.pictureBox5.TabStop = false;
@@ -210,10 +218,10 @@
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.pictureBox6.Location = new System.Drawing.Point(856, 53);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Location = new System.Drawing.Point(620, 73);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(308, 135);
+            this.pictureBox6.Size = new System.Drawing.Size(255, 110);
             this.pictureBox6.TabIndex = 20;
             this.pictureBox6.TabStop = false;
             // 
@@ -221,10 +229,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.LateToday_Icon1;
-            this.pictureBox3.Location = new System.Drawing.Point(649, 106);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(488, 116);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(79, 68);
+            this.pictureBox3.Size = new System.Drawing.Size(59, 55);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 18;
             this.pictureBox3.TabStop = false;
@@ -232,10 +240,10 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
-            this.pictureBox4.Location = new System.Drawing.Point(437, 53);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(316, 73);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(308, 135);
+            this.pictureBox4.Size = new System.Drawing.Size(255, 110);
             this.pictureBox4.TabIndex = 16;
             this.pictureBox4.TabStop = false;
             // 
@@ -243,10 +251,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.Timed_InToday_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(231, 106);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(183, 116);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(79, 68);
+            this.pictureBox2.Size = new System.Drawing.Size(59, 55);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -254,19 +262,19 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(122)))), ((int)(((byte)(183)))));
-            this.pictureBox1.Location = new System.Drawing.Point(17, 53);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 73);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(308, 135);
+            this.pictureBox1.Size = new System.Drawing.Size(255, 110);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1179, 917);
+            this.ClientSize = new System.Drawing.Size(884, 745);
             this.ControlBox = false;
             this.Controls.Add(this.lbl_AbsentToday);
             this.Controls.Add(this.pictureBox5);
@@ -285,7 +293,7 @@
             this.Controls.Add(this.lbl_Time);
             this.Controls.Add(this.lbl_Date);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Dashboard";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Dashboard_Load);

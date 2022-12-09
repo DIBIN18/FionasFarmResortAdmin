@@ -155,12 +155,6 @@
     <Compile Include="AdvanceDayOff.Designer.cs">
       <DependentUpon>AdvanceDayOff.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppliedLeavesList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppliedLeavesList.Designer.cs">
-      <DependentUpon>AppliedLeavesList.cs</DependentUpon>
-    </Compile>
     <Compile Include="LeaveListDates.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,9 +347,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdvanceDayOff.resx">
       <DependentUpon>AdvanceDayOff.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AppliedLeavesList.resx">
-      <DependentUpon>AppliedLeavesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeaveListDates.resx">
       <DependentUpon>LeaveListDates.cs</DependentUpon>

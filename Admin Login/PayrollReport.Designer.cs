@@ -329,11 +329,11 @@
             // 
             // tb_Search
             // 
-            this.tb_Search.BackColor = System.Drawing.Color.White;
+            this.tb_Search.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tb_Search.Location = new System.Drawing.Point(32, 5);
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tb_Search.Location = new System.Drawing.Point(30, 7);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(410, 21);

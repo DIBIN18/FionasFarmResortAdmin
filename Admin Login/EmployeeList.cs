@@ -73,7 +73,10 @@ namespace Admin_Login
 
                 dgv_EmployeeList.DataSource = data;
 
-               
+                dgv_EmployeeList.Columns["AccumulatedDayOffs"].Visible = false;
+                dgv_EmployeeList.Columns["AllowedOvertime"].Visible = false;
+
+
             }
         }
 
