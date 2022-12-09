@@ -321,6 +321,12 @@
     <Compile Include="THMonthView.Designer.cs">
       <DependentUpon>THMonthView.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewParentalLeaveList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewParentalLeaveList.Designer.cs">
+      <DependentUpon>ViewParentalLeaveList.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewSingleSchedList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -435,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="THMonthView.resx">
       <DependentUpon>THMonthView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewParentalLeaveList.resx">
+      <DependentUpon>ViewParentalLeaveList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSingleSchedList.resx">
       <DependentUpon>ViewSingleSchedList.cs</DependentUpon>

@@ -352,6 +352,13 @@ namespace Admin_Login
             menu.Menu_Load(menu, EventArgs.Empty);
         }
 
+        private void AppliedLeaveDatesClick(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Parental Leave List";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
+
         private void Search_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -763,9 +770,6 @@ namespace Admin_Login
             e.Handled = true;
         }
 
-        private void AppliedLeaveDatesClick(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

@@ -668,6 +668,18 @@ namespace Admin_Login
                 payRollHistory.BringToFront();
                 payRollHistory.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Parental Leave List")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Parental Leave List";
+                TitleLabel.Text = TitleExtension;
+                ViewParentalLeaveList viewParentalLeaveList = new ViewParentalLeaveList();
+                {
+                    viewParentalLeaveList.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(viewParentalLeaveList);
+                viewParentalLeaveList.BringToFront();
+                viewParentalLeaveList.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);
