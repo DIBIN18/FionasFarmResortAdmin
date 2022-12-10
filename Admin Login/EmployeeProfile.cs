@@ -26,8 +26,10 @@ namespace Admin_Login
         long selectedPositionId = 0;
 
         string Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, adminname;
-        Menu menu = (Menu)Application.OpenForms["Menu"];
 
+        int checkCounter = 0;
+
+        Menu menu = (Menu)Application.OpenForms["Menu"];
 
         public EmployeeProfile()
         {
@@ -837,6 +839,8 @@ namespace Admin_Login
             txtCustomRate.Text = "";
         }
 
+        
+
         private void cmbDepartmentEdit_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
@@ -956,5 +960,137 @@ namespace Admin_Login
                 }
             }
         }
+
+
+        //
+        //  CHECK LIMITER
+        //
+
+        private void cbMonday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbTuesday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbWednesday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbThursday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbFriday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbSaturday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
+        private void cbSunday_CheckedChanged(object sender, EventArgs e)
+        {
+            // Increase or decrease the check counter
+            CheckBox box = (CheckBox)sender;
+            if (box.Checked)
+                checkCounter++;
+            else
+                checkCounter--;
+
+            // prevent checking
+            if (checkCounter == 7)
+            {
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                box.Checked = false;
+            }
+        }
+
     }
 }

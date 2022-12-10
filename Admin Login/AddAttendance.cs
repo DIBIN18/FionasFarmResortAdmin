@@ -45,18 +45,25 @@ namespace Admin_Login
             using (SqlCommand command = new SqlCommand(query2, connection))
             {
                 connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                try
                 {
-                    if (reader.HasRows)
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        reader.Read();
-                        return reader.GetBoolean(0);
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetBoolean(0);
+                        }
+                        else
+                        {
+                            return false;
+                        }
 
+                    }
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
+                    return false;
                 }
             }
         }
@@ -158,6 +165,16 @@ namespace Admin_Login
             schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
             schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
             lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
+
+            if (checkAllowedDay(employee_id) == true)
+            {
+                lblRestDay.Text = "No";
+            }
+            else
+            {
+                lblRestDay.Text = "Yes";
+            }
+
             Update();
         }
 
@@ -224,6 +241,15 @@ namespace Admin_Login
                 lblRegHMins.Text = "0";
                 lblSpecHHours.Text = "0";
                 lblSpecHMins.Text = "0";
+            }
+
+            if (checkAllowedDay(employee_id) == true)
+            {
+                lblRestDay.Text = "No";
+            }
+            else
+            {
+                lblRestDay.Text = "Yes";
             }
         }
 
@@ -866,6 +892,7 @@ namespace Admin_Login
                 lblRegHHours.Text = "0";
                 lblSpecHHours.Text = "0";
             }
+
         }
 
         public int yntoboolean(string yn)
@@ -914,122 +941,162 @@ namespace Admin_Login
 
             string aid = yy + mn + dy + employee_id;
 
-            if (checkAllowedDay(employee_id) == true)
+            //if (checkAllowedDay(employee_id) == true)
+            //{
+
+            //}
+            //else
+            //{
+            //    DateTime weekday = Convert.ToDateTime(dtp_Date.Value.ToString());
+            //    MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded",
+            //        "Add Attendnace Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+
+            if (CheckLeave(dtp_Date.Text.ToString(), employee_id) == false)
             {
-                if (CheckLeave(dtp_Date.Text.ToString(), employee_id) == false)
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
-                    using (SqlConnection connection = new SqlConnection(login.connectionString))
+                    connection.Open();
+                    string query =
+                        "INSERT INTO AttendanceRecord(" +
+                        "AttendanceID," +
+                        "EmployeeID," +
+                        "PositionID," +
+                        "Date," +
+                        "TimeIn," +
+                        "TimeOut," +
+                        "Hours," +
+                        "Minutes," +
+                        "OT_Hours," +
+                        "Late_Minutes," +
+                        "Undertime_Hours," +
+                        "Undertime_Minutes," +
+                        "RegularHoliday," +
+                        "RH_Hours," +
+                        "RH_Minutes," +
+                        "SpecialHoliday," +
+                        "SH_Hours," +
+                        "SH_Minutes)" +
+                        "VALUES (" +
+                        "@AttendanceID," +
+                        "@EmployeeID," +
+                        "@PositionID," +
+                        "@Date," +
+                        "@TimeIn," +
+                        "@TimeOut," +
+                        "@Hours," +
+                        "@Minutes," +
+                        "@OT_Hours," +
+                        "@Late_Minutes," +
+                        "@Undertime_Hours," +
+                        "@Undertime_Minutes," +
+                        "@RegularHoliday," +
+                        "@RH_Hours," +
+                        "@RH_Minutes," +
+                        "@SpecialHoliday," +
+                        "@SH_Hours," +
+                        "@SH_Minutes) ";
+
+                    string schedIn = dtpTimeInAdd.Value.ToString("hh:mm:ss tt");
+                    string schedOut = dtpTimeOutAdd.Value.ToString("hh:mm:ss tt");
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
+                    cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
+                    cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
+                    cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
+                    cmd.Parameters.AddWithValue("@TimeIn", schedIn.ToUpper());
+                    cmd.Parameters.AddWithValue("@TimeOut", schedOut.ToUpper());
+                    cmd.Parameters.AddWithValue("@Hours", Convert.ToInt32(lblHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Minutes", Convert.ToInt32(lblMins.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@OT_hours", Convert.ToInt32(lblOTHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Late_Minutes", Convert.ToInt32(lblMinsLate.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Undertime_Hours", Convert.ToInt32(lblUhours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@Undertime_Minutes", Convert.ToInt32(lblUmins.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegH.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RH_Hours", Convert.ToInt32(lblRegHHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@RH_Minutes", Convert.ToInt32(lblRegHMins.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecH.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SH_Hours", Convert.ToInt32(lblSpecHHours.Text.ToString()));
+                    cmd.Parameters.AddWithValue("@SH_Minutes", Convert.ToInt32(lblSpecHMins.Text.ToString()));
+
+                    try
                     {
-                        connection.Open();
-                        string query =
-                            "INSERT INTO AttendanceRecord(" +
-                            "AttendanceID," +
-                            "EmployeeID," +
-                            "PositionID," +
-                            "Date," +
-                            "TimeIn," +
-                            "TimeOut," +
-                            "Hours," +
-                            "Minutes," +
-                            "OT_Hours," +
-                            "Late_Minutes," +
-                            "Undertime_Hours," +
-                            "Undertime_Minutes," +
-                            "RegularHoliday," +
-                            "RH_Hours," +
-                            "RH_Minutes," +
-                            "SpecialHoliday," +
-                            "SH_Hours," +
-                            "SH_Minutes)" +
-                            "VALUES (" +
-                            "@AttendanceID," +
-                            "@EmployeeID," +
-                            "@PositionID," +
-                            "@Date," +
-                            "@TimeIn," +
-                            "@TimeOut," +
-                            "@Hours," +
-                            "@Minutes," +
-                            "@OT_Hours," +
-                            "@Late_Minutes," +
-                            "@Undertime_Hours," +
-                            "@Undertime_Minutes," +
-                            "@RegularHoliday," +
-                            "@RH_Hours," +
-                            "@RH_Minutes," +
-                            "@SpecialHoliday," +
-                            "@SH_Hours," +
-                            "@SH_Minutes) ";
+                        cmd.ExecuteNonQuery();
 
-                        string schedIn = dtpTimeInAdd.Value.ToString("hh:mm:ss tt");
-                        string schedOut = dtpTimeOutAdd.Value.ToString("hh:mm:ss tt");
-
-                        SqlCommand cmd = new SqlCommand(query, connection);
-
-                        cmd.Parameters.AddWithValue("@AttendanceID", Convert.ToInt64(aid));
-                        cmd.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(employee_id));
-                        cmd.Parameters.AddWithValue("@PositionID", getPositionID(employee_id));
-                        cmd.Parameters.AddWithValue("@Date", dtp_Date.Text.ToString());
-                        cmd.Parameters.AddWithValue("@TimeIn", schedIn.ToUpper());
-                        cmd.Parameters.AddWithValue("@TimeOut", schedOut.ToUpper());
-                        cmd.Parameters.AddWithValue("@Hours", Convert.ToInt32(lblHours.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@Minutes", Convert.ToInt32(lblMins.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@OT_hours", Convert.ToInt32(lblOTHours.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@Late_Minutes", Convert.ToInt32(lblMinsLate.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@Undertime_Hours", Convert.ToInt32(lblUhours.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@Undertime_Minutes", Convert.ToInt32(lblUmins.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@RegularHoliday", yntoboolean(lblRegH.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@RH_Hours", Convert.ToInt32(lblRegHHours.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@RH_Minutes", Convert.ToInt32(lblRegHMins.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@SpecialHoliday", yntoboolean(lblSpecH.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@SH_Hours", Convert.ToInt32(lblSpecHHours.Text.ToString()));
-                        cmd.Parameters.AddWithValue("@SH_Minutes", Convert.ToInt32(lblSpecHMins.Text.ToString()));
-
-                        try
+                        if (lblRestDay.Text.ToString() == "Yes")
                         {
-                            cmd.ExecuteNonQuery();
+                            using (SqlConnection rest_conn = new SqlConnection(login.connectionString))
+                            {
+                                rest_conn.Open();
 
-                            MessageBox.Show("Attendance Successfuly Added", "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                string r_query =
+                                    "UPDATE AttendanceRecord " +
+                                    "SET " +
+                                    "RestDay=1," +
+                                    "RD_Hours=" + lblHours.Text.ToString() + "," +
+                                    "RD_Minutes=" + lblMins.Text.ToString() + " " +
+                                    "WHERE AttendanceID=" + aid;
+
+                                SqlCommand rcmd = new SqlCommand(r_query, rest_conn);
+                                rcmd.ExecuteNonQuery();
+                            }
                         }
-                        catch (System.Data.SqlClient.SqlException) {
-                            MessageBox.Show("Employee already had an attendance on " + dtp_Date.Text.ToString() + 
-                                " , Attendance will not be recorded", "Add Attendance Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        else
+                        {
+                            using (SqlConnection rest_conn = new SqlConnection(login.connectionString))
+                            {
+                                rest_conn.Open();
+
+                                string r_query =
+                                    "UPDATE AttendanceRecord " +
+                                    "SET " +
+                                    "RestDay=0," +
+                                    "RD_Hours=0," +
+                                    "RD_Minutes=0 " +
+                                    "WHERE AttendanceID=" + aid;
+
+                                SqlCommand rcmd = new SqlCommand(r_query, rest_conn);
+                                rcmd.ExecuteNonQuery();
+                            }
                         }
 
-                        
-                        SqlConnection auditcon = new SqlConnection(login.connectionString);
-                        auditcon.Open();
-                        //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                        //SqlDataAdapter sda = new SqlDataAdapter(name);
-                        //DataTable dtaudit = new DataTable();
-                        //sda.Fill(dtaudit);
-                        //string auditName = dt.Rows[0][0].ToString();
-                        string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                        string Module = "Attendance Record";
-                        string Description = "Add Manual Attendance";
-                        SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                        auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                        auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                        auditcommand.Parameters.AddWithValue("@Module", Module);
-                        auditcommand.Parameters.AddWithValue("@Description", Description);
-                        auditcommand.ExecuteNonQuery();
-                        auditcon.Close();
+                        MessageBox.Show("Attendance Successfuly Added", "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
-                        "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Employee already had an attendance on " + dtp_Date.Text.ToString() +
+                            " , Attendance will not be recorded", "Add Attendance Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Attendance Record";
+                    string Description = "Add Manual Attendance";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
             else
             {
-                DateTime weekday = Convert.ToDateTime(dtp_Date.Value.ToString());
-                MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded",
-                    "Add Attendnace Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
+                    "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
 
 
@@ -1056,6 +1123,47 @@ namespace Admin_Login
         //
         //  EDITING MODE CODE
         //
+
+        public Boolean EDITCheckAllowedDay(string emp_id)
+        {
+            string sDate = dtp_EditDate.Text.ToString();
+            DateTime datevalue = (Convert.ToDateTime(sDate.ToString()));
+
+            int dy = datevalue.Day;
+            int mn = datevalue.Month;
+            int yy = datevalue.Year;
+
+            DateTime findWeek = new DateTime(yy, mn, dy);
+            string dayofweek = findWeek.ToString("dddd");
+
+            string query2 = "SELECT " + dayofweek + " FROM EmployeeSchedule WHERE EmployeeID=" + emp_id;
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetBoolean(0);
+                        }
+                        else
+                        {
+                            return false;
+                        }
+
+                    }
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
+                    return false;
+                }
+            }
+        }
+
         public void RefreshEditDgvTable()
         {
             //Load Edit Attendance DGV
@@ -1138,6 +1246,16 @@ namespace Admin_Login
 
             dtpTimeOutEdit.Value = DateTime.Parse(timeOut);
             dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+            Console.WriteLine(EDIT_employee_id);
+            if (EDITCheckAllowedDay(EDIT_employee_id) == true)
+            {
+                lblEDITRestday.Text = "No";
+            }
+            else
+            {
+                lblEDITRestday.Text = "Yes";
+            }
 
             UpdateEditMode();
         }
@@ -1744,6 +1862,15 @@ namespace Admin_Login
         private void dtpDgvDate_ValueChanged(object sender, EventArgs e)
         {
             RefreshEditDgvTable();
+            //Console.WriteLine("trrrrrrrrrrrrrrrrrrrr");
+            //if (EDITCheckAllowedDay(EDIT_employee_id) == true)
+            //{
+            //    lblEDITRestday.Text = "No";
+            //}
+            //else
+            //{
+            //    lblEDITRestday.Text = "Yes";
+            //}
         }
 
         private void dtpEditTimeOut_ValueChanged(object sender, EventArgs e)
@@ -1812,6 +1939,15 @@ namespace Admin_Login
                 lbl_EditSpecHHours.Text = "0";
                 lbl_EditSpecHMins.Text = "0";
             }
+
+            if (EDITCheckAllowedDay(EDIT_employee_id) == true)
+            {
+                lblEDITRestday.Text = "No";
+            }
+            else
+            {
+                lblEDITRestday.Text = "Yes";
+            }
         }
 
         private void btn_UpdateEdit_Click(object sender, EventArgs e)
@@ -1828,83 +1964,122 @@ namespace Admin_Login
             string schedIn = dtpTimeInEdit.Value.ToString("hh:mm:ss tt");
             string schedOut = dtpTimeOutEdit.Value.ToString("hh:mm:ss tt");
 
-            if (checkAllowedDay(EDIT_employee_id) == true)
+            //if (checkAllowedDay(EDIT_employee_id) == true)
+            //{
+
+            //}
+            //else
+            //{
+            //    DateTime weekday = Convert.ToDateTime(dtp_EditDate.Value.ToString());
+            //    MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded");
+            //}
+
+            if (CheckLeave(dtp_EditDate.Text.ToString(), EDIT_employee_id) == false)
             {
-                if (CheckLeave(dtp_EditDate.Text.ToString(), EDIT_employee_id) == false)
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
-                    using (SqlConnection connection = new SqlConnection(login.connectionString))
+                    connection.Open();
+
+                    string query =
+                        "UPDATE AttendanceRecord " +
+                        "SET " +
+                        "AttendanceID= " + aid + ", " +
+                        "EmployeeID= " + EDIT_employee_id + ", " +
+                        "PositionID= " + getPositionID(EDIT_employee_id) + ", " +
+                        "Date= '" + dtp_EditDate.Text.ToString() + "', " +
+                        "TimeIn= '" + schedIn.ToUpper() + "', " +
+                        "TimeOut= '" + schedOut.ToUpper() + "', " +
+                        "Hours= " + lbl_EditHours.Text.ToString() + ", " +
+                        "Minutes= " + lbl_EditMinutes.Text.ToString() + ", " +
+                        "OT_Hours= " + lbl_EditOTHours.Text.ToString() + ", " +
+                        "Late_Minutes= " + lbl_EditLateMinutes.Text.ToString() + ", " +
+                        "Undertime_Hours= " + lbl_EditUhours.Text.ToString() + ", " +
+                        "Undertime_Minutes= " + lbl_EditUMins.Text.ToString() + ", " +
+                        "RegularHoliday= " + yntoboolean(lbl_EditRegH.Text.ToString()).ToString() + ", " +
+                        "RH_Hours= " + lbl_EditRegHHours.Text.ToString() + ", " +
+                        "RH_Minutes= " + lbl_EditRegHMins.Text.ToString() + ", " +
+                        "SpecialHoliday=" + yntoboolean(lbl_EditSpecH.Text.ToString()).ToString() + ", " +
+                        "SH_Hours=" + lbl_EditSpecHHours.Text.ToString() + ", " +
+                        "SH_Minutes=" + lbl_EditSpecHMins.Text.ToString() + " " +
+                        "WHERE AttendanceID=" + Attendance_ID;
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    try
                     {
-                        connection.Open();
+                        cmd.ExecuteNonQuery();
 
-                        string query =
-                            "UPDATE AttendanceRecord " +
-                            "SET " +
-                            "AttendanceID= " + aid + ", " +
-                            "EmployeeID= " + EDIT_employee_id + ", " +
-                            "PositionID= " + getPositionID(EDIT_employee_id) + ", " +
-                            "Date= '" + dtp_EditDate.Text.ToString() + "', " +
-                            "TimeIn= '" + schedIn.ToUpper() + "', " +
-                            "TimeOut= '" + schedOut.ToUpper() + "', " +
-                            "Hours= " + lbl_EditHours.Text.ToString() + ", " +
-                            "Minutes= " + lbl_EditMinutes.Text.ToString() + ", " +
-                            "OT_Hours= " + lbl_EditOTHours.Text.ToString() + ", " +
-                            "Late_Minutes= " + lbl_EditLateMinutes.Text.ToString() + ", " +
-                            "Undertime_Hours= " + lbl_EditUhours.Text.ToString() + ", " +
-                            "Undertime_Minutes= " + lbl_EditUMins.Text.ToString() + ", " +
-                            "RegularHoliday= " + yntoboolean(lbl_EditRegH.Text.ToString()).ToString() + ", " +
-                            "RH_Hours= " + lbl_EditRegHHours.Text.ToString() + ", " +
-                            "RH_Minutes= " + lbl_EditRegHMins.Text.ToString() + ", " +
-                            "SpecialHoliday=" + yntoboolean(lbl_EditSpecH.Text.ToString()).ToString() + ", " +
-                            "SH_Hours=" + lbl_EditSpecHHours.Text.ToString() + ", " +
-                            "SH_Minutes=" + lbl_EditSpecHMins.Text.ToString() + " " +
-                            "WHERE AttendanceID=" + Attendance_ID;
-
-                        SqlCommand cmd = new SqlCommand(query, connection);
-
-                        try
+                        if (lblEDITRestday.Text.ToString() == "Yes")
                         {
-                            cmd.ExecuteNonQuery();
+                            using (SqlConnection rest_conn = new SqlConnection(login.connectionString))
+                            {
+                                rest_conn.Open();
 
-                            MessageBox.Show("Attendance Record Successfully Updated", "Attendance Record Edit",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            RefreshEditDgvTable();
+                                string r_query =
+                                    "UPDATE AttendanceRecord " +
+                                    "SET " +
+                                    "RestDay=1," +
+                                    "RD_Hours=" + lbl_EditHours.Text.ToString() + "," +
+                                    "RD_Minutes=" + lbl_EditMinutes.Text.ToString() + " " +
+                                    "WHERE AttendanceID=" + aid;
+
+                                SqlCommand rcmd = new SqlCommand(r_query, rest_conn);
+                                rcmd.ExecuteNonQuery();
+                            }
                         }
-                        catch (System.Data.SqlClient.SqlException)
+                        else
                         {
-                            MessageBox.Show("Employee already had an attendance on " + dtp_EditDate.Text.ToString() +
-                                " , Attendance will not be recorded", "Add Attendance Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            using (SqlConnection rest_conn = new SqlConnection(login.connectionString))
+                            {
+                                rest_conn.Open();
+
+                                string r_query =
+                                    "UPDATE AttendanceRecord " +
+                                    "SET " +
+                                    "RestDay=0," +
+                                    "RD_Hours=0," +
+                                    "RD_Minutes=0 " +
+                                    "WHERE AttendanceID=" + aid;
+
+                                SqlCommand rcmd = new SqlCommand(r_query, rest_conn);
+                                rcmd.ExecuteNonQuery();
+                            }
                         }
 
-                        SqlConnection auditcon = new SqlConnection(login.connectionString);
-                        auditcon.Open();
-                        //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                        //SqlDataAdapter sda = new SqlDataAdapter(name);
-                        //DataTable dtaudit = new DataTable();
-                        //sda.Fill(dtaudit);
-                        //string auditName = dt.Rows[0][0].ToString();
-                        string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                        string Module = "Attendance Record";
-                        string Description = "Update AttendanceRecord";
-                        SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                        auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                        auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                        auditcommand.Parameters.AddWithValue("@Module", Module);
-                        auditcommand.Parameters.AddWithValue("@Description", Description);
-                        auditcommand.ExecuteNonQuery();
-                        auditcon.Close();
+                        MessageBox.Show("Attendance Record Successfully Updated", "Attendance Record Edit",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RefreshEditDgvTable();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
-                        "Employee on a Leave", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Employee already had an attendance on " + dtp_EditDate.Text.ToString() +
+                            " , Attendance will not be recorded", "Add Attendance Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    SqlConnection auditcon = new SqlConnection(login.connectionString);
+                    auditcon.Open();
+                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
+                    //SqlDataAdapter sda = new SqlDataAdapter(name);
+                    //DataTable dtaudit = new DataTable();
+                    //sda.Fill(dtaudit);
+                    //string auditName = dt.Rows[0][0].ToString();
+                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+                    string Module = "Attendance Record";
+                    string Description = "Update AttendanceRecord";
+                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
+                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
+                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
+                    auditcommand.Parameters.AddWithValue("@Module", Module);
+                    auditcommand.Parameters.AddWithValue("@Description", Description);
+                    auditcommand.ExecuteNonQuery();
+                    auditcon.Close();
                 }
             }
             else
             {
-                DateTime weekday = Convert.ToDateTime(dtp_EditDate.Value.ToString());
-                MessageBox.Show("Employee is not scheduled to time in on " + weekday.ToString("dddd") + "s, attendance will not be recorded");
+                MessageBox.Show("Employee is scheduled for a leave on the selected date, attendance will not be recorded",
+                    "Employee on a Leave", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
