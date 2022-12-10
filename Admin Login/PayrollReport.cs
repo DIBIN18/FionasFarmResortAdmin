@@ -15,7 +15,8 @@ namespace Admin_Login
     {
         Login login = new Login();
         SSSRangeClass sssclass = new SSSRangeClass();
-        FolderBrowserDialog fbd = new FolderBrowserDialog();
+        //FolderBrowserDialog fbd = new FolderBrowserDialog();
+        SaveFileDialog sfd = new SaveFileDialog();
         static string filepath = null, employeeid, employeename, department, position, datefrom,dateto;
         int i = 1;
         bool setdateFrom = true;
@@ -417,26 +418,26 @@ namespace Admin_Login
                     Worksheet.Range["U4"].CellStyle = style;
 
                     // Save the file
-                    if (fbd.ShowDialog() == DialogResult.OK)
+                    if (sfd.ShowDialog() == DialogResult.OK)
                     {
-                        filepath = fbd.SelectedPath;
-                        FileInfo fi = new FileInfo(Path.GetFullPath(filepath + "\\PayrollReport.xlsx "));
+                        filepath = sfd.FileName.ToString();
+                        FileInfo fi = new FileInfo(Path.GetFullPath(filepath + ".xlsx "));
                         if (!fi.Exists)
                         {
-                            Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport.xlsx "));
+                            Stream excelStream = File.Create(Path.GetFullPath(filepath + ".xlsx "));
                             workbook.SaveAs(excelStream);
                             excelStream.Dispose();
-                            System.Diagnostics.Process.Start(filepath + "\\PayrollReport.xlsx ");
+                            System.Diagnostics.Process.Start(filepath + ".xlsx ");
                             i++;
                         }
                         else
                         {
                             try
                             {
-                                Stream excelStream = File.Create(Path.GetFullPath(filepath + "\\PayrollReport(" + i + ").xlsx "));
+                                Stream excelStream = File.Create(Path.GetFullPath(filepath + "(" + i + ").xlsx "));
                                 workbook.SaveAs(excelStream);
                                 excelStream.Dispose();
-                                System.Diagnostics.Process.Start(filepath + "\\PayrollReport(" + i + ").xlsx ");
+                                System.Diagnostics.Process.Start(filepath + "(" + i + ").xlsx ");
                                 i++;
                             }
                             catch (Exception ex)
