@@ -541,7 +541,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -563,7 +564,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -580,7 +582,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -597,7 +600,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -614,7 +618,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -631,7 +636,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }
@@ -648,7 +654,8 @@ namespace Admin_Login
             // prevent checking
             if (checkCounter == 7)
             {
-                MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
+                MessageBox.Show("Employee must have at least one Rest Day", "Employee Workday", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 box.Checked = false;
             }
         }

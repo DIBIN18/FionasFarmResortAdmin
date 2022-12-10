@@ -131,6 +131,10 @@ namespace Admin_Login
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.dgvEditAttendance = new System.Windows.Forms.DataGridView();
             this.label49 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblRestDay = new System.Windows.Forms.Label();
+            this.lblEDITRestday = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.pnlAdd.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -153,6 +157,8 @@ namespace Admin_Login
             // pnlAdd
             // 
             this.pnlAdd.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.pnlAdd.Controls.Add(this.lblRestDay);
+            this.pnlAdd.Controls.Add(this.label21);
             this.pnlAdd.Controls.Add(this.panel1);
             this.pnlAdd.Controls.Add(this.lblSpecHMins);
             this.pnlAdd.Controls.Add(this.label52);
@@ -233,7 +239,7 @@ namespace Admin_Login
             // 
             this.lblSpecHMins.AutoSize = true;
             this.lblSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecHMins.Location = new System.Drawing.Point(825, 550);
+            this.lblSpecHMins.Location = new System.Drawing.Point(825, 582);
             this.lblSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHMins.Name = "lblSpecHMins";
             this.lblSpecHMins.Size = new System.Drawing.Size(19, 20);
@@ -244,7 +250,7 @@ namespace Admin_Login
             // 
             this.label52.AutoSize = true;
             this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.Location = new System.Drawing.Point(679, 550);
+            this.label52.Location = new System.Drawing.Point(679, 582);
             this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(104, 20);
@@ -255,7 +261,7 @@ namespace Admin_Login
             // 
             this.lblSpecHHours.AutoSize = true;
             this.lblSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecHHours.Location = new System.Drawing.Point(649, 550);
+            this.lblSpecHHours.Location = new System.Drawing.Point(649, 582);
             this.lblSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecHHours.Name = "lblSpecHHours";
             this.lblSpecHHours.Size = new System.Drawing.Size(19, 20);
@@ -266,7 +272,7 @@ namespace Admin_Login
             // 
             this.lblSpecH.AutoSize = true;
             this.lblSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecH.Location = new System.Drawing.Point(649, 522);
+            this.lblSpecH.Location = new System.Drawing.Point(649, 554);
             this.lblSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSpecH.Name = "lblSpecH";
             this.lblSpecH.Size = new System.Drawing.Size(19, 20);
@@ -277,7 +283,7 @@ namespace Admin_Login
             // 
             this.lblRegHMins.AutoSize = true;
             this.lblRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegHMins.Location = new System.Drawing.Point(825, 478);
+            this.lblRegHMins.Location = new System.Drawing.Point(825, 510);
             this.lblRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHMins.Name = "lblRegHMins";
             this.lblRegHMins.Size = new System.Drawing.Size(19, 20);
@@ -288,7 +294,7 @@ namespace Admin_Login
             // 
             this.lblRegHHours.AutoSize = true;
             this.lblRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegHHours.Location = new System.Drawing.Point(649, 478);
+            this.lblRegHHours.Location = new System.Drawing.Point(649, 510);
             this.lblRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegHHours.Name = "lblRegHHours";
             this.lblRegHHours.Size = new System.Drawing.Size(19, 20);
@@ -299,7 +305,7 @@ namespace Admin_Login
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(678, 478);
+            this.label29.Location = new System.Drawing.Point(678, 510);
             this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(105, 20);
@@ -310,7 +316,7 @@ namespace Admin_Login
             // 
             this.lblRegH.AutoSize = true;
             this.lblRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegH.Location = new System.Drawing.Point(649, 446);
+            this.lblRegH.Location = new System.Drawing.Point(649, 478);
             this.lblRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRegH.Name = "lblRegH";
             this.lblRegH.Size = new System.Drawing.Size(19, 20);
@@ -321,7 +327,7 @@ namespace Admin_Login
             // 
             this.lblUmins.AutoSize = true;
             this.lblUmins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUmins.Location = new System.Drawing.Point(825, 400);
+            this.lblUmins.Location = new System.Drawing.Point(825, 432);
             this.lblUmins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUmins.Name = "lblUmins";
             this.lblUmins.Size = new System.Drawing.Size(19, 20);
@@ -332,7 +338,7 @@ namespace Admin_Login
             // 
             this.lblUhours.AutoSize = true;
             this.lblUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUhours.Location = new System.Drawing.Point(649, 400);
+            this.lblUhours.Location = new System.Drawing.Point(649, 432);
             this.lblUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUhours.Name = "lblUhours";
             this.lblUhours.Size = new System.Drawing.Size(19, 20);
@@ -343,7 +349,7 @@ namespace Admin_Login
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(679, 400);
+            this.label25.Location = new System.Drawing.Point(679, 432);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(128, 20);
@@ -354,7 +360,7 @@ namespace Admin_Login
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(484, 400);
+            this.label24.Location = new System.Drawing.Point(484, 432);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(134, 20);
@@ -365,7 +371,7 @@ namespace Admin_Login
             // 
             this.lblOTHours.AutoSize = true;
             this.lblOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOTHours.Location = new System.Drawing.Point(649, 367);
+            this.lblOTHours.Location = new System.Drawing.Point(649, 399);
             this.lblOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOTHours.Name = "lblOTHours";
             this.lblOTHours.Size = new System.Drawing.Size(19, 20);
@@ -376,7 +382,7 @@ namespace Admin_Login
             // 
             this.lblMinsLate.AutoSize = true;
             this.lblMinsLate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMinsLate.Location = new System.Drawing.Point(825, 327);
+            this.lblMinsLate.Location = new System.Drawing.Point(825, 359);
             this.lblMinsLate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMinsLate.Name = "lblMinsLate";
             this.lblMinsLate.Size = new System.Drawing.Size(19, 20);
@@ -387,7 +393,7 @@ namespace Admin_Login
             // 
             this.lblMins.AutoSize = true;
             this.lblMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMins.Location = new System.Drawing.Point(649, 327);
+            this.lblMins.Location = new System.Drawing.Point(649, 359);
             this.lblMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMins.Name = "lblMins";
             this.lblMins.Size = new System.Drawing.Size(19, 20);
@@ -398,7 +404,7 @@ namespace Admin_Login
             // 
             this.lblHours.AutoSize = true;
             this.lblHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHours.Location = new System.Drawing.Point(649, 297);
+            this.lblHours.Location = new System.Drawing.Point(649, 329);
             this.lblHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHours.Name = "lblHours";
             this.lblHours.Size = new System.Drawing.Size(19, 20);
@@ -490,7 +496,7 @@ namespace Admin_Login
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(480, 256);
+            this.label17.Location = new System.Drawing.Point(480, 288);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(214, 24);
             this.label17.TabIndex = 94;
@@ -565,7 +571,7 @@ namespace Admin_Login
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(483, 367);
+            this.label15.Location = new System.Drawing.Point(483, 399);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(123, 20);
@@ -576,7 +582,7 @@ namespace Admin_Login
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(484, 550);
+            this.label13.Location = new System.Drawing.Point(484, 582);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(91, 20);
@@ -587,7 +593,7 @@ namespace Admin_Login
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(484, 478);
+            this.label14.Location = new System.Drawing.Point(484, 510);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(92, 20);
@@ -598,7 +604,7 @@ namespace Admin_Login
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(483, 522);
+            this.label12.Location = new System.Drawing.Point(483, 554);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(110, 20);
@@ -609,7 +615,7 @@ namespace Admin_Login
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(484, 446);
+            this.label11.Location = new System.Drawing.Point(484, 478);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(103, 20);
@@ -620,7 +626,7 @@ namespace Admin_Login
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(679, 327);
+            this.label10.Location = new System.Drawing.Point(679, 359);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 20);
@@ -631,7 +637,7 @@ namespace Admin_Login
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(484, 327);
+            this.label9.Location = new System.Drawing.Point(484, 359);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 20);
@@ -642,7 +648,7 @@ namespace Admin_Login
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(483, 297);
+            this.label8.Location = new System.Drawing.Point(483, 329);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 20);
@@ -860,6 +866,8 @@ namespace Admin_Login
             // pnlEdit
             // 
             this.pnlEdit.BackColor = System.Drawing.Color.Bisque;
+            this.pnlEdit.Controls.Add(this.lblEDITRestday);
+            this.pnlEdit.Controls.Add(this.label23);
             this.pnlEdit.Controls.Add(this.label7);
             this.pnlEdit.Controls.Add(this.dtpDgvDate);
             this.pnlEdit.Controls.Add(this.lbl_EditSpecHMins);
@@ -941,7 +949,7 @@ namespace Admin_Login
             // 
             this.lbl_EditSpecHMins.AutoSize = true;
             this.lbl_EditSpecHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecHMins.Location = new System.Drawing.Point(826, 560);
+            this.lbl_EditSpecHMins.Location = new System.Drawing.Point(826, 583);
             this.lbl_EditSpecHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecHMins.Name = "lbl_EditSpecHMins";
             this.lbl_EditSpecHMins.Size = new System.Drawing.Size(19, 20);
@@ -952,7 +960,7 @@ namespace Admin_Login
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(680, 560);
+            this.label20.Location = new System.Drawing.Point(680, 583);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(104, 20);
@@ -963,7 +971,7 @@ namespace Admin_Login
             // 
             this.lbl_EditSpecHHours.AutoSize = true;
             this.lbl_EditSpecHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecHHours.Location = new System.Drawing.Point(650, 560);
+            this.lbl_EditSpecHHours.Location = new System.Drawing.Point(650, 583);
             this.lbl_EditSpecHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecHHours.Name = "lbl_EditSpecHHours";
             this.lbl_EditSpecHHours.Size = new System.Drawing.Size(19, 20);
@@ -974,7 +982,7 @@ namespace Admin_Login
             // 
             this.lbl_EditSpecH.AutoSize = true;
             this.lbl_EditSpecH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditSpecH.Location = new System.Drawing.Point(650, 532);
+            this.lbl_EditSpecH.Location = new System.Drawing.Point(650, 555);
             this.lbl_EditSpecH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditSpecH.Name = "lbl_EditSpecH";
             this.lbl_EditSpecH.Size = new System.Drawing.Size(19, 20);
@@ -985,7 +993,7 @@ namespace Admin_Login
             // 
             this.lbl_EditRegHMins.AutoSize = true;
             this.lbl_EditRegHMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegHMins.Location = new System.Drawing.Point(826, 488);
+            this.lbl_EditRegHMins.Location = new System.Drawing.Point(826, 511);
             this.lbl_EditRegHMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegHMins.Name = "lbl_EditRegHMins";
             this.lbl_EditRegHMins.Size = new System.Drawing.Size(19, 20);
@@ -996,7 +1004,7 @@ namespace Admin_Login
             // 
             this.lbl_EditRegHHours.AutoSize = true;
             this.lbl_EditRegHHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegHHours.Location = new System.Drawing.Point(650, 488);
+            this.lbl_EditRegHHours.Location = new System.Drawing.Point(650, 511);
             this.lbl_EditRegHHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegHHours.Name = "lbl_EditRegHHours";
             this.lbl_EditRegHHours.Size = new System.Drawing.Size(19, 20);
@@ -1007,7 +1015,7 @@ namespace Admin_Login
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(679, 488);
+            this.label27.Location = new System.Drawing.Point(679, 511);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(105, 20);
@@ -1018,7 +1026,7 @@ namespace Admin_Login
             // 
             this.lbl_EditRegH.AutoSize = true;
             this.lbl_EditRegH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditRegH.Location = new System.Drawing.Point(650, 456);
+            this.lbl_EditRegH.Location = new System.Drawing.Point(650, 479);
             this.lbl_EditRegH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditRegH.Name = "lbl_EditRegH";
             this.lbl_EditRegH.Size = new System.Drawing.Size(19, 20);
@@ -1029,7 +1037,7 @@ namespace Admin_Login
             // 
             this.lbl_EditUMins.AutoSize = true;
             this.lbl_EditUMins.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditUMins.Location = new System.Drawing.Point(826, 410);
+            this.lbl_EditUMins.Location = new System.Drawing.Point(826, 433);
             this.lbl_EditUMins.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditUMins.Name = "lbl_EditUMins";
             this.lbl_EditUMins.Size = new System.Drawing.Size(19, 20);
@@ -1040,7 +1048,7 @@ namespace Admin_Login
             // 
             this.lbl_EditUhours.AutoSize = true;
             this.lbl_EditUhours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditUhours.Location = new System.Drawing.Point(650, 410);
+            this.lbl_EditUhours.Location = new System.Drawing.Point(650, 433);
             this.lbl_EditUhours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditUhours.Name = "lbl_EditUhours";
             this.lbl_EditUhours.Size = new System.Drawing.Size(19, 20);
@@ -1051,7 +1059,7 @@ namespace Admin_Login
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(680, 410);
+            this.label34.Location = new System.Drawing.Point(680, 433);
             this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(128, 20);
@@ -1062,7 +1070,7 @@ namespace Admin_Login
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(484, 410);
+            this.label35.Location = new System.Drawing.Point(484, 433);
             this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(134, 20);
@@ -1073,7 +1081,7 @@ namespace Admin_Login
             // 
             this.lbl_EditOTHours.AutoSize = true;
             this.lbl_EditOTHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditOTHours.Location = new System.Drawing.Point(650, 377);
+            this.lbl_EditOTHours.Location = new System.Drawing.Point(650, 400);
             this.lbl_EditOTHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditOTHours.Name = "lbl_EditOTHours";
             this.lbl_EditOTHours.Size = new System.Drawing.Size(19, 20);
@@ -1084,7 +1092,7 @@ namespace Admin_Login
             // 
             this.lbl_EditLateMinutes.AutoSize = true;
             this.lbl_EditLateMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditLateMinutes.Location = new System.Drawing.Point(826, 336);
+            this.lbl_EditLateMinutes.Location = new System.Drawing.Point(826, 359);
             this.lbl_EditLateMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditLateMinutes.Name = "lbl_EditLateMinutes";
             this.lbl_EditLateMinutes.Size = new System.Drawing.Size(19, 20);
@@ -1095,7 +1103,7 @@ namespace Admin_Login
             // 
             this.lbl_EditMinutes.AutoSize = true;
             this.lbl_EditMinutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditMinutes.Location = new System.Drawing.Point(650, 336);
+            this.lbl_EditMinutes.Location = new System.Drawing.Point(650, 359);
             this.lbl_EditMinutes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditMinutes.Name = "lbl_EditMinutes";
             this.lbl_EditMinutes.Size = new System.Drawing.Size(19, 20);
@@ -1106,7 +1114,7 @@ namespace Admin_Login
             // 
             this.lbl_EditHours.AutoSize = true;
             this.lbl_EditHours.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_EditHours.Location = new System.Drawing.Point(650, 307);
+            this.lbl_EditHours.Location = new System.Drawing.Point(650, 330);
             this.lbl_EditHours.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_EditHours.Name = "lbl_EditHours";
             this.lbl_EditHours.Size = new System.Drawing.Size(19, 20);
@@ -1153,7 +1161,7 @@ namespace Admin_Login
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(481, 266);
+            this.label42.Location = new System.Drawing.Point(481, 289);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(214, 24);
             this.label42.TabIndex = 142;
@@ -1218,7 +1226,7 @@ namespace Admin_Login
             // 
             this.label44.AutoSize = true;
             this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(484, 377);
+            this.label44.Location = new System.Drawing.Point(484, 400);
             this.label44.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(123, 20);
@@ -1229,7 +1237,7 @@ namespace Admin_Login
             // 
             this.label45.AutoSize = true;
             this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(484, 560);
+            this.label45.Location = new System.Drawing.Point(484, 583);
             this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(91, 20);
@@ -1240,7 +1248,7 @@ namespace Admin_Login
             // 
             this.label46.AutoSize = true;
             this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(484, 488);
+            this.label46.Location = new System.Drawing.Point(484, 511);
             this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(92, 20);
@@ -1251,7 +1259,7 @@ namespace Admin_Login
             // 
             this.label48.AutoSize = true;
             this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(484, 532);
+            this.label48.Location = new System.Drawing.Point(484, 555);
             this.label48.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(110, 20);
@@ -1262,7 +1270,7 @@ namespace Admin_Login
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(484, 456);
+            this.label50.Location = new System.Drawing.Point(484, 479);
             this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(103, 20);
@@ -1273,7 +1281,7 @@ namespace Admin_Login
             // 
             this.label51.AutoSize = true;
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(680, 336);
+            this.label51.Location = new System.Drawing.Point(680, 359);
             this.label51.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(105, 20);
@@ -1284,7 +1292,7 @@ namespace Admin_Login
             // 
             this.label53.AutoSize = true;
             this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.Location = new System.Drawing.Point(484, 336);
+            this.label53.Location = new System.Drawing.Point(484, 359);
             this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(69, 20);
@@ -1295,7 +1303,7 @@ namespace Admin_Login
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.Location = new System.Drawing.Point(484, 307);
+            this.label54.Location = new System.Drawing.Point(484, 330);
             this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(56, 20);
@@ -1475,6 +1483,50 @@ namespace Admin_Login
             this.label49.TabIndex = 59;
             this.label49.Text = "Select Attendance Record";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(483, 255);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 20);
+            this.label21.TabIndex = 127;
+            this.label21.Text = "Rest Day:";
+            // 
+            // lblRestDay
+            // 
+            this.lblRestDay.AutoSize = true;
+            this.lblRestDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRestDay.Location = new System.Drawing.Point(602, 255);
+            this.lblRestDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRestDay.Name = "lblRestDay";
+            this.lblRestDay.Size = new System.Drawing.Size(24, 20);
+            this.lblRestDay.TabIndex = 128;
+            this.lblRestDay.Text = "---";
+            // 
+            // lblEDITRestday
+            // 
+            this.lblEDITRestday.AutoSize = true;
+            this.lblEDITRestday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEDITRestday.Location = new System.Drawing.Point(603, 260);
+            this.lblEDITRestday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEDITRestday.Name = "lblEDITRestday";
+            this.lblEDITRestday.Size = new System.Drawing.Size(24, 20);
+            this.lblEDITRestday.TabIndex = 165;
+            this.lblEDITRestday.Text = "---";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(484, 260);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(79, 20);
+            this.label23.TabIndex = 164;
+            this.label23.Text = "Rest Day:";
+            // 
             // AddAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1623,5 +1675,9 @@ namespace Admin_Login
         private System.Windows.Forms.TextBox tb_Search;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtpDgvDate;
+        private System.Windows.Forms.Label lblRestDay;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblEDITRestday;
+        private System.Windows.Forms.Label label23;
     }
 }
