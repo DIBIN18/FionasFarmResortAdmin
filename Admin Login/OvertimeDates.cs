@@ -87,6 +87,49 @@ namespace Admin_Login
             dtpDateTo.Enabled = true;
         }
 
+        private Int64 GetLatestOvertimeID()
+        {
+            string query2 =
+                "SELECT MAX(OvertimeAppID) FROM Overtime";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                }
+            }
+        }
+
+        private void InsertOvertime(string AppType)
+        {
+            string query =
+                "INSERT INTO Overtime (StartDate, EndDate, ApplicationType) " +
+                "VALUES (@StartDate, @EndDate, @ApplicationType)";
+
+            using (SqlConnection conn = new SqlConnection(login.connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@StartDate", dtpDateFrom.Text.ToString());
+                cmd.Parameters.AddWithValue("@EndDate", dtpDateTo.Text.ToString());
+                cmd.Parameters.AddWithValue("@ApplicationType", AppType);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         // Insert Dates from given range
         public IEnumerable<DateTime> EachDay(DateTime from, DateTime thru)
         {
@@ -101,6 +144,7 @@ namespace Admin_Login
 
             if (onTableEmp == true)
             {
+                InsertOvertime(lblSelectedFromDGV.Text.ToString());
                 foreach (DateTime day in EachDay(StartDate, EndDate))
                 {
                     string ot_date = check_OT_Date(day.ToString("MMMM dd, yyyy"), selectedEmployee);
@@ -118,14 +162,17 @@ namespace Admin_Login
                             string query =
                                 "INSERT INTO OvertimeDates (" +
                                 "EmployeeID," +
-                                "Date) " +
+                                "Date," +
+                                "OvertimeAppID) " +
                                 "VALUES(" +
                                 "@EmployeeID," +
-                                "@Date)";
+                                "@Date," +
+                                "@OvertimeAppID)";
 
                             SqlCommand command2 = new SqlCommand(query, connection);
                             command2.Parameters.AddWithValue("@EmployeeID", Convert.ToInt64(selectedEmployee));
                             command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                            command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
                             command2.ExecuteNonQuery();
                             AuditTrail audit = new AuditTrail();
                             audit.AuditAddOverTime();
@@ -136,6 +183,7 @@ namespace Admin_Login
             }
             else if (onTableDept == true)
             {
+                InsertOvertime(lblSelectedFromDGV.Text.ToString());
                 bool duplicateDetect = false;
 
                 string query2 = "SELECT EmployeeID FROM EmployeeInfo WHERE DepartmentID=" + selectedDept;
@@ -167,14 +215,17 @@ namespace Admin_Login
                                         string query =
                                             "INSERT INTO OvertimeDates (" +
                                             "EmployeeID," +
-                                            "Date) " +
+                                            "Date," +
+                                            "OvertimeAppID) " +
                                             "VALUES(" +
                                             "@EmployeeID," +
-                                            "@Date)";
+                                            "@Date," +
+                                            "@OvertimeAppID)";
 
                                         SqlCommand command2 = new SqlCommand(query, connection2);
                                         command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
                                         command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                        command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
                                         command2.ExecuteNonQuery();
                                     }
                                 }
@@ -191,6 +242,7 @@ namespace Admin_Login
             }
             else if (onTablePos == true)
             {
+                InsertOvertime(lblSelectedFromDGV.Text.ToString());
                 bool duplicateDetect = false;
 
                 string query2 = "SELECT EmployeeID FROM EmployeeInfo WHERE PositionID=" + selectedPos;
@@ -222,14 +274,17 @@ namespace Admin_Login
                                         string query =
                                             "INSERT INTO OvertimeDates (" +
                                             "EmployeeID," +
-                                            "Date) " +
+                                            "Date," +
+                                            "OvertimeAppID) " +
                                             "VALUES(" +
                                             "@EmployeeID," +
-                                            "@Date)";
+                                            "@Date," +
+                                            "@OvertimeAppID)";
 
                                         SqlCommand command2 = new SqlCommand(query, connection2);
                                         command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
                                         command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                        command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
                                         command2.ExecuteNonQuery();
                                     }
                                 }
@@ -537,6 +592,14 @@ namespace Admin_Login
         private void tb_Search_Click(object sender, EventArgs e)
         {
             tb_Search.Text = null;
+        }
+
+        private void ViewAppliedOvertimes(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Applied Overtimes";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
         }
     }
 }

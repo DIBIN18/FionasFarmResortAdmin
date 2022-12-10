@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -234,14 +234,14 @@
             this.dgv_DailyPayrollReport.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgv_DailyPayrollReport.BackgroundColor = System.Drawing.Color.White;
             this.dgv_DailyPayrollReport.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_DailyPayrollReport.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_DailyPayrollReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DailyPayrollReport.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_DailyPayrollReport.Location = new System.Drawing.Point(3, 3);
@@ -257,10 +257,10 @@
             // cbPHILHEALTH
             // 
             this.cbPHILHEALTH.AutoSize = true;
-            this.cbPHILHEALTH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPHILHEALTH.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPHILHEALTH.Location = new System.Drawing.Point(298, 15);
             this.cbPHILHEALTH.Name = "cbPHILHEALTH";
-            this.cbPHILHEALTH.Size = new System.Drawing.Size(119, 20);
+            this.cbPHILHEALTH.Size = new System.Drawing.Size(108, 22);
             this.cbPHILHEALTH.TabIndex = 39;
             this.cbPHILHEALTH.Text = "PHILHEALTH";
             this.cbPHILHEALTH.UseVisualStyleBackColor = true;
@@ -269,10 +269,10 @@
             // cbPAGIBIG
             // 
             this.cbPAGIBIG.AutoSize = true;
-            this.cbPAGIBIG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPAGIBIG.Location = new System.Drawing.Point(200, 15);
+            this.cbPAGIBIG.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPAGIBIG.Location = new System.Drawing.Point(191, 15);
             this.cbPAGIBIG.Name = "cbPAGIBIG";
-            this.cbPAGIBIG.Size = new System.Drawing.Size(86, 20);
+            this.cbPAGIBIG.Size = new System.Drawing.Size(89, 22);
             this.cbPAGIBIG.TabIndex = 38;
             this.cbPAGIBIG.Text = "PAGIBIG";
             this.cbPAGIBIG.UseVisualStyleBackColor = true;
@@ -281,10 +281,10 @@
             // cbSSS
             // 
             this.cbSSS.AutoSize = true;
-            this.cbSSS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSSS.Location = new System.Drawing.Point(129, 15);
+            this.cbSSS.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSSS.Location = new System.Drawing.Point(121, 15);
             this.cbSSS.Name = "cbSSS";
-            this.cbSSS.Size = new System.Drawing.Size(56, 20);
+            this.cbSSS.Size = new System.Drawing.Size(51, 22);
             this.cbSSS.TabIndex = 37;
             this.cbSSS.Text = "SSS";
             this.cbSSS.UseVisualStyleBackColor = true;
@@ -293,37 +293,38 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(323, 34);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(326, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 20);
+            this.label4.Size = new System.Drawing.Size(30, 19);
             this.label4.TabIndex = 36;
             this.label4.Text = "To:";
             // 
             // dtp_To
             // 
             this.dtp_To.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_To.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_To.Location = new System.Drawing.Point(357, 31);
+            this.dtp_To.Location = new System.Drawing.Point(364, 33);
             this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_To.MaxDate = new System.DateTime(2022, 11, 15, 0, 0, 0, 0);
             this.dtp_To.Name = "dtp_To";
-            this.dtp_To.Size = new System.Drawing.Size(224, 22);
+            this.dtp_To.Size = new System.Drawing.Size(224, 23);
             this.dtp_To.TabIndex = 37;
             this.dtp_To.Value = new System.DateTime(2022, 10, 31, 0, 0, 0, 0);
             this.dtp_To.ValueChanged += new System.EventHandler(this.dtp_To_ValueChanged);
             // 
             // dtp_From
             // 
+            this.dtp_From.CalendarFont = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.CustomFormat = "MMMM dd, yyyy";
-            this.dtp_From.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_From.Location = new System.Drawing.Point(66, 32);
+            this.dtp_From.Location = new System.Drawing.Point(62, 33);
             this.dtp_From.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_From.Name = "dtp_From";
-            this.dtp_From.Size = new System.Drawing.Size(224, 22);
+            this.dtp_From.Size = new System.Drawing.Size(224, 23);
             this.dtp_From.TabIndex = 31;
             this.dtp_From.ValueChanged += new System.EventHandler(this.dtp_From_ValueChanged);
             // 
@@ -333,7 +334,7 @@
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.tb_Search.Location = new System.Drawing.Point(30, 7);
+            this.tb_Search.Location = new System.Drawing.Point(31, 6);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(410, 21);
@@ -349,7 +350,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(10, 94);
+            this.panel1.Location = new System.Drawing.Point(10, 90);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(449, 35);
@@ -370,11 +371,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(6, 33);
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 34);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 20);
+            this.label6.Size = new System.Drawing.Size(52, 19);
             this.label6.TabIndex = 40;
             this.label6.Text = "From:";
             // 
@@ -388,7 +389,7 @@
             this.groupBox1.Controls.Add(this.pictureBox6);
             this.groupBox1.Controls.Add(this.dtp_From);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(9, 3);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -449,8 +450,8 @@
             this.groupBox2.Controls.Add(this.cbPHILHEALTH);
             this.groupBox2.Controls.Add(this.cbSSS);
             this.groupBox2.Controls.Add(this.cbPAGIBIG);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(464, 86);
+            this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(464, 82);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(416, 43);
             this.groupBox2.TabIndex = 42;

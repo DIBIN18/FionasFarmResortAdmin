@@ -33,6 +33,7 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Archive Employee";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
         private void Tb_Search_Leave(object sender, EventArgs e)
         {
             if (tb_Search.Text == "")
@@ -41,6 +42,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Silver;
             }
         }
+
         private void Tb_Search_Enter(object sender, EventArgs e)
         {
             if (tb_Search.Text == " Search")
@@ -49,6 +51,7 @@ namespace Admin_Login
                 tb_Search.ForeColor = Color.Black;
             }
         }
+
         private void btnAddEmployee(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];

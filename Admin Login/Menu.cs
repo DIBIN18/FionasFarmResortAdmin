@@ -692,6 +692,18 @@ namespace Admin_Login
                 viewParentalLeaveList.BringToFront();
                 viewParentalLeaveList.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Applied Overtimes")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Applied Overtimes";
+                TitleLabel.Text = TitleExtension;
+                AppliedOvertimes appliedOvertimes = new AppliedOvertimes();
+                {
+                    appliedOvertimes.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(appliedOvertimes);
+                appliedOvertimes.BringToFront();
+                appliedOvertimes.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);
