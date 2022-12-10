@@ -86,80 +86,73 @@ namespace Admin_Login
             string AttendanceRecord = dataTable.Rows[0][9].ToString();
             string PayrollReport = dataTable.Rows[0][10].ToString();
             string HolidaySetting = dataTable.Rows[0][11].ToString();
+            string Schedule = dataTable.Rows[0][13].ToString();
             string Settings = dataTable.Rows[0][12].ToString();
             
             if (name == dataTable.Rows[0][1].ToString())
             {
-                lbl_EmployeeList.Enabled = false;
-                lbl_Dashboard.Enabled = false;
-                pictureBox3.Enabled = false;
-                pictureBox7.Enabled = false;
-                pictureBox9.Enabled = false;
-                pictureBox11.Enabled = false;
-                pictureBox13.Enabled = false;
-                pictureBox15.Enabled = false;
-                pictureBox1.Enabled = false;
-                lbl_Leave.Enabled = false;
-                lbl_DepartmentAndPosition.Enabled = false;
-                lbl_Deductions.Enabled = false;
-                lbl_AttendanceRecord.Enabled = false;
-                lbl_PayrollReport.Enabled = false;
-                lbl_HolidaySettings.Enabled = false;
-                lbl_Settings.Enabled = false; //settings
-          
                 //DASHBOARD
                 if (dashboard.ToString() == istrue.ToString())
                 {
+                    pictureBox4.Enabled = true;
                     lbl_Dashboard.Enabled = true;
                     pictureBox3.Enabled = true;
                 }
                 else
                 {
+                    pictureBox4.Enabled = false;
                     lbl_Dashboard.Enabled = false;
                     pictureBox3.Enabled = false;
                 }
                 //EmployeeList
                 if (EmployeeList.ToString() == istrue.ToString())
                 {
+                    pictureBox6.Enabled = true;
                     lbl_EmployeeList.Enabled = true;
                     pictureBox5.Enabled = true;
                 }
                 else
                 {
+                    pictureBox6.Enabled = false;
                     lbl_EmployeeList.Enabled = false;
                     pictureBox5.Enabled = false;
                 }
                 //Leave
                 if (Leave.ToString() == istrue.ToString())
                 {
+                    pictureBox8.Enabled = true;
                     lbl_Leave.Enabled = true;
                     pictureBox7.Enabled = true;
                 }
                 else
                 {
+                    pictureBox8.Enabled = false;
                     lbl_Leave.Enabled = false;
                     pictureBox7.Enabled = false;
                 }
                 //DepartmentPosition
                 if (DepartmentAndPosition.ToString() == istrue.ToString())
                 {
+                    pictureBox10.Enabled = true;
                     lbl_DepartmentAndPosition.Enabled = true;
                     pictureBox9.Enabled = true;
                 }
                 else
                 {
+                    pictureBox10.Enabled = false;
                     lbl_DepartmentAndPosition.Enabled = false;
                     pictureBox9.Enabled = false;
                 }
                 //Deductions
                 if (Deductions.ToString() == istrue.ToString())
                 {
+                    pictureBox12.Enabled = true;
                     lbl_Deductions.Enabled = true;
                     pictureBox11.Enabled = true;
                 }
                 else
                 {
-
+                    pictureBox12.Enabled = false;
                     lbl_Deductions.Enabled = false;
                     pictureBox11.Enabled = false;
                 }
@@ -167,23 +160,26 @@ namespace Admin_Login
                 if (AttendanceRecord.ToString() == istrue.ToString())
                 {
                     lbl_AttendanceRecord.Enabled = true;
-                 
+                    pictureBox13.Enabled = true;
+                    pictureBox14.Enabled = true;
                 }
                 else
                 {
-
+                    pictureBox13.Enabled = false;
+                    pictureBox14.Enabled = false;
                     lbl_AttendanceRecord.Enabled = false;
                 
                 }
                 //PayrolLReport
                 if (PayrollReport.ToString() == istrue.ToString())
                 {
+                    pictureBox16.Enabled = true;
                     lbl_PayrollReport.Enabled = true;
                     pictureBox15.Enabled = true;
                 }
                 else
                 {
-
+                    pictureBox16.Enabled = false;
                     lbl_PayrollReport.Enabled = false;
                     pictureBox15.Enabled = false;
 
@@ -191,12 +187,13 @@ namespace Admin_Login
                 //HolidaySetting
                 if (HolidaySetting.ToString() == istrue.ToString())
                 {
+                    pictureBox2.Enabled = true;
                     lbl_HolidaySettings.Enabled = true;
                     pictureBox1.Enabled = true;
                 }
                 else
                 {
-
+                    pictureBox2.Enabled = false;
                     lbl_HolidaySettings.Enabled = false;
                     pictureBox1.Enabled = false;
 
@@ -204,13 +201,28 @@ namespace Admin_Login
                 //Setting
                 if (Settings.ToString() == istrue.ToString())
                 {
+                    pictureBox17.Enabled = true;
                     lbl_Settings.Enabled = true;
                     
                 }
                 else
                 {
-
+                    pictureBox17.Enabled = false;
                     lbl_Settings.Enabled = false;
+                }
+                //Schedules
+                if (Schedule.ToString() == istrue.ToString())
+                {
+                    pictureBox21.Enabled = true;
+                    pictureBox22.Enabled = true;
+                    lbl_Schedules.Enabled = true;
+
+                }
+                else
+                {
+                    pictureBox22.Enabled = false;
+                    pictureBox21.Enabled = false;
+                    lbl_Schedules.Enabled = false;
                 }
             }
 
