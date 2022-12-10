@@ -57,7 +57,11 @@ namespace Admin_Login
             cmbUserName.Items.Add("General Manager");
 
             SqlConnection connection = new SqlConnection(login.connectionString);
-            SqlCommand cmd = new SqlCommand("Select * from AuditTrail",connection);
+
+            SqlCommand cmd = new SqlCommand(
+                "Select UserName_, Date, Module, Description from AuditTrail",
+            connection);
+
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sqlDataAdapter.Fill(dt);

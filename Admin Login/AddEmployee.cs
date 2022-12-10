@@ -304,6 +304,7 @@ namespace Admin_Login
                 }
             }
             cmbPosition.SelectedIndex = -1;
+            lblBasicRate.Text = "---";
         }
 
         private void txtPosition_MouseClick(object sender, MouseEventArgs e)
@@ -455,6 +456,30 @@ namespace Admin_Login
                     }
                 }
             }
+            lblBasicRate.Text = GetBasicRate(selectedPositionId.ToString()).ToString();
+        }
+
+        private decimal GetBasicRate(string posID)
+        {
+            string query = "SELECT BasicRate FROM Position WHERE PositionID='" + posID + "'";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetDecimal(0);
+                    }
+                    else
+                    {
+                        return 0.0m;
+                    }
+                }
+            }
         }
 
         public void clearAll()
@@ -519,6 +544,11 @@ namespace Admin_Login
                 MessageBox.Show("New Employees can only be scheduled at maximum 6 workdays a week", "Employee Workday");
                 box.Checked = false;
             }
+        }
+
+        private void cmbDepartment_Click(object sender, EventArgs e)
+        {
+            lblBasicRate.Text = "---";
         }
 
         private void cbTuesday_CheckedChanged(object sender, EventArgs e)
