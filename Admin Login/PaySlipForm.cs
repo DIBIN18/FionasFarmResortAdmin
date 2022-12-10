@@ -23,8 +23,8 @@ namespace Admin_Login
     {
         Login login = new Login();
         PayrollReport pr = new PayrollReport();
-        FolderBrowserDialog selectedfile = new FolderBrowserDialog();
-        string EmpID = "", filepath ;       
+        SaveFileDialog sfd = new SaveFileDialog();
+        string EmpID = "", filepath,filename ;       
         ArrayList getImage = new ArrayList();
         string _datefrom, _dateto;
         public PaySlipForm(string datefrom, string dateto)
@@ -47,10 +47,10 @@ namespace Admin_Login
                     add.AppendPicture(item.ToString());
                     File.Delete(item.ToString());
                 }
-                document.SaveToFile(@filepath + "\\Payslips.docx", FileFormat.Docx);
+                document.SaveToFile(@sfd.FileName.ToString() + ".docx", FileFormat.Docx);
                 convertToPDF();
-                File.Delete(@filepath + "\\Payslips.docx");
-                System.Diagnostics.Process.Start(@filepath + "\\Payslips.pdf");
+                File.Delete(@sfd.FileName.ToString() + ".docx");
+                System.Diagnostics.Process.Start(@sfd.FileName.ToString() + ".pdf");
             }
             catch (Exception ex) { }
         }
@@ -58,7 +58,7 @@ namespace Admin_Login
         {
             Word2Pdf objWorPdf = new Word2Pdf();
             string backfolder1 = filepath;
-            string strFileName = "Payslips.docx";
+            string strFileName = filename+".docx";
             object FromLocation = backfolder1 + "\\" + strFileName;
             string FileExtension = Path.GetExtension(strFileName);
             string ChangeExtension = strFileName.Replace(FileExtension, ".pdf");
@@ -81,9 +81,11 @@ namespace Admin_Login
                 adapter.Fill(data);
                 int count = 0;
 
-                if (selectedfile.ShowDialog() == DialogResult.OK)
+                if (sfd.ShowDialog() == DialogResult.OK)
                 {
-                    filepath = selectedfile.SelectedPath;
+                    FileInfo fi = new FileInfo(sfd.FileName);
+                    filepath = Path.GetFullPath(fi.DirectoryName);
+                    filename = fi.Name;
                 }
                     foreach (DataRow row in data.Rows)
                 {          
@@ -92,7 +94,7 @@ namespace Admin_Login
                     {
                         EmpID = row.ItemArray[0].ToString();
                         getInfo();
-                        ExportPaySlip();
+                        getPaySlip();
                         
                     }
                     if(count == data.Rows.Count)
@@ -103,7 +105,7 @@ namespace Admin_Login
                 }
             }
         }
-        public void ExportPaySlip()
+        public void getPaySlip()
         {
             try
             {
