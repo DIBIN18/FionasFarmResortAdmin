@@ -56,7 +56,7 @@ namespace Admin_Login
                 adapter.Fill(dts);
                 try
                 {
-                    tbWorkHours.Text = dts.Rows[0][9].ToString();                 
+                    tbWorkHours.Text = dts.Rows[0][4].ToString();                 
                     tbPLeaveDays.Text = dts.Rows[0][10].ToString();
                     tbBasicGross.Text = dts.Rows[0][5].ToString();
                     tbSSS.Text = dts.Rows[0][14].ToString();
@@ -142,6 +142,7 @@ namespace Admin_Login
                     DateTimePicker dtp = new DateTimePicker();
                     dtp.Text = getLastPayrollDate().ToString();
                     dtp_From.Value = dtp.Value.AddDays(1);
+                    tbFrom.Text = dtp_From.Text;
                     string date = dtp_From.Value.AddDays(15).ToString("MMMM dd, yyyy");
                     string cdate = "0";
                     for (int i = 0; i < date.Length; i++)
@@ -160,6 +161,7 @@ namespace Admin_Login
                     {
                         dtp_To.Value = dtp_From.Value.AddDays(14);
                     }
+                    tbTo.Text = dtp_To.Text; 
                 }
                 catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
                 sssclass.dateFrom = dtp_From.Text;

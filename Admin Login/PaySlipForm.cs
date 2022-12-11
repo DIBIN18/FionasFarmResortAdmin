@@ -87,7 +87,7 @@ namespace Admin_Login
                     filepath = Path.GetFullPath(fi.DirectoryName);
                     filename = fi.Name;
                 }
-                    foreach (DataRow row in data.Rows)
+                foreach (DataRow row in data.Rows)
                 {          
                     count++;
                     if (count <= data.Rows.Count)
@@ -168,7 +168,7 @@ namespace Admin_Login
                     txtOtherDeductions.Text = data.Rows[0][18].ToString();
                     txtNetPay.Text = "₱" + data.Rows[0][19].ToString();
                     double totaldeduct = Convert.ToDouble(data.Rows[0][14].ToString()) + Convert.ToDouble(data.Rows[0][15].ToString()) + Convert.ToDouble(data.Rows[0][16].ToString()) + Convert.ToDouble(data.Rows[0][17].ToString()) + Convert.ToDouble(data.Rows[0][18].ToString());
-                    txtTotalDeduction.Text = totaldeduct.ToString("n2");
+                    txtTotalDeduction.Text = "₱" + totaldeduct.ToString("n2");
                 }
                 catch (Exception ex)
                 {

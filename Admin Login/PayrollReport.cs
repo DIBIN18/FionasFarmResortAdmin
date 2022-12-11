@@ -340,6 +340,8 @@ namespace Admin_Login
             SqlCommand command2 = new SqlCommand(filldt, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command2);
             DataTable dt = new DataTable();
+            
+
             adapter.Fill(dt);
             command2.ExecuteNonQuery();
             //Export
@@ -360,62 +362,40 @@ namespace Admin_Login
                     IWorksheet Worksheet = workbook.Worksheets[0];
                     IStyle style = workbook.Styles.Add("NewStyle");
                     style.Font.Bold = true;
-                    style.Color.ToArgb();
+                    style.ColorIndex = ExcelKnownColors.Custom34;
+                    style.HorizontalAlignment = ExcelHAlign.HAlignLeft;
+                    
+
+                    IStyle style2 = workbook.Styles.Add("NewStyle2");
+                    style2.HorizontalAlignment = ExcelHAlign.HAlignLeft;
+                    style2.ColorIndex = ExcelKnownColors.Custom35;
+
                     // Import data from the data table
-                    Worksheet.Range["I1"].Text = "FIONA'S FARM AND RESORT";
-                    Worksheet.Range["I2"].Text = "Payroll Covered Date : "+ dtp_From.Text + " - " + dtp_To.Text;
-                    Worksheet.Range["I3"].Text = "Payroll ID : " + PayrollID;
+                    Worksheet.Range["A1"].Text = "FIONA'S FARM AND RESORT";
+                    Worksheet.Range["A2"].Text = "Payroll Covered Date : "+ dtp_From.Text + " - " + dtp_To.Text;
+                    Worksheet.Range["A3"].Text = "Payroll ID : " + PayrollID;
                     Worksheet.ImportDataTable(dt, true, 4, 1, true);
+
                     //IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
                     //table.BuiltInTableStyle = TableBuiltInStyles.TableStyleLight11;
 
-                    
-                    Worksheet.Range[4, 1].AutofitColumns();
-                    Worksheet.Range[4, 2].AutofitColumns();
-                    Worksheet.Range[4, 3].AutofitColumns();
-                    Worksheet.Range[4, 4].AutofitColumns();
-                    Worksheet.Range[4, 5].AutofitColumns();
-                    Worksheet.Range[4, 6].AutofitColumns();
-                    Worksheet.Range[4, 7].AutofitColumns();
-                    Worksheet.Range[4, 8].AutofitColumns();
-                    Worksheet.Range[4, 9].AutofitColumns();
-                    Worksheet.Range[4, 10].AutofitColumns();
-                    Worksheet.Range[4, 11].AutofitColumns();
-                    Worksheet.Range[4, 12].AutofitColumns();
-                    Worksheet.Range[4, 13].AutofitColumns();
-                    Worksheet.Range[4, 14].AutofitColumns();
-                    Worksheet.Range[4, 15].AutofitColumns();
-                    Worksheet.Range[4, 16].AutofitColumns();
-                    Worksheet.Range[4, 17].AutofitColumns();
-                    Worksheet.Range[4, 18].AutofitColumns();
-                    Worksheet.Range[4, 19].AutofitColumns();
-                    Worksheet.Range[4, 20].AutofitColumns();
-                    Worksheet.Range[4, 21].AutofitColumns();
+                    int ir = 4, reset = 0 ;
+                    Worksheet.Range[4, 1, 4,21 ].AutofitColumns();
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        Worksheet.Rows[ir].CellStyle = style2;
+                        ir++;
+                        reset++;
+                        if (reset == dt.Rows.Count)
+                        {
+                            ir = 4;
+                        }
+                    }
                     Worksheet.Range[2, 8].AutofitColumns();
-
-
-                    Worksheet.Range["I1"].CellStyle = style;
-                    Worksheet.Range["A4"].CellStyle = style;
-                    Worksheet.Range["B4"].CellStyle = style;
-                    Worksheet.Range["C4"].CellStyle = style;
-                    Worksheet.Range["D4"].CellStyle = style;
-                    Worksheet.Range["E4"].CellStyle = style;
-                    Worksheet.Range["F4"].CellStyle = style;
-                    Worksheet.Range["G4"].CellStyle = style;
-                    Worksheet.Range["H4"].CellStyle = style;
-                    Worksheet.Range["I4"].CellStyle = style;
-                    Worksheet.Range["J4"].CellStyle = style;
-                    Worksheet.Range["K4"].CellStyle = style;
-                    Worksheet.Range["L4"].CellStyle = style;
-                    Worksheet.Range["M4"].CellStyle = style;
-                    Worksheet.Range["N4"].CellStyle = style;
-                    Worksheet.Range["O4"].CellStyle = style;
-                    Worksheet.Range["P4"].CellStyle = style;
-                    Worksheet.Range["Q4"].CellStyle = style;
-                    Worksheet.Range["R4"].CellStyle = style;
-                    Worksheet.Range["S4"].CellStyle = style;
-                    Worksheet.Range["T4"].CellStyle = style;
-                    Worksheet.Range["U4"].CellStyle = style;
+                    Worksheet.SetColumnWidth(3, 15);
+                    Worksheet.SetColumnWidth(18, 10);
+                    Worksheet.Rows[3].CellStyle = style;
+                    
 
                     // Save the file
                     if (sfd.ShowDialog() == DialogResult.OK)
