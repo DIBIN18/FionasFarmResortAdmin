@@ -26,9 +26,9 @@ namespace Admin_Login
         {
             string query = "insert into PayrollReport " +
                            "select A.EmployeeID, EmployeeFullname, PositionName, C.BasicRate, concat(sum(A.Hours)+(sum(A.Minutes)/60),':',(sum(A.Minutes)-(sum(A.Minutes)/60)*60)) as TotalHours, " +
-                           "(sum(A.Hours)*C.BasicRate) + ((C.BasicRate/60)*sum(Minutes)) as BasicPay,(sum(A.OT_Hours)*C.BasicRate)*1.30 as OTPay, ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) as LegalHolidayPay, " +
+                           "(sum(A.Hours)*C.BasicRate) + ((C.BasicRate/60)*sum(Minutes)) as BasicPay,((((sum(A.OT_Hours)+sum(A.RD_Hours))*C.BasicRate)+((C.BasicRate/60)*sum(RD_Minutes)))*1.30) as OTPay, ((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60) as LegalHolidayPay, " +
                            "(((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30) as SpecialHolidayPay, count(A.EmployeeID) as TotalDays, 0 as PaidLeaveDays, " +
-                           "(sum(A.Hours)*C.BasicRate) + ((C.BasicRate/60)*sum(Minutes))+((sum(A.OT_Hours)*C.BasicRate)*1.30)+(((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60))+((((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30))  as GrossPay, " +
+                           "(sum(A.Hours)*C.BasicRate) + ((C.BasicRate/60)*sum(Minutes))+((((sum(A.OT_Hours)+sum(A.RD_Hours))*C.BasicRate)+((C.BasicRate/60)*sum(RD_Minutes)))*1.30)+(((sum(A.RH_Hours)*60)+sum(RH_Minutes))*(C.BasicRate/60))+((((sum(A.SH_Hours)*60)+sum(SH_Minutes))*(C.BasicRate/60)*0.30))  as GrossPay, " +
                            "sum(A.Late_Minutes) as MinutesLate, (sum(Undertime_Hours)*60)+sum(Undertime_Minutes) as MinutesUnderTime, 0,0,0,0,0,0,' ' " +
                            "from AttendanceRecord as A inner join EmployeeInfo as B on A.EmployeeID = B.EmployeeID " +
                            "inner join Position as C on A.PositionID = C.PositionID " +
