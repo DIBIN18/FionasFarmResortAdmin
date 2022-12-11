@@ -51,14 +51,91 @@ namespace Admin_Login
                     txtRegularHours.Text = data.Rows[0][4].ToString();
                     txtRegularPay.Text = data.Rows[0][5].ToString();
                     double otmin =  (Convert.ToDouble(data.Rows[0][6].ToString())/1.30)/Convert.ToDouble(data.Rows[0][3].ToString());
-                    txtOvertimeHrs.Text = otmin.ToString();
+                    //------OverTimeHours convertion to 0:0----
+                    int x = otmin.ToString().Length;
+                    string decimalNumbers = "";
+                    StringBuilder wholeNumber = new StringBuilder();
+                    for (int i = 0; i < x; i++)
+                    {
+                        if (otmin.ToString()[i] == '.')
+                        {
+                            decimalNumbers = "0." + otmin.ToString().Substring(i + 1, x - i - 1);
+                            i = 0;
+                            break;
+                        }
+                        wholeNumber.Append(otmin.ToString()[i]);
+                    }
+                    decimal y;
+                    try
+                    {
+                        y = Convert.ToDecimal(decimalNumbers) * 60;
+                    }
+                    catch (Exception e)
+                    {
+                        y = 0;
+                    }
+                    var g = Math.Round(y, 0);                 
+                    txtOvertimeHrs.Text = wholeNumber.ToString() + ":" + g;
+                    //---------------------------------------
                     txtOvertimePay.Text = data.Rows[0][6].ToString();
                     double rhHrs = (Convert.ToDouble(data.Rows[0][7].ToString())/(Convert.ToDouble(data.Rows[0][3].ToString())/60))/60;
-                    txtRegularHolidayHrs.Text= rhHrs.ToString();
+                    //------LegalHolidayHours convertion to 0:0----
+                    int r = rhHrs.ToString().Length;
+                    string decimalNumbersR = "";
+                    StringBuilder wholeNumberR = new StringBuilder();
+                    for (int i = 0; i < r; i++)
+                    {
+                        if (rhHrs.ToString()[i] == '.')
+                        {
+                            decimalNumbersR = "0." + rhHrs.ToString().Substring(i + 1, r - i - 1);
+                            i = 0;
+                            break;
+                        }
+                        wholeNumberR.Append(rhHrs.ToString()[i]);
+                    }
+                    decimal h;
+                    try
+                    {
+                        h = Convert.ToDecimal(decimalNumbersR) * 60;
+                    }
+                    catch (Exception e)
+                    {
+                        h = 0;
+                    }
+                    var m = Math.Round(h, 0);
+                    txtRegularHolidayHrs.Text = wholeNumberR + ":" + m;
+                    //---------------------------------------
                     double Rholidaypay = Convert.ToDouble(data.Rows[0][7].ToString());
                     txtRHolidayPay.Text = Rholidaypay.ToString("n2");
                     double S_holiday = (Convert.ToDouble(data.Rows[0][8].ToString())/ Convert.ToDouble(data.Rows[0][3].ToString())/0.30);
-                    txtSpecialHoliday.Text = S_holiday.ToString("n2");
+
+                    //------SpecialHolidayHours convertion to 0:0----
+                    int s = S_holiday.ToString().Length;
+                    string decimalNumbersS = "";
+                    StringBuilder wholeNumberS = new StringBuilder();
+                    for (int i = 0; i < s; i++)
+                    {
+                        if (S_holiday.ToString()[i] == '.')
+                        {
+                            decimalNumbersS = "0." + S_holiday.ToString().Substring(i + 1, r - i - 1);
+                            i = 0;
+                            break;
+                        }
+                        wholeNumberS.Append(S_holiday.ToString()[i]);
+                    }
+                    decimal c;
+                    try
+                    {
+                        c = Convert.ToDecimal(decimalNumbersS) * 60;
+                    }
+                    catch (Exception e)
+                    {
+                        c = 0;
+                    }
+                    var q = Math.Round(h, 0);
+                    txtSpecialHoliday.Text = wholeNumberS + ":" + q; 
+                    //---------------------------------------
+
                     double S_holidaypay = Convert.ToDouble(data.Rows[0][8].ToString());
                     txtSpHolidayPay.Text = S_holidaypay.ToString("n2");
                     txtLeavedays.Text = data.Rows[0][10].ToString();
