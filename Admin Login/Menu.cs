@@ -704,6 +704,18 @@ namespace Admin_Login
                 appliedOvertimes.BringToFront();
                 appliedOvertimes.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Payroll Report")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Payroll Report";
+                TitleLabel.Text = TitleExtension;
+                PayrollReport payrollReport = new PayrollReport();
+                {
+                    payrollReport.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(payrollReport);
+                payrollReport.BringToFront();
+                payrollReport.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

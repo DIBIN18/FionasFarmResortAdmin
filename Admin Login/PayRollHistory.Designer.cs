@@ -43,6 +43,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tb_SearchReport = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayrollRecords)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -51,6 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPayrollRecords
@@ -73,34 +78,36 @@
             this.dgvPayrollRecords.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPayrollRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPayrollRecords.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvPayrollRecords.Location = new System.Drawing.Point(10, 280);
+            this.dgvPayrollRecords.Location = new System.Drawing.Point(10, 293);
             this.dgvPayrollRecords.MultiSelect = false;
             this.dgvPayrollRecords.Name = "dgvPayrollRecords";
             this.dgvPayrollRecords.RowHeadersVisible = false;
             this.dgvPayrollRecords.RowHeadersWidth = 51;
             this.dgvPayrollRecords.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPayrollRecords.Size = new System.Drawing.Size(864, 393);
+            this.dgvPayrollRecords.Size = new System.Drawing.Size(864, 380);
             this.dgvPayrollRecords.TabIndex = 6;
             // 
             // tb_Search
             // 
-            this.tb_Search.BackColor = System.Drawing.Color.White;
+            this.tb_Search.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.tb_Search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
             this.tb_Search.Location = new System.Drawing.Point(35, 3);
             this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
-            this.tb_Search.Size = new System.Drawing.Size(374, 23);
+            this.tb_Search.Size = new System.Drawing.Size(374, 20);
             this.tb_Search.TabIndex = 6;
-            this.tb_Search.Text = " Search";
+            this.tb_Search.Text = " Search payroll reprot";
+            this.tb_Search.Click += new System.EventHandler(this.tb_Search_Click);
+            this.tb_Search.TextChanged += new System.EventHandler(this.tb_Search_TextChanged);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
-            this.panel1.Location = new System.Drawing.Point(12, 11);
+            this.panel1.Location = new System.Drawing.Point(458, 11);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(416, 30);
@@ -138,13 +145,13 @@
             this.dgv_PayrollID.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_PayrollID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_PayrollID.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv_PayrollID.Location = new System.Drawing.Point(10, 69);
+            this.dgv_PayrollID.Location = new System.Drawing.Point(10, 49);
             this.dgv_PayrollID.MultiSelect = false;
             this.dgv_PayrollID.Name = "dgv_PayrollID";
             this.dgv_PayrollID.RowHeadersVisible = false;
             this.dgv_PayrollID.RowHeadersWidth = 51;
             this.dgv_PayrollID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_PayrollID.Size = new System.Drawing.Size(864, 166);
+            this.dgv_PayrollID.Size = new System.Drawing.Size(864, 186);
             this.dgv_PayrollID.TabIndex = 46;
             this.dgv_PayrollID.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_PayrollID_CellClick);
             // 
@@ -161,6 +168,7 @@
             this.btnBackEdit.TabIndex = 156;
             this.btnBackEdit.TabStop = false;
             this.btnBackEdit.Tag = "btn_Back";
+            this.btnBackEdit.Click += new System.EventHandler(this.BtnBackClick);
             // 
             // label47
             // 
@@ -176,6 +184,7 @@
             this.label47.TabIndex = 155;
             this.label47.Tag = "btn_Back";
             this.label47.Text = "Back";
+            this.label47.Click += new System.EventHandler(this.BtnBackClick);
             // 
             // pictureBox12
             // 
@@ -189,6 +198,7 @@
             this.pictureBox12.TabIndex = 154;
             this.pictureBox12.TabStop = false;
             this.pictureBox12.Tag = "btn_Back";
+            this.pictureBox12.Click += new System.EventHandler(this.BtnBackClick);
             // 
             // pictureBox4
             // 
@@ -238,22 +248,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 47);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 19);
+            this.label1.Size = new System.Drawing.Size(200, 23);
             this.label1.TabIndex = 160;
             this.label1.Text = "Select Payroll Report";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 258);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 19);
+            this.label2.Size = new System.Drawing.Size(70, 23);
             this.label2.TabIndex = 161;
             this.label2.Text = "Report";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.tb_SearchReport);
+            this.panel2.Location = new System.Drawing.Point(458, 258);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(416, 30);
+            this.panel2.TabIndex = 162;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Image = global::Admin_Login.Properties.Resources.Search_Icon;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(19, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tb_SearchReport
+            // 
+            this.tb_SearchReport.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.tb_SearchReport.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_SearchReport.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_SearchReport.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.tb_SearchReport.Location = new System.Drawing.Point(35, 3);
+            this.tb_SearchReport.Margin = new System.Windows.Forms.Padding(2);
+            this.tb_SearchReport.Name = "tb_SearchReport";
+            this.tb_SearchReport.Size = new System.Drawing.Size(374, 20);
+            this.tb_SearchReport.TabIndex = 6;
+            this.tb_SearchReport.Text = " Search report";
+            this.tb_SearchReport.Click += new System.EventHandler(this.tb_SearchReport_Click);
+            this.tb_SearchReport.TextChanged += new System.EventHandler(this.tb_SearchReport_TextChanged);
             // 
             // PayRollHistory
             // 
@@ -262,6 +310,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(886, 734);
             this.ControlBox = false;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox4);
@@ -285,6 +334,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +357,8 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox tb_SearchReport;
     }
 }

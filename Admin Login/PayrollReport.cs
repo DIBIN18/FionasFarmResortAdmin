@@ -430,32 +430,40 @@ namespace Admin_Login
             }
         }
         private void dgvDailyPayrollReport_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {   
-            sssclass.getSSSRange();
-            SSSRangeClass.from = dtp_From.Text;
-            SSSRangeClass.to = dtp_To.Text;
-            Menu menu = (Menu)Application.OpenForms["Menu"];
-            menu.Text = "Fiona's Farm and Resort - Payroll";
-            SqlConnection connection = new SqlConnection(login.connectionString);
-            connection.Open();
-            string query = "select A.EmployeeID , A.EmployeeFullName, C.DepartmentName , B.PositionName " +
-                           " from EmployeeInfo as A " +
-                           " join Position as B on A.PositionID = B.PositionID " +
-                           " join Department as C on A.DepartmentID = C.DepartmentID " +
-                           " where A.EmployeeID = " + dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[0].Value;
-            SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-            DataTable data = new DataTable();
-            adapter.Fill(data);
-            if (dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+        {
+            try
             {
-                employeeid = dgv_DailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
-                employeename = dgv_DailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
-                department = data.Rows[0][2].ToString();
-                position = data.Rows[0][3].ToString();
-                datefrom = dtp_From.Text;
-                dateto = dtp_To.Text;
-                menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom,dateto);
-                menu.Menu_Load(menu, EventArgs.Empty);
+                sssclass.getSSSRange();
+                SSSRangeClass.from = dtp_From.Text;
+                SSSRangeClass.to = dtp_To.Text;
+                Menu menu = (Menu)Application.OpenForms["Menu"];
+                menu.Text = "Fiona's Farm and Resort - Payroll";
+                SqlConnection connection = new SqlConnection(login.connectionString);
+                connection.Open();
+                string query = "select A.EmployeeID , A.EmployeeFullName, C.DepartmentName , B.PositionName " +
+                               " from EmployeeInfo as A " +
+                               " join Position as B on A.PositionID = B.PositionID " +
+                               " join Department as C on A.DepartmentID = C.DepartmentID " +
+                               " where A.EmployeeID = " + dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[0].Value;
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                if (dgv_DailyPayrollReport.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                {
+                    employeeid = dgv_DailyPayrollReport.CurrentRow.Cells[0].Value.ToString();
+                    employeename = dgv_DailyPayrollReport.CurrentRow.Cells[1].Value.ToString();
+                    department = data.Rows[0][2].ToString();
+                    position = data.Rows[0][3].ToString();
+                    datefrom = dtp_From.Text;
+                    dateto = dtp_To.Text;
+                    menu.PayrollReport_ValueHolder(employeeid, employeename, department, position, datefrom, dateto);
+                    menu.Menu_Load(menu, EventArgs.Empty);
+                }
+            }
+            catch (ArgumentOutOfRangeException) 
+            {
+                // Do nothing
+                // Column Headers click catcher
             }
         }
     }
