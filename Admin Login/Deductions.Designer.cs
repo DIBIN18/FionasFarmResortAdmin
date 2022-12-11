@@ -68,6 +68,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.tbTo = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -180,6 +182,8 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.PeachPuff;
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.tbTo);
+            this.panel5.Controls.Add(this.tbFrom);
             this.panel5.Controls.Add(this.ArchivePictureBoxLogo);
             this.panel5.Controls.Add(this.tbTotal);
             this.panel5.Controls.Add(this.label7);
@@ -395,7 +399,7 @@
             // 
             // txtName
             // 
-            this.txtName.BackColor = System.Drawing.Color.White;
+            this.txtName.BackColor = System.Drawing.SystemColors.Window;
             this.txtName.Enabled = false;
             this.txtName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(80, 116);
@@ -403,6 +407,7 @@
             this.txtName.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(343, 30);
             this.txtName.TabIndex = 65;
+            this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -430,7 +435,7 @@
             this.dtp_To.Enabled = false;
             this.dtp_To.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_To.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_To.Location = new System.Drawing.Point(80, 82);
+            this.dtp_To.Location = new System.Drawing.Point(80, 84);
             this.dtp_To.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_To.Name = "dtp_To";
             this.dtp_To.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -458,7 +463,7 @@
             this.dtp_From.Enabled = false;
             this.dtp_From.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_From.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_From.Location = new System.Drawing.Point(80, 50);
+            this.dtp_From.Location = new System.Drawing.Point(80, 52);
             this.dtp_From.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_From.Name = "dtp_From";
             this.dtp_From.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -571,6 +576,30 @@
             this.label3.TabIndex = 36;
             this.label3.Text = "Next Payroll Deductions";
             // 
+            // tbFrom
+            // 
+            this.tbFrom.BackColor = System.Drawing.SystemColors.Window;
+            this.tbFrom.Enabled = false;
+            this.tbFrom.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbFrom.Location = new System.Drawing.Point(80, 52);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbFrom.Size = new System.Drawing.Size(343, 30);
+            this.tbFrom.TabIndex = 97;
+            this.tbFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tbTo
+            // 
+            this.tbTo.BackColor = System.Drawing.SystemColors.Window;
+            this.tbTo.Enabled = false;
+            this.tbTo.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTo.Location = new System.Drawing.Point(80, 84);
+            this.tbTo.Name = "tbTo";
+            this.tbTo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbTo.Size = new System.Drawing.Size(343, 30);
+            this.tbTo.TabIndex = 98;
+            this.tbTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Deductions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,5 +669,7 @@
         private System.Windows.Forms.PictureBox ArchivePictureBoxLogo;
         private System.Windows.Forms.Label ArchiveLabel;
         private System.Windows.Forms.PictureBox ArchivePictureBox;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.TextBox tbTo;
     }
 }
