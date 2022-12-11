@@ -82,14 +82,22 @@ namespace Admin_Login
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
-            lbl_EmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
-            lblEmployeeID.Text = selectedEmployee;
+            try
+            {
+                selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lbl_EmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+                lblEmployeeID.Text = selectedEmployee;
 
-            dtpDate.Enabled = true;
-            dtpSchedOut.Enabled = true;
-            dtpScheduleIn.Enabled = true; 
-            dtpBreakPeriod.Enabled = true;
+                dtpDate.Enabled = true;
+                dtpSchedOut.Enabled = true;
+                dtpScheduleIn.Enabled = true;
+                dtpBreakPeriod.Enabled = true;
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         public bool CheckLeave(string date, string employee_id)

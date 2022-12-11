@@ -62,7 +62,8 @@
             this.dgvLeaveList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLeaveList.GridColor = System.Drawing.Color.LightGray;
             this.dgvLeaveList.Location = new System.Drawing.Point(10, 51);
-            this.dgvLeaveList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLeaveList.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvLeaveList.MultiSelect = false;
             this.dgvLeaveList.Name = "dgvLeaveList";
             this.dgvLeaveList.ReadOnly = true;
             this.dgvLeaveList.RowHeadersVisible = false;
@@ -79,7 +80,7 @@
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.tb_Search);
             this.panel1.Location = new System.Drawing.Point(323, 11);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(292, 37);
             this.panel1.TabIndex = 24;
@@ -89,7 +90,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.White;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Search_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(7, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(19, 28);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -103,7 +104,7 @@
             this.tb_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.tb_Search.Location = new System.Drawing.Point(38, 7);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(223, 21);
             this.tb_Search.TabIndex = 6;
@@ -117,7 +118,7 @@
             this.dtp_Date.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_Date.Location = new System.Drawing.Point(86, 16);
-            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 30);
             this.dtp_Date.TabIndex = 27;
@@ -173,7 +174,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(727, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 27);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -187,7 +188,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
             this.pictureBox2.Location = new System.Drawing.Point(620, 9);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(145, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -202,7 +203,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Back_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(837, 11);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -216,7 +217,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox4.Location = new System.Drawing.Point(770, 9);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(108, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,7 +242,7 @@
             this.Controls.Add(this.dgvLeaveList);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LeaveListDates";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AppliedLeaveList";

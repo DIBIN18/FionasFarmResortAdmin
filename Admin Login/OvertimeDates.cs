@@ -63,28 +63,36 @@ namespace Admin_Login
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (onTableEmp == true)
+            try
             {
-                selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
-                lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
-                lblDetailContent.Text = selectedEmployee;
-            }
-            else if (onTableDept == true)
-            {
-                selectedDept = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
-                lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
-                lblDetailContent.Text = selectedDept;
-            }
-            else if (onTablePos == true)
-            {
-                selectedPos = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
-                lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
-                lblDetailContent.Text = selectedPos;
-            }
+                if (onTableEmp == true)
+                {
+                    selectedEmployee = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    lblDetailContent.Text = selectedEmployee;
+                }
+                else if (onTableDept == true)
+                {
+                    selectedDept = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    lblDetailContent.Text = selectedDept;
+                }
+                else if (onTablePos == true)
+                {
+                    selectedPos = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    lblSelectedFromDGV.Text = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                    lblDetailContent.Text = selectedPos;
+                }
 
 
-            dtpDateFrom.Enabled = true;
-            dtpDateTo.Enabled = true;
+                dtpDateFrom.Enabled = true;
+                dtpDateTo.Enabled = true;
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private Int64 GetLatestOvertimeID()
@@ -179,7 +187,7 @@ namespace Admin_Login
                         }
                     }
                 }
-                MessageBox.Show("Overtime Dates added");
+                MessageBox.Show("Overtime Dates added", "Overtime", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (onTableDept == true)
             {
@@ -209,24 +217,27 @@ namespace Admin_Login
                                 }
                                 else
                                 {
-                                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                    if (CheckEmployeeStatus(reader.GetInt64(count)) == "Active")
                                     {
-                                        connection2.Open();
-                                        string query =
-                                            "INSERT INTO OvertimeDates (" +
-                                            "EmployeeID," +
-                                            "Date," +
-                                            "OvertimeAppID) " +
-                                            "VALUES(" +
-                                            "@EmployeeID," +
-                                            "@Date," +
-                                            "@OvertimeAppID)";
+                                        using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                        {
+                                            connection2.Open();
+                                            string query =
+                                                "INSERT INTO OvertimeDates (" +
+                                                "EmployeeID," +
+                                                "Date," +
+                                                "OvertimeAppID) " +
+                                                "VALUES(" +
+                                                "@EmployeeID," +
+                                                "@Date," +
+                                                "@OvertimeAppID)";
 
-                                        SqlCommand command2 = new SqlCommand(query, connection2);
-                                        command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
-                                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                                        command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
-                                        command2.ExecuteNonQuery();
+                                            SqlCommand command2 = new SqlCommand(query, connection2);
+                                            command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
+                                            command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                            command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
+                                            command2.ExecuteNonQuery();
+                                        }
                                     }
                                 }
                             }
@@ -236,9 +247,10 @@ namespace Admin_Login
                 }
                 if (duplicateDetect == true)
                 {
-                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.");
+                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.", 
+                        "Duplicate Dates", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Overtime Dates added.");
+                MessageBox.Show("Overtime Dates added", "Overtime", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (onTablePos == true)
             {
@@ -268,24 +280,27 @@ namespace Admin_Login
                                 }
                                 else
                                 {
-                                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                    if (CheckEmployeeStatus(reader.GetInt64(count)) == "Active")
                                     {
-                                        connection2.Open();
-                                        string query =
-                                            "INSERT INTO OvertimeDates (" +
-                                            "EmployeeID," +
-                                            "Date," +
-                                            "OvertimeAppID) " +
-                                            "VALUES(" +
-                                            "@EmployeeID," +
-                                            "@Date," +
-                                            "@OvertimeAppID)";
+                                        using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                        {
+                                            connection2.Open();
+                                            string query =
+                                                "INSERT INTO OvertimeDates (" +
+                                                "EmployeeID," +
+                                                "Date," +
+                                                "OvertimeAppID) " +
+                                                "VALUES(" +
+                                                "@EmployeeID," +
+                                                "@Date," +
+                                                "@OvertimeAppID)";
 
-                                        SqlCommand command2 = new SqlCommand(query, connection2);
-                                        command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
-                                        command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                                        command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
-                                        command2.ExecuteNonQuery();
+                                            SqlCommand command2 = new SqlCommand(query, connection2);
+                                            command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
+                                            command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                            command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
+                                            command2.ExecuteNonQuery();
+                                        }
                                     }
                                 }
                             }
@@ -295,9 +310,34 @@ namespace Admin_Login
                 }
                 if (duplicateDetect == true)
                 {
-                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.");
+                    MessageBox.Show("There were duplicate dates on selected dates, duplicate dates were not added.",
+                        "Duplicate Dates", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Overtime Dates added.");
+                MessageBox.Show("Overtime Dates added", "Overtime", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private string CheckEmployeeStatus(Int64 emp_id)
+        {
+            string query2 =
+                "SELECT Status FROM EmployeeInfo WHERE EmployeeID=" + emp_id.ToString();
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetString(0);
+                    }
+                    else
+                    {
+                        return " ";
+                    }
+                }
             }
         }
 

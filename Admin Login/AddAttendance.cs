@@ -155,27 +155,35 @@ namespace Admin_Login
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dtpTimeInAdd.Enabled = true;
-            dtpTimeOutAdd.Enabled = true;
-            dtp_Date.Enabled = true;
-            cbAllowOT.Enabled= true;
-
-            employee_id = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
-            lblEmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
-            schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
-            schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
-            lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
-
-            if (checkAllowedDay(employee_id) == true)
+            try
             {
-                lblRestDay.Text = "No";
-            }
-            else
-            {
-                lblRestDay.Text = "Yes";
-            }
+                dtpTimeInAdd.Enabled = true;
+                dtpTimeOutAdd.Enabled = true;
+                dtp_Date.Enabled = true;
+                cbAllowOT.Enabled = true;
 
-            Update();
+                employee_id = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lblEmployeeName.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+                schedule_in = dgvEmployees.Rows[e.RowIndex].Cells[3].Value.ToString();
+                schedule_out = dgvEmployees.Rows[e.RowIndex].Cells[4].Value.ToString();
+                lblBreakPeriod.Text = getEmployeeBreakTime(employee_id);
+
+                if (checkAllowedDay(employee_id) == true)
+                {
+                    lblRestDay.Text = "No";
+                }
+                else
+                {
+                    lblRestDay.Text = "Yes";
+                }
+
+                Update();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private void dtpScheduleInEdit_ValueChanged(object sender, EventArgs e)
@@ -584,15 +592,31 @@ namespace Admin_Login
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();
 
-                DateTime time = DateTime.Parse(time_interval);
-
-                if (grace_minutes <= 10)
+                if (time_interval.Contains("-") == true)
                 {
+                    MessageBox.Show("Time in should not be ahead of Time In", "Attendance Time in",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DateTime defTimeIn = DateTime.Parse("08:00:00 AM");
+                    DateTime defTimeOut = DateTime.Parse("05:00:00 PM");
+
+                    dtpTimeInAdd.Value = defTimeIn;
+                    dtpTimeOutAdd.Value = defTimeOut;
+
                     return 0;
                 }
                 else
                 {
-                    return Convert.ToInt32(time.Minute);
+                    DateTime time = DateTime.Parse(time_interval);
+
+                    if (grace_minutes <= 10)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return Convert.ToInt32(time.Minute);
+                    }
                 }
             }
             else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
@@ -1223,41 +1247,49 @@ namespace Admin_Login
 
         private void dgvEditAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dtpTimeInEdit.Enabled = true;
-            dtpTimeOutEdit.Enabled = true;
-            dtp_EditDate.Enabled = true;
-            cb_EditAllowOT.Enabled = true;   
-
-            Attendance_ID = dgvEditAttendance.Rows[e.RowIndex].Cells[0].Value.ToString();
-            EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
-            lbl_EditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
-            EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
-            EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
-            lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
-
-            dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
-
-            string timeOut = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
-
-            if (dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString().Equals(""))
+            try
             {
-                timeOut = "05:00:00 PM";
+                dtpTimeInEdit.Enabled = true;
+                dtpTimeOutEdit.Enabled = true;
+                dtp_EditDate.Enabled = true;
+                cb_EditAllowOT.Enabled = true;
+
+                Attendance_ID = dgvEditAttendance.Rows[e.RowIndex].Cells[0].Value.ToString();
+                EDIT_employee_id = dgvEditAttendance.Rows[e.RowIndex].Cells[1].Value.ToString();
+                lbl_EditEmployeeName.Text = dgvEditAttendance.Rows[e.RowIndex].Cells[2].Value.ToString();
+                EDIT_time_in = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+                EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
+                lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
+
+                dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+
+                string timeOut = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                if (dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString().Equals(""))
+                {
+                    timeOut = "05:00:00 PM";
+                }
+
+                dtpTimeOutEdit.Value = DateTime.Parse(timeOut);
+                dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
+
+                Console.WriteLine(EDIT_employee_id);
+                if (EDITCheckAllowedDay(EDIT_employee_id) == true)
+                {
+                    lblEDITRestday.Text = "No";
+                }
+                else
+                {
+                    lblEDITRestday.Text = "Yes";
+                }
+
+                UpdateEditMode();
             }
-
-            dtpTimeOutEdit.Value = DateTime.Parse(timeOut);
-            dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
-
-            Console.WriteLine(EDIT_employee_id);
-            if (EDITCheckAllowedDay(EDIT_employee_id) == true)
+            catch (System.ArgumentOutOfRangeException)
             {
-                lblEDITRestday.Text = "No";
+                // Do nothing
+                // Column header click catcher
             }
-            else
-            {
-                lblEDITRestday.Text = "Yes";
-            }
-
-            UpdateEditMode();
         }
 
         private void cbEditAllowOT_CheckedChanged(object sender, EventArgs e)

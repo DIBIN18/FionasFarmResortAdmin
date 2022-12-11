@@ -56,8 +56,15 @@ namespace Admin_Login
 
         private void dg_HolidaysTable_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedHoliday = dgv_HolidaysTable.Rows[e.RowIndex].Cells[0].Value.ToString();
-            Console.WriteLine(selectedHoliday); 
+            try
+            {
+                selectedHoliday = dgv_HolidaysTable.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private void removeHoliday(object sender, EventArgs e)

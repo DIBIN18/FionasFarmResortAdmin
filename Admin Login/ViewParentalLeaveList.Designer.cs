@@ -172,6 +172,7 @@
             this.dgvLeaves.BackgroundColor = System.Drawing.Color.White;
             this.dgvLeaves.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLeaves.Location = new System.Drawing.Point(9, 57);
+            this.dgvLeaves.MultiSelect = false;
             this.dgvLeaves.Name = "dgvLeaves";
             this.dgvLeaves.ReadOnly = true;
             this.dgvLeaves.RowHeadersVisible = false;

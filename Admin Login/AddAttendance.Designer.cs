@@ -30,6 +30,8 @@ namespace Admin_Login
         private void InitializeComponent()
         {
             this.pnlAdd = new System.Windows.Forms.Panel();
+            this.lblRestDay = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tb_Search = new System.Windows.Forms.TextBox();
             this.lblSpecHMins = new System.Windows.Forms.Label();
@@ -84,6 +86,8 @@ namespace Admin_Login
             this.label19 = new System.Windows.Forms.Label();
             this.btn_Edit = new System.Windows.Forms.PictureBox();
             this.pnlEdit = new System.Windows.Forms.Panel();
+            this.lblEDITRestday = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dtpDgvDate = new System.Windows.Forms.DateTimePicker();
             this.lbl_EditSpecHMins = new System.Windows.Forms.Label();
@@ -131,10 +135,6 @@ namespace Admin_Login
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.dgvEditAttendance = new System.Windows.Forms.DataGridView();
             this.label49 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.lblRestDay = new System.Windows.Forms.Label();
-            this.lblEDITRestday = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.pnlAdd.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -209,6 +209,28 @@ namespace Admin_Login
             this.pnlAdd.Name = "pnlAdd";
             this.pnlAdd.Size = new System.Drawing.Size(862, 684);
             this.pnlAdd.TabIndex = 76;
+            // 
+            // lblRestDay
+            // 
+            this.lblRestDay.AutoSize = true;
+            this.lblRestDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRestDay.Location = new System.Drawing.Point(602, 255);
+            this.lblRestDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRestDay.Name = "lblRestDay";
+            this.lblRestDay.Size = new System.Drawing.Size(24, 20);
+            this.lblRestDay.TabIndex = 128;
+            this.lblRestDay.Text = "---";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(483, 255);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 20);
+            this.label21.TabIndex = 127;
+            this.label21.Text = "Rest Day:";
             // 
             // panel1
             // 
@@ -754,6 +776,7 @@ namespace Admin_Login
             this.dgvEmployees.BackgroundColor = System.Drawing.Color.White;
             this.dgvEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmployees.Location = new System.Drawing.Point(13, 80);
+            this.dgvEmployees.MultiSelect = false;
             this.dgvEmployees.Name = "dgvEmployees";
             this.dgvEmployees.ReadOnly = true;
             this.dgvEmployees.RowHeadersVisible = false;
@@ -920,6 +943,28 @@ namespace Admin_Login
             this.pnlEdit.Size = new System.Drawing.Size(865, 684);
             this.pnlEdit.TabIndex = 109;
             this.pnlEdit.Visible = false;
+            // 
+            // lblEDITRestday
+            // 
+            this.lblEDITRestday.AutoSize = true;
+            this.lblEDITRestday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEDITRestday.Location = new System.Drawing.Point(603, 260);
+            this.lblEDITRestday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEDITRestday.Name = "lblEDITRestday";
+            this.lblEDITRestday.Size = new System.Drawing.Size(24, 20);
+            this.lblEDITRestday.TabIndex = 165;
+            this.lblEDITRestday.Text = "---";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(484, 260);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(79, 20);
+            this.label23.TabIndex = 164;
+            this.label23.Text = "Rest Day:";
             // 
             // label7
             // 
@@ -1464,6 +1509,7 @@ namespace Admin_Login
             this.dgvEditAttendance.BackgroundColor = System.Drawing.Color.White;
             this.dgvEditAttendance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEditAttendance.Location = new System.Drawing.Point(13, 83);
+            this.dgvEditAttendance.MultiSelect = false;
             this.dgvEditAttendance.Name = "dgvEditAttendance";
             this.dgvEditAttendance.ReadOnly = true;
             this.dgvEditAttendance.RowHeadersVisible = false;
@@ -1482,50 +1528,6 @@ namespace Admin_Login
             this.label49.Size = new System.Drawing.Size(254, 24);
             this.label49.TabIndex = 59;
             this.label49.Text = "Select Attendance Record";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(483, 255);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 20);
-            this.label21.TabIndex = 127;
-            this.label21.Text = "Rest Day:";
-            // 
-            // lblRestDay
-            // 
-            this.lblRestDay.AutoSize = true;
-            this.lblRestDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRestDay.Location = new System.Drawing.Point(602, 255);
-            this.lblRestDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRestDay.Name = "lblRestDay";
-            this.lblRestDay.Size = new System.Drawing.Size(24, 20);
-            this.lblRestDay.TabIndex = 128;
-            this.lblRestDay.Text = "---";
-            // 
-            // lblEDITRestday
-            // 
-            this.lblEDITRestday.AutoSize = true;
-            this.lblEDITRestday.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEDITRestday.Location = new System.Drawing.Point(603, 260);
-            this.lblEDITRestday.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEDITRestday.Name = "lblEDITRestday";
-            this.lblEDITRestday.Size = new System.Drawing.Size(24, 20);
-            this.lblEDITRestday.TabIndex = 165;
-            this.lblEDITRestday.Text = "---";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(484, 260);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(79, 20);
-            this.label23.TabIndex = 164;
-            this.label23.Text = "Rest Day:";
             // 
             // AddAttendance
             // 

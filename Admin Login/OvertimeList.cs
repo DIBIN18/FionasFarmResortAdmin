@@ -87,7 +87,15 @@ namespace Admin_Login
 
         private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            selectedOtId = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
+            try
+            {
+                selectedOtId = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Columan header click catcher
+            }
         }
 
         private void cancel_Click(object sender, EventArgs e)
