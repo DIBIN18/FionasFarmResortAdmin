@@ -140,6 +140,80 @@ namespace Admin_Login
             }
         }
 
+        //
+        //  SEART FUNCTIONS
+        //
+
+        private void tb_Search_Click(object sender, EventArgs e)
+        {
+            tb_Search.Text = string.Empty;
+        }
+
+        private void tb_Search_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_Search.Text))
+                {
+                    string query = "select * from PayrollHistoryID";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgv_PayrollID.DataSource = dt2;
+                }
+                else if (tb_Search.Focused)
+                {
+                    string query =
+                        "select * from PayrollHistoryID " +
+                        "WHERE PayrollID LIKE '%" + tb_Search.Text + "%'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgv_PayrollID.DataSource = dt2;
+                }
+            }
+        }
+
+        private void tb_SearchReport_Click(object sender, EventArgs e)
+        {
+            tb_SearchReport.Text = string.Empty;
+        }
+
+        private void tb_SearchReport_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                if (string.IsNullOrEmpty(tb_SearchReport.Text))
+                {
+                    string query = "select * from PayrollReportHistory";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvPayrollRecords.DataSource = dt2;
+                }
+                else if (tb_SearchReport.Focused)
+                {
+                    string query =
+                        "select * from PayrollReportHistory " +
+                        "WHERE EmployeeName LIKE '%" + tb_SearchReport.Text + "%'";
+
+                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    sqlDataAdapter2.Fill(dt2);
+                    dgvPayrollRecords.DataSource = dt2;
+                }
+            }
+        }
+
         private void PayRollHistory_Load(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -149,6 +223,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgvPayrollRecords.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvPayrollRecords.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgvPayrollRecords.DataSource = data;
             }
 
@@ -159,6 +239,12 @@ namespace Admin_Login
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
+
+                // Column font
+                this.dgv_PayrollID.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgv_PayrollID.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
                 dgv_PayrollID.DataSource = data;
             }
         }
@@ -181,6 +267,17 @@ namespace Admin_Login
                 }
             }
             catch (Exception ex) { }
+        }
+
+        //
+        //  BACK BUTTON
+        //
+        private void BtnBackClick(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Payroll Report";
+            menu.Menu_Load(menu, EventArgs.Empty);
+            Dispose();
         }
     }
 }

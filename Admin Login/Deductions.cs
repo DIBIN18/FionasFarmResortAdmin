@@ -101,17 +101,25 @@ namespace Admin_Login
         }
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            tbDescription.Text = "";
-            txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            //txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            tagadelete();
-            tagaInsertPayrollReport();
-            getDeductions();
-            loan.EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            loan.Name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            EmpID = loan.EmpID;
-            getDescription();
-            //tagadelete();
+            try
+            {
+                tbDescription.Text = "";
+                txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                //txtName.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                tagadelete();
+                tagaInsertPayrollReport();
+                getDeductions();
+                loan.EmpID = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                loan.Name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                EmpID = loan.EmpID;
+                getDescription();
+                //tagadelete();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column headers click catcher
+            }
         }
         public string getLastPayrollDate()
         {
