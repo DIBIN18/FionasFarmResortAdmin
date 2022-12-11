@@ -72,8 +72,16 @@ namespace Admin_Login
 
         private void dgvLeaves_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectedLeaveID = dgvLeaves.Rows[e.RowIndex].Cells[0].Value.ToString();
-            SelectedEmployeeName = dgvLeaves.Rows[e.RowIndex].Cells[2].Value.ToString();
+            try
+            {
+                SelectedLeaveID = dgvLeaves.Rows[e.RowIndex].Cells[0].Value.ToString();
+                SelectedEmployeeName = dgvLeaves.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private void tb_Search_Click(object sender, EventArgs e)

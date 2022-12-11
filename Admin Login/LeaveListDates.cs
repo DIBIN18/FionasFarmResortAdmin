@@ -81,13 +81,19 @@ namespace Admin_Login
 
         private void dgvLeaveList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectedLeaveRecordID = dgvLeaveList.Rows[e.RowIndex].Cells[0].Value.ToString();
-            SelectedEmployeeID = dgvLeaveList.Rows[e.RowIndex].Cells[1].Value.ToString();
-            SelectedDate  = dgvLeaveList.Rows[e.RowIndex].Cells[5].Value.ToString();
-            SelectedEmployeeName = dgvLeaveList.Rows[e.RowIndex].Cells[2].Value.ToString();
+            try
+            {
+                SelectedLeaveRecordID = dgvLeaveList.Rows[e.RowIndex].Cells[0].Value.ToString();
+                SelectedEmployeeID = dgvLeaveList.Rows[e.RowIndex].Cells[1].Value.ToString();
+                SelectedDate = dgvLeaveList.Rows[e.RowIndex].Cells[5].Value.ToString();
+                SelectedEmployeeName = dgvLeaveList.Rows[e.RowIndex].Cells[2].Value.ToString();
 
-            Console.WriteLine(SelectedLeaveRecordID);
-            Console.WriteLine(SelectedEmployeeID);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)

@@ -93,6 +93,7 @@
             this.dgvLeave.GridColor = System.Drawing.Color.LightGray;
             this.dgvLeave.Location = new System.Drawing.Point(9, 52);
             this.dgvLeave.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvLeave.MultiSelect = false;
             this.dgvLeave.Name = "dgvLeave";
             this.dgvLeave.ReadOnly = true;
             this.dgvLeave.RowHeadersVisible = false;

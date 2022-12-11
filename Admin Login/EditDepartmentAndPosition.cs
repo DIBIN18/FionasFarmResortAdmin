@@ -152,38 +152,54 @@ namespace Admin_Login
 
         private void dgvDeparments_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            try
             {
-                connection.Open();
-                string query = "SELECT * FROM Department WHERE DepartmentID=" + dgvDeparments.Rows[e.RowIndex].Cells[0].Value;
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Department WHERE DepartmentID=" + dgvDeparments.Rows[e.RowIndex].Cells[0].Value;
 
-                SqlCommand cmd = new SqlCommand(query, connection);
-                DataTable dt = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
 
-                txtEditDepartmentName.Text = dt.Rows[0][1].ToString();
+                    txtEditDepartmentName.Text = dt.Rows[0][1].ToString();
 
-                selectedDept = dt.Rows[0][0].ToString();
+                    selectedDept = dt.Rows[0][0].ToString();
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Catcher for column header sort
             }
         }
 
         private void dgvPositions_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            try
             {
-                connection.Open();
-                string query = "SELECT * FROM Position WHERE PositionID=" + dgvPositions.Rows[e.RowIndex].Cells[0].Value;
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM Position WHERE PositionID=" + dgvPositions.Rows[e.RowIndex].Cells[0].Value;
 
-                SqlCommand cmd = new SqlCommand(query, connection);
-                DataTable dt = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                adapter.Fill(dt);
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    adapter.Fill(dt);
 
-                txtEditPositionName.Text = dt.Rows[0][1].ToString();
-                txtEditBasicRate.Text = dt.Rows[0][3].ToString();
+                    txtEditPositionName.Text = dt.Rows[0][1].ToString();
+                    txtEditBasicRate.Text = dt.Rows[0][3].ToString();
 
-                selectedPos = dt.Rows[0][0].ToString();
+                    selectedPos = dt.Rows[0][0].ToString();
+                }
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Catcher for column header sort
             }
         }
 

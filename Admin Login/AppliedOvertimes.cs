@@ -57,8 +57,15 @@ namespace Admin_Login
 
         private void dgvOTList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectedOvertimeID = dgvOTList.Rows[e.RowIndex].Cells[0].Value.ToString();
-            Console.WriteLine(SelectedOvertimeID);
+            try
+            {
+                SelectedOvertimeID = dgvOTList.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column header click catcher
+            }
         }
 
         private void BtnCancelClick(object sender, EventArgs e)

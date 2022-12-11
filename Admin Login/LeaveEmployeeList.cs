@@ -103,6 +103,7 @@ namespace Admin_Login
 
             conn.Close();
         }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -113,38 +114,46 @@ namespace Admin_Login
         {
             Leave l = new Leave();
 
-            if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try
             {
-                employeeid = dgvLeave.CurrentRow.Cells[0].Value.ToString();
-                employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
-                department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
-                position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
-                sick_leave_credits = dgvLeave.CurrentRow.Cells[4].Value.ToString();
-                vacation_leave_credits = dgvLeave.CurrentRow.Cells[5].Value.ToString();
-                schedule = getSchedIn(employeeid) + " - " + getSchedOut(employeeid);
-
-                //Didisplay ang schedule kapag nakapili na ng employee
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                if (dgvLeave.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                    connection.Open();
+                    employeeid = dgvLeave.CurrentRow.Cells[0].Value.ToString();
+                    employeename = dgvLeave.CurrentRow.Cells[1].Value.ToString();
+                    department = dgvLeave.CurrentRow.Cells[2].Value.ToString();
+                    position = dgvLeave.CurrentRow.Cells[3].Value.ToString();
+                    sick_leave_credits = dgvLeave.CurrentRow.Cells[4].Value.ToString();
+                    vacation_leave_credits = dgvLeave.CurrentRow.Cells[5].Value.ToString();
+                    schedule = getSchedIn(employeeid) + " - " + getSchedOut(employeeid);
 
-                    string query =
-                        "SELECT * FROM EmployeeSchedule WHERE EmployeeID=" + employeeid;
+                    //Didisplay ang schedule kapag nakapili na ng employee
+                    using (SqlConnection connection = new SqlConnection(login.connectionString))
+                    {
+                        connection.Open();
 
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    DataTable dts = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dts);
+                        string query =
+                            "SELECT * FROM EmployeeSchedule WHERE EmployeeID=" + employeeid;
 
-                    //Laman ng schedule kapag i didisplay sa leave
-                    //pakilagay nalang, natangal ko yung textbox
-                    schedule = dts.Rows[0][2].ToString() + " - " + dts.Rows[0][3].ToString();
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        DataTable dts = new DataTable();
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dts);
+
+                        //Laman ng schedule kapag i didisplay sa leave
+                        //pakilagay nalang, natangal ko yung textbox
+                        schedule = dts.Rows[0][2].ToString() + " - " + dts.Rows[0][3].ToString();
+                    }
+
+                    Menu menu = (Menu)Application.OpenForms["Menu"];
+                    menu.Text = "Fiona's Farm and Resort - Leave";
+                    menu.Leave_ValueHolder(employeeid, employeename, department, position, schedule, sick_leave_credits, vacation_leave_credits);
+                    menu.Menu_Load(menu, EventArgs.Empty);
                 }
-
-                Menu menu = (Menu)Application.OpenForms["Menu"];
-                menu.Text = "Fiona's Farm and Resort - Leave";
-                menu.Leave_ValueHolder(employeeid, employeename, department, position, schedule, sick_leave_credits, vacation_leave_credits);
-                menu.Menu_Load(menu, EventArgs.Empty);
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Column Header sort catcher
             }
         }
 

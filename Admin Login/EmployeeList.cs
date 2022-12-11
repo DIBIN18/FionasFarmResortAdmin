@@ -197,141 +197,148 @@ namespace Admin_Login
 
         private void dgv_EmployeeList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            try
             {
-                dgv_EmployeeList.CurrentRow.Selected = true;
-                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                if (dgv_EmployeeList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
-                    DataTable dt = new DataTable();
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    adapter.Fill(dt);
-                    ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
-                    ep.lblName.Text = dt.Rows[0][1].ToString();
-                    ep.lblAddress.Text = dt.Rows[0][2].ToString();
-                    ep.lblSSS.Text = dt.Rows[0][3].ToString();
-                    ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
-                    ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
-                    ep.lblEmail.Text = dt.Rows[0][6].ToString();
-                    ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
-                    ep.lblContact.Text = dt.Rows[0][8].ToString();
-                    ep.lblDateHired.Text = dt.Rows[0][9].ToString();
-                    ep.lblGender.Text = dt.Rows[0][10].ToString();
-                    ep.lblAge.Text = dt.Rows[0][12].ToString();
-
-                    DateTime bDate = Convert.ToDateTime(dt.Rows[0][11].ToString());
-
-                    ep.lblBirthDate.Text = bDate.ToString("MMMM dd, yyyy");
-
-                    ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                    ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
-                    ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
-                    //ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                    ep.lblAccumulated.Text = dt.Rows[0][17].ToString();
-                    ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
-                    ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
-                    ep.lblTIN.Text= dt.Rows[0][21].ToString();
-
-
-                    ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
-                    ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
-                    ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
-                    ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
-                    ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
-                    ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
-                    ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
-                    ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
-                    ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
-                    ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
-                    ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
-                    ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
-                    ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
-                    ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
-                    //ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
-                    ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
-                    ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
-                    ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
-                    ep.txtTINEdit.Text = dt.Rows[0][21].ToString();
-
-                    using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                    dgv_EmployeeList.CurrentRow.Selected = true;
+                    using (SqlConnection connection = new SqlConnection(login.connectionString))
                     {
-                        connection2.Open();
-                        SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
-                        DataTable dt2 = new DataTable();
-                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
-                        adapter2.Fill(dt2);
+                        connection.Open();
+                        SqlCommand cmd = new SqlCommand("Select * FROM EmployeeInfo WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                        DataTable dt = new DataTable();
+                        SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                        adapter.Fill(dt);
+                        ep.lblEmployeeID.Text = dt.Rows[0][0].ToString();
+                        ep.lblName.Text = dt.Rows[0][1].ToString();
+                        ep.lblAddress.Text = dt.Rows[0][2].ToString();
+                        ep.lblSSS.Text = dt.Rows[0][3].ToString();
+                        ep.lblPagIbig.Text = dt.Rows[0][4].ToString();
+                        ep.lblPhilHealth.Text = dt.Rows[0][5].ToString();
+                        ep.lblEmail.Text = dt.Rows[0][6].ToString();
+                        ep.lblMaritalStatus.Text = dt.Rows[0][7].ToString();
+                        ep.lblContact.Text = dt.Rows[0][8].ToString();
+                        ep.lblDateHired.Text = dt.Rows[0][9].ToString();
+                        ep.lblGender.Text = dt.Rows[0][10].ToString();
+                        ep.lblAge.Text = dt.Rows[0][12].ToString();
 
-                        ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
-                        ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
-                        ep.lblBreakPeriod.Text = dt2.Rows[0][11].ToString();
+                        DateTime bDate = Convert.ToDateTime(dt.Rows[0][11].ToString());
 
-                        try
+                        ep.lblBirthDate.Text = bDate.ToString("MMMM dd, yyyy");
+
+                        ep.lblDepartment.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                        ep.lblPosition.Text = getPositionName(dt.Rows[0][14].ToString());
+                        ep.lblEmploymentType.Text = dt.Rows[0][15].ToString();
+                        //ep.lblAllowedOT.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                        ep.lblAccumulated.Text = dt.Rows[0][17].ToString();
+                        ep.lblSickLeaveCredits.Text = dt.Rows[0][18].ToString();
+                        ep.lblVacationLeaveCredits.Text = dt.Rows[0][20].ToString();
+                        ep.lblTIN.Text = dt.Rows[0][21].ToString();
+
+
+                        ep.txtNameEdit.Text = dt.Rows[0][1].ToString();
+                        ep.txtAddressEdit.Text = dt.Rows[0][2].ToString();
+                        ep.txtSSSEdit.Text = dt.Rows[0][3].ToString();
+                        ep.txtPagIbigEdit.Text = dt.Rows[0][4].ToString();
+                        ep.txtPhilHealthEdit.Text = dt.Rows[0][5].ToString();
+                        ep.txtEmailEdit.Text = dt.Rows[0][6].ToString();
+                        ep.cmbMaritalStatusEdit.Text = dt.Rows[0][7].ToString();
+                        ep.txtContactNoEdit.Text = dt.Rows[0][8].ToString();
+                        ep.dtpDateHiredEdit.Value = DateTime.Parse(dt.Rows[0][9].ToString());
+                        ep.cmbGenderEdit.Text = dt.Rows[0][10].ToString();
+                        ep.dtpDateOfBirth.Value = DateTime.Parse(dt.Rows[0][11].ToString());
+                        ep.cmbDepartmentEdit.Text = getDepartmentName(dt.Rows[0][13].ToString());
+                        ep.cmbPositionEdit.Text = getPositionName(dt.Rows[0][14].ToString());
+                        ep.cmbEmploymentTypeEdit.Text = dt.Rows[0][15].ToString();
+                        //ep.cmbOtAllowed.Text = Get_Allowed_OT(dt.Rows[0][16].ToString());
+                        ep.txtAccumulatedDayOffEdit.Text = dt.Rows[0][17].ToString();
+                        ep.txtSickLeaveCreditsEdit.Text = dt.Rows[0][18].ToString();
+                        ep.txtVacationLeaveCreditsEdit.Text = dt.Rows[0][20].ToString();
+                        ep.txtTINEdit.Text = dt.Rows[0][21].ToString();
+
+                        using (SqlConnection connection2 = new SqlConnection(login.connectionString))
                         {
-                            ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
-                            ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
-                        }
-                        catch (FormatException)
-                        {
-                            //If wala pang sched blank muna
-                            ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
-                            ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
+                            connection2.Open();
+                            SqlCommand cmd2 = new SqlCommand("SELECT * FROM EmployeeSchedule WHERE EmployeeID =" + dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value, connection);
+                            DataTable dt2 = new DataTable();
+                            SqlDataAdapter adapter2 = new SqlDataAdapter(cmd2);
+                            adapter2.Fill(dt2);
+
+                            ep.lblScheduleIn.Text = dt2.Rows[0][2].ToString();
+                            ep.lblScheduleOut.Text = dt2.Rows[0][3].ToString();
+                            ep.lblBreakPeriod.Text = dt2.Rows[0][11].ToString();
+
+                            try
+                            {
+                                ep.dtpScheduleInEdit.Value = DateTime.Parse(dt2.Rows[0][2].ToString());
+                                ep.dtpSchedOutEdit.Value = DateTime.Parse(dt2.Rows[0][3].ToString());
+                            }
+                            catch (FormatException)
+                            {
+                                //If wala pang sched blank muna
+                                ep.dtpScheduleInEdit.Text = (dt2.Rows[0][2].ToString());
+                                ep.dtpSchedOutEdit.Text = (dt2.Rows[0][3].ToString());
+                            }
+
+                            if (dt2.Rows[0][4].ToString() == "True")
+                            {
+                                ep.cbMonday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][5].ToString() == "True")
+                            {
+                                ep.cbTuesday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][6].ToString() == "True")
+                            {
+                                ep.cbWednesday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][7].ToString() == "True")
+                            {
+                                ep.cbThursday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][8].ToString() == "True")
+                            {
+                                ep.cbFriday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][9].ToString() == "True")
+                            {
+                                ep.cbSaturday.CheckState = CheckState.Checked;
+                            }
+                            if (dt2.Rows[0][10].ToString() == "True")
+                            {
+                                ep.cbSunday.CheckState = CheckState.Checked;
+                            }
                         }
 
-                        if (dt2.Rows[0][4].ToString() == "True")
+                        using (SqlConnection connection3 = new SqlConnection(login.connectionString))
                         {
-                            ep.cbMonday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][5].ToString() == "True")
-                        {
-                            ep.cbTuesday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][6].ToString() == "True")
-                        {
-                            ep.cbWednesday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][7].ToString() == "True")
-                        {
-                            ep.cbThursday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][8].ToString() == "True")
-                        {
-                            ep.cbFriday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][9].ToString() == "True")
-                        {
-                            ep.cbSaturday.CheckState = CheckState.Checked;
-                        }
-                        if (dt2.Rows[0][10].ToString() == "True")
-                        {
-                            ep.cbSunday.CheckState = CheckState.Checked;
-                        }
-                    }
+                            connection3.Open();
 
-                    using (SqlConnection connection3 = new SqlConnection(login.connectionString))
-                    {
-                        connection3.Open();
+                            string query = "SELECT BasicRate, Custom FROM Position WHERE PositionID=" + getPosID(dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                        string query = "SELECT BasicRate, Custom FROM Position WHERE PositionID=" + getPosID(dgv_EmployeeList.Rows[e.RowIndex].Cells[0].Value.ToString());
+                            SqlCommand cmd3 = new SqlCommand(query, connection3);
+                            DataTable dt3 = new DataTable();
+                            SqlDataAdapter adapter3 = new SqlDataAdapter(cmd3);
+                            adapter3.Fill(dt3);
 
-                        SqlCommand cmd3 = new SqlCommand(query, connection3);
-                        DataTable dt3 = new DataTable();
-                        SqlDataAdapter adapter3 = new SqlDataAdapter(cmd3);
-                        adapter3.Fill(dt3);
-
-                        if (dt3.Rows[0][1].ToString() == "True")
-                        {
-                            ep.lblCustomRate.Text = dt3.Rows[0][0].ToString();
-                        }
-                        else
-                        {
-                            ep.lblCustomRate.Text = "None";
+                            if (dt3.Rows[0][1].ToString() == "True")
+                            {
+                                ep.lblCustomRate.Text = dt3.Rows[0][0].ToString();
+                            }
+                            else
+                            {
+                                ep.lblCustomRate.Text = "None";
+                            }
                         }
                     }
                 }
+                ep.ShowDialog();
             }
-            ep.ShowDialog();
-
+            catch(System.ArgumentOutOfRangeException)
+            {
+                // Do nothing
+                // Catcher for auto sort column header when double clicked
+            }
         }
 
         public Int64 getPosID(string emp_id)
