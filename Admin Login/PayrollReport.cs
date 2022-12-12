@@ -370,10 +370,17 @@ namespace Admin_Login
                     style2.HorizontalAlignment = ExcelHAlign.HAlignLeft;
                     style2.ColorIndex = ExcelKnownColors.Custom35;
 
+
+                    IStyle style3 = workbook.Styles.Add("NewStyle3");
+                    style3.Font.Bold = true;
+                 
                     // Import data from the data table
                     Worksheet.Range["A1"].Text = "FIONA'S FARM AND RESORT";
+                    Worksheet.Range["A1"].CellStyle = style3;
                     Worksheet.Range["A2"].Text = "Payroll Covered Date : "+ dtp_From.Text + " - " + dtp_To.Text;
+                    Worksheet.Range["A2"].CellStyle = style3;
                     Worksheet.Range["A3"].Text = "Payroll ID : " + PayrollID;
+                    Worksheet.Range["A3"].CellStyle = style3;
                     Worksheet.ImportDataTable(dt, true, 4, 1, true);
 
                     //IListObject table = Worksheet.ListObjects.Create("Payroll_Reports", Worksheet.UsedRange);
@@ -384,6 +391,10 @@ namespace Admin_Login
                     foreach (DataRow row in dt.Rows)
                     {
                         Worksheet.Rows[ir].CellStyle = style2;
+                        Worksheet.Rows[ir].CellStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Medium;
+                        Worksheet.Rows[ir].CellStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Medium;
+                        Worksheet.Rows[ir].CellStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Medium;
+                        Worksheet.Rows[ir].CellStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Medium;
                         ir++;
                         reset++;
                         if (reset == dt.Rows.Count)
@@ -395,7 +406,11 @@ namespace Admin_Login
                     Worksheet.SetColumnWidth(3, 15);
                     Worksheet.SetColumnWidth(18, 10);
                     Worksheet.Rows[3].CellStyle = style;
-                    
+                    Worksheet.Rows[3].CellStyle.Borders[ExcelBordersIndex.EdgeTop].LineStyle = ExcelLineStyle.Medium;
+                    Worksheet.Rows[3].CellStyle.Borders[ExcelBordersIndex.EdgeLeft].LineStyle = ExcelLineStyle.Medium;
+                    Worksheet.Rows[3].CellStyle.Borders[ExcelBordersIndex.EdgeBottom].LineStyle = ExcelLineStyle.Medium;
+                    Worksheet.Rows[3].CellStyle.Borders[ExcelBordersIndex.EdgeRight].LineStyle = ExcelLineStyle.Medium;
+
 
                     // Save the file
                     if (sfd.ShowDialog() == DialogResult.OK)
