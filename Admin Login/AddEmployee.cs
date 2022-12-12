@@ -79,6 +79,9 @@ namespace Admin_Login
             string schedOut = dtpScheduleOut.Value.ToString("hh:mm:ss tt");
             string breakPer = dtpBreakPeriod.Value.ToString("hh:mm:ss tt");
 
+            DateTime breakDt = dtpBreakPeriod.Value.AddHours(1);
+            string breakEnd = breakDt.ToString("hh:mm:ss tt").ToUpper();
+
             if (cbMonday.Checked)
             {
                 Monday = "1";
@@ -519,6 +522,8 @@ namespace Admin_Login
 
         private void btn_Back_Click(object sender, EventArgs e)
         {
+            string breakPer = dtpBreakPeriod.Value.ToString("hh:mm:ss tt");
+
             Menu menu = (Menu)Application.OpenForms["Menu"];
             menu.Text = "Fiona's Farm and Resort - Employee List";
             menu.Menu_Load(menu, EventArgs.Empty);

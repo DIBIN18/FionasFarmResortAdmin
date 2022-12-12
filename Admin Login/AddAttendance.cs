@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Threading;
+using Spire.Doc;
+using Syncfusion.XlsIO.Implementation.PivotAnalysis;
 
 namespace Admin_Login
 {
@@ -302,6 +304,7 @@ namespace Admin_Login
                                     "hh:mm:ss tt", CultureInfo.InvariantCulture);
             TimeSpan bBreak = gBreak.TimeOfDay;
 
+            TimeSpan eBreak = bBreak + TimeSpan.FromHours(1);
 
             if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
             {
@@ -322,7 +325,7 @@ namespace Admin_Login
                 //{
                 //    return 8;
                 //}
-
+                
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
@@ -351,10 +354,17 @@ namespace Admin_Login
 
                 DateTime time = DateTime.Parse(time_interval);
                 int hour = Convert.ToInt32(time.Hour);
-
+                
                 if (grace_on == true)
                 {
                     return 8;
+                }
+
+                // Break time trigger
+                // When timing in at the exact break time
+                if (time_in_24.TimeOfDay == bBreak)
+                {
+                    hour = hour - 1;
                 }
 
                 // Break time trigger
@@ -363,6 +373,7 @@ namespace Admin_Login
                     hour = hour - 1;
                 }
 
+                
                 // 8 Hour Limiter
                 if (hour > 8)
                 {
@@ -390,6 +401,19 @@ namespace Admin_Login
                 //{
                 //    return 8;
                 //}
+
+                // Break time trigger
+                // When timing in at the exact break time
+                if (time_in_24.TimeOfDay == bBreak)
+                {
+                    hour = hour + 1;
+                }
+
+                // Timing out at break
+                if ((time_out_24.TimeOfDay > bBreak) && (time_out_24.TimeOfDay < eBreak))
+                {
+                    hour = hour + 1;
+                }
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -521,6 +545,15 @@ namespace Admin_Login
             DateTime time_in_24 = DateTime.Parse(dtpTimeInAdd.Text.ToString().ToUpper());
             DateTime time_out_24 = DateTime.Parse(dtpTimeOutAdd.Text.ToString().ToUpper());
 
+            // Trigger Employee Break
+            string break_time = getEmployeeBreakTime(employee_id);
+
+            DateTime gBreak = DateTime.ParseExact(break_time,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan bBreak = gBreak.TimeOfDay;
+
+            TimeSpan eBreak = bBreak + TimeSpan.FromHours(1);
+
             if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
             {
                 // Early time in but not early time out
@@ -554,6 +587,25 @@ namespace Admin_Login
                 }
 
                 DateTime time = DateTime.Parse(time_interval);
+                int mins = Convert.ToInt32(time.Minute);
+
+                // Timing in at break
+                if (time_in_24.TimeOfDay > bBreak == true)
+                {
+                    DateTime endBreak = DateTime.Parse(eBreak.ToString().ToUpper());
+
+                    string Minutes = (endBreak - time_in_24).ToString();
+                    
+                    if (Minutes.Contains("-"))
+                    {
+                        // if time in is not in break reduce none
+                        Minutes = "00:00:00";
+                    }
+
+                    DateTime mins_in_break = DateTime.Parse(Minutes);
+
+                    mins = mins - Convert.ToInt32(mins_in_break.Minute);
+                }
 
                 if (grace_minutes <= 10)
                 {
@@ -561,7 +613,7 @@ namespace Admin_Login
                 }
                 else
                 {
-                    return Convert.ToInt32(time.Minute);
+                    return mins;
                 }
             }
             else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
@@ -576,16 +628,26 @@ namespace Admin_Login
                 }
 
                 DateTime time = DateTime.Parse(time_interval);
+                int mins = Convert.ToInt32(time.Minute);
 
-                //if (grace_minutes <= 10)
-                //{
-                //    return 0;
-                //}
-                //else
-                //{
-                    
-                //}
-                return Convert.ToInt32(time.Minute);
+                // Timing out at break
+                if ((time_out_24.TimeOfDay > bBreak) && (time_out_24.TimeOfDay < eBreak))
+                {
+                    DateTime startBreak = DateTime.Parse(bBreak.ToString().ToUpper());
+                    string Minutes = (time_out_24 - startBreak).ToString();
+                    Console.WriteLine(Minutes);
+                    if (Minutes.Contains("-"))
+                    {
+                        // if time in is not in break reduce none
+                        Minutes = "00:00:00";
+                    }
+
+                    DateTime mins_in_break = DateTime.Parse(Minutes);
+                    Console.WriteLine(mins_in_break.Minute);
+                    mins = mins - Convert.ToInt32(mins_in_break.Minute);
+                }
+
+                return mins;
             }
             else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
@@ -1397,6 +1459,7 @@ namespace Admin_Login
                                     "hh:mm:ss tt", CultureInfo.InvariantCulture);
             TimeSpan bBreak = gBreak.TimeOfDay;
 
+            TimeSpan eBreak = bBreak + TimeSpan.FromHours(1);
 
             if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
             {
@@ -1451,6 +1514,13 @@ namespace Admin_Login
                 }
 
                 // Break time trigger
+                // When timing in at the exact break time
+                if (time_in_24.TimeOfDay == bBreak)
+                {
+                    hour = hour - 1;
+                }
+
+                // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
                 {
                     hour = hour - 1;
@@ -1482,6 +1552,19 @@ namespace Admin_Login
                 //{
                 //    return 8;
                 //}
+
+                // Break time trigger
+                // When timing in at the exact break time
+                if (time_in_24.TimeOfDay == bBreak)
+                {
+                    hour = hour + 1;
+                }
+
+                // Timing out at break
+                if ((time_out_24.TimeOfDay > bBreak) && (time_out_24.TimeOfDay < eBreak))
+                {
+                    hour = hour + 1;
+                }
 
                 // Break time trigger
                 if ((bBreak > time_in_24.TimeOfDay) && (bBreak < time_out_24.TimeOfDay))
@@ -1610,6 +1693,15 @@ namespace Admin_Login
             DateTime time_in_24 = DateTime.Parse(dtpTimeInEdit.Text.ToString().ToUpper());
             DateTime time_out_24 = DateTime.Parse(dtpTimeOutEdit.Text.ToString().ToUpper());
 
+            // Trigger Employee Break
+            string break_time = getEmployeeBreakTime(EDIT_employee_id);
+
+            DateTime gBreak = DateTime.ParseExact(break_time,
+                                    "hh:mm:ss tt", CultureInfo.InvariantCulture);
+            TimeSpan bBreak = gBreak.TimeOfDay;
+
+            TimeSpan eBreak = bBreak + TimeSpan.FromHours(1);
+
             if (sched_in_24 > time_in_24 && sched_out_24 >= time_out_24)
             {
                 // Early time in but not early time out
@@ -1643,6 +1735,25 @@ namespace Admin_Login
                 }
 
                 DateTime time = DateTime.Parse(time_interval);
+                int mins = Convert.ToInt32(time.Minute);
+
+                // Timing in at break
+                if (time_in_24.TimeOfDay > bBreak == true)
+                {
+                    DateTime endBreak = DateTime.Parse(eBreak.ToString().ToUpper());
+
+                    string Minutes = (endBreak - time_in_24).ToString();
+
+                    if (Minutes.Contains("-"))
+                    {
+                        // if time in is not in break reduce none
+                        Minutes = "00:00:00";
+                    }
+
+                    DateTime mins_in_break = DateTime.Parse(Minutes);
+
+                    mins = mins - Convert.ToInt32(mins_in_break.Minute);
+                }
 
                 if (grace_minutes <= 10)
                 {
@@ -1650,7 +1761,7 @@ namespace Admin_Login
                 }
                 else
                 {
-                    return Convert.ToInt32(time.Minute);
+                    return mins;
                 }
             }
             else if (sched_out_24 > time_out_24 && sched_in_24 >= time_in_24)
@@ -1665,7 +1776,24 @@ namespace Admin_Login
                 }
 
                 DateTime time = DateTime.Parse(time_interval);
+                int mins = Convert.ToInt32(time.Minute);
 
+                // Timing out at break
+                if ((time_out_24.TimeOfDay > bBreak) && (time_out_24.TimeOfDay < eBreak))
+                {
+                    DateTime startBreak = DateTime.Parse(bBreak.ToString().ToUpper());
+                    string Minutes = (time_out_24 - startBreak).ToString();
+                    Console.WriteLine(Minutes);
+                    if (Minutes.Contains("-"))
+                    {
+                        // if time in is not in break reduce none
+                        Minutes = "00:00:00";
+                    }
+
+                    DateTime mins_in_break = DateTime.Parse(Minutes);
+                    Console.WriteLine(mins_in_break.Minute);
+                    mins = mins - Convert.ToInt32(mins_in_break.Minute);
+                }
                 //if (grace_minutes <= 10)
                 //{
                 //    return 0;
@@ -1674,7 +1802,7 @@ namespace Admin_Login
                 //{
                 //    return Convert.ToInt32(time.Minute);
                 //}
-                return Convert.ToInt32(time.Minute);
+                return mins;
             }
             else if (sched_in_24 > time_in_24 || sched_out_24 > time_out_24)
             {
