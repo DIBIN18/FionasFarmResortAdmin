@@ -120,9 +120,9 @@ namespace Admin_Login
                     connection.Open();
                     SqlCommand command = new SqlCommand(
                         "INSERT INTO Position" +
-                        "(PositionName, DepartmentID, BasicRate, Custom)" +
+                        "(PositionName, DepartmentID, BasicRate, Custom, Manegerial)" +
                         "VALUES" +
-                        "(@PositionName, @DepartmentID, @BasicRate, @Custom)",
+                        "(@PositionName, @DepartmentID, @BasicRate, @Custom, @Manegerial)",
                         connection);
 
                     // CONVERT STRING TO DECIMAL
@@ -141,6 +141,16 @@ namespace Admin_Login
                     command.Parameters.AddWithValue("@DepartmentID", selectedDepartmentId);
                     command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
                     command.Parameters.AddWithValue("@Custom", 0);
+
+                    if (cbManegerial.Checked == true)
+                    {
+                        command.Parameters.AddWithValue("@Manegerial", 1);
+                    }
+                    else
+                    {
+                        command.Parameters.AddWithValue("@Manegerial", 0);
+                    }
+
                     command.ExecuteNonQuery();
 
                     AuditTrail audit = new AuditTrail();

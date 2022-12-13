@@ -97,8 +97,6 @@ namespace Admin_Login
         }
         private void ExitIcon_Click(object sender, EventArgs e)
         {
-            System.Environment.Exit(0);
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -115,6 +113,7 @@ namespace Admin_Login
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
             }
+            System.Environment.Exit(0);
         }
 
         private void Username_KeyDown(object sender, KeyEventArgs e)
