@@ -17,6 +17,7 @@ namespace Admin_Login
         Login login = new Login();
 
         string selectedDept = "", selectedPos = "";
+        string selectedDeptName = "", selectedPosName = "", selectedRate = "";
 
         SqlDataAdapter DsqlDataAdapter = new SqlDataAdapter();
         BindingSource DbindingSource = new BindingSource();
@@ -84,6 +85,7 @@ namespace Admin_Login
                 dgvPositions.Columns["Custom"].Visible = false;
             }
         }
+
         private void btn_SaveDepartmentChanges_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -102,8 +104,10 @@ namespace Admin_Login
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
+
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditEditDepartment();
+                    audit.AuditEditDepartment(selectedDeptName, txtEditDepartmentName.Text.ToString());
+
                     MessageBox.Show("Department Successfully Updated", "Department Edited",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtEditDepartmentName.Clear();
@@ -131,8 +135,10 @@ namespace Admin_Login
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
+
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditAddPosition();
+                    audit.AuditEditPosition(selectedPosName, selectedRate, txtEditPositionName.Text.ToString(), txtEditBasicRate.Text.ToString());
+
                     MessageBox.Show("Position Successfully Updated", "Position Edited",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -167,6 +173,7 @@ namespace Admin_Login
                     txtEditDepartmentName.Text = dt.Rows[0][1].ToString();
 
                     selectedDept = dt.Rows[0][0].ToString();
+                    selectedDeptName = dt.Rows[0][1].ToString();
                 }
             }
             catch (System.ArgumentOutOfRangeException)
@@ -194,6 +201,9 @@ namespace Admin_Login
                     txtEditBasicRate.Text = dt.Rows[0][3].ToString();
 
                     selectedPos = dt.Rows[0][0].ToString();
+
+                    selectedPosName = dt.Rows[0][1].ToString();
+                    selectedRate = dt.Rows[0][3].ToString();
                 }
             }
             catch (System.ArgumentOutOfRangeException)
@@ -258,14 +268,23 @@ namespace Admin_Login
                     txtEditBasicRate.Text = "";
                     txtEditPositionName.Text = "";
 
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Department Deleted", "Delete Department", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadDgvDept();
-                    loadDgvPos();
-                    txtEditDepartmentName.Text = " ";
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Department Deleted", "Delete Department", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDgvDept();
+                        loadDgvPos();
+                        txtEditDepartmentName.Text = " ";
 
-                    AuditTrail audit = new AuditTrail();
-                    audit.AuditDeleteDepartment();
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditDeleteDepartment(selectedDeptName);
+                    }
+                    catch (System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Department can not be deleted because it contains position(s)" +
+                            " that are assigned to employee(s)",
+                            "Department Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -287,13 +306,21 @@ namespace Admin_Login
 
                 if (dialogResult == DialogResult.Yes)
                 {
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Position Deleted", "Delete Position", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadDgvPos();
-                    txtEditPositionName.Text = " ";
-                    txtEditBasicRate.Text = " ";
-                    AuditTrail audit = new AuditTrail();
-                    audit.AuditDeletePosition();
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Position Deleted", "Delete Position", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadDgvPos();
+                        txtEditPositionName.Text = " ";
+                        txtEditBasicRate.Text = " ";
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditDeletePosition(selectedPosName);
+                    }
+                    catch(System.Data.SqlClient.SqlException)
+                    {
+                        MessageBox.Show("Position can not be deleted because it is assigned to employee(s)",
+                            "Position Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }

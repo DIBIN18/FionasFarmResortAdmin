@@ -92,12 +92,16 @@ namespace Admin_Login
             {
                 SqlConnection conn = new SqlConnection(login.connectionString);
                 conn.Open();
+
                 SqlCommand cmd = new SqlCommand("Insert Into Department(DepartmentName)Values(@DepartmentName)", conn);
                 cmd.Parameters.AddWithValue("@DepartmentName", txtDepartmentName.Text);
                 cmd.ExecuteNonQuery();
+
                 AuditTrail audit = new AuditTrail();
-                audit.AuditAddDepartment();
+                audit.AuditAddDepartment(txtDepartmentName.Text.ToString());
+
                 conn.Close();
+
                 MessageBox.Show("New Department Has been Successfully Added", "Department Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDepartmentName.Text = "";
@@ -138,8 +142,13 @@ namespace Admin_Login
                     command.Parameters.AddWithValue("@BasicRate", string_to_decimal);
                     command.Parameters.AddWithValue("@Custom", 0);
                     command.ExecuteNonQuery();
+
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditAddPosition();
+                    audit.AuditAddPosition(
+                        txtPositionName.Text.ToString(),
+                        txtBasicRate.Text.ToString(),
+                        cmbDepartment.Text.ToString());
+
                     MessageBox.Show("New Position Has been Successfully Added", "Position Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 

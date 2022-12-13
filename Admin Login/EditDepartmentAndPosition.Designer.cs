@@ -119,7 +119,7 @@ namespace Admin_Login
             this.AddDepPos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddDepPos.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddDepPos.ForeColor = System.Drawing.Color.White;
-            this.AddDepPos.Location = new System.Drawing.Point(514, 110);
+            this.AddDepPos.Location = new System.Drawing.Point(514, 113);
             this.AddDepPos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AddDepPos.Name = "AddDepPos";
             this.AddDepPos.Size = new System.Drawing.Size(56, 23);
@@ -133,8 +133,8 @@ namespace Admin_Login
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(592, 108);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(592, 111);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -147,8 +147,8 @@ namespace Admin_Login
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox1.Location = new System.Drawing.Point(507, 103);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(507, 106);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -162,8 +162,8 @@ namespace Admin_Login
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(592, 172);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(592, 180);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -179,7 +179,7 @@ namespace Admin_Login
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(516, 172);
+            this.label3.Location = new System.Drawing.Point(516, 178);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 24);
@@ -192,8 +192,8 @@ namespace Admin_Login
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox4.Location = new System.Drawing.Point(507, 166);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(507, 174);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(128, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -208,7 +208,7 @@ namespace Admin_Login
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Image = global::Admin_Login.Properties.Resources.Back_Icon;
             this.pictureBox5.Location = new System.Drawing.Point(479, 681);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(29, 31);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -238,7 +238,7 @@ namespace Admin_Login
             this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox6.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox6.Location = new System.Drawing.Point(413, 678);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(108, 37);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -273,7 +273,7 @@ namespace Admin_Login
             this.label8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(692, 110);
+            this.label8.Location = new System.Drawing.Point(692, 113);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 23);
@@ -288,7 +288,7 @@ namespace Admin_Login
             this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
             this.pictureBox7.Location = new System.Drawing.Point(770, 108);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(25, 28);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -301,8 +301,8 @@ namespace Admin_Login
             // 
             this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox8.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox8.Location = new System.Drawing.Point(685, 103);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Location = new System.Drawing.Point(685, 106);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(128, 37);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -314,9 +314,9 @@ namespace Admin_Login
             // txtEditDepartmentName
             // 
             this.txtEditDepartmentName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditDepartmentName.Location = new System.Drawing.Point(463, 64);
+            this.txtEditDepartmentName.Location = new System.Drawing.Point(468, 66);
             this.txtEditDepartmentName.Name = "txtEditDepartmentName";
-            this.txtEditDepartmentName.Size = new System.Drawing.Size(402, 30);
+            this.txtEditDepartmentName.Size = new System.Drawing.Size(384, 30);
             this.txtEditDepartmentName.TabIndex = 73;
             // 
             // label5
@@ -358,7 +358,7 @@ namespace Admin_Login
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(692, 173);
+            this.label9.Location = new System.Drawing.Point(692, 181);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 23);
@@ -372,8 +372,8 @@ namespace Admin_Login
             this.pictureBox9.BackColor = System.Drawing.Color.Maroon;
             this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(770, 171);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox9.Location = new System.Drawing.Point(770, 179);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(25, 28);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -406,8 +406,8 @@ namespace Admin_Login
             // 
             this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox10.Location = new System.Drawing.Point(685, 166);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox10.Location = new System.Drawing.Point(685, 174);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(128, 37);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -419,24 +419,24 @@ namespace Admin_Login
             // txtEditBasicRate
             // 
             this.txtEditBasicRate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditBasicRate.Location = new System.Drawing.Point(463, 128);
+            this.txtEditBasicRate.Location = new System.Drawing.Point(468, 133);
             this.txtEditBasicRate.Name = "txtEditBasicRate";
-            this.txtEditBasicRate.Size = new System.Drawing.Size(402, 30);
+            this.txtEditBasicRate.Size = new System.Drawing.Size(384, 30);
             this.txtEditBasicRate.TabIndex = 74;
             // 
             // txtEditPositionName
             // 
             this.txtEditPositionName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEditPositionName.Location = new System.Drawing.Point(463, 65);
+            this.txtEditPositionName.Location = new System.Drawing.Point(468, 67);
             this.txtEditPositionName.Name = "txtEditPositionName";
-            this.txtEditPositionName.Size = new System.Drawing.Size(402, 30);
+            this.txtEditPositionName.Size = new System.Drawing.Size(384, 30);
             this.txtEditPositionName.TabIndex = 74;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(462, 103);
+            this.label7.Location = new System.Drawing.Point(462, 106);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 22);

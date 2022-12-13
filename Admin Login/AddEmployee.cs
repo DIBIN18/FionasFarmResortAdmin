@@ -287,7 +287,6 @@ namespace Admin_Login
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-
         private void cmbDepartment_SelectionChangeCommitted(object sender, EventArgs e)
         {
             selectedDepartmentName = cmbDepartment.GetItemText(cmbDepartment.SelectedItem);
@@ -323,6 +322,31 @@ namespace Admin_Login
                 adapter.Fill(data, "PositionName");
                 cmbPosition.DisplayMember = "PositionName";
                 cmbPosition.DataSource = data.Tables["PositionName"];
+            }
+        }
+
+        public Int64 GetLatestEmployeeID()
+        {
+            string query2 =
+                "SELECT MAX(EmployeeID) FROM EmployeeInfo";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetInt64(0);
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+
+                }
             }
         }
 
@@ -428,8 +452,12 @@ namespace Admin_Login
 
                     insertNewEmployeeSchedule();
 
+                    //
+                    //  ADD AUDIT
+                    //
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditAddEmployee();
+                    audit.AuditAddEmployee(GetLatestEmployeeID().ToString(), txtFullName.Text.ToString());
+
                     clearAll();
                 }
 

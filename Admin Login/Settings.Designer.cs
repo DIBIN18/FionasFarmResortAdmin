@@ -644,7 +644,7 @@ namespace Admin_Login
             this.dgvAuditTrail.AllowUserToDeleteRows = false;
             this.dgvAuditTrail.AllowUserToResizeColumns = false;
             this.dgvAuditTrail.AllowUserToResizeRows = false;
-            this.dgvAuditTrail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAuditTrail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvAuditTrail.BackgroundColor = System.Drawing.Color.White;
             this.dgvAuditTrail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAuditTrail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -672,13 +672,13 @@ namespace Admin_Login
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pnlUtils);
             this.Controls.Add(this.pnlAuditTrail);
+            this.Controls.Add(this.pnlUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Settings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

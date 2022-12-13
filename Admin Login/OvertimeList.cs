@@ -15,7 +15,7 @@ namespace Admin_Login
     {
         Login login = new Login();
 
-        string selectedOtId = "";
+        string selectedOtId = "", selected = "", selected_date = "";
 
         public OvertimeList()
         {
@@ -90,6 +90,8 @@ namespace Admin_Login
             try
             {
                 selectedOtId = dgvEmployees.Rows[e.RowIndex].Cells[0].Value.ToString();
+                selected = dgvEmployees.Rows[e.RowIndex].Cells[1].Value.ToString();
+                selected_date = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -118,7 +120,7 @@ namespace Admin_Login
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Overtime Schedule Removed");
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditRemoveOverTime();
+                    audit.AuditRemoveOverTime(selected, selected_date, selected_date);
                 }
             }
         }

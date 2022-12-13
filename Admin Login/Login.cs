@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Web.UI.WebControls;
+
 namespace Admin_Login
 {
     public partial class Login : Form
@@ -96,6 +98,23 @@ namespace Admin_Login
         private void ExitIcon_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+
+                DateTime today = DateTime.Today;
+
+                string query =
+                    "BACKUP DATABASE FFRUsers " +
+                    "TO DISK = '" + path + "\\Database Backups\\Backup - " +
+                    today.ToString("MMMM dd yyyy") + " " + DateTime.Now.ToString("h-mm-ss tt").ToUpper() + ".bak'";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.ExecuteNonQuery();
+            }
         }
 
         private void Username_KeyDown(object sender, KeyEventArgs e)

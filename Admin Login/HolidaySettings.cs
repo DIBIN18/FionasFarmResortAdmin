@@ -77,7 +77,8 @@ namespace Admin_Login
 
 
                 DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to remove the selected holiday?, ", "Delete Holiday", MessageBoxButtons.YesNo
+                        " Are you sure you want to remove the selected holiday?", "Delete Holiday", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Information
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -85,7 +86,7 @@ namespace Admin_Login
                 if (dialogResult == DialogResult.Yes)
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Holiday Removed");
+                    MessageBox.Show("Holiday Removed", "Removed Holiday", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AuditTrail audit = new AuditTrail();
                     audit.AuditRemoveHoliday();
                     UpdateTable();
@@ -110,7 +111,7 @@ namespace Admin_Login
                 cmd.Parameters.AddWithValue("@To_", dtpDate.Value.ToString("MMMM dd"));
                 cmd.Parameters.AddWithValue("@Type_", cb_Type.Text.ToString());
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Successfully Added Holiday");
+                MessageBox.Show("Successfully Added Holiday", "Added Holiday", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 AuditTrail audit = new AuditTrail();
                 audit.AuditAddHoliday();
             }
