@@ -184,6 +184,7 @@
             this.dgvOTList.BackgroundColor = System.Drawing.Color.White;
             this.dgvOTList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOTList.Location = new System.Drawing.Point(10, 53);
+            this.dgvOTList.MultiSelect = false;
             this.dgvOTList.Name = "dgvOTList";
             this.dgvOTList.ReadOnly = true;
             this.dgvOTList.RowHeadersVisible = false;

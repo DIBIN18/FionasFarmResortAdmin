@@ -124,7 +124,7 @@ namespace Admin_Login
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Backup Created Successfully");
+                MessageBox.Show("Backup Created Successfully", "Backup Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

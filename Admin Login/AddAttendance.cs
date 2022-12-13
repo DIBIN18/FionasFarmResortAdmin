@@ -20,6 +20,7 @@ namespace Admin_Login
         Login login = new Login();
         string employee_id = "", schedule_in = "", schedule_out = "";
         string EDIT_employee_id = "", EDIT_time_in = "", EDIT_time_out = "", Attendance_ID = "";
+        string old_date = "", old_start = "", old_end = "";
 
         int grace_minutes = 0;
         bool grace_on = false;
@@ -1148,6 +1149,13 @@ namespace Admin_Login
                             }
                         }
 
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditAddAttendance(
+                            lblEmployeeName.Text.ToString(),
+                            dtpTimeInAdd.Text.ToString(),
+                            dtpTimeOutAdd.Text.ToString(),
+                            dtp_Date.Text.ToString());
+
                         MessageBox.Show("Attendance Successfuly Added", "Attendance Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (System.Data.SqlClient.SqlException)
@@ -1156,25 +1164,6 @@ namespace Admin_Login
                             " , Attendance will not be recorded", "Add Attendance Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
-
-                    SqlConnection auditcon = new SqlConnection(login.connectionString);
-                    auditcon.Open();
-                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                    //SqlDataAdapter sda = new SqlDataAdapter(name);
-                    //DataTable dtaudit = new DataTable();
-                    //sda.Fill(dtaudit);
-                    //string auditName = dt.Rows[0][0].ToString();
-                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                    string Module = "Attendance Record";
-                    string Description = "Add Manual Attendance";
-                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                    auditcommand.Parameters.AddWithValue("@Module", Module);
-                    auditcommand.Parameters.AddWithValue("@Description", Description);
-                    auditcommand.ExecuteNonQuery();
-                    auditcon.Close();
                 }
             }
             else
@@ -1324,6 +1313,9 @@ namespace Admin_Login
                 lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
 
                 dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+                old_date = dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString();
+                old_start = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+                old_end = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 string timeOut = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
 
@@ -2206,6 +2198,15 @@ namespace Admin_Login
                             }
                         }
 
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditEditAttendance(
+                            lbl_EditEmployeeName.Text.ToString(),
+                            old_date, old_start, old_end,
+                            dtp_EditDate.Text.ToString(),
+                            dtpTimeInEdit.Text.ToString(),
+                            dtpTimeOutEdit.Text.ToString()
+                            );
+
                         MessageBox.Show("Attendance Record Successfully Updated", "Attendance Record Edit",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         RefreshEditDgvTable();
@@ -2216,24 +2217,6 @@ namespace Admin_Login
                             " , Attendance will not be recorded", "Add Attendance Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
-                    SqlConnection auditcon = new SqlConnection(login.connectionString);
-                    auditcon.Open();
-                    //SqlCommand name = new SqlCommand("Select * from Users Where Username_ = '" + forAudit.Username + "'", auditcon);
-                    //SqlDataAdapter sda = new SqlDataAdapter(name);
-                    //DataTable dtaudit = new DataTable();
-                    //sda.Fill(dtaudit);
-                    //string auditName = dt.Rows[0][0].ToString();
-                    string auditDate = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-                    string Module = "Attendance Record";
-                    string Description = "Update AttendanceRecord";
-                    SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
-                    auditcommand.Parameters.AddWithValue("@UserName_", "Sample");
-                    auditcommand.Parameters.AddWithValue("@Date", auditDate);
-                    auditcommand.Parameters.AddWithValue("@Module", Module);
-                    auditcommand.Parameters.AddWithValue("@Description", Description);
-                    auditcommand.ExecuteNonQuery();
-                    auditcon.Close();
                 }
             }
             else

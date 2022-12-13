@@ -17,6 +17,7 @@ namespace Admin_Login
         string SelectedEmployeeID = "";
         string SelectedDate = "";
         string SelectedEmployeeName = "";
+        string SelectedLeaveType = "";
 
         Login login = new Login();
         public LeaveListDates()
@@ -87,7 +88,7 @@ namespace Admin_Login
                 SelectedEmployeeID = dgvLeaveList.Rows[e.RowIndex].Cells[1].Value.ToString();
                 SelectedDate = dgvLeaveList.Rows[e.RowIndex].Cells[5].Value.ToString();
                 SelectedEmployeeName = dgvLeaveList.Rows[e.RowIndex].Cells[2].Value.ToString();
-
+                SelectedLeaveType = dgvLeaveList.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -118,7 +119,7 @@ namespace Admin_Login
                     UpdateTable();
 
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditRemoveLeave();
+                    audit.AuditRemoveLeave(SelectedLeaveType, SelectedEmployeeName, SelectedEmployeeID, SelectedDate);
                 }
 
                 MessageBox.Show("Applied Leave Successfully Cancelled", "Leave Cancellation",

@@ -15,7 +15,7 @@ namespace Admin_Login
     {
         Login login = new Login();
 
-        string SelectedOvertimeID = "";
+        string SelectedOvertimeID = "", selected = "", selected_date_start = "", selected_date_end = "";
 
         public AppliedOvertimes()
         {
@@ -60,6 +60,9 @@ namespace Admin_Login
             try
             {
                 SelectedOvertimeID = dgvOTList.Rows[e.RowIndex].Cells[0].Value.ToString();
+                selected = dgvOTList.Rows[e.RowIndex].Cells[3].Value.ToString();
+                selected_date_start = dgvOTList.Rows[e.RowIndex].Cells[1].Value.ToString();
+                selected_date_end = dgvOTList.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
             catch (System.ArgumentOutOfRangeException)
             {
@@ -90,7 +93,7 @@ namespace Admin_Login
                     MessageBox.Show("Applied Overtime Cancelled", "Cancel Overtime", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                     AuditTrail audit = new AuditTrail();
-                    audit.AuditRemoveOverTime();
+                    audit.AuditRemoveOverTime(selected, selected_date_start, selected_date_end);
                     UpdateTable();
                 }
             }

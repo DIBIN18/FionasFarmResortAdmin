@@ -152,6 +152,17 @@ namespace Admin_Login
                         MessageBox.Show("Transaction Complete",
                             "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        //
+                        //   ADD AUDIT  
+                        //
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditApplyLeave(
+                            txtEmployeeName.Text.ToString(),
+                            txtEmployeeID.Text.ToString(),
+                            cmb_LeaveType.Text.ToString(),
+                            dtp_StartDate.Text.ToString(),
+                            dtp_EndDate.Text.ToString());
+
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
                         menu.Menu_Load(menu, EventArgs.Empty);
@@ -212,6 +223,17 @@ namespace Admin_Login
                         MessageBox.Show("Transaction Complete",
                             "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        //
+                        //   ADD AUDIT  
+                        //
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditApplyLeave(
+                            txtEmployeeName.Text.ToString(),
+                            txtEmployeeID.Text.ToString(),
+                            cmb_LeaveType.Text.ToString(),
+                            dtp_StartDate.Text.ToString(),
+                            dtp_EndDate.Text.ToString());
+
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
                         menu.Menu_Load(menu, EventArgs.Empty);
@@ -270,6 +292,17 @@ namespace Admin_Login
 
                         MessageBox.Show("Transaction Complete",
                             "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //
+                        //   ADD AUDIT  
+                        //
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditApplyLeave(
+                            txtEmployeeName.Text.ToString(),
+                            txtEmployeeID.Text.ToString(),
+                            cmb_LeaveType.Text.ToString(),
+                            dtp_StartDate.Text.ToString(),
+                            dtp_EndDate.Text.ToString());
 
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";
@@ -330,6 +363,17 @@ namespace Admin_Login
 
                         MessageBox.Show("Transaction Complete",
                             "Leave Application", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //
+                        //   ADD AUDIT  
+                        //
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditApplyLeave(
+                            txtEmployeeName.Text.ToString(),
+                            txtEmployeeID.Text.ToString(),
+                            cmb_LeaveType.Text.ToString(),
+                            dtp_StartDate.Text.ToString(),
+                            dtp_EndDate.Text.ToString());
 
                         Menu menu = (Menu)Application.OpenForms["Menu"];
                         menu.Text = "Fiona's Farm and Resort - Leave";

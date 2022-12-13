@@ -1535,14 +1535,14 @@ namespace Admin_Login
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 747);
             this.ControlBox = false;
-            this.Controls.Add(this.pnlEdit);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btn_Edit);
             this.Controls.Add(this.btnAddMode);
-            this.Controls.Add(this.pnlAdd);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pnlEdit);
+            this.Controls.Add(this.pnlAdd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddAttendance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

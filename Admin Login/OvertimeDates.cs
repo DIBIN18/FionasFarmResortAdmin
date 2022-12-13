@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace Admin_Login
@@ -182,8 +183,15 @@ namespace Admin_Login
                             command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
                             command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
                             command2.ExecuteNonQuery();
+
+                            //
+                            //  ADD AUDIT
+                            //
                             AuditTrail audit = new AuditTrail();
-                            audit.AuditAddOverTime();
+                            audit.AuditAddOverTime(
+                                lblSelectedFromDGV.Text.ToString(),
+                                dtpDateFrom.Text.ToString(),
+                                dtpDateTo.Text.ToString());
                         }
                     }
                 }
@@ -243,6 +251,11 @@ namespace Admin_Login
                             }
                             count++;
                         }
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditAddOverTime(
+                                lblSelectedFromDGV.Text.ToString(),
+                                dtpDateFrom.Text.ToString(),
+                                dtpDateTo.Text.ToString());
                     }
                 }
                 if (duplicateDetect == true)
@@ -306,6 +319,11 @@ namespace Admin_Login
                             }
                             count++;
                         }
+                        AuditTrail audit = new AuditTrail();
+                        audit.AuditAddOverTime(
+                                lblSelectedFromDGV.Text.ToString(),
+                                dtpDateFrom.Text.ToString(),
+                                dtpDateTo.Text.ToString());
                     }
                 }
                 if (duplicateDetect == true)
