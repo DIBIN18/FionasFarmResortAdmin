@@ -57,6 +57,7 @@ namespace Admin_Login
             this.txtEditPositionName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbManegerial = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeparments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -162,7 +163,7 @@ namespace Admin_Login
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.SaveChanges_Icon;
-            this.pictureBox3.Location = new System.Drawing.Point(592, 180);
+            this.pictureBox3.Location = new System.Drawing.Point(592, 230);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 28);
@@ -179,7 +180,7 @@ namespace Admin_Login
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(516, 178);
+            this.label3.Location = new System.Drawing.Point(516, 228);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 24);
@@ -192,7 +193,7 @@ namespace Admin_Login
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox4.Location = new System.Drawing.Point(507, 174);
+            this.pictureBox4.Location = new System.Drawing.Point(507, 224);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(128, 37);
@@ -334,6 +335,7 @@ namespace Admin_Login
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cbManegerial);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.pictureBox9);
             this.panel2.Controls.Add(this.dgvPositions);
@@ -358,7 +360,7 @@ namespace Admin_Login
             this.label9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(692, 181);
+            this.label9.Location = new System.Drawing.Point(692, 231);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 23);
@@ -372,7 +374,7 @@ namespace Admin_Login
             this.pictureBox9.BackColor = System.Drawing.Color.Maroon;
             this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(770, 179);
+            this.pictureBox9.Location = new System.Drawing.Point(770, 226);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(25, 28);
@@ -406,7 +408,7 @@ namespace Admin_Login
             // 
             this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox10.Location = new System.Drawing.Point(685, 174);
+            this.pictureBox10.Location = new System.Drawing.Point(685, 224);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(128, 37);
@@ -453,6 +455,17 @@ namespace Admin_Login
             this.label6.Size = new System.Drawing.Size(143, 22);
             this.label6.TabIndex = 73;
             this.label6.Text = "Position Name:";
+            // 
+            // cbManegerial
+            // 
+            this.cbManegerial.AutoSize = true;
+            this.cbManegerial.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbManegerial.Location = new System.Drawing.Point(468, 181);
+            this.cbManegerial.Name = "cbManegerial";
+            this.cbManegerial.Size = new System.Drawing.Size(118, 25);
+            this.cbManegerial.TabIndex = 80;
+            this.cbManegerial.Text = "Manegerial";
+            this.cbManegerial.UseVisualStyleBackColor = true;
             // 
             // EditDepartmentAndPosition
             // 
@@ -519,5 +532,6 @@ namespace Admin_Login
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.CheckBox cbManegerial;
     }
 }

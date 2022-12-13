@@ -115,6 +115,19 @@ namespace Admin_Login
                 }
             }
         }
+
+        private int CheckManegerial()
+        {
+            if (cbManegerial.Checked == true)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         private void btn_SavePositionChanges_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(login.connectionString))
@@ -126,12 +139,29 @@ namespace Admin_Login
                     string cellValue = Convert.ToString(selectedRow.Cells["PositionID"].Value);
 
                     connection.Open();
-                    string query =
+
+                    string query = "";
+
+                    if (CheckManegerial() == 0)
+                    {
+                         query =
                         "UPDATE Position " +
                         "SET " +
                         "PositionName='" + txtEditPositionName.Text + "', " +
-                        "BasicRate=" + txtEditBasicRate.Text + " " +
+                        "BasicRate=" + txtEditBasicRate.Text + ", " +
+                        "Manegerial= 0" +
                         "WHERE PositionID=" + cellValue;
+                    }
+                    else
+                    {
+                         query =
+                        "UPDATE Position " +
+                        "SET " +
+                        "PositionName='" + txtEditPositionName.Text + "', " +
+                        "BasicRate=" + txtEditBasicRate.Text + ", " +
+                        "Manegerial= 1" +
+                        "WHERE PositionID=" + cellValue;
+                    }
 
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
@@ -148,6 +178,7 @@ namespace Admin_Login
                 }
             }
         }
+
         private void btn_Back_Click(object sender, EventArgs e)
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
@@ -204,6 +235,15 @@ namespace Admin_Login
 
                     selectedPosName = dt.Rows[0][1].ToString();
                     selectedRate = dt.Rows[0][3].ToString();
+
+                    if (dt.Rows[0][6].ToString() == "True")
+                    {
+                        cbManegerial.Checked= true;
+                    }
+                    else
+                    {
+                        cbManegerial.Checked = false;
+                    }
                 }
             }
             catch (System.ArgumentOutOfRangeException)

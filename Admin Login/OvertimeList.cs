@@ -29,7 +29,7 @@ namespace Admin_Login
             menu.Menu_Load(menu, EventArgs.Empty);
         }
 
-        private void OvertimeList_Load(object sender, EventArgs e)
+        private void UpdateTable()
         {
             string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
@@ -55,6 +55,11 @@ namespace Admin_Login
                 dgvEmployees.DataSource = data;
                 dgvEmployees.Columns["OvertimeID"].Visible = false;
             }
+        }
+
+        private void OvertimeList_Load(object sender, EventArgs e)
+        {
+            UpdateTable();
         }
 
         private void dtp_Date_ValueChanged(object sender, EventArgs e)
@@ -110,7 +115,8 @@ namespace Admin_Login
 
 
                 DialogResult dialogResult = MessageBox.Show(
-                        " Are you sure you want to remove the overtime schedule? ", "Delete Overtime Schedule", MessageBoxButtons.YesNo
+                        " Are you sure you want to remove the overtime schedule? ", "Delete Overtime Schedule", MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information
                 );
 
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -118,10 +124,12 @@ namespace Admin_Login
                 if (dialogResult == DialogResult.Yes)
                 {
                     cmd.ExecuteNonQuery();
-                    MessageBox.Show("Overtime Schedule Removed");
+                    MessageBox.Show("Overtime Schedule Removed", "Overtime Removed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     AuditTrail audit = new AuditTrail();
                     audit.AuditRemoveOverTime(selected, selected_date, selected_date);
                 }
+
+                UpdateTable();
             }
         }
 

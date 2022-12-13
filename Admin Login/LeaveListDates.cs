@@ -50,7 +50,8 @@ namespace Admin_Login
                 "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
                 "INNER JOIN Leave " +
                 "ON LeavePay.LeaveID = Leave.LeaveID " +
-                "WHERE Date = '" + date + "'";
+                "WHERE Date = '" + date + "' AND " +
+                "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
 
             SqlConnection conn = new SqlConnection(login.connectionString);
             conn.Open();
@@ -156,7 +157,8 @@ namespace Admin_Login
                         "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
                         "INNER JOIN Leave " +
                         "ON LeavePay.LeaveID = Leave.LeaveID " +
-                        "WHERE Date = '" + date + "'";
+                        "WHERE Date = '" + date + "' AND " +
+                        "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
 
                     SqlCommand cmd2 = new SqlCommand(query, connection);
                     SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
@@ -182,7 +184,8 @@ namespace Admin_Login
                         "INNER JOIN Leave " +
                         "ON LeavePay.LeaveID = Leave.LeaveID " +
                         "WHERE Date = '" + date + "' AND " +
-                        "EmployeeFullName like '%" + tb_Search.Text + "%'";
+                        "EmployeeFullName like '%" + tb_Search.Text + "%' AND " +
+                        "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
 
                     SqlCommand cmd2 = new SqlCommand(query, connection);
 

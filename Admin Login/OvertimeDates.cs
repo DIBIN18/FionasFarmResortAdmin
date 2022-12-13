@@ -45,7 +45,8 @@ namespace Admin_Login
                     "FROM EmployeeSchedule " +
                     "INNER JOIN EmployeeInfo " +
                     "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
-                    "WHERE Status='Active'";
+                    "WHERE Status='Active' AND " +
+                    "((SELECT Manegerial FROM Position WHERE PositionID = (EmployeeInfo.PositionID)) = 0)";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -115,6 +116,34 @@ namespace Admin_Login
                     else
                     {
                         return 0;
+                    }
+
+                }
+            }
+        }
+
+        private bool GetManegerial(string emp_id)
+        {
+            string query = 
+                "SELECT Manegerial " +
+                "FROM Position " +
+                "WHERE PositionID = " +
+                "(SELECT EmployeeInfo.PositionID FROM EmployeeInfo WHERE EmployeeID = " + emp_id + ")";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                        return reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
                     }
 
                 }
@@ -227,24 +256,28 @@ namespace Admin_Login
                                 {
                                     if (CheckEmployeeStatus(reader.GetInt64(count)) == "Active")
                                     {
-                                        using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                        Console.WriteLine(GetManegerial(reader.GetInt64(count).ToString()));
+                                        if (!GetManegerial(reader.GetInt64(count).ToString()) == true)
                                         {
-                                            connection2.Open();
-                                            string query =
-                                                "INSERT INTO OvertimeDates (" +
-                                                "EmployeeID," +
-                                                "Date," +
-                                                "OvertimeAppID) " +
-                                                "VALUES(" +
-                                                "@EmployeeID," +
-                                                "@Date," +
-                                                "@OvertimeAppID)";
+                                            using (SqlConnection connection2 = new SqlConnection(login.connectionString))
+                                            {
+                                                connection2.Open();
+                                                string query =
+                                                    "INSERT INTO OvertimeDates (" +
+                                                    "EmployeeID," +
+                                                    "Date," +
+                                                    "OvertimeAppID) " +
+                                                    "VALUES(" +
+                                                    "@EmployeeID," +
+                                                    "@Date," +
+                                                    "@OvertimeAppID)";
 
-                                            SqlCommand command2 = new SqlCommand(query, connection2);
-                                            command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
-                                            command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
-                                            command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
-                                            command2.ExecuteNonQuery();
+                                                SqlCommand command2 = new SqlCommand(query, connection2);
+                                                command2.Parameters.AddWithValue("@EmployeeID", reader.GetInt64(count));
+                                                command2.Parameters.AddWithValue("@Date", day.ToString("MMMM dd, yyyy"));
+                                                command2.Parameters.AddWithValue("@OvertimeAppID", GetLatestOvertimeID());
+                                                command2.ExecuteNonQuery();
+                                            }
                                         }
                                     }
                                 }
@@ -400,7 +433,8 @@ namespace Admin_Login
                     "FROM EmployeeSchedule " +
                     "INNER JOIN EmployeeInfo " +
                     "ON EmployeeSchedule.EmployeeID = EmployeeInfo.EmployeeID " +
-                    "WHERE Status='Active'";
+                    "WHERE Status='Active' AND " +
+                    "((SELECT Manegerial FROM Position WHERE PositionID = (EmployeeInfo.PositionID)) = 0)";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
@@ -461,7 +495,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query =
-                    "SELECT PositionID, PositionName FROM Position WHERE Custom=0";
+                    "SELECT PositionID, PositionName FROM Position WHERE Custom = 0 AND Manegerial = 0";
 
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
