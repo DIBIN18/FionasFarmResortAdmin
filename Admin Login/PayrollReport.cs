@@ -67,24 +67,24 @@ namespace Admin_Login
             }
             if (day_To == "15")
             {
-                cbSSS.Checked = true;
-                cbPAGIBIG.Checked = false;
-                cbPHILHEALTH.Checked = false;
+                cbSSS.Checked = false;
+                cbPAGIBIG.Checked = true;
+                cbPHILHEALTH.Checked = true;
                 dtp_From.Value = dtp_To.Value.AddDays(-14);
                 sssclass.dateTo = dtp_To.Text;
             }
             else if (day_To == "30")
             {
-                cbSSS.Checked = false;
-                cbPAGIBIG.Checked = true;
-                cbPHILHEALTH.Checked = true;
+                cbSSS.Checked = true;
+                cbPAGIBIG.Checked = false;
+                cbPHILHEALTH.Checked = false;
                 dtp_From.Value = dtp_To.Value.AddDays(-14);
             }
             else if (day_To == "31")
             {
-                cbSSS.Checked = false;
-                cbPAGIBIG.Checked = true;
-                cbPHILHEALTH.Checked = true;
+                cbSSS.Checked = true;
+                cbPAGIBIG.Checked = false;
+                cbPHILHEALTH.Checked = false;
                 dtp_From.Value = dtp_To.Value.AddDays(-15);
             }
             dgvDatechangeLoad();           
@@ -121,15 +121,15 @@ namespace Admin_Login
                 }
                 if (day_To == "15")
                 {
-                    cbSSS.Checked = true;
-                    cbPAGIBIG.Checked = false;
-                    cbPHILHEALTH.Checked = false;
-                }
-                else if (day_To == "30" || day_To == "31")
-                {
                     cbSSS.Checked = false;
                     cbPAGIBIG.Checked = true;
                     cbPHILHEALTH.Checked = true;
+                }
+                else if (day_To == "30" || day_To == "31")
+                {
+                    cbSSS.Checked = true;
+                    cbPAGIBIG.Checked = false;
+                    cbPHILHEALTH.Checked = false;
                 }
             }
             catch (Exception ex)
