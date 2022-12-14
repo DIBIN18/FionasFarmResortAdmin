@@ -15,7 +15,7 @@ namespace Admin_Login
         public DataTable datatable = new DataTable();
         public string EmployeeID, SSSON, PAGIBIGON, PHILHEALTHON, dateFrom, dateTo;
         public static string from, to;
-        double getGrossPay = 0;
+        double getGrossPay = 0, getBasicPay = 0;
 
 
         public void get13MonthsPay()
@@ -127,63 +127,81 @@ namespace Admin_Login
         }
         public void getTAX()
         {
-            //-------------------------------
-            if(getGrossPay <= 10416.99)
-            {
-                tax = 0;
-            }
-            else if (getGrossPay > 10417 && getGrossPay < 16666)
-            {
-                tax = (getGrossPay - 10417) * 0.2;
-            }
-            else if (getGrossPay > 16667 && getGrossPay < 33332)
-            {
-                tax = ((getGrossPay - 16667) * 0.25) + 1250;
-            }
-            else if (getGrossPay > 33333 && getGrossPay < 83332)
-            {
-                tax = ((getGrossPay - 33333) * 0.30) + 5416.67;
-            }
-            else if (getGrossPay > 83333 && getGrossPay < 333332)
-            {
-                tax = ((getGrossPay - 83333) * 0.32) + 20416.67;
-            }
-            else if (getGrossPay > 333333)
-            {
-                tax = ((getGrossPay - 333333) * 0.35) + 100416.67;
-            }
-            //------------------------------
-            //if (getGrossPay * 24 <= 250000)
-            //{
-            //    tax = 0;
-            //}
-            //else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
-            //{
-            //    tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
-            //}
-            //else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
-            //{
-            //    tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
-            //}
-            //else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
-            //{
-            //    tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
-            //}
-            //else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
-            //{
-            //    tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
-            //}
-            //else if (getGrossPay > 8000000)
-            //{
-            //    tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
-            //}
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "update PayrollReport set TAX = " + tax +
-                    " where EmployeeID = " + EmployeeID;
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
+                //-------------------------------
+                string query2 = "select EmployeeID from PayrollReport";
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+
+                foreach (DataRow dataRow in data.Rows)
+                {
+                    EmployeeID = dataRow[0].ToString();
+                    string query3 = "select BasicPay from PayrollReport where EmployeeID = "+ EmployeeID;
+                    SqlDataAdapter adapter2 = new SqlDataAdapter(query3, connection);
+                    DataTable data2 = new DataTable();
+                    adapter2.Fill(data2);
+
+                    getBasicPay = Convert.ToDouble(data2.Rows[0][0].ToString());
+
+                    if (getBasicPay <= 10416.99)
+                    {
+                        tax = 0;
+                    }
+                    else if (getBasicPay > 10417 && getBasicPay < 16666)
+                    {
+                        tax = (getBasicPay - 10417) * 0.2;
+                    }
+                    else if (getBasicPay > 16667 && getBasicPay < 33332)
+                    {
+                        tax = ((getBasicPay - 16667) * 0.25) + 1250;
+                    }
+                    else if (getBasicPay > 33333 && getBasicPay < 83332)
+                    {
+                        tax = ((getBasicPay - 33333) * 0.30) + 5416.67;
+                    }
+                    else if (getBasicPay > 83333 && getBasicPay < 333332)
+                    {
+                        tax = ((getBasicPay - 83333) * 0.32) + 20416.67;
+                    }
+                    else if (getBasicPay > 333333)
+                    {
+                        tax = ((getBasicPay - 333333) * 0.35) + 100416.67;
+                    }
+                    //------------------------------
+                    //if (getGrossPay * 24 <= 250000)
+                    //{
+                    //    tax = 0;
+                    //}
+                    //else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
+                    //{
+                    //    tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
+                    //}
+                    //else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
+                    //{
+                    //    tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
+                    //}
+                    //else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
+                    //{
+                    //    tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
+                    //}
+                    //else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
+                    //{
+                    //    tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
+                    //}
+                    //else if (getGrossPay > 8000000)
+                    //{
+                    //    tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
+                    //}
+
+                    string query = "update PayrollReport set TAX = " + tax +
+                        " where EmployeeID = " + EmployeeID;
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.ExecuteNonQuery();
+                }
+                
             }
         }
         public void UpdateEmployeeSSSColumn()
@@ -222,10 +240,19 @@ namespace Admin_Login
         }
         public void UpdatePhilhealthContributionColumn()
         {
-            PhilhealthContrib = getGrossPay * 0.04;           
+                   
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
+                string query2 = "declare @PH decimal (8,2) " +
+                                "select @PH = ((BasicRate*8) * 26)*0.02 from PayrollReport where EmployeeID = " + EmployeeID +
+                                " select @PH";
+                SqlDataAdapter adapter = new SqlDataAdapter(query2, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+
+                PhilhealthContrib = Convert.ToDouble(data.Rows[0][0].ToString());
+
                 string query = "UPDATE PayrollReport " +
                                 "SET PhilHealthContribution = " + PhilhealthContrib +
                                 "where EmployeeID = " + EmployeeID;
@@ -315,12 +342,13 @@ namespace Admin_Login
             AddLeavePayToGrossPay();
             removeNull();
             getEmployeeFromLeavePay();
+            getTAX();
             PayrollReport payrollReport = new PayrollReport();
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
-                string query = "select EmployeeID, BasicPay + coalesce(((sum(PaidLeaveDays)*8)*BasicRate),0) "+
-                               "from PayrollReport group by EmployeeID,BasicRate,TotalHours,BasicPay";
+                string query = "select A.EmployeeID, A.GrossSalary+ Coalesce(B.GrossSalary,0) " +
+                               "from PayrollReport as A left join PayrollReportHistory as B on A.EmployeeID = B.EmployeeID";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -626,7 +654,6 @@ namespace Admin_Login
                     {
                         UpdatePhilhealthContributionColumn();
                     }
-                    getTAX();
                     getNetPay();
                 }
             }
