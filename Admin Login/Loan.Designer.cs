@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.gbaddDeduction = new System.Windows.Forms.GroupBox();
+            this.btn_UpdateEdit = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.btnBackEdit = new System.Windows.Forms.PictureBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dtStart = new System.Windows.Forms.DateTimePicker();
             this.lbStart = new System.Windows.Forms.Label();
@@ -37,18 +43,12 @@
             this.tbScrollNum = new System.Windows.Forms.NumericUpDown();
             this.lblIteration = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
-            this.btn_UpdateEdit = new System.Windows.Forms.PictureBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.btnBackEdit = new System.Windows.Forms.PictureBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.gbaddDeduction.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_UpdateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).BeginInit();
             this.SuspendLayout();
             // 
             // gbaddDeduction
@@ -67,93 +67,13 @@
             this.gbaddDeduction.Controls.Add(this.tbScrollNum);
             this.gbaddDeduction.Controls.Add(this.lblIteration);
             this.gbaddDeduction.Controls.Add(this.tbDescription);
-            this.gbaddDeduction.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbaddDeduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbaddDeduction.Location = new System.Drawing.Point(12, 12);
             this.gbaddDeduction.Name = "gbaddDeduction";
             this.gbaddDeduction.Size = new System.Drawing.Size(466, 407);
             this.gbaddDeduction.TabIndex = 86;
             this.gbaddDeduction.TabStop = false;
             this.gbaddDeduction.Text = "Add Deduction";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(8, 172);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 22);
-            this.label14.TabIndex = 89;
-            this.label14.Text = "Description";
-            // 
-            // dtStart
-            // 
-            this.dtStart.CustomFormat = "MMMM dd, yyyy";
-            this.dtStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtStart.Location = new System.Drawing.Point(234, 118);
-            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
-            this.dtStart.Name = "dtStart";
-            this.dtStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtStart.Size = new System.Drawing.Size(219, 30);
-            this.dtStart.TabIndex = 86;
-            // 
-            // lbStart
-            // 
-            this.lbStart.AutoSize = true;
-            this.lbStart.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStart.Location = new System.Drawing.Point(8, 125);
-            this.lbStart.Name = "lbStart";
-            this.lbStart.Size = new System.Drawing.Size(82, 22);
-            this.lbStart.TabIndex = 88;
-            this.lbStart.Text = "Start at:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(8, 32);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 22);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Total Amount";
-            // 
-            // tbAddOtherDeduction
-            // 
-            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbAddOtherDeduction.Location = new System.Drawing.Point(318, 24);
-            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
-            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 30);
-            this.tbAddOtherDeduction.TabIndex = 83;
-            // 
-            // tbScrollNum
-            // 
-            this.tbScrollNum.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbScrollNum.Location = new System.Drawing.Point(318, 73);
-            this.tbScrollNum.Name = "tbScrollNum";
-            this.tbScrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.tbScrollNum.Size = new System.Drawing.Size(135, 31);
-            this.tbScrollNum.TabIndex = 85;
-            // 
-            // lblIteration
-            // 
-            this.lblIteration.AutoSize = true;
-            this.lblIteration.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIteration.Location = new System.Drawing.Point(6, 76);
-            this.lblIteration.Name = "lblIteration";
-            this.lblIteration.Size = new System.Drawing.Size(266, 22);
-            this.lblIteration.TabIndex = 84;
-            this.lblIteration.Text = "Payment Iteration (Months):";
-            // 
-            // tbDescription
-            // 
-            this.tbDescription.BackColor = System.Drawing.Color.White;
-            this.tbDescription.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescription.Location = new System.Drawing.Point(12, 206);
-            this.tbDescription.Multiline = true;
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(441, 154);
-            this.tbDescription.TabIndex = 42;
             // 
             // btn_UpdateEdit
             // 
@@ -245,6 +165,87 @@
             this.pictureBox12.Tag = "btn_Back";
             this.pictureBox12.Click += new System.EventHandler(this.label2_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(8, 172);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(104, 24);
+            this.label14.TabIndex = 89;
+            this.label14.Text = "Description";
+            // 
+            // dtStart
+            // 
+            this.dtStart.CustomFormat = "MMMM dd, yyyy";
+            this.dtStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtStart.Location = new System.Drawing.Point(234, 118);
+            this.dtStart.Margin = new System.Windows.Forms.Padding(2);
+            this.dtStart.Name = "dtStart";
+            this.dtStart.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dtStart.Size = new System.Drawing.Size(219, 28);
+            this.dtStart.TabIndex = 86;
+            // 
+            // lbStart
+            // 
+            this.lbStart.AutoSize = true;
+            this.lbStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStart.Location = new System.Drawing.Point(8, 125);
+            this.lbStart.Name = "lbStart";
+            this.lbStart.Size = new System.Drawing.Size(70, 24);
+            this.lbStart.TabIndex = 88;
+            this.lbStart.Text = "Start at:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 32);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(122, 24);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Total Amount";
+            // 
+            // tbAddOtherDeduction
+            // 
+            this.tbAddOtherDeduction.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbAddOtherDeduction.Location = new System.Drawing.Point(318, 24);
+            this.tbAddOtherDeduction.Name = "tbAddOtherDeduction";
+            this.tbAddOtherDeduction.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbAddOtherDeduction.Size = new System.Drawing.Size(135, 28);
+            this.tbAddOtherDeduction.TabIndex = 83;
+            this.tbAddOtherDeduction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbAddOtherDeduction_KeyPress);
+            // 
+            // tbScrollNum
+            // 
+            this.tbScrollNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbScrollNum.Location = new System.Drawing.Point(318, 73);
+            this.tbScrollNum.Name = "tbScrollNum";
+            this.tbScrollNum.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.tbScrollNum.Size = new System.Drawing.Size(135, 29);
+            this.tbScrollNum.TabIndex = 85;
+            // 
+            // lblIteration
+            // 
+            this.lblIteration.AutoSize = true;
+            this.lblIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIteration.Location = new System.Drawing.Point(6, 76);
+            this.lblIteration.Name = "lblIteration";
+            this.lblIteration.Size = new System.Drawing.Size(237, 24);
+            this.lblIteration.TabIndex = 84;
+            this.lblIteration.Text = "Payment Iteration (Months):";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.BackColor = System.Drawing.Color.White;
+            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(12, 206);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(441, 154);
+            this.tbDescription.TabIndex = 42;
+            // 
             // Loan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,11 +260,11 @@
             this.Load += new System.EventHandler(this.Loan_Load);
             this.gbaddDeduction.ResumeLayout(false);
             this.gbaddDeduction.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_UpdateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBackEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbScrollNum)).EndInit();
             this.ResumeLayout(false);
 
         }

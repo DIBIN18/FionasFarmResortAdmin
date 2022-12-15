@@ -61,6 +61,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblBasicRate = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTIN = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -83,8 +85,6 @@
             this.cbTuesday = new System.Windows.Forms.CheckBox();
             this.cbWednesday = new System.Windows.Forms.CheckBox();
             this.cbThursday = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblBasicRate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -217,7 +217,7 @@
             // txtContactNum
             // 
             this.txtContactNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactNum.Location = new System.Drawing.Point(152, 102);
+            this.txtContactNum.Location = new System.Drawing.Point(152, 104);
             this.txtContactNum.MaxLength = 15;
             this.txtContactNum.Name = "txtContactNum";
             this.txtContactNum.Size = new System.Drawing.Size(299, 28);
@@ -233,7 +233,7 @@
             "Male",
             "Female"});
             this.txtGender.Location = new System.Drawing.Point(152, 171);
-            this.txtGender.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGender.Margin = new System.Windows.Forms.Padding(2);
             this.txtGender.Name = "txtGender";
             this.txtGender.Size = new System.Drawing.Size(299, 30);
             this.txtGender.TabIndex = 28;
@@ -246,7 +246,7 @@
             this.dtpDateHired.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateHired.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateHired.Location = new System.Drawing.Point(586, 69);
-            this.dtpDateHired.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDateHired.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateHired.Name = "dtpDateHired";
             this.dtpDateHired.Size = new System.Drawing.Size(278, 28);
             this.dtpDateHired.TabIndex = 30;
@@ -258,7 +258,7 @@
             this.dtpDateofBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDateofBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDateofBirth.Location = new System.Drawing.Point(586, 37);
-            this.dtpDateofBirth.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDateofBirth.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateofBirth.Name = "dtpDateofBirth";
             this.dtpDateofBirth.Size = new System.Drawing.Size(278, 28);
             this.dtpDateofBirth.TabIndex = 31;
@@ -269,7 +269,7 @@
             this.cmbDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDepartment.FormattingEnabled = true;
             this.cmbDepartment.Location = new System.Drawing.Point(189, 67);
-            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(2);
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(261, 30);
             this.cmbDepartment.TabIndex = 38;
@@ -284,7 +284,7 @@
             this.cmbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPosition.FormattingEnabled = true;
             this.cmbPosition.Location = new System.Drawing.Point(189, 101);
-            this.cmbPosition.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbPosition.Margin = new System.Windows.Forms.Padding(2);
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(261, 30);
             this.cmbPosition.TabIndex = 39;
@@ -308,7 +308,7 @@
             "Widower",
             "Anulled"});
             this.txtCivilStatus.Location = new System.Drawing.Point(152, 69);
-            this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCivilStatus.Margin = new System.Windows.Forms.Padding(2);
             this.txtCivilStatus.Name = "txtCivilStatus";
             this.txtCivilStatus.Size = new System.Drawing.Size(299, 30);
             this.txtCivilStatus.TabIndex = 41;
@@ -321,7 +321,7 @@
             this.dtpScheduleIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpScheduleIn.Location = new System.Drawing.Point(152, 34);
-            this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpScheduleIn.Margin = new System.Windows.Forms.Padding(2);
             this.dtpScheduleIn.Name = "dtpScheduleIn";
             this.dtpScheduleIn.Size = new System.Drawing.Size(299, 28);
             this.dtpScheduleIn.TabIndex = 42;
@@ -361,7 +361,7 @@
             "Probationary",
             "Regular"});
             this.txtEmploymentType.Location = new System.Drawing.Point(189, 34);
-            this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtEmploymentType.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmploymentType.Name = "txtEmploymentType";
             this.txtEmploymentType.Size = new System.Drawing.Size(261, 30);
             this.txtEmploymentType.TabIndex = 45;
@@ -373,7 +373,7 @@
             this.dtpScheduleOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpScheduleOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpScheduleOut.Location = new System.Drawing.Point(152, 67);
-            this.dtpScheduleOut.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpScheduleOut.Margin = new System.Windows.Forms.Padding(2);
             this.dtpScheduleOut.Name = "dtpScheduleOut";
             this.dtpScheduleOut.Size = new System.Drawing.Size(299, 28);
             this.dtpScheduleOut.TabIndex = 46;
@@ -394,7 +394,7 @@
             // 
             this.txtFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFullName.Location = new System.Drawing.Point(152, 37);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(2);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(299, 28);
             this.txtFullName.TabIndex = 49;
@@ -437,7 +437,7 @@
             this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Image = global::Admin_Login.Properties.Resources.Back_Icon;
             this.pictureBox3.Location = new System.Drawing.Point(540, 689);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(29, 31);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -451,7 +451,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape;
             this.pictureBox4.Location = new System.Drawing.Point(472, 686);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(108, 37);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -466,7 +466,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.Register_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(396, 693);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -480,7 +480,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pictureBox1.Location = new System.Drawing.Point(297, 686);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(138, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -511,10 +511,32 @@
             this.panel1.Controls.Add(this.txtPagibigNo);
             this.panel1.Controls.Add(this.txtPhilhealthNo);
             this.panel1.Location = new System.Drawing.Point(9, 296);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(868, 188);
             this.panel1.TabIndex = 59;
+            // 
+            // lblBasicRate
+            // 
+            this.lblBasicRate.AutoSize = true;
+            this.lblBasicRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBasicRate.Location = new System.Drawing.Point(190, 140);
+            this.lblBasicRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBasicRate.Name = "lblBasicRate";
+            this.lblBasicRate.Size = new System.Drawing.Size(28, 24);
+            this.lblBasicRate.TabIndex = 80;
+            this.lblBasicRate.Text = "---";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(8, 141);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 24);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Basic Rate:";
             // 
             // label3
             // 
@@ -637,7 +659,7 @@
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Location = new System.Drawing.Point(9, 9);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(868, 294);
             this.panel2.TabIndex = 77;
@@ -672,7 +694,7 @@
             this.panel3.Controls.Add(this.dtpScheduleOut);
             this.panel3.Controls.Add(this.cbThursday);
             this.panel3.Location = new System.Drawing.Point(9, 487);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(868, 180);
             this.panel3.TabIndex = 77;
@@ -684,7 +706,7 @@
             this.dtpBreakPeriod.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpBreakPeriod.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpBreakPeriod.Location = new System.Drawing.Point(152, 99);
-            this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpBreakPeriod.Margin = new System.Windows.Forms.Padding(2);
             this.dtpBreakPeriod.Name = "dtpBreakPeriod";
             this.dtpBreakPeriod.Size = new System.Drawing.Size(299, 28);
             this.dtpBreakPeriod.TabIndex = 101;
@@ -795,28 +817,6 @@
             this.cbThursday.Text = "Thursday";
             this.cbThursday.UseVisualStyleBackColor = true;
             this.cbThursday.CheckedChanged += new System.EventHandler(this.cbThursday_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(8, 141);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 24);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "Basic Rate:";
-            // 
-            // lblBasicRate
-            // 
-            this.lblBasicRate.AutoSize = true;
-            this.lblBasicRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBasicRate.Location = new System.Drawing.Point(190, 140);
-            this.lblBasicRate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBasicRate.Name = "lblBasicRate";
-            this.lblBasicRate.Size = new System.Drawing.Size(28, 24);
-            this.lblBasicRate.TabIndex = 80;
-            this.lblBasicRate.Text = "---";
             // 
             // AddEmployee
             // 
