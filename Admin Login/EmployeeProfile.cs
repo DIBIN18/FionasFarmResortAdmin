@@ -139,7 +139,6 @@ namespace Admin_Login
             lblEmploymentType.Visible = false;
             lblPosition.Visible = false;
             lblDepartment.Visible = false;
-            //lblAccumulated.Visible = false;
             lblStatus.Visible = false;
             lblScheduleIn.Visible = false;
             lblScheduleOut.Visible = false;
@@ -160,7 +159,6 @@ namespace Admin_Login
             cmbEmploymentTypeEdit.Visible = true;
             cmbPositionEdit.Visible = true;
             cmbDepartmentEdit.Visible = true;
-            //txtAccumulatedDayOffEdit.Visible = true;
             dtpScheduleInEdit.Visible = true;
             dtpSchedOutEdit.Visible = true;
             txtSSSEdit.Visible = true;
@@ -260,6 +258,21 @@ namespace Admin_Login
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Edit_Mode();
+        }
+
+        private void UpdateAttendancePos(string emp_id, string pos_id)
+        {
+            string query = 
+                "UPDATE AttendanceRecord " +
+                "SET PositionID = " + pos_id + " " +
+                "WHERE EmployeeID= " + emp_id;
+
+            using (SqlConnection conn = new SqlConnection(login.connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -381,13 +394,13 @@ namespace Admin_Login
             {
                 using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
-                    Console.WriteLine(query);
-
                     connection.Open();
                     SqlCommand cmd = new SqlCommand(query, connection);
                     SqlCommand cmd2 = new SqlCommand(scheduleQuery, connection);
                     cmd.ExecuteNonQuery();
                     cmd2.ExecuteNonQuery();
+
+                    UpdateAttendancePos(lblEmployeeID.Text.ToString(), posId.ToString());
                 }
 
                 lblSave.Visible = false;
@@ -403,7 +416,7 @@ namespace Admin_Login
             }
             else
             {
-                MessageBox.Show("Employees can not be below 18 years old.");
+                MessageBox.Show("Employees can not be below 18 years old.", "Employee Age", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -847,11 +860,6 @@ namespace Admin_Login
         }
 
         private void cmbPositionEdit_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void cmbOtAllowed_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = true;
         }

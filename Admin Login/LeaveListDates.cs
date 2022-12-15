@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace Admin_Login
@@ -18,6 +19,8 @@ namespace Admin_Login
         string SelectedDate = "";
         string SelectedEmployeeName = "";
         string SelectedLeaveType = "";
+
+        bool historyEnabled = false;
 
         Login login = new Login();
         public LeaveListDates()
@@ -73,6 +76,8 @@ namespace Admin_Login
 
         private void AppliedLeaveList_Load(object sender, EventArgs e)
         {
+            dtp_Date.MinDate = DateTime.Now.Date;
+
             UpdateTable();
         }
 
@@ -142,58 +147,119 @@ namespace Admin_Login
                 connection.Open();
                 if (string.IsNullOrEmpty(tb_Search.Text))
                 {
-                    dtp_Date.Format = DateTimePickerFormat.Custom;
-                    dtp_Date.CustomFormat = "MMMM dd, yyyy";
-                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+                    if (historyEnabled == true)
+                    {
+                        dtp_Date.Format = DateTimePickerFormat.Custom;
+                        dtp_Date.CustomFormat = "MMMM dd, yyyy";
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
-                    string query =
-                        "SELECT " +
-                        "LeavePay.LeaveRecordID, " +
-                        "EmployeeInfo.EmployeeFullName, " +
-                        "Leave.Type, Leave.Reason, " +
-                        "LeavePay.Date " +
-                        "FROM LeavePay " +
-                        "INNER JOIN EmployeeInfo " +
-                        "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
-                        "INNER JOIN Leave " +
-                        "ON LeavePay.LeaveID = Leave.LeaveID " +
-                        "WHERE Date = '" + date + "' AND " +
-                        "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
+                        string query =
+                            "SELECT " +
+                            "LeavePay.LeaveRecordID, " +
+                            "EmployeeInfo.EmployeeFullName, " +
+                            "Leave.Type, Leave.Reason, " +
+                            "LeavePay.Date " +
+                            "FROM LeavePay " +
+                            "INNER JOIN EmployeeInfo " +
+                            "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
+                            "INNER JOIN Leave " +
+                            "ON LeavePay.LeaveID = Leave.LeaveID " +
+                            "WHERE " +
+                            "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
 
-                    SqlCommand cmd2 = new SqlCommand(query, connection);
-                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
-                    DataTable dt2 = new DataTable();
-                    sqlDataAdapter2.Fill(dt2);
-                    dgvLeaveList.DataSource = dt2;
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvLeaveList.DataSource = dt2;
+                    }
+                    else
+                    {
+                        dtp_Date.Format = DateTimePickerFormat.Custom;
+                        dtp_Date.CustomFormat = "MMMM dd, yyyy";
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+                        string query =
+                            "SELECT " +
+                            "LeavePay.LeaveRecordID, " +
+                            "EmployeeInfo.EmployeeFullName, " +
+                            "Leave.Type, Leave.Reason, " +
+                            "LeavePay.Date " +
+                            "FROM LeavePay " +
+                            "INNER JOIN EmployeeInfo " +
+                            "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
+                            "INNER JOIN Leave " +
+                            "ON LeavePay.LeaveID = Leave.LeaveID " +
+                            "WHERE Date = '" + date + "' AND " +
+                            "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
+
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvLeaveList.DataSource = dt2;
+                    }
                 }
                 else if (tb_Search.Focused)
                 {
-                    dtp_Date.Format = DateTimePickerFormat.Custom;
-                    dtp_Date.CustomFormat = "MMMM dd, yyyy";
-                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+                    if(historyEnabled == true)
+                    {
+                        dtp_Date.Format = DateTimePickerFormat.Custom;
+                        dtp_Date.CustomFormat = "MMMM dd, yyyy";
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
-                    string query =
-                        "SELECT " +
-                        "LeavePay.LeaveRecordID, " +
-                        "EmployeeInfo.EmployeeFullName, " +
-                        "Leave.Type, Leave.Reason, " +
-                        "LeavePay.Date " +
-                        "FROM LeavePay " +
-                        "INNER JOIN EmployeeInfo " +
-                        "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
-                        "INNER JOIN Leave " +
-                        "ON LeavePay.LeaveID = Leave.LeaveID " +
-                        "WHERE Date = '" + date + "' AND " +
-                        "EmployeeFullName like '%" + tb_Search.Text + "%' AND " +
-                        "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
+                        string query =
+                            "SELECT " +
+                            "LeavePay.LeaveRecordID, " +
+                            "EmployeeInfo.EmployeeFullName, " +
+                            "Leave.Type, Leave.Reason, " +
+                            "LeavePay.Date " +
+                            "FROM LeavePay " +
+                            "INNER JOIN EmployeeInfo " +
+                            "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
+                            "INNER JOIN Leave " +
+                            "ON LeavePay.LeaveID = Leave.LeaveID " +
+                            "WHERE " +
+                            "EmployeeFullName like '%" + tb_Search.Text + "%' AND " +
+                            "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
 
-                    SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
 
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    sqlDataAdapter.Fill(dt);
-                    dgvLeaveList.DataSource = dt;
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        sqlDataAdapter.Fill(dt);
+                        dgvLeaveList.DataSource = dt;
+                    }
+                    else
+                    {
+                        dtp_Date.Format = DateTimePickerFormat.Custom;
+                        dtp_Date.CustomFormat = "MMMM dd, yyyy";
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+                        string query =
+                            "SELECT " +
+                            "LeavePay.LeaveRecordID, " +
+                            "EmployeeInfo.EmployeeFullName, " +
+                            "Leave.Type, Leave.Reason, " +
+                            "LeavePay.Date " +
+                            "FROM LeavePay " +
+                            "INNER JOIN EmployeeInfo " +
+                            "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
+                            "INNER JOIN Leave " +
+                            "ON LeavePay.LeaveID = Leave.LeaveID " +
+                            "WHERE Date = '" + date + "' AND " +
+                            "EmployeeFullName like '%" + tb_Search.Text + "%' AND " +
+                            "(Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave')";
+
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        sqlDataAdapter.Fill(dt);
+                        dgvLeaveList.DataSource = dt;
+                    }
                 }
             }
         }
@@ -262,5 +328,74 @@ namespace Admin_Login
             }
         }
 
+        private void BtnHistoryClick(object sender, EventArgs e)
+        {
+            pbCancel.Visible = false;
+            lblCancel.Visible = false;
+            pbOvalCancel.Visible = false;
+
+            pbHistory.Visible = false;
+            lblHistory.Visible = false;
+            pbOvalHistory.Visible = false;
+
+            pbCurrent.Visible = true;
+            lblCurrent.Visible = true;
+            pbOvalCurrent.Visible = true;
+
+            panel1.Size = new Size(443, 37);
+
+            historyEnabled = true;
+
+            dtp_Date.Enabled = false;
+
+            string query =
+                "SELECT " +
+                "LeavePay.LeaveRecordID, " +
+                "LeavePay.EmployeeID," +
+                "EmployeeInfo.EmployeeFullName, " +
+                "Leave.Type, Leave.Reason, " +
+                "LeavePay.Date " +
+                "FROM LeavePay " +
+                "INNER JOIN EmployeeInfo " +
+                "ON LeavePay.EmployeeID = EmployeeInfo.EmployeeID " +
+                "INNER JOIN Leave " +
+                "ON LeavePay.LeaveID = Leave.LeaveID " +
+                "WHERE " +
+                "Leave.Type = 'Sick Leave' OR Leave.Type = 'Vacation Leave'";
+
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            dgvLeaveList.DataSource = dt;
+
+        }
+
+        private void btnCurrentClick(object sender, EventArgs e)
+        {
+            pbCancel.Visible = true;
+            lblCancel.Visible = true;
+            pbOvalCancel.Visible = true;
+
+            pbHistory.Visible = true;
+            lblHistory.Visible = true;
+            pbOvalHistory.Visible = true;
+
+            pbCurrent.Visible = false;
+            lblCurrent.Visible = false;
+            pbOvalCurrent.Visible = false;
+
+            panel1.Size = new Size(292, 37);
+
+            dtp_Date.Enabled = true;
+
+            historyEnabled = false;
+
+            UpdateTable();
+        }
     }
 }

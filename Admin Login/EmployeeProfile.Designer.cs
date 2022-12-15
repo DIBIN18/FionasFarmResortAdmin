@@ -110,6 +110,8 @@
             this.Logo = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblAccumulated = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.lblCustomRate = new System.Windows.Forms.Label();
             this.txtCustomRate = new System.Windows.Forms.TextBox();
@@ -132,8 +134,6 @@
             this.pbSave = new System.Windows.Forms.PictureBox();
             this.lblSave = new System.Windows.Forms.Label();
             this.pbSaveOval = new System.Windows.Forms.PictureBox();
-            this.lblAccumulated = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.txtAccumulatedDayOffEdit = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -1085,6 +1085,8 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.Logo);
+            this.panel2.Controls.Add(this.lblAccumulated);
+            this.panel2.Controls.Add(this.label15);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -1103,6 +1105,29 @@
             this.label6.Size = new System.Drawing.Size(271, 39);
             this.label6.TabIndex = 4;
             this.label6.Text = "EmployeeProfile";
+            // 
+            // lblAccumulated
+            // 
+            this.lblAccumulated.AutoSize = true;
+            this.lblAccumulated.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
+            this.lblAccumulated.Location = new System.Drawing.Point(372, 15);
+            this.lblAccumulated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAccumulated.Name = "lblAccumulated";
+            this.lblAccumulated.Size = new System.Drawing.Size(0, 17);
+            this.lblAccumulated.TabIndex = 9;
+            this.lblAccumulated.Visible = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(312, 15);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(0, 18);
+            this.label15.TabIndex = 4;
+            this.label15.Visible = false;
             // 
             // label27
             // 
@@ -1138,7 +1163,7 @@
             // 
             // btnSetCustomRate
             // 
-            this.btnSetCustomRate.Location = new System.Drawing.Point(842, 176);
+            this.btnSetCustomRate.Location = new System.Drawing.Point(841, 175);
             this.btnSetCustomRate.Name = "btnSetCustomRate";
             this.btnSetCustomRate.Size = new System.Drawing.Size(81, 23);
             this.btnSetCustomRate.TabIndex = 98;
@@ -1406,36 +1431,11 @@
             this.pbSaveOval.Visible = false;
             this.pbSaveOval.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // lblAccumulated
-            // 
-            this.lblAccumulated.AutoSize = true;
-            this.lblAccumulated.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccumulated.ForeColor = System.Drawing.Color.Gray;
-            this.lblAccumulated.Location = new System.Drawing.Point(301, 232);
-            this.lblAccumulated.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblAccumulated.Name = "lblAccumulated";
-            this.lblAccumulated.Size = new System.Drawing.Size(170, 17);
-            this.lblAccumulated.TabIndex = 9;
-            this.lblAccumulated.Text = "ACCUMULATED DAYOFF";
-            this.lblAccumulated.Visible = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(475, 231);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(115, 18);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "Acc. Day-offs:";
-            this.label15.Visible = false;
-            // 
             // txtAccumulatedDayOffEdit
             // 
-            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(373, 231);
+            this.txtAccumulatedDayOffEdit.Location = new System.Drawing.Point(370, 600);
             this.txtAccumulatedDayOffEdit.Name = "txtAccumulatedDayOffEdit";
-            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(176, 20);
+            this.txtAccumulatedDayOffEdit.Size = new System.Drawing.Size(8, 20);
             this.txtAccumulatedDayOffEdit.TabIndex = 69;
             this.txtAccumulatedDayOffEdit.Visible = false;
             // 
@@ -1458,10 +1458,8 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.pbSave);
             this.Controls.Add(this.lblSave);
-            this.Controls.Add(this.txtAccumulatedDayOffEdit);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.pbSaveOval);
-            this.Controls.Add(this.lblAccumulated);
+            this.Controls.Add(this.txtAccumulatedDayOffEdit);
             this.Controls.Add(this.pbEdit);
             this.Controls.Add(this.lblEdit);
             this.Controls.Add(this.pbEditOval);

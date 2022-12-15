@@ -36,18 +36,28 @@
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblCancel = new System.Windows.Forms.Label();
+            this.pbCancel = new System.Windows.Forms.PictureBox();
+            this.pbOvalCancel = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbHistory = new System.Windows.Forms.PictureBox();
+            this.lblHistory = new System.Windows.Forms.Label();
+            this.pbOvalHistory = new System.Windows.Forms.PictureBox();
+            this.pbCurrent = new System.Windows.Forms.PictureBox();
+            this.lblCurrent = new System.Windows.Forms.Label();
+            this.pbOvalCurrent = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLeaveList)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCurrent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCurrent)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvLeaveList
@@ -70,7 +80,7 @@
             this.dgvLeaveList.RowHeadersWidth = 51;
             this.dgvLeaveList.RowTemplate.Height = 24;
             this.dgvLeaveList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLeaveList.Size = new System.Drawing.Size(866, 671);
+            this.dgvLeaveList.Size = new System.Drawing.Size(866, 631);
             this.dgvLeaveList.TabIndex = 25;
             this.dgvLeaveList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLeaveList_CellContentClick);
             // 
@@ -152,50 +162,50 @@
             this.label2.Text = "Back";
             this.label2.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label3
+            // lblCancel
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Maroon;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(634, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 24);
-            this.label3.TabIndex = 60;
-            this.label3.Tag = "btn_Back";
-            this.label3.Text = "Cancel";
-            this.label3.Click += new System.EventHandler(this.btnRemove_Click);
+            this.lblCancel.AutoSize = true;
+            this.lblCancel.BackColor = System.Drawing.Color.Maroon;
+            this.lblCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancel.ForeColor = System.Drawing.Color.White;
+            this.lblCancel.Location = new System.Drawing.Point(634, 15);
+            this.lblCancel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCancel.Name = "lblCancel";
+            this.lblCancel.Size = new System.Drawing.Size(75, 24);
+            this.lblCancel.TabIndex = 60;
+            this.lblCancel.Tag = "btn_Back";
+            this.lblCancel.Text = "Cancel";
+            this.lblCancel.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // pictureBox1
+            // pbCancel
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Maroon;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(727, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 27);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 61;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Tag = "btn_Back";
-            this.pictureBox1.Click += new System.EventHandler(this.btnRemove_Click);
+            this.pbCancel.BackColor = System.Drawing.Color.Maroon;
+            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
+            this.pbCancel.Location = new System.Drawing.Point(727, 15);
+            this.pbCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCancel.Name = "pbCancel";
+            this.pbCancel.Size = new System.Drawing.Size(26, 27);
+            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCancel.TabIndex = 61;
+            this.pbCancel.TabStop = false;
+            this.pbCancel.Tag = "btn_Back";
+            this.pbCancel.Click += new System.EventHandler(this.btnRemove_Click);
             // 
-            // pictureBox2
+            // pbOvalCancel
             // 
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pictureBox2.Location = new System.Drawing.Point(620, 9);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(145, 37);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 59;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Tag = "btn_Back";
-            this.pictureBox2.Click += new System.EventHandler(this.btnRemove_Click);
+            this.pbOvalCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOvalCancel.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pbOvalCancel.Location = new System.Drawing.Point(620, 9);
+            this.pbOvalCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbOvalCancel.Name = "pbOvalCancel";
+            this.pbOvalCancel.Size = new System.Drawing.Size(145, 37);
+            this.pbOvalCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOvalCancel.TabIndex = 59;
+            this.pbOvalCancel.TabStop = false;
+            this.pbOvalCancel.Tag = "btn_Back";
+            this.pbOvalCancel.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // pictureBox3
             // 
@@ -226,14 +236,113 @@
             this.pictureBox4.Tag = "btn_Back";
             this.pictureBox4.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // pbHistory
+            // 
+            this.pbHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.pbHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbHistory.Image = ((System.Drawing.Image)(resources.GetObject("pbHistory.Image")));
+            this.pbHistory.Location = new System.Drawing.Point(831, 695);
+            this.pbHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.pbHistory.Name = "pbHistory";
+            this.pbHistory.Size = new System.Drawing.Size(29, 31);
+            this.pbHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbHistory.TabIndex = 64;
+            this.pbHistory.TabStop = false;
+            this.pbHistory.Tag = "btn_Back";
+            this.pbHistory.Click += new System.EventHandler(this.BtnHistoryClick);
+            // 
+            // lblHistory
+            // 
+            this.lblHistory.AutoSize = true;
+            this.lblHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.lblHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHistory.ForeColor = System.Drawing.Color.White;
+            this.lblHistory.Location = new System.Drawing.Point(689, 698);
+            this.lblHistory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHistory.Name = "lblHistory";
+            this.lblHistory.Size = new System.Drawing.Size(126, 24);
+            this.lblHistory.TabIndex = 63;
+            this.lblHistory.Tag = "btn_Back";
+            this.lblHistory.Text = "View History";
+            this.lblHistory.Click += new System.EventHandler(this.BtnHistoryClick);
+            // 
+            // pbOvalHistory
+            // 
+            this.pbOvalHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOvalHistory.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Orange;
+            this.pbOvalHistory.Location = new System.Drawing.Point(667, 693);
+            this.pbOvalHistory.Margin = new System.Windows.Forms.Padding(2);
+            this.pbOvalHistory.Name = "pbOvalHistory";
+            this.pbOvalHistory.Size = new System.Drawing.Size(211, 37);
+            this.pbOvalHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOvalHistory.TabIndex = 62;
+            this.pbOvalHistory.TabStop = false;
+            this.pbOvalHistory.Tag = "btn_Back";
+            this.pbOvalHistory.Click += new System.EventHandler(this.BtnHistoryClick);
+            // 
+            // pbCurrent
+            // 
+            this.pbCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.pbCurrent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCurrent.Image = ((System.Drawing.Image)(resources.GetObject("pbCurrent.Image")));
+            this.pbCurrent.Location = new System.Drawing.Point(828, 696);
+            this.pbCurrent.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCurrent.Name = "pbCurrent";
+            this.pbCurrent.Size = new System.Drawing.Size(29, 31);
+            this.pbCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCurrent.TabIndex = 67;
+            this.pbCurrent.TabStop = false;
+            this.pbCurrent.Tag = "btn_Back";
+            this.pbCurrent.Visible = false;
+            this.pbCurrent.Click += new System.EventHandler(this.btnCurrentClick);
+            // 
+            // lblCurrent
+            // 
+            this.lblCurrent.AutoSize = true;
+            this.lblCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(91)))), ((int)(((byte)(192)))), ((int)(((byte)(222)))));
+            this.lblCurrent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrent.ForeColor = System.Drawing.Color.White;
+            this.lblCurrent.Location = new System.Drawing.Point(689, 698);
+            this.lblCurrent.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCurrent.Name = "lblCurrent";
+            this.lblCurrent.Size = new System.Drawing.Size(131, 24);
+            this.lblCurrent.TabIndex = 66;
+            this.lblCurrent.Tag = "btn_Back";
+            this.lblCurrent.Text = "View Current";
+            this.lblCurrent.Visible = false;
+            this.lblCurrent.Click += new System.EventHandler(this.btnCurrentClick);
+            // 
+            // pbOvalCurrent
+            // 
+            this.pbOvalCurrent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOvalCurrent.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Light_Blue;
+            this.pbOvalCurrent.Location = new System.Drawing.Point(667, 693);
+            this.pbOvalCurrent.Margin = new System.Windows.Forms.Padding(2);
+            this.pbOvalCurrent.Name = "pbOvalCurrent";
+            this.pbOvalCurrent.Size = new System.Drawing.Size(211, 37);
+            this.pbOvalCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOvalCurrent.TabIndex = 65;
+            this.pbOvalCurrent.TabStop = false;
+            this.pbOvalCurrent.Tag = "btn_Back";
+            this.pbOvalCurrent.Visible = false;
+            this.pbOvalCurrent.Click += new System.EventHandler(this.btnCurrentClick);
+            // 
             // LeaveListDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 747);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pbCurrent);
+            this.Controls.Add(this.lblCurrent);
+            this.Controls.Add(this.pbOvalCurrent);
+            this.Controls.Add(this.pbHistory);
+            this.Controls.Add(this.lblHistory);
+            this.Controls.Add(this.pbOvalHistory);
+            this.Controls.Add(this.pbCancel);
+            this.Controls.Add(this.lblCancel);
+            this.Controls.Add(this.pbOvalCancel);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox4);
@@ -251,10 +360,14 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCurrent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCurrent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -270,8 +383,14 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbCancel;
+        private System.Windows.Forms.Label lblCancel;
+        private System.Windows.Forms.PictureBox pbOvalCancel;
+        private System.Windows.Forms.PictureBox pbHistory;
+        private System.Windows.Forms.Label lblHistory;
+        private System.Windows.Forms.PictureBox pbOvalHistory;
+        private System.Windows.Forms.PictureBox pbCurrent;
+        private System.Windows.Forms.Label lblCurrent;
+        private System.Windows.Forms.PictureBox pbOvalCurrent;
     }
 }
