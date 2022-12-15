@@ -380,6 +380,7 @@ namespace Admin_Login
             dateto = _DateTo;
             //typeofleave = _TypeofLeave;
         }
+        
         public void Leave_ValueHolder(string _EmployeeID, string _EmployeeName, string _Department, string _Position, string _DateFrom, string _SickLeaveCredits, string _VacationLeaveCredits)
         {
             employeeid = _EmployeeID;

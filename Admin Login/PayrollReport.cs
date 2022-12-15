@@ -241,7 +241,7 @@ namespace Admin_Login
             {
                 connection.Open();
                 string query = "Insert into PayrollReportHistory " +
-                            "select "+ Convert.ToInt32(PayrollID) +", EmployeeID,EmployeeName,Position,BasicPay,TotalHours,BasicPay,OverTimePay,LegalHollidayPay,SpecialHollidayPay,TotalWorkDays, " +
+                            "select "+ Convert.ToInt32(PayrollID) +", EmployeeID,EmployeeName,Position,BasicRate,TotalHours,BasicPay,OverTimePay,LegalHollidayPay,SpecialHollidayPay,TotalWorkDays, " +
                             "PaidLeaveDays,GrossSalary,TotalLateMinutes,TotalUnderTimeMinutes,SSSContribution,PAGIBIGContribution,PHILHEALTHContribution, " +
                             "TAX,OtherDeduction,NetSalary,'" + dtp_From.Text + "','" + dtp_To.Text + "' from PayrollReport ";
                 SqlCommand cmd = new SqlCommand(query, connection);
@@ -257,10 +257,31 @@ namespace Admin_Login
 
         private void ThMonth(object sender, EventArgs e)
         {
-            THMonthPay tHMonthPay = new THMonthPay();
-            tHMonthPay.get13month();
-            THMonthView tHMonthView = new THMonthView();
-            tHMonthView.Show();
+            THMonthSlip tHMonthSlip = new THMonthSlip();
+            PayrollReport payrollReport = new PayrollReport();
+            Login login = new Login();
+            string from = dtp_From.Text;
+            string to = dtp_To.Text;
+            using (SqlConnection bonus = new SqlConnection(login.connectionString))
+            {
+                bonus.Open();
+                string InsertTHMonthPay = "INSERT INTO THMonthsSalary " +
+                   "SELECT H.EmployeeID,H.EmployeeName,DATEDIFF(MONTH ,convert(datetime, E.DateHired, 100)" +
+                   ",GETDATE()) AS CheckMonth,SUM(BasicPay) AS YearlyBasicPay," +
+                   "SUM(BasicPay/12) AS THMonthSalary FROM PayrollReportHistory AS H " +
+                   "left JOIN EmployeeInfo AS E ON H.EmployeeID = E.EmployeeID " +
+                   "where DateFrom Between CONVERT(DateTime,'" + from + "',100) AND " +
+                   "CONVERT(DateTime,'" + to + "',100) and " +
+                   "DateTo Between CONVERT(DateTime,'" + from + "',100) " +
+                   "AND CONVERT(DateTime,'" + to + "',100) " +
+                   "and NOT EXISTS (SELECT * FROM THMonthsSalary) " +
+                   "GROUP BY H.EmployeeID,H.EmployeeName,E.DateHired";
+                SqlCommand sqlCommand = new SqlCommand(InsertTHMonthPay, bonus);
+                sqlCommand.ExecuteNonQuery();
+                bonus.Close();
+            }
+            tHMonthSlip.ShowDialog();
+
         }
 
         public void tagadelete()

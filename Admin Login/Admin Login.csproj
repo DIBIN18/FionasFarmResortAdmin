@@ -320,12 +320,11 @@
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
     <Compile Include="SSSRangeClass.cs" />
-    <Compile Include="THMonthPay.cs" />
-    <Compile Include="THMonthView.cs">
+    <Compile Include="THMonthSlip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="THMonthView.Designer.cs">
-      <DependentUpon>THMonthView.cs</DependentUpon>
+    <Compile Include="THMonthSlip.Designer.cs">
+      <DependentUpon>THMonthSlip.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewParentalLeaveList.cs">
       <SubType>Form</SubType>
@@ -448,8 +447,8 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="THMonthView.resx">
-      <DependentUpon>THMonthView.cs</DependentUpon>
+    <EmbeddedResource Include="THMonthSlip.resx">
+      <DependentUpon>THMonthSlip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewParentalLeaveList.resx">
       <DependentUpon>ViewParentalLeaveList.cs</DependentUpon>
