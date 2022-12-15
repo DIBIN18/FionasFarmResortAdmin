@@ -227,8 +227,10 @@ namespace Admin_Login
                 }
                 else
                 {
-                    pagibicontribEmployee = getGrossPay * 0.02;
-                    pagibicontribEmployer = getGrossPay * 0.02;                  
+                    //pagibicontribEmployee = getGrossPay * 0.02;
+                    //pagibicontribEmployer = getGrossPay * 0.02;
+                    pagibicontribEmployee = 100;
+                    pagibicontribEmployer = 100;
                 }
                 connection.Open();
                 string query = "UPDATE PayrollReport " +
