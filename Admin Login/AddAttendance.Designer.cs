@@ -1541,8 +1541,8 @@ namespace Admin_Login
             this.Controls.Add(this.btnAddMode);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pnlEdit);
             this.Controls.Add(this.pnlAdd);
+            this.Controls.Add(this.pnlEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddAttendance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

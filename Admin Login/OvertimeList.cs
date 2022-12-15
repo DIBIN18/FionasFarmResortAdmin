@@ -16,6 +16,7 @@ namespace Admin_Login
         Login login = new Login();
 
         string selectedOtId = "", selected = "", selected_date = "";
+        bool historyEnabled = false;
 
         public OvertimeList()
         {
@@ -59,6 +60,8 @@ namespace Admin_Login
 
         private void OvertimeList_Load(object sender, EventArgs e)
         {
+            dtp_Date.MinDate = DateTime.Now.Date;
+
             UpdateTable();
         }
 
@@ -133,6 +136,68 @@ namespace Admin_Login
             }
         }
 
+        private void ViewHistoryClick(object sender, EventArgs e)
+        {
+            pbCancel.Visible = false;
+            lblCancel.Visible = false;
+            pbOvalCancel.Visible = false;
+
+            pbHistory.Visible = false;
+            lblHistory.Visible = false;
+            pbOvalHistory.Visible = false;
+
+            pbCurrent.Visible = true;
+            lblCurrent.Visible = true;
+            pbOvalCurrent.Visible = true;
+
+            panel1.Size = new Size(443, 37);
+
+            dtp_Date.Enabled = false;
+
+            string query =
+                "SELECT " +
+                    "OvertimeDates.OvertimeID, " +
+                    "EmployeeInfo.EmployeeFullName," +
+                    "OvertimeDates.Date FROM OvertimeDates " +
+                    "INNER JOIN EmployeeInfo " +
+                    "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID";
+
+            SqlConnection conn = new SqlConnection(login.connectionString);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            dgvEmployees.DataSource = dt;
+
+            historyEnabled = true;
+        }
+
+        private void ViewCurrentClick(object sender, EventArgs e)
+        {
+            pbCancel.Visible = true;
+            lblCancel.Visible = true;
+            pbOvalCancel.Visible = true;
+
+            pbHistory.Visible = true;
+            lblHistory.Visible = true;
+            pbOvalHistory.Visible = true;
+
+            pbCurrent.Visible = false;
+            lblCurrent.Visible = false;
+            pbOvalCurrent.Visible = false;
+
+            panel1.Size = new Size(292, 37);
+
+            dtp_Date.Enabled = true;
+
+            historyEnabled = false;
+
+            UpdateTable();
+        }
+
         private void tb_Search_Click(object sender, EventArgs e)
         {
             tb_Search.Text = "";
@@ -145,42 +210,86 @@ namespace Admin_Login
                 connection.Open();
                 if (string.IsNullOrEmpty(tb_Search.Text))
                 {
-                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+                    if (historyEnabled == true)
+                    {
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
-                    string query =
-                    "SELECT " +
-                    "OvertimeDates.OvertimeID, " +
-                    "EmployeeInfo.EmployeeFullName," +
-                    "OvertimeDates.Date FROM OvertimeDates " +
-                    "INNER JOIN EmployeeInfo " +
-                    "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID " +
-                    "WHERE Date='" + date + "'";
+                        string query =
+                        "SELECT " +
+                        "OvertimeDates.OvertimeID, " +
+                        "EmployeeInfo.EmployeeFullName," +
+                        "OvertimeDates.Date FROM OvertimeDates " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID ";
+                        
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                    }
+                    else
+                    {
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
-                    SqlCommand cmd2 = new SqlCommand(query, connection);
-                    SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
-                    DataTable dt2 = new DataTable();
-                    sqlDataAdapter2.Fill(dt2);
-                    dgvEmployees.DataSource = dt2;
+                        string query =
+                        "SELECT " +
+                        "OvertimeDates.OvertimeID, " +
+                        "EmployeeInfo.EmployeeFullName," +
+                        "OvertimeDates.Date FROM OvertimeDates " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID " +
+                        "WHERE Date='" + date + "'";
+
+                        SqlCommand cmd2 = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter2 = new SqlDataAdapter(cmd2);
+                        DataTable dt2 = new DataTable();
+                        sqlDataAdapter2.Fill(dt2);
+                        dgvEmployees.DataSource = dt2;
+                    }
                 }
                 else if (tb_Search.Focused)
                 {
-                    string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+                    if (historyEnabled == true)
+                    {
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
 
-                    string query =
-                    "SELECT " +
-                    "OvertimeDates.OvertimeID, " +
-                    "EmployeeInfo.EmployeeFullName," +
-                    "OvertimeDates.Date FROM OvertimeDates " +
-                    "INNER JOIN EmployeeInfo " +
-                    "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID " +
-                    "WHERE Date='" + date + "' AND " +
-                    "EmployeeFullName like '%" + tb_Search.Text + "%'";
+                        string query =
+                        "SELECT " +
+                        "OvertimeDates.OvertimeID, " +
+                        "EmployeeInfo.EmployeeFullName," +
+                        "OvertimeDates.Date FROM OvertimeDates " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID " +
+                        "WHERE " +
+                        "EmployeeFullName like '%" + tb_Search.Text + "%'";
 
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    sqlDataAdapter.Fill(dt);
-                    dgvEmployees.DataSource = dt;
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        sqlDataAdapter.Fill(dt);
+                        dgvEmployees.DataSource = dt;
+                    }
+                    else
+                    {
+                        string date = dtp_Date.Value.ToString("MMMM dd, yyyy");
+
+                        string query =
+                        "SELECT " +
+                        "OvertimeDates.OvertimeID, " +
+                        "EmployeeInfo.EmployeeFullName," +
+                        "OvertimeDates.Date FROM OvertimeDates " +
+                        "INNER JOIN EmployeeInfo " +
+                        "ON OvertimeDates.EmployeeID = EmployeeInfo.EmployeeID " +
+                        "WHERE Date='" + date + "' AND " +
+                        "EmployeeFullName like '%" + tb_Search.Text + "%'";
+
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        sqlDataAdapter.Fill(dt);
+                        dgvEmployees.DataSource = dt;
+                    }
                 }
             }
         }

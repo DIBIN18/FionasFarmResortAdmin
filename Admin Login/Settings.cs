@@ -18,6 +18,8 @@ namespace Admin_Login
         Login login = new Login();
         EditUser eu = new EditUser();
 
+        string selectedUserId = "";
+
         public Settings()
         {
             InitializeComponent();
@@ -119,7 +121,7 @@ namespace Admin_Login
 
                 string query =
                     "BACKUP DATABASE FFRUsers " +
-                    "TO DISK = '" + path + "\\Database Backups\\Backup - "+ 
+                    "TO DISK = '" + path + "\\Database Backups\\Created Backup - "+ 
                     today.ToString("MMMM dd yyyy") + " " + DateTime.Now.ToString("h-mm-ss tt").ToUpper() + ".bak'";
 
                 SqlCommand command = new SqlCommand(query, connection);
@@ -130,7 +132,6 @@ namespace Admin_Login
 
         private void btnRestoreDatabase_Click(object sender, EventArgs e)
         {
-            //UNTESTED
             using (SqlConnection connection = new SqlConnection(login.connectionString))
             {
                 connection.Open();
@@ -148,21 +149,23 @@ namespace Admin_Login
 
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                   sFileName = ofd.FileName;         
+                   sFileName = ofd.FileName;
+
+                    string query =
+                   "USE master " +
+                   "\n" +
+                   "ALTER DATABASE FFRUsers \n" +
+                   "SET SINGLE_USER WITH ROLLBACK IMMEDIATE " +
+                   "\n" +
+                   "RESTORE DATABASE FFRUsers FROM DISK = '" + sFileName + "' " +
+                   "\n";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Database Restored Successfully", "Database Restored", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
                 }
 
-                string query =
-                    "USE master " +
-                    "\n" +
-                    "ALTER DATABASE FFRUsers \n" +
-                    "SET SINGLE_USER WITH ROLLBACK IMMEDIATE " +
-                    "\n" +
-                    "RESTORE DATABASE FFRUsers FROM DISK = '" + sFileName + "' " +
-                    "\n";
-
-                SqlCommand command = new SqlCommand(query, connection);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Database Resotored Successfully");
             }
         }
 
@@ -314,7 +317,7 @@ namespace Admin_Login
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            selectedUserId = dgvUsers.Rows[e.RowIndex].Cells[0].Value.ToString();
         }
 
         private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -387,6 +390,31 @@ namespace Admin_Login
                 }
             }
             eu.ShowDialog();
+        }
+
+        private void BtnRemove(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(
+                       " Are you sure you want to remove selected User? ", "Delete User", MessageBoxButtons.YesNo,
+                       MessageBoxIcon.Warning
+               );
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                string query =
+                "DELETE FROM Users WHERE " +
+                "UserID = " + selectedUserId;
+
+                using (SqlConnection conn = new SqlConnection(login.connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.ExecuteNonQuery();
+                }
+                updateTable();
+                MessageBox.Show("User Deleted", "User Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
     }
 }

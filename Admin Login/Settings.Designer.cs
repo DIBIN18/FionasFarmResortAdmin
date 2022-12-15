@@ -34,8 +34,6 @@ namespace Admin_Login
             this.label1 = new System.Windows.Forms.Label();
             this.pnlUtils = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbBackupEvery = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnCreateBackup = new System.Windows.Forms.Button();
             this.btnRestoreDatabase = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Label();
@@ -74,6 +72,15 @@ namespace Admin_Login
             this.label13 = new System.Windows.Forms.Label();
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.dgvAuditTrail = new System.Windows.Forms.DataGridView();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pbCancel = new System.Windows.Forms.PictureBox();
+            this.lblCancel = new System.Windows.Forms.Label();
+            this.pbOvalCancel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.pnlUtils.SuspendLayout();
             this.pnlUsers.SuspendLayout();
@@ -88,6 +95,12 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlAuditTrail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditTrail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvUsers
@@ -99,7 +112,7 @@ namespace Admin_Login
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvUsers.BackgroundColor = System.Drawing.Color.White;
             this.dgvUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsers.Location = new System.Drawing.Point(11, 39);
+            this.dgvUsers.Location = new System.Drawing.Point(11, 55);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersVisible = false;
@@ -113,7 +126,7 @@ namespace Admin_Login
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 8);
+            this.label1.Location = new System.Drawing.Point(10, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 24);
             this.label1.TabIndex = 1;
@@ -122,9 +135,13 @@ namespace Admin_Login
             // pnlUtils
             // 
             this.pnlUtils.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlUtils.Controls.Add(this.pictureBox11);
+            this.pnlUtils.Controls.Add(this.label14);
+            this.pnlUtils.Controls.Add(this.pictureBox12);
+            this.pnlUtils.Controls.Add(this.pictureBox9);
             this.pnlUtils.Controls.Add(this.label2);
-            this.pnlUtils.Controls.Add(this.cmbBackupEvery);
             this.pnlUtils.Controls.Add(this.label3);
+            this.pnlUtils.Controls.Add(this.pictureBox10);
             this.pnlUtils.Controls.Add(this.btnCreateBackup);
             this.pnlUtils.Controls.Add(this.btnRestoreDatabase);
             this.pnlUtils.Location = new System.Drawing.Point(12, 53);
@@ -143,42 +160,18 @@ namespace Admin_Login
             this.label2.TabIndex = 4;
             this.label2.Text = "Backup and Restore";
             // 
-            // cmbBackupEvery
-            // 
-            this.cmbBackupEvery.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBackupEvery.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBackupEvery.FormattingEnabled = true;
-            this.cmbBackupEvery.Items.AddRange(new object[] {
-            "Daily",
-            "Weekly",
-            "Monthly",
-            "Annually"});
-            this.cmbBackupEvery.Location = new System.Drawing.Point(231, 71);
-            this.cmbBackupEvery.Name = "cmbBackupEvery";
-            this.cmbBackupEvery.Size = new System.Drawing.Size(185, 28);
-            this.cmbBackupEvery.TabIndex = 8;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(23, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(184, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Backup Database Every:";
-            // 
             // btnCreateBackup
             // 
             this.btnCreateBackup.BackColor = System.Drawing.Color.Green;
             this.btnCreateBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateBackup.ForeColor = System.Drawing.Color.White;
-            this.btnCreateBackup.Location = new System.Drawing.Point(23, 116);
+            this.btnCreateBackup.Location = new System.Drawing.Point(23, 77);
             this.btnCreateBackup.Name = "btnCreateBackup";
             this.btnCreateBackup.Size = new System.Drawing.Size(170, 33);
             this.btnCreateBackup.TabIndex = 4;
             this.btnCreateBackup.Text = "Create Backup";
             this.btnCreateBackup.UseVisualStyleBackColor = false;
+            this.btnCreateBackup.Visible = false;
             this.btnCreateBackup.Click += new System.EventHandler(this.btnCreateBackup_Click);
             // 
             // btnRestoreDatabase
@@ -186,12 +179,13 @@ namespace Admin_Login
             this.btnRestoreDatabase.BackColor = System.Drawing.Color.Green;
             this.btnRestoreDatabase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestoreDatabase.ForeColor = System.Drawing.Color.White;
-            this.btnRestoreDatabase.Location = new System.Drawing.Point(23, 164);
+            this.btnRestoreDatabase.Location = new System.Drawing.Point(257, 77);
             this.btnRestoreDatabase.Name = "btnRestoreDatabase";
             this.btnRestoreDatabase.Size = new System.Drawing.Size(170, 33);
             this.btnRestoreDatabase.TabIndex = 7;
             this.btnRestoreDatabase.Text = "Restore Database";
             this.btnRestoreDatabase.UseVisualStyleBackColor = false;
+            this.btnRestoreDatabase.Visible = false;
             this.btnRestoreDatabase.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
             // 
             // btnAddNewUser
@@ -201,7 +195,7 @@ namespace Admin_Login
             this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddNewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUser.Location = new System.Drawing.Point(299, 290);
+            this.btnAddNewUser.Location = new System.Drawing.Point(299, 277);
             this.btnAddNewUser.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(120, 24);
@@ -245,10 +239,13 @@ namespace Admin_Login
             this.panel3.Controls.Add(this.cmbUserName);
             this.panel3.Controls.Add(this.txtUser);
             this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.pbCancel);
+            this.panel3.Controls.Add(this.lblCancel);
+            this.panel3.Controls.Add(this.pbOvalCancel);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel3.Location = new System.Drawing.Point(11, 324);
+            this.panel3.Location = new System.Drawing.Point(11, 340);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(829, 339);
+            this.panel3.Size = new System.Drawing.Size(829, 323);
             this.panel3.TabIndex = 16;
             // 
             // Schedules
@@ -415,7 +412,7 @@ namespace Admin_Login
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(101)))), ((int)(((byte)(168)))));
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.AddNew_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(430, 290);
+            this.pictureBox2.Location = new System.Drawing.Point(430, 277);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 26);
@@ -459,7 +456,7 @@ namespace Admin_Login
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
-            this.pictureBox1.Location = new System.Drawing.Point(289, 284);
+            this.pictureBox1.Location = new System.Drawing.Point(289, 271);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(186, 37);
@@ -660,6 +657,144 @@ namespace Admin_Login
             this.dgvAuditTrail.Size = new System.Drawing.Size(864, 634);
             this.dgvAuditTrail.TabIndex = 23;
             // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(186, 81);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 43;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "btn_audit_trail";
+            this.pictureBox9.Click += new System.EventHandler(this.btnCreateBackup_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(23, 81);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 24);
+            this.label3.TabIndex = 42;
+            this.label3.Tag = "btn_audit_trail";
+            this.label3.Text = "Create Backup";
+            this.label3.Click += new System.EventHandler(this.btnCreateBackup_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
+            this.pictureBox10.Location = new System.Drawing.Point(13, 75);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(216, 37);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 41;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "btn_audit_trail";
+            this.pictureBox10.Click += new System.EventHandler(this.btnCreateBackup_Click);
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(462, 81);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 46;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Tag = "btn_audit_trail";
+            this.pictureBox11.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(269, 81);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 24);
+            this.label14.TabIndex = 45;
+            this.label14.Tag = "btn_audit_trail";
+            this.label14.Text = "Restore Database";
+            this.label14.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox12.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
+            this.pictureBox12.Location = new System.Drawing.Point(259, 75);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(243, 37);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 44;
+            this.pictureBox12.TabStop = false;
+            this.pictureBox12.Tag = "btn_audit_trail";
+            this.pictureBox12.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // pbCancel
+            // 
+            this.pbCancel.BackColor = System.Drawing.Color.Maroon;
+            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
+            this.pbCancel.Location = new System.Drawing.Point(425, 277);
+            this.pbCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCancel.Name = "pbCancel";
+            this.pbCancel.Size = new System.Drawing.Size(26, 27);
+            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCancel.TabIndex = 64;
+            this.pbCancel.TabStop = false;
+            this.pbCancel.Tag = "btn_Back";
+            this.pbCancel.Visible = false;
+            this.pbCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
+            // lblCancel
+            // 
+            this.lblCancel.AutoSize = true;
+            this.lblCancel.BackColor = System.Drawing.Color.Maroon;
+            this.lblCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancel.ForeColor = System.Drawing.Color.White;
+            this.lblCancel.Location = new System.Drawing.Point(332, 277);
+            this.lblCancel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCancel.Name = "lblCancel";
+            this.lblCancel.Size = new System.Drawing.Size(87, 24);
+            this.lblCancel.TabIndex = 63;
+            this.lblCancel.Tag = "btn_Back";
+            this.lblCancel.Text = "Remove";
+            this.lblCancel.Visible = false;
+            this.lblCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
+            // pbOvalCancel
+            // 
+            this.pbOvalCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOvalCancel.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pbOvalCancel.Location = new System.Drawing.Point(318, 271);
+            this.pbOvalCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbOvalCancel.Name = "pbOvalCancel";
+            this.pbOvalCancel.Size = new System.Drawing.Size(145, 37);
+            this.pbOvalCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOvalCancel.TabIndex = 62;
+            this.pbOvalCancel.TabStop = false;
+            this.pbOvalCancel.Tag = "btn_Back";
+            this.pbOvalCancel.Visible = false;
+            this.pbOvalCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -676,9 +811,9 @@ namespace Admin_Login
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.pnlUtils);
             this.Controls.Add(this.pnlAuditTrail);
-            this.Controls.Add(this.pnlUsers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Settings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -701,6 +836,12 @@ namespace Admin_Login
             this.pnlAuditTrail.ResumeLayout(false);
             this.pnlAuditTrail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditTrail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,10 +850,8 @@ namespace Admin_Login
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlUtils;
-        private System.Windows.Forms.ComboBox cmbBackupEvery;
         private System.Windows.Forms.Button btnRestoreDatabase;
         private System.Windows.Forms.Button btnCreateBackup;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label btnAddNewUser;
@@ -751,5 +890,14 @@ namespace Admin_Login
         public System.Windows.Forms.DataGridView dgvAuditTrail;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dtp_Date;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pbCancel;
+        private System.Windows.Forms.Label lblCancel;
+        private System.Windows.Forms.PictureBox pbOvalCancel;
     }
 }
