@@ -82,6 +82,12 @@ namespace Admin_Login
             tbScrollNum.Value = 0;
             tbDescription.Text = "";
         }
+
+        private void tbAddOtherDeduction_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
         public void loadDeduction()
         {
             Menu menu = (Menu)Application.OpenForms["Menu"];
