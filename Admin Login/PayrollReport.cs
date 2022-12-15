@@ -258,7 +258,7 @@ namespace Admin_Login
         private void ThMonth(object sender, EventArgs e)
         {
             THMonthSlip tHMonthSlip = new THMonthSlip();
-            PayrollReport payrollReport = new PayrollReport();
+          
             Login login = new Login();
             string from = dtp_From.Text;
             string to = dtp_To.Text;
@@ -266,16 +266,18 @@ namespace Admin_Login
             {
                 bonus.Open();
                 string InsertTHMonthPay = "INSERT INTO THMonthsSalary " +
-                   "SELECT H.EmployeeID,H.EmployeeName,DATEDIFF(MONTH ,convert(datetime, E.DateHired, 100)" +
-                   ",GETDATE()) AS CheckMonth,SUM(BasicPay) AS YearlyBasicPay," +
-                   "SUM(BasicPay/12) AS THMonthSalary FROM PayrollReportHistory AS H " +
-                   "left JOIN EmployeeInfo AS E ON H.EmployeeID = E.EmployeeID " +
-                   "where DateFrom Between CONVERT(DateTime,'" + from + "',100) AND " +
-                   "CONVERT(DateTime,'" + to + "',100) and " +
-                   "DateTo Between CONVERT(DateTime,'" + from + "',100) " +
-                   "AND CONVERT(DateTime,'" + to + "',100) " +
-                   "and NOT EXISTS (SELECT * FROM THMonthsSalary) " +
-                   "GROUP BY H.EmployeeID,H.EmployeeName,E.DateHired";
+                    "SELECT H.EmployeeID,H.EmployeeName," +
+                    "DATEDIFF(MONTH ,convert(datetime, E.DateHired, 100) ," +
+                    "GETDATE()) AS CheckMonth,SUM(BasicPay) AS YearlyBasicPay, " +
+                    "SUM(BasicPay/12) AS THMonthSalary,FORMAT(GetDATE(),'yyyy') " +
+                    "FROM PayrollReportHistory AS H " +
+                    "left JOIN EmployeeInfo AS E ON H.EmployeeID = E.EmployeeID " +
+                    "where DateFrom Between CONVERT(DateTime,'"+from+"',100) " +
+                    "AND CONVERT(DateTime,'"+to+"',100) and " +
+                    "DateTo Between CONVERT(DateTime,'"+from+"',100) " +
+                    "AND CONVERT(DateTime,'"+to+"',100) and " +
+                    "NOT EXISTS (SELECT THYear FROM THMonthsSalary WHERE THYear = FORMAT(GetDATE(),'yyyy')) " +
+                    "GROUP BY H.EmployeeID,H.EmployeeName,E.DateHired";
                 SqlCommand sqlCommand = new SqlCommand(InsertTHMonthPay, bonus);
                 sqlCommand.ExecuteNonQuery();
                 bonus.Close();
