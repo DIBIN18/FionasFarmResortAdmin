@@ -41,10 +41,10 @@ namespace Admin_Login
                     DataTable data = new DataTable();
                     adapter.Fill(data);
 
-                    //txtEmployeeID.Text = data.Rows[0][1].ToString();
-                    //txtEmployeeName.Text = data.Rows[0][2].ToString();
-                    //txtTotalBasic.Text = data.Rows[0][4].ToString();
-                    //txtTotal.Text = data.Rows[0][5].ToString();
+                    txtEmployeeID.Text = data.Rows[0][0].ToString();
+                    txtEmployeeName.Text = data.Rows[0][1].ToString();
+                    txtTotalBasic.Text = data.Rows[0][2].ToString();
+                    txtTotal.Text = data.Rows[0][3].ToString();
 
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
