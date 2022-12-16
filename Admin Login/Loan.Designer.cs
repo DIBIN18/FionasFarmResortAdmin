@@ -232,9 +232,9 @@
             this.lblIteration.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIteration.Location = new System.Drawing.Point(6, 76);
             this.lblIteration.Name = "lblIteration";
-            this.lblIteration.Size = new System.Drawing.Size(237, 24);
+            this.lblIteration.Size = new System.Drawing.Size(219, 24);
             this.lblIteration.TabIndex = 84;
-            this.lblIteration.Text = "Payment Iteration (Months):";
+            this.lblIteration.Text = "Payment Iteration (cutoff):";
             // 
             // tbDescription
             // 

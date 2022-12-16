@@ -127,82 +127,109 @@ namespace Admin_Login
         }
         public void getTAX()
         {
-            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            try
             {
-                connection.Open();
-                //-------------------------------
-                string query2 = "select EmployeeID from PayrollReport";
-                SqlDataAdapter adapter = new SqlDataAdapter(query2, connection);
-                DataTable data = new DataTable();
-                adapter.Fill(data);
-
-                foreach (DataRow dataRow in data.Rows)
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
                 {
-                    EmployeeID = dataRow[0].ToString();
-                    string query3 = "select BasicPay from PayrollReport where EmployeeID = "+ EmployeeID;
-                    SqlDataAdapter adapter2 = new SqlDataAdapter(query3, connection);
-                    DataTable data2 = new DataTable();
-                    adapter2.Fill(data2);
+                    connection.Open();
+                    //-------------------------------
+                    string query2 = "select EmployeeID from PayrollReport";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query2, connection);
+                    DataTable data = new DataTable();
+                    adapter.Fill(data);
 
-                    getBasicPay = Convert.ToDouble(data2.Rows[0][0].ToString());
+                    foreach (DataRow dataRow in data.Rows)
+                    {
+                        EmployeeID = dataRow[0].ToString();
+                        string query3 = "select BasicPay from PayrollReport where EmployeeID = " + EmployeeID;
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(query3, connection);
+                        DataTable data2 = new DataTable();
+                        adapter2.Fill(data2);
 
-                    if (getBasicPay <= 10416.99)
-                    {
-                        tax = 0;
-                    }
-                    else if (getBasicPay > 10417 && getBasicPay < 16666)
-                    {
-                        tax = (getBasicPay - 10417) * 0.2;
-                    }
-                    else if (getBasicPay > 16667 && getBasicPay < 33332)
-                    {
-                        tax = ((getBasicPay - 16667) * 0.25) + 1250;
-                    }
-                    else if (getBasicPay > 33333 && getBasicPay < 83332)
-                    {
-                        tax = ((getBasicPay - 33333) * 0.30) + 5416.67;
-                    }
-                    else if (getBasicPay > 83333 && getBasicPay < 333332)
-                    {
-                        tax = ((getBasicPay - 83333) * 0.32) + 20416.67;
-                    }
-                    else if (getBasicPay > 333333)
-                    {
-                        tax = ((getBasicPay - 333333) * 0.35) + 100416.67;
-                    }
-                    //------------------------------
-                    //if (getGrossPay * 24 <= 250000)
-                    //{
-                    //    tax = 0;
-                    //}
-                    //else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
-                    //{
-                    //    tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
-                    //}
-                    //else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
-                    //{
-                    //    tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
-                    //}
-                    //else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
-                    //{
-                    //    tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
-                    //}
-                    //else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
-                    //{
-                    //    tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
-                    //}
-                    //else if (getGrossPay > 8000000)
-                    //{
-                    //    tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
-                    //}
+                        getBasicPay = Convert.ToDouble(data2.Rows[0][0].ToString());
 
-                    string query = "update PayrollReport set TAX = " + tax +
-                        " where EmployeeID = " + EmployeeID;
+                        if (getBasicPay <= 10416.99)
+                        {
+                            tax = 0;
+                        }
+                        else if (getBasicPay > 10417 && getBasicPay < 16666)
+                        {
+                            tax = (getBasicPay - 10417) * 0.2;
+                        }
+                        else if (getBasicPay > 16667 && getBasicPay < 33332)
+                        {
+                            tax = ((getBasicPay - 16667) * 0.25) + 1250;
+                        }
+                        else if (getBasicPay > 33333 && getBasicPay < 83332)
+                        {
+                            tax = ((getBasicPay - 33333) * 0.30) + 5416.67;
+                        }
+                        else if (getBasicPay > 83333 && getBasicPay < 333332)
+                        {
+                            tax = ((getBasicPay - 83333) * 0.32) + 20416.67;
+                        }
+                        else if (getBasicPay > 333333)
+                        {
+                            tax = ((getBasicPay - 333333) * 0.35) + 100416.67;
+                        }
+                        //------------------------------
+                        //if (getGrossPay * 24 <= 250000)
+                        //{
+                        //    tax = 0;
+                        //}
+                        //else if(getGrossPay * 24 >= 250000.1 && getGrossPay * 24 <= 400000)
+                        //{
+                        //    tax = (((getGrossPay * 24) - 250000) * 0.2) / 24;
+                        //}
+                        //else if (getGrossPay * 24 >= 400000.1 && getGrossPay * 24 <= 800000)
+                        //{
+                        //    tax = (((getGrossPay * 24) - 400000) * 0.25) / 24;
+                        //}
+                        //else if (getGrossPay * 24 >= 800000.1 && getGrossPay * 24 <= 2000000)
+                        //{
+                        //    tax = (((getGrossPay * 24) - 800000) * 0.30) / 24;
+                        //}
+                        //else if (getGrossPay * 24 >= 2000000.1 && getGrossPay * 24 <= 8000000)
+                        //{
+                        //    tax = (((getGrossPay * 24) - 2000000) * 0.32) / 24;
+                        //}
+                        //else if (getGrossPay > 8000000)
+                        //{
+                        //    tax = (((getGrossPay * 24) - 8000000) * 0.35) / 24;
+                        //}
+
+                        string query = "update PayrollReport set TAX = " + tax +
+                            " where EmployeeID = " + EmployeeID;
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                }
+            }
+            catch (Exception ex) {
+                using (SqlConnection connection = new SqlConnection(login.connectionString))
+                {
+                    connection.Open();
+                    string query = "update AttendanceRecord set Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set OT_Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set Late_Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set Undertime_Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set Undertime_Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RH_Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RH_Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set SH_Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set SH_Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RD_Hours = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RD_Minutes = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RegularHoliday = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set SpecialHoliday = 0 where Coalesce(Hours,'0') = '0'" +
+                        "update AttendanceRecord set RestDay = 0 where Coalesce(Hours,'0') = '0'";
                     SqlCommand cmd = new SqlCommand(query, connection);
                     cmd.ExecuteNonQuery();
                 }
-                
             }
+            
         }
         public void UpdateEmployeeSSSColumn()
         {

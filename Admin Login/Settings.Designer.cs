@@ -33,7 +33,13 @@ namespace Admin_Login
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlUtils = new System.Windows.Forms.Panel();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btnCreateBackup = new System.Windows.Forms.Button();
             this.btnRestoreDatabase = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Label();
@@ -59,6 +65,9 @@ namespace Admin_Login
             this.cmbUserName = new System.Windows.Forms.ComboBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbCancel = new System.Windows.Forms.PictureBox();
+            this.lblCancel = new System.Windows.Forms.Label();
+            this.pbOvalCancel = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -72,21 +81,18 @@ namespace Admin_Login
             this.label13 = new System.Windows.Forms.Label();
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
             this.dgvAuditTrail = new System.Windows.Forms.DataGridView();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pbCancel = new System.Windows.Forms.PictureBox();
-            this.lblCancel = new System.Windows.Forms.Label();
-            this.pbOvalCancel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.pnlUtils.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.pnlUsers.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -95,12 +101,6 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.pnlAuditTrail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditTrail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvUsers
@@ -150,6 +150,66 @@ namespace Admin_Login
             this.pnlUtils.TabIndex = 3;
             this.pnlUtils.Visible = false;
             // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox11.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
+            this.pictureBox11.Location = new System.Drawing.Point(462, 81);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox11.TabIndex = 46;
+            this.pictureBox11.TabStop = false;
+            this.pictureBox11.Tag = "btn_audit_trail";
+            this.pictureBox11.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(269, 81);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 24);
+            this.label14.TabIndex = 45;
+            this.label14.Tag = "btn_audit_trail";
+            this.label14.Text = "Restore Database";
+            this.label14.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox12.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
+            this.pictureBox12.Location = new System.Drawing.Point(259, 75);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(243, 37);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 44;
+            this.pictureBox12.TabStop = false;
+            this.pictureBox12.Tag = "btn_audit_trail";
+            this.pictureBox12.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(186, 81);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 43;
+            this.pictureBox9.TabStop = false;
+            this.pictureBox9.Tag = "btn_audit_trail";
+            this.pictureBox9.Click += new System.EventHandler(this.btnCreateBackup_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -159,6 +219,36 @@ namespace Admin_Login
             this.label2.Size = new System.Drawing.Size(198, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "Backup and Restore";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(23, 81);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(146, 24);
+            this.label3.TabIndex = 42;
+            this.label3.Tag = "btn_audit_trail";
+            this.label3.Text = "Create Backup";
+            this.label3.Click += new System.EventHandler(this.btnCreateBackup_Click);
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
+            this.pictureBox10.Location = new System.Drawing.Point(13, 75);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(216, 37);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 41;
+            this.pictureBox10.TabStop = false;
+            this.pictureBox10.Tag = "btn_audit_trail";
+            this.pictureBox10.Click += new System.EventHandler(this.btnCreateBackup_Click);
             // 
             // btnCreateBackup
             // 
@@ -466,6 +556,54 @@ namespace Admin_Login
             this.pictureBox1.Tag = "btnAddUser";
             this.pictureBox1.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
+            // pbCancel
+            // 
+            this.pbCancel.BackColor = System.Drawing.Color.Maroon;
+            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
+            this.pbCancel.Location = new System.Drawing.Point(425, 277);
+            this.pbCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbCancel.Name = "pbCancel";
+            this.pbCancel.Size = new System.Drawing.Size(26, 27);
+            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCancel.TabIndex = 64;
+            this.pbCancel.TabStop = false;
+            this.pbCancel.Tag = "btn_Back";
+            this.pbCancel.Visible = false;
+            this.pbCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
+            // lblCancel
+            // 
+            this.lblCancel.AutoSize = true;
+            this.lblCancel.BackColor = System.Drawing.Color.Maroon;
+            this.lblCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCancel.ForeColor = System.Drawing.Color.White;
+            this.lblCancel.Location = new System.Drawing.Point(332, 277);
+            this.lblCancel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCancel.Name = "lblCancel";
+            this.lblCancel.Size = new System.Drawing.Size(87, 24);
+            this.lblCancel.TabIndex = 63;
+            this.lblCancel.Tag = "btn_Back";
+            this.lblCancel.Text = "Remove";
+            this.lblCancel.Visible = false;
+            this.lblCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
+            // pbOvalCancel
+            // 
+            this.pbOvalCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbOvalCancel.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
+            this.pbOvalCancel.Location = new System.Drawing.Point(318, 271);
+            this.pbOvalCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.pbOvalCancel.Name = "pbOvalCancel";
+            this.pbOvalCancel.Size = new System.Drawing.Size(145, 37);
+            this.pbOvalCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbOvalCancel.TabIndex = 62;
+            this.pbOvalCancel.TabStop = false;
+            this.pbOvalCancel.Tag = "btn_Back";
+            this.pbOvalCancel.Visible = false;
+            this.pbOvalCancel.Click += new System.EventHandler(this.BtnRemove);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(124)))), ((int)(((byte)(2)))));
@@ -603,8 +741,6 @@ namespace Admin_Login
             // 
             // pnlAuditTrail
             // 
-            this.pnlAuditTrail.Controls.Add(this.label13);
-            this.pnlAuditTrail.Controls.Add(this.dtp_Date);
             this.pnlAuditTrail.Controls.Add(this.dgvAuditTrail);
             this.pnlAuditTrail.Location = new System.Drawing.Point(0, 52);
             this.pnlAuditTrail.Name = "pnlAuditTrail";
@@ -616,24 +752,26 @@ namespace Admin_Login
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(5, 12);
+            this.label13.Location = new System.Drawing.Point(579, 18);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(69, 26);
             this.label13.TabIndex = 27;
             this.label13.Tag = "btnAddAttendance";
             this.label13.Text = "Date:";
+            this.label13.Visible = false;
             // 
             // dtp_Date
             // 
             this.dtp_Date.CustomFormat = "MMMM dd, yyyy";
             this.dtp_Date.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_Date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtp_Date.Location = new System.Drawing.Point(75, 10);
+            this.dtp_Date.Location = new System.Drawing.Point(649, 16);
             this.dtp_Date.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Date.Name = "dtp_Date";
             this.dtp_Date.Size = new System.Drawing.Size(224, 28);
             this.dtp_Date.TabIndex = 28;
+            this.dtp_Date.Visible = false;
             // 
             // dgvAuditTrail
             // 
@@ -646,7 +784,7 @@ namespace Admin_Login
             this.dgvAuditTrail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAuditTrail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvAuditTrail.GridColor = System.Drawing.Color.LightGray;
-            this.dgvAuditTrail.Location = new System.Drawing.Point(9, 48);
+            this.dgvAuditTrail.Location = new System.Drawing.Point(9, 14);
             this.dgvAuditTrail.Margin = new System.Windows.Forms.Padding(2);
             this.dgvAuditTrail.Name = "dgvAuditTrail";
             this.dgvAuditTrail.ReadOnly = true;
@@ -654,146 +792,8 @@ namespace Admin_Login
             this.dgvAuditTrail.RowHeadersWidth = 51;
             this.dgvAuditTrail.RowTemplate.Height = 24;
             this.dgvAuditTrail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAuditTrail.Size = new System.Drawing.Size(864, 634);
+            this.dgvAuditTrail.Size = new System.Drawing.Size(864, 668);
             this.dgvAuditTrail.TabIndex = 23;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.pictureBox9.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(186, 81);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(20, 26);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox9.TabIndex = 43;
-            this.pictureBox9.TabStop = false;
-            this.pictureBox9.Tag = "btn_audit_trail";
-            this.pictureBox9.Click += new System.EventHandler(this.btnCreateBackup_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(23, 81);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(146, 24);
-            this.label3.TabIndex = 42;
-            this.label3.Tag = "btn_audit_trail";
-            this.label3.Text = "Create Backup";
-            this.label3.Click += new System.EventHandler(this.btnCreateBackup_Click);
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
-            this.pictureBox10.Location = new System.Drawing.Point(13, 75);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(216, 37);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 41;
-            this.pictureBox10.TabStop = false;
-            this.pictureBox10.Tag = "btn_audit_trail";
-            this.pictureBox10.Click += new System.EventHandler(this.btnCreateBackup_Click);
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.pictureBox11.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox11.Image")));
-            this.pictureBox11.Location = new System.Drawing.Point(462, 81);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(20, 26);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox11.TabIndex = 46;
-            this.pictureBox11.TabStop = false;
-            this.pictureBox11.Tag = "btn_audit_trail";
-            this.pictureBox11.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
-            this.label14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(269, 81);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(174, 24);
-            this.label14.TabIndex = 45;
-            this.label14.Tag = "btn_audit_trail";
-            this.label14.Text = "Restore Database";
-            this.label14.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox12.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
-            this.pictureBox12.Location = new System.Drawing.Point(259, 75);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(243, 37);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 44;
-            this.pictureBox12.TabStop = false;
-            this.pictureBox12.Tag = "btn_audit_trail";
-            this.pictureBox12.Click += new System.EventHandler(this.btnRestoreDatabase_Click);
-            // 
-            // pbCancel
-            // 
-            this.pbCancel.BackColor = System.Drawing.Color.Maroon;
-            this.pbCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
-            this.pbCancel.Location = new System.Drawing.Point(425, 277);
-            this.pbCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.pbCancel.Name = "pbCancel";
-            this.pbCancel.Size = new System.Drawing.Size(26, 27);
-            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCancel.TabIndex = 64;
-            this.pbCancel.TabStop = false;
-            this.pbCancel.Tag = "btn_Back";
-            this.pbCancel.Visible = false;
-            this.pbCancel.Click += new System.EventHandler(this.BtnRemove);
-            // 
-            // lblCancel
-            // 
-            this.lblCancel.AutoSize = true;
-            this.lblCancel.BackColor = System.Drawing.Color.Maroon;
-            this.lblCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCancel.ForeColor = System.Drawing.Color.White;
-            this.lblCancel.Location = new System.Drawing.Point(332, 277);
-            this.lblCancel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblCancel.Name = "lblCancel";
-            this.lblCancel.Size = new System.Drawing.Size(87, 24);
-            this.lblCancel.TabIndex = 63;
-            this.lblCancel.Tag = "btn_Back";
-            this.lblCancel.Text = "Remove";
-            this.lblCancel.Visible = false;
-            this.lblCancel.Click += new System.EventHandler(this.BtnRemove);
-            // 
-            // pbOvalCancel
-            // 
-            this.pbOvalCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbOvalCancel.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
-            this.pbOvalCancel.Location = new System.Drawing.Point(318, 271);
-            this.pbOvalCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.pbOvalCancel.Name = "pbOvalCancel";
-            this.pbOvalCancel.Size = new System.Drawing.Size(145, 37);
-            this.pbOvalCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbOvalCancel.TabIndex = 62;
-            this.pbOvalCancel.TabStop = false;
-            this.pbOvalCancel.Tag = "btn_Back";
-            this.pbOvalCancel.Visible = false;
-            this.pbOvalCancel.Click += new System.EventHandler(this.BtnRemove);
             // 
             // Settings
             // 
@@ -802,7 +802,9 @@ namespace Admin_Login
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(884, 745);
             this.ControlBox = false;
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.dtp_Date);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox3);
@@ -811,9 +813,9 @@ namespace Admin_Login
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pnlAuditTrail);
             this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.pnlUtils);
-            this.Controls.Add(this.pnlAuditTrail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Settings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -821,12 +823,18 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.pnlUtils.ResumeLayout(false);
             this.pnlUtils.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.pnlUsers.ResumeLayout(false);
             this.pnlUsers.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -834,14 +842,7 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.pnlAuditTrail.ResumeLayout(false);
-            this.pnlAuditTrail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditTrail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbOvalCancel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

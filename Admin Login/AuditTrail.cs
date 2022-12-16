@@ -330,13 +330,14 @@ namespace Admin_Login
             auditcon.Close();
         }
         //SETTINGS
-        public void AuditAddNewUser()
+        public void AuditAddNewUser(string user_type, string user_name)
         {
             SqlConnection auditcon = new SqlConnection(login.connectionString);
             auditcon.Open();
             string auditDate = DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt");
             string Module = "Settings";
-            string Description = "add New User";
+            string Description = 
+                "Added a new User named, '" + user_type + "' and a username of '" + user_name + "'";
             SqlCommand auditcommand = new SqlCommand("INSERT INTO AuditTrail(UserName_,Date,Module,Description) VALUES(@UserName_,@Date,@Module,@Description)", auditcon);
             adminname = menu.getAdminName();
             auditcommand.Parameters.AddWithValue("@UserName_", adminname);

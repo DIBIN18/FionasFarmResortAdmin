@@ -471,7 +471,7 @@ namespace Admin_Login
         {
             try
             {
-                sssclass.getSSSRange();
+                //sssclass.getSSSRange();
                 SSSRangeClass.from = dtp_From.Text;
                 SSSRangeClass.to = dtp_To.Text;
                 Menu menu = (Menu)Application.OpenForms["Menu"];

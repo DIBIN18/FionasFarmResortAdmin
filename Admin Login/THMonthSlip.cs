@@ -185,6 +185,10 @@ namespace Admin_Login
                         filepath = Path.GetFullPath(fi.DirectoryName);
                         filename = fi.Name;                  
                     }
+                    else
+                {
+                    this.Close();
+                }
                     foreach (DataRow row in data.Rows)
                     {
                         count++;
