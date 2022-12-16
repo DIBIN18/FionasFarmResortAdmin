@@ -171,137 +171,152 @@ namespace Admin_Login
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(login.connectionString))
+            if (txtUser.Text.ToString() == "")
             {
-                AddEmployee ad = new AddEmployee();
-                try
+                MessageBox.Show("Username must not be empty", "Username error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (txtPass.Text.ToString() == "")
+            {
+                MessageBox.Show("Password must not be empty", "Password error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (cmbUserName.Text.ToString() == "")
+            {
+                MessageBox.Show("User type must not be empty", "User type error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                using (SqlConnection con = new SqlConnection(login.connectionString))
                 {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(
-                        "Insert into Users" +
-                        "(User_," +
-                        "Username_," +
-                        "Password_," +
-                        "DashBoard," +
-                        "EmployeeList," +
-                        "Leave," +
-                        "DepartmentPosition," +
-                        "Deductions," +
-                        "AttendanceRecord," +
-                        "PayrollReport," +
-                        "HolidaySetting," +
-                        "Settings," +
-                        "Schedules)" +
-                        "Values" +
-                        "(@User," +
-                        "@Username," +
-                        "@Password," +
-                        "@DashBoard," +
-                        "@EmployeeList," +
-                        "@Leave," +
-                        "@DepartmentPosition," +
-                        "@Deductions," +
-                        "@AttendanceRecord," +
-                        "@PayrollReport," +
-                        "@HolidaySetting," +
-                        "@Settings," +
-                        "@Schedules) ", con);
+                    AddEmployee ad = new AddEmployee();
+                    try
+                    {
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand(
+                            "Insert into Users" +
+                            "(User_," +
+                            "Username_," +
+                            "Password_," +
+                            "DashBoard," +
+                            "EmployeeList," +
+                            "Leave," +
+                            "DepartmentPosition," +
+                            "Deductions," +
+                            "AttendanceRecord," +
+                            "PayrollReport," +
+                            "HolidaySetting," +
+                            "Settings," +
+                            "Schedules)" +
+                            "Values" +
+                            "(@User," +
+                            "@Username," +
+                            "@Password," +
+                            "@DashBoard," +
+                            "@EmployeeList," +
+                            "@Leave," +
+                            "@DepartmentPosition," +
+                            "@Deductions," +
+                            "@AttendanceRecord," +
+                            "@PayrollReport," +
+                            "@HolidaySetting," +
+                            "@Settings," +
+                            "@Schedules) ", con);
 
-                    cmd.Parameters.AddWithValue("@User", cmbUserName.Text);
-                    cmd.Parameters.AddWithValue("@Username", txtUser.Text);
-                    cmd.Parameters.AddWithValue("@Password", txtPass.Text);
+                        cmd.Parameters.AddWithValue("@User", cmbUserName.Text);
+                        cmd.Parameters.AddWithValue("@Username", txtUser.Text);
+                        cmd.Parameters.AddWithValue("@Password", txtPass.Text);
 
-                    cmd.Parameters.AddWithValue("@DashBoard", 1);
+                        cmd.Parameters.AddWithValue("@DashBoard", 1);
 
-                    if (EmployeeList.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@EmployeeList", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@EmployeeList", 0);
-                    }
-                    if (Leave.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@Leave", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Leave", 0);
-                    }
-                    if (DepartmentPosition.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@DepartmentPosition", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@DepartmentPosition", 0);
-                    }
-                    if (Deductions.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@Deductions", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Deductions", 0);
-                    }
-                    if (AttendanceRecord.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@AttendanceRecord", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@AttendanceRecord", 0);
-                    }
-                    if (PayrollReport.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@PayrollReport", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@PayrollReport", 0);
-                    }
-                    if (HolidaySetting.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@HolidaySetting", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@HolidaySetting", 0);
-                    }
-                    if (Setting.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@Settings", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Settings", 0);
-                    }
-                    if (Schedules.Checked == true)
-                    {
-                        cmd.Parameters.AddWithValue("@Schedules", 1);
-                    }
-                    else
-                    {
-                        cmd.Parameters.AddWithValue("@Schedules", 0);
-                    }
-                    cmd.ExecuteNonQuery();
-                    DialogResult dialogResult = MessageBox.Show("Successfully Created New User", "Created User", MessageBoxButtons.OK);
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        cmbUserName.Text = "";
-                        txtPass.Text = "";
-                        txtUser.Text = "";
-                        updateTable();
+                        if (EmployeeList.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@EmployeeList", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@EmployeeList", 0);
+                        }
+                        if (Leave.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Leave", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Leave", 0);
+                        }
+                        if (DepartmentPosition.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@DepartmentPosition", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@DepartmentPosition", 0);
+                        }
+                        if (Deductions.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Deductions", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Deductions", 0);
+                        }
+                        if (AttendanceRecord.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@AttendanceRecord", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@AttendanceRecord", 0);
+                        }
+                        if (PayrollReport.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@PayrollReport", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@PayrollReport", 0);
+                        }
+                        if (HolidaySetting.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@HolidaySetting", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@HolidaySetting", 0);
+                        }
+                        if (Setting.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Settings", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Settings", 0);
+                        }
+                        if (Schedules.Checked == true)
+                        {
+                            cmd.Parameters.AddWithValue("@Schedules", 1);
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@Schedules", 0);
+                        }
+                        cmd.ExecuteNonQuery();
+                        DialogResult dialogResult = MessageBox.Show("Successfully Created New User", "Created User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            cmbUserName.Text = "";
+                            txtPass.Text = "";
+                            txtUser.Text = "";
+                            updateTable();
 
-                        AuditTrail audit = new AuditTrail();
-                        audit.AuditAddNewUser();
+                            AuditTrail audit = new AuditTrail();
+                            audit.AuditAddNewUser(cmbUserName.Text.ToString(), txtUser.Text.ToString());
+                        }
+                        con.Close();
                     }
-                    con.Close();
-                }
-                catch (Exception ex)
-                {
-                    //Some Errors!
+                    catch (Exception ex)
+                    {
+                        //Some Errors!
+                    }
                 }
             }
         }

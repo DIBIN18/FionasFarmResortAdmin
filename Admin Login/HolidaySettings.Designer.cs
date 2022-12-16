@@ -82,7 +82,7 @@
             // 
             this.txtHolidayName.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHolidayName.Location = new System.Drawing.Point(158, 58);
-            this.txtHolidayName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtHolidayName.Margin = new System.Windows.Forms.Padding(2);
             this.txtHolidayName.Name = "txtHolidayName";
             this.txtHolidayName.Size = new System.Drawing.Size(237, 30);
             this.txtHolidayName.TabIndex = 39;
@@ -105,10 +105,9 @@
             this.cb_Type.FormattingEnabled = true;
             this.cb_Type.Items.AddRange(new object[] {
             "Regular Holiday",
-            "Special Non-Working Holiday",
             "Special Working Holiday"});
             this.cb_Type.Location = new System.Drawing.Point(158, 93);
-            this.cb_Type.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cb_Type.Margin = new System.Windows.Forms.Padding(2);
             this.cb_Type.Name = "cb_Type";
             this.cb_Type.Size = new System.Drawing.Size(237, 29);
             this.cb_Type.TabIndex = 41;
@@ -119,7 +118,7 @@
             this.dtpDate.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDate.Location = new System.Drawing.Point(158, 126);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(237, 30);
             this.dtpDate.TabIndex = 42;
@@ -149,7 +148,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.tb_Search);
             this.panel2.Location = new System.Drawing.Point(10, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(298, 37);
             this.panel2.TabIndex = 152;
@@ -161,7 +160,7 @@
             this.tb_Search.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_Search.ForeColor = System.Drawing.SystemColors.Desktop;
             this.tb_Search.Location = new System.Drawing.Point(9, 8);
-            this.tb_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tb_Search.Margin = new System.Windows.Forms.Padding(2);
             this.tb_Search.Name = "tb_Search";
             this.tb_Search.Size = new System.Drawing.Size(272, 20);
             this.tb_Search.TabIndex = 6;
@@ -185,7 +184,7 @@
             this.btn_UpdateEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_UpdateEdit.Image = global::Admin_Login.Properties.Resources.Export_Icon;
             this.btn_UpdateEdit.Location = new System.Drawing.Point(249, 185);
-            this.btn_UpdateEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_UpdateEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btn_UpdateEdit.Name = "btn_UpdateEdit";
             this.btn_UpdateEdit.Size = new System.Drawing.Size(20, 31);
             this.btn_UpdateEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -215,7 +214,7 @@
             this.pictureBox10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox10.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Blue;
             this.pictureBox10.Location = new System.Drawing.Point(158, 181);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(123, 37);
             this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -230,7 +229,7 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(422, 54);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 28);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -260,7 +259,7 @@
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Red;
             this.pictureBox2.Location = new System.Drawing.Point(311, 49);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(154, 37);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -283,7 +282,7 @@
             this.panel1.Controls.Add(this.dtpDate);
             this.panel1.Controls.Add(this.pictureBox10);
             this.panel1.Location = new System.Drawing.Point(469, 91);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(406, 625);
             this.panel1.TabIndex = 166;
@@ -313,7 +312,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgv_HolidaysTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HolidaySettings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.HolidaySettings_Load);

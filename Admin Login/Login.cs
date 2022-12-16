@@ -27,9 +27,9 @@ namespace Admin_Login
         //DEVIN CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
-        public string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //public string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-B80EBU7\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL PC
@@ -171,9 +171,11 @@ namespace Admin_Login
                     }
                     else
                     {
-                        UsernameError.Text = "'" + Username.Text + "' does not exist.";
-                        Username.Text = " Username";
-                        Username.ForeColor = Color.Silver;
+                        UsernameError.Text = "Incorrect user name or password";
+                        //Username.Text = " Username";
+                        //Username.ForeColor = Color.Silver;
+                        Password.Text = " Password";
+                        Password.ForeColor = Color.Silver;
                     }
                 }
             }
