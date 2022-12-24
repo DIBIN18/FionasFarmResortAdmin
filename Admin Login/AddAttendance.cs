@@ -1312,19 +1312,45 @@ namespace Admin_Login
                 EDIT_time_out = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
                 lbl_EditBreakPeriod.Text = GetEmployeeBreakTimeEdit(EDIT_employee_id);
 
-                dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+                try
+                {
+                    dtpTimeInEdit.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString());
+                }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine("Triggered");
+                    //
+                    // NO TIME IN
+                    //
+                    string timeIn = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                    if (dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString().Equals(""))
+                    {
+                        timeIn = "08:00:00 AM";
+                    }
+
+                    dtpTimeInEdit.Value = DateTime.Parse(timeIn);
+                    EDIT_time_in = "08:00:00 AM";
+                }
+
                 old_date = dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString();
                 old_start = dgvEditAttendance.Rows[e.RowIndex].Cells[4].Value.ToString();
                 old_end = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
 
+                //
+                // NO TIME OUT 
+                //
                 string timeOut = dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 if (dgvEditAttendance.Rows[e.RowIndex].Cells[5].Value.ToString().Equals(""))
                 {
                     timeOut = "05:00:00 PM";
+                    EDIT_time_out = "05:00:00 PM";
                 }
 
                 dtpTimeOutEdit.Value = DateTime.Parse(timeOut);
+
+
                 dtp_EditDate.Value = DateTime.Parse(dgvEditAttendance.Rows[e.RowIndex].Cells[3].Value.ToString());
 
                 Console.WriteLine(EDIT_employee_id);
@@ -1801,15 +1827,42 @@ namespace Admin_Login
                 // Late time in and early time out
                 string time_interval = (time_out_24 - time_in_24).ToString();
 
-                DateTime time = DateTime.Parse(time_interval);
+                //DateTime time = DateTime.Parse(time_interval);
 
-                if (grace_minutes <= 10)
+                //if (grace_minutes <= 10)
+                //{
+                //    return 0;
+                //}
+                //else
+                //{
+                //    return Convert.ToInt32(time.Minute);
+                //}
+
+                if (time_interval.Contains("-") == true)
                 {
+                    MessageBox.Show("Time in should not be ahead of Time In", "Attendance Time in",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DateTime defTimeIn = DateTime.Parse(EDIT_time_in);
+                    DateTime defTimeOut = DateTime.Parse(EDIT_time_out);
+
+                    dtpTimeInEdit.Value = defTimeIn;
+                    dtpTimeOutEdit.Value = defTimeOut;
+
                     return 0;
                 }
                 else
                 {
-                    return Convert.ToInt32(time.Minute);
+                    DateTime time = DateTime.Parse(time_interval);
+
+                    if (grace_minutes <= 10)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return Convert.ToInt32(time.Minute);
+                    }
                 }
             }
             else if (sched_in_24 > time_in_24 && time_out_24 > sched_out_24)
