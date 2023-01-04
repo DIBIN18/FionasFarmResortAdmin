@@ -717,6 +717,18 @@ namespace Admin_Login
                 payrollReport.BringToFront();
                 payrollReport.Show();
             }
+            else if (Text == "Fiona's Farm and Resort - Mail Payslip")
+            {
+                TitleExtension = "Fiona's Farm and Resort - Mail Payslip";
+                TitleLabel.Text = TitleExtension;
+                MailPayslip sendpayslip = new MailPayslip();
+                {
+                    sendpayslip.TopLevel = false;
+                };
+                pnl_Content.Controls.Add(sendpayslip);
+                sendpayslip.BringToFront();
+                sendpayslip.Show();
+            }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {
                 Btn_Leave_Click(sender, e);

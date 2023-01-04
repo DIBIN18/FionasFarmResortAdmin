@@ -285,7 +285,12 @@ namespace Admin_Login
             tHMonthSlip.ShowDialog();
 
         }
-
+        private void btn_SendPayslip_Click(object sender, EventArgs e)
+        {
+            Menu menu = (Menu)Application.OpenForms["Menu"];
+            menu.Text = "Fiona's Farm and Resort - Mail Payslip";
+            menu.Menu_Load(menu, EventArgs.Empty);
+        }
         public void tagadelete()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);

@@ -313,6 +313,12 @@
     <Compile Include="Schedules.Designer.cs">
       <DependentUpon>Schedules.cs</DependentUpon>
     </Compile>
+    <Compile Include="MailPayslip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailPayslip.Designer.cs">
+      <DependentUpon>MailPayslip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,6 +449,9 @@
     </Compile>
     <EmbeddedResource Include="Schedules.resx">
       <DependentUpon>Schedules.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailPayslip.resx">
+      <DependentUpon>MailPayslip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
@@ -636,6 +645,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Records_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Send_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mail_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel_Icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RoundedRectangle_Shape_Gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Attachment_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Compose_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />

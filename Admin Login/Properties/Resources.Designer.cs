@@ -203,6 +203,36 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Attachment_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Attachment_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Attachment_Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Attachment_Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Attachment_Icon2 {
+            get {
+                object obj = ResourceManager.GetObject("Attachment_Icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AttendanceRecord_Icon {
             get {
                 object obj = ResourceManager.GetObject("AttendanceRecord_Icon", resourceCulture);
@@ -233,9 +263,29 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cancel_Icon1 {
+            get {
+                object obj = ResourceManager.GetObject("Cancel_Icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Clear_Icon {
             get {
                 object obj = ResourceManager.GetObject("Clear_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Compose_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Compose_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -413,6 +463,16 @@ namespace Admin_Login.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Mail_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Mail_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PayrollReport_Icon {
             get {
                 object obj = ResourceManager.GetObject("PayrollReport_Icon", resourceCulture);
@@ -466,6 +526,16 @@ namespace Admin_Login.Properties {
         internal static System.Drawing.Bitmap RoundedRectangle_Shape_Blue {
             get {
                 object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RoundedRectangle_Shape_Gray {
+            get {
+                object obj = ResourceManager.GetObject("RoundedRectangle_Shape_Gray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -546,6 +616,16 @@ namespace Admin_Login.Properties {
         internal static System.Drawing.Bitmap Search_Icon {
             get {
                 object obj = ResourceManager.GetObject("Search_Icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Send_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Send_Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
