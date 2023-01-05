@@ -721,13 +721,13 @@ namespace Admin_Login
             {
                 TitleExtension = "Fiona's Farm and Resort - Mail Payslip";
                 TitleLabel.Text = TitleExtension;
-                MailPayslip sendpayslip = new MailPayslip();
+                MailPayslip form = new MailPayslip();
                 {
-                    sendpayslip.TopLevel = false;
+                    form.TopLevel = false;
                 };
-                pnl_Content.Controls.Add(sendpayslip);
-                sendpayslip.BringToFront();
-                sendpayslip.Show();
+                pnl_Content.Controls.Add(form);
+                form.BringToFront();
+                form.Show();
             }
             else if(Text == "Fiona's Farm and Resort - Leave")
             {

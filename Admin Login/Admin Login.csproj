@@ -85,6 +85,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
@@ -160,6 +161,12 @@
     </Compile>
     <Compile Include="AppliedOvertimes.Designer.cs">
       <DependentUpon>AppliedOvertimes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailPayslip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailPayslip.Designer.cs">
+      <DependentUpon>MailPayslip.cs</DependentUpon>
     </Compile>
     <Compile Include="LeaveListDates.cs">
       <SubType>Form</SubType>
@@ -313,12 +320,6 @@
     <Compile Include="Schedules.Designer.cs">
       <DependentUpon>Schedules.cs</DependentUpon>
     </Compile>
-    <Compile Include="MailPayslip.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MailPayslip.Designer.cs">
-      <DependentUpon>MailPayslip.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppliedOvertimes.resx">
       <DependentUpon>AppliedOvertimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailPayslip.resx">
+      <DependentUpon>MailPayslip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LeaveListDates.resx">
       <DependentUpon>LeaveListDates.cs</DependentUpon>
@@ -449,9 +453,6 @@
     </Compile>
     <EmbeddedResource Include="Schedules.resx">
       <DependentUpon>Schedules.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MailPayslip.resx">
-      <DependentUpon>MailPayslip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
