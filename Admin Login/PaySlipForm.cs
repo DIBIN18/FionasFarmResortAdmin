@@ -27,6 +27,7 @@ namespace Admin_Login
         string EmpID = "", filepath,filename ;       
         ArrayList getImage = new ArrayList();
         string _datefrom, _dateto;
+        
         public PaySlipForm(string datefrom, string dateto)
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace Admin_Login
                 foreach (string item in getImage)
                 {
                     add.AppendPicture(item.ToString());
-                    File.Delete(item.ToString());
+                    //File.Delete(item.ToString());
                 }
                 document.SaveToFile(@sfd.FileName.ToString() + ".docx", FileFormat.Docx);
                 convertToPDF();
@@ -107,13 +108,14 @@ namespace Admin_Login
         }
         public void getPaySlip()
         {
+            DateTime now = DateTime.Now;
             try
             {
                 using (var bmp = new Bitmap(panel1.Width, panel1.Height))
                 {
                     panel1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                    bmp.Save(@filepath + "\\" + txtEmployeeName.Text + ".jpeg");
-                    getImage.Add(@filepath + "\\" + txtEmployeeName.Text + ".jpeg");
+                    bmp.Save(@filepath + "\\" + txtEmployeeName.Text +" "+ now.ToString("MMMM dd, yyyy") +".jpeg");
+                    getImage.Add(@filepath + "\\" + txtEmployeeName.Text +" "+ now.ToString("MMMM dd, yyyy") + ".jpeg");
                 }
             }
             catch(Exception ex) { }
