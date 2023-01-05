@@ -45,7 +45,7 @@ namespace Admin_Login
             }
             catch (Exception ex)
             {
-                if (txt_Password.Text.Equals(" password")) MessageBox.Show("Wrong password.");
+                if (txt_Password.Text.Equals(" password") || txt_Password.Text.Equals("")) MessageBox.Show("Wrong password.");
                 else if (cb_To.Text.Equals(" sample@gmail.com")) MessageBox.Show("A recipient must be specified.");
                 else if (lbl_FileLocation.Text.Equals("")) MessageBox.Show("File attachment cannot be empty.");
                 else MessageBox.Show(ex.Message);
