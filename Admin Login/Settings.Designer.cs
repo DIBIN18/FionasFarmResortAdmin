@@ -33,6 +33,14 @@ namespace Admin_Login
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlUtils = new System.Windows.Forms.Panel();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.txtSenderPass = new System.Windows.Forms.TextBox();
+            this.txtSenderEmail = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
@@ -78,11 +86,13 @@ namespace Admin_Login
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pnlAuditTrail = new System.Windows.Forms.Panel();
+            this.dgvAuditTrail = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.dtp_Date = new System.Windows.Forms.DateTimePicker();
-            this.dgvAuditTrail = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.pnlUtils.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -135,6 +145,14 @@ namespace Admin_Login
             // pnlUtils
             // 
             this.pnlUtils.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.pnlUtils.Controls.Add(this.pictureBox13);
+            this.pnlUtils.Controls.Add(this.label18);
+            this.pnlUtils.Controls.Add(this.pictureBox14);
+            this.pnlUtils.Controls.Add(this.txtSenderPass);
+            this.pnlUtils.Controls.Add(this.txtSenderEmail);
+            this.pnlUtils.Controls.Add(this.label17);
+            this.pnlUtils.Controls.Add(this.label16);
+            this.pnlUtils.Controls.Add(this.label15);
             this.pnlUtils.Controls.Add(this.pictureBox11);
             this.pnlUtils.Controls.Add(this.label14);
             this.pnlUtils.Controls.Add(this.pictureBox12);
@@ -146,9 +164,100 @@ namespace Admin_Login
             this.pnlUtils.Controls.Add(this.btnRestoreDatabase);
             this.pnlUtils.Location = new System.Drawing.Point(12, 53);
             this.pnlUtils.Name = "pnlUtils";
-            this.pnlUtils.Size = new System.Drawing.Size(860, 247);
+            this.pnlUtils.Size = new System.Drawing.Size(860, 380);
             this.pnlUtils.TabIndex = 3;
             this.pnlUtils.Visible = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.pictureBox13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox13.Image = global::Admin_Login.Properties.Resources.Save_Icon;
+            this.pictureBox13.Location = new System.Drawing.Point(284, 299);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(20, 26);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox13.TabIndex = 55;
+            this.pictureBox13.TabStop = false;
+            this.pictureBox13.Tag = "btn_audit_trail";
+            this.pictureBox13.Click += new System.EventHandler(this.btn_save);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(65)))), ((int)(((byte)(0)))));
+            this.label18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(214, 299);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 24);
+            this.label18.TabIndex = 54;
+            this.label18.Tag = "btn_audit_trail";
+            this.label18.Text = "Save";
+            this.label18.Click += new System.EventHandler(this.btn_save);
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox14.Image = global::Admin_Login.Properties.Resources.RoundedRectangle_Shape_Green;
+            this.pictureBox14.Location = new System.Drawing.Point(204, 293);
+            this.pictureBox14.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(125, 37);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox14.TabIndex = 53;
+            this.pictureBox14.TabStop = false;
+            this.pictureBox14.Tag = "btn_audit_trail";
+            this.pictureBox14.Click += new System.EventHandler(this.btn_save);
+            // 
+            // txtSenderPass
+            // 
+            this.txtSenderPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenderPass.Location = new System.Drawing.Point(140, 245);
+            this.txtSenderPass.Name = "txtSenderPass";
+            this.txtSenderPass.Size = new System.Drawing.Size(271, 29);
+            this.txtSenderPass.TabIndex = 51;
+            // 
+            // txtSenderEmail
+            // 
+            this.txtSenderEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenderEmail.Location = new System.Drawing.Point(140, 201);
+            this.txtSenderEmail.Name = "txtSenderEmail";
+            this.txtSenderEmail.Size = new System.Drawing.Size(271, 29);
+            this.txtSenderEmail.TabIndex = 50;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 250);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(97, 24);
+            this.label17.TabIndex = 49;
+            this.label17.Text = "Password:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(23, 201);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(62, 24);
+            this.label16.TabIndex = 48;
+            this.label16.Text = "Email:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(23, 151);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(136, 24);
+            this.label15.TabIndex = 47;
+            this.label15.Text = "Email Sender";
             // 
             // pictureBox11
             // 
@@ -748,6 +857,28 @@ namespace Admin_Login
             this.pnlAuditTrail.TabIndex = 40;
             this.pnlAuditTrail.Visible = false;
             // 
+            // dgvAuditTrail
+            // 
+            this.dgvAuditTrail.AllowUserToAddRows = false;
+            this.dgvAuditTrail.AllowUserToDeleteRows = false;
+            this.dgvAuditTrail.AllowUserToResizeColumns = false;
+            this.dgvAuditTrail.AllowUserToResizeRows = false;
+            this.dgvAuditTrail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvAuditTrail.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAuditTrail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAuditTrail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvAuditTrail.GridColor = System.Drawing.Color.LightGray;
+            this.dgvAuditTrail.Location = new System.Drawing.Point(9, 14);
+            this.dgvAuditTrail.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvAuditTrail.Name = "dgvAuditTrail";
+            this.dgvAuditTrail.ReadOnly = true;
+            this.dgvAuditTrail.RowHeadersVisible = false;
+            this.dgvAuditTrail.RowHeadersWidth = 51;
+            this.dgvAuditTrail.RowTemplate.Height = 24;
+            this.dgvAuditTrail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAuditTrail.Size = new System.Drawing.Size(864, 668);
+            this.dgvAuditTrail.TabIndex = 23;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -773,28 +904,6 @@ namespace Admin_Login
             this.dtp_Date.TabIndex = 28;
             this.dtp_Date.Visible = false;
             // 
-            // dgvAuditTrail
-            // 
-            this.dgvAuditTrail.AllowUserToAddRows = false;
-            this.dgvAuditTrail.AllowUserToDeleteRows = false;
-            this.dgvAuditTrail.AllowUserToResizeColumns = false;
-            this.dgvAuditTrail.AllowUserToResizeRows = false;
-            this.dgvAuditTrail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvAuditTrail.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAuditTrail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAuditTrail.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvAuditTrail.GridColor = System.Drawing.Color.LightGray;
-            this.dgvAuditTrail.Location = new System.Drawing.Point(9, 14);
-            this.dgvAuditTrail.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvAuditTrail.Name = "dgvAuditTrail";
-            this.dgvAuditTrail.ReadOnly = true;
-            this.dgvAuditTrail.RowHeadersVisible = false;
-            this.dgvAuditTrail.RowHeadersWidth = 51;
-            this.dgvAuditTrail.RowTemplate.Height = 24;
-            this.dgvAuditTrail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAuditTrail.Size = new System.Drawing.Size(864, 668);
-            this.dgvAuditTrail.TabIndex = 23;
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,9 +922,9 @@ namespace Admin_Login
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pnlUtils);
             this.Controls.Add(this.pnlAuditTrail);
             this.Controls.Add(this.pnlUsers);
-            this.Controls.Add(this.pnlUtils);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Settings";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -823,6 +932,8 @@ namespace Admin_Login
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.pnlUtils.ResumeLayout(false);
             this.pnlUtils.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -900,5 +1011,13 @@ namespace Admin_Login
         private System.Windows.Forms.PictureBox pbCancel;
         private System.Windows.Forms.Label lblCancel;
         private System.Windows.Forms.PictureBox pbOvalCancel;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.PictureBox pictureBox14;
+        private System.Windows.Forms.TextBox txtSenderPass;
+        private System.Windows.Forms.TextBox txtSenderEmail;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
