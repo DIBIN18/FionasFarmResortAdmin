@@ -23,9 +23,10 @@ namespace Admin_Login
 {
     public partial class PaySlipForm : Form
     {
+
         Login login = new Login();
         PayrollReport pr = new PayrollReport();
-        SaveFileDialog sfd = new SaveFileDialog();
+        String sfd = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Payslips\\";
         string EmpID = "", filepath,filename ;       
         ArrayList getImage = new ArrayList();
         string _datefrom, _dateto;
@@ -38,6 +39,9 @@ namespace Admin_Login
         }
         public void createDocs()
         {
+            DateTime now = DateTime.Now;
+            filename = now.ToString("MMMM dd, yyyy");
+
             try
             {
                 Document document = new Document();
@@ -45,23 +49,30 @@ namespace Admin_Login
                 Section section = document.AddSection();
                 section.PageSetup.Orientation = PageOrientation.Landscape;
                 Paragraph add = section.AddParagraph();
+
                 foreach (string item in getImage)
                 {
                     add.AppendPicture(item.ToString());
                     //File.Delete(item.ToString());
                 }
-                document.SaveToFile(@sfd.FileName.ToString() + ".docx", FileFormat.Docx);
+
+                document.SaveToFile(@sfd + filename + " - Payslip.docx", FileFormat.Docx);
+
                 convertToPDF();
-                File.Delete(@sfd.FileName.ToString() + ".docx");
-                System.Diagnostics.Process.Start(@sfd.FileName.ToString() + ".pdf");
+
+                File.Delete(@sfd + filename + " - Payslip.docx");
+                System.Diagnostics.Process.Start(@sfd + ".pdf");
             }
             catch (Exception ex) { }
         }
         public void convertToPDF()
         {
+            DateTime now = DateTime.Now;
+            filename = now.ToString("MMMM dd, yyyy");
+
             Word2Pdf objWorPdf = new Word2Pdf();
             string backfolder1 = filepath;
-            string strFileName = filename+".docx";
+            string strFileName = filename + " - Payslip.docx";
             object FromLocation = backfolder1 + "\\" + strFileName;
             string FileExtension = Path.GetExtension(strFileName);
             string ChangeExtension = strFileName.Replace(FileExtension, ".pdf");
@@ -84,12 +95,17 @@ namespace Admin_Login
                 adapter.Fill(data);
                 int count = 0;
 
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo fi = new FileInfo(sfd.FileName);
-                    filepath = Path.GetFullPath(fi.DirectoryName);
-                    filename = fi.Name;
-                }
+                //if (sfd.ShowDialog() == DialogResult.OK)
+                //{
+                //    FileInfo fi = new FileInfo(sfd.FileName);
+                //    filepath = Path.GetFullPath(fi.DirectoryName);
+                //    filename = fi.Name;
+                //}
+
+                FileInfo fi = new FileInfo(sfd);
+                filepath = Path.GetFullPath(fi.DirectoryName);
+                filename = fi.Name;
+
                 foreach (DataRow row in data.Rows)
                 {          
                     count++;
@@ -103,6 +119,9 @@ namespace Admin_Login
                     if(count == data.Rows.Count)
                     {
                         createDocs();
+
+                        MessageBox.Show("Payslips Generated", "Payslips", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         this.Close();
                     }
                 }
@@ -286,6 +305,7 @@ namespace Admin_Login
                     int x = otmin.ToString().Length;
                     string decimalNumbers = "";
                     StringBuilder wholeNumber = new StringBuilder();
+
                     for (int i = 0; i < x; i++)
                     {
                         if (otmin.ToString()[i] == '.')
@@ -305,6 +325,7 @@ namespace Admin_Login
                     {
                         y = 0;
                     }
+
                     var g = Math.Round(y, 0);
                     txtOvertimeHrs.Text = wholeNumber.ToString() + ":" + g;
                     //---------------------------------------
@@ -409,5 +430,6 @@ namespace Admin_Login
                 }
             }
         }
+
     }
 }

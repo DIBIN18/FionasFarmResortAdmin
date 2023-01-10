@@ -11,6 +11,8 @@ using System.Net;
 using System.Net.Mail;
 using System.IO;
 using System.Data.SqlClient;
+using iTextSharp.text.pdf.parser;
+
 namespace Admin_Login
 {
     public partial class MailPayslip : Form
@@ -22,6 +24,7 @@ namespace Admin_Login
         }
         private void ll_AttachFile_Click(object sender, EventArgs e)
         {
+            ofd_File.InitialDirectory = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Payslips\\";
             ofd_File.ShowDialog();
             lbl_FileLocation.Text = ofd_File.FileName;
         }
