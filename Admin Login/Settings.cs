@@ -32,11 +32,78 @@ namespace Admin_Login
             pnlAuditTrail.Visible = false;
         }
 
+        public string getEmailSender()
+        {
+            string query2 = "SELECT Email FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string getPasswordSender()
+        {
+            string query2 = "SELECT Pass FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
         private void btnUtilsClick(object sender, EventArgs e)
         {
             pnlUsers.Visible = false;
             pnlUtils.Visible = true;
             pnlAuditTrail.Visible = false;
+
+            txtSenderEmail.Text= getEmailSender();
+            txtSenderPass.Text= getPasswordSender();
         }
 
         private void btnAuditTrailClick(object sender, EventArgs e)
@@ -430,6 +497,22 @@ namespace Admin_Login
                 MessageBox.Show("User Deleted", "User Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+
+        private void btn_save(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "UPDATE Sender " +
+                    "SET Email='" + txtSenderEmail.Text.ToString() + "'" +
+                    ",Pass='" + txtSenderPass.Text.ToString() + "'";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+            MessageBox.Show("Email Sender Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Admin_Login
         {
             try
             {
-                MailMessage mm = new MailMessage(txt_From.Text.ToString(), cb_To.Text.ToString());
+                MailMessage mm = new MailMessage(txt_From.Text.ToString(), lblEmployeeEmail.Text.ToString());
                 if (txt_Subject.Text.Equals(" (no subject)")) txt_Subject.Text = "";
                 mm.Subject = txt_Subject.Text.ToString();
                 mm.Body = txt_Body.Text.ToString();
@@ -133,19 +133,115 @@ namespace Admin_Login
             menu.Text = "Fiona's Farm and Resort - Payroll Report";
             menu.Menu_Load(menu, EventArgs.Empty);
         }
+
+        public string getEmailSender()
+        {
+            string query2 = "SELECT Email FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string getPasswordSender()
+        {
+            string query2 = "SELECT Pass FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
         private void MailPayslip_Load(object sender, EventArgs e)
         {
-            txt_From.Text = "fionasfarmmagalang@gmail.com";
-            txt_From.ForeColor = Color.Silver;
-            txt_Password.Text = " password";
+            //txt_From.Text = "fionasfarmmagalang@gmail.com";
+            //txt_From.ForeColor = Color.Silver;
+            //txt_Password.Text = " password";
             txt_Password.PasswordChar = '\0';
-            txt_Password.ForeColor = Color.Silver;
+            //txt_Password.ForeColor = Color.Silver;
             cb_To.Text = " sample@gmail.com";
             cb_To.ForeColor = Color.Silver;
             txt_Subject.Text = " (no subject)";
             txt_Subject.ForeColor = Color.Silver;
             txt_Body.Text = "";
             lbl_FileLocation.Text = "";
+
+
+            txt_From.Text = getEmailSender();
+            txt_Password.Text = getPasswordSender();
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "SELECT EmployeeID, EmployeeFullName, Email " +
+                    "FROM EmployeeInfo;";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+
+                // Column font
+                this.dgvEmployees.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12);
+                // Row font
+                this.dgvEmployees.DefaultCellStyle.Font = new Font("Century Gothic", 10);
+
+                dgvEmployees.DataSource = data;
+            }
+        }
+
+        private void dgvEmployees_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                lblEmployeeEmail.Text = dgvEmployees.Rows[e.RowIndex].Cells[2].Value.ToString();
+            }
+            catch (System.ArgumentOutOfRangeException) { }
         }
     }
 }

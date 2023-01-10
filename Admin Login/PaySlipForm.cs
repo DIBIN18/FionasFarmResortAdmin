@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -95,7 +97,7 @@ namespace Admin_Login
                     {
                         EmpID = row.ItemArray[0].ToString();
                         getInfo();
-                        getPaySlip();
+                        getPaySlip(EmpID);
                         
                     }
                     if(count == data.Rows.Count)
@@ -106,7 +108,7 @@ namespace Admin_Login
                 }
             }
         }
-        public void getPaySlip()
+        public void getPaySlip(string emp_id)
         {
             DateTime now = DateTime.Now;
             try
@@ -116,10 +118,148 @@ namespace Admin_Login
                     panel1.DrawToBitmap(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
                     bmp.Save(@filepath + "\\" + txtEmployeeName.Text +" "+ now.ToString("MMMM dd, yyyy") +".jpeg");
                     getImage.Add(@filepath + "\\" + txtEmployeeName.Text +" "+ now.ToString("MMMM dd, yyyy") + ".jpeg");
+
+                    string attatchment_loc = @filepath + "\\" + txtEmployeeName.Text + " " + now.ToString("MMMM dd, yyyy") + ".jpeg";
+
+                    sendEmail(getEmail(emp_id), getEmailSender(), attatchment_loc, emp_id, getPasswordSender());
+
+                    Console.WriteLine(emp_id);
                 }
             }
             catch(Exception ex) { }
         }
+
+
+        //
+        // SEND EMAIL
+        //
+        public void sendEmail(string receiver_email, string sender_email, string attatchment, string employ_id, string pw)
+        {
+            try
+            {
+                MailMessage mm = new MailMessage(sender_email, receiver_email);
+                //if (txt_Subject.Text.Equals(" (no subject)")) txt_Subject.Text = "";
+                mm.Subject = "Payslip Salary";
+                mm.Body = "Payslip";
+                mm.Attachments.Add(new Attachment(attatchment));
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                System.Net.NetworkCredential nc = new NetworkCredential(sender_email, pw);
+                smtp.EnableSsl = true;
+                smtp.Credentials = nc;
+                smtp.Send(mm);
+                //MessageBox.Show("Mail has been sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                //if (txt_Password.Text.Equals(" password") || txt_Password.Text.Equals("")) MessageBox.Show("Wrong password.");
+                //else if (cb_To.Text.Equals(" sample@gmail.com")) MessageBox.Show("A recipient must be specified.");
+                //else if (lbl_FileLocation.Text.Equals("")) MessageBox.Show("File attachment cannot be empty.");
+                //else MessageBox.Show(ex.Message);
+                MessageBox.Show("Error");
+            }
+        }
+
+        public string getEmail(string emp_id)
+        {
+            string query2 = "SELECT Email FROM EmployeeInfo WHERE EmployeeID=" + emp_id;
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+        //
+        //  SENDER INFO
+        //
+        public string getEmailSender()
+        {
+            string query2 = "SELECT Email FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
+        public string getPasswordSender()
+        {
+            string query2 = "SELECT Pass FROM Sender";
+
+            using (SqlConnection connection = new SqlConnection(login.connectionString))
+            using (SqlCommand command = new SqlCommand(query2, connection))
+            {
+                connection.Open();
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            return reader.GetString(0);
+                        }
+                        else
+                        {
+                            return "";
+                        }
+
+                    }
+                }
+                catch (Exception e)
+                {
+                    return "";
+                }
+            }
+        }
+
         public void getInfo()
         {
             SqlConnection connection = new SqlConnection(login.connectionString);

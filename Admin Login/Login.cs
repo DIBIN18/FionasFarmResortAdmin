@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace Admin_Login
 {
@@ -24,10 +25,24 @@ namespace Admin_Login
             int width,
             int height
             );
+
+        private string getConnectionString()
+        {
+            var path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            string text = File.ReadAllText(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Database Settings\\Database Address.txt");
+            return text;
+        }
+
+        //DEFAULT CONNECTION STRING
+        //public string connectionString =
+        //    "Data Source=" +
+        //    File.ReadAllText(System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Database Settings\\Database Address.txt") +
+        //    ";Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+
         //DEVIN CONNECTION STRING
-        public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        //public string connectionString = "Data Source=DESKTOP-EHBRJVA\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //CUNAN CONNECTION STRING
-        //public string connectionString = "Data Source=JOHN-CUNAN\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
+        public string connectionString = @"Data Source=JOHN-CUNAN\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //JOVS CONNECTION STRING
         //public string connectionString = "Data Source=DESKTOP-2NTMR5E\\SQLEXPRESS;Initial Catalog=FFRUsers;Integrated Security=True;MultipleActiveResultSets=True";
         //PAUL CONNECTION STRING
