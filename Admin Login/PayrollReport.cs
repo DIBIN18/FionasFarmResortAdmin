@@ -233,6 +233,8 @@ namespace Admin_Login
             datefrom = dtp_From.Text;
             dateto = dtp_To.Text;
             PaySlipForm paySlipForm = new PaySlipForm(datefrom , dateto);
+            Loading loading = new Loading();
+            loading.ShowDialog();
             paySlipForm.ShowDialog();
         }
         public void moveToHistory()

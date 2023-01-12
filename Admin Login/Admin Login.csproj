@@ -162,6 +162,12 @@
     <Compile Include="AppliedOvertimes.Designer.cs">
       <DependentUpon>AppliedOvertimes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading.Designer.cs">
+      <DependentUpon>Loading.cs</DependentUpon>
+    </Compile>
     <Compile Include="MailPayslip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,6 +374,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AppliedOvertimes.resx">
       <DependentUpon>AppliedOvertimes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading.resx">
+      <DependentUpon>Loading.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MailPayslip.resx">
       <DependentUpon>MailPayslip.cs</DependentUpon>
@@ -664,6 +673,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Compose_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GeneratingPayslip_Icon.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
